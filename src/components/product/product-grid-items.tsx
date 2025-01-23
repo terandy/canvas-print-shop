@@ -21,7 +21,7 @@ const ProductGridItems: React.FC<Props> = ({
             prefetch={true}
           >
             <GridTileImage
-              alt={product.title}
+              alt={product.title ?? "product"}
               label={{
                 title: product.title,
                 amount: product.priceRange.maxVariantPrice.amount,

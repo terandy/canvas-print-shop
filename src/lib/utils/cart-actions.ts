@@ -14,18 +14,21 @@ import { TAGS } from "../constants";
 
 export async function addItem(
     prevState: any,
-    selectedVariantId: string | undefined
+    payload: {
+        selectedVariantId: string | undefined,
+        imgURL?: string
+    }
 ) {
     const cookieStore = await cookies()
     let cartId = cookieStore.get("cartId")?.value;
 
-    if (!cartId || !selectedVariantId) {
+    if (!cartId || !payload.selectedVariantId || !payload.imgURL) {
         return "Error adding item to cart";
     }
 
     try {
-        await addToCart(cartId, [
-            { merchandiseId: selectedVariantId, quantity: 1 },
+        const res = await addToCart(cartId, [
+            { merchandiseId: payload.selectedVariantId, quantity: 1, attributes: [{ key: "_IMAGE URL", value: payload.imgURL }] },
         ]);
     } catch (error) {
         return "Error adding item to cart";
@@ -39,6 +42,7 @@ export const updateItemQuantity = async (
     payload: {
         merchandiseId: string;
         quantity: number;
+        attributes: { key: string, value: string }[]
     }
 ) => {
     const cookieStore = await cookies()
@@ -47,7 +51,7 @@ export const updateItemQuantity = async (
         return "Missing cart ID";
     }
 
-    const { merchandiseId, quantity } = payload;
+    const { merchandiseId, quantity, attributes } = payload;
 
     try {
         const cart = await getCart(cartId);
@@ -68,12 +72,13 @@ export const updateItemQuantity = async (
                         id: lineItem.id,
                         merchandiseId,
                         quantity,
+                        attributes
                     },
                 ]);
             }
         } else if (quantity > 0) {
             // If the item doesn't exist in the cart and quantity > 0, add it
-            await addToCart(cartId, [{ merchandiseId, quantity }]);
+            await addToCart(cartId, [{ merchandiseId, quantity, attributes }]);
         }
 
     } catch (error) {

@@ -2,7 +2,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { createContext, useContext, useMemo, useOptimistic } from "react";
+import React, { createContext, useCallback, useContext, useMemo, useOptimistic } from "react";
 type ProductState = {
   [key: string]: string;
 } & {
@@ -22,9 +22,9 @@ export const ProductProvider = ({
   const searchParams = useSearchParams();
   const getInitialState = () => {
     const params: ProductState = {};
-    for (const [key, value] of searchParams.entries()) {
-      params[key] = value;
-    }
+    searchParams.forEach((value, key) => {
+      params[key] = value
+    })
     return params;
   };
   const [state, setOptimisticState] = useOptimistic(getInitialState(), (prevState: ProductState, update: ProductState) => ({
@@ -67,7 +67,7 @@ export function useProduct() {
 }
 export function useUpdateURL() {
   const router = useRouter();
-  return (state: ProductState) => {
+  return useCallback((state: ProductState) => {
     const newParams = new URLSearchParams(window.location.search);
     Object.entries(state).forEach(([key, value]) => {
       newParams.set(key, value);
@@ -75,5 +75,5 @@ export function useUpdateURL() {
     router.push(`?${newParams.toString()}`, {
       scroll: false
     });
-  };
+  }, [router]);
 }

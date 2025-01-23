@@ -6,15 +6,15 @@ import { useCart } from "../../contexts/cart-context";
 import clsx from "clsx";
 import * as api from "../../lib/utils/cart-actions";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import React, { useActionState, useState } from "react";
+import React, { useActionState } from "react";
 
 interface SubmitButtonProps {
   availableForSale: boolean;
-  selectedVariantId: string | undefined;
+  disabled?: boolean;
 }
 const SubmitButton: React.FC<SubmitButtonProps> = ({
   availableForSale,
-  selectedVariantId
+  disabled
 }) => {
   const buttonClasses = "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
@@ -23,7 +23,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
       Out of Stock
     </button>;
   }
-  if (!selectedVariantId) {
+  if (disabled) {
     return <button aria-label="Please select an option" disabled className={clsx(buttonClasses, disabledClasses)}>
       <div className="absolute left-0 ml-4">
         +
@@ -46,11 +46,11 @@ interface AddToCardProps {
 
 }
 export const AddToCart: React.FC<AddToCardProps> = ({
-  product
+  product,
 }) => {
   const {
     variants,
-    availableForSale
+    availableForSale,
   } = product;
   const { addOptimisticCartItem } = useCart();
   const { state } = useProduct();
@@ -59,13 +59,12 @@ export const AddToCart: React.FC<AddToCardProps> = ({
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
   const selectedVariantId = variant?.id || defaultVariantId;
   const finalVariant = variants.find(variant => variant.id === selectedVariantId)!;
-  console.log({ message })
 
   return <form action={async () => {
-    addOptimisticCartItem(finalVariant, product); // optimistic
-    await addCartItem(selectedVariantId);
+    addOptimisticCartItem(finalVariant, product, state.imgURL); // optimistic
+    await addCartItem({ selectedVariantId, imgURL: state.imgURL });
   }}>
-    <SubmitButton availableForSale={availableForSale} selectedVariantId={selectedVariantId} />
+    <SubmitButton availableForSale={availableForSale} disabled={!selectedVariantId || !state.imgURL} />
     <p className="sr-only" role="status" aria-label="polite">
       {message}
     </p>

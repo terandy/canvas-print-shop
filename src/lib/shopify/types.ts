@@ -130,6 +130,10 @@ export type CartItem = {
         }[];
         product: CartProduct;
     };
+    attributes: Array<{
+        key: string;
+        value: string;
+    }>;
 };
 
 export type ShopifyCart = {
@@ -154,6 +158,11 @@ export type ShopifyCartOperation = {
     };
     variables: {
         cartId: string;
+    };
+};
+export type ShopifyAbandonedCartOperation = {
+    data: {
+        carts: ShopifyCart[];
     };
 };
 

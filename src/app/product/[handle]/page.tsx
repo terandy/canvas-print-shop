@@ -5,18 +5,16 @@ import { getProduct } from "@/lib/shopify";
 import * as types from "@/lib/shopify/types";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import type { Metadata } from "next";
-import { AddToCart } from "@/components/cart/add-to-cart";
+import type { Metadata, NextPage } from "next";
 
-interface Props {
-  params: { handle: string };
+type Props = {
+  params: Promise<{ handle: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
-  const { handle } = await params
-  const product = await getProduct(handle);
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
+  const product = await getProduct(params?.handle ?? "");
 
   if (!product) return notFound();
 
@@ -49,11 +47,9 @@ export const generateMetadata = async ({
   };
 }
 
-const ProductPage: React.FC<Props> = async ({
-  params,
-}) => {
-  const { handle } = await params
-  const product = await getProduct(handle)
+const ProductPage: NextPage<Props> = async (props) => {
+  const params = await props.params;
+  const product = await getProduct(params.handle);
   if (!product) return notFound();
   return (
     <ProductProvider>
@@ -76,7 +72,6 @@ const ProductPage: React.FC<Props> = async ({
           <div className="basis-full lg:basis-2/6">
             <Suspense fallback={null}>
               <ProductDescription product={product} />
-              <AddToCart product={product} />
             </Suspense>
           </div>
         </div>

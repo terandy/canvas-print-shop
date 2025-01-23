@@ -32,7 +32,8 @@ const EditItemQuantityButton: React.FC<EditItemQttyProps> = ({
   const [message, formAction] = useActionState(updateItemQuantity, null);
   const payload = {
     merchandiseId: item.merchandise.id,
-    quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1
+    quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1,
+    attributes: item.attributes
   };
   return <form action={async () => {
     optimisticUpdate(payload.merchandiseId, type);

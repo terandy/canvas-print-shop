@@ -1,3 +1,5 @@
+"use server"
+
 import { SHOPIFY_GRAPHQL_API_ENDPOINT } from "../constants";
 import { ExtractVariables } from "./types";
 import { ensureStartWith } from "../utils/base";

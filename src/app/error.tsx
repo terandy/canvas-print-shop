@@ -1,23 +1,21 @@
-"use client";
+'use client'
 
-interface Props { reset: () => void }
-
-const Error: React.FC<Props> = ({ reset }) => {
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
   return (
-    <div className="mx-auto my-4 flex max-w-xl flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 dark:border-neutral-800 dark:bg-black">
-      <h2 className="text-xl font-bold">Oh no!</h2>
-      <p className="my-2">
-        There was an issue with our storefront. This could be a temporary issue,
-        please try your action again.
-      </p>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h2 className="text-2xl font-bold mb-4">Something went wrong!</h2>
       <button
-        className="mx-auto mt-4 flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white hover:opacity-90"
+        className="px-4 py-2 bg-blue-500 text-white rounded"
         onClick={() => reset()}
       >
-        Try Again
+        Try again
       </button>
     </div>
-  );
+  )
 }
-
-export default Error

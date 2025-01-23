@@ -3,12 +3,15 @@ import { getPage } from "@/lib/shopify";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { page: string };
-}): Promise<Metadata> {
-  const page = await getPage(params.page);
+type Props = {
+  params?: Promise<{ handle: string }>;
+  searchParams?: Promise<any>;
+}
+
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params
+  const page = await getPage(params?.handle ?? "");
 
   if (!page) return notFound();
 
@@ -23,8 +26,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { page: string } }) {
-  const page = await getPage(params.page);
+const Page = async (props: Props): Promise<React.ReactNode> => {
+  const params = await props.params
+  const page = await getPage(params?.handle ?? "");
 
   if (!page) return notFound();
 
@@ -45,3 +49,5 @@ export default async function Page({ params }: { params: { page: string } }) {
     </>
   );
 }
+
+export default Page;

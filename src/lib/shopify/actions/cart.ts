@@ -1,10 +1,15 @@
-import { getCartQuery } from "../queries/cart";
+"use server"
+
 import { shopifyFetch } from "../shopifyFetch";
 import * as types from "../types";
-import { parseCart } from "../utils";
-import { addToCartMutation, createCartMutation, editCartItemsMutation, removeFromCartMutation } from "./cart";
+import { parseCart } from "../utils"
+import { getCartQuery, addToCartMutation, createCartMutation, editCartItemsMutation, removeFromCartMutation, getAbandonnedCartsQuery } from "../queries/cart";
+
+import { TAGS } from "../../constants";
+
 
 export async function createCart(): Promise<types.Cart> {
+    console.log("createCart")
     const res = await shopifyFetch<types.ShopifyCreateCartOperation>({
         query: createCartMutation,
         cache: "no-store",
@@ -21,6 +26,7 @@ export async function getCart(
     const res = await shopifyFetch<types.ShopifyCartOperation>({
         query: getCartQuery,
         variables: { cartId },
+        tags: [TAGS.cart],
     });
 
     // old carts becomes 'null' when you checkout
@@ -29,6 +35,22 @@ export async function getCart(
     }
 
     return parseCart(res.body.data.cart);
+}
+
+export async function getAbandonnedCarts(
+): Promise<types.Cart[] | undefined> {
+
+    const res = await shopifyFetch<types.ShopifyAbandonedCartOperation>({
+        query: getAbandonnedCartsQuery,
+        tags: [TAGS.cart],
+    });
+
+    // old carts becomes 'null' when you checkout
+    if (!res.body.data.carts) {
+        return undefined;
+    }
+
+    return res.body.data.carts.map(c => parseCart(c));
 }
 
 export async function removeFromCart(
@@ -49,7 +71,7 @@ export async function removeFromCart(
 
 export async function updateCart(
     cartId: string,
-    lines: { id: string; merchandiseId: string; quantity: number }[]
+    lines: { id: string; merchandiseId: string; quantity: number, attributes: { key: string, value: string }[] }[]
 ): Promise<types.Cart> {
     const res = await shopifyFetch<types.ShopifyUpdateCartOperation>({
         query: editCartItemsMutation,
@@ -65,7 +87,7 @@ export async function updateCart(
 
 export async function addToCart(
     cartId: string,
-    lines: { merchandiseId: string; quantity: number }[]
+    lines: { merchandiseId: string; quantity: number, attributes: { key: string, value: string }[] }[]
 ): Promise<types.Cart> {
     const res = await shopifyFetch<types.ShopifyAddToCartOperation>({
         query: addToCartMutation,
@@ -76,5 +98,6 @@ export async function addToCart(
         cache: "no-cache",
     });
 
-    return parseCart(res.body.data.cartLinesAdd.cart);
+    const cart = parseCart(res.body.data.cartLinesAdd.cart);
+    return cart
 }
