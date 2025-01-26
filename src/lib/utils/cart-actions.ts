@@ -37,9 +37,10 @@ export async function addItem(
     }
 }
 
-export const updateItemQuantity = async (
+export const updateCartItem = async (
     prevState: any,
     payload: {
+        cartItemId: string,
         merchandiseId: string;
         quantity: number;
         attributes: { key: string, value: string }[]
@@ -51,7 +52,7 @@ export const updateItemQuantity = async (
         return "Missing cart ID";
     }
 
-    const { merchandiseId, quantity, attributes } = payload;
+    const { cartItemId, merchandiseId, quantity, attributes } = payload;
 
     try {
         const cart = await getCart(cartId);
@@ -60,14 +61,14 @@ export const updateItemQuantity = async (
         }
 
         const lineItem = cart.lines.find(
-            (line) => line.merchandise.id === merchandiseId
+            (line) => line.id === cartItemId
         );
 
         if (lineItem && lineItem.id) {
             if (quantity === 0) {
                 await removeFromCart(cartId, [lineItem.id]);
             } else {
-                await updateCart(cartId, [
+                const cart = await updateCart(cartId, [
                     {
                         id: lineItem.id,
                         merchandiseId,
@@ -89,7 +90,7 @@ export const updateItemQuantity = async (
     }
 }
 
-export const removeItem = async (prevState: any, merchandiseId: string) => {
+export const removeItem = async (prevState: any, cartItemId: string) => {
     const cookieStore = await cookies()
     let cartId = cookieStore.get("cartId")?.value;
 
@@ -104,7 +105,7 @@ export const removeItem = async (prevState: any, merchandiseId: string) => {
         }
 
         const lineItem = cart.lines.find(
-            (line) => line.merchandise.id === merchandiseId
+            (line) => line.id === cartItemId
         );
 
         if (lineItem && lineItem.id) {

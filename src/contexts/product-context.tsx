@@ -6,12 +6,20 @@ import React, { createContext, useCallback, useContext, useMemo, useOptimistic }
 type ProductState = {
   [key: string]: string;
 } & {
+  /**
+   * Currently displayed image in the gallery
+   */
   image?: string;
+  /**
+   * The ID of the cart item
+   */
+  merchandiseId?: string;
 };
 type ProductContextType = {
   state: ProductState;
   updateOption: (name: string, value: string) => ProductState;
   updateImage: (index: string) => ProductState;
+  deleteOption: (name: string) => ProductState;
 };
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 export const ProductProvider = ({
@@ -41,6 +49,16 @@ export const ProductProvider = ({
       ...newState
     };
   };
+
+  const deleteOption = (name: string) => {
+    const newState = {
+      ...state
+    };
+    delete newState[name]
+    setOptimisticState(newState);
+    return newState;
+  };
+
   const updateImage = (index: string) => {
     const newState = {
       image: index
@@ -54,6 +72,7 @@ export const ProductProvider = ({
   const value = useMemo(() => ({
     state,
     updateOption,
+    deleteOption,
     updateImage
   }), [state]);
   return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
@@ -68,7 +87,7 @@ export function useProduct() {
 export function useUpdateURL() {
   const router = useRouter();
   return useCallback((state: ProductState) => {
-    const newParams = new URLSearchParams(window.location.search);
+    const newParams = new URLSearchParams();
     Object.entries(state).forEach(([key, value]) => {
       newParams.set(key, value);
     });

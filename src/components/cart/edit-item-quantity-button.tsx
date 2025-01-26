@@ -1,8 +1,9 @@
 import { CartItem } from "@/lib/shopify/types";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import { updateItemQuantity } from "@/lib/utils/cart-actions";
+import { updateCartItem } from "@/lib/utils/cart-actions";
 import { useActionState } from "react";
+import { UpdateQuantityType } from "@/contexts/cart-context";
 
 interface SubmitButtonProps {
   type: "plus" | "minus";
@@ -21,7 +22,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
 interface EditItemQttyProps {
   item: CartItem;
   type: "plus" | "minus";
-  optimisticUpdate: any;
+  optimisticUpdate: (cartItemId: string, updateType: UpdateQuantityType) => void;
 }
 
 const EditItemQuantityButton: React.FC<EditItemQttyProps> = ({
@@ -29,14 +30,15 @@ const EditItemQuantityButton: React.FC<EditItemQttyProps> = ({
   type,
   optimisticUpdate
 }) => {
-  const [message, formAction] = useActionState(updateItemQuantity, null);
+  const [message, formAction] = useActionState(updateCartItem, null);
   const payload = {
+    cartItemId: item.id,
     merchandiseId: item.merchandise.id,
     quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1,
     attributes: item.attributes
   };
   return <form action={async () => {
-    optimisticUpdate(payload.merchandiseId, type);
+    optimisticUpdate(payload.cartItemId, type);
     await formAction(payload);
   }}>
     <SubmitButton type={type} />

@@ -1,11 +1,11 @@
-import Gallery from "@/components/product/product-gallery";
 import { ProductProvider } from "@/contexts/product-context";
-import ProductDescription from "@/components/product/product-description";
+import ProductForm from "@/components/product/product-form";
 import { getProduct } from "@/lib/shopify";
-import * as types from "@/lib/shopify/types";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type { Metadata, NextPage } from "next";
+import { ProductImagePreview } from "@/components/product/product-image-preview";
+import Prose from "@/components/prose";
 
 type Props = {
   params: Promise<{ handle: string }>;
@@ -39,7 +39,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
             url,
             width,
             height,
-            alt,
+            alt: alt || "",
           },
         ],
       }
@@ -49,7 +49,10 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 
 const ProductPage: NextPage<Props> = async (props) => {
   const params = await props.params;
+  const searchParams = await props.searchParams;
   const product = await getProduct(params.handle);
+  const cartItemID = searchParams?.["cartItemID"] as string | undefined;
+  const imgURL = searchParams?.["imgURL"] as string | undefined;
   if (!product) return notFound();
   return (
     <ProductProvider>
@@ -61,17 +64,16 @@ const ProductPage: NextPage<Props> = async (props) => {
                 <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
               }
             >
-              <Gallery
-                images={product.images.slice(0, 5).map((image: types.Image) => ({
-                  src: image.url,
-                  altText: image.altText,
-                }))}
-              />
+              <ProductImagePreview product={product} />
             </Suspense>
           </div>
           <div className="basis-full lg:basis-2/6">
             <Suspense fallback={null}>
-              <ProductDescription product={product} />
+              <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
+                <h1 className="mb-2 text-5xl font-medium">{product.title}</h1>
+              </div>
+              {product.descriptionHtml ? <Prose className="mb-6 text-sm leading-light dark:text-white/[60%]" html={product.descriptionHtml} /> : null}
+              <ProductForm product={product} cartItemID={cartItemID} imgURL={imgURL} />
             </Suspense>
           </div>
         </div>

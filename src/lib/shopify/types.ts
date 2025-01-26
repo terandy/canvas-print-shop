@@ -53,20 +53,19 @@ export type ProductVariant = {
 
 export type Image = {
     url: string;
-    altText: string;
+    altText: string | null;
     width: number;
     height: number;
 };
 
 export type SEO = {
-    title: string;
-    description: string;
+    title: string | null;
+    description: string | null;
 };
 
 export type ShopifyProduct = {
     id: string;
     handle: string;
-    availableForSale: boolean;
     title: string;
     description: string;
     descriptionHtml: string;
@@ -116,7 +115,7 @@ export type CartProduct = {
 };
 
 export type CartItem = {
-    id: string | undefined;
+    id: string;
     quantity: number;
     cost: {
         totalAmount: Money;
@@ -124,6 +123,11 @@ export type CartItem = {
     merchandise: {
         id: string;
         title: string;
+        /**
+         * Selected options
+         * 
+         * e.g. size, frame, border
+         */
         selectedOptions: {
             name: string;
             value: string;
@@ -216,6 +220,7 @@ export type ShopifyAddToCartOperation = {
 
 
 // ---- PAGE ------
+
 export type Page = {
     id: string;
     title: string;

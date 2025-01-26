@@ -39,7 +39,7 @@ const ProductPreview: React.FC<Props> = ({ product }) => {
                                     className="object-cover hover:scale-105 transition-transform duration-300"
                                     fill
                                     src={image.url}
-                                    alt={image.altText}
+                                    alt={image.altText ?? ""}
                                     priority={index === 0}
                                 />
                             </div>

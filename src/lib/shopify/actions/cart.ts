@@ -9,7 +9,6 @@ import { TAGS } from "../../constants";
 
 
 export async function createCart(): Promise<types.Cart> {
-    console.log("createCart")
     const res = await shopifyFetch<types.ShopifyCreateCartOperation>({
         query: createCartMutation,
         cache: "no-store",

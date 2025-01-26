@@ -3,7 +3,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { UpdateType, useCart } from "../../contexts/cart-context";
+import { UpdateQuantityType, useCart } from "../../contexts/cart-context";
 import { createUrl } from "@/lib/utils/base";
 import Image from "next/image";
 import Link from "next/link";
@@ -60,8 +60,10 @@ const Totals = ({ cart }: { cart: Cart }) => {
   </>
 }
 
-const CartItemCard = ({ item, updateOptimisticCartItem, closeCart }: { item: CartItem, closeCart: () => void, updateOptimisticCartItem: (merchandiseId: string, updateType: UpdateType, imgURL: string) => void }) => {
+const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { item: CartItem, closeCart: () => void, updateOptimisticCartItemQuantity: (cartItemId: string, updateType: UpdateQuantityType,) => void }) => {
   const merchandiseSearchParams: MerchandiseSearchParams = {};
+
+  if (item.id) merchandiseSearchParams.cartItemID = item.id
 
   item.merchandise.selectedOptions.forEach(
     ({ name, value }) => {
@@ -72,15 +74,15 @@ const CartItemCard = ({ item, updateOptimisticCartItem, closeCart }: { item: Car
       }
     }
   );
+  const imgURL = item.attributes?.find(attr => attr.key === "_IMAGE URL")?.value
+
+  if (imgURL) merchandiseSearchParams["imgURL"] = imgURL;
 
   const merchandiseUrl = createUrl(
     `/product/${item.merchandise.product.handle}`,
     new URLSearchParams(merchandiseSearchParams)
   );
 
-  console.log(item)
-
-  const imgURL = item.attributes?.find(attr => attr.key === "_IMAGE URL")?.value
 
   return (
     <li
@@ -89,7 +91,7 @@ const CartItemCard = ({ item, updateOptimisticCartItem, closeCart }: { item: Car
       <div className="relative flex w-full flex-row justify-between px-1 py-4">
         <DeleteItemButton
           item={item}
-          optimisticUpdate={updateOptimisticCartItem}
+          optimisticUpdate={updateOptimisticCartItemQuantity}
         />
       </div>
       <div className="flex flex-row">
@@ -131,7 +133,7 @@ const CartItemCard = ({ item, updateOptimisticCartItem, closeCart }: { item: Car
           <EditItemQuantityButton
             item={item}
             type="minus"
-            optimisticUpdate={updateOptimisticCartItem}
+            optimisticUpdate={updateOptimisticCartItemQuantity}
           />
           <p className="w-6 text-center">
             <span className="w-full text-sm">
@@ -141,7 +143,7 @@ const CartItemCard = ({ item, updateOptimisticCartItem, closeCart }: { item: Car
           <EditItemQuantityButton
             item={item}
             type="plus"
-            optimisticUpdate={updateOptimisticCartItem}
+            optimisticUpdate={updateOptimisticCartItemQuantity}
           />
         </div>
       </div>
@@ -150,7 +152,7 @@ const CartItemCard = ({ item, updateOptimisticCartItem, closeCart }: { item: Car
 };
 
 const CartModal = () => {
-  const { cart, updateOptimisticCartItem } = useCart();
+  const { cart, updateOptimisticCartItemQuantity } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(cart?.totalQuantity);
   const openCart = () => setIsOpen(true);
@@ -228,7 +230,7 @@ const CartModal = () => {
                         )
                       )
                       .map((item) =>
-                        <CartItemCard key={`cart${item.id}`} item={item} closeCart={closeCart} updateOptimisticCartItem={updateOptimisticCartItem} />)}
+                        <CartItemCard key={`cart${item.id}`} item={item} closeCart={closeCart} updateOptimisticCartItemQuantity={updateOptimisticCartItemQuantity} />)}
                   </ul >
                   <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
                     <Totals cart={cart} />
