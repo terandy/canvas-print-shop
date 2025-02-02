@@ -15,7 +15,7 @@ const Home: React.FC = async () => {
         <div className="container mx-auto px-4 py-16 sm:py-24">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8">
-              Decorate your home with personalised art
+              Decorate your Home with personalised art
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-12">
               Explore our curated collections of images for every occasion.
