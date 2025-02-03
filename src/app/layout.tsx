@@ -12,8 +12,11 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: "Print images onto canvas",
+  title: "Canvas Print Shop",
   description: "Create your own custom decor",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 interface Props {

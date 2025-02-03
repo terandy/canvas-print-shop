@@ -1,5 +1,3 @@
-import Grid from "@/components/grid/grid";
-import ProductGridItems from "@/components/product/product-grid-items";
 import ProductPreview from "@/components/product/product-preview";
 import { getProductList } from "@/lib/shopify";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";

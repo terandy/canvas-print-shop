@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->  
+  <!-- Frame -->
+  <path d="M4 8h20v20h-20v-20zm3 3v14h14v-14h-14z" fill="#B49B7F"/>
+  
+  <!-- Shadow on top at further right -->
+  <path d="M28 4v20h-4v-16h-16v-4h20z" fill="#D4BFA6"/>
+</svg>
