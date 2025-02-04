@@ -10,10 +10,12 @@ export const getProductList = async ({
     query,
     reverse,
     sortKey,
+    cache
 }: {
     query?: string;
     reverse?: boolean;
     sortKey?: string;
+    cache?: RequestCache;
 }): Promise<types.Product[]> => {
     const res = await shopifyFetch<types.ShopifyProductsOperation>({
         query: getProductListQuery,
@@ -22,6 +24,7 @@ export const getProductList = async ({
             reverse,
             sortKey,
         },
+        cache,
     });
     return parseProducts(res.body.data.products);
 }
