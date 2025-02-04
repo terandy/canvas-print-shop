@@ -7,5 +7,5 @@ export const TAGS = {
 
 export const DEFAULT_OPTION = "Default Title";
 
-export const BASE_URL = "https://canvasprintshop.com"
+export const BASE_URL = "https://canvasprintshop.ca";
 
