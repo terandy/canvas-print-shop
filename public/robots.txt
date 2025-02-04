@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://canvasprintshop.ca
+
+# Sitemaps
+Sitemap: https://canvasprintshop.ca/sitemap.xml
