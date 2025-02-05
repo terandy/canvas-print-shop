@@ -1,8 +1,22 @@
+import { Metadata } from 'next'
 import ProductPreview from "@/components/product/product-preview";
 import { getProductList } from "@/lib/shopify";
 import { ArrowRightIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: 'Custom Canvas Prints & Framing | Canvas Print Shop',
+  description: 'Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada. Order now for fast delivery!',
+  openGraph: {
+    title: 'Custom Canvas Prints & Framing | Canvas Print Shop',
+    description: 'Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada.',
+    url: 'https://canvasprintshop.ca',
+    siteName: 'Canvas Print Shop',
+    locale: 'en_CA',
+    type: 'website',
+  },
+}
 
 const benefits = [
   { title: "Premium Materials", description: "Gallery-grade canvas and fade-resistant archival inks" },
