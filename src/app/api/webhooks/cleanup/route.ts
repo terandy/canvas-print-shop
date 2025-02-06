@@ -36,8 +36,6 @@ export async function POST(request: NextRequest) {
         body
     });
 
-    console.log('Webhook received:', { topic, body });
-
     switch (topic) {
         case 'orders/fulfilled':
             // Delete image after successful fulfillment

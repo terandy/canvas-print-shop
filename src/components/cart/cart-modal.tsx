@@ -74,9 +74,13 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
       }
     }
   );
-  const imgURL = item.attributes?.find(attr => attr.key === "_IMAGE URL")?.value
+  const imgURL = item.attributes?.find(attr => attr.key === "_IMAGE URL")?.value;
+  const borderStyle = item.attributes?.find(attr => attr.key === "borderStyle")?.value;
+  const direction = item.attributes?.find(attr => attr.key === "direction")?.value;
 
   if (imgURL) merchandiseSearchParams["imgURL"] = imgURL;
+  if (borderStyle) merchandiseSearchParams["borderStyle"] = borderStyle;
+  if (direction) merchandiseSearchParams["direction"] = direction;
 
   const merchandiseUrl = createUrl(
     `/product/${item.merchandise.product.handle}`,
@@ -118,6 +122,7 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
                 {item.merchandise.title}
               </p>
             ) : null}
+            {item.attributes.filter(attr => attr.key !== "_IMAGE URL").map(attr => <span key={attr.key} className="first-letter:capitalize text-sm text-neutral-500 dark:text-neutral-400">{attr.value}{attr.key === "borderStyle" && " border"}</span>)}
           </div>
         </Link>
       </div>

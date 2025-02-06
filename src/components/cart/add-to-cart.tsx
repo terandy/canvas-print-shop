@@ -7,7 +7,7 @@ import clsx from "clsx";
 import * as api from "../../lib/utils/cart-actions";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import React, { useActionState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface SubmitButtonProps {
   disabled?: boolean;
@@ -42,7 +42,8 @@ export const AddToCart: React.FC<AddToCardProps> = ({
   } = product;
   const { addOptimisticCartItem } = useCart();
   const { state } = useProduct();
-  const searchParams = useSearchParams()
+  const router = useRouter();
+
 
   const [message, addCartItem] = useActionState(api.addItem, null);
   const variant = variants.find((variant: ProductVariant) => variant.selectedOptions.every(option => option.value === state[option.name.toLowerCase()]));
@@ -51,8 +52,9 @@ export const AddToCart: React.FC<AddToCardProps> = ({
   const finalVariant = variants.find(variant => variant.id === selectedVariantId)!;
 
   return <form action={async () => {
-    addOptimisticCartItem(finalVariant, product, state.imgURL); // optimistic
-    await addCartItem({ selectedVariantId, imgURL: state.imgURL });
+    addOptimisticCartItem(finalVariant, product, state.imgURL, state.borderStyle, state.direction); // optimistic
+    await addCartItem({ selectedVariantId, imgURL: state.imgURL, borderStyle: state.borderStyle, direction: state.direction });
+    router.replace("/")
   }}>
     <SubmitButton disabled={!selectedVariantId || !state.imgURL} />
     <p className="sr-only" role="status" aria-label="polite">

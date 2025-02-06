@@ -82,6 +82,8 @@ export type ShopifyProduct = {
     updatedAt: string;
 };
 
+export type BorderStyle = "black" | "white" | "wrapped";
+
 export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
     variants: ProductVariant[];
     images: Image[];

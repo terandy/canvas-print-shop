@@ -16,7 +16,9 @@ export async function addItem(
     prevState: any,
     payload: {
         selectedVariantId: string | undefined,
-        imgURL?: string
+        imgURL?: string,
+        borderStyle: string,
+        direction: string,
     }
 ) {
     const cookieStore = await cookies()
@@ -28,7 +30,7 @@ export async function addItem(
 
     try {
         const res = await addToCart(cartId, [
-            { merchandiseId: payload.selectedVariantId, quantity: 1, attributes: [{ key: "_IMAGE URL", value: payload.imgURL }] },
+            { merchandiseId: payload.selectedVariantId, quantity: 1, attributes: [{ key: "_IMAGE URL", value: payload.imgURL }, { key: "borderStyle", value: payload.borderStyle }, { key: "direction", value: payload.direction }] },
         ]);
     } catch (error) {
         return "Error adding item to cart";

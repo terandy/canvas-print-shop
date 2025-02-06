@@ -54,13 +54,15 @@ export const SaveCartItem: React.FC<SaveCartItemProps> = ({
   const prevCartItem = cart?.lines.find(line => line.id === cartItemID)
 
   const imgURL = prevCartItem?.attributes.find(attr => attr.key === "_IMAGE URL")?.value
+  const borderStyle = prevCartItem?.attributes?.find(attr => attr.key === "borderStyle")?.value
+  const direction = prevCartItem?.attributes?.find(attr => attr.key === "direction")?.value
 
-  const hasDiff = prevCartItem?.merchandise.id !== selectedVariantId || imgURL !== state.imgURL
+  const hasDiff = prevCartItem?.merchandise.id !== selectedVariantId || imgURL !== state.imgURL || borderStyle !== state.borderStyle || direction !== state.direction
 
   return <form action={async () => {
     if (!selectedVariantId) return;
-    updateOptimisticCartItem(cartItemID, finalVariant, product, state.imgURL); // optimistic
-    await updateCartItem({ cartItemId: cartItemID, merchandiseId: selectedVariantId, quantity: 1, attributes: [{ key: "_IMAGE URL", value: state.imgURL }] });
+    updateOptimisticCartItem(cartItemID, finalVariant, product, state.imgURL, state.borderStyle, state.direction); // optimistic
+    await updateCartItem({ cartItemId: cartItemID, merchandiseId: selectedVariantId, quantity: 1, attributes: [{ key: "_IMAGE URL", value: state.imgURL }, { key: "borderStyle", value: state.borderStyle }, { key: "direction", value: state.direction }] });
   }}>
     <SubmitButton saved={!hasDiff} disabled={!state.imgURL || !selectedVariantId} />
     <p className="sr-only" role="status" aria-label="polite">

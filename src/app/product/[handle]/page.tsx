@@ -56,15 +56,15 @@ const ProductPage: NextPage<Props> = async (props) => {
   if (!product) return notFound();
   return (
     <ProductProvider>
-      <div className="mx-auto max-w-screen-2xl px-4">
-        <div className="position-relative flex flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 lg:flex-row lg:gap-8 dark:border-neutral-800 dark:bg-black">
-          <div className="sticky top-28 h-full w-full basis-full lg:basis-4/6 mb-6 lg:mb-0">
+      <div className="mx-auto max-w-screen-2xl pl-4">
+        <div className="rounded-lg p-8 md:p-12 box-border border border-neutral-200 dark:border-neutral-800 dark:bg-black lg:flex lg:gap-12">
+          <div className="basis-full lg:basis-4/6 mb-6 lg:mb-0 ">
             <Suspense
               fallback={
-                <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
+                <div className="aspect-square h-96 w-full" />
               }
             >
-              <ProductImagePreview product={product} />
+              <ProductImagePreview product={product} className="lg:sticky lg:top-28" />
             </Suspense>
           </div>
           <div className="basis-full lg:basis-2/6">
