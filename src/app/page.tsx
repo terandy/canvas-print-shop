@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 }
 
 const benefits = [
-  { title: "Premium Materials", description: "Gallery-grade canvas and fade-resistant archival inks" },
-  { title: "Expert Craftsmanship", description: "Handcrafted in our Canadian studio" },
-  { title: "Easy Process", description: "Simple upload and preview system" },
-  { title: "Satisfaction Guaranteed", description: "100% satisfaction guarantee on all prints" },
+  { title: "Premium Materials", description: "Premium cotton-blend canvas with 10x higher density and 75% opacity - far superior to competitors' lower quality materials." },
+  { title: "Expert Craftsmanship", description: "All canvas prints are expertly handcrafted in our Canadian studio, based in Quebec City." },
+  { title: "Easy Process", description: "Simply upload your image, choose your dimensions, preview your canvas print and then checkout." },
+  { title: "UVgel Technology", description: "Advanced Canon printing technology delivering exceptional color vibrancy and durability, backed by our 30-year print quality guarantee. Eco-friendly, no-odor prints perfect for indoor display." },
 ];
 
 const process = [
@@ -100,7 +100,7 @@ const Home: React.FC = async () => {
       {/* Featured Collections */}
       <section className="container mx-auto px-4 py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-          Featured Collections
+          Create Your Custom Canvas Print
         </h2>
         {products.map(product => (
           <ProductPreview key={product.id} product={product} />
