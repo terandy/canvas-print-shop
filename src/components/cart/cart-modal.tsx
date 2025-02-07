@@ -80,7 +80,7 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
 
   if (imgURL) merchandiseSearchParams["imgURL"] = imgURL;
   if (borderStyle) merchandiseSearchParams["borderStyle"] = borderStyle;
-  if (direction) merchandiseSearchParams["direction"] = direction;
+  if (direction) merchandiseSearchParams["direction"] = direction.toLowerCase();
 
   const merchandiseUrl = createUrl(
     `/product/${item.merchandise.product.handle}`,
