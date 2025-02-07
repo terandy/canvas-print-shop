@@ -5,9 +5,10 @@ import { useProduct } from "../../contexts/product-context";
 import { useCart } from "../../contexts/cart-context";
 import clsx from "clsx";
 import * as api from "../../lib/utils/cart-actions";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { useActionState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { deleteImage } from "@/lib/s3/actions/image";
 
 interface SubmitButtonProps {
   disabled?: boolean;
@@ -31,6 +32,15 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
   </button>;
 };
 
+const CancelButton = ({ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement> }) => {
+  return <button aria-label={"Cancel"} className={clsx("relative flex w-full items-center justify-center tracking-wide text-gray bg-white p-4 hover:text-blue-600")} onClick={onClick}>
+    <div className="absolute left-0 ml-4">
+      <XMarkIcon />
+    </div>
+    Cancel
+  </button>
+}
+
 interface AddToCardProps {
   product: Product;
 }
@@ -42,7 +52,8 @@ export const AddToCart: React.FC<AddToCardProps> = ({
   } = product;
   const { addOptimisticCartItem } = useCart();
   const { state } = useProduct();
-  const searchParams = useSearchParams()
+  const router = useRouter();
+
 
   const [message, addCartItem] = useActionState(api.addItem, null);
   const variant = variants.find((variant: ProductVariant) => variant.selectedOptions.every(option => option.value === state[option.name.toLowerCase()]));
@@ -50,11 +61,19 @@ export const AddToCart: React.FC<AddToCardProps> = ({
   const selectedVariantId = variant?.id || defaultVariantId;
   const finalVariant = variants.find(variant => variant.id === selectedVariantId)!;
 
+  const onCancel: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    if (state.imgURL) deleteImage(state.imgURL)
+    router.replace("/")
+  }
+
   return <form action={async () => {
-    addOptimisticCartItem(finalVariant, product, state.imgURL); // optimistic
-    await addCartItem({ selectedVariantId, imgURL: state.imgURL });
+    addOptimisticCartItem(finalVariant, product, state.imgURL, state.borderStyle, state.direction); // optimistic
+    await addCartItem({ selectedVariantId, imgURL: state.imgURL, borderStyle: state.borderStyle, direction: state.direction });
+    router.replace("/")
   }}>
     <SubmitButton disabled={!selectedVariantId || !state.imgURL} />
+    <CancelButton onClick={onCancel} />
     <p className="sr-only" role="status" aria-label="polite">
       {message}
     </p>

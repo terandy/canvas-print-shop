@@ -2,14 +2,14 @@
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Cart, CartItem, Product, ProductVariant } from "@/lib/shopify/types";
-import { createContext, use, useContext, useMemo, useOptimistic } from "react";
+import { createContext, useContext, useMemo, useOptimistic } from "react";
 import { v4 } from "uuid";
 export type UpdateQuantityType = "plus" | "minus" | "delete";
 type CartContextType = {
   cart: Cart | undefined;
   updateOptimisticCartItemQuantity: (cartItemId: string, updateType: UpdateQuantityType) => void;
-  updateOptimisticCartItem: (cartItemId: string, variant: ProductVariant, product: Product, imgURL: string) => void;
-  addOptimisticCartItem: (variant: ProductVariant, product: Product, imgURL: string) => void;
+  updateOptimisticCartItem: (cartItemId: string, variant: ProductVariant, product: Product, imgURL: string, borderStyle: string, direction: string) => void;
+  addOptimisticCartItem: (variant: ProductVariant, product: Product, imgURL: string, borderStyle: string, direction: string) => void;
 };
 type CartAction = {
   type: "UPDATE_ITEM_QUANTITY";
@@ -22,7 +22,9 @@ type CartAction = {
   payload: {
     variant: ProductVariant;
     product: Product;
-    imgURL: string,
+    imgURL: string;
+    borderStyle: string;
+    direction: string;
   };
 } | {
   type: "UPDATE_ITEM",
@@ -31,6 +33,8 @@ type CartAction = {
     variant: ProductVariant;
     product: Product;
     imgURL: string,
+    borderStyle: string;
+    direction: string;
   }
 };
 
@@ -100,7 +104,7 @@ const updateCartTotals = (lines: CartItem[]): Pick<Cart, "totalQuantity" | "cost
     }
   };
 }
-const createCartItem = (variant: ProductVariant, product: Product, imgURL: string): CartItem => {
+const createCartItem = (variant: ProductVariant, product: Product, imgURL: string, borderStyle: string, direction: string): CartItem => {
   const quantity = 1;
   const totalAmount = calculateItemCost(quantity, variant.price.amount);
   return {
@@ -125,10 +129,14 @@ const createCartItem = (variant: ProductVariant, product: Product, imgURL: strin
     },
     attributes: [{
       key: "_IMAGE URL", value: imgURL
+    }, {
+      key: "borderStyle", value: borderStyle,
+    }, {
+      key: "direction", value: direction,
     }]
   };
 }
-const updateCartItem = (existingItem: CartItem, variant: ProductVariant, product: Product, imgURL: string): CartItem => {
+const updateCartItem = (existingItem: CartItem, variant: ProductVariant, product: Product, imgURL: string, borderStyle: string, direction: string): CartItem => {
   const quantity = 1;
   const totalAmount = calculateItemCost(quantity, variant.price.amount);
   return {
@@ -152,7 +160,11 @@ const updateCartItem = (existingItem: CartItem, variant: ProductVariant, product
       },
     },
     attributes: [{
-      key: "_IMAGE URL", value: imgURL
+      key: "_IMAGE URL", value: imgURL,
+    }, {
+      key: "borderStyle", value: borderStyle,
+    }, {
+      key: "direction", value: direction,
     }]
   };
 }
@@ -166,11 +178,13 @@ const cartReducer = (state: Cart | undefined, action: CartAction): Cart => {
           cartItemId,
           variant,
           product,
-          imgURL
+          imgURL,
+          borderStyle,
+          direction
         } = action.payload;
         const existingItem = currentCart.lines.find(item => item.id === cartItemId);
         if (!existingItem) throw Error("cart item not found");
-        const updatedItem = updateCartItem(existingItem, variant, product, imgURL);
+        const updatedItem = updateCartItem(existingItem, variant, product, imgURL, borderStyle, direction);
         const updatedLines = existingItem ? currentCart.lines.map(item => item.id === cartItemId ? updatedItem : item) : [...currentCart.lines, updatedItem];
         return {
           ...currentCart,
@@ -210,9 +224,11 @@ const cartReducer = (state: Cart | undefined, action: CartAction): Cart => {
         const {
           variant,
           product,
-          imgURL
+          imgURL,
+          borderStyle,
+          direction
         } = action.payload;
-        const updatedItem = createCartItem(variant, product, imgURL);
+        const updatedItem = createCartItem(variant, product, imgURL, borderStyle, direction);
         const updatedLines = [...currentCart.lines, updatedItem];
         return {
           ...currentCart,
@@ -244,24 +260,28 @@ const CartProvider = ({
       }
     });
   };
-  const updateOptimisticCartItem = (cartItemId: string, variant: ProductVariant, product: Product, imgURL: string) => {
+  const updateOptimisticCartItem = (cartItemId: string, variant: ProductVariant, product: Product, imgURL: string, borderStyle: string, direction: string) => {
     updateOptimisticCart({
       type: "UPDATE_ITEM",
       payload: {
         cartItemId,
         variant,
         product,
-        imgURL
+        imgURL,
+        borderStyle,
+        direction
       }
     })
   }
-  const addOptimisticCartItem = (variant: ProductVariant, product: Product, imgURL: string) => {
+  const addOptimisticCartItem = (variant: ProductVariant, product: Product, imgURL: string, borderStyle: string, direction: string) => {
     updateOptimisticCart({
       type: "ADD_ITEM",
       payload: {
         variant,
         product,
-        imgURL
+        imgURL,
+        borderStyle,
+        direction
       }
     });
   };

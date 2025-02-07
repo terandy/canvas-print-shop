@@ -25,8 +25,8 @@ const Gallery: React.FC<Props> = ({
     "h-full px-6 transition-all ease-in-out hover:scale-110 hover:text-black dark:hover:text-white flex items-center justify-center";
 
   return (
-    <form className="w-full">
-      <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
+    <form className="h-full w-full flex flex-col gap-4">
+      <div className="relative aspect-square flex-grow max-h-[550px] w-full overflow-hidden">
         {images[imageIndex] && (
           <Image
             className="h-full w-full object-contain"
@@ -39,7 +39,7 @@ const Gallery: React.FC<Props> = ({
         )}
 
         {images.length > 1 ? (
-          <div className="absolute bottom-[15%] flex w-full justify-center">
+          <div className="absolute bottom-1 flex w-full justify-center">
             <div className="mx-auto flex h-11 items-center rounded-full border border-white bg-neutral-50/80 text-neutral-500 backdrop-blur dark:border-black dark:bg-neutral-900/80">
               <button
                 formAction={() => {
@@ -67,7 +67,7 @@ const Gallery: React.FC<Props> = ({
         ) : null}
       </div>
       {images.length > 1 ? (
-        <ul className="my-12 flex items-center justify-center gap-2 overflow-auto py-1 lg:mb-0">
+        <ul className="flex items-center justify-center gap-2 lg:mb-0">
           {images.map((image, index) => {
             const isActive = index === imageIndex;
             return (
