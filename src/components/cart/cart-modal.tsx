@@ -1,7 +1,6 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { UpdateQuantityType, useCart } from "../../contexts/cart-context";
 import { createUrl } from "@/lib/utils/base";
@@ -9,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Price from "../price";
 import OpenCart from "./open-cart";
-import CloseCart from "./close-cart";
 import { DEFAULT_OPTION } from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
@@ -17,6 +15,7 @@ import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
 import { createCartAndSetCookie, redirectToCheckout } from "@/lib/utils/cart-actions";
 import { Cart, CartItem } from "@/lib/shopify/types";
+import { ShoppingCart, X } from "lucide-react";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -210,17 +209,17 @@ const CartModal = () => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] dark:border-neutral-700 dark:bg-black/80 dark:text-white">
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] dark:border-neutral-700 dark:bg-black/80 dark:text-white z-[999]">
               <div className="flex items-center justify-between">
                 <p className="text-lg font-semibold">My Cart</p>
                 <button aria-label="Close cart" onClick={closeCart}>
-                  <CloseCart />
+                  <X />
                 </button>
               </div>
 
               {!cart || cart.lines.length === 0 ? (
                 <div>
-                  <ShoppingCartIcon className="h-16" />
+                  <ShoppingCart className="h-16" />
                   <p className="mt-6 text-center text-2xl font-bold">
                     Your Cart is Empty.
                   </p>

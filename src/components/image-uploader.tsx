@@ -1,11 +1,9 @@
 "use client"
 
 import React, { useState, useCallback, startTransition } from 'react';
-import { ArrowUpTrayIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import { useProduct, useUpdateURL } from '@/contexts/product-context';
 import clsx from 'clsx';
-import Image from 'next/image';
-import { deleteImage } from '@/lib/s3/actions/image';
+import { Upload } from 'lucide-react';
 
 interface ImageUploaderProps {
     maxSizeMB?: number;
@@ -120,7 +118,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
                 <div className="space-y-4">
-                    <ArrowUpTrayIcon className="w-12 h-12 mx-auto text-gray-400" />
+                    <Upload className="w-12 h-12 mx-auto text-gray-400" />
                     <div>
                         <p className="text- font-medium text-gray-700">
                             Drop your image here, or click to browse

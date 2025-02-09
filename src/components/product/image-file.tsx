@@ -2,7 +2,7 @@
 "use client";
 import { useProduct, useUpdateURL } from "@/contexts/product-context";
 import { deleteImage } from "@/lib/s3/actions/image";
-import { XCircleIcon } from "@heroicons/react/24/outline"
+import { X } from "lucide-react";
 import Image from "next/image"
 import { startTransition } from "react";
 
@@ -37,7 +37,7 @@ const ImageFile: React.FC<Props> = ({ imgURL }) => {
             title="remove image"
             onMouseOver={(e) => e.stopPropagation()}
         >
-            <XCircleIcon />
+            <X />
         </button>
     </div>
 }
