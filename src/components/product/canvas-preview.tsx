@@ -1,7 +1,7 @@
 import Loading from '@/app/loading';
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { ComponentPropsWithoutRef, useLayoutEffect, useState } from 'react';
+import React, { ComponentPropsWithoutRef, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 interface ImagePreviewerProps {
     /**
@@ -17,7 +17,7 @@ interface ImagePreviewerProps {
      */
     direction: string;
     /**
-     * Selected style for the border
+     * Selected style for the border    
      */
     borderStyle: string;
 }
@@ -44,6 +44,17 @@ interface CanvasProps {
      */
     src: string;
 }
+
+// Helper function to check if element is in viewport
+const isElementInViewport = (el: HTMLElement) => {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
 
 const Badge: React.FC<ComponentPropsWithoutRef<"p">> = ({ children, ...props }) => {
     return <div {...props}><p className={"m-auto text-small px-3 py-1 rounded bg-gray-800 text-white w-min"}>{children}</p></div>
@@ -104,6 +115,7 @@ const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"
     borderStyle = "white",
     ...props
 }) => {
+    const componentRef = useRef<HTMLDivElement>(null);
     const [canvasProps, setCanvasProps] = useState<CanvasProps>();
     const sizeArray = size.split('x').map(Number);
     const [x, y] = direction === "landscape" ? [sizeArray[1], sizeArray[0]] : [sizeArray[0], sizeArray[1]];
@@ -120,10 +132,29 @@ const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"
         setCanvasProps({ width, height, thickness, borderStyle, src })
     }, [x, y, setCanvasProps, borderStyle, src, direction])
 
+
+    // Watch for changes in props and state that should trigger scrolling
+    useEffect(() => {
+        if (componentRef.current) {
+            const element = componentRef.current;
+
+            // Only scroll if element is not already in view
+            if (!isElementInViewport(element)) {
+                const elementRect = element.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.scrollY;
+                const targetPosition = absoluteElementTop - 76; // Position 96px from top
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }, [src, size, direction, borderStyle]);
+
     if (!canvasProps) return <Loading message={"Loading canvas preview"} />;
 
     return (
-        <div {...props}>
+        <div {...props} ref={componentRef}>
             <div className="grid grid-cols-[auto,1fr] gap-1 w-min mx-auto">
                 <Badge>{x}</Badge>
                 <div />
