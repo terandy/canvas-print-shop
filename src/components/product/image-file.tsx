@@ -16,8 +16,8 @@ const ImageFile: React.FC<Props> = ({ imgURL }) => {
 
     const removeImage = () => {
         startTransition(() => {
-            deleteImage(imgURL)
             const newState = deleteOption("imgURL");
+            deleteImage(imgURL)
             updateURL(newState);
         })
     };

@@ -4,6 +4,7 @@ import React, { useState, useCallback, startTransition } from 'react';
 import { useProduct, useUpdateURL } from '@/contexts/product-context';
 import clsx from 'clsx';
 import { Upload } from 'lucide-react';
+import ImageFile from './product/image-file';
 
 interface ImageUploaderProps {
     maxSizeMB?: number;
@@ -20,10 +21,12 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     const [error, setError] = useState<string | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
 
     const handleImageSelect = useCallback(async (file: File) => {
         try {
             setIsUploading(true);
+            setUploadProgress(0);
 
             // Get presigned URL
             const response = await fetch('/api/upload', {
@@ -33,28 +36,49 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
             });
             const { uploadUrl, publicUrl } = await response.json();
 
-            // Upload to S3
-            await fetch(uploadUrl, {
-                method: 'PUT',
-                body: file,
-                headers: {
-                    'Content-Type': file.type,
-                },
-            });
-            startTransition(() => {
-                const newState = updateOption("imgURL", publicUrl);
-                updateURL(newState);
-            })
+            // Create XMLHttpRequest to track upload progress
+            const xhr = new XMLHttpRequest();
+
+            // Track upload progress
+            xhr.upload.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    const progress = Math.round((event.loaded / event.total) * 100);
+                    setUploadProgress(progress);
+                }
+            };
+
+            // Handle completion
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    startTransition(() => {
+                        const newState = updateOption("imgURL", publicUrl);
+                        updateURL(newState);
+                    });
+                } else {
+                    setError('Upload failed. Please try again.');
+                }
+                setIsUploading(false);
+            };
+
+            // Handle errors
+            xhr.onerror = () => {
+                setError('Upload failed. Please try again.');
+                setIsUploading(false);
+            };
+
+            // Send the request
+            xhr.open('PUT', uploadUrl);
+            xhr.setRequestHeader('Content-Type', file.type);
+            xhr.send(file);
+
         } catch (error) {
             console.error('Error uploading image:', error);
-            // Handle error appropriately
-        } finally {
+            setError('Upload failed. Please try again.');
             setIsUploading(false);
         }
     }, [updateOption, updateURL]);
 
     const validateFile = useCallback((file: File): boolean => {
-
         // Check file type
         if (!acceptedTypes.includes(file.type)) {
             setError(`Accepted file types: ${acceptedTypes.join(', ')}`);
@@ -73,11 +97,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
         // Create preview
         const reader = new FileReader();
-
         reader.readAsDataURL(file);
-
         handleImageSelect(file);
-    }, [handleImageSelect, validateFile,]);
+    }, [handleImageSelect, validateFile]);
 
     const handleDrag = useCallback((e: React.DragEvent) => {
         e.preventDefault();
@@ -101,15 +123,16 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         }
     }, [handleFile]);
 
+    if (imgURL) return <ImageFile imgURL={imgURL} />
+
     return (
         <div className={clsx("w-full max-w-xl mx-auto", className)}>
-            {!imgURL && <div
+            {!isUploading && <div
                 onDragEnter={handleDrag}
                 onDragLeave={handleDrag}
                 onDragOver={handleDrag}
                 onDrop={handleDrop}
-                className={`relative border-2 border-dashed rounded-lg p-8 text-center ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
-                    }`}
+                className={`relative border-2 border-dashed rounded-lg p-8 text-center ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}
             >
                 <input
                     type="file"
@@ -120,7 +143,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                 <div className="space-y-4">
                     <Upload className="w-12 h-12 mx-auto text-gray-400" />
                     <div>
-                        <p className="text- font-medium text-gray-700">
+                        <p className="text-base font-medium text-gray-700">
                             Drop your image here, or click to browse
                         </p>
                         <p className="text-sm text-gray-500 mt-2">
@@ -130,12 +153,23 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                 </div>
             </div>}
             {isUploading && (
-                <p className="mt-2 text-blue-600">Uploading your image...</p>
+                <div className="mt-4">
+                    <div className="flex items-center justify-between mb-1">
+                        <p className="text-sm font-medium text-blue-600">Uploading...</p>
+                        <span className="text-sm font-medium text-blue-600">{uploadProgress}%</span>
+                    </div>
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div
+                            className="bg-blue-600 h-2 rounded-full transition-all duration-300 ease-in-out"
+                            style={{ width: `${uploadProgress}%` }}
+                        />
+                    </div>
+                </div>
             )}
             {error && (
                 <p className="mt-2 text-red-500 text-sm">{error}</p>
             )}
-        </div >
+        </div>
     );
 };
 

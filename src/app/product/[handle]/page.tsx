@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import type { Metadata, NextPage } from "next";
 import { ProductImagePreview } from "@/components/product/product-image-preview";
 import Prose from "@/components/prose";
+import ImageUploader from "@/components/image-uploader";
 
 type Props = {
   params: Promise<{ handle: string }>;
@@ -73,7 +74,8 @@ const ProductPage: NextPage<Props> = async (props) => {
                 <h1 className="mb-2 text-5xl font-medium">{product.title}</h1>
               </div>
               {product.descriptionHtml ? <Prose className="mb-6 text-sm leading-light dark:text-white/[60%]" html={product.descriptionHtml} /> : null}
-              <ProductForm product={product} cartItemID={cartItemID} imgURL={imgURL} />
+              <ImageUploader className="mb-6" />
+              <ProductForm product={product} cartItemID={cartItemID} />
             </Suspense>
           </div>
         </div>
