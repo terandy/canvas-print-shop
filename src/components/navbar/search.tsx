@@ -3,7 +3,14 @@ import { createUrl } from "@/lib/utils/base";
 import { SearchIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const Search = () => {
+interface Props {
+  /**
+   * Callback triggered when search input is submitted
+   */
+  onSearch?: () => void;
+}
+
+const Search: React.FC<Props> = ({ onSearch }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -21,6 +28,7 @@ const Search = () => {
     }
 
     router.push(createUrl("/search", newParams));
+    onSearch?.()
   }
   return (
     <form

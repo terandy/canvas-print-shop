@@ -57,7 +57,7 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
                   <X className="h-6" />
                 </button>
                 <div className="mb-4 w-full">
-                  <Search />
+                  <Search onSearch={closeMobileMenu} />
                 </div>
                 {menu.length > 0 ? (
                   <ul className="flex w-full flex-col">
