@@ -101,11 +101,50 @@ const WrappedCanvas: React.FC<CanvasProps> = ({ thickness, src, width, height })
             fill // Fill the parent element
         />
         <div className="relative shadow-2xl border border-opacity-10 border-gray-500" style={{ width: `${width}px`, height: `${height}px` }} />
+        <Border className="absolute top-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+        <Border className="absolute right-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
+        <Border className="absolute bottom-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+        <Border className="absolute left-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
         <Corner className="absolute top-0 left-0" thickness={thickness} />
         <Corner className="absolute top-0 right-0" thickness={thickness} />
         <Corner className="absolute bottom-0 right-0" thickness={thickness} />
         <Corner className="absolute bottom-0 left-0" thickness={thickness} />
     </>
+}
+
+const FilledBorderCanvas: React.FC<CanvasProps> = ({ width, src, height, thickness }) => {
+    return (
+        <>
+            <Image
+                src={src}
+                alt="Preview"
+                className="object-cover" // will cause the image to fill the entire container and be cropped to preserve aspect ratio
+                fill // Fill the parent element
+            />
+            <div className="relative shadow-xl" style={{ width: `${width}px`, height: `${height}px` }}>
+                <Image
+                    src={src}
+                    alt="Preview"
+                    className="object-cover" // will cause the image to fill the entire container and be cropped to preserve aspect ratio
+                    fill // Fill the parent element
+                />
+            </div>
+            <Border className="absolute top-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+            <Border className="absolute right-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
+            <Border className="absolute bottom-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+            <Border className="absolute left-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
+            <Corner className="absolute top-0 left-0" thickness={thickness} />
+            <Corner className="absolute top-0 right-0" thickness={thickness} />
+            <Corner className="absolute bottom-0 right-0" thickness={thickness} />
+            <Corner className="absolute bottom-0 left-0" thickness={thickness} />
+        </>
+    );
+}
+
+const Canvas: React.FC<CanvasProps> = (props) => {
+    if (props.borderStyle === "wrapped") return <WrappedCanvas {...props} />
+    if (props.borderStyle === "fill") return <FilledBorderCanvas {...props} />
+    return <CanvasWithBorder {...props} />
 }
 
 const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"div">> = ({
@@ -159,13 +198,12 @@ const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"
                 <Badge>{x}</Badge>
                 <div />
                 <CanvasContainer {...canvasProps}>
-                    {borderStyle !== "wrapped"
-                        ? <CanvasWithBorder {...canvasProps} />
-                        : <WrappedCanvas {...canvasProps} />}
+                    <Canvas {...canvasProps} />
                 </CanvasContainer>
                 <Badge className="w-min flex align-middle">{y}</Badge>
             </div>
-        </div >
+            <span className="text-xs text-gray-500 mt-6">* The preview is meant to give you a sense of the final look, but the actual product may vary slightly.</span>
+        </div>
     );
 };
 

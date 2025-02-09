@@ -6,7 +6,7 @@ import clsx from "clsx";
 const BorderStyleSelector = () => {
     const { state, updateOption } = useProduct();
     const updateURL = useUpdateURL();
-    const options = [{ label: "black" }, { label: "white" }, { label: "wrapped" }]
+    const options = [{ label: "black" }, { label: "white" }, { label: "wrapped" }, { label: "fill" }]
     return <form >
         <dl className="mb-8">
             <dt className="mb-4 text-sm uppercase tracking-wide">Border style</dt>
