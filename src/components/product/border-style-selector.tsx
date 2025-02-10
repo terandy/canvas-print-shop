@@ -13,6 +13,7 @@ const BorderStyleSelector = () => {
         { label: "Wrapped", value: "wrapped", src: "/border/wrapped-border.png" },
         { label: "Auto fill", value: "fill", src: "/border/fill-border.png" }
     ];
+
     return <form >
         <dl className="mb-8">
             <dt className="mb-4 text-sm uppercase tracking-wide">Border style</dt>

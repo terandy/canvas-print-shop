@@ -2,11 +2,11 @@
 
 import { useProduct, useUpdateURL } from "@/contexts/product-context";
 import clsx from "clsx";
-import { RectangleHorizontal, RectangleVertical } from "lucide-react";
 
 const DirectionSelector = () => {
     const { state, updateOption } = useProduct();
     const updateURL = useUpdateURL();
+
     const options = [{ label: "Landscape", value: "landscape", className: "w-24 h-16" }, { label: "Portrait", value: "portrait", className: "h-24 w-16" }]
     return <form >
         <dl className="mb-8">
