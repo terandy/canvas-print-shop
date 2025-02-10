@@ -2,28 +2,35 @@
 
 import { useProduct, useUpdateURL } from "@/contexts/product-context";
 import clsx from "clsx";
+import Image from "next/image";
 
 const BorderStyleSelector = () => {
     const { state, updateOption } = useProduct();
     const updateURL = useUpdateURL();
-    const options = [{ label: "black" }, { label: "white" }, { label: "wrapped" }]
+    const options = [
+        { label: "Black", value: "black", src: "/border/black-border.png" },
+        { label: "White", value: "white", src: "/border/white-border.png" },
+        { label: "Wrapped", value: "wrapped", src: "/border/wrapped-border.png" },
+        { label: "Auto fill", value: "fill", src: "/border/fill-border.png" }
+    ];
+
     return <form >
         <dl className="mb-8">
             <dt className="mb-4 text-sm uppercase tracking-wide">Border style</dt>
             <dd className="flex flex-wrap gap-3">
                 {options.map((option) => {
-                    const isActive = state.borderStyle === option.label;
+                    const isActive = state.borderStyle === option.value;
 
                     return (
                         <button
                             formAction={() => {
-                                const newState = updateOption("borderStyle", option.label);
+                                const newState = updateOption("borderStyle", option.value);
                                 updateURL(newState);
                             }}
                             key={option.label}
                             title={`${option.label}`}
                             className={clsx(
-                                "flex min-w-[48px] items-center justify-center rounded-full border bg-neutral-100 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-neutral-900",
+                                "border rounded bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900",
                                 {
                                     "cursor-default ring-2 ring-blue-600": isActive,
                                     "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600":
@@ -31,7 +38,8 @@ const BorderStyleSelector = () => {
                                 }
                             )}
                         >
-                            {option.label}
+                            <Image alt={`preview-${option.label}`} src={option.src} height={100} width={100} />
+                            <span className="text-sm">{option.label}</span>
                         </button>
                     );
                 })}

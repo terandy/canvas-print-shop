@@ -1,7 +1,7 @@
 import Loading from '@/app/loading';
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { ComponentPropsWithoutRef, useLayoutEffect, useState } from 'react';
+import React, { ComponentPropsWithoutRef, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 interface ImagePreviewerProps {
     /**
@@ -17,7 +17,7 @@ interface ImagePreviewerProps {
      */
     direction: string;
     /**
-     * Selected style for the border
+     * Selected style for the border    
      */
     borderStyle: string;
 }
@@ -44,6 +44,17 @@ interface CanvasProps {
      */
     src: string;
 }
+
+// Helper function to check if element is in viewport
+const isElementInViewport = (el: HTMLElement) => {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
 
 const Badge: React.FC<ComponentPropsWithoutRef<"p">> = ({ children, ...props }) => {
     return <div {...props}><p className={"m-auto text-small px-3 py-1 rounded bg-gray-800 text-white w-min"}>{children}</p></div>
@@ -90,11 +101,50 @@ const WrappedCanvas: React.FC<CanvasProps> = ({ thickness, src, width, height })
             fill // Fill the parent element
         />
         <div className="relative shadow-2xl border border-opacity-10 border-gray-500" style={{ width: `${width}px`, height: `${height}px` }} />
+        <Border className="absolute top-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+        <Border className="absolute right-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
+        <Border className="absolute bottom-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+        <Border className="absolute left-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
         <Corner className="absolute top-0 left-0" thickness={thickness} />
         <Corner className="absolute top-0 right-0" thickness={thickness} />
         <Corner className="absolute bottom-0 right-0" thickness={thickness} />
         <Corner className="absolute bottom-0 left-0" thickness={thickness} />
     </>
+}
+
+const FilledBorderCanvas: React.FC<CanvasProps> = ({ width, src, height, thickness }) => {
+    return (
+        <>
+            <Image
+                src={src}
+                alt="Preview"
+                className="object-cover" // will cause the image to fill the entire container and be cropped to preserve aspect ratio
+                fill // Fill the parent element
+            />
+            <div className="relative shadow-xl" style={{ width: `${width}px`, height: `${height}px` }}>
+                <Image
+                    src={src}
+                    alt="Preview"
+                    className="object-cover" // will cause the image to fill the entire container and be cropped to preserve aspect ratio
+                    fill // Fill the parent element
+                />
+            </div>
+            <Border className="absolute top-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+            <Border className="absolute right-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
+            <Border className="absolute bottom-0 bg-white bg-opacity-50" style={{ height: `${thickness}px`, width: `${width}px`, left: `${thickness}px` }} />
+            <Border className="absolute left-0 bg-white bg-opacity-50" style={{ width: `${thickness}px`, height: `${height}px`, top: `${thickness}px` }} />
+            <Corner className="absolute top-0 left-0" thickness={thickness} />
+            <Corner className="absolute top-0 right-0" thickness={thickness} />
+            <Corner className="absolute bottom-0 right-0" thickness={thickness} />
+            <Corner className="absolute bottom-0 left-0" thickness={thickness} />
+        </>
+    );
+}
+
+const Canvas: React.FC<CanvasProps> = (props) => {
+    if (props.borderStyle === "wrapped") return <WrappedCanvas {...props} />
+    if (props.borderStyle === "fill") return <FilledBorderCanvas {...props} />
+    return <CanvasWithBorder {...props} />
 }
 
 const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"div">> = ({
@@ -104,6 +154,7 @@ const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"
     borderStyle = "white",
     ...props
 }) => {
+    const componentRef = useRef<HTMLDivElement>(null);
     const [canvasProps, setCanvasProps] = useState<CanvasProps>();
     const sizeArray = size.split('x').map(Number);
     const [x, y] = direction === "landscape" ? [sizeArray[1], sizeArray[0]] : [sizeArray[0], sizeArray[1]];
@@ -120,21 +171,39 @@ const CanvasPreviewer: React.FC<ImagePreviewerProps & ComponentPropsWithoutRef<"
         setCanvasProps({ width, height, thickness, borderStyle, src })
     }, [x, y, setCanvasProps, borderStyle, src, direction])
 
+
+    // Watch for changes in props and state that should trigger scrolling
+    useEffect(() => {
+        if (componentRef.current) {
+            const element = componentRef.current;
+
+            // Only scroll if element is not already in view
+            if (!isElementInViewport(element)) {
+                const elementRect = element.getBoundingClientRect();
+                const absoluteElementTop = elementRect.top + window.scrollY;
+                const targetPosition = absoluteElementTop - 76; // Position 96px from top
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }, [src, size, direction, borderStyle]);
+
     if (!canvasProps) return <Loading message={"Loading canvas preview"} />;
 
     return (
-        <div {...props}>
+        <div {...props} ref={componentRef}>
             <div className="grid grid-cols-[auto,1fr] gap-1 w-min mx-auto">
                 <Badge>{x}</Badge>
                 <div />
                 <CanvasContainer {...canvasProps}>
-                    {borderStyle !== "wrapped"
-                        ? <CanvasWithBorder {...canvasProps} />
-                        : <WrappedCanvas {...canvasProps} />}
+                    <Canvas {...canvasProps} />
                 </CanvasContainer>
                 <Badge className="w-min flex align-middle">{y}</Badge>
             </div>
-        </div >
+            <span className="text-xs text-gray-500 mt-6">* The preview is meant to give you a sense of the final look, but the actual product may vary slightly.</span>
+        </div>
     );
 };
 

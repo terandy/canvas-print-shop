@@ -5,9 +5,9 @@ import { useProduct } from "../../contexts/product-context";
 import { useCart } from "../../contexts/cart-context";
 import clsx from "clsx";
 import * as api from "../../lib/utils/cart-actions";
-import { PlusIcon } from "@heroicons/react/24/outline";
 import React, { useActionState } from "react";
 import Link from "next/link";
+import { Plus } from "lucide-react";
 
 interface SubmitButtonProps {
   saved?: boolean;
@@ -27,7 +27,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
 
   return <button aria-label={saved ? "Please select an option" : "Add to cart"} className={className}>
     <div className="absolute left-0 ml-4">
-      <PlusIcon />
+      <Plus />
     </div>
     {!saved ? "Save changes" : "Saved"}
   </button>;

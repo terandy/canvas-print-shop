@@ -5,10 +5,10 @@ import { useProduct } from "../../contexts/product-context";
 import { useCart } from "../../contexts/cart-context";
 import clsx from "clsx";
 import * as api from "../../lib/utils/cart-actions";
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { useActionState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteImage } from "@/lib/s3/actions/image";
+import { Plus, X } from "lucide-react";
 
 interface SubmitButtonProps {
   disabled?: boolean;
@@ -25,18 +25,14 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
   )
 
   return <button aria-label={disabled ? "Please select an option" : "Add to cart"} className={className}>
-    <div className="absolute left-0 ml-4">
-      <PlusIcon />
-    </div>
+    <Plus className="mr-2" />
     Add To Cart
   </button>;
 };
 
 const CancelButton = ({ onClick }: { onClick: React.MouseEventHandler<HTMLButtonElement> }) => {
   return <button aria-label={"Cancel"} className={clsx("relative flex w-full items-center justify-center tracking-wide text-gray bg-white p-4 hover:text-blue-600")} onClick={onClick}>
-    <div className="absolute left-0 ml-4">
-      <XMarkIcon />
-    </div>
+    <X className="mr-2" />
     Cancel
   </button>
 }

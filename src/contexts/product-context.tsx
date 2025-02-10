@@ -3,7 +3,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { createContext, useCallback, useContext, useMemo, useOptimistic } from "react";
-type ProductState = {
+export type ProductState = {
   [key: string]: string;
 } & {
   /**
@@ -20,6 +20,7 @@ type ProductContextType = {
   updateOption: (name: string, value: string) => ProductState;
   updateImage: (index: string) => ProductState;
   deleteOption: (name: string) => ProductState;
+  updateOptions: (update: ProductState) => ProductState;
 };
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 export const ProductProvider = ({
@@ -50,6 +51,12 @@ export const ProductProvider = ({
     };
   };
 
+  const updateOptions = (update: ProductState) => {
+    setOptimisticState(update);
+    return { ...state, ...update }
+
+  }
+
   const deleteOption = (name: string) => {
     const newState = {
       ...state
@@ -73,7 +80,8 @@ export const ProductProvider = ({
     state,
     updateOption,
     deleteOption,
-    updateImage
+    updateImage,
+    updateOptions,
   }), [state]);
   return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
 };

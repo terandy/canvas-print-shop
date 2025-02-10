@@ -2,10 +2,10 @@
 
 import { Menu } from "@/lib/shopify/types";
 import { Dialog, Transition } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import Search from "./search";
+import { Menu as MenuIcon, X } from "lucide-react";
 
 interface Props {
   menu: Menu[]
@@ -22,7 +22,7 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
         aria-label="Open mobile menu"
         className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
       >
-        <Bars3Icon className="h-4" />
+        <MenuIcon className="h-4" />
       </button>
 
       <Transition show={isOpen}>
@@ -54,10 +54,10 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
                   onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
                 >
-                  <XMarkIcon className="h-6" />
+                  <X className="h-6" />
                 </button>
                 <div className="mb-4 w-full">
-                  <Search />
+                  <Search onSearch={closeMobileMenu} />
                 </div>
                 {menu.length > 0 ? (
                   <ul className="flex w-full flex-col">

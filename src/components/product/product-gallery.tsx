@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import GridTileImage from "../grid/grid-tile-image";
 import { useProduct, useUpdateURL } from "../../contexts/product-context";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface Props {
   images: { src: string; altText: string }[];
@@ -49,7 +49,7 @@ const Gallery: React.FC<Props> = ({
                 aria-label="Previous product image"
                 className={buttonClassName}
               >
-                <ArrowLeftIcon className="h-5" />
+                <ArrowLeft className="h-5" />
               </button>
               <div className="mx-1 h-6 w-px bg-neutral-500"></div>
               <button
@@ -60,7 +60,7 @@ const Gallery: React.FC<Props> = ({
                 aria-label="Next product image"
                 className={buttonClassName}
               >
-                <ArrowRightIcon className="h-5" />
+                <ArrowRight className="h-5" />
               </button>
             </div>
           </div>

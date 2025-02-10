@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import ProductPreview from "@/components/product/product-preview";
 import { getProductList } from "@/lib/shopify";
-import { ArrowRightIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React from "react";
+import { ArrowRight, CircleCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Custom Canvas Prints & Framing | Canvas Print Shop',
@@ -48,7 +48,6 @@ const Home: React.FC = async () => {
 
   return (
     <main className="flex-1 bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section */}
       <section className="relative overflow-hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-16 sm:py-24">
           <div className="max-w-4xl mx-auto text-center">
@@ -67,7 +66,7 @@ const Home: React.FC = async () => {
                   className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-colors"
                 >
                   <span>{product.title}</span>
-                  <ArrowRightIcon className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               ))}
             </div>
@@ -88,7 +87,7 @@ const Home: React.FC = async () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
-                <CheckCircleIcon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <CircleCheck className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{benefit.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
               </div>

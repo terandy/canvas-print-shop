@@ -3,7 +3,7 @@ import Prose from "../prose";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRightIcon, HeartIcon } from "@heroicons/react/24/outline";
+import { ArrowRight } from "lucide-react";
 
 interface Props {
     product: Product;
@@ -53,7 +53,7 @@ const ProductPreview: React.FC<Props> = ({ product }) => {
                         className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-colors"
                     >
                         <span>Start Creating</span>
-                        <ArrowRightIcon className="w-5 h-5" />
+                        <ArrowRight className="w-5 h-5" />
                     </Link>
                 </div>
             </div>
