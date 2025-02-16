@@ -9,6 +9,7 @@ import { SaveCartItem } from "../cart/save-cart-item";
 import BorderStyleSelector from "./border-style-selector";
 import DirectionSelector from "./direction-selector";
 import { ProductState, useProduct, useUpdateURL } from "@/contexts/product-context";
+import FrameSelector from "./frame-selector";
 
 interface Props {
   product: Product;
@@ -36,10 +37,13 @@ const ProductForm: React.FC<Props> = ({
     })
   }, [])
 
+  const frameOption = product.options.find(opt => opt.name.toLowerCase() === "frame")
+
   return <>
     <VariantSelector options={product.options} variants={product.variants} />
     <DirectionSelector />
     <BorderStyleSelector />
+    {frameOption && <FrameSelector option={frameOption} options={product.options} variants={product.variants} />}
     {!cartItemID ? <AddToCart product={product} /> :
       <SaveCartItem product={product} cartItemID={cartItemID} />}
   </>;

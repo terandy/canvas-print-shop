@@ -110,7 +110,11 @@ const Variants: React.FC<VariantsProps> = ({ options, variants }) => {
   if (hasNoOptionsOrJustOneOption) {
     return null;
   }
-  return options.map(option => <VariantSelector key={option.id} option={option} options={options} variants={variants} />)
+
+  return options.map(option => {
+    if (option.name === "Frame") return null;
+    return <VariantSelector key={option.id} option={option} options={options} variants={variants} />
+  })
 }
 
 export default Variants;
