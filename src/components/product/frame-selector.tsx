@@ -99,11 +99,11 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                 })}
               >
                 <Image
-                  className="object-cover h-[150px]"
+                  className="object-cover h-[100px]"
                   alt={`preview-${value}`}
                   src={getImageOptions(value.toLowerCase())}
-                  height={150}
-                  width={150}
+                  height={100}
+                  width={100}
                 />
                 <div className="flex flex-col">
                   <span className="text-sm">

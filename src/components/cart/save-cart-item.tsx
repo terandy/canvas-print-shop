@@ -4,7 +4,7 @@ import { Product, ProductVariant } from "@/lib/shopify/types";
 import { useProduct, useCart } from "@/contexts";
 import * as api from "@/lib/utils/cart-actions";
 import React, { useActionState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Save } from "lucide-react";
 import Button from "../buttons/button";
 import ButtonLink from "../buttons/button-link";
 
@@ -17,7 +17,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ saved, disabled }) => {
     <Button
       aria-label={saved ? "Please select an option" : "Add to cart"}
       disabled={disabled || saved}
-      icon={Plus}
+      icon={Save}
     >
       {!saved ? "Save changes" : "Saved"}
     </Button>
@@ -40,6 +40,7 @@ const SaveCartItem: React.FC<SaveCartItemProps> = ({ product, cartItemID }) => {
   );
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
   const selectedVariantId = variant?.id || defaultVariantId;
+  console.log(variants);
   const finalVariant = variants.find(
     (variant) => variant.id === selectedVariantId
   )!;
@@ -90,7 +91,12 @@ const SaveCartItem: React.FC<SaveCartItemProps> = ({ product, cartItemID }) => {
         saved={!hasDiff}
         disabled={!state.imgURL || !selectedVariantId}
       />
-      <ButtonLink href={`/product/${product.handle}`} variant="secondary">
+      <ButtonLink
+        href={`/product/${product.handle}`}
+        variant="secondary"
+        icon={Plus}
+        iconPosition="left"
+      >
         Create a new canvas
       </ButtonLink>
       <p className="sr-only" role="status" aria-label="polite">
