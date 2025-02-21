@@ -13,6 +13,6 @@ const CloseCart: React.FC<ComponentProps<"div">> = ({ className }) => {
       />
     </div>
   );
-}
+};
 
 export default CloseCart;

@@ -1,35 +1,35 @@
 // components/layout/footer.tsx
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 import {
   CreditCard,
   HelpCircle,
   ShieldCheck,
   Truck,
   ArrowLeftRight,
-  Mail
-} from 'lucide-react'
-import ContactInfo from './contact-info'
+  Mail,
+} from "lucide-react";
+import ContactInfo from "./contact-info";
 
 const companyLinks = [
-  { name: 'Privacy Policy', href: '/privacy-policy', icon: ShieldCheck },
-  { name: 'FAQs', href: '/faqs', icon: HelpCircle },
-  { name: 'Shipping Policy', href: '/shipping-policy', icon: Truck },
-  { name: 'Returns Policy', href: '/returns-policy', icon: ArrowLeftRight },
-  { name: 'Contact Us', href: '/contact', icon: Mail },
-]
+  { name: "Privacy Policy", href: "/privacy-policy", icon: ShieldCheck },
+  { name: "FAQs", href: "/faqs", icon: HelpCircle },
+  { name: "Shipping Policy", href: "/shipping-policy", icon: Truck },
+  { name: "Returns Policy", href: "/returns-policy", icon: ArrowLeftRight },
+  { name: "Contact Us", href: "/contact", icon: Mail },
+];
 
 const paymentMethods = [
-  { name: 'Visa', icon: '/visa.svg', width: 48, height: 32 },
-  { name: 'Mastercard', icon: '/mastercard.svg', width: 48, height: 32 },
-  { name: 'American Express', icon: '/amex.svg', width: 48, height: 32 },
-  { name: 'Discover', icon: '/discover.svg', width: 48, height: 32 },
-  { name: "Diners Club", icon: '/diners.svg', width: 48, height: 32 },
-  { name: 'Apple Pay', icon: '/apple-pay.svg', width: 48, height: 32 },
-  { name: 'Interac', icon: '/interac.svg', width: 48, height: 32 },
-  { name: 'Google Pay', icon: '/google-pay.svg', width: 48, height: 32 },
-  { name: 'Shop Pay', icon: '/shop-pay.svg', width: 48, height: 32 },
-]
+  { name: "Visa", icon: "/visa.svg", width: 48, height: 32 },
+  { name: "Mastercard", icon: "/mastercard.svg", width: 48, height: 32 },
+  { name: "American Express", icon: "/amex.svg", width: 48, height: 32 },
+  { name: "Discover", icon: "/discover.svg", width: 48, height: 32 },
+  { name: "Diners Club", icon: "/diners.svg", width: 48, height: 32 },
+  { name: "Apple Pay", icon: "/apple-pay.svg", width: 48, height: 32 },
+  { name: "Interac", icon: "/interac.svg", width: 48, height: 32 },
+  { name: "Google Pay", icon: "/google-pay.svg", width: 48, height: 32 },
+  { name: "Shop Pay", icon: "/shop-pay.svg", width: 48, height: 32 },
+];
 
 const Footer = () => {
   return (
@@ -44,8 +44,8 @@ const Footer = () => {
                 Canvas Print Shop
               </h3>
               <p className="mt-4 text-sm text-gray-600">
-                Creating beautiful, high-quality canvas prints for your home or office.
-                Proudly Canadian, serving customers nationwide.
+                Creating beautiful, high-quality canvas prints for your home or
+                office. Proudly Canadian, serving customers nationwide.
               </p>
             </div>
 
@@ -56,7 +56,7 @@ const Footer = () => {
               </h3>
               <ul className="mt-4 space-y-2">
                 {companyLinks.map((link) => {
-                  const IconComponent = link.icon
+                  const IconComponent = link.icon;
                   return (
                     <li key={link.name}>
                       <Link
@@ -67,7 +67,7 @@ const Footer = () => {
                         {link.name}
                       </Link>
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </div>
@@ -111,12 +111,13 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-200 py-8">
           <p className="text-sm text-center text-gray-500">
-            © {new Date().getFullYear()} Canvas Print Shop. All rights reserved.
+            © {new Date().getFullYear()} Canvas Print Shop. All rights
+            reserved.
           </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

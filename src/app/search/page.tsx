@@ -9,12 +9,10 @@ export const metadata = {
 type Props = {
   params: Promise<Record<string, never>>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
+};
 
-const SearchPage: React.FC<Props> = async ({
-  searchParams,
-}) => {
-  const { q: searchValue } = await searchParams as { [key: string]: string };
+const SearchPage: React.FC<Props> = async ({ searchParams }) => {
+  const { q: searchValue } = (await searchParams) as { [key: string]: string };
   const products = await getProductList({ query: searchValue });
   const resultsText = products.length > 1 ? "results" : "result";
   return (
@@ -34,6 +32,6 @@ const SearchPage: React.FC<Props> = async ({
       ) : null}
     </main>
   );
-}
+};
 
 export default SearchPage;

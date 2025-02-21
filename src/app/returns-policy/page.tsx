@@ -1,12 +1,13 @@
 // app/returns-policy/page.tsx
-import { Metadata } from 'next'
-import { RefreshCw, ShieldCheck, Mail, Clock } from 'lucide-react'
-import ContactInfo from '@/components/contact-info'
+import { Metadata } from "next";
+import { RefreshCw, ShieldCheck, Mail, Clock } from "lucide-react";
+import ContactInfo from "@/components/contact-info";
 
 export const metadata: Metadata = {
-  title: 'Returns Policy | Canvas Print Shop',
-  description: 'Learn about our 30-day return policy and our commitment to customer satisfaction. We make returns easy with our hassle-free process.',
-}
+  title: "Returns Policy | Canvas Print Shop",
+  description:
+    "Learn about our 30-day return policy and our commitment to customer satisfaction. We make returns easy with our hassle-free process.",
+};
 
 export default function ReturnsPolicy() {
   return (
@@ -21,7 +22,11 @@ export default function ReturnsPolicy() {
           <section className="mb-12">
             <div className="bg-blue-50 rounded-lg p-6 mb-8">
               <p className="text-gray-700 text-lg">
-                At Canvas Print Shop, we take pride in delivering exceptional quality canvas prints. Your satisfaction is our top priority, which is why we offer a comprehensive 30-day return policy. We stand behind our products and will work with you to ensure you&apos;re completely happy with your purchase.
+                At Canvas Print Shop, we take pride in delivering exceptional
+                quality canvas prints. Your satisfaction is our top priority,
+                which is why we offer a comprehensive 30-day return policy. We
+                stand behind our products and will work with you to ensure
+                you&apos;re completely happy with your purchase.
               </p>
             </div>
           </section>
@@ -36,7 +41,8 @@ export default function ReturnsPolicy() {
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-600 mb-4">
-                You can initiate a return within 30 days of receiving your order if you&apos;re not completely satisfied. This applies to:
+                You can initiate a return within 30 days of receiving your order
+                if you&apos;re not completely satisfied. This applies to:
               </p>
               <ul className="list-disc pl-6 text-gray-600">
                 <li>Prints with quality issues</li>
@@ -57,17 +63,23 @@ export default function ReturnsPolicy() {
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-600 mb-4">
-                Starting a return is simple. Email us at returns@canvasprintshop.ca with:
+                Starting a return is simple. Email us at
+                returns@canvasprintshop.ca with:
               </p>
               <ul className="list-disc pl-6 text-gray-600 mb-6">
-                <li>Your order number and email address used for the purchase</li>
+                <li>
+                  Your order number and email address used for the purchase
+                </li>
                 <li>The reason for your return</li>
-                <li>Photos of the item (required for quality issues or damage)</li>
+                <li>
+                  Photos of the item (required for quality issues or damage)
+                </li>
                 <li>Your preference for a replacement or refund</li>
               </ul>
               <div className="bg-yellow-50 rounded p-4 text-sm">
                 <p className="text-gray-700">
-                  Our customer service team will respond within one business day with detailed return instructions and next steps.
+                  Our customer service team will respond within one business day
+                  with detailed return instructions and next steps.
                 </p>
               </div>
             </div>
@@ -87,8 +99,12 @@ export default function ReturnsPolicy() {
               </p>
               <ul className="list-disc pl-6 text-gray-600">
                 <li>Free replacements for any quality issues</li>
-                <li>Full refunds available if we can&apos;t meet your satisfaction</li>
-                <li>No return shipping costs for defective or incorrect items</li>
+                <li>
+                  Full refunds available if we can&apos;t meet your satisfaction
+                </li>
+                <li>
+                  No return shipping costs for defective or incorrect items
+                </li>
                 <li>Dedicated support throughout the return process</li>
               </ul>
             </div>
@@ -101,10 +117,19 @@ export default function ReturnsPolicy() {
             </h2>
             <div className="bg-gray-50 rounded-lg p-6">
               <ul className="list-disc pl-6 text-gray-600">
-                <li>Refunds are processed within 3-5 business days of receiving the return</li>
+                <li>
+                  Refunds are processed within 3-5 business days of receiving
+                  the return
+                </li>
                 <li>Refunds are issued to the original payment method</li>
-                <li>You&apos;ll receive an email confirmation when your refund is processed</li>
-                <li>Bank processing times may vary for the refund to appear in your account</li>
+                <li>
+                  You&apos;ll receive an email confirmation when your refund is
+                  processed
+                </li>
+                <li>
+                  Bank processing times may vary for the refund to appear in
+                  your account
+                </li>
               </ul>
             </div>
           </section>
@@ -136,7 +161,8 @@ export default function ReturnsPolicy() {
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-600">
-                Our customer service team is here to help with any questions about returns:
+                Our customer service team is here to help with any questions
+                about returns:
               </p>
               <ContactInfo />
             </div>
@@ -144,5 +170,5 @@ export default function ReturnsPolicy() {
         </div>
       </div>
     </main>
-  )
+  );
 }

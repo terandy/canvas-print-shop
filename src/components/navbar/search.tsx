@@ -28,7 +28,7 @@ const Search: React.FC<Props> = ({ onSearch }) => {
     }
 
     router.push(createUrl("/search", newParams));
-    onSearch?.()
+    onSearch?.();
   }
   return (
     <form
@@ -49,7 +49,7 @@ const Search: React.FC<Props> = ({ onSearch }) => {
       </div>
     </form>
   );
-}
+};
 const SearchSkeleton = () => {
   return (
     <form className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
@@ -63,6 +63,6 @@ const SearchSkeleton = () => {
       </div>
     </form>
   );
-}
+};
 export default Search;
-export { SearchSkeleton }
+export { SearchSkeleton };

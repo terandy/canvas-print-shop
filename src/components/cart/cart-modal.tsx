@@ -13,7 +13,10 @@ import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
-import { createCartAndSetCookie, redirectToCheckout } from "@/lib/utils/cart-actions";
+import {
+  createCartAndSetCookie,
+  redirectToCheckout,
+} from "@/lib/utils/cart-actions";
 import { Cart, CartItem } from "@/lib/shopify/types";
 import { ShoppingCart, X } from "lucide-react";
 
@@ -32,50 +35,65 @@ const CheckoutButton = () => {
       {pending ? <LoadingDots className="bg-white" /> : "Proceed to Checkout"}
     </button>
   );
-}
+};
 
 const Totals = ({ cart }: { cart: Cart }) => {
-  return <>
-    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1">
-      <p>Taxes</p>
-      <Price
-        className="text-right text-base text-black"
-        amount={cart.cost.totalTaxAmount.amount}
-        currencyCode={cart.cost.totalTaxAmount.currencyCode}
-      />
-    </div>
-    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
-      <p>Shipping</p>
-      <p className="text-right">Calculated at checkout</p>
-    </div>
-    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
-      <p>Total</p>
-      <Price
-        className="text-right text-base text-black"
-        amount={cart.cost.totalAmount.amount}
-        currencyCode={cart.cost.totalAmount.currencyCode}
-      />
-    </div>
-  </>
-}
+  return (
+    <>
+      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1">
+        <p>Taxes</p>
+        <Price
+          className="text-right text-base text-black"
+          amount={cart.cost.totalTaxAmount.amount}
+          currencyCode={cart.cost.totalTaxAmount.currencyCode}
+        />
+      </div>
+      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
+        <p>Shipping</p>
+        <p className="text-right">Calculated at checkout</p>
+      </div>
+      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
+        <p>Total</p>
+        <Price
+          className="text-right text-base text-black"
+          amount={cart.cost.totalAmount.amount}
+          currencyCode={cart.cost.totalAmount.currencyCode}
+        />
+      </div>
+    </>
+  );
+};
 
-const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { item: CartItem, closeCart: () => void, updateOptimisticCartItemQuantity: (cartItemId: string, updateType: UpdateQuantityType,) => void }) => {
+const CartItemCard = ({
+  item,
+  updateOptimisticCartItemQuantity,
+  closeCart,
+}: {
+  item: CartItem;
+  closeCart: () => void;
+  updateOptimisticCartItemQuantity: (
+    cartItemId: string,
+    updateType: UpdateQuantityType
+  ) => void;
+}) => {
   const merchandiseSearchParams: MerchandiseSearchParams = {};
 
-  if (item.id) merchandiseSearchParams.cartItemID = item.id
+  if (item.id) merchandiseSearchParams.cartItemID = item.id;
 
-  item.merchandise.selectedOptions.forEach(
-    ({ name, value }) => {
-      if (value !== DEFAULT_OPTION) {
-        merchandiseSearchParams[
-          name.toLocaleLowerCase()
-        ] = value;
-      }
+  item.merchandise.selectedOptions.forEach(({ name, value }) => {
+    if (value !== DEFAULT_OPTION) {
+      merchandiseSearchParams[name.toLocaleLowerCase()] = value;
     }
-  );
-  const imgURL = item.attributes?.find(attr => attr.key === "_IMAGE URL")?.value;
-  const borderStyle = item.attributes?.find(attr => attr.key === "borderStyle")?.value;
-  const direction = item.attributes?.find(attr => attr.key === "direction")?.value;
+  });
+  const imgURL = item.attributes?.find(
+    (attr) => attr.key === "_IMAGE URL"
+  )?.value;
+  const borderStyle = item.attributes?.find(
+    (attr) => attr.key === "borderStyle"
+  )?.value;
+  const direction = item.attributes?.find(
+    (attr) => attr.key === "direction"
+  )?.value;
 
   if (imgURL) merchandiseSearchParams["imgURL"] = imgURL;
   if (borderStyle) merchandiseSearchParams["borderStyle"] = borderStyle;
@@ -86,11 +104,8 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
     new URLSearchParams(merchandiseSearchParams)
   );
 
-
   return (
-    <li
-      className="lex w-full flex-col border-b border-neutral-300"
-    >
+    <li className="lex w-full flex-col border-b border-neutral-300">
       <div className="relative flex w-full flex-row justify-between px-1 py-4">
         <DeleteItemButton
           item={item}
@@ -121,7 +136,17 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
                 {item.merchandise.title}
               </p>
             ) : null}
-            {item.attributes.filter(attr => attr.key !== "_IMAGE URL").map(attr => <span key={attr.key} className="first-letter:capitalize text-sm text-neutral-500">{attr.value}{attr.key === "borderStyle" && " border"}</span>)}
+            {item.attributes
+              .filter((attr) => attr.key !== "_IMAGE URL")
+              .map((attr) => (
+                <span
+                  key={attr.key}
+                  className="first-letter:capitalize text-sm text-neutral-500"
+                >
+                  {attr.value}
+                  {attr.key === "borderStyle" && " border"}
+                </span>
+              ))}
           </div>
         </Link>
       </div>
@@ -129,9 +154,7 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
         <Price
           className="flex justify-end space-y-2 text-right text-sm"
           amount={item.cost.totalAmount.amount}
-          currencyCode={
-            item.cost.totalAmount.currencyCode
-          }
+          currencyCode={item.cost.totalAmount.currencyCode}
         />
         <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200">
           <EditItemQuantityButton
@@ -140,9 +163,7 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
             optimisticUpdate={updateOptimisticCartItemQuantity}
           />
           <p className="w-6 text-center">
-            <span className="w-full text-sm">
-              {item.quantity}
-            </span>
+            <span className="w-full text-sm">{item.quantity}</span>
           </p>
           <EditItemQuantityButton
             item={item}
@@ -152,7 +173,7 @@ const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { i
         </div>
       </div>
     </li>
-  )
+  );
 };
 
 const CartModal = () => {
@@ -233,22 +254,35 @@ const CartModal = () => {
                           b.merchandise.product.title
                         )
                       )
-                      .map((item) =>
-                        <CartItemCard key={`cart${item.id}`} item={item} closeCart={closeCart} updateOptimisticCartItemQuantity={updateOptimisticCartItemQuantity} />)}
-                  </ul >
+                      .map((item) => (
+                        <CartItemCard
+                          key={`cart${item.id}`}
+                          item={item}
+                          closeCart={closeCart}
+                          updateOptimisticCartItemQuantity={
+                            updateOptimisticCartItemQuantity
+                          }
+                        />
+                      ))}
+                  </ul>
                   <div className="py-4 text-sm text-neutral-500">
                     <Totals cart={cart} />
-                    <form action={() => { redirectToCheckout() }}>
+                    <form
+                      action={() => {
+                        redirectToCheckout();
+                      }}
+                    >
                       <CheckoutButton />
                     </form>
                   </div>
-                </div>)}
+                </div>
+              )}
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
       </Transition>
     </>
   );
-}
+};
 
 export default CartModal;

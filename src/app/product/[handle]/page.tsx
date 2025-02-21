@@ -11,7 +11,7 @@ import ImageUploader from "@/components/image-uploader";
 type Props = {
   params: Promise<{ handle: string }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
-}
+};
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
@@ -35,18 +35,18 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
     },
     openGraph: url
       ? {
-        images: [
-          {
-            url,
-            width,
-            height,
-            alt: alt || "",
-          },
-        ],
-      }
+          images: [
+            {
+              url,
+              width,
+              height,
+              alt: alt || "",
+            },
+          ],
+        }
       : null,
   };
-}
+};
 
 const ProductPage: NextPage<Props> = async (props) => {
   const params = await props.params;
@@ -60,12 +60,11 @@ const ProductPage: NextPage<Props> = async (props) => {
       <div className="mx-auto max-w-screen-2xl pl-4">
         <div className="rounded-lg p-8 md:p-12 box-border border border-neutral-200 lg:flex lg:gap-12">
           <div className="basis-full lg:basis-4/6 mb-6 lg:mb-0 ">
-            <Suspense
-              fallback={
-                <div className="aspect-square h-96 w-full" />
-              }
-            >
-              <ProductImagePreview product={product} className="lg:sticky lg:top-28" />
+            <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
+              <ProductImagePreview
+                product={product}
+                className="lg:sticky lg:top-28"
+              />
             </Suspense>
           </div>
           <div className="basis-full lg:basis-2/6">
@@ -73,7 +72,12 @@ const ProductPage: NextPage<Props> = async (props) => {
               <div className="mb-6 flex flex-col border-b pb-6">
                 <h1 className="mb-2 text-5xl font-medium">{product.title}</h1>
               </div>
-              {product.descriptionHtml ? <Prose className="mb-6 text-sm leading-light" html={product.descriptionHtml} /> : null}
+              {product.descriptionHtml ? (
+                <Prose
+                  className="mb-6 text-sm leading-light"
+                  html={product.descriptionHtml}
+                />
+              ) : null}
               <ImageUploader className="mb-6" />
               <ProductForm product={product} cartItemID={cartItemID} />
             </Suspense>
@@ -82,6 +86,6 @@ const ProductPage: NextPage<Props> = async (props) => {
       </div>
     </ProductProvider>
   );
-}
+};
 
 export default ProductPage;

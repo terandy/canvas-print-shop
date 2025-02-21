@@ -4,9 +4,7 @@ export type Props = {
   title?: string;
 };
 
-const OpengraphImage = async (
-  props?: Props
-): Promise<ImageResponse> => {
+const OpengraphImage = async (props?: Props): Promise<ImageResponse> => {
   const { title } = {
     ...{
       title: process.env.SITE_NAME,
@@ -28,6 +26,6 @@ const OpengraphImage = async (
       height: 630,
     }
   );
-}
+};
 
 export default OpengraphImage;

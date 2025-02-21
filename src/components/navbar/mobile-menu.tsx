@@ -8,7 +8,7 @@ import Search from "./search";
 import { Menu as MenuIcon, X } from "lucide-react";
 
 interface Props {
-  menu: Menu[]
+  menu: Menu[];
 }
 
 const MobileMenu: React.FC<Props> = ({ menu }) => {
@@ -84,6 +84,6 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
       </Transition>
     </>
   );
-}
+};
 
 export default MobileMenu;

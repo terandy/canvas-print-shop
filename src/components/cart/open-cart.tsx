@@ -4,13 +4,9 @@ import { ComponentProps } from "react";
 
 interface Props extends ComponentProps<"div"> {
   quantity?: number;
-
 }
 
-const OpenCart: React.FC<Props> = ({
-  className,
-  quantity,
-}) => {
+const OpenCart: React.FC<Props> = ({ className, quantity }) => {
   return (
     <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors">
       <ShoppingCart
@@ -27,6 +23,6 @@ const OpenCart: React.FC<Props> = ({
       ) : null}
     </div>
   );
-}
+};
 
 export default OpenCart;

@@ -7,12 +7,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface Props {
   images: { src: string; altText: string }[];
-
 }
 
-const Gallery: React.FC<Props> = ({
-  images,
-}) => {
+const Gallery: React.FC<Props> = ({ images }) => {
   const { state, updateImage } = useProduct();
   const updateURL = useUpdateURL();
   const imageIndex = state.image ? parseInt(state.image) : 0;
@@ -95,6 +92,6 @@ const Gallery: React.FC<Props> = ({
       ) : null}
     </form>
   );
-}
+};
 
 export default Gallery;

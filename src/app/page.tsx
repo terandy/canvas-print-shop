@@ -1,46 +1,78 @@
-import { Metadata } from 'next'
+import { Metadata } from "next";
 import ProductPreview from "@/components/product/product-preview";
 import { getProductList } from "@/lib/shopify";
 import Link from "next/link";
 import React from "react";
-import { ArrowRight, CircleCheck } from 'lucide-react';
+import { ArrowRight, CircleCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Custom Canvas Prints & Framing | Canvas Print Shop',
-  description: 'Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada. Order now for fast delivery!',
+  title: "Custom Canvas Prints & Framing | Canvas Print Shop",
+  description:
+    "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada. Order now for fast delivery!",
   openGraph: {
-    title: 'Custom Canvas Prints & Framing | Canvas Print Shop',
-    description: 'Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada.',
-    url: 'https://canvasprintshop.ca',
-    siteName: 'Canvas Print Shop',
-    locale: 'en_CA',
-    type: 'website',
+    title: "Custom Canvas Prints & Framing | Canvas Print Shop",
+    description:
+      "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada.",
+    url: "https://canvasprintshop.ca",
+    siteName: "Canvas Print Shop",
+    locale: "en_CA",
+    type: "website",
   },
-}
+};
 
 const benefits = [
-  { title: "Premium Materials", description: "Premium cotton-blend canvas with 10x higher density and 75% opacity - far superior to competitors' lower quality materials." },
-  { title: "Expert Craftsmanship", description: "All canvas prints are expertly handcrafted in our Canadian studio, based in Quebec City." },
-  { title: "Easy Process", description: "Simply upload your image, choose your dimensions, preview your canvas print and then checkout." },
-  { title: "UVgel Technology", description: "Advanced Canon printing technology delivering exceptional color vibrancy and durability, backed by our 30-year print quality guarantee. Eco-friendly, no-odor prints perfect for indoor display." },
+  {
+    title: "Premium Materials",
+    description:
+      "Premium cotton-blend canvas with 10x higher density and 75% opacity - far superior to competitors' lower quality materials.",
+  },
+  {
+    title: "Expert Craftsmanship",
+    description:
+      "All canvas prints are expertly handcrafted in our Canadian studio, based in Quebec City.",
+  },
+  {
+    title: "Easy Process",
+    description:
+      "Simply upload your image, choose your dimensions, preview your canvas print and then checkout.",
+  },
+  {
+    title: "UVgel Technology",
+    description:
+      "Advanced Canon printing technology delivering exceptional color vibrancy and durability, backed by our 30-year print quality guarantee. Eco-friendly, no-odor prints perfect for indoor display.",
+  },
 ];
 
 const process = [
-  { title: "Upload Your Photo", description: "Choose your favorite image from any device" },
-  { title: "Select Your Style", description: "Pick your size and frame options" },
-  { title: "We Create Your Masterpiece", description: "Expert printing and craftsmanship" },
-  { title: "Enjoy Your Custom Art", description: "Ready-to-hang delivery to your door" },
+  {
+    title: "Upload Your Photo",
+    description: "Choose your favorite image from any device",
+  },
+  {
+    title: "Select Your Style",
+    description: "Pick your size and frame options",
+  },
+  {
+    title: "We Create Your Masterpiece",
+    description: "Expert printing and craftsmanship",
+  },
+  {
+    title: "Enjoy Your Custom Art",
+    description: "Ready-to-hang delivery to your door",
+  },
 ];
 
 const testimonials = [
   {
-    quote: "The quality exceeded my expectations. The colors are vibrant, and the framing is absolutely perfect.",
-    author: "Jennifer T., Toronto"
+    quote:
+      "The quality exceeded my expectations. The colors are vibrant, and the framing is absolutely perfect.",
+    author: "Jennifer T., Toronto",
   },
   {
-    quote: "From upload to delivery, the whole process was seamless. The finished piece looks amazing!",
-    author: "Michel B., Montreal"
-  }
+    quote:
+      "From upload to delivery, the whole process was seamless. The finished piece looks amazing!",
+    author: "Michel B., Montreal",
+  },
 ];
 
 const Home: React.FC = async () => {
@@ -55,11 +87,12 @@ const Home: React.FC = async () => {
               Custom Canvas Prints Made to Order
             </h1>
             <p className="text-xl text-gray-600 mb-12">
-              Turn your cherished memories into beautiful canvas prints, expertly hand-crafted in Canada and ready to hang in your home.
+              Turn your cherished memories into beautiful canvas prints,
+              expertly hand-crafted in Canada and ready to hang in your home.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
-              {products.map(product => (
+              {products.map((product) => (
                 <Link
                   key={product.id}
                   href={`/product/${product.handle}`}
@@ -88,7 +121,9 @@ const Home: React.FC = async () => {
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
                 <CircleCheck className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                  {benefit.title}
+                </h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </div>
             ))}
@@ -101,7 +136,7 @@ const Home: React.FC = async () => {
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
           Create Your Custom Canvas Print
         </h2>
-        {products.map(product => (
+        {products.map((product) => (
           <ProductPreview key={product.id} product={product} />
         ))}
       </section>
@@ -118,7 +153,9 @@ const Home: React.FC = async () => {
                 <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{step.title}</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                  {step.title}
+                </h3>
                 <p className="text-gray-600">{step.description}</p>
               </div>
             ))}
@@ -135,8 +172,12 @@ const Home: React.FC = async () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                <p className="text-gray-600 mb-4 italic">&ldquo;{testimonial.quote}&rdquo;</p>
-                <p className="text-gray-900 font-medium">{testimonial.author}</p>
+                <p className="text-gray-600 mb-4 italic">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <p className="text-gray-900 font-medium">
+                  {testimonial.author}
+                </p>
               </div>
             ))}
           </div>

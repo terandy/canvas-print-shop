@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { SHOPIFY_GRAPHQL_API_ENDPOINT } from "../constants";
 import { ExtractVariables } from "./types";
@@ -12,7 +12,7 @@ const endpoint = `${domain}${SHOPIFY_GRAPHQL_API_ENDPOINT}`;
 const key = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
 
 export async function shopifyFetch<T>({
-  cache = 'no-store',
+  cache = "no-store",
   headers,
   query,
   tags,

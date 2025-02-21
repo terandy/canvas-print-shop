@@ -2,7 +2,13 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { createContext, useCallback, useContext, useMemo, useOptimistic } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useOptimistic,
+} from "react";
 export type ProductState = {
   [key: string]: string;
 } & {
@@ -24,7 +30,7 @@ type ProductContextType = {
 };
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 export const ProductProvider = ({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) => {
@@ -32,58 +38,65 @@ export const ProductProvider = ({
   const getInitialState = () => {
     const params: ProductState = {};
     searchParams.forEach((value, key) => {
-      params[key] = value
-    })
+      params[key] = value;
+    });
     return params;
   };
-  const [state, setOptimisticState] = useOptimistic(getInitialState(), (prevState: ProductState, update: ProductState) => ({
-    ...prevState,
-    ...update
-  }));
+  const [state, setOptimisticState] = useOptimistic(
+    getInitialState(),
+    (prevState: ProductState, update: ProductState) => ({
+      ...prevState,
+      ...update,
+    })
+  );
   const updateOption = (name: string, value: string) => {
     const newState = {
-      [name]: value
+      [name]: value,
     };
     setOptimisticState(newState);
     return {
       ...state,
-      ...newState
+      ...newState,
     };
   };
 
   const updateOptions = (update: ProductState) => {
     setOptimisticState(update);
-    return { ...state, ...update }
-
-  }
+    return { ...state, ...update };
+  };
 
   const deleteOption = (name: string) => {
     const newState = {
-      ...state
+      ...state,
     };
-    delete newState[name]
+    delete newState[name];
     setOptimisticState(newState);
     return newState;
   };
 
   const updateImage = (index: string) => {
     const newState = {
-      image: index
+      image: index,
     };
     setOptimisticState(newState);
     return {
       ...state,
-      ...newState
+      ...newState,
     };
   };
-  const value = useMemo(() => ({
-    state,
-    updateOption,
-    deleteOption,
-    updateImage,
-    updateOptions,
-  }), [state]);
-  return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>;
+  const value = useMemo(
+    () => ({
+      state,
+      updateOption,
+      deleteOption,
+      updateImage,
+      updateOptions,
+    }),
+    [state]
+  );
+  return (
+    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+  );
 };
 export function useProduct() {
   const context = useContext(ProductContext);
@@ -94,13 +107,16 @@ export function useProduct() {
 }
 export function useUpdateURL() {
   const router = useRouter();
-  return useCallback((state: ProductState) => {
-    const newParams = new URLSearchParams();
-    Object.entries(state).forEach(([key, value]) => {
-      newParams.set(key, value);
-    });
-    router.push(`?${newParams.toString()}`, {
-      scroll: false
-    });
-  }, [router]);
+  return useCallback(
+    (state: ProductState) => {
+      const newParams = new URLSearchParams();
+      Object.entries(state).forEach(([key, value]) => {
+        newParams.set(key, value);
+      });
+      router.push(`?${newParams.toString()}`, {
+        scroll: false,
+      });
+    },
+    [router]
+  );
 }

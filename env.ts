@@ -16,6 +16,6 @@ envSchema.parse(process.env);
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv extends z.infer<typeof envSchema> { }
+    interface ProcessEnv extends z.infer<typeof envSchema> {}
   }
 }

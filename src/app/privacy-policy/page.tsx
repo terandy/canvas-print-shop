@@ -1,11 +1,12 @@
 // app/privacy-policy/page.tsx
-import ContactInfo from '@/components/contact-info'
-import { Metadata } from 'next'
+import ContactInfo from "@/components/contact-info";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Canvas Print Shop',
-  description: 'Learn about how Canvas Print Shop protects and handles your personal information. Our privacy policy outlines our data collection, use, and protection practices.',
-}
+  title: "Privacy Policy | Canvas Print Shop",
+  description:
+    "Learn about how Canvas Print Shop protects and handles your personal information. Our privacy policy outlines our data collection, use, and protection practices.",
+};
 
 export default function PrivacyPolicy() {
   return (
@@ -17,7 +18,7 @@ export default function PrivacyPolicy() {
 
         <div className="prose max-w-none">
           <p className="text-gray-600 mb-8">
-            Last updated: {new Date().toLocaleDateString('en-CA')}
+            Last updated: {new Date().toLocaleDateString("en-CA")}
           </p>
 
           <section className="mb-8">
@@ -25,7 +26,12 @@ export default function PrivacyPolicy() {
               Introduction
             </h2>
             <p className="text-gray-600">
-              Canvas Print Shop (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) respects your privacy and is committed to protecting your personal information. This privacy policy explains how we collect, use, disclose, and safeguard your information when you visit our website canvasprintshop.ca or make a purchase from us.
+              Canvas Print Shop (&quot;we&quot;, &quot;our&quot;, or
+              &quot;us&quot;) respects your privacy and is committed to
+              protecting your personal information. This privacy policy explains
+              how we collect, use, disclose, and safeguard your information when
+              you visit our website canvasprintshop.ca or make a purchase from
+              us.
             </p>
           </section>
 
@@ -34,7 +40,8 @@ export default function PrivacyPolicy() {
               Information We Collect
             </h2>
             <p className="text-gray-600 mb-4">
-              We collect information that you voluntarily provide to us when you:
+              We collect information that you voluntarily provide to us when
+              you:
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-600">
               <li>Create an account or place an order</li>
@@ -44,7 +51,9 @@ export default function PrivacyPolicy() {
               <li>Participate in promotions or surveys</li>
             </ul>
             <p className="text-gray-600">
-              This information may include your name, email address, postal address, phone number, payment information, and the images you upload for printing.
+              This information may include your name, email address, postal
+              address, phone number, payment information, and the images you
+              upload for printing.
             </p>
           </section>
 
@@ -70,10 +79,14 @@ export default function PrivacyPolicy() {
               Information Sharing and Disclosure
             </h2>
             <p className="text-gray-600 mb-4">
-              We do not sell or rent your personal information to third parties. We may share your information with:
+              We do not sell or rent your personal information to third parties.
+              We may share your information with:
             </p>
             <ul className="list-disc pl-6 mb-4 text-gray-600">
-              <li>Service providers who assist in our operations (payment processors, shipping carriers)</li>
+              <li>
+                Service providers who assist in our operations (payment
+                processors, shipping carriers)
+              </li>
               <li>Professional advisers (lawyers, accountants, auditors)</li>
               <li>Law enforcement or regulatory bodies when required by law</li>
             </ul>
@@ -84,7 +97,11 @@ export default function PrivacyPolicy() {
               Data Security
             </h2>
             <p className="text-gray-600">
-              We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. This includes encrypted data transmission, secure payment processing, and regular security assessments.
+              We implement appropriate technical and organizational measures to
+              protect your personal information against unauthorized access,
+              alteration, disclosure, or destruction. This includes encrypted
+              data transmission, secure payment processing, and regular security
+              assessments.
             </p>
           </section>
 
@@ -92,9 +109,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Your Rights
             </h2>
-            <p className="text-gray-600 mb-4">
-              You have the right to:
-            </p>
+            <p className="text-gray-600 mb-4">You have the right to:</p>
             <ul className="list-disc pl-6 mb-4 text-gray-600">
               <li>Access your personal information</li>
               <li>Correct inaccurate information</li>
@@ -109,7 +124,11 @@ export default function PrivacyPolicy() {
               Cookie Policy
             </h2>
             <p className="text-gray-600">
-              We use cookies and similar tracking technologies to improve your browsing experience, analyze site traffic, and understand where our audience is coming from. You can choose to disable cookies through your browser settings, although this may affect some website functionality.
+              We use cookies and similar tracking technologies to improve your
+              browsing experience, analyze site traffic, and understand where
+              our audience is coming from. You can choose to disable cookies
+              through your browser settings, although this may affect some
+              website functionality.
             </p>
           </section>
 
@@ -118,7 +137,9 @@ export default function PrivacyPolicy() {
               Changes to This Policy
             </h2>
             <p className="text-gray-600">
-              We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the &quot;Last updated&quot; date.
+              We may update this privacy policy from time to time. We will
+              notify you of any changes by posting the new policy on this page
+              and updating the &quot;Last updated&quot; date.
             </p>
           </section>
 
@@ -131,5 +152,5 @@ export default function PrivacyPolicy() {
         </div>
       </div>
     </main>
-  )
+  );
 }
