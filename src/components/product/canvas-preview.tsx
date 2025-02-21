@@ -1,4 +1,5 @@
 import Loading from "@/app/loading";
+import { useResize } from "@/lib/hooks/useResize";
 import clsx from "clsx";
 import Image from "next/image";
 import React, {
@@ -310,10 +311,15 @@ const Canvas: React.FC<CanvasProps> = (props) => {
   return <CanvasWithBorder {...props} />;
 };
 
+const TOP_NAVBAR_HEIGHT = 76;
+const MEASUREMENT_GAP = 40 + 8;
+const ADDITIONAL_PADDING = 24;
+
 const CanvasPreviewer: React.FC<
   ImagePreviewerProps & ComponentPropsWithoutRef<"div">
 > = ({ src, size, direction, borderStyle = "white", ...props }) => {
   const componentRef = useRef<HTMLDivElement>(null);
+  const resize = useResize(componentRef);
   const [canvasProps, setCanvasProps] = useState<CanvasProps>();
   const sizeArray = size.split("x").map(Number);
   const [x, y] =
@@ -322,19 +328,54 @@ const CanvasPreviewer: React.FC<
       : [sizeArray[0], sizeArray[1]];
 
   useLayoutEffect(() => {
-    const containerWidth = document.body.getBoundingClientRect().width;
-    const getWidth = () => {
-      if (containerWidth > 768)
-        return direction === "landscape"
-          ? (containerWidth * 1) / 2
-          : (containerWidth * 1) / 4;
-      return containerWidth / 2;
-    };
-    const width = getWidth();
-    const height = (y / x) * width;
-    const thickness = width / x;
+    const containerWidth =
+      document
+        .getElementById("product-image-preview-container")
+        ?.getBoundingClientRect().width ??
+      0 - MEASUREMENT_GAP - 2 * ADDITIONAL_PADDING;
+
+    const containerHeight =
+      document.documentElement.clientHeight -
+      TOP_NAVBAR_HEIGHT -
+      MEASUREMENT_GAP -
+      2 * ADDITIONAL_PADDING;
+
+    let thickness;
+    let width;
+    let height;
+    if (direction === "landscape") {
+      thickness = containerWidth / (x + 2);
+      width = containerWidth - 2 * thickness;
+      height = (width * y) / x;
+    } else {
+      thickness = containerHeight / (y + 2);
+      height = containerHeight - 2 * thickness;
+      width = (height * x) / y;
+    }
+
+    const totalHeight =
+      height + thickness * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
+    if (totalHeight > containerHeight) {
+      height -= totalHeight - containerHeight;
+      width = (height * x) / y;
+    }
+    const totalWidth =
+      width + thickness * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
+    if (totalWidth > containerWidth) {
+      width -= totalWidth - containerWidth;
+      height = (width * y) / x;
+    }
     setCanvasProps({ width, height, thickness, borderStyle, src });
-  }, [x, y, setCanvasProps, borderStyle, src, direction]);
+  }, [
+    x,
+    y,
+    setCanvasProps,
+    borderStyle,
+    src,
+    direction,
+    resize.height,
+    resize.width,
+  ]);
 
   // Watch for changes in props and state that should trigger scrolling
   useEffect(() => {

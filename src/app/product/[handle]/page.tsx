@@ -63,7 +63,7 @@ const ProductPage: NextPage<Props> = async (props) => {
     <ProductProvider>
       <div className="container mx-auto max-w-screen-2xl px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3" id="product-image-preview-container">
             <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
               <ProductImagePreview
                 product={product}
@@ -74,9 +74,9 @@ const ProductPage: NextPage<Props> = async (props) => {
 
           <div className="lg:col-span-2 mt-8 lg:mt-0">
             <Suspense fallback={null}>
-              <div className="space-y-6 rounded-lg bg-white shadow-lg p-6">
+              <div className="space-y-6 rounded-lg  border border-gray/10 shadow-lg p-6">
                 <PageHeader>{product.title}</PageHeader>
-                <SectionContainer>
+                <SectionContainer className="-mx-6 rounded-none">
                   {product.descriptionHtml && (
                     <Prose
                       className="text-sm leading-light"
