@@ -30,9 +30,9 @@ const BorderStyleSelector = () => {
                 }}
                 key={option.label}
                 title={`${option.label}`}
-                className={clsx("border rounded bg-neutral-100", {
-                  "cursor-default ring-2 ring-blue-600": isActive,
-                  "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600":
+                className={clsx("border rounded bg-background", {
+                  "cursor-default ring-2 ring-primary-light": isActive,
+                  "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-primary-light":
                     !isActive,
                 })}
               >

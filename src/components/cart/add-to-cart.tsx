@@ -3,54 +3,35 @@
 import { Product, ProductVariant } from "@/lib/shopify/types";
 import { useProduct } from "../../contexts/product-context";
 import { useCart } from "../../contexts/cart-context";
-import clsx from "clsx";
 import * as api from "../../lib/utils/cart-actions";
-import React, { useActionState } from "react";
+import React, { ComponentProps, useActionState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteImage } from "@/lib/s3/actions/image";
 import { Plus, X } from "lucide-react";
+import Button from "../buttons/button";
 
-interface SubmitButtonProps {
-  disabled?: boolean;
-}
-const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
-  const buttonClasses =
-    "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
-  const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
-
-  const className = clsx(
-    buttonClasses,
-    !disabled && "hover:opacity-90",
-    disabled && disabledClasses
-  );
-
+const SubmitButton: React.FC<ComponentProps<"button">> = ({
+  disabled,
+  ...props
+}) => {
   return (
-    <button
-      aria-label={disabled ? "Please select an option" : "Add to cart"}
-      className={className}
+    <Button
+      {...props}
+      disabledMessage={"Please select an option"}
+      icon={Plus}
+      type="submit"
+      className="bg-secondary hover:bg-primary-light"
     >
-      <Plus className="mr-2" />
       Add To Cart
-    </button>
+    </Button>
   );
 };
 
-const CancelButton = ({
-  onClick,
-}: {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-}) => {
+const CancelButton: React.FC<ComponentProps<"button">> = (props) => {
   return (
-    <button
-      aria-label={"Cancel"}
-      className={clsx(
-        "relative flex w-full items-center justify-center tracking-wide text-gray bg-white p-4 hover:text-blue-600"
-      )}
-      onClick={onClick}
-    >
-      <X className="mr-2" />
+    <Button {...props} icon={X} variant="ghost">
       Cancel
-    </button>
+    </Button>
   );
 };
 
@@ -99,6 +80,7 @@ export const AddToCart: React.FC<AddToCardProps> = ({ product }) => {
         });
         router.replace("/");
       }}
+      className="flex flex-col gap-2"
     >
       <SubmitButton disabled={!selectedVariantId || !state.imgURL} />
       <CancelButton onClick={onCancel} />

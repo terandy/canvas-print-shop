@@ -4,6 +4,7 @@ import { deleteImage } from "@/lib/s3/actions/image";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { startTransition } from "react";
+import Button from "../buttons/button";
 
 interface Props {
   imgURL: string;
@@ -31,14 +32,15 @@ const ImageFile: React.FC<Props> = ({ imgURL }) => {
         className="object-contain rounded-lg border-2 border-gray-200"
       />
       <span>Image</span>
-      <button
+      <Button
         onClick={removeImage}
-        className="w-6 h-6 text-gray-600 hover:text-red-500"
         title="remove image"
         onMouseOver={(e) => e.stopPropagation()}
-      >
-        <X />
-      </button>
+        icon={X}
+        variant="ghost"
+        size="sm"
+        className="hover:text-red-700"
+      />
     </div>
   );
 };

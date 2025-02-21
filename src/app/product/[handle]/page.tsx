@@ -2,11 +2,13 @@ import { ProductProvider } from "@/contexts/product-context";
 import ProductForm from "@/components/product/product-form";
 import { getProduct } from "@/lib/shopify";
 import { notFound } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import type { Metadata, NextPage } from "next";
 import { ProductImagePreview } from "@/components/product/product-image-preview";
-import Prose from "@/components/prose";
+import Prose from "@/components/typography/prose";
 import ImageUploader from "@/components/image-uploader";
+import PageHeader from "@/components/typography/page-header";
+import SectionContainer from "@/components/typography/section-container";
 
 type Props = {
   params: Promise<{ handle: string }>;
@@ -57,9 +59,9 @@ const ProductPage: NextPage<Props> = async (props) => {
   if (!product) return notFound();
   return (
     <ProductProvider>
-      <div className="mx-auto max-w-screen-2xl pl-4">
-        <div className="rounded-lg p-8 md:p-12 box-border border border-neutral-200 lg:flex lg:gap-12">
-          <div className="basis-full lg:basis-4/6 mb-6 lg:mb-0 ">
+      <div className="container mx-auto max-w-screen-2xl px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
+          <div className="lg:col-span-3">
             <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
               <ProductImagePreview
                 product={product}
@@ -67,19 +69,22 @@ const ProductPage: NextPage<Props> = async (props) => {
               />
             </Suspense>
           </div>
-          <div className="basis-full lg:basis-2/6">
+
+          <div className="lg:col-span-2 mt-8 lg:mt-0">
             <Suspense fallback={null}>
-              <div className="mb-6 flex flex-col border-b pb-6">
-                <h1 className="mb-2 text-5xl font-medium">{product.title}</h1>
+              <div className="space-y-6 rounded-lg bg-white shadow-lg p-6">
+                <PageHeader>{product.title}</PageHeader>
+                <SectionContainer>
+                  {product.descriptionHtml && (
+                    <Prose
+                      className="text-sm leading-light"
+                      html={product.descriptionHtml}
+                    />
+                  )}
+                </SectionContainer>
+                <ImageUploader />
+                <ProductForm product={product} cartItemID={cartItemID} />
               </div>
-              {product.descriptionHtml ? (
-                <Prose
-                  className="mb-6 text-sm leading-light"
-                  html={product.descriptionHtml}
-                />
-              ) : null}
-              <ImageUploader className="mb-6" />
-              <ProductForm product={product} cartItemID={cartItemID} />
             </Suspense>
           </div>
         </div>

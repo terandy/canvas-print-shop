@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image";
-import Label from "../label";
+import ProductLabel from "../product/product-label";
 
 interface Props extends React.ComponentProps<typeof Image> {
   isInteractive?: boolean;
@@ -41,7 +41,7 @@ const GridTileImage: React.FC<Props> = ({
         />
       ) : null}
       {label ? (
-        <Label
+        <ProductLabel
           title={label.title}
           amount={label.amount}
           currencyCode={label.currencyCode}

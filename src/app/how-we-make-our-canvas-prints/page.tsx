@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import ButtonLink from "@/components/buttons/button-link";
 
 interface ProcessStep {
   title: string;
@@ -123,12 +123,7 @@ const CanvasProcessPage: React.FC = () => {
           Each canvas is crafted with care and backed by our satisfaction
           guarantee.
         </p>
-        <Link
-          href="/product/canvas"
-          className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colours inline-block"
-        >
-          Shop Our Canvases
-        </Link>
+        <ButtonLink href="/product/canvas">Shop Our Canvases</ButtonLink>
       </div>
     </div>
   );

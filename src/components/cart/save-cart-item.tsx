@@ -8,32 +8,22 @@ import * as api from "../../lib/utils/cart-actions";
 import React, { useActionState } from "react";
 import Link from "next/link";
 import { Plus } from "lucide-react";
+import Button from "../buttons/button";
+import ButtonLink from "../buttons/button-link";
 
 interface SubmitButtonProps {
   saved?: boolean;
   disabled: boolean;
 }
 const SubmitButton: React.FC<SubmitButtonProps> = ({ saved, disabled }) => {
-  const buttonClasses =
-    "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
-  const disabledClasses = "opacity-60 hover:opacity-60";
-
-  const className = clsx(
-    buttonClasses,
-    !saved && !disabled && "hover:opacity-90",
-    (disabled || saved) && disabledClasses
-  );
-
   return (
-    <button
+    <Button
       aria-label={saved ? "Please select an option" : "Add to cart"}
-      className={className}
+      disabled={disabled || saved}
+      icon={Plus}
     >
-      <div className="absolute left-0 ml-4">
-        <Plus />
-      </div>
       {!saved ? "Save changes" : "Saved"}
-    </button>
+    </Button>
   );
 };
 
@@ -100,17 +90,15 @@ export const SaveCartItem: React.FC<SaveCartItemProps> = ({
           ],
         });
       }}
+      className="flex flex-col gap-2"
     >
       <SubmitButton
         saved={!hasDiff}
         disabled={!state.imgURL || !selectedVariantId}
       />
-      <Link
-        href={`/product/${product.handle}`}
-        className="mt-3 w-full inline-flex items-center justify-center text-blue-500 border border-blue-500 px-6 py-3 rounded-full"
-      >
-        <span>Create a new canvas</span>
-      </Link>
+      <ButtonLink href={`/product/${product.handle}`} variant="secondary">
+        Create a new canvas
+      </ButtonLink>
       <p className="sr-only" role="status" aria-label="polite">
         {message}
       </p>

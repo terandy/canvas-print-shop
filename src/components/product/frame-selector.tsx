@@ -92,18 +92,18 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                 }}
                 key={value}
                 title={`${value}`}
-                className={clsx("border rounded bg-neutral-100", {
-                  "cursor-default ring-2 ring-blue-600": isActive,
-                  "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600":
+                className={clsx("border rounded bg-white", {
+                  "cursor-default ring-2 ring-primary-light": isActive,
+                  "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-primary-light":
                     !isActive,
                 })}
               >
                 <Image
-                  className="object-cover h-[100px]"
+                  className="object-cover h-[150px]"
                   alt={`preview-${value}`}
                   src={getImageOptions(value.toLowerCase())}
-                  height={100}
-                  width={100}
+                  height={150}
+                  width={150}
                 />
                 <div className="flex flex-col">
                   <span className="text-sm">

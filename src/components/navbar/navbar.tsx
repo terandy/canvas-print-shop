@@ -4,9 +4,9 @@ import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import Search from "./search";
 import CartModal from "@/components/cart/cart-modal";
-import clsx from "clsx";
 import React from "react";
 import { Home } from "lucide-react";
+import SquareLink from "../buttons/square-link";
 
 const Navbar: React.FC = async () => {
   const menu = await getMenu("next-js-frontend-menu");
@@ -17,16 +17,7 @@ const Navbar: React.FC = async () => {
       </div>
       <div className="flex w-full items-center">
         <div className="flex w-full md:w-1/3">
-          <Link
-            href={"/"}
-            prefetch={true}
-            className="h-11 w-11 flex items-center justify-center rounded-md border border-neutral-200 text-black transition-colors"
-          >
-            <Home
-              className={clsx("h-4 transition-all ease-in-out hover:scale-110")}
-            />
-          </Link>
-
+          <SquareLink href={"/"} prefetch={true} icon={Home} />
           {menu.length > 0 ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
               {menu.map((item: Menu) => (

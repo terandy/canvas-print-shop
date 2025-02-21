@@ -147,7 +147,13 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
           onDrop={handleDrop}
-          className={`relative border-2 border-dashed rounded-lg p-8 text-center ${isDragging ? "border-blue-500 bg-blue-50" : "border-gray-300"}`}
+          className={clsx(
+            "relative border-2 border-dashed rounded-lg p-8 text-center",
+            "transition-all duration-200 ease-in-out",
+            isDragging
+              ? "border-primary bg-primary/10 scale-[1.02]"
+              : "border-gray/300 hover:border-primary/50 hover:bg-primary/5"
+          )}
         >
           <input
             type="file"
@@ -157,36 +163,45 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
             }
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           />
-          <div className="space-y-4">
-            <Upload className="w-12 h-12 mx-auto text-gray-400" />
+          <div className="flex items-center">
             <div>
-              <p className="text-base font-medium text-gray-700">
+              <p className="text-base font-medium text-gray/70">
                 Drop your image here, or click to browse
               </p>
               <p className="text-sm text-gray-500 mt-2">
                 Supported formats: JPG, PNG, WebP
               </p>
             </div>
+            <Upload
+              className={clsx(
+                "w-12 h-12 mx-auto transition-colors duration-200",
+                isDragging ? "text-primary" : "text-gray/40"
+              )}
+            />
           </div>
         </div>
       )}
       {isUploading && (
         <div className="mt-4">
-          <div className="flex items-center justify-between mb-1">
-            <p className="text-sm font-medium text-blue-600">Uploading...</p>
-            <span className="text-sm font-medium text-blue-600">
+          <div className="flex items-center justify-between mb-1.5">
+            <p className="text-sm font-medium text-primary">Uploading...</p>
+            <span className="text-sm font-medium text-primary">
               {uploadProgress}%
             </span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
             <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300 ease-in-out"
+              className="bg-primary h-full rounded-full transition-all duration-300 ease-in-out"
               style={{ width: `${uploadProgress}%` }}
             />
           </div>
         </div>
       )}
-      {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
+      {error && (
+        <p className="mt-3 text-sm text-red-500 bg-red-50 rounded-md p-2.5 border border-red-100">
+          {error}
+        </p>
+      )}
     </div>
   );
 };

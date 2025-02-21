@@ -6,8 +6,7 @@ import { UpdateQuantityType, useCart } from "../../contexts/cart-context";
 import { createUrl } from "@/lib/utils/base";
 import Image from "next/image";
 import Link from "next/link";
-import Price from "../price";
-import OpenCart from "./open-cart";
+import Price from "../product/price";
 import { DEFAULT_OPTION } from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
@@ -18,7 +17,11 @@ import {
   redirectToCheckout,
 } from "@/lib/utils/cart-actions";
 import { Cart, CartItem } from "@/lib/shopify/types";
-import { ShoppingCart, X } from "lucide-react";
+import { Pencil, ShoppingCart, X } from "lucide-react";
+import Button from "../buttons/button";
+import SquareButton from "../buttons/square-button";
+import Badge from "../badge";
+import ButtonLink from "../buttons/button-link";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -27,40 +30,36 @@ type MerchandiseSearchParams = {
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
   return (
-    <button
-      className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
-      type="submit"
-      disabled={pending}
-    >
+    <Button type="submit" className="w-full flex justify-center">
       {pending ? <LoadingDots className="bg-white" /> : "Proceed to Checkout"}
-    </button>
+    </Button>
   );
 };
 
 const Totals = ({ cart }: { cart: Cart }) => {
   return (
-    <>
-      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1">
-        <p>Taxes</p>
+    <div className="space-y-4">
+      <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
+        <p className="text-gray">Taxes</p>
         <Price
-          className="text-right text-base text-black"
+          className="text-right text-base text-secondary"
           amount={cart.cost.totalTaxAmount.amount}
           currencyCode={cart.cost.totalTaxAmount.currencyCode}
         />
       </div>
-      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
-        <p>Shipping</p>
-        <p className="text-right">Calculated at checkout</p>
+      <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
+        <p className="text-gray">Shipping</p>
+        <p className="text-right text-gray">Calculated at checkout</p>
       </div>
-      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
-        <p>Total</p>
+      <div className="flex items-center justify-between pb-3">
+        <p className="text-secondary font-semibold">Total</p>
         <Price
-          className="text-right text-base text-black"
+          className="text-right text-lg font-semibold text-secondary"
           amount={cart.cost.totalAmount.amount}
           currencyCode={cart.cost.totalAmount.currencyCode}
         />
       </div>
-    </>
+    </div>
   );
 };
 
@@ -103,74 +102,75 @@ const CartItemCard = ({
     `/product/${item.merchandise.product.handle}`,
     new URLSearchParams(merchandiseSearchParams)
   );
-
   return (
-    <li className="lex w-full flex-col border-b border-neutral-300">
-      <div className="relative flex w-full flex-row justify-between px-1 py-4">
-        <DeleteItemButton
-          item={item}
-          optimisticUpdate={updateOptimisticCartItemQuantity}
-        />
-      </div>
-      <div className="flex flex-row">
-        <div className="relative h-16 w-16 overflow-hidden rounded-md border border-neutral-300 bg-neutral-300">
+    <li className="border-b border-gray-light/10 py-4">
+      <div className="flex gap-4">
+        <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
           <Image
             src={imgURL ?? item.merchandise.product.featuredImage.url}
-            width={64}
-            height={64}
+            width={80}
+            height={80}
             alt="Custom Print"
-            className="w-24 h-24 object-cover rounded"
+            className="object-cover w-full h-full"
           />
         </div>
-        <Link
-          href={merchandiseUrl}
-          onClick={closeCart}
-          className="z-30 ml-2 flex flex-row space-x-4"
-        >
-          <div className="flex flex-1 flex-col text-base">
-            <span className="leading-tight">
+        <div className="flex-1">
+          <div className="space-y-1">
+            <p className="text-secondary font-medium">
               {item.merchandise.product.title}
-            </span>
-            {item.merchandise.title !== DEFAULT_OPTION ? (
-              <p className="text-sm text-neutral-500">
-                {item.merchandise.title}
-              </p>
-            ) : null}
+            </p>
+            {item.merchandise.title !== DEFAULT_OPTION && (
+              <p className="text-sm text-gray">{item.merchandise.title}</p>
+            )}
             {item.attributes
               .filter((attr) => attr.key !== "_IMAGE URL")
               .map((attr) => (
                 <span
                   key={attr.key}
-                  className="first-letter:capitalize text-sm text-neutral-500"
+                  className="block text-sm text-gray first-letter:capitalize"
                 >
                   {attr.value}
                   {attr.key === "borderStyle" && " border"}
                 </span>
               ))}
           </div>
-        </Link>
+        </div>
+        <div className="flex">
+          <DeleteItemButton
+            item={item}
+            optimisticUpdate={updateOptimisticCartItemQuantity}
+          />
+          <ButtonLink
+            href={merchandiseUrl}
+            onClick={closeCart}
+            icon={Pencil}
+            size="sm"
+            title="Edit"
+            variant="secondary"
+          >
+            Edit
+          </ButtonLink>
+        </div>
       </div>
-      <div className="flex h-16 flex-col justify-between">
-        <Price
-          className="flex justify-end space-y-2 text-right text-sm"
-          amount={item.cost.totalAmount.amount}
-          currencyCode={item.cost.totalAmount.currencyCode}
-        />
-        <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200">
+      <div className="flex mt-4 items-center justify-between gap-4">
+        <div className="flex items-center rounded-full border border-gray-light/20">
           <EditItemQuantityButton
             item={item}
             type="minus"
             optimisticUpdate={updateOptimisticCartItemQuantity}
           />
-          <p className="w-6 text-center">
-            <span className="w-full text-sm">{item.quantity}</span>
-          </p>
+          <p className="w-8 text-center text-secondary">{item.quantity}</p>
           <EditItemQuantityButton
             item={item}
             type="plus"
             optimisticUpdate={updateOptimisticCartItemQuantity}
           />
         </div>
+        <Price
+          className="text-secondary font-medium"
+          amount={item.cost.totalAmount.amount}
+          currencyCode={item.cost.totalAmount.currencyCode}
+        />
       </div>
     </li>
   );
@@ -205,9 +205,13 @@ const CartModal = () => {
 
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
-        <OpenCart quantity={cart?.totalQuantity} />
-      </button>
+      <Badge count={cart?.totalQuantity}>
+        <SquareButton
+          aria-label="Open cart"
+          icon={ShoppingCart}
+          onClick={openCart}
+        />
+      </Badge>
       <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
           <Transition.Child
@@ -219,7 +223,7 @@ const CartModal = () => {
             leaveFrom="opacity-100 backdrop-blur-[.5px]"
             leaveTo="opacity-0 backdrop-blur-none"
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+            <div className="fixed inset-0 bg-secondary/30" aria-hidden="true" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -230,24 +234,29 @@ const CartModal = () => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] z-[999]">
-              <div className="flex items-center justify-between">
-                <p className="text-lg font-semibold">My Cart</p>
-                <button aria-label="Close cart" onClick={closeCart}>
-                  <X />
-                </button>
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
+              <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
+                <p className="flex gap-2 text-lg font-semibold text-secondary">
+                  My Cart
+                </p>
+                <Button
+                  aria-label="Close cart"
+                  onClick={closeCart}
+                  icon={X}
+                  variant="ghost"
+                />
               </div>
 
               {!cart || cart.lines.length === 0 ? (
-                <div>
-                  <ShoppingCart className="h-16" />
-                  <p className="mt-6 text-center text-2xl font-bold">
-                    Your Cart is Empty.
+                <div className="flex flex-col items-center justify-center flex-1 p-8">
+                  <ShoppingCart className="w-16 h-16 text-gray-light" />
+                  <p className="mt-4 text-xl font-medium text-secondary">
+                    Your Cart is Empty
                   </p>
                 </div>
               ) : (
-                <div className="flex h-full flex-col justify-between overflow-hidden p-1">
-                  <ul className="flex-grow overflow-auto py-4">
+                <div className="flex flex-col h-full">
+                  <ul className="flex-1 overflow-auto p-4 space-y-6">
                     {cart.lines
                       .sort((a, b) =>
                         a.merchandise.product.title.localeCompare(
@@ -265,7 +274,7 @@ const CartModal = () => {
                         />
                       ))}
                   </ul>
-                  <div className="py-4 text-sm text-neutral-500">
+                  <div className="border-t border-gray-light/10 p-4 space-y-4">
                     <Totals cart={cart} />
                     <form
                       action={() => {

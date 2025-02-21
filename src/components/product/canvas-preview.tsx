@@ -366,10 +366,6 @@ const CanvasPreviewer: React.FC<
         </CanvasContainer>
         <Badge className="w-min flex align-middle">{y}</Badge>
       </div>
-      <span className="text-xs text-gray-500 mt-6">
-        * The preview is meant to give you a sense of the final look, but the
-        actual product may vary slightly.
-      </span>
     </div>
   );
 };

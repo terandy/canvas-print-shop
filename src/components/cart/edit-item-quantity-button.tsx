@@ -4,6 +4,7 @@ import { updateCartItem } from "@/lib/utils/cart-actions";
 import { useActionState } from "react";
 import { UpdateQuantityType } from "@/contexts/cart-context";
 import { Minus, Plus } from "lucide-react";
+import Button from "../buttons/button";
 
 interface SubmitButtonProps {
   type: "plus" | "minus";
@@ -11,24 +12,15 @@ interface SubmitButtonProps {
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({ type }) => {
   return (
-    <button
+    <Button
       type="submit"
       aria-label={
         type === "plus" ? "Increase item quantity" : "Reduce item quantity"
       }
-      className={clsx(
-        "ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full p-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80",
-        {
-          "ml-auto": type === "minus",
-        }
-      )}
-    >
-      {type === "plus" ? (
-        <Plus className="h-4 w-4" />
-      ) : (
-        <Minus className="h-4 w-4" />
-      )}
-    </button>
+      icon={type === "plus" ? Plus : Minus}
+      size="sm"
+      variant="ghost"
+    />
   );
 };
 

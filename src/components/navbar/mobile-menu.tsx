@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Fragment, useState } from "react";
 import Search from "./search";
 import { Menu as MenuIcon, X } from "lucide-react";
+import Button from "../buttons/button";
+import SquareButton from "../buttons/square-button";
 
 interface Props {
   menu: Menu[];
@@ -17,14 +19,11 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
   const closeMobileMenu = () => setIsOpen(false);
   return (
     <>
-      <button
+      <SquareButton
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden"
-      >
-        <MenuIcon className="h-4" />
-      </button>
-
+        icon={MenuIcon}
+      />
       <Transition show={isOpen}>
         <Dialog onClose={closeMobileMenu} className="relative z-50">
           <Transition.Child
@@ -49,13 +48,11 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
           >
             <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6">
               <div className="p-4">
-                <button
-                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors"
+                <Button
                   onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
-                >
-                  <X className="h-6" />
-                </button>
+                  icon={X}
+                />
                 <div className="mb-4 w-full">
                   <Search onSearch={closeMobileMenu} />
                 </div>

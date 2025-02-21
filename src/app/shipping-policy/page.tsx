@@ -1,7 +1,10 @@
-// app/shipping-policy/page.tsx
 import { Metadata } from "next";
 import { Truck, Clock, MapPin } from "lucide-react";
 import ContactInfo from "@/components/contact-info";
+import SectionHeader from "@/components/typography/section-header";
+import SectionContainer from "@/components/typography/section-container";
+import PageHeader from "@/components/typography/page-header";
+import ContactSection from "@/components/contact-section";
 
 export const metadata: Metadata = {
   title: "Shipping Policy | Canvas Print Shop",
@@ -11,26 +14,20 @@ export const metadata: Metadata = {
 
 export default function ShippingPolicy() {
   return (
-    <main className="flex-1 bg-white">
+    <main className="flex-1">
       <div className="container mx-auto px-4 py-16 max-w-4xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">
-          Shipping Policy
-        </h1>
+        <PageHeader>Shipping Policy</PageHeader>
 
-        <div className="prose max-w-none">
-          <section className="mb-12">
-            <div className="flex items-center gap-2 mb-4">
-              <MapPin className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Local Pickup
-              </h2>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <p className="text-gray-600 mb-4">
+        <div className="flex flex-col gap-8">
+          {/* Local Pickup */}
+          <section>
+            <SectionHeader icon={MapPin}>Local Pickup</SectionHeader>
+            <SectionContainer>
+              <p>
                 We offer free local pickup at our Quebec City location for your
                 convenience.
               </p>
-              <ul className="list-disc pl-6 text-gray-600">
+              <ul>
                 <li>
                   Available during business hours: Monday to Friday, 9am - 5pm
                   EST
@@ -41,49 +38,39 @@ export default function ShippingPolicy() {
                   pickup
                 </li>
               </ul>
-            </div>
+            </SectionContainer>
           </section>
 
-          <section className="mb-12">
-            <div className="flex items-center gap-2 mb-4">
-              <Truck className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Canada Post Delivery
-              </h2>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6 mb-6">
-              <p className="text-gray-600 mb-4">
+          {/* Canada Post Delivery */}
+          <section>
+            <SectionHeader icon={Truck}>Canada Post Delivery</SectionHeader>
+            <SectionContainer>
+              <p>
                 We ship all orders through Canada Post with tracking provided on
                 every shipment.
               </p>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-secondary mt-6 mb-3">
                 Estimated Delivery Times:
               </h3>
-              <ul className="list-disc pl-6 text-gray-600 mb-4">
+              <ul>
                 <li>Local (Quebec): 1-2 business days</li>
                 <li>Major cities: 2-3 business days</li>
                 <li>Rural areas: 3-7 business days</li>
                 <li>Remote locations: 7-14 business days</li>
               </ul>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm mt-4">
                 *Delivery times are estimates and may vary based on weather
                 conditions and Canada Post service updates.
               </p>
-            </div>
+            </SectionContainer>
           </section>
 
-          <section className="mb-12">
-            <div className="flex items-center gap-2 mb-4">
-              <Clock className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-semibold text-gray-900">
-                Processing Time
-              </h2>
-            </div>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <p className="text-gray-600 mb-4">
-                Each canvas print is carefully crafted to order:
-              </p>
-              <ul className="list-disc pl-6 text-gray-600">
+          {/* Processing Time */}
+          <section>
+            <SectionHeader icon={Clock}>Processing Time</SectionHeader>
+            <SectionContainer>
+              <p>Each canvas print is carefully crafted to order:</p>
+              <ul>
                 <li>Standard orders: 2-3 business days processing time</li>
                 <li>Processing begins once payment is confirmed</li>
                 <li>
@@ -92,15 +79,14 @@ export default function ShippingPolicy() {
                 </li>
                 <li>Rush processing may be available upon request</li>
               </ul>
-            </div>
+            </SectionContainer>
           </section>
 
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Shipping Costs
-            </h2>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <ul className="list-disc pl-6 text-gray-600">
+          {/* Shipping Costs */}
+          <section>
+            <SectionHeader>Shipping Costs</SectionHeader>
+            <SectionContainer>
+              <ul>
                 <li>Local Pickup: Free</li>
                 <li>
                   Standard Shipping: Calculated at checkout based on size and
@@ -111,18 +97,15 @@ export default function ShippingPolicy() {
                   excluded)
                 </li>
               </ul>
-            </div>
+            </SectionContainer>
           </section>
 
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Order Tracking
-            </h2>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <p className="text-gray-600 mb-4">
-                Stay informed about your order status:
-              </p>
-              <ul className="list-disc pl-6 text-gray-600">
+          {/* Order Tracking */}
+          <section>
+            <SectionHeader>Order Tracking</SectionHeader>
+            <SectionContainer>
+              <p>Stay informed about your order status:</p>
+              <ul>
                 <li>Tracking number provided via email once order ships</li>
                 <li>
                   Track your package directly through Canada Post&apos;s website
@@ -136,21 +119,9 @@ export default function ShippingPolicy() {
                   support
                 </li>
               </ul>
-            </div>
+            </SectionContainer>
           </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              Contact Us
-            </h2>
-            <div className="bg-gray-50 rounded-lg p-6">
-              <p className="text-gray-600">
-                Questions about shipping? We&apos;re here to help:
-                <br />
-              </p>
-              <ContactInfo />
-            </div>
-          </section>
+          <ContactSection />
         </div>
       </div>
     </main>
