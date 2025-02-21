@@ -1,44 +1,19 @@
 "use client";
 
+import React, { useActionState } from "react";
+
 import { Product, ProductVariant } from "@/lib/shopify/types";
-import { useProduct } from "../../contexts/product-context";
-import { useCart } from "../../contexts/cart-context";
+import { useProduct, useCart } from "@/contexts";
 import * as api from "../../lib/utils/cart-actions";
-import React, { ComponentProps, useActionState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteImage } from "@/lib/s3/actions/image";
 import { Plus, X } from "lucide-react";
 import Button from "../buttons/button";
 
-const SubmitButton: React.FC<ComponentProps<"button">> = ({
-  disabled,
-  ...props
-}) => {
-  return (
-    <Button
-      {...props}
-      disabledMessage={"Please select an option"}
-      icon={Plus}
-      type="submit"
-      className="bg-secondary hover:bg-primary-light"
-    >
-      Add To Cart
-    </Button>
-  );
-};
-
-const CancelButton: React.FC<ComponentProps<"button">> = (props) => {
-  return (
-    <Button {...props} icon={X} variant="ghost">
-      Cancel
-    </Button>
-  );
-};
-
 interface AddToCardProps {
   product: Product;
 }
-export const AddToCart: React.FC<AddToCardProps> = ({ product }) => {
+const AddToCart: React.FC<AddToCardProps> = ({ product }) => {
   const { variants } = product;
   const { addOptimisticCartItem } = useCart();
   const { state } = useProduct();
@@ -82,11 +57,23 @@ export const AddToCart: React.FC<AddToCardProps> = ({ product }) => {
       }}
       className="flex flex-col gap-2"
     >
-      <SubmitButton disabled={!selectedVariantId || !state.imgURL} />
-      <CancelButton onClick={onCancel} />
+      <Button
+        disabledMessage={"Please select an option"}
+        icon={Plus}
+        type="submit"
+        className="bg-secondary hover:bg-primary-light"
+        disabled={!selectedVariantId || !state.imgURL}
+      >
+        Add To Cart
+      </Button>
+      <Button onClick={onCancel} icon={X} variant="ghost">
+        Cancel
+      </Button>
       <p className="sr-only" role="status" aria-label="polite">
         {message}
       </p>
     </form>
   );
 };
+
+export default AddToCart;

@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import { Truck, Clock, MapPin } from "lucide-react";
-import ContactInfo from "@/components/contact-info";
-import SectionHeader from "@/components/typography/section-header";
-import SectionContainer from "@/components/typography/section-container";
-import PageHeader from "@/components/typography/page-header";
-import ContactSection from "@/components/contact-section";
-
+import {
+  SectionHeader,
+  SectionContainer,
+  PageHeader,
+  ContactSection,
+} from "@/components";
 export const metadata: Metadata = {
   title: "Shipping Policy | Canvas Print Shop",
   description:

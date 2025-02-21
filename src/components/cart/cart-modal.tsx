@@ -2,10 +2,9 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { UpdateQuantityType, useCart } from "../../contexts/cart-context";
+import { UpdateQuantityType, useCart } from "@/contexts";
 import { createUrl } from "@/lib/utils/base";
 import Image from "next/image";
-import Link from "next/link";
 import Price from "../product/price";
 import { DEFAULT_OPTION } from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";

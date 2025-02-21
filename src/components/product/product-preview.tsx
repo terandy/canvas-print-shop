@@ -1,6 +1,6 @@
 // ProductPreview component
 import { Product } from "@/lib/shopify/types";
-import Prose from "../typography/prose";
+import Prose from "../prose";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";

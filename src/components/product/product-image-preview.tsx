@@ -2,7 +2,7 @@
 
 import React from "react";
 import Gallery from "./product-gallery";
-import { useProduct } from "@/contexts/product-context";
+import { useProduct } from "@/contexts";
 import * as types from "@/lib/shopify/types";
 import CanvasPreviewer from "./canvas-preview";
 
@@ -11,10 +11,7 @@ interface Props {
   className?: string;
 }
 
-export const ProductImagePreview: React.FC<Props> = ({
-  product,
-  className,
-}) => {
+const ProductImagePreview: React.FC<Props> = ({ product, className }) => {
   const { state } = useProduct();
 
   if (state.imgURL) {
@@ -40,3 +37,5 @@ export const ProductImagePreview: React.FC<Props> = ({
     />
   );
 };
+
+export default ProductImagePreview;

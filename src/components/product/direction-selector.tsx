@@ -1,6 +1,6 @@
 "use-client";
 
-import { useProduct, useUpdateURL } from "@/contexts/product-context";
+import { useProduct, useUpdateURL } from "@/contexts";
 import clsx from "clsx";
 
 const DirectionSelector = () => {

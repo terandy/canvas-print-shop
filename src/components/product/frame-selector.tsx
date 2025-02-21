@@ -1,6 +1,6 @@
 "use-client";
 
-import { useProduct, useUpdateURL } from "@/contexts/product-context";
+import { useProduct, useUpdateURL } from "@/contexts";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
 import clsx from "clsx";
 import Image from "next/image";

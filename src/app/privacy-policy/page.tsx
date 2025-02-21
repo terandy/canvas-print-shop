@@ -1,9 +1,10 @@
-import ContactInfo from "@/components/contact-info";
-import PageHeader from "@/components/typography/page-header";
-import SectionHeader from "@/components/typography/section-header";
-import SectionContainer from "@/components/typography/section-container";
+import {
+  SectionContainer,
+  SectionHeader,
+  PageHeader,
+  ContactInfo,
+} from "@/components";
 import { Metadata } from "next";
-import ContactSection from "@/components/contact-section";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Canvas Print Shop",

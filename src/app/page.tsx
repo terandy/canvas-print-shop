@@ -1,9 +1,7 @@
 import { Metadata } from "next";
-import ProductPreview from "@/components/product/product-preview";
+import { ButtonLink, ProductPreview, SectionContainer } from "@/components";
 import { getProductList } from "@/lib/shopify";
 import { ArrowRight, CircleCheck } from "lucide-react";
-import ButtonLink from "@/components/buttons/button-link";
-import SectionContainer from "@/components/typography/section-container";
 
 export const metadata: Metadata = {
   title: "Custom Canvas Prints & Framing | Canvas Print Shop",

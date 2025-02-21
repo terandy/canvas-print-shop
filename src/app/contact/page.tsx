@@ -1,10 +1,9 @@
+import React from "react";
+
 import { Metadata } from "next";
 import { Mail, Phone, MapPin, LucideIcon } from "lucide-react";
 import { EMAIL, PHONE, ADDRESS, OPENING_HOURS } from "@/lib/constants";
-import React from "react";
-import SectionContainer from "@/components/typography/section-container";
-import SectionHeader from "@/components/typography/section-header";
-import PageHeader from "@/components/typography/page-header";
+import { PageHeader, SectionHeader, SectionContainer } from "@/components";
 import Link from "next/link";
 
 export const metadata: Metadata = {

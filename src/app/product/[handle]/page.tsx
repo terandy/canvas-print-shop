@@ -4,11 +4,13 @@ import { getProduct } from "@/lib/shopify";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type { Metadata, NextPage } from "next";
-import { ProductImagePreview } from "@/components/product/product-image-preview";
-import Prose from "@/components/typography/prose";
-import ImageUploader from "@/components/image-uploader";
-import PageHeader from "@/components/typography/page-header";
-import SectionContainer from "@/components/typography/section-container";
+import {
+  ProductImagePreview,
+  SectionContainer,
+  PageHeader,
+  ImageUploader,
+  Prose,
+} from "@/components";
 
 type Props = {
   params: Promise<{ handle: string }>;

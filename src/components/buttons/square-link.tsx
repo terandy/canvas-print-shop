@@ -1,3 +1,5 @@
+import React from "react";
+
 import { LucideIcon } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 import { squareStyles } from "./styles";

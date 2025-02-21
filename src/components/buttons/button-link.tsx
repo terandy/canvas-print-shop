@@ -1,3 +1,4 @@
+import React from "react";
 import clsx from "clsx";
 import { ArrowRight, LucideIcon } from "lucide-react";
 import Link, { LinkProps } from "next/link";

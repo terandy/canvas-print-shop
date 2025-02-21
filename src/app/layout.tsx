@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/navbar/navbar";
-import Footer from "@/components/footer";
-import { CartProvider } from "@/contexts/cart-context";
+
 import { cookies } from "next/headers";
 import { getCart } from "@/lib/shopify";
+import { Navbar, Footer } from "@/components";
+import { CartProvider } from "@/contexts";
 import { Geist } from "next/font/google";
 
 const geist = Geist({

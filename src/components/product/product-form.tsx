@@ -4,15 +4,11 @@
 import { Product } from "@/lib/shopify/types";
 import VariantSelector from "./product-variant-selector";
 import React, { startTransition, useLayoutEffect } from "react";
-import { AddToCart } from "../cart/add-to-cart";
-import { SaveCartItem } from "../cart/save-cart-item";
+import { AddToCart } from "../cart";
+import { SaveCartItem } from "../cart";
 import BorderStyleSelector from "./border-style-selector";
 import DirectionSelector from "./direction-selector";
-import {
-  ProductState,
-  useProduct,
-  useUpdateURL,
-} from "@/contexts/product-context";
+import { type ProductState, useProduct, useUpdateURL } from "@/contexts";
 import FrameSelector from "./frame-selector";
 
 interface Props {

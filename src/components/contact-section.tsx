@@ -1,6 +1,6 @@
 import React from "react";
-import SectionHeader from "./typography/section-header";
-import SectionContainer from "./typography/section-container";
+import SectionHeader from "./section-header";
+import SectionContainer from "./section-container";
 import { Mail } from "lucide-react";
 import ContactInfo from "./contact-info";
 

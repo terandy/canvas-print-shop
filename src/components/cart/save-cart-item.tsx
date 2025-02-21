@@ -1,12 +1,9 @@
 "use client";
 
 import { Product, ProductVariant } from "@/lib/shopify/types";
-import { useProduct } from "../../contexts/product-context";
-import { useCart } from "../../contexts/cart-context";
-import clsx from "clsx";
-import * as api from "../../lib/utils/cart-actions";
+import { useProduct, useCart } from "@/contexts";
+import * as api from "@/lib/utils/cart-actions";
 import React, { useActionState } from "react";
-import Link from "next/link";
 import { Plus } from "lucide-react";
 import Button from "../buttons/button";
 import ButtonLink from "../buttons/button-link";
@@ -31,10 +28,7 @@ interface SaveCartItemProps {
   product: Product;
   cartItemID: string;
 }
-export const SaveCartItem: React.FC<SaveCartItemProps> = ({
-  product,
-  cartItemID,
-}) => {
+const SaveCartItem: React.FC<SaveCartItemProps> = ({ product, cartItemID }) => {
   const { variants } = product;
   const { updateOptimisticCartItem, cart } = useCart();
   const { state } = useProduct();
@@ -105,3 +99,5 @@ export const SaveCartItem: React.FC<SaveCartItemProps> = ({
     </form>
   );
 };
+
+export default SaveCartItem;

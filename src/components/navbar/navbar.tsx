@@ -3,7 +3,7 @@ import { Menu } from "@/lib/shopify/types";
 import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import Search from "./search";
-import CartModal from "@/components/cart/cart-modal";
+import { CartModal } from "@/components";
 import React from "react";
 import { Home } from "lucide-react";
 import SquareLink from "../buttons/square-link";

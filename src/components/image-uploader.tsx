@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, startTransition } from "react";
-import { useProduct, useUpdateURL } from "@/contexts/product-context";
+import { useProduct, useUpdateURL } from "@/contexts";
 import clsx from "clsx";
 import { Upload } from "lucide-react";
 import ImageFile from "./product/image-file";

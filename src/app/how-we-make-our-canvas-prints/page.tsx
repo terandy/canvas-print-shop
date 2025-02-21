@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-import ButtonLink from "@/components/buttons/button-link";
+import { ButtonLink } from "@/components";
 
 interface ProcessStep {
   title: string;

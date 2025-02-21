@@ -1,5 +1,4 @@
-import Grid from "@/components/grid/grid";
-import ProductGridItems from "@/components/product/product-grid-items";
+import { ProductGridItems, Grid } from "@/components";
 import { getProductList } from "@/lib/shopify";
 
 export const metadata = {

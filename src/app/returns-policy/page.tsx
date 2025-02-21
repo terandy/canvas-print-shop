@@ -1,11 +1,11 @@
-// app/returns-policy/page.tsx
 import { Metadata } from "next";
-import { RefreshCw, ShieldCheck, Mail, Clock, Section } from "lucide-react";
-import ContactInfo from "@/components/contact-info";
-import SectionHeader from "@/components/typography/section-header";
-import SectionContainer from "@/components/typography/section-container";
-import PageHeader from "@/components/typography/page-header";
-import ContactSection from "@/components/contact-section";
+import { RefreshCw, ShieldCheck, Clock } from "lucide-react";
+import {
+  SectionHeader,
+  SectionContainer,
+  PageHeader,
+  ContactSection,
+} from "@/components";
 
 export const metadata: Metadata = {
   title: "Returns Policy | Canvas Print Shop",
