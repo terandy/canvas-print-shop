@@ -1,4 +1,5 @@
 // app/privacy-policy/page.tsx
+import ContactInfo from '@/components/contact-info'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -125,12 +126,7 @@ export default function PrivacyPolicy() {
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Contact Us
             </h2>
-            <p className="text-gray-600">
-              If you have any questions about this privacy policy or our practices, please contact us at:<br />
-              Email: info@canvasprintshop.ca<br />
-              Phone: (514) 441-2230 <br />
-              Address: 1172 Av. du Lac-Saint-Charles, Québec, QC G3G 2S7
-            </p>
+            <ContactInfo />
           </section>
         </div>
       </div>

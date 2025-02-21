@@ -1,6 +1,7 @@
 // app/returns-policy/page.tsx
 import { Metadata } from 'next'
 import { RefreshCw, ShieldCheck, Mail, Clock } from 'lucide-react'
+import ContactInfo from '@/components/contact-info'
 
 export const metadata: Metadata = {
   title: 'Returns Policy | Canvas Print Shop',
@@ -135,11 +136,9 @@ export default function ReturnsPolicy() {
             </div>
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-600">
-                Our customer service team is here to help with any questions about returns:<br />
-                Email: info@canvasprintshop.ca<br />
-                Phone: (514) 441-2230<br />
-                Hours: Monday-Friday 9am-5pm EST
+                Our customer service team is here to help with any questions about returns:
               </p>
+              <ContactInfo />
             </div>
           </section>
         </div>

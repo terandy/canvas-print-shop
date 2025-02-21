@@ -1,6 +1,7 @@
 // app/shipping-policy/page.tsx
 import { Metadata } from 'next'
 import { Truck, Clock, MapPin } from 'lucide-react'
+import ContactInfo from '@/components/contact-info'
 
 export const metadata: Metadata = {
   title: 'Shipping Policy | Canvas Print Shop',
@@ -118,10 +119,8 @@ export default function ShippingPolicy() {
             <div className="bg-gray-50 rounded-lg p-6">
               <p className="text-gray-600">
                 Questions about shipping? We&apos;re here to help:<br />
-                Email: info@canvasprintshop.ca<br />
-                Phone: (514) 441-2230<br />
-                Hours: Monday-Friday 9am-5pm EST
               </p>
+              <ContactInfo />
             </div>
           </section>
         </div>
