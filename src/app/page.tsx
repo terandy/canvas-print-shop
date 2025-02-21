@@ -47,14 +47,14 @@ const Home: React.FC = async () => {
   const products = await getProductList({});
 
   return (
-    <main className="flex-1 bg-gray-50 dark:bg-gray-900">
-      <section className="relative overflow-hidden bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <main className="flex-1 bg-gray-50">
+      <section className="relative overflow-hidden bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-16 sm:py-24">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8">
               Custom Canvas Prints Made to Order
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12">
+            <p className="text-xl text-gray-600 mb-12">
               Turn your cherished memories into beautiful canvas prints, expertly hand-crafted in Canada and ready to hang in your home.
             </p>
 
@@ -73,23 +73,23 @@ const Home: React.FC = async () => {
           </div>
 
           <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white opacity-90" />
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="bg-white dark:bg-gray-800 py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             Why Choose Canvas Print Shop?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
                 <CircleCheck className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{benefit.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{benefit.title}</h3>
+                <p className="text-gray-600">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -98,7 +98,7 @@ const Home: React.FC = async () => {
 
       {/* Featured Collections */}
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900">
           Create Your Custom Canvas Print
         </h2>
         {products.map(product => (
@@ -107,9 +107,9 @@ const Home: React.FC = async () => {
       </section>
 
       {/* Process Section */}
-      <section className="bg-gray-50 dark:bg-gray-900 py-16">
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             How It Works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -118,8 +118,8 @@ const Home: React.FC = async () => {
                 <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{step.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
               </div>
             ))}
           </div>
@@ -127,16 +127,16 @@ const Home: React.FC = async () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-white dark:bg-gray-800 py-16">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
-                <p className="text-gray-600 dark:text-gray-300 mb-4 italic">&ldquo;{testimonial.quote}&rdquo;</p>
-                <p className="text-gray-900 dark:text-white font-medium">{testimonial.author}</p>
+              <div key={index} className="bg-gray-50 p-6 rounded-lg">
+                <p className="text-gray-600 mb-4 italic">&ldquo;{testimonial.quote}&rdquo;</p>
+                <p className="text-gray-900 font-medium">{testimonial.author}</p>
               </div>
             ))}
           </div>
@@ -144,9 +144,9 @@ const Home: React.FC = async () => {
       </section>
 
       {/* Trust Badges */}
-      <section className="border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 py-8">
+      <section className="border-t border-gray-200 bg-gray-50 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8 text-center text-sm text-gray-600 dark:text-gray-300">
+          <div className="flex flex-wrap justify-center gap-8 text-center text-sm text-gray-600">
             <div>✓ Secure checkout</div>
             <div>✓ SSL encrypted</div>
             <div>✓ Fast, reliable shipping</div>

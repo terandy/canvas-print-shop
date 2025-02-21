@@ -20,7 +20,7 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
       <button
         onClick={openMobileMenu}
         aria-label="Open mobile menu"
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
+        className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden"
       >
         <MenuIcon className="h-4" />
       </button>
@@ -47,10 +47,10 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-[-100%]"
           >
-            <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6 dark:bg-black">
+            <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6">
               <div className="p-4">
                 <button
-                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white"
+                  className="mb-4 flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors"
                   onClick={closeMobileMenu}
                   aria-label="Close mobile menu"
                 >
@@ -63,7 +63,7 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
                   <ul className="flex w-full flex-col">
                     {menu.map((item: Menu) => (
                       <li
-                        className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white"
+                        className="py-2 text-xl text-black transition-colors hover:text-neutral-500"
                         key={item.title}
                       >
                         <Link

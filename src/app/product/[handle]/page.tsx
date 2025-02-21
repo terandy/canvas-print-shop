@@ -58,7 +58,7 @@ const ProductPage: NextPage<Props> = async (props) => {
   return (
     <ProductProvider>
       <div className="mx-auto max-w-screen-2xl pl-4">
-        <div className="rounded-lg p-8 md:p-12 box-border border border-neutral-200 dark:border-neutral-800 dark:bg-black lg:flex lg:gap-12">
+        <div className="rounded-lg p-8 md:p-12 box-border border border-neutral-200 lg:flex lg:gap-12">
           <div className="basis-full lg:basis-4/6 mb-6 lg:mb-0 ">
             <Suspense
               fallback={
@@ -70,10 +70,10 @@ const ProductPage: NextPage<Props> = async (props) => {
           </div>
           <div className="basis-full lg:basis-2/6">
             <Suspense fallback={null}>
-              <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
+              <div className="mb-6 flex flex-col border-b pb-6">
                 <h1 className="mb-2 text-5xl font-medium">{product.title}</h1>
               </div>
-              {product.descriptionHtml ? <Prose className="mb-6 text-sm leading-light dark:text-white/[60%]" html={product.descriptionHtml} /> : null}
+              {product.descriptionHtml ? <Prose className="mb-6 text-sm leading-light" html={product.descriptionHtml} /> : null}
               <ImageUploader className="mb-6" />
               <ProductForm product={product} cartItemID={cartItemID} />
             </Suspense>

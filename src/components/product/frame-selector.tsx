@@ -90,7 +90,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                             key={value}
                             title={`${value}`}
                             className={clsx(
-                                "border rounded bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900",
+                                "border rounded bg-neutral-100",
                                 {
                                     "cursor-default ring-2 ring-blue-600": isActive,
                                     "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600":

@@ -61,7 +61,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({ option, options, vari
           }
           )
         }}
-        className="w-full px-4 py-2 rounded-lg border bg-white dark:bg-neutral-900 dark:border-neutral-800"
+        className="w-full px-4 py-2 rounded-lg border bg-white"
       >
         <option value="">Select {option.name}</option>
         {option.values.map((value) => {

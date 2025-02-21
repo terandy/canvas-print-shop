@@ -24,7 +24,7 @@ const DirectionSelector = () => {
                             key={option.label}
                             title={`${option.label}`}
                             className={clsx(
-                                "flex items-center justify-center rounded border bg-neutral-100 p-1 text-xs dark:border-neutral-800 dark:bg-neutral-900",
+                                "flex items-center justify-center rounded border bg-neutral-100 p-1 text-xs",
                                 {
                                     "cursor-default ring-2 ring-blue-600": isActive,
                                     "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-blue-600":
