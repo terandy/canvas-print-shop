@@ -125,7 +125,7 @@ const Home: React.FC = async () => {
       </section>
 
       {/* Featured Collections */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-b from-background to-secondary/5">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-b from-background to-secondary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-20">
             <h2 className="text-3xl sm:text-4xl font-bold text-secondary mb-3 sm:mb-4">
