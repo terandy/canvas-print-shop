@@ -137,8 +137,12 @@ const Home: React.FC = async () => {
             </p>
           </div>
           <div className="grid gap-6 sm:gap-8 md:gap-12">
-            {products.map((product) => (
-              <ProductPreview key={product.id} product={product} />
+            {products.map((product, index) => (
+              <ProductPreview
+                key={product.id}
+                product={product}
+                direction={index % 2 == 0 ? "right" : "left"}
+              />
             ))}
           </div>
         </div>
