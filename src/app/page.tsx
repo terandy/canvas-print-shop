@@ -74,6 +74,7 @@ const testimonials = [
 ];
 const Home: React.FC = async () => {
   const products = await getProductList({});
+  console.log(products);
 
   return (
     <main className="flex-1">

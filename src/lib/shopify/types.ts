@@ -7,6 +7,13 @@ export type Menu = {
   path: string;
 };
 
+export type Attribute =
+  | {
+      key: string;
+      value: string;
+    }
+  | { key: "imgURL"; value: string };
+
 export type ShopifyMenuOperation = {
   data: {
     menu?: {
@@ -32,6 +39,7 @@ export type ProductOption = {
   values: string[];
 };
 
+//--- Data structure returned by shopify ---
 export type Edge<T> = {
   node: T;
 };
@@ -109,6 +117,12 @@ export type ShopifyProductOperation = {
 
 // ----- CART -------
 
+/**
+ * Product information
+ *
+ * The cart item has a full product object.
+ * Not all fields were listed here for simplicity and readability.
+ */
 export type CartProduct = {
   id: string;
   handle: string;
@@ -116,7 +130,16 @@ export type CartProduct = {
   featuredImage: Image;
 };
 
-export type CartItem = {
+/**
+ * The line item in the cart
+ */
+interface AbstractLineItem<
+  S extends { name: string; value: string }[] = {
+    name: string;
+    value: string;
+  }[],
+  A extends Attribute[] = Attribute[],
+> {
   id: string;
   quantity: number;
   cost: {
@@ -126,21 +149,42 @@ export type CartItem = {
     id: string;
     title: string;
     /**
-     * Selected options
+     * Options defined on shopify
      *
-     * e.g. size, frame, border
+     * These options affect pricing:
      */
-    selectedOptions: {
-      name: string;
-      value: string;
-    }[];
-    product: CartProduct;
+    selectedOptions: S;
+    product: Product;
   };
-  attributes: Array<{
-    key: string;
-    value: string;
-  }>;
-};
+  /**
+   * Options defined in the code
+   *
+   * These options don't affect pricing:
+   */
+  attributes: A;
+}
+
+export type CanvasLineItem = AbstractLineItem<
+  [
+    { name: "size"; value: string /*8x10*/ },
+    { name: "frame"; value: "black" | "none" },
+  ],
+  [
+    { key: "imgURL"; value: string },
+    { key: "direction"; value: "portrait" | "landscape" },
+    { key: "borderStyle"; value: "black" | "white" | "wrapped" | "fill" },
+  ]
+>;
+
+export type CanvasRollLineItem = AbstractLineItem<
+  [{ name: "size"; value: string /*8x10*/ }],
+  [
+    { key: "imgURL"; value: string },
+    { key: "direction"; value: "portrait" | "landscape" },
+  ]
+>;
+
+export type LineItem = AbstractLineItem;
 
 export type ShopifyCart = {
   id: string | undefined;
@@ -150,12 +194,12 @@ export type ShopifyCart = {
     totalAmount: Money;
     totalTaxAmount: Money;
   };
-  lines: Connection<CartItem>;
+  lines: Connection<LineItem>;
   totalQuantity: number;
 };
 
 export type Cart = Omit<ShopifyCart, "lines"> & {
-  lines: CartItem[];
+  lines: LineItem[];
 };
 
 export type ShopifyCartOperation = {
@@ -188,8 +232,16 @@ export type ShopifyUpdateCartOperation = {
       id: string;
       merchandiseId: string;
       quantity: number;
+      attributes: Attribute[];
     }[];
   };
+};
+
+export type UpdateCartItemOperation = {
+  cartItemId: string;
+  merchandiseId: string;
+  quantity: number;
+  attributes: Attribute[];
 };
 
 export type ShopifyRemoveFromCartOperation = {
@@ -215,8 +267,16 @@ export type ShopifyAddToCartOperation = {
     lines: {
       merchandiseId: string;
       quantity: number;
+      attributes: Attribute[];
     }[];
   };
+};
+
+export type AddToCartOperation = {
+  selectedVariantId: string | undefined;
+  imgURL?: string;
+  borderStyle: string;
+  direction: string;
 };
 
 // ---- PAGE ------

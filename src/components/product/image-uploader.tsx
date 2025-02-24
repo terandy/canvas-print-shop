@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useCallback, startTransition } from "react";
-import { useProduct, useUpdateURL } from "@/contexts";
 import clsx from "clsx";
 import { Upload } from "lucide-react";
-import ImageFile from "./product/image-file";
+import ImageFile from "./image-file";
+import { useProduct } from "@/contexts/product-context";
 
 interface ImageUploaderProps {
   maxSizeMB?: number;
@@ -17,10 +17,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   className,
 }) => {
   const {
-    updateOption,
+    updateField,
     state: { imgURL },
   } = useProduct();
-  const updateURL = useUpdateURL();
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -53,11 +52,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
         // Handle completion
         xhr.onload = () => {
+          console.log("onload", { publicUrl });
           if (xhr.status === 200) {
-            startTransition(() => {
-              const newState = updateOption("imgURL", publicUrl);
-              updateURL(newState);
-            });
+            updateField("imgURL", publicUrl);
           } else {
             setError("Upload failed. Please try again.");
           }
@@ -80,7 +77,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         setIsUploading(false);
       }
     },
-    [updateOption, updateURL]
+    [updateField]
   );
 
   const validateFile = useCallback(
@@ -137,7 +134,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     [handleFile]
   );
 
-  if (imgURL) return <ImageFile imgURL={imgURL} />;
+  if (imgURL !== "/default-image.jpeg") return <ImageFile imgURL={imgURL} />;
 
   return (
     <div className={clsx("w-full max-w-xl mx-auto", className)}>

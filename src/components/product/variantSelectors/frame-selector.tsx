@@ -1,6 +1,6 @@
 "use-client";
 
-import { useProduct, useUpdateURL } from "@/contexts";
+import { useProduct } from "@/contexts";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
 import clsx from "clsx";
 import Image from "next/image";
@@ -19,8 +19,7 @@ interface Props {
 }
 
 const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
-  const { state, updateOption } = useProduct();
-  const updateURL = useUpdateURL();
+  const { state, updateField } = useProduct();
 
   const getImageOptions = (opt: string) => {
     switch (opt) {
@@ -44,8 +43,6 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
       {}
     ),
   }));
-
-  const nonePrice = 0;
 
   return (
     <form>
@@ -87,8 +84,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
             return (
               <button
                 formAction={() => {
-                  const newState = updateOption("frame", value.toLowerCase());
-                  updateURL(newState);
+                  updateField("frame", value.toLowerCase());
                 }}
                 key={value}
                 title={`${value}`}

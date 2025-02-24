@@ -11,50 +11,54 @@ import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { TAGS } from "../constants";
+import type {
+  UpdateCartItemOperation,
+  AddToCartOperation,
+  Cart,
+} from "../shopify/types";
 
 export async function addItem(
   prevState: any,
-  payload: {
-    selectedVariantId: string | undefined;
-    imgURL?: string;
-    borderStyle: string;
-    direction: string;
-  }
+  payload: AddToCartOperation,
+  onSuccess?: (res: Cart) => void
 ) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
+  console.log({ cartId });
 
   if (!cartId || !payload.selectedVariantId || !payload.imgURL) {
     return "Error adding item to cart";
   }
 
   try {
-    const res = await addToCart(cartId, [
-      {
-        merchandiseId: payload.selectedVariantId,
-        quantity: 1,
-        attributes: [
-          { key: "_IMAGE URL", value: payload.imgURL },
-          { key: "borderStyle", value: payload.borderStyle },
-          { key: "direction", value: payload.direction },
-        ],
-      },
-    ]);
+    const res = await addToCart({
+      cartId,
+      lines: [
+        {
+          merchandiseId: payload.selectedVariantId,
+          quantity: 1,
+          attributes: [
+            { key: "imgURL", value: payload.imgURL },
+            { key: "borderStyle", value: payload.borderStyle },
+            { key: "direction", value: payload.direction },
+          ],
+        },
+      ],
+    });
+    onSuccess?.(res);
   } catch (error) {
+    console.log("error");
+
     return "Error adding item to cart";
   } finally {
+    console.log("revalidateTa");
     revalidateTag(TAGS.cart);
   }
 }
 
 export const updateCartItem = async (
   prevState: any,
-  payload: {
-    cartItemId: string;
-    merchandiseId: string;
-    quantity: number;
-    attributes: { key: string; value: string }[];
-  }
+  payload: UpdateCartItemOperation
 ) => {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
@@ -74,20 +78,26 @@ export const updateCartItem = async (
 
     if (lineItem && lineItem.id) {
       if (quantity === 0) {
-        await removeFromCart(cartId, [lineItem.id]);
+        await removeFromCart({ cartId, lineIds: [lineItem.id] });
       } else {
-        const cart = await updateCart(cartId, [
-          {
-            id: lineItem.id,
-            merchandiseId,
-            quantity,
-            attributes,
-          },
-        ]);
+        await updateCart({
+          cartId,
+          lines: [
+            {
+              id: lineItem.id,
+              merchandiseId,
+              quantity,
+              attributes,
+            },
+          ],
+        });
       }
     } else if (quantity > 0) {
       // If the item doesn't exist in the cart and quantity > 0, add it
-      await addToCart(cartId, [{ merchandiseId, quantity, attributes }]);
+      await addToCart({
+        cartId,
+        lines: [{ merchandiseId, quantity, attributes }],
+      });
     }
   } catch (error) {
     console.error(error);
@@ -114,7 +124,7 @@ export const removeItem = async (prevState: any, cartItemId: string) => {
     const lineItem = cart.lines.find((line) => line.id === cartItemId);
 
     if (lineItem && lineItem.id) {
-      await removeFromCart(cartId, [lineItem.id]);
+      await removeFromCart({ cartId, lineIds: [lineItem.id] });
     } else {
       return "Item not found in cart";
     }

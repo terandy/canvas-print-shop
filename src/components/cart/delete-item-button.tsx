@@ -1,6 +1,5 @@
 "use client";
 
-import { CartItem } from "@/lib/shopify/types";
 import { removeItem } from "@/lib/utils/cart-actions";
 import { useActionState } from "react";
 import { deleteImage } from "@/lib/s3/actions/image";
@@ -8,10 +7,11 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import Button from "../buttons/button";
+import { CartItem, TCartContext } from "@/contexts";
 
 interface Props {
   item: CartItem;
-  optimisticUpdate: any;
+  optimisticUpdate: TCartContext["updateCartItemQuantity"];
 }
 
 const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
@@ -24,9 +24,7 @@ const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
       action={async () => {
         optimisticUpdate(cartItemId, "delete");
         await formAction(cartItemId);
-        const imgUrl = item.attributes.find(
-          (attr) => attr.key === "_IMAGE URL"
-        )?.value;
+        const imgUrl = item.imgURL;
         if (imgUrl) deleteImage(imgUrl);
         if (searchParams.get("cartItemID") === cartItemId) router.replace("/");
       }}

@@ -19,9 +19,7 @@ interface SectionProps {
 
 const ContentSection: React.FC<SectionProps> = ({ product, order }) => {
   return (
-    <div
-      className={`order-2 md:order-${order} px-4 pb-6 sm:p-8 md:p-10`}
-    >
+    <div className={`order-2 md:order-${order} px-4 pb-6 sm:p-8 md:p-10`}>
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary mb-3 sm:mb-4">
         {product.title}
       </h2>

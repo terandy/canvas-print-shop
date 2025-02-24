@@ -1,11 +1,10 @@
 "use-client";
 
-import { useProduct, useUpdateURL } from "@/contexts";
+import { useProduct } from "@/contexts";
 import clsx from "clsx";
 
 const DirectionSelector = () => {
-  const { state, updateOption } = useProduct();
-  const updateURL = useUpdateURL();
+  const { state, updateField } = useProduct();
 
   const options = [
     { label: "Landscape", value: "landscape", className: "w-24 h-16" },
@@ -23,8 +22,7 @@ const DirectionSelector = () => {
             return (
               <button
                 formAction={() => {
-                  const newState = updateOption("direction", option.value);
-                  updateURL(newState);
+                  updateField("direction", option.value);
                 }}
                 key={option.label}
                 title={`${option.label}`}

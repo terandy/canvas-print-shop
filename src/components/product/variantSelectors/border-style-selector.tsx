@@ -1,12 +1,11 @@
 "use-client";
 
-import { useProduct, useUpdateURL } from "@/contexts";
+import { useProduct } from "@/contexts";
 import clsx from "clsx";
 import Image from "next/image";
 
 const BorderStyleSelector = () => {
-  const { state, updateOption } = useProduct();
-  const updateURL = useUpdateURL();
+  const { state, updateField } = useProduct();
   const options = [
     { label: "Black", value: "black", src: "/border/black-border.png" },
     { label: "White", value: "white", src: "/border/white-border.png" },
@@ -25,8 +24,7 @@ const BorderStyleSelector = () => {
             return (
               <button
                 formAction={() => {
-                  const newState = updateOption("borderStyle", option.value);
-                  updateURL(newState);
+                  updateField("borderStyle", option.value);
                 }}
                 key={option.label}
                 title={`${option.label}`}

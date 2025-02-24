@@ -1,8 +1,11 @@
 "use client";
 
+import { useProduct, FormState } from "@/contexts";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
-import { useProduct, useUpdateURL } from "../../contexts/product-context";
 import { startTransition } from "react";
+import DirectionSelector from "./direction-selector";
+import BorderStyleSelector from "./border-style-selector";
+import FrameSelector from "./frame-selector";
 
 type Combination = {
   id: string;
@@ -27,8 +30,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
   options,
   variants,
 }) => {
-  const { state, updateOption } = useProduct();
-  const updateURL = useUpdateURL();
+  const { state, updateField } = useProduct();
 
   const combinations: Combination[] = variants.map((variant) => ({
     id: variant.id,
@@ -43,7 +45,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
     ),
   }));
 
-  const optionNameLowerCase = option.name.toLowerCase();
+  const key = option.name.toLowerCase() as keyof FormState;
 
   return (
     <form key={option.id} className="mb-8">
@@ -55,18 +57,17 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
       </label>
       <select
         id={option.name}
-        value={state[optionNameLowerCase] || ""}
+        value={state[key] ?? undefined}
         onChange={(e) => {
           startTransition(() => {
-            const newState = updateOption(optionNameLowerCase, e.target.value);
-            updateURL(newState);
+            updateField(key, e.target.value);
           });
         }}
         className="w-full px-4 py-2 rounded-lg border bg-white"
       >
         <option value="">Select {option.name}</option>
         {option.values.map((value) => {
-          const optionParams = { ...state, [optionNameLowerCase]: value };
+          const optionParams = { ...state, [key]: value };
           const filtered = Object.entries(optionParams).filter(([key, value]) =>
             options.find(
               (option) =>
@@ -98,26 +99,4 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
   );
 };
 
-const Variants: React.FC<VariantsProps> = ({ options, variants }) => {
-  const hasNoOptionsOrJustOneOption =
-    !options.length ||
-    (options.length === 1 && options[0]?.values.length === 1);
-
-  if (hasNoOptionsOrJustOneOption) {
-    return null;
-  }
-
-  return options.map((option) => {
-    if (option.name === "Frame") return null;
-    return (
-      <VariantSelector
-        key={option.id}
-        option={option}
-        options={options}
-        variants={variants}
-      />
-    );
-  });
-};
-
-export default Variants;
+export default VariantSelector;

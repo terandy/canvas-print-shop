@@ -19,3 +19,6 @@ export const ADDRESS = {
   label: "1172 Av. du Lac-Saint-Charles:: Québec, QC, G3G 2S7 :: Canada",
   href: "https://maps.app.goo.gl/fdPr7qQHmF4rRbuD7",
 };
+
+export const LOCAL_STORAGE_FORM_STATE = "FormState";
+export const CANVAS_ID = "canvasID";

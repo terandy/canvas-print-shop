@@ -1,5 +1,5 @@
 "use client";
-import { useProduct, useUpdateURL } from "@/contexts/product-context";
+import { useProduct } from "@/contexts/product-context";
 import { deleteImage } from "@/lib/s3/actions/image";
 import { X } from "lucide-react";
 import Image from "next/image";
@@ -11,14 +11,12 @@ interface Props {
 }
 
 const ImageFile: React.FC<Props> = ({ imgURL }) => {
-  const { deleteOption } = useProduct();
-  const updateURL = useUpdateURL();
+  const { deleteImgURL } = useProduct();
 
   const removeImage = () => {
     startTransition(() => {
-      const newState = deleteOption("imgURL");
+      deleteImgURL;
       deleteImage(imgURL);
-      updateURL(newState);
     });
   };
 

@@ -39,5 +39,6 @@ export const getProduct = async (
     },
     tags: [TAGS.products],
   });
+  console.log({ res });
   return parseProduct(res.body.data.product);
 };

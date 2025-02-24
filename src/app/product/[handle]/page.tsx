@@ -1,4 +1,3 @@
-import { ProductProvider } from "@/contexts/product-context";
 import ProductForm from "@/components/product/product-form";
 import { getProduct } from "@/lib/shopify";
 import { notFound } from "next/navigation";
@@ -8,9 +7,10 @@ import {
   ProductImagePreview,
   SectionContainer,
   PageHeader,
-  ImageUploader,
   Prose,
 } from "@/components";
+import { ProductProvider } from "@/contexts/product-context";
+import { CANVAS_ID } from "@/lib/constants";
 
 type Props = {
   params: Promise<{ handle: string }>;
@@ -52,7 +52,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   };
 };
 
-const ProductPage: NextPage<Props> = async (props) => {
+const ProductPage: NextPage<Props> = async (props: Props) => {
   const params = await props.params;
   const searchParams = await props.searchParams;
   const product = await getProduct(params.handle);
@@ -60,15 +60,17 @@ const ProductPage: NextPage<Props> = async (props) => {
 
   if (!product) return notFound();
   return (
-    <ProductProvider>
+    // TODO allow other types
+    <ProductProvider
+      key={cartItemID}
+      product={product}
+      cartItemID={cartItemID ?? null}
+    >
       <div className="container mx-auto max-w-screen-2xl px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
           <div className="lg:col-span-3" id="product-image-preview-container">
             <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
-              <ProductImagePreview
-                product={product}
-                className="lg:sticky lg:top-28"
-              />
+              <ProductImagePreview className="lg:sticky lg:top-28" />
             </Suspense>
           </div>
 
@@ -84,7 +86,6 @@ const ProductPage: NextPage<Props> = async (props) => {
                     />
                   )}
                 </SectionContainer>
-                <ImageUploader />
                 <ProductForm product={product} cartItemID={cartItemID} />
               </div>
             </Suspense>

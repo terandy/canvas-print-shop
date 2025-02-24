@@ -57,15 +57,11 @@ export async function getAbandonnedCarts(): Promise<types.Cart[] | undefined> {
 }
 
 export async function removeFromCart(
-  cartId: string,
-  lineIds: string[]
+  variables: types.ShopifyRemoveFromCartOperation["variables"]
 ): Promise<types.Cart> {
   const res = await shopifyFetch<types.ShopifyRemoveFromCartOperation>({
     query: removeFromCartMutation,
-    variables: {
-      cartId,
-      lineIds,
-    },
+    variables,
     cache: "no-store",
   });
 
@@ -73,20 +69,11 @@ export async function removeFromCart(
 }
 
 export async function updateCart(
-  cartId: string,
-  lines: {
-    id: string;
-    merchandiseId: string;
-    quantity: number;
-    attributes: { key: string; value: string }[];
-  }[]
+  variables: types.ShopifyUpdateCartOperation["variables"]
 ): Promise<types.Cart> {
   const res = await shopifyFetch<types.ShopifyUpdateCartOperation>({
     query: editCartItemsMutation,
-    variables: {
-      cartId,
-      lines,
-    },
+    variables,
     cache: "no-store",
   });
 
@@ -94,19 +81,11 @@ export async function updateCart(
 }
 
 export async function addToCart(
-  cartId: string,
-  lines: {
-    merchandiseId: string;
-    quantity: number;
-    attributes: { key: string; value: string }[];
-  }[]
+  variables: types.ShopifyAddToCartOperation["variables"]
 ): Promise<types.Cart> {
   const res = await shopifyFetch<types.ShopifyAddToCartOperation>({
     query: addToCartMutation,
-    variables: {
-      cartId,
-      lines,
-    },
+    variables,
     cache: "no-cache",
   });
 

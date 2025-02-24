@@ -2,58 +2,48 @@
 
 import React, { useActionState } from "react";
 
-import { Product, ProductVariant } from "@/lib/shopify/types";
-import { useProduct, useCart } from "@/contexts";
+import { useProduct, useCart, FormState } from "@/contexts";
 import * as api from "../../lib/utils/cart-actions";
 import { useRouter } from "next/navigation";
 import { deleteImage } from "@/lib/s3/actions/image";
 import { Plus, X } from "lucide-react";
 import Button from "../buttons/button";
+import { ProductVariant } from "@/lib/shopify/types";
+import { v4 } from "uuid";
 
 interface AddToCardProps {
-  product: Product;
+  variant: ProductVariant;
+  formState: FormState;
 }
-const AddToCart: React.FC<AddToCardProps> = ({ product }) => {
-  const { variants } = product;
-  const { addOptimisticCartItem } = useCart();
-  const { state } = useProduct();
+
+/**
+ * Find the variant that matches the form selections (as stored in the useProduct context
+ */
+const AddToCart: React.FC<AddToCardProps> = ({ variant, formState }) => {
+  const cartContext = useCart();
   const router = useRouter();
 
   const [message, addCartItem] = useActionState(api.addItem, null);
-  const variant = variants.find((variant: ProductVariant) =>
-    variant.selectedOptions.every(
-      (option) => option.value === state[option.name.toLowerCase()]
-    )
-  );
-  const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
-  const selectedVariantId = variant?.id || defaultVariantId;
-  const finalVariant = variants.find(
-    (variant) => variant.id === selectedVariantId
-  )!;
 
   const onCancel: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    if (state.imgURL) deleteImage(state.imgURL);
+    if (formState.imgURL !== "/default-image.jpeg")
+      deleteImage(formState.imgURL);
     router.replace("/");
   };
 
   return (
     <form
       action={async () => {
-        addOptimisticCartItem(
-          finalVariant,
-          product,
-          state.imgURL,
-          state.borderStyle,
-          state.direction
-        ); // optimistic
+        if (formState.imgURL === "/default-image.jpeg" || !variant) return;
+        const id = v4();
+        cartContext.addCanvasCartItem({ ...formState }, variant); // optimistic
         await addCartItem({
-          selectedVariantId,
-          imgURL: state.imgURL,
-          borderStyle: state.borderStyle,
-          direction: state.direction,
+          selectedVariantId: variant.id,
+          imgURL: formState.imgURL,
+          borderStyle: formState.borderStyle,
+          direction: formState.direction,
         });
-        router.replace("/");
       }}
       className="flex flex-col gap-2"
     >
@@ -62,7 +52,7 @@ const AddToCart: React.FC<AddToCardProps> = ({ product }) => {
         icon={Plus}
         type="submit"
         className="bg-secondary hover:bg-primary-light"
-        disabled={!selectedVariantId || !state.imgURL}
+        disabled={formState.imgURL === "/default-image.jpeg" || !variant}
       >
         Add To Cart
       </Button>
