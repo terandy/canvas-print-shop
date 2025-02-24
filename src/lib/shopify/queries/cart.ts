@@ -9,17 +9,18 @@ export const getCartQuery = /* GraphQL */ `
   ${cartFragment}
 `;
 export const getAbandonnedCartsQuery = /* GraphQL */ `
-query getAbandonedCarts($threshold: DateTime!) {
-  carts(first: 100, query: "updated_at:<$threshold") {
-    edges {
-      node {
-        id
-        lines(first: 10) {
-          edges {
-            node {
-              attributes {
-                key
-                value
+  query getAbandonedCarts($threshold: DateTime!) {
+    carts(first: 100, query: "updated_at:<$threshold") {
+      edges {
+        node {
+          id
+          lines(first: 10) {
+            edges {
+              node {
+                attributes {
+                  key
+                  value
+                }
               }
             }
           }
@@ -27,7 +28,7 @@ query getAbandonedCarts($threshold: DateTime!) {
       }
     }
   }
-}`
+`;
 
 export const addToCartMutation = /* GraphQL */ `
   mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {

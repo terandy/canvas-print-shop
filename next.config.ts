@@ -11,20 +11,20 @@ const nextConfig: NextConfig = {
         pathname: "/s/files/**",
       },
       {
-        protocol: 'https',
+        protocol: "https",
         hostname: `${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com`,
-        port: '',
-        pathname: '/uploads/**',
+        port: "",
+        pathname: "/uploads/**",
       },
     ],
   },
   webpack: (config) => {
     config.resolve.fallback = {
-      crypto: require.resolve('crypto-browserify'),
-      stream: require.resolve('stream-browserify'),
+      crypto: require.resolve("crypto-browserify"),
+      stream: require.resolve("stream-browserify"),
     };
     return config;
-  }
+  },
 };
 
 export default nextConfig;

@@ -1,51 +1,59 @@
-import { CartItem } from "@/lib/shopify/types";
-import clsx from "clsx";
 import { updateCartItem } from "@/lib/utils/cart-actions";
 import { useActionState } from "react";
-import { UpdateQuantityType } from "@/contexts/cart-context";
 import { Minus, Plus } from "lucide-react";
+import Button from "../buttons/button";
+import { CartItem, TCartContext } from "@/contexts/cart-context/types";
+import { ProductVariant } from "@/lib/shopify/types";
 
 interface SubmitButtonProps {
   type: "plus" | "minus";
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ({
-  type
-}) => {
-  return <button type="submit" aria-label={type === "plus" ? "Increase item quantity" : "Reduce item quantity"} className={clsx("ease flex h-full min-w-[36px] max-w-[36px] flex-none items-center justify-center rounded-full p-2 transition-all duration-200 hover:border-neutral-800 hover:opacity-80", {
-    "ml-auto": type === "minus"
-  })}>
-    {type === "plus" ? <Plus className="h-4 w-4 dark:text-neutral-500" /> : <Minus className="h-4 w-4 dark:text-neutral-500" />}
-  </button>;
+const SubmitButton: React.FC<SubmitButtonProps> = ({ type }) => {
+  return (
+    <Button
+      type="submit"
+      aria-label={
+        type === "plus" ? "Increase item quantity" : "Reduce item quantity"
+      }
+      icon={type === "plus" ? Plus : Minus}
+      size="sm"
+      variant="ghost"
+    />
+  );
 };
 
 interface EditItemQttyProps {
   item: CartItem;
   type: "plus" | "minus";
-  optimisticUpdate: (cartItemId: string, updateType: UpdateQuantityType) => void;
+  optimisticUpdate: TCartContext["updateCartItemQuantity"];
 }
 
 const EditItemQuantityButton: React.FC<EditItemQttyProps> = ({
   item,
   type,
-  optimisticUpdate
+  optimisticUpdate,
 }) => {
   const [message, formAction] = useActionState(updateCartItem, null);
   const payload = {
     cartItemId: item.id,
-    merchandiseId: item.merchandise.id,
+    merchandiseId: item.variantID,
     quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1,
-    attributes: item.attributes
+    attributes: item.attributes,
   };
-  return <form action={async () => {
-    optimisticUpdate(payload.cartItemId, type);
-    await formAction(payload);
-  }}>
-    <SubmitButton type={type} />
-    <p aria-label="polite" className="sr-only" role="status">
-      {message}
-    </p>
-  </form>;
+  return (
+    <form
+      action={async () => {
+        optimisticUpdate(item.id, type);
+        await formAction(payload);
+      }}
+    >
+      <SubmitButton type={type} />
+      <p aria-label="polite" className="sr-only" role="status">
+        {message}
+      </p>
+    </form>
+  );
 };
 
 export default EditItemQuantityButton;

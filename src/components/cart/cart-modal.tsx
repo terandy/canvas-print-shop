@@ -2,20 +2,26 @@
 
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { UpdateQuantityType, useCart } from "../../contexts/cart-context";
-import { createUrl } from "@/lib/utils/base";
+import { useCart } from "@/contexts";
 import Image from "next/image";
-import Link from "next/link";
-import Price from "../price";
-import OpenCart from "./open-cart";
-import { DEFAULT_OPTION } from "@/lib/constants";
+import Price from "../product/price";
+import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
-import { createCartAndSetCookie, redirectToCheckout } from "@/lib/utils/cart-actions";
-import { Cart, CartItem } from "@/lib/shopify/types";
-import { ShoppingCart, X } from "lucide-react";
+import {
+  createCartAndSetCookie,
+  redirectToCheckout,
+} from "@/lib/utils/cart-actions";
+import { Pencil, ShoppingCart, X } from "lucide-react";
+import Button from "../buttons/button";
+import SquareButton from "../buttons/square-button";
+import Badge from "../badge";
+import ButtonLink from "../buttons/button-link";
+import type { CartItem, CartState, TCartContext } from "@/contexts";
+import { toProductState } from "@/contexts/cart-context/utils";
+import { useRouter } from "next/router";
 
 type MerchandiseSearchParams = {
   [key: string]: string;
@@ -24,169 +30,172 @@ type MerchandiseSearchParams = {
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
   return (
-    <button
-      className="block w-full rounded-full bg-blue-600 p-3 text-center text-sm font-medium text-white opacity-90 hover:opacity-100"
-      type="submit"
-      disabled={pending}
-    >
+    <Button type="submit" className="w-full flex justify-center">
       {pending ? <LoadingDots className="bg-white" /> : "Proceed to Checkout"}
-    </button>
+    </Button>
   );
-}
+};
 
-const Totals = ({ cart }: { cart: Cart }) => {
-  return <>
-    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 dark:border-neutral-700">
-      <p>Taxes</p>
-      <Price
-        className="text-right text-base text-black dark:text-white"
-        amount={cart.cost.totalTaxAmount.amount}
-        currencyCode={cart.cost.totalTaxAmount.currencyCode}
-      />
-    </div>
-    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-      <p>Shipping</p>
-      <p className="text-right">Calculated at checkout</p>
-    </div>
-    <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-      <p>Total</p>
-      <Price
-        className="text-right text-base text-black dark:text-white"
-        amount={cart.cost.totalAmount.amount}
-        currencyCode={cart.cost.totalAmount.currencyCode}
-      />
-    </div>
-  </>
-}
-
-const CartItemCard = ({ item, updateOptimisticCartItemQuantity, closeCart }: { item: CartItem, closeCart: () => void, updateOptimisticCartItemQuantity: (cartItemId: string, updateType: UpdateQuantityType,) => void }) => {
-  const merchandiseSearchParams: MerchandiseSearchParams = {};
-
-  if (item.id) merchandiseSearchParams.cartItemID = item.id
-
-  item.merchandise.selectedOptions.forEach(
-    ({ name, value }) => {
-      if (value !== DEFAULT_OPTION) {
-        merchandiseSearchParams[
-          name.toLocaleLowerCase()
-        ] = value;
-      }
-    }
-  );
-  const imgURL = item.attributes?.find(attr => attr.key === "_IMAGE URL")?.value;
-  const borderStyle = item.attributes?.find(attr => attr.key === "borderStyle")?.value;
-  const direction = item.attributes?.find(attr => attr.key === "direction")?.value;
-
-  if (imgURL) merchandiseSearchParams["imgURL"] = imgURL;
-  if (borderStyle) merchandiseSearchParams["borderStyle"] = borderStyle;
-  if (direction) merchandiseSearchParams["direction"] = direction.toLowerCase();
-
-  const merchandiseUrl = createUrl(
-    `/product/${item.merchandise.product.handle}`,
-    new URLSearchParams(merchandiseSearchParams)
-  );
-
-
+const Totals = ({ cartState }: { cartState: CartState }) => {
   return (
-    <li
-      className="lex w-full flex-col border-b border-neutral-300 dark:border-neutral-700"
-    >
-      <div className="relative flex w-full flex-row justify-between px-1 py-4">
-        <DeleteItemButton
-          item={item}
-          optimisticUpdate={updateOptimisticCartItemQuantity}
+    <div className="space-y-4">
+      <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
+        <p className="text-gray">Taxes</p>
+        <Price
+          className="text-right text-base text-secondary"
+          amount={cartState.cost.totalTaxAmount.amount}
+          currencyCode={cartState.cost.totalTaxAmount.currencyCode}
         />
       </div>
-      <div className="flex flex-row">
-        <div className="relative h-16 w-16 overflow-hidden rounded-md border border-neutral-300 bg-neutral-300 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+      <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
+        <p className="text-gray">Shipping</p>
+        <p className="text-right text-gray">Calculated at checkout</p>
+      </div>
+      <div className="flex items-center justify-between pb-3">
+        <p className="text-secondary font-semibold">Total</p>
+        <Price
+          className="text-right text-lg font-semibold text-secondary"
+          amount={cartState.cost.totalAmount.amount}
+          currencyCode={cartState.cost.totalAmount.currencyCode}
+        />
+      </div>
+    </div>
+  );
+};
+
+const CartItemCard = ({
+  item,
+  updateCartItemQuantity,
+  closeCart,
+}: {
+  item: CartItem;
+  closeCart: () => void;
+  updateCartItemQuantity: TCartContext["updateCartItemQuantity"];
+}) => {
+  console.log("item", item);
+  const state = toProductState(item);
+
+  const getProductHref = () => {
+    const newParams = new URLSearchParams();
+    newParams.set("cartItemID", item.id);
+    return `/product/${item.title}?${newParams.toString()}`;
+  };
+  return (
+    <li className="border-b border-gray-light/10 py-4">
+      <div className="flex gap-4">
+        <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
           <Image
-            src={imgURL ?? item.merchandise.product.featuredImage.url}
-            width={64}
-            height={64}
+            src={item.imgURL ?? "/default-image.jpeg"}
+            width={80}
+            height={80}
             alt="Custom Print"
-            className="w-24 h-24 object-cover rounded"
+            className="object-cover w-full h-full"
           />
         </div>
-        <Link
-          href={merchandiseUrl}
-          onClick={closeCart}
-          className="z-30 ml-2 flex flex-row space-x-4"
-        >
-          <div className="flex flex-1 flex-col text-base">
-            <span className="leading-tight">
-              {item.merchandise.product.title}
-            </span>
-            {item.merchandise.title !== DEFAULT_OPTION ? (
-              <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                {item.merchandise.title}
-              </p>
-            ) : null}
-            {item.attributes.filter(attr => attr.key !== "_IMAGE URL").map(attr => <span key={attr.key} className="first-letter:capitalize text-sm text-neutral-500 dark:text-neutral-400">{attr.value}{attr.key === "borderStyle" && " border"}</span>)}
+        <div className="flex-1">
+          <div className="space-y-1">
+            <p className="text-secondary font-medium">{item.title}</p>
+            {Object.entries(state)
+              .filter(([key, _value]) => key !== "imgURL")
+              .map(([key, value]) => (
+                <span
+                  key={key}
+                  className="block text-sm text-gray first-letter:capitalize"
+                >
+                  {value}
+                  {key === "borderStyle" && " border"}
+                </span>
+              ))}
           </div>
-        </Link>
+        </div>
+        <div className="flex">
+          <DeleteItemButton
+            item={item}
+            optimisticUpdate={updateCartItemQuantity}
+          />
+          <ButtonLink
+            href={getProductHref()}
+            onClick={() => {
+              localStorage.setItem(
+                LOCAL_STORAGE_FORM_STATE,
+                JSON.stringify(toProductState(item))
+              );
+              closeCart();
+            }}
+            icon={Pencil}
+            size="sm"
+            title="Edit"
+            variant="secondary"
+            replace
+          >
+            Edit
+          </ButtonLink>
+        </div>
       </div>
-      <div className="flex h-16 flex-col justify-between">
-        <Price
-          className="flex justify-end space-y-2 text-right text-sm"
-          amount={item.cost.totalAmount.amount}
-          currencyCode={
-            item.cost.totalAmount.currencyCode
-          }
-        />
-        <div className="ml-auto flex h-9 flex-row items-center rounded-full border border-neutral-200 dark:border-neutral-700">
+      <div className="flex mt-4 items-center justify-between gap-4">
+        <div className="flex items-center rounded-full border border-gray-light/20">
           <EditItemQuantityButton
             item={item}
             type="minus"
-            optimisticUpdate={updateOptimisticCartItemQuantity}
+            optimisticUpdate={updateCartItemQuantity}
           />
-          <p className="w-6 text-center">
-            <span className="w-full text-sm">
-              {item.quantity}
-            </span>
-          </p>
+          <p className="w-8 text-center text-secondary">{item.quantity}</p>
           <EditItemQuantityButton
             item={item}
             type="plus"
-            optimisticUpdate={updateOptimisticCartItemQuantity}
+            optimisticUpdate={updateCartItemQuantity}
           />
         </div>
+        <Price
+          className="text-secondary font-medium"
+          amount={item.totalAmount.amount}
+          currencyCode={item.totalAmount.currencyCode}
+        />
       </div>
     </li>
-  )
+  );
 };
 
 const CartModal = () => {
-  const { cart, updateOptimisticCartItemQuantity } = useCart();
+  const { state, updateCartItemQuantity } = useCart();
   const [isOpen, setIsOpen] = useState(false);
-  const quantityRef = useRef(cart?.totalQuantity);
+  const quantityRef = useRef(state?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
+  console.log("cartState", state);
 
   useEffect(() => {
-    if (!cart) {
+    if (!state) {
+      console.log("createCart");
       createCartAndSetCookie();
     }
-  }, [cart]);
+  }, [state]);
 
   useEffect(() => {
     if (
-      cart?.totalQuantity &&
-      cart?.totalQuantity !== quantityRef.current &&
-      cart?.totalQuantity > 0
+      state?.totalQuantity &&
+      state?.totalQuantity !== quantityRef.current &&
+      state?.totalQuantity > 0
     ) {
       if (!isOpen) {
+        console.log("setOpen");
         setIsOpen(true);
       }
 
-      quantityRef.current = cart?.totalQuantity;
+      quantityRef.current = state?.totalQuantity;
     }
-  }, [isOpen, cart?.totalQuantity, quantityRef]);
+  }, [isOpen, state?.totalQuantity, quantityRef]);
 
+  const items = state?.items ? Object.values(state?.items) : [];
   return (
     <>
-      <button aria-label="Open cart" onClick={openCart}>
-        <OpenCart quantity={cart?.totalQuantity} />
-      </button>
+      <Badge count={state?.totalQuantity}>
+        <SquareButton
+          aria-label="Open cart"
+          icon={ShoppingCart}
+          onClick={openCart}
+        />
+      </Badge>
       <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
           <Transition.Child
@@ -198,7 +207,7 @@ const CartModal = () => {
             leaveFrom="opacity-100 backdrop-blur-[.5px]"
             leaveTo="opacity-0 backdrop-blur-none"
           >
-            <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+            <div className="fixed inset-0 bg-secondary/30" aria-hidden="true" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -209,46 +218,58 @@ const CartModal = () => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-neutral-200 bg-white/80 p-6 text-black backdrop-blur-xl md:w-[390px] dark:border-neutral-700 dark:bg-black/80 dark:text-white z-[999]">
-              <div className="flex items-center justify-between">
-                <p className="text-lg font-semibold">My Cart</p>
-                <button aria-label="Close cart" onClick={closeCart}>
-                  <X />
-                </button>
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
+              <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
+                <p className="flex gap-2 text-lg font-semibold text-secondary">
+                  My Cart
+                </p>
+                <Button
+                  aria-label="Close cart"
+                  onClick={closeCart}
+                  icon={X}
+                  variant="ghost"
+                />
               </div>
 
-              {!cart || cart.lines.length === 0 ? (
-                <div>
-                  <ShoppingCart className="h-16" />
-                  <p className="mt-6 text-center text-2xl font-bold">
-                    Your Cart is Empty.
+              {!state || items.length === 0 ? (
+                <div className="flex flex-col items-center justify-center flex-1 p-8">
+                  <ShoppingCart className="w-16 h-16 text-gray-light" />
+                  <p className="mt-4 text-xl font-medium text-secondary">
+                    Your Cart is Empty
                   </p>
                 </div>
               ) : (
-                <div className="flex h-full flex-col justify-between overflow-hidden p-1">
-                  <ul className="flex-grow overflow-auto py-4">
-                    {cart.lines
-                      .sort((a, b) =>
-                        a.merchandise.product.title.localeCompare(
-                          b.merchandise.product.title
-                        )
-                      )
-                      .map((item) =>
-                        <CartItemCard key={`cart${item.id}`} item={item} closeCart={closeCart} updateOptimisticCartItemQuantity={updateOptimisticCartItemQuantity} />)}
-                  </ul >
-                  <div className="py-4 text-sm text-neutral-500 dark:text-neutral-400">
-                    <Totals cart={cart} />
-                    <form action={() => { redirectToCheckout() }}>
+                <div className="flex flex-col h-full">
+                  <ul className="flex-1 overflow-auto p-4 space-y-6">
+                    {items
+                      .sort((a, b) => a.title.localeCompare(b.title))
+                      .map((item) => (
+                        <CartItemCard
+                          key={`cart${item.id}`}
+                          item={item}
+                          closeCart={closeCart}
+                          updateCartItemQuantity={updateCartItemQuantity}
+                        />
+                      ))}
+                  </ul>
+                  <div className="border-t border-gray-light/10 p-4 space-y-4">
+                    <Totals cartState={state} />
+                    <form
+                      action={() => {
+                        redirectToCheckout();
+                      }}
+                    >
                       <CheckoutButton />
                     </form>
                   </div>
-                </div>)}
+                </div>
+              )}
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
       </Transition>
     </>
   );
-}
+};
 
 export default CartModal;

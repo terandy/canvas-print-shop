@@ -8,9 +8,7 @@ interface Props {
   products: Product[];
 }
 
-const ProductGridItems: React.FC<Props> = ({
-  products
-}) => {
+const ProductGridItems: React.FC<Props> = ({ products }) => {
   return (
     <>
       {products.map((product) => (
@@ -36,6 +34,6 @@ const ProductGridItems: React.FC<Props> = ({
       ))}
     </>
   );
-}
+};
 
-export default ProductGridItems
+export default ProductGridItems;

@@ -1,45 +1,46 @@
-
 "use client";
-import { useProduct, useUpdateURL } from "@/contexts/product-context";
+import { useProduct } from "@/contexts/product-context";
 import { deleteImage } from "@/lib/s3/actions/image";
 import { X } from "lucide-react";
-import Image from "next/image"
+import Image from "next/image";
 import { startTransition } from "react";
+import Button from "../buttons/button";
 
 interface Props {
-    imgURL: string;
+  imgURL: string;
 }
 
 const ImageFile: React.FC<Props> = ({ imgURL }) => {
-    const { deleteOption } = useProduct();
-    const updateURL = useUpdateURL();
+  const { deleteImgURL } = useProduct();
 
-    const removeImage = () => {
-        startTransition(() => {
-            const newState = deleteOption("imgURL");
-            deleteImage(imgURL)
-            updateURL(newState);
-        })
-    };
+  const removeImage = () => {
+    startTransition(() => {
+      deleteImgURL;
+      deleteImage(imgURL);
+    });
+  };
 
-    return <div className="flex gap-2 mt-2 mb-2">
-        <Image
-            src={imgURL}
-            alt="Preview"
-            width={25}
-            height={25}
-            className="object-contain rounded-lg border-2 border-gray-200"
-        />
-        <span>Image</span>
-        <button
-            onClick={removeImage}
-            className="w-6 h-6 text-gray-600 hover:text-red-500"
-            title="remove image"
-            onMouseOver={(e) => e.stopPropagation()}
-        >
-            <X />
-        </button>
+  return (
+    <div className="flex gap-2 mt-2 mb-2">
+      <Image
+        src={imgURL}
+        alt="Preview"
+        width={25}
+        height={25}
+        className="object-contain rounded-lg border-2 border-gray-200"
+      />
+      <span>Image</span>
+      <Button
+        onClick={removeImage}
+        title="remove image"
+        onMouseOver={(e) => e.stopPropagation()}
+        icon={X}
+        variant="ghost"
+        size="sm"
+        className="hover:text-red-700"
+      />
     </div>
-}
+  );
+};
 
 export default ImageFile;

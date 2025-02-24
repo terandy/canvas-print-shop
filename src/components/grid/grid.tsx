@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import { ComponentProps } from "react";
 
-const Grid: React.FC<ComponentProps<"ul">> & { Item: React.FC<ComponentProps<"li">> } = (props) => {
+const Grid: React.FC<ComponentProps<"ul">> & {
+  Item: React.FC<ComponentProps<"li">>;
+} = (props) => {
   return (
     <ul
       {...props}
@@ -10,7 +12,7 @@ const Grid: React.FC<ComponentProps<"ul">> & { Item: React.FC<ComponentProps<"li
       {props.children}
     </ul>
   );
-}
+};
 
 const GridItem: React.FC<ComponentProps<"li">> = (props) => {
   return (
@@ -21,7 +23,7 @@ const GridItem: React.FC<ComponentProps<"li">> = (props) => {
       {props.children}
     </li>
   );
-}
+};
 
 Grid.Item = GridItem;
 export default Grid;

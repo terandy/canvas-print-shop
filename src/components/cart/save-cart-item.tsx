@@ -1,79 +1,84 @@
 "use client";
 
-import { Product, ProductVariant } from "@/lib/shopify/types";
-import { useProduct } from "../../contexts/product-context";
-import { useCart } from "../../contexts/cart-context";
-import clsx from "clsx";
-import * as api from "../../lib/utils/cart-actions";
+import { ProductVariant } from "@/lib/shopify/types";
+import { useCart, FormState } from "@/contexts";
+import * as api from "@/lib/utils/cart-actions";
 import React, { useActionState } from "react";
-import Link from "next/link";
-import { Plus } from "lucide-react";
+import { Plus, Save } from "lucide-react";
+import Button from "../buttons/button";
+import { toProductState } from "@/contexts/cart-context/utils";
+import { CanvasCartItem } from "@/contexts/cart-context/types";
+import { ButtonLink } from "../buttons";
+import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
 
 interface SubmitButtonProps {
   saved?: boolean;
   disabled: boolean;
 }
-const SubmitButton: React.FC<SubmitButtonProps> = ({
-  saved,
-  disabled,
-}) => {
-  const buttonClasses = "relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white";
-  const disabledClasses = "opacity-60 hover:opacity-60";
-
-  const className = clsx(buttonClasses, !saved && !disabled &&
-    "hover:opacity-90",
-    (disabled || saved) && disabledClasses
-  )
-
-  return <button aria-label={saved ? "Please select an option" : "Add to cart"} className={className}>
-    <div className="absolute left-0 ml-4">
-      <Plus />
-    </div>
-    {!saved ? "Save changes" : "Saved"}
-  </button>;
+const SubmitButton: React.FC<SubmitButtonProps> = ({ saved, disabled }) => {
+  return (
+    <Button
+      aria-label={saved ? "Please select an option" : "Add to cart"}
+      disabled={disabled || saved}
+      icon={Save}
+    >
+      {!saved ? "Save changes" : "Saved"}
+    </Button>
+  );
 };
 
 interface SaveCartItemProps {
-  product: Product;
+  variant: ProductVariant;
+  formState: FormState;
   cartItemID: string;
-
 }
-export const SaveCartItem: React.FC<SaveCartItemProps> = ({
-  product,
-  cartItemID
+const SaveCartItem: React.FC<SaveCartItemProps> = ({
+  cartItemID,
+  variant,
+  formState,
 }) => {
-  const {
-    variants,
-  } = product;
-  const { updateOptimisticCartItem, cart } = useCart();
-  const { state } = useProduct();
+  const cartContext = useCart();
   const [message, updateCartItem] = useActionState(api.updateCartItem, null);
-  const variant = variants.find((variant: ProductVariant) => variant.selectedOptions.every(option => option.value === state[option.name.toLowerCase()]));
-  const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
-  const selectedVariantId = variant?.id || defaultVariantId;
-  const finalVariant = variants.find(variant => variant.id === selectedVariantId)!;
-  const prevCartItem = cart?.lines.find(line => line.id === cartItemID)
+  const prevCartItem = cartContext.state?.items[cartItemID] as CanvasCartItem;
 
-  const imgURL = prevCartItem?.attributes.find(attr => attr.key === "_IMAGE URL")?.value
-  const borderStyle = prevCartItem?.attributes?.find(attr => attr.key === "borderStyle")?.value
-  const direction = prevCartItem?.attributes?.find(attr => attr.key === "direction")?.value
+  const hasDiff =
+    JSON.stringify(formState) !==
+    JSON.stringify(prevCartItem ? toProductState(prevCartItem) : null);
 
-  const hasDiff = prevCartItem?.merchandise.id !== selectedVariantId || imgURL !== state.imgURL || borderStyle !== state.borderStyle || direction !== state.direction
-
-  return <form action={async () => {
-    if (!selectedVariantId) return;
-    updateOptimisticCartItem(cartItemID, finalVariant, product, state.imgURL, state.borderStyle, state.direction); // optimistic
-    await updateCartItem({ cartItemId: cartItemID, merchandiseId: selectedVariantId, quantity: 1, attributes: [{ key: "_IMAGE URL", value: state.imgURL }, { key: "borderStyle", value: state.borderStyle }, { key: "direction", value: state.direction }] });
-  }}>
-    <SubmitButton saved={!hasDiff} disabled={!state.imgURL || !selectedVariantId} />
-    <Link
-      href={`/product/${product.handle}`}
-      className="mt-3 w-full inline-flex items-center justify-center text-blue-500 border border-blue-500 px-6 py-3 rounded-full"
+  return (
+    <form
+      action={async () => {
+        if (!formState.imgURL || !variant || !formState.cartItemID) return;
+        cartContext.updateCanvasCartItem(prevCartItem.id, formState, variant); // optimistic
+        await updateCartItem({
+          cartItemId: prevCartItem.id,
+          merchandiseId: variant.id,
+          quantity: 1,
+          attributes: [
+            { key: "imgURL", value: formState.imgURL },
+            { key: "borderStyle", value: formState.borderStyle },
+            { key: "direction", value: formState.direction },
+          ],
+        });
+      }}
+      className="flex flex-col gap-2"
     >
-      <span>Create a new canvas</span>
-    </Link>
-    <p className="sr-only" role="status" aria-label="polite">
-      {message}
-    </p>
-  </form>;
+      <SubmitButton saved={!hasDiff} disabled={!formState.imgURL} />
+      <ButtonLink
+        href={`/product/${prevCartItem.title}`}
+        variant="secondary"
+        icon={Plus}
+        iconPosition="left"
+        onClick={() => localStorage.removeItem(LOCAL_STORAGE_FORM_STATE)}
+        replace
+      >
+        Create a new canvas
+      </ButtonLink>
+      <p className="sr-only" role="status" aria-label="polite">
+        {message}
+      </p>
+    </form>
+  );
 };
+
+export default SaveCartItem;
