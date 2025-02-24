@@ -24,7 +24,6 @@ export async function addItem(
 ) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
-  console.log({ cartId });
 
   if (!cartId || !payload.selectedVariantId || !payload.imgURL) {
     return "Error adding item to cart";
@@ -47,11 +46,8 @@ export async function addItem(
     });
     onSuccess?.(res);
   } catch (error) {
-    console.log("error");
-
     return "Error adding item to cart";
   } finally {
-    console.log("revalidateTa");
     revalidateTag(TAGS.cart);
   }
 }

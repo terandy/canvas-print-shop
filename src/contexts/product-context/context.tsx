@@ -39,12 +39,10 @@ const ProductProvider = ({
       const savedState = localStorage.getItem(LOCAL_STORAGE_FORM_STATE);
       if (!savedState) return;
       const parsedSavedState = JSON.parse(savedState);
-      console.log();
       if (
         typeof parsedSavedState === "object" &&
         parsedSavedState.cartItemID === cartItemID
       ) {
-        console.log("setOptimistic from useEffect");
         setState(JSON.parse(savedState));
       }
     } catch (error) {

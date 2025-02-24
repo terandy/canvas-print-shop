@@ -128,7 +128,6 @@ export const generateUpdatedCartItemQuantity = (
 export const getInitialState = (cart?: Cart): CartState => {
   if (!cart) return { ...EMPTY_CART_STATE };
   const items: CartState["items"] = {};
-  console.log({ cart });
   cart.lines.forEach((line) => {
     const cartItemID = line.id;
     items[cartItemID] = getCartItem(line);

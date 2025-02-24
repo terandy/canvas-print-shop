@@ -52,7 +52,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 
         // Handle completion
         xhr.onload = () => {
-          console.log("onload", { publicUrl });
           if (xhr.status === 200) {
             updateField("imgURL", publicUrl);
           } else {

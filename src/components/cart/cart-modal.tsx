@@ -72,7 +72,6 @@ const CartItemCard = ({
   closeCart: () => void;
   updateCartItemQuantity: TCartContext["updateCartItemQuantity"];
 }) => {
-  console.log("item", item);
   const state = toProductState(item);
 
   const getProductHref = () => {
@@ -162,11 +161,9 @@ const CartModal = () => {
   const quantityRef = useRef(state?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
-  console.log("cartState", state);
 
   useEffect(() => {
     if (!state) {
-      console.log("createCart");
       createCartAndSetCookie();
     }
   }, [state]);
@@ -178,7 +175,6 @@ const CartModal = () => {
       state?.totalQuantity > 0
     ) {
       if (!isOpen) {
-        console.log("setOpen");
         setIsOpen(true);
       }
 

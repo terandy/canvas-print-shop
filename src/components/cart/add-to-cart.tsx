@@ -36,7 +36,6 @@ const AddToCart: React.FC<AddToCardProps> = ({ variant, formState }) => {
     <form
       action={async () => {
         if (formState.imgURL === "/default-image.jpeg" || !variant) return;
-        const id = v4();
         cartContext.addCanvasCartItem({ ...formState }, variant); // optimistic
         await addCartItem({
           selectedVariantId: variant.id,
