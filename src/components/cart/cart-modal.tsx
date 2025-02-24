@@ -95,7 +95,9 @@ const CartItemCard = ({
           <div className="space-y-1">
             <p className="text-secondary font-medium">{item.title}</p>
             {Object.entries(state)
-              .filter(([key, _value]) => key !== "imgURL")
+              .filter(
+                ([key, _value]) => key !== "imgURL" && key !== "cartItemID"
+              )
               .map(([key, value]) => (
                 <span
                   key={key}
