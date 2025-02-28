@@ -141,7 +141,7 @@ const Home: React.FC = async () => {
               <ProductPreview
                 key={product.id}
                 product={product}
-                direction={index % 2 == 0 ? "right" : "left"}
+                direction={index % 2 === 0 ? "right" : "left"}
               />
             ))}
           </div>
