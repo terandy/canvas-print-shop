@@ -68,7 +68,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
             const noneMatch = combinations.find(
               (combination) =>
                 combination.size === optionParams.size &&
-                combination.frame === "None"
+                combination.frame === "none"
             );
 
             const variantMatch = combinations.find((combination) =>
