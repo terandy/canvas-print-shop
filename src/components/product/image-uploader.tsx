@@ -19,97 +19,92 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 }) => {
   const {
     updateField,
+    setImgFileUrl,
     state: { imgURL },
   } = useProduct();
+
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  const handleImageSelect = useCallback(
-    async (file: File) => {
-      try {
-        setIsUploading(true);
-        setUploadProgress(0);
+  const handleImageSelect = async (file: File) => {
+    setImgFileUrl(URL.createObjectURL(file));
+    try {
+      setIsUploading(true);
+      setUploadProgress(0);
 
-        // Get presigned URL
-        const response = await fetch("/api/upload", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ fileType: file.type }),
-        });
-        const { uploadUrl, publicUrl } = await response.json();
+      // Get presigned URL
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fileType: file.type }),
+      });
+      const { uploadUrl, publicUrl } = await response.json();
 
-        // Create XMLHttpRequest to track upload progress
-        const xhr = new XMLHttpRequest();
+      // Create XMLHttpRequest to track upload progress
+      const xhr = new XMLHttpRequest();
 
-        // Track upload progress
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            const progress = Math.round((event.loaded / event.total) * 100);
-            setUploadProgress(progress);
-          }
-        };
+      // Track upload progress
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const progress = Math.round((event.loaded / event.total) * 100);
+          setUploadProgress(progress);
+        }
+      };
 
-        // Handle completion
-        xhr.onload = () => {
-          if (xhr.status === 200) {
-            updateField("imgURL", publicUrl);
-          } else {
-            setError("Upload failed. Please try again.");
-          }
-          setIsUploading(false);
-        };
-
-        // Handle errors
-        xhr.onerror = () => {
+      // Handle completion
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          updateField("imgURL", publicUrl);
+          setImgFileUrl(null);
+        } else {
           setError("Upload failed. Please try again.");
-          setIsUploading(false);
-        };
+        }
+        setIsUploading(false);
+      };
 
-        // Send the request
-        xhr.open("PUT", uploadUrl);
-        xhr.setRequestHeader("Content-Type", file.type);
-        xhr.send(file);
-      } catch (error) {
-        console.error("Error uploading image:", error);
+      // Handle errors
+      xhr.onerror = () => {
         setError("Upload failed. Please try again.");
         setIsUploading(false);
-      }
-    },
-    [updateField]
-  );
+      };
 
-  const validateFile = useCallback(
-    (file: File): boolean => {
-      // Check file type
-      if (!acceptedTypes.includes(file.type)) {
-        setError(`Accepted file types: ${acceptedTypes.join(", ")}`);
-        return false;
-      }
+      // Send the request
+      xhr.open("PUT", uploadUrl);
+      xhr.setRequestHeader("Content-Type", file.type);
+      xhr.send(file);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      setError("Upload failed. Please try again.");
+      setIsUploading(false);
+    }
+  };
 
-      return true;
-    },
-    [setError, acceptedTypes]
-  );
+  const validateFile = (file: File): boolean => {
+    // Check file type
+    if (!acceptedTypes.includes(file.type)) {
+      setError(`Accepted file types: ${acceptedTypes.join(", ")}`);
+      return false;
+    }
 
-  const handleFile = useCallback(
-    (file: File) => {
-      setError(null);
+    return true;
+  };
 
-      if (!validateFile(file)) {
-        return;
-      }
+  const handleFile = (file: File) => {
+    setError(null);
 
-      // Create preview
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      handleImageSelect(file);
-    },
-    [handleImageSelect, validateFile]
-  );
+    if (!validateFile(file)) {
+      return;
+    }
 
-  const handleDrag = useCallback((e: React.DragEvent) => {
+    // Create preview
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    handleImageSelect(file);
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -118,21 +113,18 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     } else if (e.type === "dragleave") {
       setIsDragging(false);
     }
-  }, []);
+  };
 
-  const handleDrop = useCallback(
-    (e: React.DragEvent) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setIsDragging(false);
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
 
-      const file = e.dataTransfer.files[0];
-      if (file) {
-        handleFile(file);
-      }
-    },
-    [handleFile]
-  );
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      handleFile(file);
+    }
+  };
 
   if (imgURL !== DEFAULT_CANVAS_IMAGE) return <ImageFile imgURL={imgURL} />;
 

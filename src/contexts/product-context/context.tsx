@@ -29,6 +29,7 @@ const ProductProvider = ({
 }) => {
   const [isHydrated, setIsHydrated] = useState(false);
   const [state, setState] = useState(INITIAL_FORM_STATE);
+  const [imgFileUrl, setImgFileUrl] = useState<string | null>(null);
 
   const updateState = (update: Partial<FormState>) => {
     setState((prevState) => ({
@@ -97,11 +98,13 @@ const ProductProvider = ({
     () => ({
       state,
       variant,
+      imgFileUrl,
       updateField,
       updateState,
       deleteImgURL,
+      setImgFileUrl,
     }),
-    [state, variant]
+    [state, variant, imgFileUrl]
   );
 
   return (

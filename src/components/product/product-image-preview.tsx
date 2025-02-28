@@ -9,12 +9,12 @@ interface Props {
 }
 
 const ProductImagePreview: React.FC<Props> = ({ className }) => {
-  const { state } = useProduct();
+  const { state, imgFileUrl } = useProduct();
 
   return (
     <CanvasPreviewer
       className={className}
-      src={state.imgURL}
+      src={imgFileUrl ?? state.imgURL}
       size={state.size}
       direction={state.direction}
       borderStyle={state.borderStyle}
