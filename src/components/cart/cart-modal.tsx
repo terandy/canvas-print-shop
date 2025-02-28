@@ -5,7 +5,10 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { useCart } from "@/contexts";
 import Image from "next/image";
 import Price from "../product/price";
-import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
+import {
+  DEFAULT_CANVAS_IMAGE,
+  LOCAL_STORAGE_FORM_STATE,
+} from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
@@ -84,7 +87,7 @@ const CartItemCard = ({
       <div className="flex gap-4">
         <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
           <Image
-            src={item.imgURL ?? "/default-image.jpeg"}
+            src={item.imgURL ?? DEFAULT_CANVAS_IMAGE}
             width={80}
             height={80}
             alt="Custom Print"

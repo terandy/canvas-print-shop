@@ -10,6 +10,7 @@ import { Plus, X } from "lucide-react";
 import Button from "../buttons/button";
 import { ProductVariant } from "@/lib/shopify/types";
 import { v4 } from "uuid";
+import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 
 interface AddToCardProps {
   variant: ProductVariant;
@@ -27,7 +28,7 @@ const AddToCart: React.FC<AddToCardProps> = ({ variant, formState }) => {
 
   const onCancel: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    if (formState.imgURL !== "/default-image.jpeg")
+    if (formState.imgURL !== DEFAULT_CANVAS_IMAGE)
       deleteImage(formState.imgURL);
     router.replace("/");
   };
@@ -35,7 +36,7 @@ const AddToCart: React.FC<AddToCardProps> = ({ variant, formState }) => {
   return (
     <form
       action={async () => {
-        if (formState.imgURL === "/default-image.jpeg" || !variant) return;
+        if (formState.imgURL === DEFAULT_CANVAS_IMAGE || !variant) return;
         cartContext.addCanvasCartItem({ ...formState }, variant); // optimistic
         await addCartItem({
           selectedVariantId: variant.id,
@@ -51,7 +52,7 @@ const AddToCart: React.FC<AddToCardProps> = ({ variant, formState }) => {
         icon={Plus}
         type="submit"
         className="bg-secondary hover:bg-primary-light"
-        disabled={formState.imgURL === "/default-image.jpeg" || !variant}
+        disabled={formState.imgURL === DEFAULT_CANVAS_IMAGE || !variant}
       >
         Add To Cart
       </Button>

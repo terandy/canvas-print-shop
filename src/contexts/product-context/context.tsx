@@ -11,7 +11,10 @@ import React, {
 import type { TProductContext, FormState } from "./types";
 import { Product } from "@/lib/shopify/types";
 import { INITIAL_FORM_STATE } from "./data";
-import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
+import {
+  DEFAULT_CANVAS_IMAGE,
+  LOCAL_STORAGE_FORM_STATE,
+} from "@/lib/constants";
 
 const ProductContext = createContext<TProductContext | undefined>(undefined);
 
@@ -75,9 +78,9 @@ const ProductProvider = ({
   };
 
   const deleteImgURL = () => {
-    const update = { imgURL: "default-image.jpeg" } as Partial<FormState>;
+    const update = { imgURL: DEFAULT_CANVAS_IMAGE } as Partial<FormState>;
     updateState(update);
-    return { ...state, ...update };
+    return update;
   };
 
   const variant = useMemo(() => {

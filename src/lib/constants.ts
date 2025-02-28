@@ -22,3 +22,5 @@ export const ADDRESS = {
 
 export const LOCAL_STORAGE_FORM_STATE = "FormState";
 export const CANVAS_ID = "canvasID";
+
+export const DEFAULT_CANVAS_IMAGE = "/default-image.jpeg";

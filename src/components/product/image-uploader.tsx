@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Upload } from "lucide-react";
 import ImageFile from "./image-file";
 import { useProduct } from "@/contexts/product-context";
+import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 
 interface ImageUploaderProps {
   maxSizeMB?: number;
@@ -133,7 +134,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     [handleFile]
   );
 
-  if (imgURL !== "/default-image.jpeg") return <ImageFile imgURL={imgURL} />;
+  if (imgURL !== DEFAULT_CANVAS_IMAGE) return <ImageFile imgURL={imgURL} />;
 
   return (
     <div className={clsx("w-full max-w-xl mx-auto", className)}>
