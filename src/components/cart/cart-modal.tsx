@@ -13,10 +13,7 @@ import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
-import {
-  createCartAndSetCookie,
-  redirectToCheckout,
-} from "@/lib/utils/cart-actions";
+import { redirectToCheckout } from "@/lib/utils/cart-actions";
 import { Pencil, ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
@@ -166,12 +163,6 @@ const CartModal = () => {
   const quantityRef = useRef(state?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
-
-  useEffect(() => {
-    if (!state) {
-      createCartAndSetCookie();
-    }
-  }, [state]);
 
   useEffect(() => {
     if (
