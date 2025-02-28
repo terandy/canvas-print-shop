@@ -24,9 +24,12 @@ export async function addItem(
 ) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
-  console.log({ cartId });
 
   if (!cartId || !payload.selectedVariantId || !payload.imgURL) {
+    console.error("Failed to call cart action addItem. Missing variable", {
+      cartId,
+      payload,
+    });
     return "Error adding item to cart";
   }
 
@@ -47,11 +50,9 @@ export async function addItem(
     });
     onSuccess?.(res);
   } catch (error) {
-    console.log("error");
-
+    console.error(error);
     return "Error adding item to cart";
   } finally {
-    console.log("revalidateTa");
     revalidateTag(TAGS.cart);
   }
 }

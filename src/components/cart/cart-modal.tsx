@@ -5,15 +5,15 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { useCart } from "@/contexts";
 import Image from "next/image";
 import Price from "../product/price";
-import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
+import {
+  DEFAULT_CANVAS_IMAGE,
+  LOCAL_STORAGE_FORM_STATE,
+} from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
-import {
-  createCartAndSetCookie,
-  redirectToCheckout,
-} from "@/lib/utils/cart-actions";
+import { redirectToCheckout } from "@/lib/utils/cart-actions";
 import { Pencil, ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
@@ -72,7 +72,6 @@ const CartItemCard = ({
   closeCart: () => void;
   updateCartItemQuantity: TCartContext["updateCartItemQuantity"];
 }) => {
-  console.log("item", item);
   const state = toProductState(item);
 
   const getProductHref = () => {
@@ -85,7 +84,7 @@ const CartItemCard = ({
       <div className="flex gap-4">
         <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
           <Image
-            src={item.imgURL ?? "/default-image.jpeg"}
+            src={item.imgURL ?? DEFAULT_CANVAS_IMAGE}
             width={80}
             height={80}
             alt="Custom Print"
@@ -96,7 +95,9 @@ const CartItemCard = ({
           <div className="space-y-1">
             <p className="text-secondary font-medium">{item.title}</p>
             {Object.entries(state)
-              .filter(([key, _value]) => key !== "imgURL")
+              .filter(
+                ([key, _value]) => key !== "imgURL" && key !== "cartItemID"
+              )
               .map(([key, value]) => (
                 <span
                   key={key}
@@ -162,14 +163,6 @@ const CartModal = () => {
   const quantityRef = useRef(state?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
-  console.log("cartState", state);
-
-  useEffect(() => {
-    if (!state) {
-      console.log("createCart");
-      createCartAndSetCookie();
-    }
-  }, [state]);
 
   useEffect(() => {
     if (
@@ -178,7 +171,6 @@ const CartModal = () => {
       state?.totalQuantity > 0
     ) {
       if (!isOpen) {
-        console.log("setOpen");
         setIsOpen(true);
       }
 

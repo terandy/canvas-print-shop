@@ -19,7 +19,9 @@ interface SectionProps {
 
 const ContentSection: React.FC<SectionProps> = ({ product, order }) => {
   return (
-    <div className={`order-2 md:order-${order} px-4 pb-6 sm:p-8 md:p-10`}>
+    <div
+      className={`order-${order} md:order-${order} sm:order-2 px-4 pb-6 sm:p-8 md:p-10`}
+    >
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary mb-3 sm:mb-4">
         {product.title}
       </h2>
@@ -45,14 +47,18 @@ const ContentSection: React.FC<SectionProps> = ({ product, order }) => {
 };
 
 const ImageGallerySection: React.FC<SectionProps> = ({ product, order }) => {
+  // As a hack, i've reordered the images so the first image appears last
+  // The first image is intended to be used by the checkout page to display items
+  // Shopify required Pro to display images by attribute, so instead i chose to display a basic image.
+  const sortedImages = [...product.images.slice(1), product.images[0]];
   return (
     <div
-      className={`order-1 md:order-${order} relative bg-secondary/5 md:col-span-2 w-full overflow-hidden`}
+      className={`order-${order} md:order-${order} sm:order-1 relative bg-secondary/5 md:col-span-2 w-full overflow-hidden`}
     >
       <div className="p-4 sm:p-6">
         <div className="relative">
           <div className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4">
-            {product.images.map((image, index) => (
+            {sortedImages.map((image, index) => (
               <div
                 key={image.url}
                 className="relative w-[calc(100vw-32px)] sm:w-[320px] md:w-[400px] aspect-[4/3] flex-none rounded-xl sm:rounded-2xl overflow-hidden snap-center bg-secondary/5"

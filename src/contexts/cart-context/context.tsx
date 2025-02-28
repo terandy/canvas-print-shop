@@ -3,6 +3,7 @@
 import React, {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useOptimistic,
 } from "react";
@@ -21,6 +22,7 @@ import {
   generateUpdatedCartItemQuantity,
 } from "./utils";
 import { FormState } from "../product-context";
+import { createCartAndSetCookie } from "@/lib/utils/cart-actions";
 
 const CartContext = createContext<TCartContext | undefined>(undefined);
 
@@ -106,6 +108,11 @@ const CartProvider = ({
     }),
     [state]
   );
+  useEffect(() => {
+    if (!state.id) {
+      createCartAndSetCookie();
+    }
+  }, [state.id]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

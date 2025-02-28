@@ -23,6 +23,8 @@ export type TProductContext = {
    */
   state: FormState;
   variant: ProductVariant;
+  imgFileUrl: string | null;
+  setImgFileUrl: React.Dispatch<React.SetStateAction<string | null>>;
   updateField: (name: keyof FormState, value: string) => FormState;
   updateState: (updates: Partial<FormState>) => void;
   deleteImgURL: () => {};

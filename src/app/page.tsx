@@ -74,7 +74,6 @@ const testimonials = [
 ];
 const Home: React.FC = async () => {
   const products = await getProductList({});
-  console.log(products);
 
   return (
     <main className="flex-1">
@@ -142,7 +141,7 @@ const Home: React.FC = async () => {
               <ProductPreview
                 key={product.id}
                 product={product}
-                direction={index % 2 == 0 ? "right" : "left"}
+                direction={index % 2 === 0 ? "right" : "left"}
               />
             ))}
           </div>

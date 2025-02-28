@@ -11,7 +11,10 @@ import React, {
 import type { TProductContext, FormState } from "./types";
 import { Product } from "@/lib/shopify/types";
 import { INITIAL_FORM_STATE } from "./data";
-import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
+import {
+  DEFAULT_CANVAS_IMAGE,
+  LOCAL_STORAGE_FORM_STATE,
+} from "@/lib/constants";
 
 const ProductContext = createContext<TProductContext | undefined>(undefined);
 
@@ -26,6 +29,7 @@ const ProductProvider = ({
 }) => {
   const [isHydrated, setIsHydrated] = useState(false);
   const [state, setState] = useState(INITIAL_FORM_STATE);
+  const [imgFileUrl, setImgFileUrl] = useState<string | null>(null);
 
   const updateState = (update: Partial<FormState>) => {
     setState((prevState) => ({
@@ -39,12 +43,10 @@ const ProductProvider = ({
       const savedState = localStorage.getItem(LOCAL_STORAGE_FORM_STATE);
       if (!savedState) return;
       const parsedSavedState = JSON.parse(savedState);
-      console.log();
       if (
         typeof parsedSavedState === "object" &&
         parsedSavedState.cartItemID === cartItemID
       ) {
-        console.log("setOptimistic from useEffect");
         setState(JSON.parse(savedState));
       }
     } catch (error) {
@@ -77,9 +79,9 @@ const ProductProvider = ({
   };
 
   const deleteImgURL = () => {
-    const update = { imgURL: "default-image.jpeg" } as Partial<FormState>;
+    const update = { imgURL: DEFAULT_CANVAS_IMAGE } as Partial<FormState>;
     updateState(update);
-    return { ...state, ...update };
+    return update;
   };
 
   const variant = useMemo(() => {
@@ -96,11 +98,13 @@ const ProductProvider = ({
     () => ({
       state,
       variant,
+      imgFileUrl,
       updateField,
       updateState,
       deleteImgURL,
+      setImgFileUrl,
     }),
-    [state, variant]
+    [state, variant, imgFileUrl]
   );
 
   return (
