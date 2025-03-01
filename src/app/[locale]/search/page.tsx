@@ -1,14 +1,9 @@
 import { ProductGridItems, Grid } from "@/components";
 import { getProductList } from "@/lib/shopify";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Search.metadata" });
+export async function generateMetadata() {
+  const t = await getTranslations("Search.metadata");
 
   return {
     title: t("title"),
@@ -17,17 +12,12 @@ export async function generateMetadata({
 }
 
 type Props = {
-  params: { locale: string };
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-const SearchPage: React.FC<Props> = async ({ params, searchParams }) => {
-  const locale = params.locale;
-  // Enable static rendering
-  setRequestLocale(locale);
-
+const SearchPage: React.FC<Props> = async ({ searchParams }) => {
   // Get translations
-  const t = await getTranslations({ locale, namespace: "Search" });
+  const t = await getTranslations("Search");
 
   const { q: searchValue } = (await searchParams) as { [key: string]: string };
   const products = await getProductList({ query: searchValue });

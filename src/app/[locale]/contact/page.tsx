@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin, LucideIcon } from "lucide-react";
 import { EMAIL, PHONE, ADDRESS } from "@/lib/constants";
 import { PageHeader, SectionHeader, SectionContainer } from "@/components";
 import Link from "next/link";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -56,17 +56,8 @@ const ContactSection = ({
   </SectionContainer>
 );
 
-export default async function ContactPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  const locale = params.locale;
-  // Enable static rendering
-  setRequestLocale(locale);
-
-  // Get translations
-  const t = await getTranslations({ locale, namespace: "Contact" });
+export default async function ContactPage() {
+  const t = await getTranslations("Contact");
 
   return (
     <main className="flex-1">

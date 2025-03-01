@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 interface ProcessStep {
   title: string;
@@ -57,16 +57,8 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
   );
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({
-    locale,
-    namespace: "CanvasProcess.metadata",
-  });
+export async function generateMetadata() {
+  const t = await getTranslations("CanvasProcess.metadata");
 
   return {
     title: t("title"),
@@ -74,17 +66,10 @@ export async function generateMetadata({
   };
 }
 
-const CanvasProcessPage = async ({
-  params,
-}: {
-  params: { locale: string };
-}) => {
-  const locale = params.locale;
-  // Enable static rendering
-  setRequestLocale(locale);
-
+const CanvasProcessPage = async () => {
   // Get translations
-  const t = await getTranslations({ locale, namespace: "CanvasProcess" });
+  const t = await getTranslations("CanvasProcess");
+  const locale = await getLocale();
 
   const steps: ProcessStep[] = [
     {

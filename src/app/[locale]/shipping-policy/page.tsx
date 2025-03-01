@@ -6,7 +6,7 @@ import {
   PageHeader,
   ContactSection,
 } from "@/components";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -25,17 +25,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function ShippingPolicy({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  const locale = params.locale;
-  // Enable static rendering
-  setRequestLocale(locale);
-
+export default async function ShippingPolicy() {
   // Get translations for this page
-  const t = await getTranslations({ locale, namespace: "ShippingPolicy" });
+  const t = await getTranslations("ShippingPolicy");
 
   return (
     <main className="flex-1">
