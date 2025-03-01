@@ -147,6 +147,7 @@ const CartModal = () => {
                     <Totals cartState={state} />
                     <form
                       action={() => {
+                        localStorage.clear();
                         redirectToCheckout();
                       }}
                     >
