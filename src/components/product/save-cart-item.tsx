@@ -2,7 +2,7 @@
 
 import { useCart, useProduct } from "@/contexts";
 import * as api from "@/lib/utils/cart-actions";
-import React, { useActionState, useTransition } from "react";
+import React, { useActionState } from "react";
 import { Plus, Save } from "lucide-react";
 import Button from "../buttons/button";
 import { getAttributes, toProductState } from "@/contexts/cart-context/utils";
@@ -46,7 +46,6 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
   } = useProduct();
   const t = useTranslations("Cart.SaveItem");
   const locale = useLocale();
-  let [isPending, startTransition] = useTransition();
 
   const [message, updateCartItem] = useActionState(api.updateCartItem, null);
 
@@ -61,26 +60,21 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
 
   const hasDiff = checkDiff();
 
-  const onSubmit = () => {
-    startTransition(async () => {
-      if (!state.imgURL || !variant) return;
-      contextUpdateCartItem(cartItemID, state, variant); // optimistic
-      await updateCartItem({
-        cartItemId: cartItemID,
-        merchandiseId: variant.id,
-        quantity: 1,
-        attributes: getAttributes(state),
-      });
-    });
-  };
-
   return (
-    <form action={onSubmit} className="flex flex-col gap-2">
-      <SubmitButton
-        saved={!hasDiff}
-        disabled={!state.imgURL}
-        loading={isPending}
-      />
+    <form
+      action={async () => {
+        if (!state.imgURL || !variant || !cartItemID) return;
+        contextUpdateCartItem(cartItemID, state, variant); // optimistic
+        await updateCartItem({
+          cartItemId: cartItemID,
+          merchandiseId: variant.id,
+          quantity: 1,
+          attributes: getAttributes(state),
+        });
+      }}
+      className="flex flex-col gap-2"
+    >
+      <SubmitButton saved={!hasDiff} disabled={!state.imgURL} />
       <ButtonLink
         href={`/${locale}/product/${handle}`}
         variant="secondary"

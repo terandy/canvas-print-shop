@@ -42,11 +42,13 @@ const CartProvider = ({
   ) => {
     const newCartItem = generateNewCartItem(formState, variant, productHandle);
     const newItems = { ...state.items, [newCartItem.id]: newCartItem };
-    return {
+    const update = {
       ...state,
       ...generateCartTotals(newItems),
       items: newItems,
     };
+    setOptimisticState(update);
+    return update;
   };
   const updateCartItem = (
     cartItemID: CartItem["id"],
@@ -57,11 +59,13 @@ const CartProvider = ({
     const newCartItem = generateUpdatedCartItem(cartItem, updates, variant);
     const newItems = { ...state.items };
     newItems[cartItemID] = newCartItem;
-    return {
+    const update = {
       ...state,
       ...generateCartTotals(newItems),
       items: newItems,
     };
+    setOptimisticState(update);
+    return update;
   };
 
   const updateCartItemQuantity = (
@@ -78,11 +82,13 @@ const CartProvider = ({
     } else {
       delete newItems[cartItemID];
     }
-    return {
+    const update = {
       ...state,
       ...generateCartTotals(newItems),
       items: newItems,
     };
+    setOptimisticState(update);
+    return update;
   };
 
   const setState = (newState: Cart) => {
