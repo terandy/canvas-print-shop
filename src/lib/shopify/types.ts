@@ -274,9 +274,7 @@ export type ShopifyAddToCartOperation = {
 
 export type AddToCartOperation = {
   selectedVariantId: string | undefined;
-  imgURL?: string;
-  borderStyle: string;
-  direction: string;
+  attributes: Attribute[];
 };
 
 // ---- PAGE ------

@@ -2,10 +2,8 @@
 
 import { useProduct, FormState } from "@/contexts";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
+import { useTranslations } from "next-intl";
 import { startTransition } from "react";
-import DirectionSelector from "./direction-selector";
-import BorderStyleSelector from "./border-style-selector";
-import FrameSelector from "./frame-selector";
 
 type Combination = {
   id: string;
@@ -31,6 +29,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
   variants,
 }) => {
   const { state, updateField } = useProduct();
+  const t = useTranslations("Product");
 
   const combinations: Combination[] = variants.map((variant) => ({
     id: variant.id,
@@ -53,7 +52,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
         htmlFor={option.name}
         className="block mb-4 text-sm uppercase tracking-wide"
       >
-        {option.name}
+        {t(`${option.name}.title`)}
       </label>
       <select
         id={option.name}
@@ -65,15 +64,12 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
         }}
         className="w-full px-4 py-2 rounded-lg border bg-white"
       >
-        <option value="">Select {option.name}</option>
+        <option value="">{t(`${option.name}.select`)}</option>
         {option.values.map((value) => {
           const optionParams = { ...state, [key]: value };
           const filtered = Object.entries(optionParams).filter(([key, value]) =>
             options.find(
-              (option) =>
-                option.name.toLowerCase() === key &&
-                value !== null &&
-                option.values.includes(value)
+              (option) => option.name === key && option.values.includes(value)
             )
           );
 

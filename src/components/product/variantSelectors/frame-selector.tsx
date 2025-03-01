@@ -3,6 +3,7 @@
 import { useProduct } from "@/contexts";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 type Combination = {
@@ -20,6 +21,7 @@ interface Props {
 
 const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
   const { state, updateField } = useProduct();
+  const t = useTranslations("Product");
 
   const getImageOptions = (opt: string) => {
     switch (opt) {
@@ -47,22 +49,22 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
   return (
     <form>
       <dl className="mb-8">
-        <dt className="mb-4 text-sm uppercase tracking-wide">Frame</dt>
+        <dt className="mb-4 text-sm uppercase tracking-wide">
+          {t(`${option.name}.title`)}
+        </dt>
         <dd className="flex flex-wrap gap-3">
           {option.values.map((value) => {
             const isActive = state.frame?.toLowerCase() === value.toLowerCase();
             const optionParams = {
               ...state,
-              [option.name.toLocaleLowerCase()]: value,
+              [option.name]: value,
             };
 
             const filtered = Object.entries(optionParams).filter(
               ([key, value]) =>
                 options.find(
                   (option) =>
-                    option.name.toLowerCase() === key &&
-                    value !== null &&
-                    option.values.includes(value)
+                    option.name === key && option.values.includes(value)
                 )
             );
             const noneMatch = combinations.find(
@@ -103,7 +105,9 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                 />
                 <div className="flex flex-col">
                   <span className="text-sm">
-                    {value.toLowerCase() === "black" ? "Premium" : value}
+                    {value === "black"
+                      ? t("frame.premium")
+                      : t(`frame.${value}`)}
                   </span>
                   <span className="text-xs text-gray-800">
                     {formattedPrice}

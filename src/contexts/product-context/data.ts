@@ -7,5 +7,4 @@ export const INITIAL_FORM_STATE: FormState = {
   frame: "none",
   direction: "landscape",
   imgURL: DEFAULT_CANVAS_IMAGE,
-  cartItemID: null,
 };

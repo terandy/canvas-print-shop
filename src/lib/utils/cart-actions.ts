@@ -10,22 +10,18 @@ import {
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { TAGS } from "../constants";
+import { BASE_URL, TAGS } from "../constants";
 import type {
   UpdateCartItemOperation,
   AddToCartOperation,
-  Cart,
 } from "../shopify/types";
+import { getLocale } from "next-intl/server";
 
-export async function addItem(
-  prevState: any,
-  payload: AddToCartOperation,
-  onSuccess?: (res: Cart) => void
-) {
+export async function addItem(prevState: any, payload: AddToCartOperation) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId || !payload.selectedVariantId || !payload.imgURL) {
+  if (!cartId || !payload.selectedVariantId) {
     console.error("Failed to call cart action addItem. Missing variable", {
       cartId,
       payload,
@@ -40,15 +36,11 @@ export async function addItem(
         {
           merchandiseId: payload.selectedVariantId,
           quantity: 1,
-          attributes: [
-            { key: "imgURL", value: payload.imgURL },
-            { key: "borderStyle", value: payload.borderStyle },
-            { key: "direction", value: payload.direction },
-          ],
+          attributes: payload.attributes,
         },
       ],
     });
-    onSuccess?.(res);
+    return res;
   } catch (error) {
     console.error(error);
     return "Error adding item to cart";
@@ -139,6 +131,7 @@ export const removeItem = async (prevState: any, cartItemId: string) => {
 export const redirectToCheckout = async () => {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
+  const locale = await getLocale();
 
   if (!cartId) {
     return "Missing cart ID";
@@ -150,7 +143,13 @@ export const redirectToCheckout = async () => {
     return "Error fetching cart";
   }
 
-  redirect(cart.checkoutUrl);
+  const localeParam = `locale=${locale}`;
+  const returnToParam = `return_to=${encodeURIComponent(`${BASE_URL}/${locale}`)}`;
+  const checkoutUrlWithLocale = cart.checkoutUrl.includes("?")
+    ? `${cart.checkoutUrl}&${localeParam}&${returnToParam}`
+    : `${cart.checkoutUrl}?${localeParam}&${returnToParam}`;
+
+  redirect(checkoutUrlWithLocale);
 };
 
 export const createCartAndSetCookie = async () => {

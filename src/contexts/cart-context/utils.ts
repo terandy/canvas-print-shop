@@ -1,5 +1,5 @@
-import { Cart, LineItem, ProductVariant } from "@/lib/shopify/types";
-import { CartState, CartItem, CanvasCartItem } from "./types";
+import { Attribute, Cart, LineItem, ProductVariant } from "@/lib/shopify/types";
+import { CartState, CartItem } from "./types";
 import { FormState } from "../product-context";
 import { v4 } from "uuid";
 import { EMPTY_CART_STATE } from "./data";
@@ -20,41 +20,57 @@ const getCartItem = (lineItem: LineItem): CartItem => {
   } as CartItem;
 };
 
-export const generateNewCanvasCartItem = (
+export const isSelectOption = (fieldName: string) => {
+  return ["size", "frame"].includes(fieldName);
+};
+export const isAttribute = (fieldName: string) => {
+  return ["borderStyle", "imgURL", "direction"].includes(fieldName);
+};
+
+export const getAttributes = (formState: {
+  [key: string]: string;
+}): Attribute[] => {
+  return Object.entries(formState)
+    .map(([key, value]) => {
+      return { key, value };
+    })
+    .filter((item) => isAttribute(item.key));
+};
+
+export const getSelectOptions = (formState: {
+  [key: string]: string;
+}): CartItem["selectedOptions"] => {
+  return Object.entries(formState)
+    .map(([key, value]) => ({ name: key, value }))
+    .filter((item) => isSelectOption(item.name));
+};
+
+export const generateNewCartItem = (
   formState: FormState,
-  productVariant: ProductVariant
-): CanvasCartItem => {
+  productVariant: ProductVariant,
+  producthandle: string
+): CartItem => {
   return {
     id: v4(),
-    title: "Canvas",
+    title: producthandle,
     quantity: 1,
     totalAmount: productVariant.price,
     variantID: productVariant.id,
-    attributes: [
-      { key: "imgURL", value: formState.imgURL },
-      { key: "direction", value: formState.direction },
-      { key: "borderStyle", value: formState.borderStyle },
-    ],
-    selectedOptions: [
-      { name: "size", value: formState.size },
-      { name: "frame", value: formState.frame },
-    ],
+    attributes: getAttributes(formState),
+    selectedOptions: getSelectOptions(formState),
     imgURL: formState.imgURL,
   };
 };
 
-export const toProductState = (
-  cartItem: CartItem
-): { [key: string]: string } => {
+export const toProductState = (cartItem: CartItem): FormState => {
   const interim: { [key: string]: string } = {};
   cartItem.attributes.forEach((attr) => (interim[attr.key] = attr.value));
   cartItem.selectedOptions.forEach((opt) => (interim[opt.name] = opt.value));
-  interim.cartItemID = cartItem.id;
   return interim;
 };
-export const generateUpdatedCanvasCartItem = (
-  prevItem: CanvasCartItem,
-  updates: Partial<FormState>,
+export const generateUpdatedCartItem = (
+  prevItem: CartItem,
+  updates: FormState,
   productVariant: ProductVariant
 ): CartItem => {
   const prevAttributes = Object.fromEntries(
@@ -63,31 +79,18 @@ export const generateUpdatedCanvasCartItem = (
   const prevSelectedOptions = Object.fromEntries(
     prevItem.selectedOptions.map((attr) => [attr.name, attr.value])
   );
+
+  const updatedSelectedOptions = Object.fromEntries(
+    productVariant.selectedOptions.map((opt) => [opt.name, opt.value])
+  );
   return {
     ...prevItem,
     totalAmount: productVariant.price,
-    attributes: [
-      { key: "imgURL", value: updates.imgURL ?? prevAttributes.imgURL },
-      {
-        key: "direction",
-        value:
-          updates.direction ??
-          (prevAttributes.direction as FormState["direction"]),
-      },
-      {
-        key: "borderStyle",
-        value:
-          updates.borderStyle ??
-          (prevAttributes.borderStyle as FormState["borderStyle"]),
-      },
-    ],
-    selectedOptions: [
-      { name: "size", value: prevSelectedOptions.size as FormState["size"] },
-      {
-        name: "frame",
-        value: prevSelectedOptions.frame as FormState["frame"],
-      },
-    ],
+    attributes: getAttributes({ ...prevAttributes, ...updates }),
+    selectedOptions: getSelectOptions({
+      ...prevSelectedOptions,
+      ...updatedSelectedOptions,
+    }),
     imgURL: prevAttributes.imgURL,
   };
 };

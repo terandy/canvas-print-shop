@@ -1,21 +1,24 @@
+"use client";
+
 import { updateCartItem } from "@/lib/utils/cart-actions";
 import { useActionState } from "react";
 import { Minus, Plus } from "lucide-react";
 import Button from "../buttons/button";
 import { CartItem, TCartContext } from "@/contexts/cart-context/types";
 import { ProductVariant } from "@/lib/shopify/types";
+import { useTranslations } from "next-intl";
 
 interface SubmitButtonProps {
   type: "plus" | "minus";
 }
 
 const SubmitButton: React.FC<SubmitButtonProps> = ({ type }) => {
+  const t = useTranslations("Cart.Quantity");
+
   return (
     <Button
       type="submit"
-      aria-label={
-        type === "plus" ? "Increase item quantity" : "Reduce item quantity"
-      }
+      aria-label={type === "plus" ? t("increase") : t("decrease")}
       icon={type === "plus" ? Plus : Minus}
       size="sm"
       variant="ghost"

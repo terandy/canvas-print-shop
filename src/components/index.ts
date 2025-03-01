@@ -3,6 +3,7 @@ export * from "./product";
 export * from "./grid";
 export * from "./cart";
 export * from "./buttons";
+export * from "./alerts";
 
 export { default as Badge } from "./badge";
 export { default as ContactSection } from "./contact-section";

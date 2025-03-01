@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import Button from "../buttons/button";
 import { CartItem, TCartContext } from "@/contexts";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 interface Props {
   item: CartItem;
@@ -15,10 +17,13 @@ interface Props {
 }
 
 const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
+  const t = useTranslations("Cart.DeleteItem");
+  const locale = useLocale();
   const searchParams = useSearchParams();
   const router = useRouter();
   const [message, formAction] = useActionState(removeItem, null);
   const cartItemId = item.id;
+
   return (
     <form
       action={async () => {
@@ -26,12 +31,13 @@ const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
         await formAction(cartItemId);
         const imgUrl = item.imgURL;
         if (imgUrl) deleteImage(imgUrl);
-        if (searchParams.get("cartItemID") === cartItemId) router.replace("/");
+        if (searchParams.get("cartItemID") === cartItemId)
+          router.replace(`/${locale}/`);
       }}
     >
       <Button
         type="submit"
-        aria-label="Remove cart item"
+        aria-label={t("ariaLabel")}
         icon={Trash}
         variant="ghost"
         className="border border-transparent hover:text-red-600"

@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { startTransition } from "react";
 import Button from "../buttons/button";
+import { useTranslations } from "next-intl";
 
 interface Props {
   imgURL: string;
@@ -12,6 +13,7 @@ interface Props {
 
 const ImageFile: React.FC<Props> = ({ imgURL }) => {
   const { deleteImgURL } = useProduct();
+  const t = useTranslations("common");
 
   const removeImage = () => {
     startTransition(() => {
@@ -29,10 +31,10 @@ const ImageFile: React.FC<Props> = ({ imgURL }) => {
         height={25}
         className="object-contain rounded-lg border-2 border-gray-200"
       />
-      <span>Image</span>
+      <span>{t("image")}</span>
       <Button
         onClick={removeImage}
-        title="remove image"
+        title={t("removeImage")}
         onMouseOver={(e) => e.stopPropagation()}
         icon={X}
         variant="ghost"

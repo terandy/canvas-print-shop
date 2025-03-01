@@ -3,20 +3,27 @@
 import { useProduct } from "@/contexts";
 import clsx from "clsx";
 import Image from "next/image";
+import { useTranslations } from "use-intl";
 
 const BorderStyleSelector = () => {
   const { state, updateField } = useProduct();
+  const t = useTranslations("Product.borderStyle");
+
   const options = [
-    { label: "Black", value: "black", src: "/border/black-border.png" },
-    { label: "White", value: "white", src: "/border/white-border.png" },
-    { label: "Wrapped", value: "wrapped", src: "/border/wrapped-border.png" },
-    { label: "Auto fill", value: "fill", src: "/border/fill-border.png" },
+    { label: t("black"), value: "black", src: "/border/black-border.png" },
+    { label: t("white"), value: "white", src: "/border/white-border.png" },
+    {
+      label: t("wrapped"),
+      value: "wrapped",
+      src: "/border/wrapped-border.png",
+    },
+    { label: t("fill"), value: "fill", src: "/border/fill-border.png" },
   ];
 
   return (
     <form>
       <dl className="mb-8">
-        <dt className="mb-4 text-sm uppercase tracking-wide">Border style</dt>
+        <dt className="mb-4 text-sm uppercase tracking-wide">{t("title")}</dt>
         <dd className="flex flex-wrap gap-3">
           {options.map((option) => {
             const isActive = state.borderStyle === option.value;

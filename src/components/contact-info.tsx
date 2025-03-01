@@ -1,18 +1,23 @@
-import { EMAIL, PHONE, OPENING_HOURS } from "@/lib/constants";
+"use server";
+
+import { EMAIL, PHONE } from "@/lib/constants";
 import clsx from "clsx";
+import { getTranslations } from "next-intl/server";
 
 interface Props {
   className?: string;
 }
 
-const ContactInfo: React.FC<Props> = ({ className }) => {
+const ContactInfo = async ({ className }: Props) => {
+  const t = await getTranslations("Contact");
+
   return (
     <p className={clsx("text-gray-600", className)}>
-      Email: {EMAIL.label}
+      {t("email.label")}: {EMAIL.label}
       <br />
-      Phone: {PHONE.label}
+      {t("phone.label")}: {PHONE.label}
       <br />
-      Hours: {OPENING_HOURS}
+      {t("openingHours.label")}: {t("openingHours.value")}
       <br />
     </p>
   );

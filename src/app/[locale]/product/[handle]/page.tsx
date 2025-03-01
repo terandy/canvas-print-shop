@@ -10,7 +10,6 @@ import {
   Prose,
 } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
-import { CANVAS_ID } from "@/lib/constants";
 
 type Props = {
   params: Promise<{ handle: string }>;
@@ -61,11 +60,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   if (!product) return notFound();
   return (
     // TODO allow other types
-    <ProductProvider
-      key={cartItemID}
-      product={product}
-      cartItemID={cartItemID ?? null}
-    >
+    <ProductProvider product={product} cartItemID={cartItemID ?? null}>
       <div className="container mx-auto max-w-screen-2xl px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
           <div className="lg:col-span-3" id="product-image-preview-container">
@@ -86,7 +81,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
                     />
                   )}
                 </SectionContainer>
-                <ProductForm product={product} cartItemID={cartItemID} />
+                <ProductForm />
               </div>
             </Suspense>
           </div>

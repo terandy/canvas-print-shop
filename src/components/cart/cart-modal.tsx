@@ -3,44 +3,36 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useCart } from "@/contexts";
-import Image from "next/image";
 import Price from "../product/price";
-import {
-  DEFAULT_CANVAS_IMAGE,
-  LOCAL_STORAGE_FORM_STATE,
-} from "@/lib/constants";
-import DeleteItemButton from "./delete-item-button";
-import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
 import { redirectToCheckout } from "@/lib/utils/cart-actions";
-import { Pencil, ShoppingCart, X } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
 import Badge from "../badge";
-import ButtonLink from "../buttons/button-link";
-import type { CartItem, CartState, TCartContext } from "@/contexts";
-import { toProductState } from "@/contexts/cart-context/utils";
-import { useRouter } from "next/router";
-
-type MerchandiseSearchParams = {
-  [key: string]: string;
-};
+import type { CartState } from "@/contexts";
+import CartItemCard from "./cart-item-card";
+import { useTranslations } from "next-intl";
 
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
+  const t = useTranslations("Cart.Modal");
+
   return (
     <Button type="submit" className="w-full flex justify-center">
-      {pending ? <LoadingDots className="bg-white" /> : "Proceed to Checkout"}
+      {pending ? <LoadingDots className="bg-white" /> : t("checkout")}
     </Button>
   );
 };
 
 const Totals = ({ cartState }: { cartState: CartState }) => {
+  const t = useTranslations("Cart.Modal");
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
-        <p className="text-gray">Taxes</p>
+        <p className="text-gray">{t("taxes")}</p>
         <Price
           className="text-right text-base text-secondary"
           amount={cartState.cost.totalTaxAmount.amount}
@@ -48,11 +40,11 @@ const Totals = ({ cartState }: { cartState: CartState }) => {
         />
       </div>
       <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
-        <p className="text-gray">Shipping</p>
-        <p className="text-right text-gray">Calculated at checkout</p>
+        <p className="text-gray">{t("shipping")}</p>
+        <p className="text-right text-gray">{t("shippingCalculation")}</p>
       </div>
       <div className="flex items-center justify-between pb-3">
-        <p className="text-secondary font-semibold">Total</p>
+        <p className="text-secondary font-semibold">{t("total")}</p>
         <Price
           className="text-right text-lg font-semibold text-secondary"
           amount={cartState.cost.totalAmount.amount}
@@ -63,101 +55,8 @@ const Totals = ({ cartState }: { cartState: CartState }) => {
   );
 };
 
-const CartItemCard = ({
-  item,
-  updateCartItemQuantity,
-  closeCart,
-}: {
-  item: CartItem;
-  closeCart: () => void;
-  updateCartItemQuantity: TCartContext["updateCartItemQuantity"];
-}) => {
-  const state = toProductState(item);
-
-  const getProductHref = () => {
-    const newParams = new URLSearchParams();
-    newParams.set("cartItemID", item.id);
-    return `/product/${item.title}?${newParams.toString()}`;
-  };
-  return (
-    <li className="border-b border-gray-light/10 py-4">
-      <div className="flex gap-4">
-        <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
-          <Image
-            src={item.imgURL ?? DEFAULT_CANVAS_IMAGE}
-            width={80}
-            height={80}
-            alt="Custom Print"
-            className="object-cover w-full h-full"
-          />
-        </div>
-        <div className="flex-1">
-          <div className="space-y-1">
-            <p className="text-secondary font-medium">{item.title}</p>
-            {Object.entries(state)
-              .filter(
-                ([key, _value]) => key !== "imgURL" && key !== "cartItemID"
-              )
-              .map(([key, value]) => (
-                <span
-                  key={key}
-                  className="block text-sm text-gray first-letter:capitalize"
-                >
-                  {value}
-                  {key === "borderStyle" && " border"}
-                </span>
-              ))}
-          </div>
-        </div>
-        <div className="flex">
-          <DeleteItemButton
-            item={item}
-            optimisticUpdate={updateCartItemQuantity}
-          />
-          <ButtonLink
-            href={getProductHref()}
-            onClick={() => {
-              localStorage.setItem(
-                LOCAL_STORAGE_FORM_STATE,
-                JSON.stringify(toProductState(item))
-              );
-              closeCart();
-            }}
-            icon={Pencil}
-            size="sm"
-            title="Edit"
-            variant="secondary"
-            replace
-          >
-            Edit
-          </ButtonLink>
-        </div>
-      </div>
-      <div className="flex mt-4 items-center justify-between gap-4">
-        <div className="flex items-center rounded-full border border-gray-light/20">
-          <EditItemQuantityButton
-            item={item}
-            type="minus"
-            optimisticUpdate={updateCartItemQuantity}
-          />
-          <p className="w-8 text-center text-secondary">{item.quantity}</p>
-          <EditItemQuantityButton
-            item={item}
-            type="plus"
-            optimisticUpdate={updateCartItemQuantity}
-          />
-        </div>
-        <Price
-          className="text-secondary font-medium"
-          amount={item.totalAmount.amount}
-          currencyCode={item.totalAmount.currencyCode}
-        />
-      </div>
-    </li>
-  );
-};
-
 const CartModal = () => {
+  const t = useTranslations("Cart.Modal");
   const { state, updateCartItemQuantity } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const quantityRef = useRef(state?.totalQuantity);
@@ -183,7 +82,7 @@ const CartModal = () => {
     <>
       <Badge count={state?.totalQuantity}>
         <SquareButton
-          aria-label="Open cart"
+          aria-label={t("openCart")}
           icon={ShoppingCart}
           onClick={openCart}
         />
@@ -213,10 +112,10 @@ const CartModal = () => {
             <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
               <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
                 <p className="flex gap-2 text-lg font-semibold text-secondary">
-                  My Cart
+                  {t("myCart")}
                 </p>
                 <Button
-                  aria-label="Close cart"
+                  aria-label={t("closeCart")}
                   onClick={closeCart}
                   icon={X}
                   variant="ghost"
@@ -227,7 +126,7 @@ const CartModal = () => {
                 <div className="flex flex-col items-center justify-center flex-1 p-8">
                   <ShoppingCart className="w-16 h-16 text-gray-light" />
                   <p className="mt-4 text-xl font-medium text-secondary">
-                    Your Cart is Empty
+                    {t("emptyCart")}
                   </p>
                 </div>
               ) : (
@@ -248,6 +147,7 @@ const CartModal = () => {
                     <Totals cartState={state} />
                     <form
                       action={() => {
+                        localStorage.clear();
                         redirectToCheckout();
                       }}
                     >
