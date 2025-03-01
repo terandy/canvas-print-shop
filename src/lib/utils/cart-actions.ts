@@ -17,15 +17,11 @@ import type {
   Cart,
 } from "../shopify/types";
 
-export async function addItem(
-  prevState: any,
-  payload: AddToCartOperation,
-  onSuccess?: (res: Cart) => void
-) {
+export async function addItem(prevState: any, payload: AddToCartOperation) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId || !payload.selectedVariantId || !payload.imgURL) {
+  if (!cartId || !payload.selectedVariantId) {
     console.error("Failed to call cart action addItem. Missing variable", {
       cartId,
       payload,
@@ -40,15 +36,11 @@ export async function addItem(
         {
           merchandiseId: payload.selectedVariantId,
           quantity: 1,
-          attributes: [
-            { key: "imgURL", value: payload.imgURL },
-            { key: "borderStyle", value: payload.borderStyle },
-            { key: "direction", value: payload.direction },
-          ],
+          attributes: payload.attributes,
         },
       ],
     });
-    onSuccess?.(res);
+    return res;
   } catch (error) {
     console.error(error);
     return "Error adding item to cart";

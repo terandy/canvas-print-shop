@@ -53,16 +53,14 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
             const isActive = state.frame?.toLowerCase() === value.toLowerCase();
             const optionParams = {
               ...state,
-              [option.name.toLocaleLowerCase()]: value,
+              [option.name]: value,
             };
 
             const filtered = Object.entries(optionParams).filter(
               ([key, value]) =>
                 options.find(
                   (option) =>
-                    option.name.toLowerCase() === key &&
-                    value !== null &&
-                    option.values.includes(value)
+                    option.name === key && option.values.includes(value)
                 )
             );
             const noneMatch = combinations.find(

@@ -20,7 +20,4 @@ export const ADDRESS = {
   href: "https://maps.app.goo.gl/fdPr7qQHmF4rRbuD7",
 };
 
-export const LOCAL_STORAGE_FORM_STATE = "FormState";
-export const CANVAS_ID = "canvasID";
-
 export const DEFAULT_CANVAS_IMAGE = "/default-image.jpeg";

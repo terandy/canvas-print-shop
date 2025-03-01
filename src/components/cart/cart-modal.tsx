@@ -5,10 +5,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { useCart } from "@/contexts";
 import Image from "next/image";
 import Price from "../product/price";
-import {
-  DEFAULT_CANVAS_IMAGE,
-  LOCAL_STORAGE_FORM_STATE,
-} from "@/lib/constants";
+import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
@@ -21,11 +18,6 @@ import Badge from "../badge";
 import ButtonLink from "../buttons/button-link";
 import type { CartItem, CartState, TCartContext } from "@/contexts";
 import { toProductState } from "@/contexts/cart-context/utils";
-import { useRouter } from "next/router";
-
-type MerchandiseSearchParams = {
-  [key: string]: string;
-};
 
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
@@ -118,9 +110,10 @@ const CartItemCard = ({
             href={getProductHref()}
             onClick={() => {
               localStorage.setItem(
-                LOCAL_STORAGE_FORM_STATE,
+                item.title,
                 JSON.stringify(toProductState(item))
               );
+              localStorage.setItem("cartItemID", item.id);
               closeCart();
             }}
             icon={Pencil}

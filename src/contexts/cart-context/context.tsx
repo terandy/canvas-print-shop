@@ -7,16 +7,11 @@ import React, {
   useMemo,
   useOptimistic,
 } from "react";
-import type {
-  CartState,
-  TCartContext,
-  CartItem,
-  CanvasCartItem,
-} from "./types";
+import type { CartState, TCartContext, CartItem } from "./types";
 import { Cart, ProductVariant } from "@/lib/shopify/types";
 import {
-  generateNewCanvasCartItem,
-  generateUpdatedCanvasCartItem,
+  generateNewCartItem,
+  generateUpdatedCartItem,
   getInitialState,
   generateCartTotals,
   generateUpdatedCartItemQuantity,
@@ -40,8 +35,12 @@ const CartProvider = ({
       ...update,
     })
   );
-  const addCanvasCartItem = (formState: FormState, variant: ProductVariant) => {
-    const newCartItem = generateNewCanvasCartItem(formState, variant);
+  const addCartItem = (
+    formState: FormState,
+    variant: ProductVariant,
+    productHandle: string
+  ) => {
+    const newCartItem = generateNewCartItem(formState, variant, productHandle);
     const newItems = { ...state.items, [newCartItem.id]: newCartItem };
     return {
       ...state,
@@ -49,20 +48,13 @@ const CartProvider = ({
       items: newItems,
     };
   };
-  const updateCanvasCartItem = (
-    cartItemID: CanvasCartItem["id"],
-    updates: Partial<FormState>,
+  const updateCartItem = (
+    cartItemID: CartItem["id"],
+    updates: FormState,
     variant: ProductVariant
   ) => {
     const cartItem = state.items[cartItemID];
-    if (cartItem.title !== "Canvas") {
-      console.warn("cartItem found is not a canvas");
-    }
-    const newCartItem = generateUpdatedCanvasCartItem(
-      cartItem as CanvasCartItem,
-      updates,
-      variant
-    );
+    const newCartItem = generateUpdatedCartItem(cartItem, updates, variant);
     const newItems = { ...state.items };
     newItems[cartItemID] = newCartItem;
     return {
@@ -101,8 +93,8 @@ const CartProvider = ({
   const value = useMemo<TCartContext>(
     () => ({
       state,
-      addCanvasCartItem,
-      updateCanvasCartItem,
+      addCartItem,
+      updateCartItem,
       updateCartItemQuantity,
       setState,
     }),

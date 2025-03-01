@@ -1,15 +1,14 @@
 "use client";
 
 import { ProductVariant } from "@/lib/shopify/types";
-import { useCart, FormState } from "@/contexts";
+import { useCart, FormState, useProduct } from "@/contexts";
 import * as api from "@/lib/utils/cart-actions";
 import React, { useActionState } from "react";
 import { Plus, Save } from "lucide-react";
 import Button from "../buttons/button";
-import { toProductState } from "@/contexts/cart-context/utils";
-import { CanvasCartItem } from "@/contexts/cart-context/types";
+import { getAttributes, toProductState } from "@/contexts/cart-context/utils";
+import { CartItem } from "@/contexts/cart-context/types";
 import { ButtonLink } from "../buttons";
-import { LOCAL_STORAGE_FORM_STATE } from "@/lib/constants";
 
 interface SubmitButtonProps {
   saved?: boolean;
@@ -27,52 +26,53 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ saved, disabled }) => {
   );
 };
 
-interface SaveCartItemProps {
-  variant: ProductVariant;
-  formState: FormState;
+interface SaveCartItemProps<T extends FormState> {
   cartItemID: string;
 }
-const SaveCartItem: React.FC<SaveCartItemProps> = ({
+
+const SaveCartItem = <T extends FormState, U extends CartItem>({
   cartItemID,
-  variant,
-  formState,
-}) => {
+}: SaveCartItemProps<T>) => {
   const cartContext = useCart();
+  const {
+    product: { handle },
+    state,
+    variant,
+  } = useProduct();
   const [message, updateCartItem] = useActionState(api.updateCartItem, null);
-  const prevCartItem = cartContext.state?.items[cartItemID] as CanvasCartItem;
+  const prevCartItem = cartContext.state?.items[cartItemID] as U;
 
   const hasDiff =
-    JSON.stringify(formState) !==
+    JSON.stringify(state) !==
     JSON.stringify(prevCartItem ? toProductState(prevCartItem) : null);
 
   return (
     <form
       action={async () => {
-        if (!formState.imgURL || !variant || !formState.cartItemID) return;
-        cartContext.updateCanvasCartItem(prevCartItem.id, formState, variant); // optimistic
+        if (!state.imgURL || !variant) return;
+        cartContext.updateCartItem(cartItemID, state, variant); // optimistic
         await updateCartItem({
-          cartItemId: prevCartItem.id,
+          cartItemId: cartItemID,
           merchandiseId: variant.id,
           quantity: 1,
-          attributes: [
-            { key: "imgURL", value: formState.imgURL },
-            { key: "borderStyle", value: formState.borderStyle },
-            { key: "direction", value: formState.direction },
-          ],
+          attributes: getAttributes(state),
         });
       }}
       className="flex flex-col gap-2"
     >
-      <SubmitButton saved={!hasDiff} disabled={!formState.imgURL} />
+      <SubmitButton saved={!hasDiff} disabled={!state.imgURL} />
       <ButtonLink
-        href={`/product/${prevCartItem.title}`}
+        href={`/product/${handle}`}
         variant="secondary"
         icon={Plus}
         iconPosition="left"
-        onClick={() => localStorage.removeItem(LOCAL_STORAGE_FORM_STATE)}
+        onClick={() => {
+          localStorage.removeItem(handle);
+          localStorage.removeItem("cartItemID");
+        }}
         replace
       >
-        Create a new canvas
+        Create a new {handle}
       </ButtonLink>
       <p className="sr-only" role="status" aria-label="polite">
         {message}

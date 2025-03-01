@@ -1,23 +1,19 @@
 "use client";
 
-import { Product } from "@/lib/shopify/types";
 import VariantSelector from "./variantSelectors/variant-selector";
 import React from "react";
-import { AddToCart } from "../cart";
-import { SaveCartItem } from "../cart";
 import BorderStyleSelector from "./variantSelectors/border-style-selector";
 import DirectionSelector from "./variantSelectors/direction-selector";
 import FrameSelector from "./variantSelectors/frame-selector";
 import { useProduct } from "@/contexts";
 import ImageUploader from "./image-uploader";
+import AddToCart from "./add-to-cart";
+import SaveCartItem from "./save-cart-item";
 
-interface Props {
-  product: Product;
-  cartItemID?: string;
-}
+interface Props {}
 
-const ProductForm: React.FC<Props> = ({ product, cartItemID }) => {
-  const { variant, state } = useProduct();
+const ProductForm: React.FC<Props> = () => {
+  const { variant, state, product, cartItemID } = useProduct();
   return (
     <>
       {"imgURL" in state && <ImageUploader />}
@@ -45,15 +41,7 @@ const ProductForm: React.FC<Props> = ({ product, cartItemID }) => {
       })}
       {"direction" in state && <DirectionSelector />}
       {"borderStyle" in state && <BorderStyleSelector />}
-      {!cartItemID ? (
-        <AddToCart variant={variant} formState={state} />
-      ) : (
-        <SaveCartItem
-          variant={variant}
-          formState={state}
-          cartItemID={cartItemID}
-        />
-      )}
+      {!cartItemID ? <AddToCart /> : <SaveCartItem cartItemID={cartItemID} />}
     </>
   );
 };

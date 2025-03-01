@@ -10,11 +10,8 @@ import React, {
 } from "react";
 import type { TProductContext, FormState } from "./types";
 import { Product } from "@/lib/shopify/types";
-import { INITIAL_FORM_STATE } from "./data";
-import {
-  DEFAULT_CANVAS_IMAGE,
-  LOCAL_STORAGE_FORM_STATE,
-} from "@/lib/constants";
+import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
+import { getInitialFormState } from "./utils";
 
 const ProductContext = createContext<TProductContext | undefined>(undefined);
 
@@ -27,51 +24,22 @@ const ProductProvider = ({
   product: Product;
   cartItemID: string | null;
 }) => {
+  const { handle } = product;
   const [isHydrated, setIsHydrated] = useState(false);
-  const [state, setState] = useState(INITIAL_FORM_STATE);
+  const [state, setState] = useState<FormState>(getInitialFormState(handle));
   const [imgFileUrl, setImgFileUrl] = useState<string | null>(null);
 
-  const updateState = (update: Partial<FormState>) => {
+  const updateState = (update: FormState) => {
     setState((prevState) => ({
       ...prevState,
       ...update,
     }));
   };
-  useEffect(() => {
-    try {
-      // Load saved state after hydration
-      const savedState = localStorage.getItem(LOCAL_STORAGE_FORM_STATE);
-      if (!savedState) return;
-      const parsedSavedState = JSON.parse(savedState);
-      if (
-        typeof parsedSavedState === "object" &&
-        parsedSavedState.cartItemID === cartItemID
-      ) {
-        setState(JSON.parse(savedState));
-      }
-    } catch (error) {
-      console.error("Failed to parse saved state:", error);
-    }
-    setIsHydrated(true);
 
-    // Return cleanup function to handle component unmounting
-    return () => {
-      // Cancel any pending transitions
-      startTransition(() => {});
-    };
-  }, [isHydrated]);
-
-  useEffect(() => {
-    // Only save state after hydration and when state changes
-    if (isHydrated) {
-      localStorage.setItem(LOCAL_STORAGE_FORM_STATE, JSON.stringify(state));
-    }
-  }, [state, isHydrated]);
-
-  const updateField = <T extends keyof FormState>(
-    name: T,
-    value: FormState[T]
-  ) => {
+  const updateField = <U extends keyof FormState>(
+    name: U,
+    value: FormState[U]
+  ): FormState => {
     const newState = { ...state, [name]: value };
 
     updateState(newState);
@@ -79,7 +47,7 @@ const ProductProvider = ({
   };
 
   const deleteImgURL = () => {
-    const update = { imgURL: DEFAULT_CANVAS_IMAGE } as Partial<FormState>;
+    const update = { imgURL: DEFAULT_CANVAS_IMAGE };
     updateState(update);
     return update;
   };
@@ -96,19 +64,63 @@ const ProductProvider = ({
 
   const value = useMemo<TProductContext>(
     () => ({
+      cartItemID,
+      handle,
+      imgFileUrl,
+      product,
       state,
       variant,
-      imgFileUrl,
-      updateField,
-      updateState,
       deleteImgURL,
       setImgFileUrl,
+      updateField,
+      updateState,
     }),
-    [state, variant, imgFileUrl]
+    [state, variant, imgFileUrl, handle, product, cartItemID]
   );
 
+  useEffect(() => {
+    try {
+      // Load saved state after hydration
+      const savedState = localStorage.getItem(handle);
+      const savedCartItemID = localStorage.getItem("cartItemID");
+      if (!savedState) {
+        setIsHydrated(true);
+        setState(getInitialFormState(handle));
+        return;
+      }
+      const parsedSavedState = JSON.parse(savedState);
+      if (savedCartItemID === cartItemID) {
+        setState({ ...state, ...parsedSavedState });
+      } else {
+        setState(getInitialFormState(handle));
+      }
+    } catch (error) {
+      console.error("Failed to parse saved state:", error);
+    } finally {
+      setIsHydrated(true);
+    }
+  }, [handle, cartItemID]);
+
+  useEffect(() => {
+    // Only save state after hydration and when state changes
+    if (isHydrated) {
+      localStorage.setItem(handle, JSON.stringify(state));
+    }
+  }, [state, handle, isHydrated]);
+
+  useEffect(() => {
+    if (!isHydrated) return;
+    if (cartItemID) {
+      localStorage.setItem("cartItemID", cartItemID);
+    } else {
+      localStorage.removeItem("cartItemID");
+    }
+  }, [cartItemID, handle, isHydrated]);
+
   return (
-    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
+    <ProductContext.Provider key={product.handle + cartItemID} value={value}>
+      {children}
+    </ProductContext.Provider>
   );
 };
 
