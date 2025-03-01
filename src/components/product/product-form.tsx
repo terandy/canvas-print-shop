@@ -13,7 +13,7 @@ import SaveCartItem from "./save-cart-item";
 interface Props {}
 
 const ProductForm: React.FC<Props> = () => {
-  const { variant, state, product, cartItemID } = useProduct();
+  const { state, product, cartItemID } = useProduct();
   return (
     <>
       {"imgURL" in state && <ImageUploader />}

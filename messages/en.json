@@ -1,0 +1,393 @@
+{
+  "Metadata": {
+    "title": "Custom Canvas Prints & Framing | Canvas Print Shop",
+    "description": "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada. Order now for fast delivery!",
+    "og": {
+      "title": "Custom Canvas Prints & Framing | Canvas Print Shop",
+      "description": "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada."
+    }
+  },
+  "Home": {
+    "hero": {
+      "title": "Custom Canvas Prints Made to Order",
+      "description": "Turn your cherished memories into beautiful canvas prints, expertly hand-crafted in Canada and ready to hang in your home."
+    },
+    "benefits": {
+      "heading": "Why Choose Canvas Print Shop?",
+      "premium": {
+        "title": "Premium Materials",
+        "description": "Premium cotton-blend canvas with 10x higher density and 75% opacity - far superior to competitors' lower quality materials."
+      },
+      "craftsmanship": {
+        "title": "Expert Craftsmanship",
+        "description": "All canvas prints are expertly handcrafted in our Canadian studio, based in Quebec City."
+      },
+      "process": {
+        "title": "Easy Process",
+        "description": "Simply upload your image, choose your dimensions, preview your canvas print and then checkout."
+      },
+      "technology": {
+        "title": "UVgel Technology",
+        "description": "Advanced Canon printing technology delivering exceptional color vibrancy and durability, backed by our 30-year print quality guarantee. Eco-friendly, no-odor prints perfect for indoor display."
+      }
+    },
+    "featured": {
+      "heading": "Create Your Custom Canvas Print",
+      "description": "Transform your favorite moments into stunning wall art with our premium canvas prints"
+    },
+    "process": {
+      "heading": "How It Works",
+      "upload": {
+        "title": "Upload Your Photo",
+        "description": "Choose your favorite image from any device"
+      },
+      "select": {
+        "title": "Select Your Style",
+        "description": "Pick your size and frame options"
+      },
+      "create": {
+        "title": "We Create Your Masterpiece",
+        "description": "Expert printing and craftsmanship"
+      },
+      "enjoy": {
+        "title": "Enjoy Your Custom Art",
+        "description": "Ready-to-hang delivery to your door"
+      }
+    },
+    "testimonials": {
+      "heading": "What Our Customers Say",
+      "first": {
+        "quote": "The quality exceeded my expectations. The colors are vibrant, and the framing is absolutely perfect.",
+        "author": "Jennifer T., Toronto"
+      },
+      "second": {
+        "quote": "From upload to delivery, the whole process was seamless. The finished piece looks amazing!",
+        "author": "Michel B., Montreal"
+      }
+    },
+    "trustBadges": {
+      "secure": "Secure checkout",
+      "ssl": "SSL encrypted",
+      "shipping": "Fast, reliable shipping",
+      "made": "Made in Canada",
+      "satisfaction": "100% satisfaction guaranteed"
+    }
+  },
+  "Error": {
+    "title": "Something went wrong!",
+    "message": "We're sorry, but an error occurred while processing your request.",
+    "tryAgain": "Try again"
+  },
+  "Footer": {
+    "companyName": "Canvas Print Shop",
+    "companyDescription": "Creating beautiful, high-quality canvas prints for your home or office. Proudly Canadian, serving customers nationwide.",
+    "customerService": "Customer Service",
+    "contactUs": "Contact Us",
+    "securePayment": "Secure Payment Methods",
+    "copyright": "All rights reserved.",
+    "paymentAlt": "{method} payment accepted",
+    "links": {
+      "privacy": "Privacy Policy",
+      "faqs": "FAQs",
+      "shipping": "Shipping Policy",
+      "returns": "Returns Policy",
+      "contact": "Contact Us"
+    }
+  },
+  "ShippingPolicy": {
+    "metadata": {
+      "title": "Shipping Policy | Canvas Print Shop",
+      "description": "Learn about our shipping options including Canada Post delivery and local pickup in Quebec City."
+    },
+    "pageTitle": "Shipping Policy",
+    "localPickup": {
+      "title": "Local Pickup",
+      "description": "We offer free local pickup at our Quebec City location for your convenience.",
+      "hours": "Available during business hours: Monday to Friday, 9am - 5pm EST",
+      "select": "Select \"Local Pickup\" during checkout",
+      "email": "You'll receive an email when your order is ready for pickup"
+    },
+    "canadaPost": {
+      "title": "Canada Post Delivery",
+      "description": "We ship all orders through Canada Post with tracking provided on every shipment.",
+      "estimatedTitle": "Estimated Delivery Times:",
+      "local": "Local (Quebec): 1-2 business days",
+      "majorCities": "Major cities: 2-3 business days",
+      "ruralAreas": "Rural areas: 3-7 business days",
+      "remoteLocations": "Remote locations: 7-14 business days",
+      "disclaimer": "*Delivery times are estimates and may vary based on weather conditions and Canada Post service updates."
+    },
+    "processingTime": {
+      "title": "Processing Time",
+      "description": "Each canvas print is carefully crafted to order:",
+      "standard": "Standard orders: 2-3 business days processing time",
+      "payment": "Processing begins once payment is confirmed",
+      "tracking": "You'll receive an email with tracking information once your order ships",
+      "rush": "Rush processing may be available upon request"
+    },
+    "shippingCosts": {
+      "title": "Shipping Costs",
+      "localPickup": "Local Pickup: Free",
+      "standard": "Standard Shipping: Calculated at checkout based on size and destination",
+      "free": "Free shipping on orders over $150 (some remote locations excluded)"
+    },
+    "orderTracking": {
+      "title": "Order Tracking",
+      "description": "Stay informed about your order status:",
+      "number": "Tracking number provided via email once order ships",
+      "website": "Track your package directly through Canada Post's website",
+      "notifications": "Email notifications for order confirmation, processing, and shipping",
+      "support": "Contact our customer service team for additional tracking support"
+    }
+  },
+  "ReturnsPolicy": {
+    "metadata": {
+      "title": "Returns Policy | Canvas Print Shop",
+      "description": "Learn about our 30-day return policy and our commitment to customer satisfaction. We make returns easy with our hassle-free process."
+    },
+    "pageTitle": "Returns Policy",
+    "introduction": "At Canvas Print Shop, we take pride in delivering exceptional quality canvas prints. Your satisfaction is our top priority, which is why we offer a comprehensive 30-day return policy. We stand behind our products and will work with you to ensure you're completely happy with your purchase.",
+    "returnWindow": {
+      "title": "30-Day Return Window",
+      "description": "You can initiate a return within 30 days of receiving your order if you're not completely satisfied. This applies to:",
+      "reasons": {
+        "quality": "Prints with quality issues",
+        "damage": "Damaged items",
+        "incorrect": "Incorrect sizes or specifications",
+        "expectations": "Items that don't meet your expectations"
+      }
+    },
+    "returnProcess": {
+      "title": "How to Return Your Order",
+      "description": "Starting a return is simple. Email us at returns@canvasprintshop.ca with:",
+      "requirements": {
+        "orderInfo": "Your order number and email address used for the purchase",
+        "reason": "The reason for your return",
+        "photos": "Photos of the item (required for quality issues or damage)",
+        "preference": "Your preference for a replacement or refund"
+      },
+      "response": "Our customer service team will respond within one business day with detailed return instructions."
+    },
+    "guarantee": {
+      "title": "Our Quality Guarantee",
+      "description": "We stand behind the quality of our products:",
+      "benefits": {
+        "replacements": "Free replacements for any quality issues",
+        "refunds": "Full refunds available if we can't meet your satisfaction",
+        "shipping": "No return shipping costs for defective or incorrect items",
+        "support": "Dedicated support throughout the return process"
+      }
+    },
+    "refundProcess": {
+      "title": "Refund Information",
+      "timeline": "Refunds are processed within 3-5 business days of receiving the return",
+      "method": "Refunds are issued to the original payment method",
+      "confirmation": "You'll receive an email confirmation when your refund is processed",
+      "bankProcessing": "Bank processing times may vary for the refund to appear in your account"
+    },
+    "exceptions": {
+      "title": "Return Exceptions",
+      "description": "Please note that some items may not be eligible for return:",
+      "items": {
+        "customSizes": "Custom-sized prints outside our standard dimensions",
+        "misuse": "Items damaged due to misuse or improper handling",
+        "lateReturns": "Returns initiated after the 30-day window"
+      }
+    }
+  },
+  "Search": {
+    "placeholder": "Search for products...",
+    "metadata": {
+      "title": "Search",
+      "description": "Search for products in the store."
+    },
+    "noResults": "There are no products that match",
+    "showingResults": "Showing {count} {resultsText} for ",
+    "singleResult": "result",
+    "multipleResults": "results"
+  },
+  "CanvasProcess": {
+    "metadata": {
+      "title": "Canvas Making Process | Canvas Print Shop",
+      "description": "Learn about our premium canvas production process - from material selection to quality control, see how we craft our high-quality canvas prints."
+    },
+    "hero": {
+      "title": "How We Make Our Canvases",
+      "description": "Discover the craftsmanship and attention to detail that goes into every canvas we produce."
+    },
+    "steps": {
+      "materials": {
+        "title": "Selecting Premium Materials",
+        "description": "We start with carefully selected, high-grade cotton blend canvas. Each roll is inspected for quality and consistency, ensuring that only the finest materials make it to our production floor. Our canvas has an opacity of up to 75%, over 7x higher than Best Canvas."
+      },
+      "printing": {
+        "title": "High Quality Printing Process",
+        "description": "We utilise advanced Canon printing technology to deliver exceptional colour vibrancy and durability. After printing your image using UVgel ink, the print undergoes UV LED curing. The result? A durable, flexible finish that needs no further protection. It's so durable, our canvases are backed by our 30-year print quality guarantee!"
+      },
+      "frame": {
+        "title": "Custom Stretcher Frame Assembly",
+        "description": "Our skilled craftsmen construct sturdy stretcher frames from premium wood, precisely cut and joined to create the foundation of your canvas. Each corner is reinforced for lasting durability."
+      },
+      "stretching": {
+        "title": "Professional Stretching Process",
+        "description": "Using specialised equipment and techniques, we stretch the canvas over the frame with perfect tension. This critical step ensures your canvas will maintain its shape and stability over time."
+      },
+      "quality": {
+        "title": "Quality Control",
+        "description": "Every canvas undergoes rigorous quality checks throughout the production process. We examine tension, corner folds, and overall construction to ensure each piece meets our exacting standards."
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Our Quality?",
+      "description": "Each canvas is crafted with care and backed by our satisfaction guarantee.",
+      "button": "Shop Our Canvases"
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: {date}",
+    "introduction": {
+      "title": "Introduction",
+      "content": "Canvas Print Shop ('we', 'our', 'us') respects your privacy and is committed to protecting your personal information..."
+    },
+    "informationWeCollect": {
+      "title": "Information We Collect",
+      "content": "We collect information that you voluntarily provide to us when you create an account, upload images, contact us, or subscribe to our newsletter..."
+    },
+    "howWeUseInformation": {
+      "title": "How We Use Your Information",
+      "content": "We use your information to process orders, provide support, send marketing messages, and improve our services..."
+    },
+    "informationSharing": {
+      "title": "Information Sharing and Disclosure",
+      "content": "We do not sell your personal information. We may share it with service providers, legal advisors, or authorities when required..."
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "content": "We implement encryption, secure payment processing, and other measures to protect your data..."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "content": "You have the right to access, correct, or delete your data and withdraw consent for marketing communications..."
+    },
+    "cookiePolicy": {
+      "title": "Cookie Policy",
+      "content": "We use cookies to improve user experience and analyze traffic. You can disable cookies in your browser settings..."
+    },
+    "changesToPolicy": {
+      "title": "Changes to This Policy",
+      "content": "We may update this privacy policy. We will notify you by updating the 'Last updated' date..."
+    },
+    "questions": {
+      "title": "Questions?",
+      "content": "If you have any questions about our privacy policy, please contact us:"
+    }
+  },
+  "Contact": {
+    "metadata": {
+      "title": "Contact us | Canvas Print Shop",
+      "description": "We're here to help! Choose the best way to reach us below."
+    },
+    "pageTitle": "Contact us",
+    "subtitle": "We're here to help! Choose the best way to reach us below.",
+    "email": {
+      "title": "Send an email",
+      "subtitle": "Available anytime",
+      "label": "Email"
+    },
+    "phone": {
+      "title": "Call us",
+      "label": "Phone"
+    },
+    "address": {
+      "title": "Visit us in store",
+      "label": "Address"
+    },
+    "openingHours": {
+      "value": "Monday-Friday 9am-5pm EST",
+      "label": "Opening Hours"
+    },
+    "needHelp": "Need Help?",
+    "customerServiceMessage": "Our customer service team is here to help with any questions:"
+  },
+  "Product": {
+    "direction": {
+      "title": "Orientation",
+      "landscape": "Landscape",
+      "portrait": "Portrait"
+    },
+    "borderStyle": {
+      "title": "Border Style",
+      "black": "Black",
+      "white": "White",
+      "wrapped": "Wrapped",
+      "fill": "Auto Fill"
+    },
+    "size": {
+      "title": "Size",
+      "select": "Select size"
+    },
+    "frame": {
+      "title": "Frame",
+      "premium": "Premium",
+      "none": "None",
+      "black": "Premium"
+    },
+    "startCreating": "Start Creating",
+    "canvas-roll-prints": "Canvas Roll",
+    "canvas": "Canvas"
+  },
+  "ImageUploader": {
+    "dropzone": {
+      "mainText": "Drop your image here, or click to browse",
+      "supportedFormats": "Supported formats: JPG, PNG, WebP"
+    },
+    "uploading": {
+      "status": "Uploading..."
+    },
+    "errors": {
+      "uploadFailed": "Upload failed. Please try again.",
+      "fileType": "Accepted file types: {types}"
+    }
+  },
+  "common": {
+    "select": "Select",
+    "image": "Image",
+    "removeImage": "Remove Image"
+  },
+  "Cart": {
+    "SaveItem": {
+      "saveChanges": "Save changes",
+      "saved": "Saved",
+      "createNew": "Create a new item"
+    },
+    "AddToCart": {
+      "title": "Add to Cart",
+      "label": "Add to Cart",
+      "disabledMessage": "Upload an image to continue",
+      "cancel": "Cancel"
+    },
+    "EditItem": {
+      "title": "Edit",
+      "label": "Edit"
+    },
+    "Quantity": {
+      "increase": "Increase item quantity",
+      "decrease": "Reduce item quantity"
+    },
+    "DeleteItem": {
+      "ariaLabel": "Remove cart item"
+    },
+    "Modal": {
+      "openCart": "Open cart",
+      "closeCart": "Close cart",
+      "myCart": "My Cart",
+      "emptyCart": "Your Cart is Empty",
+      "checkout": "Proceed to Checkout",
+      "taxes": "Taxes",
+      "shipping": "Shipping",
+      "shippingCalculation": "Calculated at checkout",
+      "total": "Total"
+    }
+  }
+}

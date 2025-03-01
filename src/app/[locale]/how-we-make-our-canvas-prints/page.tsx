@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 interface ProcessStep {
   title: string;
@@ -56,36 +57,59 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
   );
 };
 
-const CanvasProcessPage: React.FC = () => {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "CanvasProcess.metadata",
+  });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
+
+const CanvasProcessPage = async ({
+  params,
+}: {
+  params: { locale: string };
+}) => {
+  const locale = params.locale;
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Get translations
+  const t = await getTranslations({ locale, namespace: "CanvasProcess" });
+
   const steps: ProcessStep[] = [
     {
-      title: "Selecting Premium Materials",
-      description:
-        "We start with carefully selected, high-grade cotton blend canvas. Each roll is inspected for quality and consistency, ensuring that only the finest materials make it to our production floor. Our canvas has an opacity of up to 75%, over 7x higher than Best Canvas.",
+      title: t("steps.materials.title"),
+      description: t("steps.materials.description"),
       imageUrl: "/Canvas Cotton.png",
     },
     {
-      title: "High Quality Printing Process",
-      description:
-        "We utilise advanced Canon printing technology to deliver exceptional colour vibrancy and durability. After printing your image using UVgel ink, the print undergoes UV LED curing. The result? A durable, flexible finish that needs no further protection. It's so durable, our canvases are backed by our 30-year print quality guarantee!",
+      title: t("steps.printing.title"),
+      description: t("steps.printing.description"),
       videoUrl: "/UV Curing.mp4",
     },
     {
-      title: "Custom Stretcher Frame Assembly",
-      description:
-        "Our skilled craftsmen construct sturdy stretcher frames from premium wood, precisely cut and joined to create the foundation of your canvas. Each corner is reinforced for lasting durability.",
+      title: t("steps.frame.title"),
+      description: t("steps.frame.description"),
       imageUrl: "/stretcher frame example.jpeg",
     },
     {
-      title: "Professional Stretching Process",
-      description:
-        "Using specialised equipment and techniques, we stretch the canvas over the frame with perfect tension. This critical step ensures your canvas will maintain its shape and stability over time.",
+      title: t("steps.stretching.title"),
+      description: t("steps.stretching.description"),
       imageUrl: "/canvas stretching.jpeg",
     },
     {
-      title: "Quality Control",
-      description:
-        "Every canvas undergoes rigorous quality checks throughout the production process. We examine tension, corner folds, and overall construction to ensure each piece meets our exacting standards.",
+      title: t("steps.quality.title"),
+      description: t("steps.quality.description"),
       imageUrl: "/quality control.jpeg",
     },
   ];
@@ -95,11 +119,10 @@ const CanvasProcessPage: React.FC = () => {
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          How We Make Our Canvases
+          {t("hero.title")}
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Discover the craftsmanship and attention to detail that goes into
-          every canvas we produce.
+          {t("hero.description")}
         </p>
         <ChevronDown
           className="mx-auto mt-8 text-gray-400 animate-bounce"
@@ -117,13 +140,12 @@ const CanvasProcessPage: React.FC = () => {
       {/* Call to Action */}
       <div className="text-center mt-16 bg-gray-50 rounded-lg p-8">
         <h2 className="text-3xl font-semibold text-gray-900 mb-4">
-          Ready to Experience Our Quality?
+          {t("cta.title")}
         </h2>
-        <p className="text-gray-600 mb-8">
-          Each canvas is crafted with care and backed by our satisfaction
-          guarantee.
-        </p>
-        <ButtonLink href="/product/canvas">Shop Our Canvases</ButtonLink>
+        <p className="text-gray-600 mb-8">{t("cta.description")}</p>
+        <ButtonLink href={`/${locale}/product/canvas`}>
+          {t("cta.button")}
+        </ButtonLink>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { Upload } from "lucide-react";
 import ImageFile from "./image-file";
 import { useProduct } from "@/contexts/product-context";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 
 interface ImageUploaderProps {
   maxSizeMB?: number;
@@ -17,6 +18,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   acceptedTypes = ["image/jpeg", "image/png", "image/webp"],
   className,
 }) => {
+  // Get translations for this component
+  const t = useTranslations("ImageUploader");
+
   const {
     updateField,
     setImgFileUrl,
@@ -59,14 +63,14 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           updateField("imgURL", publicUrl);
           setImgFileUrl(null);
         } else {
-          setError("Upload failed. Please try again.");
+          setError(t("errors.uploadFailed"));
         }
         setIsUploading(false);
       };
 
       // Handle errors
       xhr.onerror = () => {
-        setError("Upload failed. Please try again.");
+        setError(t("errors.uploadFailed"));
         setIsUploading(false);
       };
 
@@ -76,7 +80,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
       xhr.send(file);
     } catch (error) {
       console.error("Error uploading image:", error);
-      setError("Upload failed. Please try again.");
+      setError(t("errors.uploadFailed"));
       setIsUploading(false);
     }
   };
@@ -84,7 +88,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   const validateFile = (file: File): boolean => {
     // Check file type
     if (!acceptedTypes.includes(file.type)) {
-      setError(`Accepted file types: ${acceptedTypes.join(", ")}`);
+      setError(t("errors.fileType", { types: acceptedTypes.join(", ") }));
       return false;
     }
 
@@ -155,10 +159,10 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
           <div className="flex items-center">
             <div>
               <p className="text-base font-medium text-gray/70">
-                Drop your image here, or click to browse
+                {t("dropzone.mainText")}
               </p>
               <p className="text-sm text-gray-500 mt-2">
-                Supported formats: JPG, PNG, WebP
+                {t("dropzone.supportedFormats")}
               </p>
             </div>
             <Upload
@@ -173,7 +177,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
       {isUploading && (
         <div className="mt-4">
           <div className="flex items-center justify-between mb-1.5">
-            <p className="text-sm font-medium text-primary">Uploading...</p>
+            <p className="text-sm font-medium text-primary">
+              {t("uploading.status")}
+            </p>
             <span className="text-sm font-medium text-primary">
               {uploadProgress}%
             </span>

@@ -55,7 +55,7 @@ const ProductProvider = ({
   const variant = useMemo(() => {
     return (
       product.variants.find((variant) => {
-        variant.selectedOptions.every((option) => {
+        return variant.selectedOptions.every((option) => {
           return state[option.name as keyof FormState] === option.value;
         });
       }) ?? product.variants[0]

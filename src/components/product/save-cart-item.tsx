@@ -1,68 +1,88 @@
 "use client";
 
-import { ProductVariant } from "@/lib/shopify/types";
-import { useCart, FormState, useProduct } from "@/contexts";
+import { useCart, useProduct } from "@/contexts";
 import * as api from "@/lib/utils/cart-actions";
-import React, { useActionState } from "react";
+import React, { useActionState, useTransition } from "react";
 import { Plus, Save } from "lucide-react";
 import Button from "../buttons/button";
 import { getAttributes, toProductState } from "@/contexts/cart-context/utils";
-import { CartItem } from "@/contexts/cart-context/types";
 import { ButtonLink } from "../buttons";
+import { useLocale, useTranslations } from "next-intl";
 
 interface SubmitButtonProps {
   saved?: boolean;
   disabled: boolean;
+  loading?: boolean;
 }
-const SubmitButton: React.FC<SubmitButtonProps> = ({ saved, disabled }) => {
+const SubmitButton: React.FC<SubmitButtonProps> = ({
+  saved,
+  disabled,
+  loading,
+}) => {
+  const t = useTranslations("Cart.SaveItem");
+  const label = !saved ? t("saveChanges") : t("saved");
   return (
     <Button
-      aria-label={saved ? "Please select an option" : "Add to cart"}
-      disabled={disabled || saved}
+      aria-label={label}
+      disabled={disabled || saved || loading}
       icon={Save}
+      loading={loading}
     >
-      {!saved ? "Save changes" : "Saved"}
+      {label}
     </Button>
   );
 };
 
-interface SaveCartItemProps<T extends FormState> {
+interface SaveCartItemProps {
   cartItemID: string;
 }
 
-const SaveCartItem = <T extends FormState, U extends CartItem>({
-  cartItemID,
-}: SaveCartItemProps<T>) => {
-  const cartContext = useCart();
+const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
+  const { state: cartState, updateCartItem: contextUpdateCartItem } = useCart();
   const {
     product: { handle },
     state,
     variant,
   } = useProduct();
-  const [message, updateCartItem] = useActionState(api.updateCartItem, null);
-  const prevCartItem = cartContext.state?.items[cartItemID] as U;
+  const t = useTranslations("Cart.SaveItem");
+  const locale = useLocale();
+  let [isPending, startTransition] = useTransition();
 
-  const hasDiff =
-    JSON.stringify(state) !==
-    JSON.stringify(prevCartItem ? toProductState(prevCartItem) : null);
+  const [message, updateCartItem] = useActionState(api.updateCartItem, null);
+
+  const checkDiff = () => {
+    const prevCartItem = cartState?.items[cartItemID];
+    const prevState = prevCartItem ? toProductState(prevCartItem) : null;
+
+    return !Object.keys(state).every((key) => {
+      return state[key] === prevState?.[key];
+    });
+  };
+
+  const hasDiff = checkDiff();
+
+  const onSubmit = () => {
+    startTransition(async () => {
+      if (!state.imgURL || !variant) return;
+      contextUpdateCartItem(cartItemID, state, variant); // optimistic
+      await updateCartItem({
+        cartItemId: cartItemID,
+        merchandiseId: variant.id,
+        quantity: 1,
+        attributes: getAttributes(state),
+      });
+    });
+  };
 
   return (
-    <form
-      action={async () => {
-        if (!state.imgURL || !variant) return;
-        cartContext.updateCartItem(cartItemID, state, variant); // optimistic
-        await updateCartItem({
-          cartItemId: cartItemID,
-          merchandiseId: variant.id,
-          quantity: 1,
-          attributes: getAttributes(state),
-        });
-      }}
-      className="flex flex-col gap-2"
-    >
-      <SubmitButton saved={!hasDiff} disabled={!state.imgURL} />
+    <form action={onSubmit} className="flex flex-col gap-2">
+      <SubmitButton
+        saved={!hasDiff}
+        disabled={!state.imgURL}
+        loading={isPending}
+      />
       <ButtonLink
-        href={`/product/${handle}`}
+        href={`/${locale}/product/${handle}`}
         variant="secondary"
         icon={Plus}
         iconPosition="left"
@@ -72,7 +92,7 @@ const SaveCartItem = <T extends FormState, U extends CartItem>({
         }}
         replace
       >
-        Create a new {handle}
+        {t("createNew")}
       </ButtonLink>
       <p className="sr-only" role="status" aria-label="polite">
         {message}

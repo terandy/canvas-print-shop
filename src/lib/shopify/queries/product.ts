@@ -1,7 +1,7 @@
 import { productFragment } from "./fragments/product";
 
-export const getProductQuery = /* GraphQL */ `
-  query getProduct($handle: String!) {
+export const getProductQuery = (languageCode: string) => `
+  query getProduct($handle: String!) @inContext(language: ${languageCode}){
     product(handle: $handle) {
       ...product
     }
@@ -9,12 +9,12 @@ export const getProductQuery = /* GraphQL */ `
   ${productFragment}
 `;
 
-export const getProductListQuery = /* GraphQL */ `
+export const getProductListQuery = (languageCode: string) => `
   query getProducts(
     $sortKey: ProductSortKeys
     $reverse: Boolean
     $query: String
-  ) {
+  ) @inContext(language: ${languageCode}) {
     products(sortKey: $sortKey, reverse: $reverse, query: $query, first: 100) {
       edges {
         node {

@@ -1,4 +1,4 @@
-import Loading from "@/app/loading";
+import Loading from "@/app/[locale]/loading";
 import { useResize } from "@/lib/hooks/useResize";
 import clsx from "clsx";
 import Image from "next/image";

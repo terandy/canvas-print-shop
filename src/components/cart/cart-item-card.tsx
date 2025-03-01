@@ -5,6 +5,7 @@ import DeleteItemButton from "./delete-item-button";
 import EditItemQuantityButton from "./edit-item-quantity-button";
 import Price from "../product/price";
 import EditItemButton from "./edit-item-button";
+import { useTranslations } from "next-intl";
 
 interface Props {
   item: CartItem;
@@ -18,9 +19,10 @@ const CartItemCard: React.FC<Props> = ({
   closeCart,
 }) => {
   const state = toProductState(item);
+  const t = useTranslations("Product");
 
   const getTitle = () => {
-    return item.title.split("-").join(" ");
+    return t(item.title);
   };
 
   return (
@@ -49,8 +51,7 @@ const CartItemCard: React.FC<Props> = ({
                   key={key}
                   className="block text-sm text-gray first-letter:capitalize"
                 >
-                  {value}
-                  {key === "borderStyle" && " border"}
+                  {key === "size" ? value : t(`${key}.${value}`)}
                 </span>
               ))}
           </div>

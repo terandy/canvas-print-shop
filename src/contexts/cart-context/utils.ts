@@ -79,11 +79,18 @@ export const generateUpdatedCartItem = (
   const prevSelectedOptions = Object.fromEntries(
     prevItem.selectedOptions.map((attr) => [attr.name, attr.value])
   );
+
+  const updatedSelectedOptions = Object.fromEntries(
+    productVariant.selectedOptions.map((opt) => [opt.name, opt.value])
+  );
   return {
     ...prevItem,
     totalAmount: productVariant.price,
     attributes: getAttributes({ ...prevAttributes, ...updates }),
-    selectedOptions: getSelectOptions({ ...prevSelectedOptions, ...updates }),
+    selectedOptions: getSelectOptions({
+      ...prevSelectedOptions,
+      ...updatedSelectedOptions,
+    }),
     imgURL: prevAttributes.imgURL,
   };
 };

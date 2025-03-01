@@ -10,12 +10,14 @@ import { Plus, X } from "lucide-react";
 import Button from "../buttons/button";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import { getAttributes } from "@/contexts/cart-context/utils";
+import { useTranslations } from "next-intl";
 
 /**
  * Find the variant that matches the form selections (as stored in the useProduct context
  */
 const AddToCart: React.FC = () => {
   const cartContext = useCart();
+  const t = useTranslations("Cart");
   const {
     product: { handle },
     state,
@@ -43,23 +45,22 @@ const AddToCart: React.FC = () => {
       );
       if (typeof res === "object" && res.id)
         router.push(`?cartItemID=${res.id}`);
-      console.log({ res });
     });
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <Button
-        disabledMessage={"Upload an image"}
+        disabledMessage={t("AddToCart.disabledMessage")}
         icon={Plus}
         type="submit"
         className="bg-secondary hover:bg-primary-light"
         disabled={state.imgURL === DEFAULT_CANVAS_IMAGE || !variant}
       >
-        Add To Cart
+        {t("AddToCart.label")}
       </Button>
       <Button onClick={onCancel} icon={X} variant="ghost">
-        Cancel
+        {t("AddToCart.cancel")}
       </Button>
     </form>
   );

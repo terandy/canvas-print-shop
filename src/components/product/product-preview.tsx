@@ -1,11 +1,10 @@
-// ProductPreview component
 import { Product } from "@/lib/shopify/types";
 import Prose from "../prose";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import ButtonLink from "../buttons/button-link";
+import { getLocale, getTranslations } from "next-intl/server";
 
 interface Props {
   product: Product;
@@ -17,7 +16,9 @@ interface SectionProps {
   order: number;
 }
 
-const ContentSection: React.FC<SectionProps> = ({ product, order }) => {
+const ContentSection: React.FC<SectionProps> = async ({ product, order }) => {
+  const t = await getTranslations("Product");
+  const locale = await getLocale();
   return (
     <div
       className={`order-${order} md:order-${order} sm:order-2 px-4 pb-6 sm:p-8 md:p-10`}
@@ -35,11 +36,11 @@ const ContentSection: React.FC<SectionProps> = ({ product, order }) => {
 
       <div className="mt-6 sm:mt-8">
         <ButtonLink
-          href={`/product/${product.handle}`}
+          href={`${locale}/product/${product.handle}`}
           icon={ArrowRight}
           className="w-full sm:w-auto text-center bg-primary hover:bg-primary/90 text-white"
         >
-          Start Creating
+          {t("startCreating")}
         </ButtonLink>
       </div>
     </div>

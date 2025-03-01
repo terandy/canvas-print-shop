@@ -1,15 +1,23 @@
 import React from "react";
-
-import { Metadata } from "next";
 import { Mail, Phone, MapPin, LucideIcon } from "lucide-react";
-import { EMAIL, PHONE, ADDRESS, OPENING_HOURS } from "@/lib/constants";
+import { EMAIL, PHONE, ADDRESS } from "@/lib/constants";
 import { PageHeader, SectionHeader, SectionContainer } from "@/components";
 import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Contact us | Canvas Print Shop",
-  description: "We're here to help! Choose the best way to reach us below.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Contact.metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 interface ContactSectionProps {
   icon: LucideIcon;
@@ -48,38 +56,47 @@ const ContactSection = ({
   </SectionContainer>
 );
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = params.locale;
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Get translations
+  const t = await getTranslations({ locale, namespace: "Contact" });
+
   return (
     <main className="flex-1">
       <div className="container mx-auto px-4 py-16 md:py-24 max-w-3xl">
         <div className="mb-16 text-center space-y-4">
-          <PageHeader className="!mb-0">Contact us</PageHeader>
-          <p className="text-lg text-gray max-w-2xl mx-auto">
-            We&apos;re here to help! Choose the best way to reach us below.
-          </p>
+          <PageHeader className="!mb-0">{t("pageTitle")}</PageHeader>
+          <p className="text-lg text-gray max-w-2xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div className="flex flex-col gap-8">
           <ContactSection
             icon={Mail}
-            title="Send an email"
-            subtitle="Available anytime"
+            title={t("email.title")}
+            subtitle={t("email.subtitle")}
             href={EMAIL.href}
             label={EMAIL.label}
           />
 
           <ContactSection
             icon={Phone}
-            title="Call us"
-            subtitle={OPENING_HOURS}
+            title={t("phone.title")}
+            subtitle={t("openingHours.value")}
             href={PHONE.href}
             label={PHONE.label}
           />
 
           <ContactSection
             icon={MapPin}
-            title="Visit us in store"
-            subtitle={OPENING_HOURS}
+            title={t("address.title")}
+            subtitle={t("openingHours.value")}
             href={ADDRESS.href}
             label={
               <address className="not-italic">

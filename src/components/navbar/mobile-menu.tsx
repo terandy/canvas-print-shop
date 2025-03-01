@@ -1,19 +1,17 @@
 "use client";
 
-import { Menu } from "@/lib/shopify/types";
 import { Dialog, Transition } from "@headlessui/react";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 import Search from "./search";
 import { Menu as MenuIcon, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
+import LanguageSwitcher from "./LanguageSwitcher";
+import QuickLinks from "./quick-links";
 
-interface Props {
-  menu: Menu[];
-}
+interface Props {}
 
-const MobileMenu: React.FC<Props> = ({ menu }) => {
+const MobileMenu: React.FC<Props> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openMobileMenu = () => setIsOpen(true);
   const closeMobileMenu = () => setIsOpen(false);
@@ -47,33 +45,20 @@ const MobileMenu: React.FC<Props> = ({ menu }) => {
             leaveTo="translate-x-[-100%]"
           >
             <Dialog.Panel className="fixed bottom-0 left-0 right-0 top-0 flex h-full w-full flex-col bg-white pb-6">
-              <div className="p-4">
-                <Button
-                  onClick={closeMobileMenu}
-                  aria-label="Close mobile menu"
-                  icon={X}
-                />
+              <div className="p-4 flex flex-col gap-2 ">
+                <div className="flex justify-between">
+                  <LanguageSwitcher />
+                  <Button
+                    onClick={closeMobileMenu}
+                    aria-label="Close mobile menu"
+                    icon={X}
+                    variant="ghost"
+                  />
+                </div>
                 <div className="mb-4 w-full">
                   <Search onSearch={closeMobileMenu} />
                 </div>
-                {menu.length > 0 ? (
-                  <ul className="flex w-full flex-col">
-                    {menu.map((item: Menu) => (
-                      <li
-                        className="py-2 text-xl text-black transition-colors hover:text-neutral-500"
-                        key={item.title}
-                      >
-                        <Link
-                          href={item.path}
-                          prefetch={true}
-                          onClick={closeMobileMenu}
-                        >
-                          {item.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
+                <QuickLinks onClick={closeMobileMenu} />
               </div>
             </Dialog.Panel>
           </Transition.Child>

@@ -1,7 +1,9 @@
 "use client";
+
 import { createUrl } from "@/lib/utils/base";
 import { SearchIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
 
 interface Props {
   /**
@@ -11,6 +13,8 @@ interface Props {
 }
 
 const Search: React.FC<Props> = ({ onSearch }) => {
+  const t = useTranslations("Search");
+  const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -27,9 +31,10 @@ const Search: React.FC<Props> = ({ onSearch }) => {
       newParams.delete("q");
     }
 
-    router.push(createUrl("/search", newParams));
+    router.push(createUrl(`/${locale}/search`, newParams));
     onSearch?.();
   }
+
   return (
     <form
       onSubmit={onSubmit}
@@ -39,7 +44,7 @@ const Search: React.FC<Props> = ({ onSearch }) => {
         key={searchParams?.get("q")}
         type="text"
         name="search"
-        placeholder="Search for products..."
+        placeholder={t("placeholder")}
         autoComplete="off"
         defaultValue={searchParams?.get("q") || ""}
         className="text-md w-full rounded-lg border bg-white px-4 py-2 text-black placeholder:text-neutral-500 md:text-sm"
@@ -50,12 +55,15 @@ const Search: React.FC<Props> = ({ onSearch }) => {
     </form>
   );
 };
+
 const SearchSkeleton = () => {
+  const t = useTranslations("Search");
+
   return (
     <form className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
       <input
         type="text"
-        placeholder="Search for products..."
+        placeholder={t("placeholder")}
         className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-black placeholder:text-neutral-500"
       />
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
@@ -64,5 +72,6 @@ const SearchSkeleton = () => {
     </form>
   );
 };
+
 export default Search;
 export { SearchSkeleton };
