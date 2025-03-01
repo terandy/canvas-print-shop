@@ -10,12 +10,12 @@ import {
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { TAGS } from "../constants";
+import { BASE_URL, TAGS } from "../constants";
 import type {
   UpdateCartItemOperation,
   AddToCartOperation,
-  Cart,
 } from "../shopify/types";
+import { getLocale } from "next-intl/server";
 
 export async function addItem(prevState: any, payload: AddToCartOperation) {
   const cookieStore = await cookies();
@@ -131,6 +131,7 @@ export const removeItem = async (prevState: any, cartItemId: string) => {
 export const redirectToCheckout = async () => {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
+  const locale = await getLocale();
 
   if (!cartId) {
     return "Missing cart ID";
@@ -142,7 +143,13 @@ export const redirectToCheckout = async () => {
     return "Error fetching cart";
   }
 
-  redirect(cart.checkoutUrl);
+  const localeParam = `locale=${locale}`;
+  const returnToParam = `return_to=${encodeURIComponent(`${BASE_URL}/${locale}`)}`;
+  const checkoutUrlWithLocale = cart.checkoutUrl.includes("?")
+    ? `${cart.checkoutUrl}&${localeParam}&${returnToParam}`
+    : `${cart.checkoutUrl}?${localeParam}&${returnToParam}`;
+
+  redirect(checkoutUrlWithLocale);
 };
 
 export const createCartAndSetCookie = async () => {
