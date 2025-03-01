@@ -6,18 +6,10 @@ import {
   PageHeader,
   ContactSection,
 } from "@/components";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({
-    locale,
-    namespace: "ReturnsPolicy.metadata",
-  });
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("ReturnsPolicy.metadata");
 
   return {
     title: t("title"),
@@ -25,17 +17,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function ReturnsPolicy({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  const locale = params.locale;
-  // Enable static rendering
-  setRequestLocale(locale);
-
+export default async function ReturnsPolicy() {
   // Get translations for this page
-  const t = await getTranslations({ locale, namespace: "ReturnsPolicy" });
+  const t = await getTranslations("ReturnsPolicy");
 
   return (
     <main className="flex-1 bg-white">
