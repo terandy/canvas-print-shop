@@ -3,21 +3,16 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useCart } from "@/contexts";
-import Image from "next/image";
 import Price from "../product/price";
-import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
-import DeleteItemButton from "./delete-item-button";
-import EditItemQuantityButton from "./edit-item-quantity-button";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
 import { redirectToCheckout } from "@/lib/utils/cart-actions";
-import { Pencil, ShoppingCart, X } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
 import Badge from "../badge";
-import ButtonLink from "../buttons/button-link";
-import type { CartItem, CartState, TCartContext } from "@/contexts";
-import { toProductState } from "@/contexts/cart-context/utils";
+import type { CartState } from "@/contexts";
+import CartItemCard from "./cart-item-card";
 
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
@@ -52,101 +47,6 @@ const Totals = ({ cartState }: { cartState: CartState }) => {
         />
       </div>
     </div>
-  );
-};
-
-const CartItemCard = ({
-  item,
-  updateCartItemQuantity,
-  closeCart,
-}: {
-  item: CartItem;
-  closeCart: () => void;
-  updateCartItemQuantity: TCartContext["updateCartItemQuantity"];
-}) => {
-  const state = toProductState(item);
-
-  const getProductHref = () => {
-    const newParams = new URLSearchParams();
-    newParams.set("cartItemID", item.id);
-    return `/product/${item.title}?${newParams.toString()}`;
-  };
-  return (
-    <li className="border-b border-gray-light/10 py-4">
-      <div className="flex gap-4">
-        <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
-          <Image
-            src={item.imgURL ?? DEFAULT_CANVAS_IMAGE}
-            width={80}
-            height={80}
-            alt="Custom Print"
-            className="object-cover w-full h-full"
-          />
-        </div>
-        <div className="flex-1">
-          <div className="space-y-1">
-            <p className="text-secondary font-medium">{item.title}</p>
-            {Object.entries(state)
-              .filter(
-                ([key, _value]) => key !== "imgURL" && key !== "cartItemID"
-              )
-              .map(([key, value]) => (
-                <span
-                  key={key}
-                  className="block text-sm text-gray first-letter:capitalize"
-                >
-                  {value}
-                  {key === "borderStyle" && " border"}
-                </span>
-              ))}
-          </div>
-        </div>
-        <div className="flex">
-          <DeleteItemButton
-            item={item}
-            optimisticUpdate={updateCartItemQuantity}
-          />
-          <ButtonLink
-            href={getProductHref()}
-            onClick={() => {
-              localStorage.setItem(
-                item.title,
-                JSON.stringify(toProductState(item))
-              );
-              localStorage.setItem("cartItemID", item.id);
-              closeCart();
-            }}
-            icon={Pencil}
-            size="sm"
-            title="Edit"
-            variant="secondary"
-            replace
-          >
-            Edit
-          </ButtonLink>
-        </div>
-      </div>
-      <div className="flex mt-4 items-center justify-between gap-4">
-        <div className="flex items-center rounded-full border border-gray-light/20">
-          <EditItemQuantityButton
-            item={item}
-            type="minus"
-            optimisticUpdate={updateCartItemQuantity}
-          />
-          <p className="w-8 text-center text-secondary">{item.quantity}</p>
-          <EditItemQuantityButton
-            item={item}
-            type="plus"
-            optimisticUpdate={updateCartItemQuantity}
-          />
-        </div>
-        <Price
-          className="text-secondary font-medium"
-          amount={item.totalAmount.amount}
-          currencyCode={item.totalAmount.currencyCode}
-        />
-      </div>
-    </li>
   );
 };
 
