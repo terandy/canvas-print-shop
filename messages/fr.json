@@ -1,29 +1,29 @@
 {
   "Metadata": {
-    "title": "Impressions sur Toile Personnalisées & Encadrement | Atelier Impression Toile",
+    "title": "Impressions sur Toile personnalisées & Encadrement | Atelier Impression Toile",
     "description": "Transformez vos photos en impressions sur toile de haute qualité avec notre service de téléchargement facile et encadrement optionnel. Artisanat expert, fabriqué au Canada. Commandez maintenant pour une livraison rapide!",
     "og": {
-      "title": "Impressions sur Toile Personnalisées & Encadrement | Atelier Impression Toile",
+      "title": "Impressions sur toile personnalisées & Encadrement | Atelier Impression Toile",
       "description": "Transformez vos photos en impressions sur toile de haute qualité avec notre service de téléchargement facile et encadrement optionnel. Artisanat expert, fabriqué au Canada."
     }
   },
   "Home": {
     "hero": {
-      "title": "Impressions sur Toile Personnalisées Sur Mesure",
+      "title": "Impressions sur toile personnalisées sur mesure",
       "description": "Transformez vos souvenirs précieux en magnifiques impressions sur toile, expertement fabriquées à la main au Canada et prêtes à être accrochées dans votre maison."
     },
     "benefits": {
-      "heading": "Pourquoi Choisir Atelier Impression Toile?",
+      "heading": "Pourquoi choisir atelier impression toile?",
       "premium": {
         "title": "Matériaux Premium",
         "description": "Toile mélangée de coton premium avec une densité 10x plus élevée et 75% d'opacité - bien supérieure aux matériaux de moindre qualité des concurrents."
       },
       "craftsmanship": {
-        "title": "Artisanat Expert",
+        "title": "Artisanat expert",
         "description": "Toutes les impressions sur toile sont artisanalement créées dans notre studio canadien, basé à Québec."
       },
       "process": {
-        "title": "Processus Facile",
+        "title": "Processus facile",
         "description": "Téléchargez simplement votre image, choisissez vos dimensions, prévisualisez votre impression sur toile, puis passez à la caisse."
       },
       "technology": {
@@ -32,30 +32,30 @@
       }
     },
     "featured": {
-      "heading": "Créez Votre Impression sur Toile Personnalisée",
+      "heading": "Créez votre impression sur toile personnalisée",
       "description": "Transformez vos moments préférés en magnifiques décorations murales avec nos impressions sur toile premium"
     },
     "process": {
-      "heading": "Comment Ça Fonctionne",
+      "heading": "Comment ça fonctionne",
       "upload": {
-        "title": "Téléchargez Votre Photo",
+        "title": "Téléchargez votre photo",
         "description": "Choisissez votre image préférée depuis n'importe quel appareil"
       },
       "select": {
-        "title": "Sélectionnez Votre Style",
+        "title": "Sélectionnez votre style",
         "description": "Choisissez votre taille et vos options d'encadrement"
       },
       "create": {
-        "title": "Nous Créons Votre Chef-d'œuvre",
+        "title": "Nous créons votre chef-d'œuvre",
         "description": "Impression et artisanat experts"
       },
       "enjoy": {
-        "title": "Profitez de Votre Art Personnalisé",
+        "title": "Profitez de votre art personnalisé",
         "description": "Livraison prête à accrocher à votre porte"
       }
     },
     "testimonials": {
-      "heading": "Ce Que Disent Nos Clients",
+      "heading": "Ce que disent nos clients",
       "first": {
         "quote": "La qualité a dépassé mes attentes. Les couleurs sont vibrantes et l'encadrement est absolument parfait.",
         "author": "Jennifer T., Toronto"
