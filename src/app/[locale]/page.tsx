@@ -1,4 +1,3 @@
-// app/[locale]/page.tsx
 import { Metadata } from "next";
 import { ButtonLink, ProductPreview, SectionContainer } from "@/components";
 import { getProductList } from "@/lib/shopify";
@@ -28,7 +27,7 @@ export async function generateMetadata({
 
 const Home = async () => {
   const locale = await getLocale();
-  const t = await getTranslations({ locale, namespace: "Home" });
+  const t = await getTranslations("Home");
   const products = await getProductList({});
 
   const benefits = [
