@@ -97,11 +97,19 @@ const Home = async () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background border-b border-gray-light/10">
         {/* Background Image */}
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: "url('/canvas-example.jpeg')" }}
-          aria-hidden="true"
-        ></div>
+        <div className="absolute inset-0 z-0" aria-hidden="true">
+          <Image
+            src="/canvas-example.jpeg"
+            alt=""
+            fill
+            priority
+            quality={80}
+            className="object-cover opacity-30"
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEB..."
+          />
+        </div>
         <div className="container relative z-10 mx-auto px-4 py-20 sm:py-28">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary">
@@ -142,6 +150,9 @@ const Home = async () => {
                     src={benefit.url}
                     alt={benefit.title}
                     className="object-cover w-full h-48"
+                    priority={index < 2} // Add priority for above-the-fold images
+                    loading={index < 2 ? "eager" : "lazy"} // Explicitly set loading strategy
+                    quality={80} // Reduce quality slightly for faster loading
                   />
                 </div>
                 <div className="bg-white rounded-full shadow-md p-2 -mt-8 mb-4 relative z-10 border-2 border-white">
