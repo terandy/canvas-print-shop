@@ -1,13 +1,9 @@
-import { getMenu } from "@/lib/shopify";
-import { Menu } from "@/lib/shopify/types";
-import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import Search from "./search";
-import { CartModal } from "@/components";
+import { ButtonLink, CartModal } from "@/components";
 import React from "react";
-import { Home } from "lucide-react";
-import SquareLink from "../buttons/square-link";
 import LanguageSwitcher from "./LanguageSwitcher";
+import Logo from "../Logo";
 
 const Navbar: React.FC = async () => {
   return (
@@ -17,13 +13,22 @@ const Navbar: React.FC = async () => {
       </div>
       <div className="flex w-full items-center">
         <div className="flex w-full md:w-1/3">
-          <SquareLink href={"/"} prefetch={true} icon={Home} />
+          <ButtonLink
+            href={"/"}
+            prefetch={true}
+            icon={Logo}
+            iconPosition="left"
+            variant="outline"
+            className="bg-white items-center uppercase text-xs text-gray-700"
+          >
+            <span>Canvas Print Shop</span>
+          </ButtonLink>
         </div>
         <div className="hidden justify-center md:flex md:w-1/3">
           <Search />
         </div>
         <div className="flex justify-end md:w-1/3">
-          <LanguageSwitcher />
+          <LanguageSwitcher className="hidden md:flex" />
           <CartModal />
         </div>
       </div>
