@@ -4,12 +4,13 @@ import { ArrowRight, LucideIcon } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 import { ComponentProps } from "react";
 import { buttonStyles, sizeStyles, variantStyles } from "./styles";
+import Logo from "../Logo";
 
 interface Props extends LinkProps, Omit<ComponentProps<"a">, "href"> {
   variant?: keyof typeof variantStyles;
   children?: React.ReactNode;
   size?: keyof typeof sizeStyles;
-  icon?: LucideIcon;
+  icon?: LucideIcon | typeof Logo;
   iconPosition?: "left" | "right";
 }
 
