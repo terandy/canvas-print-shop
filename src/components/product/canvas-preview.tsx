@@ -122,6 +122,24 @@ const CanvasContainer: React.FC<
   );
 };
 
+const FlatCanvas: React.FC<CanvasProps> = ({ width, src, height }) => {
+  return (
+    <>
+      <div
+        className="relative shadow-xl"
+        style={{ width: `${width}px`, height: `${height}px` }}
+      >
+        <Image
+          src={src}
+          alt="Preview"
+          className="object-cover" // will cause the image to fill the entire container and be cropped to preserve aspect ratio
+          fill // Fill the parent element
+        />
+      </div>
+    </>
+  );
+};
+
 const CanvasWithBorder: React.FC<CanvasProps> = ({
   width,
   src,
@@ -307,6 +325,7 @@ const FilledBorderCanvas: React.FC<CanvasProps> = ({
 
 const Canvas: React.FC<CanvasProps> = (props) => {
   if (props.borderStyle === "wrapped") return <WrappedCanvas {...props} />;
+  if (props.borderStyle === "none") return <FlatCanvas {...props} />;
   if (props.borderStyle === "fill") return <FilledBorderCanvas {...props} />;
   return <CanvasWithBorder {...props} />;
 };
