@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { cookies } from "next/headers";
-import { getCart } from "@/lib/shopify";
-import { Navbar, Footer } from "@/components";
-import { CartProvider } from "@/contexts";
 import { Geist } from "next/font/google";
-import { getMessages, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { NextIntlClientProvider } from "next-intl";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -29,33 +21,9 @@ interface Props {
 }
 
 const RootLayout: React.FC<Props> = async ({ children, params }) => {
-  const cookiesStore = await cookies();
-  const cartId = cookiesStore.get("cartId")?.value;
-  const cart = await getCart(cartId);
-
-  // Ensure that the incoming `locale` is valid
-  const { locale } = await params;
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-
-  // Enable static rendering
-  setRequestLocale(locale);
-
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
   return (
-    <html lang={locale}>
-      <body className={geist.className}>
-        <NextIntlClientProvider messages={messages}>
-          <CartProvider cart={cart}>
-            <Navbar />
-            {children}
-            <Footer />
-          </CartProvider>
-        </NextIntlClientProvider>
-      </body>
+    <html>
+      <body className={geist.className}>{children}</body>
     </html>
   );
 };
