@@ -97,10 +97,10 @@ const Home = async () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background border-b border-gray-light/10">
         {/* Background Image */}
-        <div className="absolute inset-0 z-0" aria-hidden="true">
+        <div className="absolute inset-0" aria-hidden="true">
           <Image
             src="/canvas-example.jpeg"
-            alt=""
+            alt="Banner background"
             fill
             priority
             quality={80}
@@ -110,7 +110,7 @@ const Home = async () => {
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEB..."
           />
         </div>
-        <div className="container relative z-10 mx-auto px-4 py-20 sm:py-28">
+        <div className="relative mx-auto px-4 py-20 sm:py-28">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary">
               {t("hero.title")}
