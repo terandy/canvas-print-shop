@@ -3,6 +3,7 @@ import { ButtonLink, ProductPreview, SectionContainer } from "@/components";
 import { getProductList } from "@/lib/shopify";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 export async function generateMetadata({
   params,
@@ -34,18 +35,22 @@ const Home = async () => {
     {
       title: t("benefits.premium.title"),
       description: t("benefits.premium.description"),
+      url: "/canvas-tools.jpeg",
     },
     {
       title: t("benefits.craftsmanship.title"),
       description: t("benefits.craftsmanship.description"),
+      url: "/canvas-making.jpeg",
     },
     {
       title: t("benefits.process.title"),
       description: t("benefits.process.description"),
+      url: "/upload-process.png",
     },
     {
       title: t("benefits.technology.title"),
       description: t("benefits.technology.description"),
+      url: "/canvas-in-living-room.jpeg",
     },
   ];
 
@@ -91,7 +96,13 @@ const Home = async () => {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background border-b border-gray-light/10">
-        <div className="container mx-auto px-4 py-20 sm:py-28">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{ backgroundImage: "url('/canvas-example.jpeg')" }}
+          aria-hidden="true"
+        ></div>
+        <div className="container relative z-10 mx-auto px-4 py-20 sm:py-28">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary">
               {t("hero.title")}
@@ -112,7 +123,6 @@ const Home = async () => {
           </div>
         </div>
       </section>
-
       {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -121,9 +131,23 @@ const Home = async () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {benefits.map((benefit, index) => (
-              <div key={index} className="text-center space-y-4">
-                <CircleCheck className="w-12 h-12 text-primary mx-auto" />
-                <h3 className="text-xl font-semibold text-secondary">
+              <div
+                key={index}
+                className="text-center flex flex-col items-center transition-transform duration-300 hover:-translate-y-1"
+              >
+                <div className="mb-5 relative rounded-lg overflow-hidden shadow-md">
+                  <Image
+                    width={240}
+                    height={180}
+                    src={benefit.url}
+                    alt={benefit.title}
+                    className="object-cover w-full h-48"
+                  />
+                </div>
+                <div className="bg-white rounded-full shadow-md p-2 -mt-8 mb-4 relative z-10 border-2 border-white">
+                  <CircleCheck className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-secondary mb-2">
                   {benefit.title}
                 </h3>
                 <p className="text-gray">{benefit.description}</p>
@@ -132,7 +156,6 @@ const Home = async () => {
           </div>
         </div>
       </section>
-
       {/* Featured Collections */}
       <section className="relative py-12 sm:py-24 bg-gradient-to-b from-background to-secondary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
