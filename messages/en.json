@@ -389,5 +389,9 @@
       "shippingCalculation": "Calculated at checkout",
       "total": "Total"
     }
+  },
+  "canadian": {
+    "proudly": "proudly",
+    "canadian": "canadian"
   }
 }
