@@ -394,5 +394,9 @@
       "message": "Désolé, la page que vous recherchez n'existe pas.",
       "button": "Retourner à l'accueil"
     }
+  },
+  "canadian": {
+    "proudly": "fièrement",
+    "canadian": "canadien"
   }
 }
