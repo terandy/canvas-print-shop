@@ -37,7 +37,6 @@ export default async function PrivacyPolicy() {
             "yourRights",
             "cookiePolicy",
             "changesToPolicy",
-            "questions",
           ].map((section) => (
             <section key={section}>
               <SectionHeader>{t(`${section}.title`)}</SectionHeader>
