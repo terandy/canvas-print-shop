@@ -325,7 +325,18 @@
     },
     "size": {
       "title": "Size",
-      "select": "Select size"
+      "select": "Select size",
+      "width": "Width",
+      "height": "Height",
+      "price": "Price",
+      "add": "Add",
+      "quality": {
+        "title": "Resolution",
+        "poorDescription": "The resolution of the image isn't high enough for this canvas size. If we print onto a canvas of this size, the quality of the image will be poor. Ensure the uploaded image quality is sufficient for the size you desire.",
+        "lowQuality": "Poor",
+        "normalQuality": "Good",
+        "goodQuality": "Perfect!"
+      }
     },
     "frame": {
       "title": "Frame",
@@ -333,6 +344,7 @@
       "none": "None",
       "black": "Premium"
     },
+    "noImage": "No Image",
     "startCreating": "Start Creating",
     "canvas-roll-prints": "Canvas Roll",
     "canvas": "Canvas"

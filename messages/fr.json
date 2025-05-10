@@ -325,7 +325,18 @@
     },
     "size": {
       "title": "Taille",
-      "select": "Selectionner la taille"
+      "select": "Selectionner la taille",
+      "width": "Largeur",
+      "height": "Hauteur",
+      "price": "Prix",
+      "add": "Ajouter",
+      "quality": {
+        "title": "Qualité de résolution",
+        "description": "La qualité représente la résolution de l'image téléchargée. Si la résolution n'est pas assez élevée et que nous imprimons sur une grande toile, la qualité sera médiocre. Assurez-vous donc que la qualité de l'image téléchargée est suffisante pour la taille souhaitée.",
+        "lowQuality": "Médiocre",
+        "normalQuality": "Bonne",
+        "goodQuality": "Haute"
+      }
     },
     "frame": {
       "title": "Cadre",
@@ -333,6 +344,7 @@
       "none": "Aucun",
       "black": "Prime"
     },
+    "noImage": "Aucun image",
     "startCreating": "Commencez votre création",
     "canvas-roll-prints": "Rouleaux de toile",
     "canvas": "Toile"

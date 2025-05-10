@@ -100,7 +100,7 @@ export const generateUpdatedCartItemQuantity = (
   action: "plus" | "minus" | "delete"
 ): CartItem | null => {
   let quantity = prevItem.quantity;
-  const price = Number(prevItem.totalAmount) / quantity;
+  const price = Number(prevItem.totalAmount.amount) / quantity;
   switch (action) {
     case "plus":
       quantity += 1;
@@ -152,7 +152,7 @@ export const generateCartTotals = (
     (sum, item) => sum + Number(item.totalAmount.amount),
     0
   );
-  const currencyCode = cartItems[0]?.totalAmount.currencyCode ?? "USD";
+  const currencyCode = cartItems[0]?.totalAmount.currencyCode ?? "CAD";
   return {
     totalQuantity,
     cost: {

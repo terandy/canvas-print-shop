@@ -7,6 +7,7 @@ import ImageFile from "./image-file";
 import { useProduct } from "@/contexts/product-context";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import { useTranslations } from "next-intl";
+import { uploadImage } from "@/lib/s3/actions/image";
 
 interface ImageUploaderProps {
   maxSizeMB?: number;
@@ -39,12 +40,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
       setUploadProgress(0);
 
       // Get presigned URL
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fileType: file.type }),
-      });
-      const { uploadUrl, publicUrl } = await response.json();
+      const { uploadUrl, publicUrl } = await uploadImage(
+        JSON.stringify({ fileType: file.type })
+      );
 
       // Create XMLHttpRequest to track upload progress
       const xhr = new XMLHttpRequest();

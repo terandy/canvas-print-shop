@@ -31,14 +31,14 @@ const Totals = ({ cartState }: { cartState: CartState }) => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
+      {/* <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
         <p className="text-gray">{t("taxes")}</p>
         <Price
           className="text-right text-base text-secondary"
           amount={cartState.cost.totalTaxAmount.amount}
           currencyCode={cartState.cost.totalTaxAmount.currencyCode}
         />
-      </div>
+      </div> */}
       <div className="flex items-center justify-between border-b border-gray-light/10 pb-3">
         <p className="text-gray">{t("shipping")}</p>
         <p className="text-right text-gray">{t("shippingCalculation")}</p>
@@ -78,6 +78,7 @@ const CartModal = () => {
   }, [isOpen, state?.totalQuantity, quantityRef]);
 
   const items = state?.items ? Object.values(state?.items) : [];
+
   return (
     <>
       <Badge count={state?.totalQuantity}>
@@ -132,16 +133,14 @@ const CartModal = () => {
               ) : (
                 <div className="flex flex-col h-full">
                   <ul className="flex-1 overflow-auto p-4 space-y-6">
-                    {items
-                      .sort((a, b) => a.title.localeCompare(b.title))
-                      .map((item) => (
-                        <CartItemCard
-                          key={`cart${item.id}`}
-                          item={item}
-                          closeCart={closeCart}
-                          updateCartItemQuantity={updateCartItemQuantity}
-                        />
-                      ))}
+                    {items.map((item) => (
+                      <CartItemCard
+                        key={`cart${item.id}`}
+                        item={item}
+                        closeCart={closeCart}
+                        updateCartItemQuantity={updateCartItemQuantity}
+                      />
+                    ))}
                   </ul>
                   <div className="border-t border-gray-light/10 p-4 space-y-4">
                     <Totals cartState={state} />
