@@ -25,7 +25,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
 
   const getImageOptions = (opt: string) => {
     switch (opt) {
-      case "black":
+      case "premium":
         return "/frame/black-frame.png";
       case "none":
       default:

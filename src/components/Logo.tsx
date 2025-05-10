@@ -15,8 +15,8 @@ const Logo = ({ className = "" }) => {
           x2="100%"
           y2="100%"
         >
-          <stop offset="0%" stop-color="#FF9933" />
-          <stop offset="100%" stop-color="#E67300" />
+          <stop offset="0%" stopColor="#FF9933" />
+          <stop offset="100%" stopColor="#E67300" />
         </linearGradient>
         <linearGradient
           id="printerBottomGradient"
@@ -25,8 +25,8 @@ const Logo = ({ className = "" }) => {
           x2="100%"
           y2="100%"
         >
-          <stop offset="0%" stop-color="#E67300" />
-          <stop offset="100%" stop-color="#CC5500" />
+          <stop offset="0%" stopColor="#E67300" />
+          <stop offset="100%" stopColor="#CC5500" />
         </linearGradient>
       </defs>
 
