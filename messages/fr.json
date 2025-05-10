@@ -331,11 +331,11 @@
       "price": "Prix",
       "add": "Ajouter",
       "quality": {
-        "title": "Resolution quality",
-        "description": "The quality represents the the resolution of the picture uploaded. If the resolution isn't high enough, and we print onto a large canvas, the quality will be poor. So ensure the upload quality is sufficient for the size you desire.",
-        "lowQuality": "Poor",
-        "normalQuality": "Good",
-        "goodQuality": "Perfect!"
+        "title": "Qualité de résolution",
+        "description": "La qualité représente la résolution de l'image téléchargée. Si la résolution n'est pas assez élevée et que nous imprimons sur une grande toile, la qualité sera médiocre. Assurez-vous donc que la qualité de l'image téléchargée est suffisante pour la taille souhaitée.",
+        "lowQuality": "Médiocre",
+        "normalQuality": "Bonne",
+        "goodQuality": "Haute"
       }
     },
     "frame": {
