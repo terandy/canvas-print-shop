@@ -59,6 +59,20 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     height: number;
   } | null>(null);
 
+  // State for responsive design
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   // Convert inches to centimeters and round to 1 decimal place
   const inchesToCm = (inches: number): string => {
     return (inches * INCHES_TO_CM).toFixed(1);
@@ -87,7 +101,7 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
         className="flex gap-1 text-gray-500"
         title={t("quality.poorDescription")}
       >
-        {t("quality.lowQuality")} <InfoIcon />
+        {t("quality.lowQuality")} <InfoIcon size={16} />
       </span>
     );
   };
@@ -102,79 +116,150 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     }
   }, [state.imgURL]);
 
+  // Mobile card view for each size option
+  const renderMobileSizeCards = () => {
+    return (
+      <div className="space-y-3">
+        {option.values.map((value) => {
+          const optionParams = { ...state, [key]: value };
+          const isActive = state[key] === value;
+          const filtered = Object.entries(optionParams).filter(([key, value]) =>
+            options.find(
+              (option) => option.name === key && option.values.includes(value)
+            )
+          );
+
+          const variantMatch = combinations.find((combination) =>
+            filtered.every(([key, value]) => combination[key] === value)
+          );
+
+          const formattedPrice = variantMatch?.price
+            ? new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: variantMatch.currencyCode,
+              }).format(Number(variantMatch.price))
+            : "";
+
+          const [x, y] = value.split("x");
+
+          return (
+            <div
+              key={value}
+              className={clsx(
+                "p-3 border rounded-md cursor-pointer transition duration-300 ease-in-out",
+                {
+                  "ring-2 ring-primary-light bg-gray-50": isActive,
+                  "hover:bg-gray-50": !isActive,
+                }
+              )}
+              onClick={() =>
+                startTransition(() => {
+                  updateField(key, value);
+                })
+              }
+            >
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="font-medium">
+                    {x}" × {y}"
+                    <span className="text-gray-400 text-xs ml-1">
+                      ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
+                    </span>
+                  </div>
+                  <div className="mt-1 text-sm">{formattedPrice}</div>
+                </div>
+                <div className="text-sm">{checkImageCompatibility(+x, +y)}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Desktop table view
+  const renderDesktopTable = () => {
+    return (
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="border-b">
+              <th className="p-2 text-left">{t("width")}</th>
+              <th className="p-2 text-left">{t("height")}</th>
+              <th className="p-2 text-left">{t("price")}</th>
+              <th className="p-2 text-left">{t("quality.title")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {option.values.map((value) => {
+              const optionParams = { ...state, [key]: value };
+              const isActive = state[key] === value;
+              const filtered = Object.entries(optionParams).filter(
+                ([key, value]) =>
+                  options.find(
+                    (option) =>
+                      option.name === key && option.values.includes(value)
+                  )
+              );
+
+              const variantMatch = combinations.find((combination) =>
+                filtered.every(([key, value]) => combination[key] === value)
+              );
+
+              const formattedPrice = variantMatch?.price
+                ? new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: variantMatch.currencyCode,
+                  }).format(Number(variantMatch.price))
+                : "";
+
+              const [x, y] = value.split("x");
+
+              return (
+                <tr
+                  key={value}
+                  className={clsx(
+                    "cursor-pointer transition duration-300 ease-in-out",
+                    {
+                      "border border-primary": isActive,
+                      "hover:bg-gray-100": !isActive,
+                    }
+                  )}
+                  onClick={() =>
+                    startTransition(() => {
+                      updateField(key, value);
+                    })
+                  }
+                >
+                  <td className="p-2">
+                    {x}"
+                    <span className="text-gray-400 text-xs ml-1">
+                      ({inchesToCm(+x)} cm)
+                    </span>
+                  </td>
+                  <td className="p-2">
+                    {y}"
+                    <span className="text-gray-400 text-xs ml-1">
+                      ({inchesToCm(+y)} cm)
+                    </span>
+                  </td>
+                  <td className="p-2">{formattedPrice}</td>
+                  <td className="p-2">{checkImageCompatibility(+x, +y)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   return (
     <div>
       <h3 className="block mb-4 text-sm uppercase tracking-wide">
         {t(`title`)}
       </h3>
-      <table className="w-full border-collapse">
-        <thead>
-          <tr className="border-b">
-            <th className="p-2 text-left">{t("width")}</th>
-            <th className="p-2 text-left">{t("height")}</th>
-            <th className="p-2 text-left">{t("price")}</th>
-            <th className="p-2 text-left">{t("quality.title")}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {option.values.map((value) => {
-            const optionParams = { ...state, [key]: value };
-            const isActive = state[key] === value;
-            const filtered = Object.entries(optionParams).filter(
-              ([key, value]) =>
-                options.find(
-                  (option) =>
-                    option.name === key && option.values.includes(value)
-                )
-            );
-
-            const variantMatch = combinations.find((combination) =>
-              filtered.every(([key, value]) => combination[key] === value)
-            );
-
-            const formattedPrice = variantMatch?.price
-              ? new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: variantMatch.currencyCode,
-                }).format(Number(variantMatch.price))
-              : "";
-
-            const [x, y] = value.split("x");
-            return (
-              <tr
-                key={value}
-                className={clsx(
-                  "cursor-pointer border-b transition duration-300 ease-in-out",
-                  {
-                    "ring-2 ring-primary-light": isActive,
-                    "hover:bg-gray-100": !isActive,
-                  }
-                )}
-                onClick={() =>
-                  startTransition(() => {
-                    updateField(key, value);
-                  })
-                }
-              >
-                <td className="p-2">
-                  {x}
-                  <span className="text-gray-400 text-sm ml-1">
-                    ({inchesToCm(+x)} cm)
-                  </span>
-                </td>
-                <td className="p-2">
-                  {y}
-                  <span className="text-gray-400 text-sm ml-1">
-                    ({inchesToCm(+y)} cm)
-                  </span>
-                </td>
-                <td className="p-2">{formattedPrice}</td>
-                <td className="p-2">{checkImageCompatibility(+x, +y)}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {isMobile ? renderMobileSizeCards() : renderDesktopTable()}
     </div>
   );
 };
