@@ -16,14 +16,6 @@ type Combination = {
   [key: string]: string | boolean;
 };
 
-// Define types for the component
-interface SizeOption {
-  width: number;
-  height: number;
-  value: string;
-  price: number;
-}
-
 interface SizeSelectorProps {
   option: ProductOption;
   options: ProductOption[];
@@ -161,7 +153,7 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
               <div className="flex justify-between items-center">
                 <div>
                   <div className="font-medium">
-                    {x}" × {y}"
+                    {x}&quot; × {y}&quot;
                     <span className="text-gray-400 text-xs ml-1">
                       ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
                     </span>
@@ -232,13 +224,13 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
                   }
                 >
                   <td className="p-2">
-                    {x}"
+                    {x}&quot;
                     <span className="text-gray-400 text-xs ml-1">
                       ({inchesToCm(+x)} cm)
                     </span>
                   </td>
                   <td className="p-2">
-                    {y}"
+                    {y}&quot;
                     <span className="text-gray-400 text-xs ml-1">
                       ({inchesToCm(+y)} cm)
                     </span>
