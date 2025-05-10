@@ -30,7 +30,7 @@ const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
         optimisticUpdate(cartItemId, "delete");
         await formAction(cartItemId);
         const imgUrl = item.imgURL;
-        if (imgUrl) deleteImage(imgUrl);
+        if (imgUrl) await deleteImage(imgUrl);
         if (searchParams.get("cartItemID") === cartItemId)
           router.replace(`/${locale}/`);
       }}
