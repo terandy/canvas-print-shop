@@ -339,10 +339,15 @@
       }
     },
     "frame": {
-      "title": "Frame",
-      "premium": "Premium",
+      "title": "Floating Frame",
       "none": "None",
-      "black": "Premium"
+      "black": "Black"
+    },
+    "depth": {
+      "title": "Depth",
+      "select": "Select canvas depth",
+      "regular": "Regular (0.75 inches)",
+      "gallery": "Gallery (1.75 inches)"
     },
     "noImage": "No Image",
     "startCreating": "Start Creating",

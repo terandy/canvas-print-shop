@@ -27,6 +27,10 @@ interface ImagePreviewerProps {
    * Selected style for the border
    */
   borderStyle: string;
+  /**
+   * Selected depth for the canvas in inches
+   */
+  depth: string;
 }
 
 interface CanvasProps {
@@ -336,7 +340,14 @@ const ADDITIONAL_PADDING = 24;
 
 const CanvasPreviewer: React.FC<
   ImagePreviewerProps & ComponentPropsWithoutRef<"div">
-> = ({ src, size, direction, borderStyle = "white", ...props }) => {
+> = ({
+  src,
+  size,
+  direction,
+  borderStyle = "white",
+  depth = "regular",
+  ...props
+}) => {
   const componentRef = useRef<HTMLDivElement>(null);
   const resize = useResize(componentRef);
   const [canvasProps, setCanvasProps] = useState<CanvasProps>();
@@ -359,35 +370,59 @@ const CanvasPreviewer: React.FC<
       MEASUREMENT_GAP -
       2 * ADDITIONAL_PADDING;
 
-    let thickness;
-    let width;
-    let height;
+    // Calculate pixels per inch based on the canvas dimensions and available space
+    let pixelsPerInch: number;
+    let width: number;
+    let height: number;
+    let thicknessPx: number;
+    const thicknessIn = depth === "regular" ? 0.75 : 1.75;
+
     if (direction === "landscape") {
-      thickness = containerWidth / (x + 2);
-      width = containerWidth - 2 * thickness;
-      height = (width * y) / x;
+      // For landscape, fit to container width considering thickness
+      const totalWidthInches = x + 2 * thicknessIn;
+      pixelsPerInch = containerWidth / totalWidthInches;
+
+      width = x * pixelsPerInch;
+      height = y * pixelsPerInch;
+      thicknessPx = thicknessIn * pixelsPerInch;
     } else {
-      thickness = containerHeight / (y + 2);
-      height = containerHeight - 2 * thickness;
-      width = (height * x) / y;
+      // For portrait, fit to container height considering thickness
+      const totalHeightInches = y + 2 * thicknessIn;
+      pixelsPerInch = containerHeight / totalHeightInches;
+
+      width = x * pixelsPerInch;
+      height = y * pixelsPerInch;
+      thicknessPx = thicknessIn * pixelsPerInch;
     }
 
+    // Check if the calculated dimensions fit within the container
     const totalHeight =
-      height + thickness * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
-    if (totalHeight > containerHeight) {
-      height -= totalHeight - containerHeight;
-      width = (height * x) / y;
-    }
+      height + thicknessPx * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
     const totalWidth =
-      width + thickness * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
-    if (totalWidth > containerWidth) {
-      width -= totalWidth - containerWidth;
-      height = (width * y) / x;
+      width + thicknessPx * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
+
+    // If it doesn't fit, scale down proportionally
+    if (totalHeight > containerHeight || totalWidth > containerWidth) {
+      const scaleFactorHeight = containerHeight / totalHeight;
+      const scaleFactorWidth = containerWidth / totalWidth;
+      const scaleFactor = Math.min(scaleFactorHeight, scaleFactorWidth);
+
+      width *= scaleFactor;
+      height *= scaleFactor;
+      thicknessPx *= scaleFactor;
     }
-    setCanvasProps({ width, height, thickness, borderStyle, src });
+
+    setCanvasProps({
+      width,
+      height,
+      thickness: thicknessPx,
+      borderStyle,
+      src,
+    });
   }, [
     x,
     y,
+    depth,
     setCanvasProps,
     borderStyle,
     src,
@@ -412,7 +447,7 @@ const CanvasPreviewer: React.FC<
         });
       }
     }
-  }, [src, size, direction, borderStyle]);
+  }, [src, size, direction, borderStyle, depth]);
 
   if (!canvasProps) return <Loading message={"Loading canvas preview"} />;
 

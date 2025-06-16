@@ -52,7 +52,7 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
         htmlFor={option.name}
         className="block mb-4 text-sm uppercase tracking-wide"
       >
-        {t(`${option.name}.title`)}
+        {t(`${key}.title`)}
       </label>
       <select
         id={option.name}
@@ -86,7 +86,8 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
 
           return (
             <option key={value} value={value}>
-              {value} {formattedPrice ? `- ${formattedPrice}` : ""}
+              {t(`${option.name}.${value}`)}{" "}
+              {formattedPrice ? `- ${formattedPrice}` : ""}
             </option>
           );
         })}

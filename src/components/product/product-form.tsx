@@ -18,6 +18,7 @@ const ProductForm: React.FC<Props> = () => {
   return (
     <>
       {"imgURL" in state && <ImageUploader />}
+      {"direction" in state && <DirectionSelector />}
       {product.options.map((option) => {
         switch (option.name) {
           case "frame":
@@ -49,7 +50,6 @@ const ProductForm: React.FC<Props> = () => {
             );
         }
       })}
-      {"direction" in state && <DirectionSelector />}
       {"borderStyle" in state && <BorderStyleSelector />}
       {!cartItemID ? <AddToCart /> : <SaveCartItem cartItemID={cartItemID} />}
     </>
