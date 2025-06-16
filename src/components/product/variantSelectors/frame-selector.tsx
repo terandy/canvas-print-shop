@@ -25,7 +25,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
 
   const getImageOptions = (opt: string) => {
     switch (opt) {
-      case "premium":
+      case "black":
         return "/frame/black-frame.png";
       case "none":
       default:
@@ -89,7 +89,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                   updateField("frame", value.toLowerCase());
                 }}
                 key={value}
-                title={`${value}`}
+                title={t(`frame.${value}`)}
                 className={clsx("border rounded bg-white", {
                   "cursor-default ring-2 ring-primary-light": isActive,
                   "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-primary-light":
@@ -104,11 +104,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                   width={100}
                 />
                 <div className="flex flex-col">
-                  <span className="text-sm">
-                    {value === "black"
-                      ? t("frame.premium")
-                      : t(`frame.${value}`)}
-                  </span>
+                  <span className="text-sm">{t(`frame.${value}`)}</span>
                   <span className="text-xs text-gray-800">
                     {formattedPrice}
                   </span>

@@ -332,17 +332,22 @@
       "add": "Ajouter",
       "quality": {
         "title": "Qualité de résolution",
-        "description": "La qualité représente la résolution de l'image téléchargée. Si la résolution n'est pas assez élevée et que nous imprimons sur une grande toile, la qualité sera médiocre. Assurez-vous donc que la qualité de l'image téléchargée est suffisante pour la taille souhaitée.",
+        "poorDescription": "La qualité représente la résolution de l'image téléchargée. Si la résolution n'est pas assez élevée et que nous imprimons sur une grande toile, la qualité sera médiocre. Assurez-vous donc que la qualité de l'image téléchargée est suffisante pour la taille souhaitée.",
         "lowQuality": "Médiocre",
         "normalQuality": "Bonne",
         "goodQuality": "Haute"
       }
     },
     "frame": {
-      "title": "Cadre",
-      "premium": "Prime",
+      "title": "Cadre flottant",
       "none": "Aucun",
-      "black": "Prime"
+      "black": "Noir"
+    },
+    "depth": {
+      "title": "Épaisseur",
+      "select": "Sélectionner l'épaisseur de la toile",
+      "regular": "Standard (0,75 pouces)",
+      "gallery": "Galerie (1.75 pouces)"
     },
     "noImage": "Aucun image",
     "startCreating": "Commencez votre création",
@@ -376,7 +381,7 @@
     "AddToCart": {
       "title": "Ajouter au panier",
       "label": "Ajouter au panier",
-      "disabledMessage": "Téléchargemer une image pour continuer",
+      "disabledMessage": "Télécharger une image pour continuer",
       "cancel": "Annuler"
     },
     "EditItem": {

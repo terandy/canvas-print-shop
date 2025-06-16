@@ -168,6 +168,7 @@ export type CanvasLineItem = AbstractLineItem<
   [
     { name: "size"; value: string /*8x10*/ },
     { name: "frame"; value: "black" | "none" },
+    { name: "depth"; value: "regular" | "gallery" },
   ],
   [
     { key: "imgURL"; value: string },

@@ -25,6 +25,7 @@ const ProductImagePreview: React.FC<Props> = ({ className }) => {
           size={state.size}
           direction={state.direction}
           borderStyle={state.borderStyle}
+          depth={state.depth}
         />
       );
     default:
@@ -35,6 +36,7 @@ const ProductImagePreview: React.FC<Props> = ({ className }) => {
           size={state.size}
           direction={state.direction}
           borderStyle={"none"}
+          depth={state.depth}
         />
       );
   }
