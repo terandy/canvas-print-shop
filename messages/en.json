@@ -352,7 +352,32 @@
     "noImage": "No Image",
     "startCreating": "Start Creating",
     "canvas-roll-prints": "Canvas Roll",
-    "canvas": "Canvas"
+    "canvas": "Canvas",
+    "details": {
+      "title": "Details",
+      "premiumCanvas": "Premium 35% cotton-blend canvas",
+      "fadeResistant": "Fade-resistant for 30+ years",
+      "handStretched": "Hand-stretched over solid wood frame",
+      "readyToHang": "Ready to hang with included hardware",
+      "madeInQuebec": "Proudly made in Quebec City"
+    },
+    "shippingTime": {
+      "title": "Shipping Time",
+      "production": "Production: 2-3 business days",
+      "localPickup": "Local pickup available same day",
+      "canadaPost": "Canada Post: 3-7 business days",
+      "expressAvailable": "Express shipping available at checkout"
+    },
+    "qualityAssurance": {
+      "title": "Quality Assurance",
+      "description": "We stand behind every canvas we create.",
+      "satisfaction": "100% satisfaction guarantee",
+      "replacement": "Free replacement for any defects",
+      "expertSupport": "Expert customer support"
+    },
+    "reviews": {
+      "title": "Customer Reviews"
+    }
   },
   "ImageUploader": {
     "dropzone": {
