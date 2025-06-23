@@ -415,5 +415,9 @@
   "canadian": {
     "proudly": "fièrement",
     "canadian": "canadien"
+  },
+  "price": {
+    "total": "Total",
+    "discount": "rabais"
   }
 }

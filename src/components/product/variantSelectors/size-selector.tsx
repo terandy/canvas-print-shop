@@ -5,6 +5,8 @@ import { useTranslations } from "use-intl";
 import { useState, useEffect, startTransition } from "react";
 import { InfoIcon } from "lucide-react";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
+import { BASE_STATE } from "@/contexts/product-context/data";
+import Price from "../price";
 
 const INCHES_TO_CM = 2.54; // Conversion factor: 1 inch = 2.54 cm
 const MIN_DPI = 100; // Minimum DPI for good print quality
@@ -113,24 +115,25 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     return (
       <div className="space-y-3">
         {option.values.map((value) => {
-          const optionParams = { ...state, [key]: value };
           const isActive = state[key] === value;
-          const filtered = Object.entries(optionParams).filter(([key, value]) =>
-            options.find(
-              (option) => option.name === key && option.values.includes(value)
-            )
+          const optionParams = {
+            ...BASE_STATE,
+            size: value,
+          };
+
+          const productOption = Object.entries(optionParams).filter(
+            ([key, value]) =>
+              options.find(
+                (option) => option.name === key && option.values.includes(value)
+              )
           );
 
           const variantMatch = combinations.find((combination) =>
-            filtered.every(([key, value]) => combination[key] === value)
+            productOption.every(([key, value]) => combination[key] === value)
           );
 
-          const formattedPrice = variantMatch?.price
-            ? new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: variantMatch.currencyCode,
-              }).format(Number(variantMatch.price))
-            : "";
+          // This is the difference in price between the "no option" option, and the currently selected option.
+          const price = variantMatch?.price ? Number(variantMatch.price) : "";
 
           const [x, y] = value.split("x");
 
@@ -158,7 +161,9 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
                       ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
                     </span>
                   </div>
-                  <div className="mt-1 text-sm">{formattedPrice}</div>
+                  <div className="mt-1 text-sm">
+                    {<Price currencyCode={"CAD"} amount={`${price}`} />}
+                  </div>
                 </div>
                 <div className="text-sm">{checkImageCompatibility(+x, +y)}</div>
               </div>
@@ -184,9 +189,13 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
           </thead>
           <tbody>
             {option.values.map((value) => {
-              const optionParams = { ...state, [key]: value };
               const isActive = state[key] === value;
-              const filtered = Object.entries(optionParams).filter(
+              const optionParams = {
+                ...BASE_STATE,
+                size: value,
+              };
+
+              const productOption = Object.entries(optionParams).filter(
                 ([key, value]) =>
                   options.find(
                     (option) =>
@@ -195,14 +204,14 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
               );
 
               const variantMatch = combinations.find((combination) =>
-                filtered.every(([key, value]) => combination[key] === value)
+                productOption.every(
+                  ([key, value]) => combination[key] === value
+                )
               );
 
-              const formattedPrice = variantMatch?.price
-                ? new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: variantMatch.currencyCode,
-                  }).format(Number(variantMatch.price))
+              // This is the difference in price between the "no option" option, and the currently selected option.
+              const price = variantMatch?.price
+                ? Number(variantMatch.price)
                 : "";
 
               const [x, y] = value.split("x");
@@ -235,7 +244,9 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
                       ({inchesToCm(+y)} cm)
                     </span>
                   </td>
-                  <td className="p-2">{formattedPrice}</td>
+                  <td className="p-2">
+                    {<Price currencyCode={"CAD"} amount={`${price}`} />}
+                  </td>
                   <td className="p-2">{checkImageCompatibility(+x, +y)}</td>
                 </tr>
               );

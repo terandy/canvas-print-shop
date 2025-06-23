@@ -5,14 +5,14 @@ interface PriceProps extends React.ComponentProps<"p"> {
   amount: string;
   className?: string;
   currencyCode: string;
-  currencyCodeClassName?: string;
+  currencyDisplay?: "code" | "symbol" | "name" | "narrowSymbol";
 }
 
 const Price: React.FC<PriceProps> = ({
   amount,
   className,
-  currencyCode = "USD",
-  currencyCodeClassName,
+  currencyCode = "CAD",
+  currencyDisplay = "symbol",
 }) => {
   // Get the current locale
   const locale = useLocale();
@@ -31,11 +31,8 @@ const Price: React.FC<PriceProps> = ({
       {`${new Intl.NumberFormat(numberFormatLocale, {
         style: "currency",
         currency: currencyCode,
-        currencyDisplay: "narrowSymbol",
+        currencyDisplay,
       }).format(parseFloat(amount))}`}
-      <span
-        className={clsx("ml-1 inline", currencyCodeClassName)}
-      >{`${currencyCode}`}</span>
     </p>
   );
 };

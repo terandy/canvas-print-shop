@@ -410,5 +410,9 @@
   "canadian": {
     "proudly": "proudly",
     "canadian": "canadian"
+  },
+  "price": {
+    "total": "Total",
+    "discount": "discount"
   }
 }
