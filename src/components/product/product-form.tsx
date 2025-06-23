@@ -10,6 +10,7 @@ import AddToCart from "./add-to-cart";
 import SaveCartItem from "./save-cart-item";
 import SizeSelector from "./variantSelectors/size-selector";
 import VariantSelector from "./variantSelectors/variant-selector";
+import ProductTotal from "./product-total";
 
 interface Props {}
 
@@ -51,6 +52,7 @@ const ProductForm: React.FC<Props> = () => {
         }
       })}
       {"borderStyle" in state && <BorderStyleSelector />}
+      <ProductTotal />
       {!cartItemID ? <AddToCart /> : <SaveCartItem cartItemID={cartItemID} />}
     </>
   );
