@@ -352,7 +352,32 @@
     "noImage": "Aucun image",
     "startCreating": "Commencez votre création",
     "canvas-roll-prints": "Rouleaux de toile",
-    "canvas": "Toile"
+    "canvas": "Toile",
+    "details": {
+      "title": "Détails",
+      "premiumCanvas": "Toile mélange coton premium 35%",
+      "fadeResistant": "Résistant à la décoloration pendant plus de 30 ans",
+      "handStretched": "Tendue à la main sur un cadre en bois massif",
+      "readyToHang": "Prête à accrocher avec le matériel inclus",
+      "madeInQuebec": "Fièrement fabriqué à Québec"
+    },
+    "shippingTime": {
+      "title": "Délais de Livraison",
+      "production": "Production : 2-3 jours ouvrables",
+      "localPickup": "Collecte locale disponible le jour même",
+      "canadaPost": "Postes Canada : 3-7 jours ouvrables",
+      "expressAvailable": "Expédition express disponible à la caisse"
+    },
+    "qualityAssurance": {
+      "title": "Assurance Qualité",
+      "description": "Nous garantissons chaque toile que nous créons.",
+      "satisfaction": "Garantie de satisfaction à 100%",
+      "replacement": "Remplacement gratuit pour tout défaut",
+      "expertSupport": "Support client expert"
+    },
+    "reviews": {
+      "title": "Avis des Clients"
+    }
   },
   "ImageUploader": {
     "dropzone": {
