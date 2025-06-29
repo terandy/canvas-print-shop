@@ -7,7 +7,6 @@ import { useTranslations } from "next-intl";
 const ProductTotal = () => {
   const t = useTranslations("price");
   const { variant } = useProduct();
-  console.log(variant);
 
   return (
     <div className="flex gap-1">
