@@ -10,7 +10,6 @@ interface PriceProps extends React.ComponentProps<"p"> {
 
 const Price: React.FC<PriceProps> = ({
   amount,
-  className,
   currencyCode = "CAD",
   currencyDisplay = "symbol",
 }) => {
@@ -26,15 +25,11 @@ const Price: React.FC<PriceProps> = ({
   // Use the appropriate locale for number formatting
   const numberFormatLocale = localeMap[locale] || "en-CA";
 
-  return (
-    <p suppressHydrationWarning={true} className={className}>
-      {`${new Intl.NumberFormat(numberFormatLocale, {
-        style: "currency",
-        currency: currencyCode,
-        currencyDisplay,
-      }).format(parseFloat(amount))}`}
-    </p>
-  );
+  return new Intl.NumberFormat(numberFormatLocale, {
+    style: "currency",
+    currency: currencyCode,
+    currencyDisplay,
+  }).format(parseFloat(amount));
 };
 
 export default Price;

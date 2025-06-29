@@ -78,11 +78,12 @@ const CartItemCard: React.FC<Props> = ({
             optimisticUpdate={updateCartItemQuantity}
           />
         </div>
-        <Price
-          className="text-secondary font-medium"
-          amount={item.totalAmount.amount}
-          currencyCode={item.totalAmount.currencyCode}
-        />
+        <p className="text-secondary font-medium">
+          <Price
+            amount={item.totalAmount.amount}
+            currencyCode={item.totalAmount.currencyCode}
+          />
+        </p>
       </div>
     </li>
   );

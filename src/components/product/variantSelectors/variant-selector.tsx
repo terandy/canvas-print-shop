@@ -95,16 +95,16 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
 
           return (
             <option key={value} value={value}>
-              <span>{t(`${option.name}.${value}`)}</span>
+              {t(`${option.name}.${value}`)}
               {price !== 0 && (
-                <div>
+                <>
                   {" - "}
                   <Price
                     currencyCode={"CAD"}
                     amount={`${price < 0 ? price * -1 : price}`}
                   />
                   {price < 0 && ` ${priceTr("discount")}`}
-                </div>
+                </>
               )}
             </option>
           );

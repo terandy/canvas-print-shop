@@ -45,11 +45,12 @@ const Totals = ({ cartState }: { cartState: CartState }) => {
       </div>
       <div className="flex items-center justify-between pb-3">
         <p className="text-secondary font-semibold">{t("total")}</p>
-        <Price
-          className="text-right text-lg font-semibold text-secondary"
-          amount={cartState.cost.totalAmount.amount}
-          currencyCode={cartState.cost.totalAmount.currencyCode}
-        />
+        <p className="text-right text-lg font-semibold text-secondary">
+          <Price
+            amount={cartState.cost.totalAmount.amount}
+            currencyCode={cartState.cost.totalAmount.currencyCode}
+          />
+        </p>
       </div>
     </div>
   );
