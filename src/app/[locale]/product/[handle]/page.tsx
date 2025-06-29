@@ -3,12 +3,7 @@ import { getProduct } from "@/lib/shopify";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import type { Metadata, NextPage } from "next";
-import {
-  ProductImagePreview,
-  SectionContainer,
-  PageHeader,
-  Prose,
-} from "@/components";
+import { ProductImagePreview, SectionContainer, Prose } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
 import { Star } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -176,67 +171,24 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   return (
     <ProductProvider product={product} cartItemID={cartItemID ?? null}>
       <div className="container mx-auto max-w-screen-2xl px-4 py-6">
-        {/* Mobile Layout */}
-        <div className="lg:hidden">
-          {/* Sticky image container for mobile */}
-          <div className="sticky top-0 z-20 bg-white">
-            <div className="p-6" id="product-image-preview-container">
-              <Suspense
-                fallback={<div className="aspect-square h-96 w-full" />}
-              >
-                <ProductImagePreview />
-              </Suspense>
-            </div>
-          </div>
-
-          {/* Product details for mobile */}
-          <div className="p-6 pt-0">
-            <Suspense fallback={null}>
-              <div className="space-y-6 rounded-lg border border-gray/10 shadow-lg p-6">
-                {/* Left-aligned title with star rating */}
-                <div className="text-left">
-                  <h1 className="text-3xl font-bold text-secondary mb-2">
-                    {product.title}
-                  </h1>
-                  <StarRating rating={averageRating} showNumber={true} />
-                </div>
-
-                {/* Product description */}
-                <SectionContainer className="-mx-6 rounded-none">
-                  {product.descriptionHtml && (
-                    <Prose
-                      className="text-sm leading-light"
-                      html={product.descriptionHtml}
-                    />
-                  )}
-                </SectionContainer>
-
-                {/* Product form */}
-                <ProductForm />
-
-                {/* Dropdown sections */}
-                <div className="mt-8 border-t border-gray-200">
-                  <ProductDropdowns />
-                </div>
-              </div>
-            </Suspense>
-          </div>
-        </div>
-
-        {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-5 lg:gap-8 p-8">
-          <div className="lg:col-span-3" id="product-image-preview-container">
+        <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
+          {/* Image container - adapts for mobile/desktop */}
+          <div
+            className="lg:col-span-3 sticky top-0 lg:static z-10 lg:z-auto bg-white lg:bg-transparent pb-4 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 z-30 pt-2 lg:pt-0"
+            id="product-image-preview-container"
+          >
             <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
-              <ProductImagePreview className="lg:sticky lg:top-28" />
+              <ProductImagePreview className="max-h-[40vh] lg:max-h-none lg:sticky lg:top-28" />
             </Suspense>
           </div>
 
-          <div className="lg:col-span-2">
+          {/* Product details container */}
+          <div className="lg:col-span-2 mt-4 lg:mt-0 relative z-20 lg:z-auto bg-white lg:bg-transparent">
             <Suspense fallback={null}>
               <div className="space-y-6 rounded-lg border border-gray/10 shadow-lg p-6">
                 {/* Left-aligned title with star rating */}
                 <div className="text-left">
-                  <h1 className="text-3xl font-bold text-secondary mb-2">
+                  <h1 className="text-2xl lg:text-3xl font-bold text-secondary mb-2">
                     {product.title}
                   </h1>
                   <StarRating rating={averageRating} showNumber={true} />
