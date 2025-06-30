@@ -6,8 +6,8 @@ import Link from "next/link";
 import { ChevronDown, Globe } from "lucide-react";
 
 const languages = [
-  { code: "en", name: "English" },
-  { code: "fr", name: "Français" },
+  { code: "en", name: "En" },
+  { code: "fr", name: "Fr" },
 ];
 
 export default function LanguageSwitcher({ className = "" }) {
