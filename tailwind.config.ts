@@ -10,9 +10,9 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#CC5500", // Rich yellowy-orange with good contrast
-          dark: "#A34400", // Darker for better contrast
-          light: "#E67300", // Lighter but still accessible
+          DEFAULT: "#007ACC", // Blue with good contrast
+          dark: "#005C99", // Darker blue for better contrast
+          light: "#3399FF", // Lighter blue but still accessible
         },
         secondary: {
           DEFAULT: "#1F1A17", // Warmer charcoal
