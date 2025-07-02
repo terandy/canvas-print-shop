@@ -9,11 +9,17 @@ import { Star } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
 
-type Props = {
+/**
+ * Page Props
+ */
+export type Props = {
   params: Promise<{ handle: string }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
+/**
+ * Metadata generation
+ */
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
   const product = await getProduct(params?.handle ?? "");
@@ -49,7 +55,9 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   };
 };
 
-// Reviews data
+/**
+ * Static reviews data – replace with dynamic data when available
+ */
 const reviews = [
   {
     id: 1,
@@ -57,6 +65,8 @@ const reviews = [
     rating: 5,
     comment:
       "I highly recommend! Very satisfied with my labels! Great customer service, very fast. Thank you very much.",
+    date: "2024-12-15",
+    verified: true,
   },
   {
     id: 2,
@@ -64,6 +74,8 @@ const reviews = [
     rating: 5,
     comment:
       "I recommend 100% family business, attentive to our needs, with attention to detail",
+    date: "2024-12-10",
+    verified: true,
   },
   {
     id: 3,
@@ -71,36 +83,48 @@ const reviews = [
     rating: 5,
     comment:
       "L'équipe est incroyable! Ils savent répondre à nos besoins tant pour le laminage que l'impression",
+    date: "2024-12-08",
+    verified: true,
   },
   {
     id: 4,
     author: "Carrossier ProColor Lac St-Charles",
     rating: 5,
     comment: "Always quality work! Thank you for your excellent service!",
+    date: "2024-12-05",
+    verified: true,
   },
   {
     id: 5,
     author: "Guy Tremblay",
     rating: 5,
     comment: "Very satisfied with the work accomplished.",
+    date: "2024-12-01",
+    verified: true,
   },
   {
     id: 6,
     author: "France Paul",
     rating: 5,
     comment: "Very satisfied with the result and the service!",
+    date: "2024-11-28",
+    verified: true,
   },
   {
     id: 7,
     author: "Renald Lafleur",
     rating: 5,
     comment: "Best place for imaging in Quebec.",
+    date: "2024-11-25",
+    verified: true,
   },
   {
     id: 8,
     author: "France Bouchard",
     rating: 5,
     comment: "Always perfect!!!!",
+    date: "2024-11-20",
+    verified: true,
   },
   {
     id: 9,
@@ -108,56 +132,68 @@ const reviews = [
     rating: 3,
     comment:
       "Contacted by email for a quote. I assume the project was not within the company's capabilities.",
+    date: "2024-11-18",
+    verified: false,
   },
 ];
 
-// Calculate average rating
+/**
+ * Average rating helper
+ */
 const averageRating =
   reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
 
-// Star Rating Component
+/**
+ * Star rating component
+ */
 const StarRating = ({
   rating,
   showNumber = false,
 }: {
   rating: number;
   showNumber?: boolean;
-}) => {
-  return (
-    <div className="flex items-center gap-1">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          className={`w-4 h-4 ${
-            star <= Math.round(rating)
-              ? "fill-primary text-primary"
-              : "fill-gray-200 text-gray-200"
-          }`}
-        />
-      ))}
-      {showNumber && (
-        <span className="ml-2 text-sm text-gray-600">
-          {rating.toFixed(1)} ({reviews.length} reviews)
-        </span>
-      )}
-    </div>
-  );
-};
+}) => (
+  <div className="flex items-center gap-1">
+    {[1, 2, 3, 4, 5].map((star) => (
+      <Star
+        key={star}
+        className={`w-4 h-4 ${
+          star <= Math.round(rating)
+            ? "fill-primary text-primary"
+            : "fill-gray-200 text-gray-200"
+        }`}
+      />
+    ))}
+    {showNumber && (
+      <span className="ml-2 text-sm text-gray-600">
+        {rating.toFixed(1)} ({reviews.length} reviews)
+      </span>
+    )}
+  </div>
+);
 
-// Review Card Component
-const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => {
-  return (
-    <div className="border-b border-gray-100 pb-6 mb-6 last:border-0">
-      <div className="flex items-start justify-between mb-2">
-        <div>
+/**
+ * Individual review card
+ */
+const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
+  <div className="border-b border-gray-100 pb-4 mb-4 last:border-0">
+    <div className="flex items-start justify-between mb-2">
+      <div>
+        <div className="flex items-center gap-2 mb-1">
           <p className="font-medium text-secondary">{review.author}</p>
-          <StarRating rating={review.rating} />
+          {review.verified && (
+            <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+              Verified
+            </span>
+          )}
         </div>
+        <StarRating rating={review.rating} />
       </div>
-      <p className="text-gray-600 mt-3">{review.comment}</p>
+      <span className="text-sm text-gray-500">{review.date}</span>
     </div>
-  );
-};
+    <p className="text-gray-600 mt-2">{review.comment}</p>
+  </div>
+);
 
 const ProductPage: NextPage<Props> = async (props: Props) => {
   const params = await props.params;
@@ -172,7 +208,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
     <ProductProvider product={product} cartItemID={cartItemID ?? null}>
       <div className="container mx-auto max-w-screen-2xl px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
-          {/* Image container - adapts for mobile/desktop */}
+          {/* Image container - adapts for mobile/desktop with sticky functionality */}
           <div
             className="lg:col-span-3 sticky top-0 lg:static z-10 lg:z-auto bg-white lg:bg-transparent pb-4 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 z-30 pt-2 lg:pt-0"
             id="product-image-preview-container"
@@ -186,12 +222,59 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           <div className="lg:col-span-2 mt-4 lg:mt-0 relative z-20 lg:z-auto bg-white lg:bg-transparent">
             <Suspense fallback={null}>
               <div className="space-y-6 rounded-lg border border-gray/10 shadow-lg p-6">
-                {/* Left-aligned title with star rating */}
+                {/* Title and rating */}
                 <div className="text-left">
                   <h1 className="text-2xl lg:text-3xl font-bold text-secondary mb-2">
                     {product.title}
                   </h1>
-                  <StarRating rating={averageRating} showNumber={true} />
+                  <StarRating rating={averageRating} showNumber />
+
+                  {/* Delivery date estimate */}
+                  <div className="mt-3 p-2 bg-green-50 border border-green-200 rounded-lg">
+                    <p className="text-sm text-green-800">
+                      📦 Get it by{" "}
+                      <strong>
+                        {(() => {
+                          const today = new Date();
+                          const minDate = new Date(today);
+                          const maxDate = new Date(today);
+
+                          // Add 5 business days for minimum
+                          let businessDays = 0;
+                          while (businessDays < 5) {
+                            minDate.setDate(minDate.getDate() + 1);
+                            if (
+                              minDate.getDay() !== 0 &&
+                              minDate.getDay() !== 6
+                            ) {
+                              businessDays++;
+                            }
+                          }
+
+                          // Add 10 business days for maximum
+                          businessDays = 0;
+                          while (businessDays < 10) {
+                            maxDate.setDate(maxDate.getDate() + 1);
+                            if (
+                              maxDate.getDay() !== 0 &&
+                              maxDate.getDay() !== 6
+                            ) {
+                              businessDays++;
+                            }
+                          }
+
+                          const formatDate = (date: Date) =>
+                            date.toLocaleDateString("en-GB", {
+                              day: "2-digit",
+                              month: "short",
+                            });
+
+                          return `${formatDate(minDate)} - ${formatDate(maxDate)}`;
+                        })()}
+                      </strong>{" "}
+                      if you order today
+                    </p>
+                  </div>
                 </div>
 
                 {/* Product description */}
@@ -206,25 +289,73 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
 
                 {/* Product form */}
                 <ProductForm />
-
-                {/* Dropdown sections */}
-                <div className="mt-8 border-t border-gray-200">
-                  <ProductDropdowns />
-                </div>
               </div>
             </Suspense>
           </div>
         </div>
 
-        {/* Reviews Section */}
-        <div className="max-w-4xl mx-auto px-6 py-12">
-          <h2 className="text-2xl font-bold text-secondary mb-8">
-            {t("reviews.title")}
-          </h2>
-          <div className="grid gap-6">
-            {reviews.map((review) => (
-              <ReviewCard key={review.id} review={review} />
-            ))}
+        {/* Reviews + Product Details Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-xl mx-auto px-6 py-12">
+          {/* Reviews column (left) */}
+          <div>
+            <h2 className="text-2xl font-bold text-secondary mb-6">
+              Customer Reviews
+            </h2>
+
+            {/* Rating summary */}
+            <div className="bg-gray-50 rounded-lg p-4 mb-6">
+              <div className="flex items-center gap-4">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-secondary">
+                    {averageRating.toFixed(1)}
+                  </div>
+                  <StarRating rating={averageRating} />
+                  <div className="text-sm text-gray-500 mt-1">
+                    {reviews.length} reviews
+                  </div>
+                </div>
+                <div className="flex-1">
+                  {[5, 4, 3, 2, 1].map((stars) => {
+                    const count = reviews.filter(
+                      (r) => r.rating === stars
+                    ).length;
+                    const percentage = (count / reviews.length) * 100;
+                    return (
+                      <div key={stars} className="flex items-center gap-2 mb-1">
+                        <span className="text-sm w-8">{stars}</span>
+                        <Star className="w-3 h-3 fill-gray-300 text-gray-300" />
+                        <div className="flex-1 bg-gray-200 rounded-full h-2">
+                          <div
+                            className="bg-primary h-2 rounded-full"
+                            style={{ width: `${percentage}%` }}
+                          />
+                        </div>
+                        <span className="text-xs text-gray-500 w-8">
+                          {count}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Individual reviews */}
+            <div className="space-y-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pr-2">
+              {reviews.map((review) => (
+                <ReviewCard key={review.id} review={review} />
+              ))}
+            </div>
+          </div>
+
+          {/* Product Details column (right) */}
+          <div>
+            <h2 className="text-2xl font-bold text-secondary mb-6">
+              Product Information
+            </h2>
+            <div className="space-y-4">
+              <ProductDropdowns />
+            </div>
           </div>
         </div>
       </div>
