@@ -7,6 +7,12 @@
       "description": "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada."
     }
   },
+  "FAQ": {
+    "metadata": {
+      "title": "Frequently Asked Questions | Canvas Print Shop",
+      "description": "Find answers to common questions about our canvas prints, shipping, quality guarantee, and more. Get help with your custom canvas printing needs."
+    }
+  },
   "Home": {
     "hero": {
       "title": "Custom Canvas Prints Made to Order",
@@ -398,6 +404,11 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
+      "sections": {
+        "imageQualityProduct": "Image Quality & Product Details",
+        "deliveryPickup": "Delivery & Pickup",
+        "satisfactionSupport": "Satisfaction & Support"
+      },
       "questions": {
         "imageQuality": {
           "question": "How do I know if my image quality is good enough?",
