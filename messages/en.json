@@ -7,6 +7,12 @@
       "description": "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada."
     }
   },
+  "FAQ": {
+    "metadata": {
+      "title": "Frequently Asked Questions | Canvas Print Shop",
+      "description": "Find answers to common questions about our canvas prints, shipping, quality guarantee, and more. Get help with your custom canvas printing needs."
+    }
+  },
   "Home": {
     "hero": {
       "title": "Custom Canvas Prints Made to Order",
@@ -347,7 +353,7 @@
       "title": "Depth",
       "select": "Select canvas depth",
       "regular": "Regular (0.75 inches)",
-      "gallery": "Gallery (1.75 inches)"
+      "gallery": "Gallery (1.5 inches)"
     },
     "noImage": "No Image",
     "startCreating": "Start Creating",
@@ -377,6 +383,66 @@
     },
     "reviews": {
       "title": "Customer Reviews"
+    },
+    "productInformation": "Product Information",
+    "delivery": {
+      "getItBy": "Get it by",
+      "ifOrderToday": "if you order today"
+    },
+    "verified": "Verified",
+    "averageRating": "{rating} ({count} reviews)",
+    "deliveryDetails": {
+      "title": "Delivery Details",
+      "processingTime": "Processing time:",
+      "processingTimeValue": "2-4 business days",
+      "localPickup": "Local pickup:",
+      "localPickupValue": "Available after 4 business days",
+      "totalDeliveryTime": "Total delivery time:",
+      "totalDeliveryTimeValue": "Approximately 5-10 business days",
+      "shippingCost": "Shipping Cost:",
+      "shippingCostValue": "Available at checkout (FREE shipping on orders over $150)"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "sections": {
+        "imageQualityProduct": "Image Quality & Product Details",
+        "deliveryPickup": "Delivery & Pickup",
+        "satisfactionSupport": "Satisfaction & Support"
+      },
+      "questions": {
+        "imageQuality": {
+          "question": "How do I know if my image quality is good enough?",
+          "answer": "Our system automatically checks your image resolution and shows a quality indicator (Poor, Normal or Perfect) when you select a canvas size. We recommend 'Perfect' quality for the best results."
+        },
+        "depthDifference": {
+          "question": "What's the difference between Regular and Gallery depth?",
+          "answer": "Regular depth (0.75 inches) is our standard option, while Gallery depth (1.5 inches) creates a more dramatic, museum-like appearance with deeper sides."
+        },
+        "localPickupAvailable": {
+          "question": "Do you offer local pickup?",
+          "answer": "Yes! We offer free local pickup at our Quebec City location during business hours (Monday-Friday, 9am-5pm EST). You'll receive an email when your order is ready."
+        },
+        "satisfaction": {
+          "question": "What if I'm not satisfied with my canvas?",
+          "answer": "We offer a 30-day satisfaction guarantee. If you're not completely happy with your canvas, we'll work with you to make it right or provide a full refund."
+        },
+        "durability": {
+          "question": "How long will my canvas last?",
+          "answer": "Our canvases are printed with UVgel technology and guaranteed not to fade for over 30 years. They're also scratch and water-resistant for long-lasting beauty."
+        },
+        "deliveryTime": {
+          "question": "How long does delivery take?",
+          "answer": "We typically need 2 - 4 days to produce, package and dispatch your canvas. Please allow additional transit time based on the shipping option you choose."
+        },
+        "multipleCanvases": {
+          "question": "Can I order multiple canvases of the same image?",
+          "answer": "Absolutely! You can create multiple canvas designs with different sizes and framing options from the same image."
+        }
+      }
+    },
+    "guarantee": {
+      "title": "30-Year Print Quality Guarantee",
+      "description": "We stand behind our premium UVgel printing technology with an industry-leading guarantee."
     }
   },
   "ImageUploader": {
