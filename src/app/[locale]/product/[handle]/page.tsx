@@ -8,6 +8,13 @@ import { ProductProvider } from "@/contexts/product-context";
 import { Star } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
+import { addBusinessDays } from "@/lib/utils/base";
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en-CA", {
+    day: "2-digit",
+    month: "short",
+  });
 
 /**
  * Page Props
@@ -201,6 +208,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   const product = await getProduct(params.handle);
   const cartItemID = searchParams?.["cartItemID"] as string | undefined;
   const t = await getTranslations("Product");
+  const today = new Date();
 
   if (!product) return notFound();
 
@@ -234,43 +242,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
                     <p className="text-sm text-green-800">
                       📦 Get it by{" "}
                       <strong>
-                        {(() => {
-                          const today = new Date();
-                          const minDate = new Date(today);
-                          const maxDate = new Date(today);
-
-                          // Add 5 business days for minimum
-                          let businessDays = 0;
-                          while (businessDays < 5) {
-                            minDate.setDate(minDate.getDate() + 1);
-                            if (
-                              minDate.getDay() !== 0 &&
-                              minDate.getDay() !== 6
-                            ) {
-                              businessDays++;
-                            }
-                          }
-
-                          // Add 10 business days for maximum
-                          businessDays = 0;
-                          while (businessDays < 10) {
-                            maxDate.setDate(maxDate.getDate() + 1);
-                            if (
-                              maxDate.getDay() !== 0 &&
-                              maxDate.getDay() !== 6
-                            ) {
-                              businessDays++;
-                            }
-                          }
-
-                          const formatDate = (date: Date) =>
-                            date.toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "short",
-                            });
-
-                          return `${formatDate(minDate)} - ${formatDate(maxDate)}`;
-                        })()}
+                        {`${formatDate(addBusinessDays(today, 5))} - ${formatDate(addBusinessDays(today, 10))}`}
                       </strong>{" "}
                       if you order today
                     </p>
