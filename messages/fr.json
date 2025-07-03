@@ -347,7 +347,7 @@
       "title": "Épaisseur",
       "select": "Sélectionner l'épaisseur de la toile",
       "regular": "Standard (0,75 pouces)",
-      "gallery": "Galerie (1.75 pouces)"
+      "gallery": "Galerie (1.5 pouces)"
     },
     "noImage": "Aucun image",
     "startCreating": "Commencez votre création",
@@ -377,6 +377,61 @@
     },
     "reviews": {
       "title": "Avis des Clients"
+    },
+    "productInformation": "Informations sur le Produit",
+    "delivery": {
+      "getItBy": "Recevez-le d'ici le",
+      "ifOrderToday": "si vous commandez aujourd'hui"
+    },
+    "verified": "Vérifié",
+    "averageRating": "{rating} ({count} avis)",
+    "deliveryDetails": {
+      "title": "Détails de Livraison",
+      "processingTime": "Temps de traitement :",
+      "processingTimeValue": "2-4 jours ouvrables",
+      "localPickup": "Collecte locale :",
+      "localPickupValue": "Disponible après 4 jours ouvrables",
+      "totalDeliveryTime": "Temps de livraison total :",
+      "totalDeliveryTimeValue": "Environ 5-10 jours ouvrables",
+      "shippingCost": "Frais d'expédition :",
+      "shippingCostValue": "Disponible à la caisse (Livraison GRATUITE pour les commandes de plus de 150$)"
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées",
+      "questions": {
+        "imageQuality": {
+          "question": "Comment savoir si la qualité de mon image est suffisante ?",
+          "answer": "Notre système vérifie automatiquement la résolution de votre image et affiche un indicateur de qualité (Médiocre, Bonne ou Parfaite) lorsque vous sélectionnez une taille de toile. Nous recommandons une qualité 'Parfaite' pour de meilleurs résultats."
+        },
+        "depthDifference": {
+          "question": "Quelle est la différence entre l'épaisseur Standard et Galerie ?",
+          "answer": "L'épaisseur Standard (0,75 pouces) est notre option standard, tandis que l'épaisseur Galerie (1,5 pouces) crée un aspect plus dramatique, semblable à un musée, avec des côtés plus profonds."
+        },
+        "localPickupAvailable": {
+          "question": "Offrez-vous la collecte locale ?",
+          "answer": "Oui ! Nous offrons une collecte locale gratuite à notre emplacement de Québec pendant les heures d'ouverture (lundi-vendredi, 9h-17h HNE). Vous recevrez un email lorsque votre commande sera prête."
+        },
+        "satisfaction": {
+          "question": "Que se passe-t-il si je ne suis pas satisfait de ma toile ?",
+          "answer": "Nous offrons une garantie de satisfaction de 30 jours. Si vous n'êtes pas entièrement satisfait de votre toile, nous travaillerons avec vous pour arranger les choses ou fournir un remboursement complet."
+        },
+        "durability": {
+          "question": "Combien de temps ma toile durera-t-elle ?",
+          "answer": "Nos toiles sont imprimées avec la technologie UVgel et garanties de ne pas se décolorer pendant plus de 30 ans. Elles sont également résistantes aux rayures et à l'eau pour une beauté durable."
+        },
+        "deliveryTime": {
+          "question": "Combien de temps prend la livraison ?",
+          "answer": "Nous avons généralement besoin de 2 à 4 jours pour produire, emballer et expédier votre toile. Veuillez prévoir du temps de transit supplémentaire selon l'option d'expédition que vous choisissez."
+        },
+        "multipleCanvases": {
+          "question": "Puis-je commander plusieurs toiles de la même image ?",
+          "answer": "Absolument ! Vous pouvez créer plusieurs designs de toile avec différentes tailles et options d'encadrement à partir de la même image."
+        }
+      }
+    },
+    "guarantee": {
+      "title": "Garantie de Qualité d'Impression de 30 Ans",
+      "description": "Nous soutenons notre technologie d'impression UVgel premium avec une garantie leader de l'industrie."
     }
   },
   "ImageUploader": {

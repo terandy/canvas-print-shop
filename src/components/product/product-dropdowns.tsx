@@ -74,68 +74,41 @@ const FAQItem = ({
 const ProductDropdowns = () => {
   const t = useTranslations("Product");
 
-  // FAQ data
-  const faqs = [
-    {
-      question: "How do I know if my image quality is good enough?",
-      answer:
-        "Our system automatically checks your image resolution and shows a quality indicator (Poor, Normal or Perfect) when you select a canvas size. We recommend 'Perfect' quality for the best results.",
-    },
-    {
-      question: "What's the difference between Regular and Gallery depth?",
-      answer:
-        "Regular depth (0.75 inches) is our standard option, while Gallery depth (1.5 inches) creates a more dramatic, museum-like appearance with deeper sides.",
-    },
-    {
-      question: "Do you offer local pickup?",
-      answer:
-        "Yes! We offer free local pickup at our Quebec City location during business hours (Monday-Friday, 9am-5pm EST). You'll receive an email when your order is ready.",
-    },
-    {
-      question: "What if I'm not satisfied with my canvas?",
-      answer:
-        "We offer a 30-day satisfaction guarantee. If you're not completely happy with your canvas, we'll work with you to make it right or provide a full refund.",
-    },
-    {
-      question: "How long will my canvas last?",
-      answer:
-        "Our canvases are printed with UVgel technology and guaranteed not to fade for over 30 years. They're also scratch and water-resistant for long-lasting beauty.",
-    },
-    {
-      question: "How long does delivery take?",
-      answer:
-        "We typically need 2 - 4 days to produce, package and dispatch your canvas. Please allow additional transit time based on the shipping option you choose.",
-    },
-    {
-      question: "Can I order multiple canvases of the same image?",
-      answer:
-        "Absolutely! You can create multiple canvas designs with different sizes and framing options from the same image.",
-    },
-  ];
-
   return (
     <>
       {/* Delivery Details - Open by default */}
-      <Dropdown title="Delivery Details" defaultOpen={true}>
+      <Dropdown title={t("deliveryDetails.title")} defaultOpen={true}>
         <div className="space-y-3">
           <div className="flex justify-between">
-            <span className="text-gray-600">Processing time:</span>
-            <span className="font-medium">2-4 business days</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Local pickup:</span>
-            <span className="font-medium">Available after 4 business days</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">Total delivery time:</span>
+            <span className="text-gray-600">
+              {t("deliveryDetails.processingTime")}
+            </span>
             <span className="font-medium">
-              Approximately 5-10 business days
+              {t("deliveryDetails.processingTimeValue")}
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-600">Shipping Cost:</span>
+            <span className="text-gray-600">
+              {t("deliveryDetails.localPickup")}
+            </span>
             <span className="font-medium">
-              Available at checkout (FREE shipping on orders over $150)
+              {t("deliveryDetails.localPickupValue")}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">
+              {t("deliveryDetails.totalDeliveryTime")}
+            </span>
+            <span className="font-medium">
+              {t("deliveryDetails.totalDeliveryTimeValue")}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">
+              {t("deliveryDetails.shippingCost")}
+            </span>
+            <span className="font-medium">
+              {t("deliveryDetails.shippingCostValue")}
             </span>
           </div>
         </div>
@@ -153,11 +126,36 @@ const ProductDropdowns = () => {
       </Dropdown>
 
       {/* FAQs */}
-      <Dropdown title="Frequently Asked Questions">
+      <Dropdown title={t("faq.title")}>
         <div className="space-y-0">
-          {faqs.map((faq, index) => (
-            <FAQItem key={index} question={faq.question} answer={faq.answer} />
-          ))}
+          <FAQItem
+            question={t("faq.questions.imageQuality.question")}
+            answer={t("faq.questions.imageQuality.answer")}
+          />
+          <FAQItem
+            question={t("faq.questions.depthDifference.question")}
+            answer={t("faq.questions.depthDifference.answer")}
+          />
+          <FAQItem
+            question={t("faq.questions.localPickupAvailable.question")}
+            answer={t("faq.questions.localPickupAvailable.answer")}
+          />
+          <FAQItem
+            question={t("faq.questions.satisfaction.question")}
+            answer={t("faq.questions.satisfaction.answer")}
+          />
+          <FAQItem
+            question={t("faq.questions.durability.question")}
+            answer={t("faq.questions.durability.answer")}
+          />
+          <FAQItem
+            question={t("faq.questions.deliveryTime.question")}
+            answer={t("faq.questions.deliveryTime.answer")}
+          />
+          <FAQItem
+            question={t("faq.questions.multipleCanvases.question")}
+            answer={t("faq.questions.multipleCanvases.answer")}
+          />
         </div>
       </Dropdown>
 
@@ -171,11 +169,10 @@ const ProductDropdowns = () => {
         </ul>
         <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
           <p className="text-green-800 font-medium text-sm">
-            🛡️ 30-Year Print Quality Guarantee
+            🛡️ {t("guarantee.title")}
           </p>
           <p className="text-green-700 text-sm mt-1">
-            We stand behind our premium UVgel printing technology with an
-            industry-leading guarantee.
+            {t("guarantee.description")}
           </p>
         </div>
       </Dropdown>

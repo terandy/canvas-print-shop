@@ -9,12 +9,7 @@ import { Star } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
 import { addBusinessDays } from "@/lib/utils/base";
-
-const formatDate = (date: Date) =>
-  date.toLocaleDateString("en-CA", {
-    day: "2-digit",
-    month: "short",
-  });
+import { getLocale } from "next-intl/server";
 
 /**
  * Page Props
@@ -153,54 +148,67 @@ const averageRating =
 /**
  * Star rating component
  */
-const StarRating = ({
+const StarRating = async ({
   rating,
   showNumber = false,
+  reviewCount,
 }: {
   rating: number;
   showNumber?: boolean;
-}) => (
-  <div className="flex items-center gap-1">
-    {[1, 2, 3, 4, 5].map((star) => (
-      <Star
-        key={star}
-        className={`w-4 h-4 ${
-          star <= Math.round(rating)
-            ? "fill-primary text-primary"
-            : "fill-gray-200 text-gray-200"
-        }`}
-      />
-    ))}
-    {showNumber && (
-      <span className="ml-2 text-sm text-gray-600">
-        {rating.toFixed(1)} ({reviews.length} reviews)
-      </span>
-    )}
-  </div>
-);
+  reviewCount?: number;
+}) => {
+  const t = await getTranslations("Product");
+
+  return (
+    <div className="flex items-center gap-1">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star
+          key={star}
+          className={`w-4 h-4 ${
+            star <= Math.round(rating)
+              ? "fill-primary text-primary"
+              : "fill-gray-200 text-gray-200"
+          }`}
+        />
+      ))}
+      {showNumber && t && reviewCount && (
+        <span className="ml-2 text-sm text-gray-600">
+          {t("averageRating", {
+            rating: rating.toFixed(1),
+            count: reviewCount,
+          })}
+        </span>
+      )}
+    </div>
+  );
+};
 
 /**
  * Individual review card
  */
-const ReviewCard = ({ review }: { review: (typeof reviews)[0] }) => (
-  <div className="border-b border-gray-100 pb-4 mb-4 last:border-0">
-    <div className="flex items-start justify-between mb-2">
-      <div>
-        <div className="flex items-center gap-2 mb-1">
-          <p className="font-medium text-secondary">{review.author}</p>
-          {review.verified && (
-            <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
-              Verified
-            </span>
-          )}
+const ReviewCard = async ({ review }: { review: (typeof reviews)[0] }) => {
+  const t = await getTranslations("Product");
+
+  return (
+    <div className="border-b border-gray-100 pb-4 mb-4 last:border-0">
+      <div className="flex items-start justify-between mb-2">
+        <div>
+          <div className="flex items-center gap-2 mb-1">
+            <p className="font-medium text-secondary">{review.author}</p>
+            {review.verified && (
+              <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                {t("verified")}
+              </span>
+            )}
+          </div>
+          <StarRating rating={review.rating} />
         </div>
-        <StarRating rating={review.rating} />
+        <span className="text-sm text-gray-500">{review.date}</span>
       </div>
-      <span className="text-sm text-gray-500">{review.date}</span>
+      <p className="text-gray-600 mt-2">{review.comment}</p>
     </div>
-    <p className="text-gray-600 mt-2">{review.comment}</p>
-  </div>
-);
+  );
+};
 
 const ProductPage: NextPage<Props> = async (props: Props) => {
   const params = await props.params;
@@ -208,6 +216,13 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   const product = await getProduct(params.handle);
   const cartItemID = searchParams?.["cartItemID"] as string | undefined;
   const t = await getTranslations("Product");
+  const locale = await getLocale();
+  const formatDate = (date: Date) =>
+    date.toLocaleDateString(locale, {
+      day: "2-digit",
+      month: "short",
+    });
+
   const today = new Date();
 
   if (!product) return notFound();
@@ -235,16 +250,20 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
                   <h1 className="text-2xl lg:text-3xl font-bold text-secondary mb-2">
                     {product.title}
                   </h1>
-                  <StarRating rating={averageRating} showNumber />
+                  <StarRating
+                    rating={averageRating}
+                    showNumber
+                    reviewCount={reviews.length}
+                  />
 
                   {/* Delivery date estimate */}
                   <div className="mt-3 p-2 bg-green-50 border border-green-200 rounded-lg">
                     <p className="text-sm text-green-800">
-                      📦 Get it by{" "}
+                      📦 {t("delivery.getItBy")}{" "}
                       <strong>
                         {`${formatDate(addBusinessDays(today, 5))} - ${formatDate(addBusinessDays(today, 10))}`}
                       </strong>{" "}
-                      if you order today
+                      {t("delivery.ifOrderToday")}
                     </p>
                   </div>
                 </div>
@@ -271,7 +290,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           {/* Reviews column (left) */}
           <div>
             <h2 className="text-2xl font-bold text-secondary mb-6">
-              Customer Reviews
+              {t("reviews.title")}
             </h2>
 
             {/* Rating summary */}
@@ -283,7 +302,10 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
                   </div>
                   <StarRating rating={averageRating} />
                   <div className="text-sm text-gray-500 mt-1">
-                    {reviews.length} reviews
+                    {t("averageRating", {
+                      rating: "",
+                      count: reviews.length,
+                    }).replace(/^[0-9.]+ /, "")}
                   </div>
                 </div>
                 <div className="flex-1">
@@ -323,7 +345,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           {/* Product Details column (right) */}
           <div>
             <h2 className="text-2xl font-bold text-secondary mb-6">
-              Product Information
+              {t("productInformation")}
             </h2>
             <div className="space-y-4">
               <ProductDropdowns />
