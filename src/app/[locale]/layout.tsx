@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 import { Geist } from "next/font/google";
+import GoogleAnalytics from "@/components/google-analytics"; // Add this import
 
 const geist = Geist({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ const LocaleLayout: React.FC<Props> = async ({ children, params }) => {
   return (
     <html lang={locale}>
       <body className={geist.className}>
+        <GoogleAnalytics /> {/* Add this line */}
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
             <Navbar />
