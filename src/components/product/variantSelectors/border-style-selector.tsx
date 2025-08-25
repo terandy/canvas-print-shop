@@ -10,8 +10,6 @@ const BorderStyleSelector = () => {
   const t = useTranslations("Product.borderStyle");
 
   const options = [
-    { label: t("black"), value: "black", src: "/border/black-border.png" },
-    { label: t("white"), value: "white", src: "/border/white-border.png" },
     {
       label: t("wrapped"),
       value: "wrapped",

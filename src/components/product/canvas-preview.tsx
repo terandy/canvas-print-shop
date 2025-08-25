@@ -344,7 +344,7 @@ const CanvasPreviewer: React.FC<
   src,
   size,
   direction,
-  borderStyle = "white",
+  borderStyle = "wrapped",
   depth = "regular",
   ...props
 }) => {
