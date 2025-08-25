@@ -153,17 +153,17 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
                 })
               }
             >
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="font-medium">
-                    {x}&quot; × {y}&quot;
-                    <span className="text-gray-400 text-xs ml-1">
-                      ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
-                    </span>
-                  </div>
-                  <div className="mt-1 text-sm">
-                    {<Price currencyCode={"CAD"} amount={`${price}`} />}
-                  </div>
+              <div>
+                <div className="font-medium">
+                  {x}&quot; × {y}&quot;
+                  <span className="text-gray-400 text-xs ml-1">
+                    ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
+                  </span>
+                </div>
+              </div>
+              <div className="flex justify-between">
+                <div className="mt-1 text-sm">
+                  {<Price currencyCode={"CAD"} amount={`${price}`} />}
                 </div>
                 <div className="text-sm">{checkImageCompatibility(+x, +y)}</div>
               </div>
