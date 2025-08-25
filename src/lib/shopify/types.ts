@@ -90,7 +90,7 @@ export type ShopifyProduct = {
   updatedAt: string;
 };
 
-export type BorderStyle = "black" | "white" | "wrapped";
+export type BorderStyle = "wrapped" | "fill";
 
 export type Product = Omit<ShopifyProduct, "variants" | "images"> & {
   variants: ProductVariant[];
@@ -173,7 +173,7 @@ export type CanvasLineItem = AbstractLineItem<
   [
     { key: "imgURL"; value: string },
     { key: "direction"; value: "portrait" | "landscape" },
-    { key: "borderStyle"; value: "black" | "white" | "wrapped" | "fill" },
+    { key: "borderStyle"; value: "wrapped" | "fill" },
   ]
 >;
 

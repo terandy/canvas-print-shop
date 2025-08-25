@@ -18,7 +18,7 @@ interface BaseFormState extends FormState {
 }
 
 export interface CanvasFormState extends BaseFormState {
-  borderStyle: "black" | "white" | "wrapped" | "fill";
+  borderStyle: "wrapped" | "fill";
   frame: "none" | "black";
 }
 
