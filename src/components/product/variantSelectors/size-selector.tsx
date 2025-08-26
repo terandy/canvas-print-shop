@@ -56,6 +56,16 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
   // State for responsive design
   const [isMobile, setIsMobile] = useState(false);
 
+  // State to track which size info card is shown
+  const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
+
+  // State to track hover card position
+  const [hoverCardPosition, setHoverCardPosition] = useState<{
+    x: number;
+    y: number;
+    arrowOffset: number;
+  } | null>(null);
+
   // Check screen size
   useEffect(() => {
     const checkScreenSize = () => {
@@ -67,12 +77,71 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  // Hide tooltip on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setHoveredInfo(null);
+      setHoverCardPosition(null);
+    };
+
+    if (hoveredInfo) {
+      window.addEventListener("scroll", handleScroll, true);
+      return () => window.removeEventListener("scroll", handleScroll, true);
+    }
+  }, [hoveredInfo]);
+
   // Convert inches to centimeters and round to 1 decimal place
   const inchesToCm = (inches: number): string => {
     return (inches * INCHES_TO_CM).toFixed(1);
   };
 
-  const checkImageCompatibility = (width: number, height: number) => {
+  const handleHoverToggle = (
+    value: string,
+    event: React.MouseEvent | React.TouchEvent
+  ) => {
+    // Prevent the click from bubbling up to the size selection
+    event.stopPropagation();
+
+    if (hoveredInfo === value) {
+      setHoveredInfo(null);
+      setHoverCardPosition(null);
+    } else {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const tooltipWidth = isMobile ? 320 : 320; // w-80 = 320px
+      const screenWidth = window.innerWidth;
+      const padding = 16; // 1rem padding from edges
+
+      // Calculate initial x position (centered on trigger)
+      const triggerCenter = rect.left + rect.width / 2;
+      let x = triggerCenter;
+
+      // Adjust if tooltip would overflow left edge
+      if (x - tooltipWidth / 2 < padding) {
+        x = tooltipWidth / 2 + padding;
+      }
+
+      // Adjust if tooltip would overflow right edge
+      if (x + tooltipWidth / 2 > screenWidth - padding) {
+        x = screenWidth - tooltipWidth / 2 - padding;
+      }
+
+      // Calculate arrow offset from center of tooltip to point at trigger
+      const arrowOffset = triggerCenter - x;
+
+      setHoverCardPosition({
+        x: x,
+        y: rect.bottom + 8,
+        arrowOffset: arrowOffset,
+      });
+      setHoveredInfo(value);
+    }
+  };
+
+  const checkImageCompatibility = (
+    width: number,
+    height: number,
+    value: string
+  ) => {
     if (!imageResolution) return tr("noImage");
     // Calculate DPI for both dimensions
     const widthDPI = imageResolution.width / width;
@@ -92,8 +161,19 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     }
     return (
       <span
-        className="flex gap-1 text-gray-500"
-        title={t("quality.poorDescription")}
+        className="flex gap-1 items-center cursor-pointer text-gray-500"
+        onClick={isMobile ? (e) => handleHoverToggle(value, e) : undefined}
+        onMouseEnter={
+          !isMobile ? (e) => handleHoverToggle(value, e) : undefined
+        }
+        onMouseLeave={
+          !isMobile
+            ? () => {
+                setHoveredInfo(null);
+                setHoverCardPosition(null);
+              }
+            : undefined
+        }
       >
         {t("quality.lowQuality")} <InfoIcon size={16} />
       </span>
@@ -153,19 +233,21 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
                 })
               }
             >
-              <div className="flex justify-between items-center">
-                <div>
-                  <div className="font-medium">
-                    {x}&quot; × {y}&quot;
-                    <span className="text-gray-400 text-xs ml-1">
-                      ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
-                    </span>
-                  </div>
-                  <div className="mt-1 text-sm">
-                    {<Price currencyCode={"CAD"} amount={`${price}`} />}
-                  </div>
+              <div>
+                <div className="font-medium">
+                  {x}&quot; × {y}&quot;
+                  <span className="text-gray-400 text-xs ml-1">
+                    ({inchesToCm(+x)} × {inchesToCm(+y)} cm)
+                  </span>
                 </div>
-                <div className="text-sm">{checkImageCompatibility(+x, +y)}</div>
+              </div>
+              <div className="flex justify-between">
+                <div className="mt-1 text-sm">
+                  {<Price currencyCode={"CAD"} amount={`${price}`} />}
+                </div>
+                <div className="text-sm">
+                  {checkImageCompatibility(+x, +y, value)}
+                </div>
               </div>
             </div>
           );
@@ -247,7 +329,9 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
                   <td className="p-2">
                     {<Price currencyCode={"CAD"} amount={`${price}`} />}
                   </td>
-                  <td className="p-2">{checkImageCompatibility(+x, +y)}</td>
+                  <td className="p-2">
+                    {checkImageCompatibility(+x, +y, value)}
+                  </td>
                 </tr>
               );
             })}
@@ -263,6 +347,27 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
         {t(`title`)}
       </h3>
       {isMobile ? renderMobileSizeCards() : renderDesktopTable()}
+
+      {/* Portal-style hover card */}
+      {hoveredInfo && hoverCardPosition && (
+        <div
+          className="fixed z-[9999] p-3 bg-white border border-gray-200 rounded-lg shadow-lg w-80 sm:max-w-xs text-xs text-gray-700 pointer-events-none"
+          style={{
+            left: hoverCardPosition.x,
+            top: hoverCardPosition.y,
+            transform: "translateX(-50%)",
+          }}
+        >
+          <div
+            className="absolute -top-1 w-2 h-2 bg-white border-l border-t border-gray-200"
+            style={{
+              left: `calc(50% + ${hoverCardPosition.arrowOffset}px)`,
+              transform: "translateX(-50%) rotate(45deg)",
+            }}
+          ></div>
+          {t("quality.poorDescription")}
+        </div>
+      )}
     </div>
   );
 };
