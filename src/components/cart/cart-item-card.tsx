@@ -61,9 +61,9 @@ const CartItemCard: React.FC<Props> = ({
   const t = useTranslations("Product");
 
   return (
-    <li className="border-b border-gray-light/10 py-4">
-      <div className="flex gap-4">
-        <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
+    <li className="border-b border-gray-light/10 py-3 sm:py-4">
+      <div className="flex gap-3 mb-3">
+        <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-gray-light/20 bg-background">
           <Image
             src={item.imgURL}
             width={IMAGE_SIZE.width}
@@ -72,37 +72,41 @@ const CartItemCard: React.FC<Props> = ({
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="flex-1">
-          <div className="space-y-1">
-            <p className="text-secondary font-medium capitalize">
+        <div className="flex-1 min-w-0 flex flex-col gap-1">
+          <div className="flex items-start justify-between gap-2">
+            <h6 className="text-secondary font-medium capitalize flex-1">
               {t(item.title)}
-            </p>
+            </h6>
+            <div className="flex flex-shrink-0">
+              <DeleteItemButton
+                item={item}
+                optimisticUpdate={updateCartItemQuantity}
+              />
+              <EditItemButton item={item} closeCart={closeCart} />
+            </div>
+          </div>
+          <div>
             <ProductDetails state={state} />
           </div>
         </div>
-        <div className="flex">
-          <DeleteItemButton
-            item={item}
-            optimisticUpdate={updateCartItemQuantity}
-          />
-          <EditItemButton item={item} closeCart={closeCart} />
-        </div>
       </div>
-      <div className="flex mt-4 items-center justify-between gap-4">
+      <div className="flex items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center rounded-full border border-gray-light/20">
           <EditItemQuantityButton
             item={item}
             type="minus"
             optimisticUpdate={updateCartItemQuantity}
           />
-          <p className="w-8 text-center text-secondary">{item.quantity}</p>
+          <p className="w-8 text-center text-secondary text-sm sm:text-base">
+            {item.quantity}
+          </p>
           <EditItemQuantityButton
             item={item}
             type="plus"
             optimisticUpdate={updateCartItemQuantity}
           />
         </div>
-        <p className="text-secondary font-medium">
+        <p className="text-secondary font-medium text-sm sm:text-base">
           <Price
             amount={item.totalAmount.amount}
             currencyCode={item.totalAmount.currencyCode}
