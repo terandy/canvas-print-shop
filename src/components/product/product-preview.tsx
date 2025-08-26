@@ -21,7 +21,7 @@ const ContentSection: React.FC<SectionProps> = async ({ product, order }) => {
   const locale = await getLocale();
   return (
     <div
-      className={`order-${order} md:order-${order} sm:order-2 px-4 pb-6 sm:p-8 md:p-10`}
+      className={`order-${order} md:order-${order} sm:order-2 px-4 pb-6 p-8 md:p-10`}
     >
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary mb-3 sm:mb-4">
         {product.title}

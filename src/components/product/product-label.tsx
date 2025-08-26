@@ -25,7 +25,7 @@ export default function ProductLabel({
         <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
           {title}
         </h3>
-        <p className="flex-none rounded-full bg-blue-600 p-2 text-white">
+        <p className="flex-none rounded-full bg-primary p-2 text-white">
           <Price amount={amount} currencyCode={currencyCode} />
         </p>
       </div>
