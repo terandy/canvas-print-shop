@@ -22,7 +22,7 @@ const ProductGridItems: React.FC<Props> = ({ products }) => {
               alt={product.title ?? "product"}
               label={{
                 title: product.title,
-                amount: product.priceRange.maxVariantPrice.amount,
+                amount: product.priceRange.minVariantPrice.amount,
                 currencyCode: product.priceRange.maxVariantPrice.currencyCode,
               }}
               src={product.featuredImage?.url}

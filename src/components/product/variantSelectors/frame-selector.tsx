@@ -1,10 +1,12 @@
 "use-client";
 
 import { useProduct } from "@/contexts";
+import { BASE_STATE } from "@/contexts/product-context/data";
 import { ProductOption, ProductVariant } from "@/lib/shopify/types";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import Price from "../price";
 
 type Combination = {
   id: string;
@@ -56,7 +58,8 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
           {option.values.map((value) => {
             const isActive = state.frame?.toLowerCase() === value.toLowerCase();
             const optionParams = {
-              ...state,
+              ...BASE_STATE,
+              size: state.size,
               [option.name]: value,
             };
 
@@ -67,20 +70,21 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                     option.name === key && option.values.includes(value)
                 )
             );
+
             const noneMatch = combinations.find(
               (combination) =>
-                combination.size === optionParams.size &&
-                combination.frame === "none"
+                combination.size === state.size &&
+                combination.frame === BASE_STATE.frame &&
+                combination.depth === BASE_STATE.depth
             );
 
             const variantMatch = combinations.find((combination) =>
               filtered.every(([key, value]) => combination[key] === value)
             );
-            const formattedPrice = variantMatch?.price
-              ? new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: variantMatch.currencyCode,
-                }).format(Number(variantMatch.price) - Number(noneMatch?.price))
+
+            // This is the difference in price between the "no option" option, and the currently selected option.
+            const price = variantMatch?.price
+              ? Number(variantMatch.price) - Number(noneMatch?.price)
               : "";
 
             return (
@@ -89,7 +93,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                   updateField("frame", value.toLowerCase());
                 }}
                 key={value}
-                title={`${value}`}
+                title={t(`frame.${value}`)}
                 className={clsx("border rounded bg-white", {
                   "cursor-default ring-2 ring-primary-light": isActive,
                   "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-primary-light":
@@ -104,13 +108,9 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                   width={100}
                 />
                 <div className="flex flex-col">
-                  <span className="text-sm">
-                    {value === "black"
-                      ? t("frame.premium")
-                      : t(`frame.${value}`)}
-                  </span>
+                  <span className="text-sm">{t(`frame.${value}`)}</span>
                   <span className="text-xs text-gray-800">
-                    {formattedPrice}
+                    <Price currencyCode="CAD" amount={`${price}`} />
                   </span>
                 </div>
               </button>

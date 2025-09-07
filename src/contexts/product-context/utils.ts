@@ -1,5 +1,5 @@
 import { INITIAL_FORM_STATE } from "./data";
-import { CanvasFormState, CanvasRollFormState, FormState } from "./types";
+import { CanvasFormState, CanvasRollFormState } from "./types";
 
 export const getInitialFormState = (productHandle: string) => {
   switch (productHandle) {

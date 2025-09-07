@@ -1,52 +1,67 @@
 import { getProductList } from "@/lib/shopify";
 import { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/constants";
-import { routing } from "@/i18n/routing"; // Import locales from your i18n configuration
+import { routing } from "@/i18n/routing";
 
-// Define static routes for each locale
+// Generate static routes for each locale
 const generateStaticRoutes = (): MetadataRoute.Sitemap => {
   let routes: MetadataRoute.Sitemap = [];
 
-  // For the root URL (with locale detection)
+  // Root URL (redirects to default locale)
   routes.push({
     url: BASE_URL,
     lastModified: new Date(),
     changeFrequency: "yearly",
     priority: 1,
+    alternates: {
+      languages: {
+        en: `${BASE_URL}/en`,
+        fr: `${BASE_URL}/fr`,
+      },
+    },
   });
 
-  // For each locale
-  routing.locales.forEach((locale) => {
-    // Add locale-specific home page
-    routes.push({
-      url: `${BASE_URL}/${locale}`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 1,
-    });
+  // Static pages for each locale
+  const staticPages = [
+    { path: "", priority: 1 }, // Home page
+    { path: "/contact", priority: 0.8 },
+    { path: "/faqs", priority: 0.7 },
+    { path: "/shipping-policy", priority: 0.6 },
+    { path: "/returns-policy", priority: 0.6 },
+    { path: "/privacy-policy", priority: 0.5 },
+    { path: "/how-we-make-our-canvas-prints", priority: 0.7 },
+    { path: "/quality-guarantee", priority: 0.7 },
+  ];
 
-    // Add other static routes here for each locale
-    // Example:
-    // routes.push({
-    //   url: `${BASE_URL}/${locale}/about`,
-    //   lastModified: new Date(),
-    //   changeFrequency: "monthly",
-    //   priority: 0.7,
-    // });
+  routing.locales.forEach((locale) => {
+    staticPages.forEach(({ path, priority }) => {
+      const url = `${BASE_URL}/${locale}${path}`;
+      routes.push({
+        url,
+        lastModified: new Date(),
+        changeFrequency: path === "" ? "weekly" : "monthly",
+        priority,
+        alternates: {
+          languages: {
+            en: `${BASE_URL}/en${path}`,
+            fr: `${BASE_URL}/fr${path}`,
+          },
+        },
+      });
+    });
   });
 
   return routes;
 };
 
-export const runtime = "edge"; // Optional: Use edge runtime for better performance
 export const revalidate = 3600; // Revalidate every hour
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   try {
-    // Create static routes for each locale
+    // Generate static routes
     const staticRoutes = generateStaticRoutes();
 
-    // Fetch products with revalidation
+    // Fetch products (this will use the default locale for product fetching)
     const products = await getProductList({
       cache: "force-cache",
     }).catch((error) => {
@@ -57,22 +72,26 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     // Generate product routes for each locale
     let productRoutes: MetadataRoute.Sitemap = [];
 
-    routing.locales.forEach((locale) => {
-      products.forEach((product) => {
+    products.forEach((product) => {
+      routing.locales.forEach((locale) => {
         productRoutes.push({
           url: `${BASE_URL}/${locale}/product/${product.handle}`,
           lastModified: new Date(product.updatedAt),
-          changeFrequency: "weekly" as const,
+          changeFrequency: "weekly",
           priority: 0.8,
+          alternates: {
+            languages: {
+              en: `${BASE_URL}/en/product/${product.handle}`,
+              fr: `${BASE_URL}/fr/product/${product.handle}`,
+            },
+          },
         });
       });
     });
 
-    // Combine all routes
     return [...staticRoutes, ...productRoutes];
   } catch (error) {
     console.error("Sitemap generation error:", error);
-    // Fallback to static routes if there's an error
     return generateStaticRoutes();
   }
 };

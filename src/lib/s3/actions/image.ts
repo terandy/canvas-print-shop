@@ -1,7 +1,6 @@
 "use server";
 
 import { DeleteObjectCommand } from "@aws-sdk/client-s3";
-import { NextRequest, NextResponse } from "next/server";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import crypto from "crypto";
@@ -24,10 +23,8 @@ export async function deleteImage(url: string) {
   }
 }
 
-export async function uploadImage(request: NextRequest) {
+export async function uploadImage(fileType: string) {
   try {
-    const { fileType } = await request.json();
-
     // Generate unique filename
     const fileName = `${crypto.randomBytes(16).toString("hex")}-${Date.now()}`;
     const key = `uploads/${fileName}${fileType.startsWith(".") ? fileType : "." + fileType}`;
@@ -44,17 +41,13 @@ export async function uploadImage(request: NextRequest) {
       expiresIn: 3600,
     });
 
-    return NextResponse.json({
+    return {
       uploadUrl: presignedUrl,
       key: key,
-      // The URL where the image will be accessible after upload
       publicUrl: `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`,
-    });
+    };
   } catch (error) {
     console.error("Error generating presigned URL:", error);
-    return NextResponse.json(
-      { message: "Error generating upload URL" },
-      { status: 500 }
-    );
+    throw new Error("Error generating upload URL");
   }
 }

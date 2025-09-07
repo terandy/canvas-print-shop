@@ -5,6 +5,8 @@ export const variantStyles = {
         disabled:border-gray-light disabled:text-gray-light disabled:hover:bg-transparent disabled:cursor-not-allowed`,
   ghost: `text-gray hover:text-primary 
         disabled:text-gray-light disabled:hover:text-gray-light disabled:cursor-not-allowed`,
+  outline:
+    "h-11 rounded-md border border-neutral-200 text-black transition-colors",
 };
 
 // Size variations

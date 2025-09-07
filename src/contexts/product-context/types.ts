@@ -14,10 +14,11 @@ interface BaseFormState extends FormState {
    */
   imgURL: string;
   size: string; // 8x10;
+  depth: "regular" | "gallery";
 }
 
 export interface CanvasFormState extends BaseFormState {
-  borderStyle: "black" | "white" | "wrapped" | "fill";
+  borderStyle: "wrapped" | "fill";
   frame: "none" | "black";
 }
 

@@ -25,10 +25,20 @@ const ProductImagePreview: React.FC<Props> = ({ className }) => {
           size={state.size}
           direction={state.direction}
           borderStyle={state.borderStyle}
+          depth={state.depth}
         />
       );
     default:
-      return <UnderConstruction />;
+      return (
+        <CanvasPreviewer
+          className={className}
+          src={imgFileUrl ?? state.imgURL}
+          size={state.size}
+          direction={state.direction}
+          borderStyle={"none"}
+          depth={state.depth}
+        />
+      );
   }
 };
 
