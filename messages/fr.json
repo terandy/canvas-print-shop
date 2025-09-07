@@ -1,15 +1,15 @@
 {
   "Metadata": {
-    "title": "Impressions sur Toile Personnalisées et Encadrement | Canvas Print Shop",
+    "title": "Impressions sur toile personnalisées et encadrement | Canvas Print Shop",
     "description": "Transformez vos photos en impressions sur toile de haute qualité avec notre service de téléchargement facile et encadrement optionnel. Savoir-faire expert, fabriqué au Canada. Commandez maintenant pour une livraison rapide !",
     "og": {
-      "title": "Impressions sur Toile Personnalisées et Encadrement | Canvas Print Shop",
+      "title": "Impressions sur toile personnalisées et encadrement | Canvas Print Shop",
       "description": "Transformez vos photos en impressions sur toile de haute qualité avec notre service de téléchargement facile et encadrement optionnel. Savoir-faire expert, fabriqué au Canada."
     }
   },
   "FAQ": {
     "metadata": {
-      "title": "Foire aux Questions | Canvas Print Shop",
+      "title": "Foire aux questions sur les impressions sur toile | Canvas Print Shop",
       "description": "Trouvez des réponses aux questions courantes sur nos impressions sur toile, expédition, garantie de qualité, et plus encore. Obtenez de l'aide avec vos besoins d'impression sur toile personnalisée."
     }
   },
@@ -19,7 +19,7 @@
       "description": "Transformez vos souvenirs précieux en magnifiques impressions sur toile, expertes fabriquées à la main au Canada et prêtes à accrocher dans votre maison."
     },
     "benefits": {
-      "heading": "Pourquoi Choisir Canvas Print Shop ?",
+      "heading": "Pourquoi choisir les impressions sur toile chez Canvas Print Shop ?",
       "premium": {
         "title": "Matériaux Premium",
         "description": "Toile mélange coton premium avec une densité 10x plus élevée et 75% d'opacité - largement supérieure aux matériaux de qualité inférieure des concurrents."
@@ -38,13 +38,13 @@
       }
     },
     "featured": {
-      "heading": "Créez Votre Impression sur Toile Personnalisée",
+      "heading": "Créez votre impression sur toile personnalisée",
       "description": "Transformez vos moments favoris en art mural époustouflant avec nos impressions sur toile premium"
     },
     "process": {
       "heading": "Comment ça fonctionne",
       "upload": {
-        "title": "Téléchargez Votre Photo",
+        "title": "Téléchargez votre photo",
         "description": "Choisissez votre image favorite depuis n'importe quel appareil"
       },
       "select": {
@@ -87,25 +87,25 @@
   "Footer": {
     "companyName": "Canvas Print Shop",
     "companyDescription": "Créer de belles impressions sur toile de haute qualité pour votre maison ou bureau. Fièrement canadien, servant les clients à travers le pays.",
-    "customerService": "Service Client",
-    "contactUs": "Contactez-Nous",
-    "securePayment": "Méthodes de Paiement Sécurisées",
+    "customerService": "Service client",
+    "contactUs": "Contactez-nous",
+    "securePayment": "Méthodes de paiement sécurisées",
     "copyright": "Tous droits réservés.",
     "paymentAlt": "Paiement {method} accepté",
     "links": {
-      "privacy": "Politique de Confidentialité",
+      "privacy": "Politique de confidentialité",
       "faqs": "FAQs",
-      "shipping": "Politique d'Expédition",
-      "returns": "Politique de Retours",
-      "contact": "Contactez-Nous"
+      "shipping": "Politique d'expédition",
+      "returns": "Politique de retours",
+      "contact": "Contactez-nous"
     }
   },
   "ShippingPolicy": {
     "metadata": {
-      "title": "Politique d'Expédition | Canvas Print Shop",
+      "title": "Politique d'expédition  sur les impressions sur toile | Canvas Print Shop",
       "description": "Découvrez nos options d'expédition, y compris la livraison par Postes Canada et la collecte locale à Québec."
     },
-    "pageTitle": "Politique d'Expédition",
+    "pageTitle": "Politique d'expédition",
     "localPickup": {
       "title": "Cueillette Locale",
       "description": "Nous offrons la cueillette locale gratuite à notre emplacement de Québec pour votre commodité.",
@@ -132,13 +132,13 @@
       "rush": "Un traitement accéléré peut être disponible sur demande"
     },
     "shippingCosts": {
-      "title": "Frais d'Expédition",
-      "localPickup": "Collecte Locale : Gratuit",
-      "standard": "Expédition Standard : Calculée lors du paiement en fonction de la taille et de la destination",
+      "title": "Frais d'expédition",
+      "localPickup": "Collecte locale : Gratuit",
+      "standard": "Expédition standard : Calculée lors du paiement en fonction de la taille et de la destination",
       "free": "Livraison gratuite pour les commandes de plus de 150$ (certains endroits éloignés exclus)"
     },
     "orderTracking": {
-      "title": "Suivi de Commande",
+      "title": "Suivi de commande",
       "description": "Restez informé sur l'état de votre commande :",
       "number": "Numéro de suivi fourni par courriel une fois la commande expédiée",
       "website": "Suivez votre colis directement sur le site web de Postes Canada",
@@ -148,13 +148,13 @@
   },
   "ReturnsPolicy": {
     "metadata": {
-      "title": "Politique de Retours | Canvas Print Shop",
+      "title": "Politique de retours sur les impressions sur toile | Canvas Print Shop",
       "description": "Découvrez notre politique de retour de 30 jours et notre engagement envers la satisfaction client. Nous facilitons les retours avec notre processus sans tracas."
     },
-    "pageTitle": "Politique de Retours",
+    "pageTitle": "Politique de retours",
     "introduction": "Chez Canvas Print Shop, nous sommes fiers de livrer des impressions sur toile de qualité exceptionnelle. Votre satisfaction est notre priorité absolue, c'est pourquoi nous offrons une politique de retour complète de 30 jours. Nous garantissons nos produits et travaillerons avec vous pour nous assurer que vous êtes complètement satisfait de votre achat.",
     "returnWindow": {
-      "title": "Fenêtre de Retour de 30 Jours",
+      "title": "Fenêtre de retour de 30 Jours",
       "description": "Vous pouvez initier un retour dans les 30 jours suivant la réception de votre commande si vous n'êtes pas complètement satisfait. Ceci s'applique à :",
       "reasons": {
         "quality": "Impressions avec des problèmes de qualité",
@@ -164,7 +164,7 @@
       }
     },
     "returnProcess": {
-      "title": "Comment Retourner Votre Commande",
+      "title": "Comment retourner votre commande",
       "description": "Commencer un retour est simple. Envoyez-nous un courriel à returns@canvasprintshop.ca avec :",
       "requirements": {
         "orderInfo": "Votre numéro de commande et adresse courriel utilisée pour l'achat",
@@ -175,7 +175,7 @@
       "response": "Notre équipe de service client répondra dans un jour ouvrable avec des instructions de retour détaillées."
     },
     "guarantee": {
-      "title": "Notre Garantie de Qualité",
+      "title": "Notre garantie de qualité",
       "description": "Nous garantissons la qualité de nos produits :",
       "benefits": {
         "replacements": "Remplacements gratuits pour tout problème de qualité",
@@ -185,14 +185,14 @@
       }
     },
     "refundProcess": {
-      "title": "Informations de Remboursement",
+      "title": "Informations de remboursement",
       "timeline": "Les remboursements sont traités dans les 3 à 5 jours ouvrables suivant la réception du retour",
       "method": "Les remboursements sont émis sur le mode de paiement d'origine",
       "confirmation": "Vous recevrez une confirmation par email lorsque votre remboursement sera traité",
       "bankProcessing": "Les délais de traitement bancaire peuvent varier pour que le remboursement apparaisse sur votre compte"
     },
     "exceptions": {
-      "title": "Exceptions de Retour",
+      "title": "Exceptions de retour",
       "description": "Veuillez noter que certains articles peuvent ne pas être éligibles au retour :",
       "items": {
         "customSizes": "Impressions de tailles personnalisées en dehors de nos dimensions standard",
@@ -214,43 +214,43 @@
   },
   "CanvasProcess": {
     "metadata": {
-      "title": "Processus de Fabrication de Toile | Canvas Print Shop",
+      "title": "Processus de fabrication de toile | Canvas Print Shop",
       "description": "Découvrez notre processus de production de toiles premium - de la sélection des matériaux au contrôle qualité, voyez comment nous fabriquons nos impressions sur toile de haute qualité."
     },
     "hero": {
-      "title": "Comment Nous Fabriquons Nos Toiles",
+      "title": "Comment nous fabriquons nos toiles",
       "description": "Découvrez le savoir-faire et l'attention aux détails qui caractérisent chaque toile que nous produisons."
     },
     "steps": {
       "materials": {
-        "title": "Sélection des Matériaux Premium",
+        "title": "Sélection des matériaux premium",
         "description": "Nous commençons par une toile soigneusement sélectionnée en mélange de coton de haute qualité. Chaque rouleau est inspecté pour sa qualité et sa consistance, garantissant que seuls les meilleurs matériaux arrivent à notre atelier de production. Notre toile a une opacité allant jusqu'à 75%, plus de 7 fois supérieure à Best Canvas."
       },
       "printing": {
-        "title": "Processus d'Impression de Haute Qualité",
+        "title": "Processus d'impression de haute qualité",
         "description": "Nous utilisons la technologie d'impression Canon avancée pour offrir une vibrance et une durabilité exceptionnelles des couleurs. Après l'impression de votre image avec de l'encre UVgel, l'impression subit un durcissement par LED UV. Le résultat ? Une finition durable et flexible qui ne nécessite aucune protection supplémentaire. C'est si durable que nos toiles sont garanties par notre garantie de qualité d'impression de 30 ans !"
       },
       "frame": {
-        "title": "Assemblage de Cadre Tendeur Personnalisé",
+        "title": "Assemblage de cadre tendeur personnalisé",
         "description": "Nos artisans qualifiés construisent des cadres tendeurs robustes à partir de bois premium, coupés et assemblés avec précision pour créer la base de votre toile. Chaque coin est renforcé pour une durabilité à long terme."
       },
       "stretching": {
-        "title": "Processus de Tension Professionnel",
+        "title": "Processus de tension professionnel",
         "description": "En utilisant des équipements et des techniques spécialisés, nous tendons la toile sur le cadre avec une tension parfaite. Cette étape critique garantit que votre toile maintiendra sa forme et sa stabilité au fil du temps."
       },
       "quality": {
-        "title": "Contrôle Qualité",
+        "title": "Contrôle qualité",
         "description": "Chaque toile subit des contrôles de qualité rigoureux tout au long du processus de production. Nous examinons la tension, les plis d'angle et la construction globale pour nous assurer que chaque pièce répond à nos normes exigeantes."
       }
     },
     "cta": {
-      "title": "Prêt à Découvrir Notre Qualité ?",
+      "title": "Prêt à découvrir notre qualité ?",
       "description": "Chaque toile est fabriquée avec soin et soutenue par notre garantie de satisfaction.",
       "button": "Acheter Nos Toiles"
     }
   },
   "PrivacyPolicy": {
-    "title": "Politique de Confidentialité",
+    "title": "Politique de confidentialité",
     "lastUpdated": "Dernière mise à jour : {date}",
     "introduction": {
       "title": "Introduction",
@@ -375,16 +375,16 @@
       "expressAvailable": "Expédition express disponible à la caisse"
     },
     "qualityAssurance": {
-      "title": "Assurance Qualité",
+      "title": "Assurance qualité",
       "description": "Nous garantissons chaque toile que nous créons.",
       "satisfaction": "Garantie de satisfaction à 100%",
       "replacement": "Remplacement gratuit pour tout défaut",
       "expertSupport": "Support client expert"
     },
     "reviews": {
-      "title": "Avis des Clients"
+      "title": "Avis des clients"
     },
-    "productInformation": "Informations sur le Produit",
+    "productInformation": "Informations sur le produit",
     "delivery": {
       "getItBy": "Recevez-le d'ici le",
       "ifOrderToday": "si vous commandez aujourd'hui"
@@ -403,11 +403,11 @@
       "shippingCostValue": "Disponible à la caisse (Livraison GRATUITE pour les commandes de plus de 150$)"
     },
     "faq": {
-      "title": "Foire aux Questions",
+      "title": "Foire aux questions",
       "sections": {
-        "imageQualityProduct": "Qualité d'Image et Détails du Produit",
-        "deliveryPickup": "Livraison et Cueillette",
-        "satisfactionSupport": "Satisfaction et Support"
+        "imageQualityProduct": "Qualité d'image et détails du produit",
+        "deliveryPickup": "Livraison et cueillette",
+        "satisfactionSupport": "Satisfaction et support"
       },
       "questions": {
         "imageQuality": {
@@ -441,7 +441,7 @@
       }
     },
     "guarantee": {
-      "title": "Garantie de Qualité d'Impression de 30 Ans",
+      "title": "Garantie de qualité d'impression de 30 ans",
       "description": "Nous soutenons notre technologie d'impression UVgel premium avec une garantie leader de l'industrie."
     }
   },
@@ -489,9 +489,9 @@
     "Modal": {
       "openCart": "Ouvrir le panier",
       "closeCart": "Fermer le panier",
-      "myCart": "Mon Panier",
-      "emptyCart": "Votre Panier est Vide",
-      "checkout": "Passer à la Caisse",
+      "myCart": "Mon panier",
+      "emptyCart": "Votre panier est vide",
+      "checkout": "Passer à la caisse",
       "taxes": "Taxes",
       "shipping": "Livraison",
       "shippingCalculation": "Calculée à la caisse",
