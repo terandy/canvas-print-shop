@@ -9,11 +9,13 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 import { Geist } from "next/font/google";
-import GoogleAnalytics from "@/components/google-analytics"; // Add this import
+import GoogleAnalytics from "@/components/google-analytics";
 
 const geist = Geist({
   subsets: ["latin"],
 });
+
+const BASE_URL = process.env.BASE_URL;
 
 export const metadata: Metadata = {
   title: "Canvas Print Shop",
@@ -25,28 +27,41 @@ export const metadata: Metadata = {
 
 interface Props {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }
 
-const LocaleLayout: React.FC<Props> = async ({ children, params }) => {
+const LocaleLayout = async ({ children, params }: Props) => {
   const cookiesStore = await cookies();
   const cartId = cookiesStore.get("cartId")?.value;
   const cart = await getCart(cartId);
 
-  // Ensure that the incoming `locale` is valid
-  const { locale } = await params;
+  const { locale } = params;
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
+
+  const alternates = routing.locales.map((loc) => ({
+    hrefLang: `${loc}-CA`, // e.g. en-CA, fr-CA
+    href: `${BASE_URL}/${loc}`,
+  }));
 
   return (
     <html lang={locale}>
+      <head>
+        {alternates.map(({ hrefLang, href }) => (
+          <link
+            key={hrefLang}
+            rel="alternate"
+            hrefLang={hrefLang}
+            href={href}
+          />
+        ))}
+        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
+      </head>
       <body className={geist.className}>
-        <GoogleAnalytics /> {/* Add this line */}
+        <GoogleAnalytics />
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
             <Navbar />
