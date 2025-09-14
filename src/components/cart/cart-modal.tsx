@@ -7,13 +7,14 @@ import Price from "../product/price";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
 import { redirectToCheckout } from "@/lib/utils/cart-actions";
-import { ShoppingCart, X } from "lucide-react";
+import { PlusIcon, ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
 import Badge from "../badge";
 import type { CartState } from "@/contexts";
 import CartItemCard from "./cart-item-card";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { ButtonLink } from "../buttons";
 
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
@@ -57,9 +58,11 @@ const Totals = ({ cartState }: { cartState: CartState }) => {
 };
 
 const CartModal = () => {
+  const locale = useLocale();
   const t = useTranslations("Cart.Modal");
-  const { state, updateCartItemQuantity } = useCart();
-  const [isOpen, setIsOpen] = useState(false);
+  const tr = useTranslations("Product");
+
+  const { state, updateCartItemQuantity, isOpen, setIsOpen } = useCart();
   const quantityRef = useRef(state?.totalQuantity);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
@@ -111,7 +114,7 @@ const CartModal = () => {
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex h-full w-full flex-col border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex flex-1 w-full flex-col border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
               <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
                 <p className="flex gap-2 text-lg font-semibold text-secondary">
                   {t("myCart")}
@@ -132,7 +135,7 @@ const CartModal = () => {
                   </p>
                 </div>
               ) : (
-                <div className="flex flex-col h-full">
+                <div className="flex flex-col flex-1">
                   <ul className="flex-1 overflow-auto p-4 space-y-6">
                     {items.map((item) => (
                       <CartItemCard
@@ -142,7 +145,23 @@ const CartModal = () => {
                         updateCartItemQuantity={updateCartItemQuantity}
                       />
                     ))}
+                    <hr />
+                    <ButtonLink
+                      href={`/${locale}/product/canvas`}
+                      variant="outline"
+                      icon={PlusIcon}
+                      iconPosition="left"
+                      onClick={() => {
+                        localStorage.removeItem("canvas");
+                        localStorage.removeItem("cartItemID");
+                        setIsOpen(false);
+                      }}
+                      replace
+                    >
+                      {tr("canvas")}
+                    </ButtonLink>
                   </ul>
+
                   <div className="border-t border-gray-light/10 p-4 space-y-4">
                     <Totals cartState={state} />
                     <form

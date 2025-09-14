@@ -6,7 +6,7 @@ export const INITIAL_FORM_STATE: FormState = {
   size: "8x10",
   frame: "none",
   direction: "landscape",
-  depth: "gallery",
+  depth: "regular",
   imgURL: DEFAULT_CANVAS_IMAGE,
 };
 
@@ -16,5 +16,5 @@ export const INITIAL_FORM_STATE: FormState = {
 export const BASE_STATE: FormState = {
   size: "8x10",
   frame: "none",
-  depth: "gallery",
+  depth: "regular",
 };

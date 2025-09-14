@@ -54,6 +54,7 @@ const AddToCart: React.FC = () => {
       if (line) {
         localStorage.setItem("cartItemID", line.id);
         router.push(`?cartItemID=${line.id}`);
+        cartContext.setIsOpen(true);
       }
     });
   };

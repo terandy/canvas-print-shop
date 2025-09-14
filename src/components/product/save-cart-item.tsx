@@ -13,11 +13,13 @@ interface SubmitButtonProps {
   saved?: boolean;
   disabled: boolean;
   loading?: boolean;
+  className?: string;
 }
 const SubmitButton: React.FC<SubmitButtonProps> = ({
   saved,
   disabled,
   loading,
+  className,
 }) => {
   const t = useTranslations("Cart.SaveItem");
   const label = !saved ? t("saveChanges") : t("saved");
@@ -27,6 +29,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
       disabled={disabled || saved || loading}
       icon={Save}
       loading={loading}
+      className={className}
     >
       {label}
     </Button>
@@ -38,7 +41,11 @@ interface SaveCartItemProps {
 }
 
 const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
-  const { state: cartState, updateCartItem: contextUpdateCartItem } = useCart();
+  const {
+    state: cartState,
+    updateCartItem: contextUpdateCartItem,
+    setIsOpen,
+  } = useCart();
   const {
     product: { handle },
     state,
@@ -61,20 +68,26 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
   const hasDiff = checkDiff();
 
   return (
-    <form
-      action={async () => {
-        if (!state.imgURL || !variant || !cartItemID) return;
-        contextUpdateCartItem(cartItemID, state, variant); // optimistic
-        await updateCartItem({
-          cartItemId: cartItemID,
-          merchandiseId: variant.id,
-          quantity: 1,
-          attributes: getAttributes(state),
-        });
-      }}
-      className="flex flex-col gap-2"
-    >
-      <SubmitButton saved={!hasDiff} disabled={!state.imgURL} />
+    <>
+      <form
+        action={async () => {
+          if (!state.imgURL || !variant || !cartItemID) return;
+          contextUpdateCartItem(cartItemID, state, variant); // optimistic
+          await updateCartItem({
+            cartItemId: cartItemID,
+            merchandiseId: variant.id,
+            quantity: 1,
+            attributes: getAttributes(state),
+          });
+          setIsOpen(true);
+        }}
+        className="flex flex-col gap-2 bg-white sticky bottom-1 lg:static"
+      >
+        <SubmitButton saved={!hasDiff} disabled={!state.imgURL} />
+        <p className="sr-only" role="status" aria-label="polite">
+          {message}
+        </p>
+      </form>
       <ButtonLink
         href={`/${locale}/product/${handle}`}
         variant="secondary"
@@ -85,13 +98,11 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
           localStorage.removeItem("cartItemID");
         }}
         replace
+        className="mt-1"
       >
         {t("createNew")}
       </ButtonLink>
-      <p className="sr-only" role="status" aria-label="polite">
-        {message}
-      </p>
-    </form>
+    </>
   );
 };
 

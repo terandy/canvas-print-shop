@@ -48,6 +48,8 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
     ),
   }));
 
+  const isRegularDepth = state.depth.toLowerCase() === "regular";
+
   return (
     <form>
       <dl className="mb-8">
@@ -87,6 +89,8 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
               ? Number(variantMatch.price) - Number(noneMatch?.price)
               : "";
 
+            const isDisabled = !isRegularDepth && value === "black";
+
             return (
               <button
                 formAction={() => {
@@ -97,8 +101,10 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
                 className={clsx("border rounded bg-white", {
                   "cursor-default ring-2 ring-primary-light": isActive,
                   "ring-1 ring-transparent transition duration-300 ease-in-out hover:ring-primary-light":
-                    !isActive,
+                    !isActive && !isDisabled,
+                  "opacity-50": isDisabled,
                 })}
+                disabled={isDisabled}
               >
                 <Image
                   className="object-cover h-[100px]"
@@ -117,6 +123,11 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
             );
           })}
         </dd>
+        {!isRegularDepth && (
+          <span className="text-xs text-gray">
+            {t("frame.additionalMessage")}
+          </span>
+        )}
       </dl>
     </form>
   );

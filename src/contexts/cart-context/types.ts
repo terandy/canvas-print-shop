@@ -1,5 +1,6 @@
 import { Cart, LineItem, Money, ProductVariant } from "@/lib/shopify/types";
 import { FormState } from "../product-context";
+import { Dispatch, SetStateAction } from "react";
 
 /**
  * The line item in the cart
@@ -37,4 +38,12 @@ export type TCartContext = {
     cartItemID: CartItem["id"],
     action: UpdateQuantityType
   ) => CartState;
+  /**
+   * True if cart modal is visible
+   */
+  isOpen: boolean;
+  /**
+   * Controls the visibility of the cart modal
+   */
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
