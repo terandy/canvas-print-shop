@@ -229,11 +229,11 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
 
   return (
     <ProductProvider product={product} cartItemID={cartItemID ?? null}>
-      <div className="container mx-auto max-w-screen-2xl px-4 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 p-6 lg:p-8">
+      <div className="container mx-auto max-w-screen-2xl lg:px-4 lg:py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 lg:p-8">
           {/* Image container - adapts for mobile/desktop with sticky functionality */}
           <div
-            className="lg:col-span-3 sticky top-0 lg:static z-10 lg:z-auto bg-white lg:bg-transparent pb-4 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 z-30 pt-2 lg:pt-0"
+            className="lg:col-span-3 sticky top-0 lg:static z-10 lg:z-auto bg-white lg:bg-transparent pb-4 lg:pb-0 px-6 lg:mx-0 lg:px-0 z-30 pt-2 lg:pt-0"
             id="product-image-preview-container"
           >
             <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
