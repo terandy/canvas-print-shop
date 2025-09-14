@@ -347,7 +347,8 @@
     "frame": {
       "title": "Floating Frame",
       "none": "None",
-      "black": "Black"
+      "black": "Black",
+      "additionalMessage": "* Frames are only available for a canvas of regular depth"
     },
     "depth": {
       "title": "Depth",

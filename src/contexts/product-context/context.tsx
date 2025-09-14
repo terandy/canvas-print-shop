@@ -41,6 +41,14 @@ const ProductProvider = ({
   ): FormState => {
     const newState = { ...state, [name]: value };
 
+    if (name === "frame" && value === "black") {
+      newState.depth = "regular";
+    }
+
+    if (name === "depth" && value === "gallery") {
+      newState.frame = "none";
+    }
+
     updateState(newState);
     return newState;
   };
@@ -115,6 +123,10 @@ const ProductProvider = ({
       localStorage.removeItem("cartItemID");
     }
   }, [cartItemID, handle, isHydrated]);
+
+  useEffect(() => {
+    console.log(state.frame, state.depth);
+  }, [state.frame, state.depth]);
 
   return (
     <ProductContext.Provider key={product.handle + cartItemID} value={value}>
