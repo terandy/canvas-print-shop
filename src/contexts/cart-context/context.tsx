@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useMemo,
   useOptimistic,
+  useState,
 } from "react";
 import type { CartState, TCartContext, CartItem } from "./types";
 import { Cart, ProductVariant } from "@/lib/shopify/types";
@@ -28,6 +29,8 @@ const CartProvider = ({
   children: React.ReactNode;
   cart: Cart | undefined;
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const [state, setOptimisticState] = useOptimistic(
     getInitialState(cart),
     (prevState: CartState, update: Partial<CartState>) => ({
@@ -103,8 +106,10 @@ const CartProvider = ({
       updateCartItem,
       updateCartItemQuantity,
       setState,
+      isOpen,
+      setIsOpen,
     }),
-    [state]
+    [state, isOpen]
   );
   useEffect(() => {
     if (!state.id) {
