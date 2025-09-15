@@ -2,6 +2,7 @@ import ProductForm from "@/components/product/product-form";
 import { getProduct } from "@/lib/shopify";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import Image from "next/image";
 import type { Metadata, NextPage } from "next";
 import { ProductImagePreview, SectionContainer, Prose } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
@@ -139,6 +140,16 @@ const reviews = [
   },
 ];
 
+const trustedBy = [
+  { src: "/Starbucks Logo for website.png", alt: "Starbucks logo" },
+  { src: "/CNESST Logo for site.png", alt: "CNESST logo" },
+  {
+    src: "/Christyna Merette Logo.png",
+    alt: "Christyna Mérette logo",
+  },
+  { src: "/Inkpicx Logo for website.avif", alt: "Créations Inkpicx logo" },
+];
+
 /**
  * Average rating helper
  */
@@ -203,6 +214,7 @@ const ReviewCard = async ({ review }: { review: (typeof reviews)[0] }) => {
           </div>
           <StarRating rating={review.rating} />
         </div>
+
         <span className="text-sm text-gray-500">{review.date}</span>
       </div>
       <p className="text-gray-600 mt-2">{review.comment}</p>
@@ -289,6 +301,25 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-xl mx-auto px-6 py-12">
           {/* Reviews column (left) */}
           <div>
+            <h2 className="text-2xl font-bold text-secondary mb-2">
+              {t("trustedBy")}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center mb-7">
+              {trustedBy.map(({ src, alt }) => (
+                <div
+                  key={alt}
+                  className="h-16 flex items-center justify-center"
+                >
+                  <Image
+                    src={src}
+                    alt={alt}
+                    width={200}
+                    height={56}
+                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
+                  />
+                </div>
+              ))}
+            </div>
             <h2 className="text-2xl font-bold text-secondary mb-6">
               {t("reviews.title")}
             </h2>
