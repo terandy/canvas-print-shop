@@ -140,6 +140,16 @@ const reviews = [
   },
 ];
 
+const trustedBy = [
+  { src: "/Starbucks Logo for website.png", alt: "Starbucks logo" },
+  { src: "/CNESST Logo for site.png", alt: "CNESST logo" },
+  {
+    src: "/Christyna Merette Logo.png",
+    alt: "Christyna Mérette logo",
+  },
+  { src: "/Inkpicx Logo for website.avif", alt: "Créations Inkpicx logo" },
+];
+
 /**
  * Average rating helper
  */
@@ -205,7 +215,6 @@ const ReviewCard = async ({ review }: { review: (typeof reviews)[0] }) => {
           <StarRating rating={review.rating} />
         </div>
 
-        
         <span className="text-sm text-gray-500">{review.date}</span>
       </div>
       <p className="text-gray-600 mt-2">{review.comment}</p>
@@ -288,57 +297,29 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           </div>
         </div>
 
-        {/* Trusted By section (placed after add-to-cart, before reviews) */}
-        <div className="max-w-screen-xl mx-auto px-6 py-10">
-          <h2 className="text-center text-2xl font-bold text-secondary mb-6">{t("trustedBy")}</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center">
-            {/* Starbucks */}
-            <div className="h-16 flex items-center justify-center">
-              <Image
-                src="/Starbucks Logo for website.png"
-                alt="Starbucks logo"
-                width={200}
-                height={56}
-                className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
-              />
-            </div>
-            {/* CNESST */}
-            <div className="h-16 flex items-center justify-center">
-              <Image
-                src="/CNESST Logo for site.png"
-                alt="CNESST logo"
-                width={200}
-                height={56}
-                className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
-              />
-            </div>
-            {/* Christyna Mérette */}
-            <div className="h-16 flex items-center justify-center">
-              <Image
-                src="/Christyna Merette Logo.png"
-                alt="Christyna Mérette logo"
-                width={200}
-                height={56}
-                className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
-              />
-            </div>
-            {/* Créations Inkpicx */}
-            <div className="h-16 flex items-center justify-center">
-              <Image
-                src="/Inkpicx Logo for website.avif"
-                alt="Créations Inkpicx logo"
-                width={200}
-                height={56}
-                className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
-              />
-            </div>
-          </div>
-        </div>
-
         {/* Reviews + Product Details Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-xl mx-auto px-6 py-12">
           {/* Reviews column (left) */}
           <div>
+            <h2 className="text-2xl font-bold text-secondary mb-2">
+              {t("trustedBy")}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center mb-7">
+              {trustedBy.map(({ src, alt }) => (
+                <div
+                  key={alt}
+                  className="h-16 flex items-center justify-center"
+                >
+                  <Image
+                    src={src}
+                    alt={alt}
+                    width={200}
+                    height={56}
+                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
+                  />
+                </div>
+              ))}
+            </div>
             <h2 className="text-2xl font-bold text-secondary mb-6">
               {t("reviews.title")}
             </h2>

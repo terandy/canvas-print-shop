@@ -35,7 +35,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
   const cartId = cookiesStore.get("cartId")?.value;
   const cart = await getCart(cartId);
 
-  const { locale } = params;
+  const { locale } = await params;
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
