@@ -385,6 +385,7 @@
     "reviews": {
       "title": "Customer Reviews"
     },
+    "trustedBy": "Trusted By",
     "productInformation": "Product Information",
     "delivery": {
       "getItBy": "Get it by",

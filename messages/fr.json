@@ -385,6 +385,7 @@
     "reviews": {
       "title": "Avis des clients"
     },
+    "trustedBy": "Ils nous font confiance",
     "productInformation": "Informations sur le produit",
     "delivery": {
       "getItBy": "Recevez-le d'ici le",
