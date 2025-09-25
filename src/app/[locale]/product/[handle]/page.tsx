@@ -3,6 +3,7 @@ import { getProduct } from "@/lib/shopify";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Image from "next/image";
+import Script from "next/script";
 import type { Metadata, NextPage } from "next";
 import { ProductImagePreview, SectionContainer, Prose } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
@@ -26,14 +27,18 @@ export type Props = {
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
   const product = await getProduct(params?.handle ?? "");
+  const locale = await getLocale();
 
   if (!product) return notFound();
 
   const { url, width, height, altText: alt } = product.featuredImage || {};
   const indexable = true;
+  const defaultTitle = locale?.startsWith("fr")
+    ? "Toiles sur mesure | Fabrication canadienne"
+    : "Custom Canvas Prints | Made In Canada";
 
   return {
-    title: product.seo.title || product.title,
+    title: product.seo.title || defaultTitle,
     description: product.seo.description || product.description,
     robots: {
       index: indexable,
@@ -241,6 +246,19 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
 
   return (
     <ProductProvider product={product} cartItemID={cartItemID ?? null}>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=AW-17600505431"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-17600505431');
+        `}
+      </Script>
       <div className="container mx-auto max-w-screen-2xl lg:px-4 lg:py-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 lg:p-8">
           {/* Image container - adapts for mobile/desktop with sticky functionality */}
