@@ -509,6 +509,11 @@
     "proudly": "fièrement",
     "canadian": "canadien"
   },
+  "trustStrip": {
+    "madeInCanada": "Fabriqué au Canada",
+    "freeDelivery": "Livraison gratuite à partir de 150 $",
+    "happinessGuarantee": "Garantie bonheur 100 %"
+  },
   "price": {
     "total": "Total",
     "discount": "rabais"

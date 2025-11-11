@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cookies } from "next/headers";
 import { getCart } from "@/lib/shopify";
-import { Navbar, Footer } from "@/components";
+import { Navbar, Footer, TrustStrip } from "@/components";
 import { CartProvider } from "@/contexts";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import { Geist } from "next/font/google";
 import GoogleAnalytics from "@/components/google-analytics";
 
@@ -23,6 +23,54 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+};
+
+const TRUST_STRIP_KEYS = [
+  "madeInCanada",
+  "freeDelivery",
+  "happinessGuarantee",
+] as const;
+
+const TRUST_STRIP_FALLBACK: Record<
+  string,
+  Record<(typeof TRUST_STRIP_KEYS)[number], string>
+> = {
+  en: {
+    madeInCanada: "Made in Canada",
+    freeDelivery: "Free delivery over $150",
+    happinessGuarantee: "100% happiness guarantee",
+  },
+  fr: {
+    madeInCanada: "Fabriqué au Canada",
+    freeDelivery: "Livraison gratuite à partir de 150 $",
+    happinessGuarantee: "Garantie bonheur 100 %",
+  },
+};
+
+const getTrustStripItems = (
+  locale: string,
+  messages: AbstractIntlMessages
+): string[] => {
+  const trustStrip =
+    (messages["trustStrip"] as
+      | Record<(typeof TRUST_STRIP_KEYS)[number], string>
+      | undefined) ?? undefined;
+
+  const items =
+    trustStrip &&
+    TRUST_STRIP_KEYS.map((key) => trustStrip[key]).filter(
+      (value): value is string => Boolean(value)
+    );
+
+  if (items && items.length === TRUST_STRIP_KEYS.length) {
+    return items;
+  }
+
+  const fallback =
+    TRUST_STRIP_FALLBACK[locale as keyof typeof TRUST_STRIP_FALLBACK] ??
+    TRUST_STRIP_FALLBACK.en;
+
+  return TRUST_STRIP_KEYS.map((key) => fallback[key]);
 };
 
 interface Props {
@@ -47,6 +95,8 @@ const LocaleLayout = async ({ children, params }: Props) => {
     href: `${BASE_URL}/${loc}`,
   }));
 
+  const trustStripItems = getTrustStripItems(locale, messages);
+
   return (
     <html lang={locale}>
       <head>
@@ -64,6 +114,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
         <GoogleAnalytics />
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
+            <TrustStrip items={trustStripItems} />
             <Navbar />
             {children}
             <Footer />

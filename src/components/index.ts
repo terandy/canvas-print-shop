@@ -16,3 +16,4 @@ export { default as PageHeader } from "./page-header";
 export { default as Prose } from "./prose";
 export { default as SectionContainer } from "./section-container";
 export { default as SectionHeader } from "./section-header";
+export { default as TrustStrip } from "./trust-strip";
