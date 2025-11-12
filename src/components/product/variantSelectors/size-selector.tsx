@@ -9,7 +9,7 @@ import { BASE_STATE } from "@/contexts/product-context/data";
 import Price from "../price";
 
 const INCHES_TO_CM = 2.54; // Conversion factor: 1 inch = 2.54 cm
-const MIN_DPI = 100; // Minimum DPI for good print quality
+const MIN_DPI = 50; // Posterjack policy minimum DPI for acceptable quality
 
 type Combination = {
   id: string;
@@ -152,12 +152,6 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
 
     if (effectiveDPI >= MIN_DPI) {
       return <span className="text-gray-500">{t("quality.goodQuality")}</span>;
-    } else if (effectiveDPI >= MIN_DPI * 0.7) {
-      return (
-        <span className="flex gap-1 text-gray-500">
-          {t("quality.normalQuality")}
-        </span>
-      );
     }
     return (
       <span
