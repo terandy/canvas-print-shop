@@ -143,6 +143,15 @@ const reviews = [
     date: "2024-11-18",
     verified: false,
   },
+  {
+    id: 10,
+    author: "Andrew G",
+    rating: 5,
+    comment:
+      "Really happy with my canvas. Looks great and came well packed. Took a few days but worth the wait.",
+    date: "2025-11-11",
+    verified: true,
+  },
 ];
 
 const trustedBy = [
@@ -315,29 +324,35 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           </div>
         </div>
 
-        {/* Reviews + Product Details Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-xl mx-auto px-6 py-12">
-          {/* Reviews column (left) */}
-          <div>
-            <h2 className="text-2xl font-bold text-secondary mb-2">
+        {/* Trusted By strip */}
+        <section className="mt-10 px-4 sm:px-6">
+          <div className="rounded-2xl border border-gray/10 bg-white shadow-sm px-4 sm:px-6 py-6">
+            <p className="text-center text-xs sm:text-sm tracking-[0.3em] uppercase text-gray-500">
               {t("trustedBy")}
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 items-center justify-items-center mb-7">
+            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-2">
               {trustedBy.map(({ src, alt }) => (
                 <div
                   key={alt}
-                  className="h-16 flex items-center justify-center"
+                  className="flex h-10 w-28 items-center justify-center sm:h-14 sm:w-40"
                 >
                   <Image
                     src={src}
                     alt={alt}
-                    width={200}
+                    width={180}
                     height={56}
-                    className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition"
+                    className="h-full w-auto object-contain opacity-80 transition hover:opacity-100"
                   />
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Reviews + Product Details Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-screen-xl mx-auto px-6 py-12">
+          {/* Reviews column (left) */}
+          <div>
             <h2 className="text-2xl font-bold text-secondary mb-6">
               {t("reviews.title")}
             </h2>
