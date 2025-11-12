@@ -25,52 +25,21 @@ export const metadata: Metadata = {
   },
 };
 
-const TRUST_STRIP_KEYS = [
-  "madeInCanada",
-  "freeDelivery",
-  "happinessGuarantee",
-] as const;
-
-const TRUST_STRIP_FALLBACK: Record<
-  string,
-  Record<(typeof TRUST_STRIP_KEYS)[number], string>
-> = {
-  en: {
-    madeInCanada: "Made in Canada",
-    freeDelivery: "Free delivery over $150",
-    happinessGuarantee: "100% happiness guarantee",
-  },
-  fr: {
-    madeInCanada: "Fabriqué au Canada",
-    freeDelivery: "Livraison gratuite à partir de 150 $",
-    happinessGuarantee: "Garantie bonheur 100 %",
-  },
+const TRUST_STRIP_FALLBACK: Record<string, string> = {
+  en: "Use code GET10 for 10% off your order",
+  fr: "Utilisez le code GET10 pour obtenir 10 % de rabais",
 };
 
-const getTrustStripItems = (
+const getTrustStripMessage = (
   locale: string,
   messages: AbstractIntlMessages
-): string[] => {
-  const trustStrip =
-    (messages["trustStrip"] as
-      | Record<(typeof TRUST_STRIP_KEYS)[number], string>
-      | undefined) ?? undefined;
-
-  const items =
-    trustStrip &&
-    TRUST_STRIP_KEYS.map((key) => trustStrip[key]).filter(
-      (value): value is string => Boolean(value)
-    );
-
-  if (items && items.length === TRUST_STRIP_KEYS.length) {
-    return items;
-  }
-
-  const fallback =
-    TRUST_STRIP_FALLBACK[locale as keyof typeof TRUST_STRIP_FALLBACK] ??
+): string => {
+  const copy =
+    ((messages["trustStrip"] as { discount?: string })?.discount ??
+      TRUST_STRIP_FALLBACK[locale as keyof typeof TRUST_STRIP_FALLBACK]) ??
     TRUST_STRIP_FALLBACK.en;
 
-  return TRUST_STRIP_KEYS.map((key) => fallback[key]);
+  return copy;
 };
 
 interface Props {
@@ -95,7 +64,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
     href: `${BASE_URL}/${loc}`,
   }));
 
-  const trustStripItems = getTrustStripItems(locale, messages);
+  const trustStripMessage = getTrustStripMessage(locale, messages);
 
   return (
     <html lang={locale}>
@@ -114,7 +83,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
         <GoogleAnalytics />
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
-            <TrustStrip items={trustStripItems} />
+            <TrustStrip message={trustStripMessage} />
             <Navbar />
             {children}
             <Footer />

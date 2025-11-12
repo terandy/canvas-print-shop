@@ -1,21 +1,34 @@
+import Image from "next/image";
+
 interface TrustStripProps {
-  items: string[];
+  message: string | null;
 }
 
-const TrustStrip = ({ items }: TrustStripProps) => {
-  if (!items.length) {
+const TrustStrip = ({ message }: TrustStripProps) => {
+  if (!message) {
     return null;
   }
 
-  const bannerText = items.join(" · ");
-
   return (
     <div className="bg-secondary text-white text-xs sm:text-sm">
-      <p className="mx-auto max-w-5xl px-4 py-2 text-center font-medium tracking-wide">
-        {bannerText}
-      </p>
+      <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 px-4 py-2 text-center font-medium tracking-wide">
+        <LeafIcon />
+        <span>{message}</span>
+        <LeafIcon />
+      </div>
     </div>
   );
 };
+
+const LeafIcon = () => (
+  <Image
+    src="/canadian-leaf.png"
+    alt=""
+    width={16}
+    height={16}
+    className="opacity-90"
+    aria-hidden="true"
+  />
+);
 
 export default TrustStrip;

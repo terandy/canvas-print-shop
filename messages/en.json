@@ -505,9 +505,7 @@
     "canadian": "canadian"
   },
   "trustStrip": {
-    "madeInCanada": "Made in Canada",
-    "freeDelivery": "Free delivery over $150",
-    "happinessGuarantee": "100% happiness guarantee"
+    "discount": "Use code GET10 for 10% off your order"
   },
   "price": {
     "total": "Total",

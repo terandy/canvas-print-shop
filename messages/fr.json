@@ -510,9 +510,7 @@
     "canadian": "canadien"
   },
   "trustStrip": {
-    "madeInCanada": "Fabriqué au Canada",
-    "freeDelivery": "Livraison gratuite à partir de 150 $",
-    "happinessGuarantee": "Garantie bonheur 100 %"
+    "discount": "Utilisez le code GET10 pour obtenir 10 % de rabais"
   },
   "price": {
     "total": "Total",
