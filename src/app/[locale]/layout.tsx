@@ -25,21 +25,57 @@ export const metadata: Metadata = {
   },
 };
 
-const TRUST_STRIP_FALLBACK: Record<string, string> = {
-  en: "Use code GET10 for 10% off your order",
-  fr: "Utilisez le code GET10 pour obtenir 10 % de rabais",
+type TrustStripCopy = {
+  madeInCanada: string;
+  discount: string;
+  happiness: string;
+  holidayShipping: string;
 };
 
-const getTrustStripMessage = (
+const TRUST_STRIP_FALLBACK: Record<string, TrustStripCopy> = {
+  en: {
+    madeInCanada: "Made in Quebec",
+    discount: "Use code GET10 for 10% off your order",
+    happiness: "100% happiness guarantee",
+    holidayShipping: "Order now to receive before Christmas",
+  },
+  fr: {
+    madeInCanada: "Fabriqué au Québec",
+    discount: "Utilisez le code GET10 pour obtenir 10 % de rabais",
+    happiness: "Garantie bonheur 100 %",
+    holidayShipping: "Commandez maintenant pour recevoir avant Noël",
+  },
+};
+
+type TrustStripItem = {
+  text: string;
+  includeLeaves?: boolean;
+};
+
+const getTrustStripItems = (
   locale: string,
   messages: AbstractIntlMessages
-): string => {
-  const copy =
-    ((messages["trustStrip"] as { discount?: string })?.discount ??
-      TRUST_STRIP_FALLBACK[locale as keyof typeof TRUST_STRIP_FALLBACK]) ??
+): TrustStripItem[] => {
+  const fallback =
+    TRUST_STRIP_FALLBACK[locale as keyof typeof TRUST_STRIP_FALLBACK] ??
     TRUST_STRIP_FALLBACK.en;
 
-  return copy;
+  const trustStrip =
+    (messages["trustStrip"] as Partial<TrustStripCopy> | undefined) ?? {};
+
+  const resolved: TrustStripCopy = {
+    madeInCanada: trustStrip.madeInCanada ?? fallback.madeInCanada,
+    discount: trustStrip.discount ?? fallback.discount,
+    happiness: trustStrip.happiness ?? fallback.happiness,
+    holidayShipping: trustStrip.holidayShipping ?? fallback.holidayShipping,
+  };
+
+  return [
+    { text: resolved.madeInCanada, includeLeaves: true },
+    { text: resolved.discount },
+    { text: resolved.happiness },
+    { text: resolved.holidayShipping },
+  ];
 };
 
 interface Props {
@@ -64,7 +100,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
     href: `${BASE_URL}/${loc}`,
   }));
 
-  const trustStripMessage = getTrustStripMessage(locale, messages);
+  const trustStripItems = getTrustStripItems(locale, messages);
 
   return (
     <html lang={locale}>
@@ -83,7 +119,7 @@ const LocaleLayout = async ({ children, params }: Props) => {
         <GoogleAnalytics />
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
-            <TrustStrip message={trustStripMessage} />
+            <TrustStrip items={trustStripItems} />
             <Navbar />
             {children}
             <Footer />

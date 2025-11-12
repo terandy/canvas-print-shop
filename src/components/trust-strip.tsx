@@ -1,24 +1,58 @@
 import Image from "next/image";
 
+type TrustStripItem = {
+  text: string;
+  includeLeaves?: boolean;
+};
+
 interface TrustStripProps {
-  message: string | null;
+  items: TrustStripItem[];
 }
 
-const TrustStrip = ({ message }: TrustStripProps) => {
-  if (!message) {
+const TrustStrip = ({ items }: TrustStripProps) => {
+  if (!items.length) {
     return null;
   }
 
+  const scrollingItems = [...items, ...items];
+
+  const marqueeItems = scrollingItems.flatMap((item, index) => {
+    const nodes = [
+      <BannerItem key={`${item.text}-${index}`} item={item} />,
+    ];
+
+    if (index !== scrollingItems.length - 1) {
+      nodes.push(<Separator key={`separator-${index}`} />);
+    }
+
+    return nodes;
+  });
+
   return (
-    <div className="bg-secondary text-white text-xs sm:text-sm">
-      <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 px-4 py-2 text-center font-medium tracking-wide">
-        <LeafIcon />
-        <span>{message}</span>
-        <LeafIcon />
+    <div className="bg-secondary text-white text-xs sm:text-sm overflow-hidden">
+      <div className="flex min-w-full animate-marquee gap-6 whitespace-nowrap">
+        {marqueeItems}
       </div>
     </div>
   );
 };
+
+const BannerItem = ({ item }: { item: TrustStripItem }) => (
+  <span className="flex items-center gap-2 px-6 py-2 font-medium tracking-wide uppercase">
+    {item.includeLeaves && <LeafIcon />}
+    <span>{item.text}</span>
+    {item.includeLeaves && <LeafIcon />}
+  </span>
+);
+
+const Separator = () => (
+  <span
+    aria-hidden="true"
+    className="flex items-center justify-center px-4 text-white/60 text-base sm:text-lg font-semibold"
+  >
+    {"\u2022"}
+  </span>
+);
 
 const LeafIcon = () => (
   <Image

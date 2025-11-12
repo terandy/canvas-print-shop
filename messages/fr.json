@@ -510,7 +510,10 @@
     "canadian": "canadien"
   },
   "trustStrip": {
-    "discount": "Utilisez le code GET10 pour obtenir 10 % de rabais"
+    "madeInCanada": "Fabriqué au Québec",
+    "discount": "Utilisez le code GET10 pour obtenir 10 % de rabais",
+    "happiness": "Garantie bonheur 100 %",
+    "holidayShipping": "Commandez maintenant pour recevoir avant Noël"
   },
   "price": {
     "total": "Total",

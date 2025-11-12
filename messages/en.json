@@ -505,7 +505,10 @@
     "canadian": "canadian"
   },
   "trustStrip": {
-    "discount": "Use code GET10 for 10% off your order"
+    "madeInCanada": "Made in Quebec",
+    "discount": "Use code GET10 for 10% off your order",
+    "happiness": "100% happiness guarantee",
+    "holidayShipping": "Order now to receive before Christmas"
   },
   "price": {
     "total": "Total",
