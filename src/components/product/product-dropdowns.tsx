@@ -18,20 +18,20 @@ const Dropdown = ({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-gray-200 rounded-lg mb-4">
+    <div className="rounded-2xl border border-slate-200/70 bg-white/95 shadow-sm transition-shadow duration-200 hover:shadow-md">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full text-left p-4 hover:bg-gray-50 transition-colors"
+        className="flex justify-between items-center w-full text-left px-5 py-4 md:px-6 md:py-5 text-[#0F172A] hover:bg-[#FFF7ED] transition-colors"
       >
-        <span className="text-secondary font-medium">{title}</span>
+        <span className="font-semibold">{title}</span>
         {isOpen ? (
-          <ChevronUp className="w-5 h-5 text-gray-500" />
+          <ChevronUp className="w-5 h-5 text-[#FF9933]" />
         ) : (
-          <ChevronDown className="w-5 h-5 text-gray-500" />
+          <ChevronDown className="w-5 h-5 text-[#FF9933]" />
         )}
       </button>
       {isOpen && (
-        <div className="px-4 pb-4 text-gray-600 prose prose-sm border-t border-gray-100">
+        <div className="px-5 pb-5 text-gray-600 prose prose-sm border-t border-slate-100 bg-[#FFF7ED]/40 md:px-6">
           {children}
         </div>
       )}
@@ -71,111 +71,131 @@ const FAQItem = ({
   );
 };
 
-const ProductDropdowns = () => {
+type ProductDropdownsProps = {
+  hideFaq?: boolean;
+  hideDelivery?: boolean;
+  hideDetails?: boolean;
+  hideQuality?: boolean;
+};
+
+const ProductDropdowns = ({
+  hideFaq = false,
+  hideDelivery = false,
+  hideDetails = false,
+  hideQuality = false,
+}: ProductDropdownsProps = {}) => {
   const t = useTranslations("Product");
 
   return (
     <>
       {/* Delivery Details - Open by default */}
-      <Dropdown title={t("deliveryDetails.title")} defaultOpen={true}>
-        <div className="space-y-3">
-          <div className="flex justify-between">
-            <span className="text-gray-600">
-              {t("deliveryDetails.processingTime")}
-            </span>
-            <span className="font-medium">
-              {t("deliveryDetails.processingTimeValue")}
-            </span>
+      {!hideDelivery && (
+        <Dropdown title={t("deliveryDetails.title")} defaultOpen={true}>
+          <div className="space-y-3">
+            <div className="flex justify-between">
+              <span className="text-gray-600">
+                {t("deliveryDetails.processingTime")}
+              </span>
+              <span className="font-medium">
+                {t("deliveryDetails.processingTimeValue")}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">
+                {t("deliveryDetails.localPickup")}
+              </span>
+              <span className="font-medium">
+                {t("deliveryDetails.localPickupValue")}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">
+                {t("deliveryDetails.totalDeliveryTime")}
+              </span>
+              <span className="font-medium">
+                {t("deliveryDetails.totalDeliveryTimeValue")}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">
+                {t("deliveryDetails.shippingCost")}
+              </span>
+              <span className="font-medium">
+                {t("deliveryDetails.shippingCostValue")}
+              </span>
+            </div>
           </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">
-              {t("deliveryDetails.localPickup")}
-            </span>
-            <span className="font-medium">
-              {t("deliveryDetails.localPickupValue")}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">
-              {t("deliveryDetails.totalDeliveryTime")}
-            </span>
-            <span className="font-medium">
-              {t("deliveryDetails.totalDeliveryTimeValue")}
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-gray-600">
-              {t("deliveryDetails.shippingCost")}
-            </span>
-            <span className="font-medium">
-              {t("deliveryDetails.shippingCostValue")}
-            </span>
-          </div>
-        </div>
-      </Dropdown>
+        </Dropdown>
+      )}
 
       {/* Product Details */}
-      <Dropdown title={t("details.title")}>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>{t("details.premiumCanvas")}</li>
-          <li>{t("details.fadeResistant")}</li>
-          <li>{t("details.handStretched")}</li>
-          <li>{t("details.readyToHang")}</li>
-          <li>{t("details.madeInQuebec")}</li>
-        </ul>
-      </Dropdown>
+      {!hideDetails && (
+        <Dropdown title={t("details.title")}>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>{t("details.premiumCanvas")}</li>
+            <li>{t("details.fadeResistant")}</li>
+            <li>{t("details.handStretched")}</li>
+            <li>{t("details.readyToHang")}</li>
+            <li>{t("details.madeInQuebec")}</li>
+          </ul>
+        </Dropdown>
+      )}
 
       {/* FAQs */}
-      <Dropdown title={t("faq.title")}>
-        <div className="space-y-0">
-          <FAQItem
-            question={t("faq.questions.imageQuality.question")}
-            answer={t("faq.questions.imageQuality.answer")}
-          />
-          <FAQItem
-            question={t("faq.questions.depthDifference.question")}
-            answer={t("faq.questions.depthDifference.answer")}
-          />
-          <FAQItem
-            question={t("faq.questions.localPickupAvailable.question")}
-            answer={t("faq.questions.localPickupAvailable.answer")}
-          />
-          <FAQItem
-            question={t("faq.questions.satisfaction.question")}
-            answer={t("faq.questions.satisfaction.answer")}
-          />
-          <FAQItem
-            question={t("faq.questions.durability.question")}
-            answer={t("faq.questions.durability.answer")}
-          />
-          <FAQItem
-            question={t("faq.questions.deliveryTime.question")}
-            answer={t("faq.questions.deliveryTime.answer")}
-          />
-          <FAQItem
-            question={t("faq.questions.multipleCanvases.question")}
-            answer={t("faq.questions.multipleCanvases.answer")}
-          />
-        </div>
-      </Dropdown>
+      {!hideFaq && (
+        <Dropdown title={t("faq.title")}>
+          <div className="space-y-0">
+            <FAQItem
+              question={t("faq.questions.imageQuality.question")}
+              answer={t("faq.questions.imageQuality.answer")}
+            />
+            <FAQItem
+              question={t("faq.questions.depthDifference.question")}
+              answer={t("faq.questions.depthDifference.answer")}
+            />
+            <FAQItem
+              question={t("faq.questions.localPickupAvailable.question")}
+              answer={t("faq.questions.localPickupAvailable.answer")}
+            />
+            <FAQItem
+              question={t("faq.questions.satisfaction.question")}
+              answer={t("faq.questions.satisfaction.answer")}
+            />
+            <FAQItem
+              question={t("faq.questions.durability.question")}
+              answer={t("faq.questions.durability.answer")}
+            />
+            <FAQItem
+              question={t("faq.questions.deliveryTime.question")}
+              answer={t("faq.questions.deliveryTime.answer")}
+            />
+            <FAQItem
+              question={t("faq.questions.multipleCanvases.question")}
+              answer={t("faq.questions.multipleCanvases.answer")}
+            />
+          </div>
+        </Dropdown>
+      )}
 
       {/* Quality Assurance */}
-      <Dropdown title={t("qualityAssurance.title")}>
-        <p className="mb-3">{t("qualityAssurance.description")}</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>{t("qualityAssurance.satisfaction")}</li>
-          <li>{t("qualityAssurance.replacement")}</li>
-          <li>{t("qualityAssurance.expertSupport")}</li>
-        </ul>
-        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-green-800 font-medium text-sm">
-            🛡️ {t("guarantee.title")}
-          </p>
-          <p className="text-green-700 text-sm mt-1">
-            {t("guarantee.description")}
-          </p>
-        </div>
-      </Dropdown>
+      {!hideQuality && (
+        <Dropdown title={t("qualityAssurance.title")}>
+          <p className="mb-3">{t("qualityAssurance.description")}</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>{t("qualityAssurance.satisfaction")}</li>
+            <li>{t("qualityAssurance.replacement")}</li>
+            <li>{t("qualityAssurance.expertSupport")}</li>
+          </ul>
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+            <p className="text-green-800 font-medium text-sm">
+              🛡️ {t("guarantee.title")}
+            </p>
+            <p className="text-green-700 text-sm mt-1">
+              {t("guarantee.description")}
+            </p>
+          </div>
+        </Dropdown>
+      )}
     </>
   );
 };
