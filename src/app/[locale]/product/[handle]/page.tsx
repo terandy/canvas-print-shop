@@ -459,13 +459,14 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
               key={image.alt}
               className="space-y-3 rounded-[28px] bg-white/80 p-3 shadow-lg ring-1 ring-slate-100 backdrop-blur"
             >
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-slate-100">
+              <div className="overflow-hidden rounded-[20px] bg-slate-100">
                 <Image
                   src={image.src}
                   alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 25vw, 280px"
-                  className="object-cover"
+                  width={640}
+                  height={480}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 320px"
+                  className="h-48 sm:h-56 w-full object-cover"
                 />
               </div>
               <figcaption className="text-sm text-slate-600 text-center px-2">
@@ -565,7 +566,7 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
             <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-slate-500">
               {t("trustedBy")}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
               {trustedBy.map(({ src, alt }) => (
                 <div key={alt} className="flex h-10 w-28 sm:h-12 sm:w-36 items-center justify-center">
                   <Image
@@ -629,9 +630,6 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                       <div className="text-4xl md:text-5xl font-semibold tracking-tight">
                         {averageRating.toFixed(1)}
                       </div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-                        {reviewsSectionCopy.ratingLabel}
-                      </p>
                     </div>
                     <div className="flex-1 min-w-[140px]">
                       <StarRating rating={averageRating} />
@@ -774,7 +772,7 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                       >
                         <summary className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-sm md:text-base font-medium text-[#0F172A] [&::-webkit-details-marker]:hidden">
                           <span>{faq.question}</span>
-                          <ChevronDown className="h-5 w-5 text-[#FF9933] transition-transform duration-300 group-open:rotate-180" />
+                          <ChevronDown className="h-5 w-5 flex-shrink-0 text-[#FF9933] transition-transform duration-300 group-open:rotate-180" />
                         </summary>
                         <div className="px-5 pb-5 text-sm md:text-base text-slate-700">
                           {faq.answer}
@@ -808,9 +806,6 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                   <div className="mt-6 flex items-center gap-4">
                     <div className="text-5xl font-semibold">{averageRating.toFixed(1)}</div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/60">
-                        {reviewsSectionCopy.ratingLabel}
-                      </p>
                       <StarRating rating={averageRating} />
                     </div>
                   </div>

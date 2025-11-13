@@ -25,9 +25,9 @@ const Dropdown = ({
       >
         <span className="font-semibold">{title}</span>
         {isOpen ? (
-          <ChevronUp className="w-5 h-5 text-[#FF9933]" />
+          <ChevronUp className="w-5 h-5 text-[#FF9933] flex-shrink-0" />
         ) : (
-          <ChevronDown className="w-5 h-5 text-[#FF9933]" />
+          <ChevronDown className="w-5 h-5 text-[#FF9933] flex-shrink-0" />
         )}
       </button>
       {isOpen && (
@@ -57,9 +57,9 @@ const FAQItem = ({
       >
         <span className="font-medium pr-4">{question}</span>
         {isOpen ? (
-          <ChevronUp className="w-4 h-4 text-gray-500 flex-shrink-0 mt-1" />
+          <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0 mt-1" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-500 flex-shrink-0 mt-1" />
+          <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0 mt-1" />
         )}
       </button>
       {isOpen && (
