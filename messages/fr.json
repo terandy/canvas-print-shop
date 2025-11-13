@@ -508,6 +508,17 @@
         },
         "footer": "Conçues, imprimées et finies au Canada, avec une garantie de qualité d'impression de 30 ans."
       },
+      "gallerySection": {
+        "eyebrow": "Dans notre atelier",
+        "title": "Un savoir-faire de qualité crée des toiles de qualité.",
+        "description": "Un aperçu de nos outils, de nos artisans et des toiles finies — puis découvrez toute l'histoire sur « Comment nous fabriquons nos toiles ».",
+        "cta": "Voir comment nous fabriquons nos toiles",
+        "images": {
+          "tools": "Matériaux premium et outils prêts pour l'impression",
+          "craftsmanship": "Toile tendue à la main à Québec",
+          "livingRoom": "Toile terminée mise en scène dans un salon chaleureux"
+        }
+      },
       "keyDetails": {
         "eyebrow": "Informations sur le produit",
         "title": "L'essentiel en un coup d'œil",

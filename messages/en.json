@@ -508,6 +508,17 @@
         },
         "footer": "Designed, printed and finished in Canada, backed by a 30-year print quality guarantee."
       },
+      "gallerySection": {
+        "eyebrow": "Inside the studio",
+        "title": "Quality craftsmanship equals quality canvas.",
+        "description": "A quick look at the workbench, the craft, and the finished piece—then dive into the full \"How we make our canvas prints\" story.",
+        "cta": "See how we make our canvas prints",
+        "images": {
+          "tools": "Premium materials and canvas tools ready for printing",
+          "craftsmanship": "Hand-stretching a canvas in Quebec City",
+          "livingRoom": "Finished canvas styled inside a cozy living room"
+        }
+      },
       "keyDetails": {
         "eyebrow": "Product information",
         "title": "Key details at a glance",

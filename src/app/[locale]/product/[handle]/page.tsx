@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Image from "next/image";
 import Script from "next/script";
+import Link from "next/link";
 import type { Metadata, NextPage } from "next";
 import { ProductImagePreview, SectionContainer, Prose } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
@@ -278,6 +279,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   const cartItemID = searchParams?.["cartItemID"] as string | undefined;
   const t = await getTranslations("Product");
   const locale = await getLocale();
+  const qualityPageHref = `/${locale ?? "en"}/quality-guarantee`;
   const formatDate = (date: Date) =>
     date.toLocaleDateString(locale, {
       day: "2-digit",
@@ -331,6 +333,26 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
     ratingLabel: t("canvasPage.reviewsSection.ratingLabel", {
       count: reviews.length,
     }),
+  };
+  const gallerySectionCopy = {
+    eyebrow: t("canvasPage.gallerySection.eyebrow"),
+    title: t("canvasPage.gallerySection.title"),
+    description: t("canvasPage.gallerySection.description"),
+    cta: t("canvasPage.gallerySection.cta"),
+    images: [
+      {
+        src: "/canvas-tools.jpeg",
+        alt: t("canvasPage.gallerySection.images.tools"),
+      },
+      {
+        src: "/canvas-making.jpeg",
+        alt: t("canvasPage.gallerySection.images.craftsmanship"),
+      },
+      {
+        src: "/canvas-in-living-room.jpeg",
+        alt: t("canvasPage.gallerySection.images.livingRoom"),
+      },
+    ],
   };
 
   const ProductInformationPanel = ({
@@ -415,7 +437,54 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
       ))}
     </div>
   </>
-);
+  );
+
+  const HomepageGallerySection = () => (
+    <section className="bg-[#F8FAFC] py-16 md:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-slate-500">
+            {gallerySectionCopy.eyebrow}
+          </p>
+          <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-[#0F172A]">
+            {gallerySectionCopy.title}
+          </h3>
+          <p className="mt-3 text-sm md:text-base text-slate-600">
+            {gallerySectionCopy.description}
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {gallerySectionCopy.images.map((image) => (
+            <figure
+              key={image.alt}
+              className="space-y-3 rounded-[28px] bg-white/80 p-3 shadow-lg ring-1 ring-slate-100 backdrop-blur"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] bg-slate-100">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 25vw, 280px"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="text-sm text-slate-600 text-center px-2">
+                {image.alt}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link
+            href={qualityPageHref}
+            className="inline-flex items-center justify-center rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-[#111C3D]"
+          >
+            {gallerySectionCopy.cta}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 
   if (!product) return notFound();
 
@@ -492,22 +561,19 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
 
         {/* Trusted By strip */}
         <section className="mt-10 px-4 sm:px-6">
-          <div className="rounded-2xl border border-gray/10 bg-white shadow-sm px-4 sm:px-6 py-6">
-            <p className="text-center text-xs sm:text-sm tracking-[0.3em] uppercase text-gray-500">
+          <div className="text-center space-y-4">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-slate-500">
               {t("trustedBy")}
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-2">
+            <div className="flex flex-wrap items-center justify-center gap-6">
               {trustedBy.map(({ src, alt }) => (
-                <div
-                  key={alt}
-                  className="flex h-10 w-28 items-center justify-center sm:h-14 sm:w-40"
-                >
+                <div key={alt} className="flex h-10 w-28 sm:h-12 sm:w-36 items-center justify-center">
                   <Image
                     src={src}
                     alt={alt}
                     width={180}
                     height={56}
-                    className="h-full w-auto object-contain opacity-80 transition hover:opacity-100"
+                    className="h-full w-auto object-contain opacity-90"
                   />
                 </div>
               ))}
@@ -518,90 +584,132 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
 
       {isCanvasProduct ? (
         <div className="w-full">
-          {/* Canvas quality + comparison story */}
-          <section className="w-full bg-gradient-to-b from-[#0F172A] via-[#111827] to-[#0F172A] py-16 md:py-20">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-semibold text-white">
-                  {qualitySectionCopy.title}
-                </h2>
-                <p className="mt-4 text-base md:text-lg text-slate-100/80 max-w-3xl">
-                  {qualitySectionCopy.description}
-                </p>
-              </div>
-              <div className="mt-10 grid gap-6 md:grid-cols-2">
-                {featureCards.map((feature) => (
-                  <div
-                    key={feature.title}
-                    className="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 shadow-xl backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF9933]/15 text-[#FF9933] text-sm font-semibold">
-                      {feature.icon}
-                    </div>
+          {/* Canvas craft story */}
+          <section className="relative isolate overflow-hidden bg-[#050E24] py-16 md:py-24 text-white">
+            <div className="absolute inset-0">
+              <div className="absolute -left-10 top-24 h-64 w-64 rounded-full bg-[#FF9933]/20 blur-3xl" />
+              <div className="absolute -right-10 bottom-12 h-72 w-72 rounded-full bg-slate-500/20 blur-3xl" />
+            </div>
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+              <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
+                    {qualitySectionCopy.title}
+                  </h2>
+                  <p className="mt-4 text-base md:text-lg text-white/70 max-w-3xl">
+                    {qualitySectionCopy.description}
+                  </p>
+                  <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                    {featureCards.map((feature) => (
+                      <div
+                        key={feature.title}
+                        className="group flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-xl backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/30"
+                      >
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF9933]/20 text-[#FF9933] text-base font-semibold">
+                          {feature.icon}
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-white">
+                            {feature.title}
+                          </h3>
+                          <p className="mt-1 text-sm text-white/70 leading-relaxed">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 sm:p-8 shadow-2xl backdrop-blur">
+                  <p className="text-sm text-white/70">
+                    {reviewsSectionCopy.subtitle}
+                  </p>
+                  <div className="mt-6 flex flex-wrap items-center gap-4">
                     <div>
-                      <h3 className="text-base md:text-lg font-semibold text-white mb-1">
-                        {feature.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-slate-100/80 leading-relaxed">
-                        {feature.description}
+                      <div className="text-4xl md:text-5xl font-semibold tracking-tight">
+                        {averageRating.toFixed(1)}
+                      </div>
+                      <p className="text-xs uppercase tracking-[0.2em] text-white/60">
+                        {reviewsSectionCopy.ratingLabel}
                       </p>
                     </div>
+                    <div className="flex-1 min-w-[140px]">
+                      <StarRating rating={averageRating} />
+                    </div>
                   </div>
-                ))}
+                  <div className="mt-8 grid gap-4">
+                    {keyDetails.slice(0, 2).map((detail) => (
+                      <div
+                        key={`highlight-${detail.title}`}
+                        className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                      >
+                        <p className="text-xs uppercase tracking-[0.2em] text-white/60">
+                          {detail.title}
+                        </p>
+                        <p className="mt-2 text-base text-white">
+                          {detail.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-8 text-xs text-white/50">
+                    {comparisonSectionCopy.footer}
+                  </p>
+                </div>
               </div>
             </div>
           </section>
 
-          <section className="w-full bg-[#FFF7ED] py-16 md:py-20">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Comparison */}
+          <section className="bg-[#FFF7ED] py-16 md:py-24">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
               <div className="max-w-4xl">
-                <h2 className="text-3xl md:text-4xl font-semibold text-[#0F172A]">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#EA580C]">
+                  {comparisonSectionCopy.labels.badge}
+                </p>
+                <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-[#0F172A]">
                   {comparisonSectionCopy.title}
                 </h2>
-                <p className="mt-4 text-base md:text-lg text-slate-700 max-w-3xl">
+                <p className="mt-3 text-base md:text-lg text-slate-700">
                   {comparisonSectionCopy.description}
                 </p>
               </div>
-              <div className="mt-8 rounded-3xl bg-white shadow-xl border border-slate-100 overflow-hidden">
-                <div className="hidden md:grid grid-cols-3 text-sm md:text-base font-semibold">
-                  <div className="bg-white px-4 py-4 text-slate-800">
-                    {comparisonSectionCopy.labels.feature}
-                  </div>
-                  <div className="bg-[#FFF4E5] px-4 py-4 text-[#0F172A] flex flex-col gap-1 border-x border-slate-100">
-                    <span>{comparisonSectionCopy.labels.ours}</span>
-                    <span className="text-xs uppercase tracking-wide text-[#FF9933] font-semibold">
+              <div className="rounded-[32px] border border-[#FFD8B1] bg-white/90 shadow-[0_20px_60px_rgba(255,153,51,0.25)] overflow-hidden">
+                <div className="hidden md:grid grid-cols-[0.9fr_1fr_1fr] text-sm font-semibold text-[#9A3412]">
+                  <div className="px-6 py-4">{comparisonSectionCopy.labels.feature}</div>
+                  <div className="px-6 py-4 border-x border-[#FFE7CF]">
+                    <div>{comparisonSectionCopy.labels.ours}</div>
+                    <div className="text-xs uppercase tracking-[0.3em] text-[#F97316]">
                       {comparisonSectionCopy.labels.badge}
-                    </span>
+                    </div>
                   </div>
-                  <div className="bg-slate-50 px-4 py-4 text-slate-700">
-                    {comparisonSectionCopy.labels.theirs}
-                  </div>
+                  <div className="px-6 py-4">{comparisonSectionCopy.labels.theirs}</div>
                 </div>
-                <div className="divide-y divide-slate-100">
+                <div className="divide-y divide-[#FFE7CF]">
                   {comparisonRows.map((row) => (
                     <div
                       key={row.feature}
-                      className="grid grid-cols-1 md:grid-cols-3 text-sm md:text-base"
+                      className="grid grid-cols-1 md:grid-cols-[0.9fr_1fr_1fr] text-sm md:text-base"
                     >
-                      <div className="px-4 py-4 md:py-3 font-medium text-[#0F172A] bg-white md:border-r md:border-slate-100">
-                        <p className="md:hidden text-xs font-semibold tracking-wide text-slate-500 uppercase mb-1">
+                      <div className="px-5 py-4 font-medium text-[#0F172A] bg-white">
+                        <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2">
                           {comparisonSectionCopy.labels.feature}
                         </p>
                         {row.feature}
                       </div>
-                      <div className="px-4 py-4 md:py-3 bg-[#FFF4E5] text-slate-800 md:border-r md:border-slate-100">
-                        <p className="md:hidden text-xs font-semibold tracking-wide text-[#FF9933] uppercase mb-1">
+                      <div className="px-5 py-4 bg-[#FFF4E5] border-y md:border-y-0 border-[#FFE7CF] text-slate-800 md:border-x md:border-[#FFE7CF]">
+                        <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-[#F97316] mb-2">
                           {comparisonSectionCopy.labels.ours}
                         </p>
-                        <div className="flex items-start gap-2">
-                          <span aria-hidden="true" className="mt-1 text-[#FF9933]">
+                        <div className="flex items-start gap-3">
+                          <span aria-hidden="true" className="text-[#F97316] mt-1">
                             ✔
                           </span>
-                          <p className="flex-1">{row.canvasPrintShop}</p>
+                          <p>{row.canvasPrintShop}</p>
                         </div>
                       </div>
-                      <div className="px-4 py-4 md:py-3 bg-slate-50 text-slate-600">
-                        <p className="md:hidden text-xs font-semibold tracking-wide text-slate-500 uppercase mb-1">
+                      <div className="px-5 py-4 bg-[#FFF9F3] text-slate-600">
+                        <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2">
                           {comparisonSectionCopy.labels.theirs}
                         </p>
                         {row.discount}
@@ -609,102 +717,127 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                     </div>
                   ))}
                 </div>
-                <p className="text-xs md:text-sm text-slate-500 px-4 py-3 border-t border-slate-100 text-right">
-                  {comparisonSectionCopy.footer}
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="bg-[#FFF7ED] py-16 md:py-20">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="rounded-3xl border border-[#FF9933]/20 bg-white shadow-xl p-6 sm:p-10">
-                <p className="text-sm font-semibold uppercase tracking-wide text-[#FF9933]">
-                  {keyDetailsCopy.eyebrow}
-                </p>
-                <h3 className="mt-2 text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                  {keyDetailsCopy.title}
-                </h3>
-                <p className="mt-3 text-sm md:text-base text-slate-700">
-                  {keyDetailsCopy.description}
-                </p>
-                <dl className="mt-8 grid gap-6 sm:grid-cols-2">
-                  {keyDetails.map((detail) => (
-                    <div key={detail.title}>
-                      <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {detail.title}
-                      </dt>
-                      <dd className="mt-1 text-base text-[#0F172A]">
-                        {detail.description}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-              <div className="mt-12">
-                <h3 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                  {t("faq.title")}
-                </h3>
-                <p className="mt-2 text-sm md:text-base text-slate-700 max-w-2xl">
-                  {faqIntro}
-                </p>
-                <div className="mt-6 divide-y divide-slate-200 rounded-2xl bg-white shadow-lg border border-slate-100">
-                  {faqItems.map((faq) => (
-                    <details key={faq.question} className="group">
-                      <summary className="flex w-full cursor-pointer items-center justify-between px-5 py-4 text-left [&::-webkit-details-marker]:hidden">
-                        <span className="text-sm md:text-base font-medium text-[#0F172A]">
-                          {faq.question}
-                        </span>
-                        <ChevronDown className="h-5 w-5 text-[#FF9933] transition-transform duration-300 group-open:rotate-180" />
-                      </summary>
-                      <div className="px-5 pb-4 text-sm md:text-base text-slate-700">
-                        {faq.answer}
-                      </div>
-                    </details>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="reviews" className="bg-white py-16 md:py-20">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                    {reviewsSectionCopy.title}
-                  </h2>
-                  <p className="mt-1 text-sm md:text-base text-slate-600">
-                    {reviewsSectionCopy.subtitle}
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 px-6 py-4 text-xs md:text-sm text-[#9A3412] bg-[#FFF4E5]">
+                  <p>{comparisonSectionCopy.footer}</p>
+                  <p className="uppercase tracking-[0.35em] font-semibold">
+                    {t("trustedBy")}
                   </p>
                 </div>
-                <div className="inline-flex items-center gap-3 rounded-full bg-[#FFF4E5] px-4 py-2 border border-[#FF9933]/30">
-                  <Star className="h-5 w-5 text-[#FF9933] fill-[#FF9933]" />
-                  <span className="text-lg font-semibold text-[#0F172A]">
-                    {averageRating.toFixed(1)}
-                  </span>
-                  <span className="text-xs uppercase tracking-wide text-slate-700">
-                    {reviewsSectionCopy.ratingLabel}
-                  </span>
+              </div>
+            </div>
+          </section>
+
+          {/* Key details + FAQ */}
+          <section className="bg-white py-16 md:py-24">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="rounded-[32px] border border-slate-200 bg-slate-50/70 p-6 sm:p-10 shadow-xl">
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#FF9933]">
+                    {keyDetailsCopy.eyebrow}
+                  </p>
+                  <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-[#0F172A]">
+                    {keyDetailsCopy.title}
+                  </h3>
+                  <p className="mt-3 text-sm md:text-base text-slate-700 max-w-2xl">
+                    {keyDetailsCopy.description}
+                  </p>
+                  <dl className="mt-8 grid gap-6 sm:grid-cols-2">
+                    {keyDetails.map((detail) => (
+                      <div
+                        key={detail.title}
+                        className="rounded-2xl bg-white p-4 shadow-sm border border-white"
+                      >
+                        <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                          {detail.title}
+                        </dt>
+                        <dd className="mt-2 text-base text-[#0F172A]">
+                          {detail.description}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+                <div className="rounded-[32px] border border-slate-100 bg-white shadow-xl p-4 sm:p-8">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
+                      {t("faq.title")}
+                    </h3>
+                    <p className="text-sm md:text-base text-slate-600">
+                      {faqIntro}
+                    </p>
+                  </div>
+                  <div className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-100">
+                    {faqItems.map((faq) => (
+                      <details
+                        key={faq.question}
+                        className="group open:bg-slate-50/60 transition"
+                      >
+                        <summary className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-sm md:text-base font-medium text-[#0F172A] [&::-webkit-details-marker]:hidden">
+                          <span>{faq.question}</span>
+                          <ChevronDown className="h-5 w-5 text-[#FF9933] transition-transform duration-300 group-open:rotate-180" />
+                        </summary>
+                        <div className="px-5 pb-5 text-sm md:text-base text-slate-700">
+                          {faq.answer}
+                        </div>
+                      </details>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-4 md:p-6 shadow-inner">
-                <ReviewsPanel showHeading={false} />
+            </div>
+          </section>
+
+          <HomepageGallerySection />
+
+          {/* Reviews */}
+          <section id="reviews" className="relative isolate bg-[#020617] py-16 md:py-24 text-white">
+            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/10 to-transparent" />
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-start">
+                <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 sm:p-10 shadow-2xl backdrop-blur">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/80">
+                    <Star className="h-4 w-4 text-[#FF9933] fill-[#FF9933]" />
+                    {t("reviews.title")}
+                  </div>
+                  <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-white">
+                    {reviewsSectionCopy.title}
+                  </h2>
+                  <p className="mt-3 text-sm md:text-base text-white/70">
+                    {reviewsSectionCopy.subtitle}
+                  </p>
+                  <div className="mt-6 flex items-center gap-4">
+                    <div className="text-5xl font-semibold">{averageRating.toFixed(1)}</div>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+                        {reviewsSectionCopy.ratingLabel}
+                      </p>
+                      <StarRating rating={averageRating} />
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-[32px] bg-white shadow-2xl p-4 sm:p-8">
+                  <ReviewsPanel showHeading={false} />
+                </div>
               </div>
             </div>
           </section>
         </div>
       ) : (
-        <div className="container mx-auto max-w-screen-2xl px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div>
-              <ReviewsPanel />
-            </div>
-            <div>
-              <ProductInformationPanel />
+        <>
+          <HomepageGallerySection />
+          <div className="bg-slate-50 border-t border-slate-200 py-16 md:py-20">
+            <div className="container mx-auto max-w-screen-2xl px-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
+                  <ReviewsPanel />
+                </div>
+                <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
+                  <ProductInformationPanel />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </ProductProvider>
   );
