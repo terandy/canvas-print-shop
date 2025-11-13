@@ -442,6 +442,112 @@
         }
       }
     },
+    "canvasPage": {
+      "qualitySection": {
+        "title": "Pourquoi notre toile est différente",
+        "description": "La plupart des toiles en ligne se ressemblent à l'écran, mais offrent une sensation très différente en vrai. Nous misons sur les matériaux et le procédé d'impression pour que votre toile ait réellement un aspect haut de gamme sur votre mur.",
+        "cards": {
+          "premiumCanvas": {
+            "title": "Toile en coton mélangé de qualité supérieure",
+            "description": "Nous utilisons une toile en coton à haute densité avec jusqu'à 75 % d'opacité. Résultat : des couleurs plus riches, des blancs plus propres et beaucoup moins de transparence que sur les toiles économiques."
+          },
+          "archivalPrinting": {
+            "title": "Impression de qualité archivistique",
+            "description": "Votre photo est imprimée avec la technologie Canon UVgel pour un rendu net, des noirs profonds et sans odeur. Nous garantissons qu'elle ne se décolorera pas avant plus de 30 ans dans une maison."
+          },
+          "handStretched": {
+            "title": "Tendue à la main à Québec",
+            "description": "Chaque toile est imprimée, tendue et finie dans notre atelier de Québec sur des barres en bois sur mesure, avec une tension impeccable et des coins nets."
+          },
+          "readyToHang": {
+            "title": "Prête à accrocher et faite pour durer",
+            "description": "Chaque toile arrive prête à être accrochée avec la quincaillerie incluse et est inspectée par notre équipe avant de quitter l'atelier."
+          }
+        }
+      },
+      "comparisonSection": {
+        "title": "Canvas Print Shop vs toiles bon marché",
+        "description": "Toutes les toiles ne se valent pas. Voici comment nos toiles se comparent aux toiles à bas prix que vous voyez en ligne.",
+        "labels": {
+          "feature": "Caractéristique",
+          "ours": "Canvas Print Shop",
+          "badge": "Meilleur choix",
+          "theirs": "Toiles économiques typiques"
+        },
+        "rows": {
+          "material": {
+            "feature": "Matériau de la toile",
+            "ours": "Toile en coton mélangé à haute opacité.",
+            "theirs": "Toile en polyester léger avec plus de transparence."
+          },
+          "opacity": {
+            "feature": "Densité et opacité de la toile",
+            "ours": "Jusqu'à 75 % d'opacité pour des couleurs riches et des blancs propres.",
+            "theirs": "Opacité plus faible, texture plus visible et transparence sur les murs pâles."
+          },
+          "technology": {
+            "feature": "Technologie d'impression",
+            "ours": "Impression Canon UVgel pour un détail précis et des couleurs durables.",
+            "theirs": "Impression à colorants ou solvants standard, qui se décolore plus rapidement."
+          },
+          "frames": {
+            "feature": "Cadres et assemblage",
+            "ours": "Barres de tension sur mesure, tendues à la main et inspectées dans notre atelier de Québec.",
+            "theirs": "Cadres génériques, souvent tendus à la machine avec moins de contrôle qualité."
+          },
+          "origin": {
+            "feature": "Lieu de fabrication",
+            "ours": "Imprimée et assemblée au Canada.",
+            "theirs": "Souvent produite dans des usines à grand volume à l'étranger."
+          },
+          "guarantee": {
+            "feature": "Garantie",
+            "ours": "Garantie de qualité d'impression de 30 ans et garantie de satisfaction de 30 jours.",
+            "theirs": "Garanties plus courtes et support limité."
+          }
+        },
+        "footer": "Conçues, imprimées et finies au Canada, avec une garantie de qualité d'impression de 30 ans."
+      },
+      "keyDetails": {
+        "eyebrow": "Informations sur le produit",
+        "title": "L'essentiel en un coup d'œil",
+        "description": "Tout est pensé pour la durabilité, la facilité d'installation et pour accrocher votre toile rapidement.",
+        "items": {
+          "productionTime": {
+            "title": "Temps de production",
+            "description": "Nous avons généralement besoin de 2 à 4 jours pour imprimer, tendre et emballer votre toile avant l'expédition."
+          },
+          "delivery": {
+            "title": "Livraison",
+            "description": "Ajoutez le temps de transit selon l'option choisie. Les délais et estimations sont affichés à la caisse."
+          },
+          "builtToLast": {
+            "title": "Construit pour durer",
+            "description": "Imprimée avec la technologie Canon UVgel et garantie de ne pas se décolorer pendant plus de 30 ans."
+          },
+          "satisfaction": {
+            "title": "Garantie de satisfaction",
+            "description": "Garantie de satisfaction de 30 jours. Si vous n'êtes pas satisfait, nous arrangerons la situation."
+          },
+          "localPickup": {
+            "title": "Cueillette locale",
+            "description": "Cueillette gratuite dans notre atelier de Québec pendant les heures d'ouverture."
+          },
+          "shippingCost": {
+            "title": "Frais d'expédition",
+            "description": "Affichés à la caisse (livraison GRATUITE pour les commandes de plus de 150 $)."
+          }
+        }
+      },
+      "faq": {
+        "intro": "Les réponses aux questions les plus fréquentes sur nos toiles, la qualité d'image et la livraison."
+      },
+      "reviewsSection": {
+        "title": "Avis des clients",
+        "subtitle": "Découvrez ce que les gens pensent de leurs toiles Canvas Print Shop.",
+        "ratingLabel": "Basé sur {count} avis"
+      }
+    },
     "guarantee": {
       "title": "Garantie de qualité d'impression de 30 ans",
       "description": "Nous soutenons notre technologie d'impression UVgel premium avec une garantie leader de l'industrie."

@@ -442,6 +442,112 @@
         }
       }
     },
+    "canvasPage": {
+      "qualitySection": {
+        "title": "Why our canvas feels different",
+        "description": "Most online canvas prints look similar on screen, but feel very different in real life. We focus on the materials and print process so your canvas actually looks and feels premium when it's on the wall.",
+        "cards": {
+          "premiumCanvas": {
+            "title": "Premium cotton-blend canvas",
+            "description": "We use a high-density cotton-blend canvas with up to 75% opacity. That means richer colour, cleaner whites and far less show-through than lightweight budget canvases."
+          },
+          "archivalPrinting": {
+            "title": "Archival-grade printing",
+            "description": "Your photo is printed with Canon UVgel technology for sharp detail, deep blacks and no odour. We guarantee it will not fade for 30+ years in typical home conditions."
+          },
+          "handStretched": {
+            "title": "Hand-stretched in Quebec City",
+            "description": "Every canvas is printed, stretched and finished in our Quebec City studio on custom wooden stretcher bars, with tight tension and crisp, clean corners."
+          },
+          "readyToHang": {
+            "title": "Ready to hang, built to last",
+            "description": "Each canvas arrives ready to hang with hardware included, and is checked by our team before it leaves the workshop."
+          }
+        }
+      },
+      "comparisonSection": {
+        "title": "Canvas Print Shop vs cheap canvas prints",
+        "description": "Not all canvases are made the same. Here's how our canvases compare to the typical discount canvas prints you see online.",
+        "labels": {
+          "feature": "Feature",
+          "ours": "Canvas Print Shop",
+          "badge": "Best choice",
+          "theirs": "Typical discount canvas prints"
+        },
+        "rows": {
+          "material": {
+            "feature": "Canvas material",
+            "ours": "Premium cotton-blend canvas with high opacity.",
+            "theirs": "Lightweight polyester canvas with more show-through."
+          },
+          "opacity": {
+            "feature": "Canvas density & opacity",
+            "ours": "Up to 75% opacity for rich colour and clean whites.",
+            "theirs": "Lower opacity, more visible texture and show-through on light walls."
+          },
+          "technology": {
+            "feature": "Print technology",
+            "ours": "Canon UVgel printing for sharp detail and long-lasting colour.",
+            "theirs": "Standard dye or solvent printing, more prone to fading."
+          },
+          "frames": {
+            "feature": "Frames and build",
+            "ours": "Custom stretcher bars, hand-stretched and inspected in our Quebec City studio.",
+            "theirs": "Generic frames, often machine-stretched with less quality control."
+          },
+          "origin": {
+            "feature": "Where it's made",
+            "ours": "Printed and finished in Canada.",
+            "theirs": "Often produced in high-volume overseas facilities."
+          },
+          "guarantee": {
+            "feature": "Guarantee",
+            "ours": "30-year print quality guarantee and 30-day satisfaction guarantee.",
+            "theirs": "Shorter warranties and more limited support."
+          }
+        },
+        "footer": "Designed, printed and finished in Canada, backed by a 30-year print quality guarantee."
+      },
+      "keyDetails": {
+        "eyebrow": "Product information",
+        "title": "Key details at a glance",
+        "description": "Everything we do is focused on longevity, ease of hanging and getting your canvas on the wall quickly.",
+        "items": {
+          "productionTime": {
+            "title": "Production time",
+            "description": "We typically need 2 – 4 days to print, stretch and pack your canvas before dispatch."
+          },
+          "delivery": {
+            "title": "Delivery",
+            "description": "Add shipping transit time on top. You will see options and estimates at checkout."
+          },
+          "builtToLast": {
+            "title": "Built to last",
+            "description": "Printed with Canon UVgel technology and guaranteed not to fade for over 30 years."
+          },
+          "satisfaction": {
+            "title": "Satisfaction guarantee",
+            "description": "30-day satisfaction guarantee. If you are not happy, we will make it right."
+          },
+          "localPickup": {
+            "title": "Local pickup",
+            "description": "Free pickup from our Quebec City location during business hours."
+          },
+          "shippingCost": {
+            "title": "Shipping cost",
+            "description": "Available at checkout (FREE shipping on orders over $150)."
+          }
+        }
+      },
+      "faq": {
+        "intro": "Answers to the most common questions about our canvas prints, image quality and delivery."
+      },
+      "reviewsSection": {
+        "title": "Customer reviews",
+        "subtitle": "See what people think of their Canvas Print Shop canvases.",
+        "ratingLabel": "Based on {count} reviews"
+      }
+    },
     "guarantee": {
       "title": "30-Year Print Quality Guarantee",
       "description": "We stand behind our premium UVgel printing technology with an industry-leading guarantee."

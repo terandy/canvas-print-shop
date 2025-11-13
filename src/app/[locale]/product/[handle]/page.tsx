@@ -7,21 +7,11 @@ import Script from "next/script";
 import type { Metadata, NextPage } from "next";
 import { ProductImagePreview, SectionContainer, Prose } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
-import {
-  Star,
-  Clock,
-  Truck,
-  ShieldCheck,
-  Smile,
-  MapPin,
-  ChevronDown,
-  DollarSign,
-} from "lucide-react";
+import { Star, ChevronDown } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
 import { addBusinessDays } from "@/lib/utils/base";
 import { getLocale } from "next-intl/server";
-import type { LucideIcon } from "lucide-react";
 
 /**
  * Page Props
@@ -174,147 +164,40 @@ const trustedBy = [
   { src: "/Inkpicx Logo for website.avif", alt: "Créations Inkpicx logo" },
 ];
 
-const canvasFeatureCards = [
-  {
-    title: "Premium cotton-blend canvas",
-    description:
-      "We use a high-density cotton-blend canvas with up to 75% opacity. That means richer colour, cleaner whites and far less show-through than lightweight budget canvases.",
-    icon: "01",
-  },
-  {
-    title: "Archival-grade printing",
-    description:
-      "Your photo is printed with Canon UVgel technology for sharp detail, deep blacks and no odour. We guarantee it will not fade for 30+ years in typical home conditions.",
-    icon: "02",
-  },
-  {
-    title: "Hand-stretched in Quebec City",
-    description:
-      "Every canvas is printed, stretched and finished in our Quebec City studio on custom wooden stretcher bars, with tight tension and crisp, clean corners.",
-    icon: "03",
-  },
-  {
-    title: "Ready to hang, built to last",
-    description:
-      "Each canvas arrives ready to hang with hardware included, and is checked by our team before it leaves the workshop.",
-    icon: "04",
-  },
-];
+const canvasFeatureCardConfig = [
+  { key: "premiumCanvas", icon: "01" },
+  { key: "archivalPrinting", icon: "02" },
+  { key: "handStretched", icon: "03" },
+  { key: "readyToHang", icon: "04" },
+] as const;
 
-const canvasKeyDetails: Array<{
-  title: string;
-  description: string;
-  icon: LucideIcon;
-}> = [
-  {
-    title: "Production time",
-    description:
-      "We typically need 2 – 4 days to print, stretch and pack your canvas before dispatch.",
-    icon: Clock,
-  },
-  {
-    title: "Delivery",
-    description:
-      "Add shipping transit time on top. You will see options and estimates at checkout.",
-    icon: Truck,
-  },
-  {
-    title: "Built to last",
-    description:
-      "Printed with Canon UVgel technology and guaranteed not to fade for over 30 years.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Satisfaction guarantee",
-    description:
-      "30-day satisfaction guarantee. If you are not happy, we will make it right.",
-    icon: Smile,
-  },
-  {
-    title: "Local pickup",
-    description:
-      "Free pickup from our Quebec City location during business hours.",
-    icon: MapPin,
-  },
-  {
-    title: "Shipping cost",
-    description:
-      "Available at checkout (FREE shipping on orders over $150).",
-    icon: DollarSign,
-  },
-];
+const canvasComparisonRowKeys = [
+  "material",
+  "opacity",
+  "technology",
+  "frames",
+  "origin",
+  "guarantee",
+] as const;
 
-const canvasFaqItems = [
-  {
-    question: "How do I know if my image quality is good enough?",
-    answer:
-      "Our system automatically checks your image resolution and shows a quality indicator (Poor, Normal or Perfect) when you select a canvas size. We recommend 'Perfect' quality for the best results.",
-  },
-  {
-    question: "What's the difference between Regular and Gallery depth?",
-    answer:
-      "Regular depth (0.75 inches) is our standard option, while Gallery depth (1.5 inches) creates a more dramatic, museum-like appearance with deeper sides.",
-  },
-  {
-    question: "Do you offer local pickup?",
-    answer:
-      "Yes! We offer free local pickup at our Quebec City location during business hours (Monday-Friday, 9am-5pm EST). You'll receive an email when your order is ready.",
-  },
-  {
-    question: "What if I'm not satisfied with my canvas?",
-    answer:
-      "We offer a 30-day satisfaction guarantee. If you're not completely happy with your canvas, we'll work with you to make it right or provide a full refund.",
-  },
-  {
-    question: "How long will my canvas last?",
-    answer:
-      "Our canvases are printed with UVgel technology and guaranteed not to fade for over 30 years. They're also scratch and water-resistant for long-lasting beauty.",
-  },
-  {
-    question: "How long does delivery take?",
-    answer:
-      "We typically need 2 - 4 days to produce, package and dispatch your canvas. Please allow additional transit time based on the shipping option you choose.",
-  },
-  {
-    question: "Can I order multiple canvases of the same image?",
-    answer:
-      "Absolutely! You can create multiple canvas designs with different sizes and framing options from the same image.",
-  },
-];
+const canvasKeyDetailKeys = [
+  "productionTime",
+  "delivery",
+  "builtToLast",
+  "satisfaction",
+  "localPickup",
+  "shippingCost",
+] as const;
 
-const canvasComparisonRows = [
-  {
-    feature: "Canvas material",
-    canvasPrintShop: "Premium cotton-blend canvas with high opacity.",
-    discount: "Lightweight polyester canvas with more show-through.",
-  },
-  {
-    feature: "Canvas density & opacity",
-    canvasPrintShop: "Up to 75% opacity for rich colour and clean whites.",
-    discount: "Lower opacity, more visible texture and show-through on light walls.",
-  },
-  {
-    feature: "Print technology",
-    canvasPrintShop: "Canon UVgel printing for sharp detail and long-lasting colour.",
-    discount: "Standard dye or solvent printing, more prone to fading.",
-  },
-  {
-    feature: "Frames and build",
-    canvasPrintShop:
-      "Custom stretcher bars, hand-stretched and inspected in our Quebec City studio.",
-    discount: "Generic frames, often machine-stretched with less quality control.",
-  },
-  {
-    feature: "Where it's made",
-    canvasPrintShop: "Printed and finished in Canada.",
-    discount: "Often produced in high-volume overseas facilities.",
-  },
-  {
-    feature: "Guarantee",
-    canvasPrintShop: "30-year print quality guarantee and 30-day satisfaction guarantee.",
-    discount: "Shorter warranties and more limited support.",
-  },
-];
+const canvasFaqQuestionKeys = [
+  "imageQuality",
+  "depthDifference",
+  "localPickupAvailable",
+  "satisfaction",
+  "durability",
+  "deliveryTime",
+  "multipleCanvases",
+] as const;
 
 /**
  * Average rating helper
@@ -403,6 +286,52 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
 
   const today = new Date();
   const isCanvasProduct = params.handle === "canvas";
+  const qualitySectionCopy = {
+    title: t("canvasPage.qualitySection.title"),
+    description: t("canvasPage.qualitySection.description"),
+  };
+  const featureCards = canvasFeatureCardConfig.map(({ key, icon }) => ({
+    icon,
+    title: t(`canvasPage.qualitySection.cards.${key}.title`),
+    description: t(`canvasPage.qualitySection.cards.${key}.description`),
+  }));
+  const comparisonSectionCopy = {
+    title: t("canvasPage.comparisonSection.title"),
+    description: t("canvasPage.comparisonSection.description"),
+    labels: {
+      feature: t("canvasPage.comparisonSection.labels.feature"),
+      ours: t("canvasPage.comparisonSection.labels.ours"),
+      badge: t("canvasPage.comparisonSection.labels.badge"),
+      theirs: t("canvasPage.comparisonSection.labels.theirs"),
+    },
+    footer: t("canvasPage.comparisonSection.footer"),
+  };
+  const comparisonRows = canvasComparisonRowKeys.map((key) => ({
+    feature: t(`canvasPage.comparisonSection.rows.${key}.feature`),
+    canvasPrintShop: t(`canvasPage.comparisonSection.rows.${key}.ours`),
+    discount: t(`canvasPage.comparisonSection.rows.${key}.theirs`),
+  }));
+  const keyDetailsCopy = {
+    eyebrow: t("canvasPage.keyDetails.eyebrow"),
+    title: t("canvasPage.keyDetails.title"),
+    description: t("canvasPage.keyDetails.description"),
+  };
+  const keyDetails = canvasKeyDetailKeys.map((key) => ({
+    title: t(`canvasPage.keyDetails.items.${key}.title`),
+    description: t(`canvasPage.keyDetails.items.${key}.description`),
+  }));
+  const faqIntro = t("canvasPage.faq.intro");
+  const faqItems = canvasFaqQuestionKeys.map((key) => ({
+    question: t(`faq.questions.${key}.question`),
+    answer: t(`faq.questions.${key}.answer`),
+  }));
+  const reviewsSectionCopy = {
+    title: t("canvasPage.reviewsSection.title"),
+    subtitle: t("canvasPage.reviewsSection.subtitle"),
+    ratingLabel: t("canvasPage.reviewsSection.ratingLabel", {
+      count: reviews.length,
+    }),
+  };
 
   const ProductInformationPanel = ({
     showHeading = true,
@@ -594,17 +523,14 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-5xl">
                 <h2 className="text-3xl md:text-4xl font-semibold text-white">
-                  Why our canvas feels different
+                  {qualitySectionCopy.title}
                 </h2>
                 <p className="mt-4 text-base md:text-lg text-slate-100/80 max-w-3xl">
-                  Most online canvas prints look similar on screen, but feel very
-                  different in real life. We focus on the materials and print
-                  process so your canvas actually looks and feels premium when
-                  it&apos;s on the wall.
+                  {qualitySectionCopy.description}
                 </p>
               </div>
               <div className="mt-10 grid gap-6 md:grid-cols-2">
-                {canvasFeatureCards.map((feature) => (
+                {featureCards.map((feature) => (
                   <div
                     key={feature.title}
                     className="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 shadow-xl backdrop-blur transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl"
@@ -630,41 +556,42 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl">
                 <h2 className="text-3xl md:text-4xl font-semibold text-[#0F172A]">
-                  Canvas Print Shop vs cheap canvas prints
+                  {comparisonSectionCopy.title}
                 </h2>
                 <p className="mt-4 text-base md:text-lg text-slate-700 max-w-3xl">
-                  Not all canvases are made the same. Here&apos;s how our canvases
-                  compare to the typical discount canvas prints you see online.
+                  {comparisonSectionCopy.description}
                 </p>
               </div>
               <div className="mt-8 rounded-3xl bg-white shadow-xl border border-slate-100 overflow-hidden">
                 <div className="hidden md:grid grid-cols-3 text-sm md:text-base font-semibold">
-                  <div className="bg-white px-4 py-4 text-slate-800">Feature</div>
+                  <div className="bg-white px-4 py-4 text-slate-800">
+                    {comparisonSectionCopy.labels.feature}
+                  </div>
                   <div className="bg-[#FFF4E5] px-4 py-4 text-[#0F172A] flex flex-col gap-1 border-x border-slate-100">
-                    <span>Canvas Print Shop</span>
+                    <span>{comparisonSectionCopy.labels.ours}</span>
                     <span className="text-xs uppercase tracking-wide text-[#FF9933] font-semibold">
-                      Best choice
+                      {comparisonSectionCopy.labels.badge}
                     </span>
                   </div>
                   <div className="bg-slate-50 px-4 py-4 text-slate-700">
-                    Typical discount canvas prints
+                    {comparisonSectionCopy.labels.theirs}
                   </div>
                 </div>
                 <div className="divide-y divide-slate-100">
-                  {canvasComparisonRows.map((row) => (
+                  {comparisonRows.map((row) => (
                     <div
                       key={row.feature}
                       className="grid grid-cols-1 md:grid-cols-3 text-sm md:text-base"
                     >
                       <div className="px-4 py-4 md:py-3 font-medium text-[#0F172A] bg-white md:border-r md:border-slate-100">
                         <p className="md:hidden text-xs font-semibold tracking-wide text-slate-500 uppercase mb-1">
-                          Feature
+                          {comparisonSectionCopy.labels.feature}
                         </p>
                         {row.feature}
                       </div>
                       <div className="px-4 py-4 md:py-3 bg-[#FFF4E5] text-slate-800 md:border-r md:border-slate-100">
                         <p className="md:hidden text-xs font-semibold tracking-wide text-[#FF9933] uppercase mb-1">
-                          Canvas Print Shop
+                          {comparisonSectionCopy.labels.ours}
                         </p>
                         <div className="flex items-start gap-2">
                           <span aria-hidden="true" className="mt-1 text-[#FF9933]">
@@ -675,7 +602,7 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                       </div>
                       <div className="px-4 py-4 md:py-3 bg-slate-50 text-slate-600">
                         <p className="md:hidden text-xs font-semibold tracking-wide text-slate-500 uppercase mb-1">
-                          Typical discount canvas prints
+                          {comparisonSectionCopy.labels.theirs}
                         </p>
                         {row.discount}
                       </div>
@@ -683,8 +610,7 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                   ))}
                 </div>
                 <p className="text-xs md:text-sm text-slate-500 px-4 py-3 border-t border-slate-100 text-right">
-                  Designed, printed and finished in Canada, backed by a 30-year print
-                  quality guarantee.
+                  {comparisonSectionCopy.footer}
                 </p>
               </div>
             </div>
@@ -694,17 +620,16 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="rounded-3xl border border-[#FF9933]/20 bg-white shadow-xl p-6 sm:p-10">
                 <p className="text-sm font-semibold uppercase tracking-wide text-[#FF9933]">
-                  Product information
+                  {keyDetailsCopy.eyebrow}
                 </p>
                 <h3 className="mt-2 text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                  Key details at a glance
+                  {keyDetailsCopy.title}
                 </h3>
                 <p className="mt-3 text-sm md:text-base text-slate-700">
-                  Everything we do is focused on longevity, ease of hanging and getting
-                  your canvas on the wall quickly.
+                  {keyDetailsCopy.description}
                 </p>
                 <dl className="mt-8 grid gap-6 sm:grid-cols-2">
-                  {canvasKeyDetails.map((detail) => (
+                  {keyDetails.map((detail) => (
                     <div key={detail.title}>
                       <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                         {detail.title}
@@ -718,14 +643,13 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
               </div>
               <div className="mt-12">
                 <h3 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                  Frequently Asked Questions
+                  {t("faq.title")}
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-slate-700 max-w-2xl">
-                  Answers to the most common questions about our canvas prints, image
-                  quality and delivery.
+                  {faqIntro}
                 </p>
                 <div className="mt-6 divide-y divide-slate-200 rounded-2xl bg-white shadow-lg border border-slate-100">
-                  {canvasFaqItems.map((faq) => (
+                  {faqItems.map((faq) => (
                     <details key={faq.question} className="group">
                       <summary className="flex w-full cursor-pointer items-center justify-between px-5 py-4 text-left [&::-webkit-details-marker]:hidden">
                         <span className="text-sm md:text-base font-medium text-[#0F172A]">
@@ -748,10 +672,10 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
                 <div>
                   <h2 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                    Customer reviews
+                    {reviewsSectionCopy.title}
                   </h2>
                   <p className="mt-1 text-sm md:text-base text-slate-600">
-                    See what people think of their Canvas Print Shop canvases.
+                    {reviewsSectionCopy.subtitle}
                   </p>
                 </div>
                 <div className="inline-flex items-center gap-3 rounded-full bg-[#FFF4E5] px-4 py-2 border border-[#FF9933]/30">
@@ -760,7 +684,7 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                     {averageRating.toFixed(1)}
                   </span>
                   <span className="text-xs uppercase tracking-wide text-slate-700">
-                    Based on {reviews.length} reviews
+                    {reviewsSectionCopy.ratingLabel}
                   </span>
                 </div>
               </div>
