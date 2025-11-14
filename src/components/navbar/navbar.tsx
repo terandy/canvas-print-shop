@@ -26,7 +26,7 @@ const Navbar: React.FC = async () => {
   return (
     <>
       <ProudlyCanadian className="pt-3 px-3 lg:hidden" />
-      <nav className="flex items-center justify-between p-4 lg:px-6 sticky top-0 backdrop-blur-sm z-10">
+      <nav className="flex items-center justify-between p-4 lg:px-6">
         <div className="block flex-none md:hidden">
           <MobileMenu />
         </div>
