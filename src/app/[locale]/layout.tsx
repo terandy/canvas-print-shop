@@ -10,6 +10,7 @@ import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import { Geist } from "next/font/google";
 import GoogleAnalytics from "@/components/google-analytics";
+import Script from "next/script";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -117,6 +118,11 @@ const LocaleLayout = async ({ children, params }: Props) => {
       </head>
       <body className={geist.className}>
         <GoogleAnalytics />
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="https://js-eu1.hs-scripts.com/147269675.js"
+        />
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
             <TrustStrip items={trustStripItems} />
