@@ -109,17 +109,17 @@ const CartModal = () => {
             as={Fragment}
             enter="transition-all ease-in-out duration-300"
             enterFrom="translate-x-full"
-            enterTo="translate-x-0"
-            leave="transition-all ease-in-out duration-200"
-            leaveFrom="translate-x-0"
-            leaveTo="translate-x-full"
-          >
-            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex flex-1 w-full flex-col border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
-              <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
-                <p className="flex gap-2 text-lg font-semibold text-secondary">
-                  {t("myCart")}
-                </p>
-                <Button
+          enterTo="translate-x-0"
+          leave="transition-all ease-in-out duration-200"
+          leaveFrom="translate-x-0"
+          leaveTo="translate-x-full"
+        >
+          <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex flex-1 w-full min-h-0 flex-col overflow-hidden border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
+            <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
+              <p className="flex gap-2 text-lg font-semibold text-secondary">
+                {t("myCart")}
+              </p>
+              <Button
                   aria-label={t("closeCart")}
                   onClick={closeCart}
                   icon={X}
@@ -135,7 +135,7 @@ const CartModal = () => {
                   </p>
                 </div>
               ) : (
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 min-h-0">
                   <ul className="flex-1 overflow-auto p-4 space-y-6">
                     {items.map((item) => (
                       <CartItemCard
