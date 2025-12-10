@@ -28,23 +28,17 @@ export const metadata: Metadata = {
 
 type TrustStripCopy = {
   madeInCanada: string;
-  discount: string;
   happiness: string;
-  holidayShipping: string;
 };
 
 const TRUST_STRIP_FALLBACK: Record<string, TrustStripCopy> = {
   en: {
     madeInCanada: "Made in Quebec",
-    discount: "Use code GET10 for 10% off your order",
     happiness: "100% happiness guarantee",
-    holidayShipping: "Order now to receive before Christmas",
   },
   fr: {
     madeInCanada: "Fabriqué au Québec",
-    discount: "Utilisez le code GET10 pour obtenir 10 % de rabais",
     happiness: "Garantie bonheur 100 %",
-    holidayShipping: "Commandez maintenant pour recevoir avant Noël",
   },
 };
 
@@ -66,16 +60,12 @@ const getTrustStripItems = (
 
   const resolved: TrustStripCopy = {
     madeInCanada: trustStrip.madeInCanada ?? fallback.madeInCanada,
-    discount: trustStrip.discount ?? fallback.discount,
     happiness: trustStrip.happiness ?? fallback.happiness,
-    holidayShipping: trustStrip.holidayShipping ?? fallback.holidayShipping,
   };
 
   return [
     { text: resolved.madeInCanada, includeLeaves: true },
-    { text: resolved.discount },
     { text: resolved.happiness },
-    { text: resolved.holidayShipping },
   ];
 };
 
