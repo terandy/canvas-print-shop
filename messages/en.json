@@ -628,5 +628,59 @@
   "price": {
     "total": "Total",
     "discount": "discount"
+  },
+  "Checkout": {
+    "success": {
+      "title": "Thank you for your order!",
+      "orderNumber": "Order #{orderNumber}",
+      "processing": "Your payment was successful. You will receive an email confirmation shortly.",
+      "orderSummary": "Order Summary",
+      "quantity": "Qty: {quantity}",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total": "Total",
+      "shippingAddress": "Shipping Address",
+      "confirmationSent": "A confirmation email has been sent to {email}",
+      "continueShopping": "Continue Shopping",
+      "invalidSession": "Invalid session",
+      "noSessionMessage": "No checkout session found. Please try again.",
+      "returnHome": "Return to Home"
+    },
+    "cancelled": {
+      "title": "Checkout Cancelled",
+      "message": "Your checkout was cancelled. Your cart items are still saved if you'd like to complete your purchase.",
+      "returnToCart": "Return to Cart",
+      "continueShopping": "Continue Shopping"
+    }
+  },
+  "Email": {
+    "orderConfirmation": {
+      "subject": "Order Confirmation #{orderNumber}",
+      "greeting": "Hi {name}",
+      "greetingDefault": "Hi there",
+      "thankYou": "Thank you for your order!",
+      "received": "We've received your order and are getting it ready. We'll send you another email when it ships.",
+      "items": "Items",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total": "Total",
+      "shippingAddress": "Shipping Address",
+      "notProvided": "Not provided",
+      "questions": "If you have any questions, please reply to this email or contact us at info@canvasprintshop.ca",
+      "thankYouShopping": "Thank you for shopping with Canvas Print Shop!"
+    },
+    "shippingUpdate": {
+      "subject": "Your order #{orderNumber} has shipped!",
+      "title": "Your order is on its way!",
+      "greeting": "Hi {name}",
+      "greetingDefault": "Hi there",
+      "message": "Great news! Your order #{orderNumber} has been shipped.",
+      "trackingInfo": "Tracking Information",
+      "trackPackage": "Track your package",
+      "trackingNumber": "Tracking number: {number}",
+      "thankYou": "Thank you for shopping with Canvas Print Shop!"
+    }
   }
 }

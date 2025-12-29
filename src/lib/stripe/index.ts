@@ -1,7 +1,22 @@
 import Stripe from "stripe";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not set");
+// Allow build to pass without STRIPE_SECRET_KEY for static generation
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+function getStripe(): Stripe {
+  if (!stripeSecretKey) {
+    throw new Error("STRIPE_SECRET_KEY is not set");
+  }
+  return new Stripe(stripeSecretKey);
 }
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Lazy initialization to avoid build-time errors
+export const stripe = stripeSecretKey
+  ? new Stripe(stripeSecretKey)
+  : (new Proxy({} as Stripe, {
+      get() {
+        throw new Error("STRIPE_SECRET_KEY is not set");
+      },
+    }) as Stripe);
+
+export { getStripe };

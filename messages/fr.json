@@ -633,5 +633,59 @@
   "price": {
     "total": "Total",
     "discount": "rabais"
+  },
+  "Checkout": {
+    "success": {
+      "title": "Merci pour votre commande !",
+      "orderNumber": "Commande #{orderNumber}",
+      "processing": "Votre paiement a été effectué avec succès. Vous recevrez un courriel de confirmation sous peu.",
+      "orderSummary": "Résumé de la commande",
+      "quantity": "Qté : {quantity}",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "tax": "Taxes",
+      "total": "Total",
+      "shippingAddress": "Adresse de livraison",
+      "confirmationSent": "Un courriel de confirmation a été envoyé à {email}",
+      "continueShopping": "Continuer vos achats",
+      "invalidSession": "Session invalide",
+      "noSessionMessage": "Aucune session de paiement trouvée. Veuillez réessayer.",
+      "returnHome": "Retour à l'accueil"
+    },
+    "cancelled": {
+      "title": "Paiement annulé",
+      "message": "Votre paiement a été annulé. Les articles de votre panier sont toujours sauvegardés si vous souhaitez compléter votre achat.",
+      "returnToCart": "Retourner au panier",
+      "continueShopping": "Continuer vos achats"
+    }
+  },
+  "Email": {
+    "orderConfirmation": {
+      "subject": "Confirmation de commande #{orderNumber}",
+      "greeting": "Bonjour {name}",
+      "greetingDefault": "Bonjour",
+      "thankYou": "Merci pour votre commande !",
+      "received": "Nous avons reçu votre commande et nous la préparons. Nous vous enverrons un autre courriel lorsqu'elle sera expédiée.",
+      "items": "Articles",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "tax": "Taxes",
+      "total": "Total",
+      "shippingAddress": "Adresse de livraison",
+      "notProvided": "Non fournie",
+      "questions": "Si vous avez des questions, veuillez répondre à ce courriel ou nous contacter à info@canvasprintshop.ca",
+      "thankYouShopping": "Merci d'avoir magasiné chez Canvas Print Shop !"
+    },
+    "shippingUpdate": {
+      "subject": "Votre commande #{orderNumber} a été expédiée !",
+      "title": "Votre commande est en route !",
+      "greeting": "Bonjour {name}",
+      "greetingDefault": "Bonjour",
+      "message": "Bonne nouvelle ! Votre commande #{orderNumber} a été expédiée.",
+      "trackingInfo": "Informations de suivi",
+      "trackPackage": "Suivre votre colis",
+      "trackingNumber": "Numéro de suivi : {number}",
+      "thankYou": "Merci d'avoir magasiné chez Canvas Print Shop !"
+    }
   }
 }

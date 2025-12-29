@@ -144,9 +144,12 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
 
     console.log(`Order ${order.orderNumber} created successfully`);
 
-    // Send confirmation email
+    // Send confirmation email in customer's locale
+    const locale = (session.metadata?.locale === "fr" ? "fr" : "en") as
+      | "en"
+      | "fr";
     try {
-      await sendOrderConfirmation(order);
+      await sendOrderConfirmation(order, locale);
       console.log(`Confirmation email sent for order ${order.orderNumber}`);
     } catch (emailError) {
       console.error("Failed to send confirmation email:", emailError);
