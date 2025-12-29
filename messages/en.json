@@ -654,6 +654,91 @@
       "continueShopping": "Continue Shopping"
     }
   },
+  "Admin": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "orders": "Orders",
+      "products": "Products",
+      "logout": "Logout"
+    },
+    "login": {
+      "title": "Admin Login",
+      "email": "Email",
+      "emailPlaceholder": "admin@example.com",
+      "password": "Password",
+      "submit": "Sign In",
+      "signingIn": "Signing in..."
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "totalOrders": "Total Orders",
+      "totalRevenue": "Total Revenue",
+      "pendingOrders": "Pending Orders",
+      "completed": "Completed",
+      "recentOrders": "Recent Orders",
+      "noOrders": "No orders yet"
+    },
+    "orders": {
+      "title": "Orders",
+      "allOrders": "All Orders",
+      "order": "Order",
+      "customer": "Customer",
+      "status": "Status",
+      "total": "Total",
+      "date": "Date",
+      "noOrders": "No orders found",
+      "backToOrders": "Back to Orders",
+      "orderDetails": "Order Details",
+      "items": "Items",
+      "quantity": "Qty",
+      "price": "Price",
+      "shippingAddress": "Shipping Address",
+      "noAddress": "No address provided",
+      "updateStatus": "Update Status",
+      "trackingNumber": "Tracking Number",
+      "trackingPlaceholder": "Enter tracking number",
+      "updateButton": "Update Status",
+      "updating": "Updating...",
+      "updateSuccess": "Order status updated",
+      "updateError": "Update failed"
+    },
+    "products": {
+      "title": "Products",
+      "noProducts": "No products found",
+      "willAppear": "Products will appear here once migrated from Shopify",
+      "variants": "variants",
+      "view": "View",
+      "edit": "Edit",
+      "inactive": "Inactive",
+      "backToProducts": "Back to Products",
+      "basicInfo": "Basic Information",
+      "titleEn": "Title (English)",
+      "titleFr": "Title (French)",
+      "handle": "Handle",
+      "status": "Status",
+      "active": "Active",
+      "options": "Options",
+      "noOptions": "No options configured",
+      "affectsPrice": "Affects price",
+      "displayOnly": "Display only",
+      "sku": "SKU",
+      "featuredImage": "Featured Image",
+      "noImage": "No image",
+      "metadata": "Metadata",
+      "created": "Created",
+      "updated": "Updated",
+      "id": "ID"
+    },
+    "status": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "fulfilled": "Fulfilled",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    }
+  },
   "Email": {
     "orderConfirmation": {
       "subject": "Order Confirmation #{orderNumber}",
