@@ -11,8 +11,9 @@ export default async function AdminLayout({
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") || headersList.get("x-invoke-path") || "";
 
-  // Allow access to login page without auth
-  if (pathname.includes("/admin/login")) {
+  // Allow access to auth pages without login
+  const publicPaths = ["/admin/login", "/admin/forgot-password", "/admin/reset-password"];
+  if (publicPaths.some((path) => pathname.includes(path))) {
     return <>{children}</>;
   }
 
