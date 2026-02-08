@@ -9,7 +9,11 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "import:orders": "tsx scripts/import-shopify-orders.ts",
+    "verify:order": "tsx scripts/verify-latest-order.ts",
+    "test:tracking": "tsx scripts/test-tracking-email.ts",
+    "debug:checkout": "tsx scripts/debug-checkout.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.732.0",
@@ -21,6 +25,7 @@
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "crypto-browserify": "^3.12.1",
+    "csv-parse": "^6.1.0",
     "drizzle-orm": "^0.45.1",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.474.0",
