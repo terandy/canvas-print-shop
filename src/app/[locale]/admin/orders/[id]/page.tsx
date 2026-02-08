@@ -73,7 +73,8 @@ export default async function AdminOrderDetailPage({ params }: Props) {
               {order.items.map((item) => {
                 // Parse variant title for options (e.g., "20x30 / none / regular")
                 const variantParts = item.variantTitle?.split(" / ") || [];
-                const dimensions = variantParts[0] || item.selectedOptions?.size;
+                const dimensions =
+                  variantParts[0] || item.selectedOptions?.size;
                 const frame = variantParts[1] || item.selectedOptions?.frame;
                 const depth = variantParts[2] || item.selectedOptions?.depth;
 
@@ -95,53 +96,56 @@ export default async function AdminOrderDetailPage({ params }: Props) {
                       <div className="mt-2 space-y-1 text-sm text-gray-600">
                         {dimensions && (
                           <p>
-                            <span className="text-gray-500">Dimensions:</span>{" "}
+                            <span className="text-gray-500">Dimensions:</span>
                             {dimensions}
                           </p>
                         )}
                         {frame && (
                           <p>
-                            <span className="text-gray-500">Frame:</span> {frame}
+                            <span className="text-gray-500">Frame:</span>
+                            {frame}
                           </p>
                         )}
                         {depth && (
                           <p>
-                            <span className="text-gray-500">Depth:</span> {depth}
+                            <span className="text-gray-500">Depth:</span>
+                            {depth}
                           </p>
                         )}
                         {item.attributes?.borderStyle && (
                           <p>
-                            <span className="text-gray-500">Border:</span>{" "}
+                            <span className="text-gray-500">Border:</span>
                             {item.attributes.borderStyle}
                           </p>
                         )}
                         {item.attributes?.orientation && (
                           <p>
-                            <span className="text-gray-500">Orientation:</span>{" "}
+                            <span className="text-gray-500">Orientation:</span>
                             {item.attributes.orientation}
                           </p>
                         )}
                         <p>
-                          <span className="text-gray-500">Qty:</span>{" "}
+                          <span className="text-gray-500">Qty:</span>
                           {item.quantity}
                         </p>
                         {item.attributes?.imageUrl && (
                           <p>
-                            <span className="text-gray-500">Image:</span>{" "}
-                            <a
+                            <span className="text-gray-500">Image:</span>
+                            <Link
                               href={item.attributes.imageUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-primary hover:underline break-all"
                             >
                               View Full Image
-                            </a>
+                            </Link>
                           </p>
                         )}
                       </div>
                       <div className="mt-3 pt-2 border-t flex justify-end">
                         <span className="font-medium">
-                          ${((item.priceCents * item.quantity) / 100).toFixed(2)}
+                          $
+                          {((item.priceCents * item.quantity) / 100).toFixed(2)}
                         </span>
                       </div>
                     </div>
@@ -240,23 +244,29 @@ export default async function AdminOrderDetailPage({ params }: Props) {
               </h2>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-500">{t("orders.trackingNumber")}</span>
+                  <span className="text-gray-500">
+                    {t("orders.trackingNumber")}
+                  </span>
                   <span className="font-mono">{order.trackingNumber}</span>
                 </div>
                 {order.trackingUrl && (
-                  <a
+                  <Link
                     href={order.trackingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline block text-right"
                   >
                     {t("orders.trackPackage")}
-                  </a>
+                  </Link>
                 )}
                 {order.shippedAt && (
                   <div className="flex justify-between">
-                    <span className="text-gray-500">{t("orders.shippedAt")}</span>
-                    <span>{new Date(order.shippedAt).toLocaleDateString()}</span>
+                    <span className="text-gray-500">
+                      {t("orders.shippedAt")}
+                    </span>
+                    <span>
+                      {new Date(order.shippedAt).toLocaleDateString()}
+                    </span>
                   </div>
                 )}
               </div>
