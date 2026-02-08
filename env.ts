@@ -5,25 +5,20 @@ const envSchema = z.object({
   SITE_NAME: z.string(),
 
   // Database (Vercel Postgres)
-  POSTGRES_URL: z.string().optional(),
+  POSTGRES_URL: z.string(),
 
   // Stripe
-  STRIPE_SECRET_KEY: z.string().optional(),
-  STRIPE_PUBLISHABLE_KEY: z.string().optional(),
-  STRIPE_WEBHOOK_SECRET: z.string().optional(),
+  STRIPE_SECRET_KEY: z.string(),
+  STRIPE_PUBLISHABLE_KEY: z.string(),
+  STRIPE_WEBHOOK_SECRET: z.string(),
 
   // Email (Resend)
-  RESEND_API_KEY: z.string().optional(),
-  ORDER_EMAIL: z.string().optional(),
-  ADMIN_EMAIL: z.string().optional(),
+  RESEND_API_KEY: z.string(),
+  ORDER_EMAIL: z.string(),
+  ADMIN_EMAIL: z.string(),
 
   // Admin Auth
-  ADMIN_JWT_SECRET: z.string().optional(),
-
-  // Legacy Shopify (keep during migration, remove after)
-  SHOPIFY_REVALIDATION_SECRET: z.string().optional(),
-  SHOPIFY_STOREFRONT_ACCESS_TOKEN: z.string().optional(),
-  SHOPIFY_STORE_DOMAIN: z.string().optional(),
+  ADMIN_JWT_SECRET: z.string(),
 
   // AWS S3
   AWS_REGION: z.string(),
