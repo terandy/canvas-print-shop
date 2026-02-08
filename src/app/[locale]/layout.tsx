@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cookies, headers } from "next/headers";
-import { getCart, createCart } from "@/lib/db/queries/carts";
+import { getCart } from "@/lib/db/queries/carts";
 import { Navbar, Footer, TrustStrip } from "@/components";
 import { CartProvider } from "@/contexts";
 import { getMessages } from "next-intl/server";
@@ -80,15 +80,9 @@ const LocaleLayout = async ({ children, params }: Props) => {
   const isAdminRoute = pathname.includes("/admin");
 
   const cookiesStore = await cookies();
-  let cartId = cookiesStore.get("cartId")?.value;
-  let cart = !isAdminRoute && cartId ? await getCart(cartId) : undefined;
-
-  // If cart cookie exists but cart not found (invalid/old Shopify ID), create new cart
-  if (!isAdminRoute && cartId && !cart) {
-    const newCart = await createCart();
-    cookiesStore.set("cartId", newCart.id);
-    cart = await getCart(newCart.id);
-  }
+  const cartId = cookiesStore.get("cartId")?.value;
+  // getCart will return undefined for invalid cart IDs (e.g., old Shopify IDs)
+  const cart = !isAdminRoute && cartId ? await getCart(cartId) : undefined;
 
   const { locale } = await params;
   if (!routing.locales.includes(locale as any)) {
