@@ -3,6 +3,7 @@
 import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { loginAction, type LoginState } from "@/lib/auth/actions";
 
 const INITIAL_STATE: LoginState = {};
@@ -70,6 +71,15 @@ export default function AdminLoginPage() {
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
             />
+          </div>
+
+          <div className="flex justify-end">
+            <Link
+              href="/admin/forgot-password"
+              className="text-sm text-primary hover:text-primary/80"
+            >
+              {t("login.forgotPassword")}
+            </Link>
           </div>
 
           <button

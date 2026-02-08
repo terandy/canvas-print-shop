@@ -1,6 +1,7 @@
 import { resend, ORDER_EMAIL } from "./index";
 import type { Order } from "@/types/order";
 import { getAdminUsersForOrderEmails } from "@/lib/db/queries/admin-users";
+import { BASE_URL } from "@/lib/constants";
 
 type Locale = "en" | "fr";
 
@@ -220,6 +221,54 @@ export async function sendShippingUpdate(
         </div>
 
         <p>${t.thankYou}</p>
+
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+
+        <p style="color: #666; font-size: 12px;">
+          Canvas Print Shop<br>
+          1172 Av. du Lac-Saint-Charles<br>
+          Québec, QC, G3G 2S7, Canada
+        </p>
+      </div>
+    `,
+  });
+}
+
+export async function sendPasswordResetEmail(
+  email: string,
+  name: string | null,
+  token: string,
+  locale: Locale = "en"
+): Promise<void> {
+  if (!resend) {
+    return;
+  }
+
+  const t = getEmailTranslations(locale).passwordReset;
+  const resetUrl = `${BASE_URL}/${locale}/admin/reset-password?token=${token}`;
+
+  const greeting = name
+    ? interpolate(t.greeting, { name })
+    : t.greetingDefault;
+
+  await resend.emails.send({
+    from: ORDER_EMAIL,
+    to: email,
+    subject: t.subject,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #CC5500;">${t.subject}</h1>
+
+        <p>${greeting},</p>
+
+        <p>${t.message}</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="${resetUrl}" style="background-color: #CC5500; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">${t.buttonText}</a>
+        </div>
+
+        <p style="color: #666; font-size: 14px;">${t.expiry}</p>
+        <p style="color: #666; font-size: 14px;">${t.ignore}</p>
 
         <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 

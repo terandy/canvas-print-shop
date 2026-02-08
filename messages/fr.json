@@ -673,7 +673,31 @@
       "emailPlaceholder": "admin@example.com",
       "password": "Mot de passe",
       "submit": "Se connecter",
-      "signingIn": "Connexion en cours..."
+      "signingIn": "Connexion en cours...",
+      "forgotPassword": "Mot de passe oublié ?"
+    },
+    "forgotPassword": {
+      "title": "Réinitialiser le mot de passe",
+      "description": "Entrez votre adresse courriel et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+      "emailLabel": "Courriel",
+      "submit": "Envoyer le lien",
+      "submitting": "Envoi...",
+      "successTitle": "Vérifiez votre courriel",
+      "successMessage": "Si un compte existe avec ce courriel, un lien de réinitialisation a été envoyé.",
+      "backToLogin": "Retour à la connexion"
+    },
+    "resetPassword": {
+      "title": "Nouveau mot de passe",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "submit": "Réinitialiser",
+      "resetting": "Réinitialisation...",
+      "successTitle": "Mot de passe réinitialisé",
+      "successMessage": "Votre mot de passe a été mis à jour. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.",
+      "loginLink": "Aller à la connexion",
+      "invalidToken": "Ce lien de réinitialisation est invalide ou a expiré.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas.",
+      "passwordRequirements": "Le mot de passe doit contenir au moins 8 caractères avec au moins une lettre et un chiffre."
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -803,6 +827,15 @@
       "trackPackage": "Suivre votre colis",
       "trackingNumber": "Numéro de suivi : {number}",
       "thankYou": "Merci d'avoir magasiné chez Canvas Print Shop !"
+    },
+    "passwordReset": {
+      "subject": "Réinitialisez votre mot de passe",
+      "greeting": "Bonjour {name}",
+      "greetingDefault": "Bonjour",
+      "message": "Nous avons reçu une demande de réinitialisation de votre mot de passe. Cliquez sur le bouton ci-dessous pour choisir un nouveau mot de passe.",
+      "buttonText": "Réinitialiser le mot de passe",
+      "expiry": "Ce lien expirera dans 1 heure.",
+      "ignore": "Si vous n'avez pas demandé de réinitialisation, vous pouvez ignorer ce courriel."
     }
   }
 }
