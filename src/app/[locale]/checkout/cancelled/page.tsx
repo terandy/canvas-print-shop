@@ -15,16 +15,10 @@ export default async function CheckoutCancelledPage() {
 
       <p className="mt-4 text-gray-600">{t("message")}</p>
 
-      <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <Link
-          href="/cart"
-          className="inline-block rounded-md bg-primary px-6 py-3 text-white hover:bg-primary/90"
-        >
-          {t("returnToCart")}
-        </Link>
+      <div className="mt-8 flex justify-center">
         <Link
           href="/"
-          className="inline-block rounded-md border border-gray-300 px-6 py-3 hover:bg-gray-50"
+          className="inline-block rounded-md bg-primary px-6 py-3 text-white hover:bg-primary/90"
         >
           {t("continueShopping")}
         </Link>

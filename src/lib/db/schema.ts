@@ -220,6 +220,7 @@ export const adminUsers = pgTable("admin_users", {
   name: varchar("name", { length: 255 }),
   role: varchar("role", { length: 50 }).default("admin"), // "admin", "staff"
   isActive: boolean("is_active").default(true),
+  receiveOrderEmails: boolean("receive_order_emails").default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

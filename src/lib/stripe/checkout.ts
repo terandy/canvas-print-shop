@@ -43,7 +43,7 @@ export async function createCheckoutSession(cartId: string, locale: string) {
     line_items: lineItems,
     mode: "payment",
     success_url: `${BASE_URL}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${BASE_URL}/${locale}/cart`,
+    cancel_url: `${BASE_URL}/${locale}/checkout/cancelled`,
     shipping_address_collection: {
       allowed_countries: ["CA", "US"],
     },

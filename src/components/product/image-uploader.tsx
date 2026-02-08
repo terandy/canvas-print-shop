@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState, useCallback, startTransition } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { Upload } from "lucide-react";
-import ImageFile from "./image-file";
 import { useProduct } from "@/contexts/product-context";
-import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import { useTranslations } from "next-intl";
 import { uploadImage } from "@/lib/s3/actions/image";
+import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 
 interface ImageUploaderProps {
   maxSizeMB?: number;
@@ -128,7 +127,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     }
   };
 
-  if (imgURL !== DEFAULT_CANVAS_IMAGE) return <ImageFile imgURL={imgURL} />;
+  if (imgURL !== DEFAULT_CANVAS_IMAGE && !isUploading && !error) return null;
 
   return (
     <div className={clsx("w-full max-w-xl mx-auto", className)}>
