@@ -9,6 +9,13 @@ import * as cartDb from "@/lib/db/queries/carts";
 import type { CartItemAttributes } from "@/types/cart";
 import { createCheckoutSession } from "@/lib/stripe/checkout";
 
+// Helper to validate UUID format
+function isValidUUID(id: string): boolean {
+  const uuidRegex =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  return uuidRegex.test(id);
+}
+
 // Attribute format from Shopify (for backwards compatibility during transition)
 type Attribute = {
   key: string;
@@ -56,7 +63,14 @@ export async function addItem(_prevState: any, payload: AddToCartPayload) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId || !payload.selectedVariantId) {
+  // Validate cart ID and create new cart if invalid
+  if (!cartId || !isValidUUID(cartId)) {
+    const newCart = await cartDb.createCart();
+    cookieStore.set("cartId", newCart.id);
+    cartId = newCart.id;
+  }
+
+  if (!payload.selectedVariantId) {
     console.error("Failed to call cart action addItem. Missing variable", {
       cartId,
       payload,
@@ -89,8 +103,8 @@ export const updateCartItem = async (
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId) {
-    return "Missing cart ID";
+  if (!cartId || !isValidUUID(cartId)) {
+    return "Invalid cart ID";
   }
 
   const { cartItemId, merchandiseId, quantity, attributes } = payload;
@@ -122,8 +136,8 @@ export const removeItem = async (_prevState: any, cartItemId: string) => {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId) {
-    return "Missing cart ID";
+  if (!cartId || !isValidUUID(cartId)) {
+    return "Invalid cart ID";
   }
 
   try {
@@ -142,8 +156,8 @@ export const redirectToCheckout = async () => {
   let cartId = cookieStore.get("cartId")?.value;
   const locale = await getLocale();
 
-  if (!cartId) {
-    return "Missing cart ID";
+  if (!cartId || !isValidUUID(cartId)) {
+    return "Invalid cart ID";
   }
 
   const cart = await cartDb.getCart(cartId);
@@ -178,7 +192,7 @@ export const getCart = async () => {
   const cookieStore = await cookies();
   const cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId) {
+  if (!cartId || !isValidUUID(cartId)) {
     return undefined;
   }
 
@@ -190,7 +204,7 @@ export const clearCartAction = async () => {
   const cookieStore = await cookies();
   const cartId = cookieStore.get("cartId")?.value;
 
-  if (!cartId) {
+  if (!cartId || !isValidUUID(cartId)) {
     return;
   }
 
