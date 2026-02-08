@@ -7,9 +7,11 @@ import React, {
   useMemo,
   useOptimistic,
   useState,
+  useTransition,
 } from "react";
 import type { CartState, TCartContext, CartItem } from "./types";
-import { Cart, ProductVariant } from "@/lib/shopify/types";
+import type { ProductVariant } from "@/types/product";
+import type { Cart } from "@/types/cart";
 import {
   generateNewCartItem,
   generateUpdatedCartItem,
@@ -94,9 +96,21 @@ const CartProvider = ({
     return update;
   };
 
-  const setState = (newState: Cart) => {
-    setOptimisticState(newState);
-    return newState;
+  const [, startTransition] = useTransition();
+
+  const clearCart = () => {
+    startTransition(() => {
+      setOptimisticState({
+        id: state.id,
+        cost: {
+          subtotalAmount: { amount: "0", currencyCode: "CAD" },
+          totalAmount: { amount: "0", currencyCode: "CAD" },
+          totalTaxAmount: { amount: "0", currencyCode: "CAD" },
+        },
+        totalQuantity: 0,
+        items: {},
+      });
+    });
   };
 
   const value = useMemo<TCartContext>(
@@ -105,7 +119,7 @@ const CartProvider = ({
       addCartItem,
       updateCartItem,
       updateCartItemQuantity,
-      setState,
+      clearCart,
       isOpen,
       setIsOpen,
     }),

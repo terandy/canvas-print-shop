@@ -628,5 +628,150 @@
   "price": {
     "total": "Total",
     "discount": "discount"
+  },
+  "Checkout": {
+    "success": {
+      "title": "Thank you for your order!",
+      "orderNumber": "Order #{orderNumber}",
+      "processing": "Your payment was successful. You will receive an email confirmation shortly.",
+      "orderSummary": "Order Summary",
+      "quantity": "Qty: {quantity}",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total": "Total",
+      "shippingAddress": "Shipping Address",
+      "confirmationSent": "A confirmation email has been sent to {email}",
+      "continueShopping": "Continue Shopping",
+      "invalidSession": "Invalid session",
+      "noSessionMessage": "No checkout session found. Please try again.",
+      "returnHome": "Return to Home"
+    },
+    "cancelled": {
+      "title": "Checkout Cancelled",
+      "message": "Your checkout was cancelled. Your cart items are still saved if you'd like to complete your purchase.",
+      "returnToCart": "Return to Cart",
+      "continueShopping": "Continue Shopping"
+    }
+  },
+  "Admin": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "orders": "Orders",
+      "products": "Products",
+      "logout": "Logout"
+    },
+    "login": {
+      "title": "Admin Login",
+      "email": "Email",
+      "emailPlaceholder": "admin@example.com",
+      "password": "Password",
+      "submit": "Sign In",
+      "signingIn": "Signing in..."
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "totalOrders": "Total Orders",
+      "totalRevenue": "Total Revenue",
+      "pendingOrders": "Pending Orders",
+      "completed": "Completed",
+      "recentOrders": "Recent Orders",
+      "noOrders": "No orders yet"
+    },
+    "orders": {
+      "title": "Orders",
+      "allOrders": "All Orders",
+      "order": "Order",
+      "customer": "Customer",
+      "status": "Status",
+      "total": "Total",
+      "date": "Date",
+      "noOrders": "No orders found",
+      "backToOrders": "Back to Orders",
+      "orderDetails": "Order Details",
+      "items": "Items",
+      "quantity": "Qty",
+      "price": "Price",
+      "shippingAddress": "Shipping Address",
+      "noAddress": "No address provided",
+      "updateStatus": "Update Status",
+      "trackingNumber": "Tracking Number",
+      "trackingPlaceholder": "Enter tracking number",
+      "trackingUrl": "Tracking URL",
+      "trackingUrlPlaceholder": "https://www.canadapost.ca/track/...",
+      "tracking": "Tracking",
+      "trackPackage": "Track Package",
+      "shippedAt": "Shipped",
+      "updateButton": "Update Status",
+      "updating": "Updating...",
+      "updateSuccess": "Order status updated",
+      "updateError": "Update failed"
+    },
+    "products": {
+      "title": "Products",
+      "noProducts": "No products found",
+      "willAppear": "Products will appear here once migrated from Shopify",
+      "variants": "variants",
+      "view": "View",
+      "edit": "Edit",
+      "inactive": "Inactive",
+      "backToProducts": "Back to Products",
+      "basicInfo": "Basic Information",
+      "titleEn": "Title (English)",
+      "titleFr": "Title (French)",
+      "handle": "Handle",
+      "status": "Status",
+      "active": "Active",
+      "options": "Options",
+      "noOptions": "No options configured",
+      "affectsPrice": "Affects price",
+      "displayOnly": "Display only",
+      "sku": "SKU",
+      "featuredImage": "Featured Image",
+      "noImage": "No image",
+      "metadata": "Metadata",
+      "created": "Created",
+      "updated": "Updated",
+      "id": "ID",
+      "addProduct": "Add Product"
+    },
+    "status": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "fulfilled": "Fulfilled",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    }
+  },
+  "Email": {
+    "orderConfirmation": {
+      "subject": "Order Confirmation #{orderNumber}",
+      "greeting": "Hi {name}",
+      "greetingDefault": "Hi there",
+      "thankYou": "Thank you for your order!",
+      "received": "We've received your order and are getting it ready. We'll send you another email when it ships.",
+      "items": "Items",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total": "Total",
+      "shippingAddress": "Shipping Address",
+      "notProvided": "Not provided",
+      "questions": "If you have any questions, please reply to this email or contact us at info@canvasprintshop.ca",
+      "thankYouShopping": "Thank you for shopping with Canvas Print Shop!"
+    },
+    "shippingUpdate": {
+      "subject": "Your order #{orderNumber} has shipped!",
+      "title": "Your order is on its way!",
+      "greeting": "Hi {name}",
+      "greetingDefault": "Hi there",
+      "message": "Great news! Your order #{orderNumber} has been shipped.",
+      "trackingInfo": "Tracking Information",
+      "trackPackage": "Track your package",
+      "trackingNumber": "Tracking number: {number}",
+      "thankYou": "Thank you for shopping with Canvas Print Shop!"
+    }
   }
 }

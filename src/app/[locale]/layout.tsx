@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cookies } from "next/headers";
-import { getCart } from "@/lib/shopify";
+import { cookies, headers } from "next/headers";
+import { getCart } from "@/lib/db/queries/carts";
 import { Navbar, Footer, TrustStrip } from "@/components";
 import { CartProvider } from "@/contexts";
 import { getMessages } from "next-intl/server";
@@ -75,9 +75,13 @@ interface Props {
 }
 
 const LocaleLayout = async ({ children, params }: Props) => {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
+  const isAdminRoute = pathname.includes("/admin");
+
   const cookiesStore = await cookies();
   const cartId = cookiesStore.get("cartId")?.value;
-  const cart = await getCart(cartId);
+  const cart = !isAdminRoute && cartId ? await getCart(cartId) : undefined;
 
   const { locale } = await params;
   if (!routing.locales.includes(locale as any)) {
@@ -92,6 +96,22 @@ const LocaleLayout = async ({ children, params }: Props) => {
   }));
 
   const trustStripItems = getTrustStripItems(locale, messages);
+
+  // Admin pages get a minimal layout without navbar/footer
+  if (isAdminRoute) {
+    return (
+      <html lang={locale}>
+        <head>
+          <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
+        </head>
+        <body className={geist.className}>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </body>
+      </html>
+    );
+  }
 
   return (
     <html lang={locale}>

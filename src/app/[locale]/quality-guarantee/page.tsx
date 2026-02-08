@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 // --- Reusable Feature Card Component --- //
 interface QualityFeatureProps {
@@ -231,12 +232,12 @@ const OurQualityPage = () => (
           craftsmanship.
         </p>
         <div className="mt-8">
-          <a
+          <Link
             href="/en/product/canvas"
             className="inline-block bg-primary text-white font-bold text-lg py-4 px-12 rounded-full hover:bg-primary-dark transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
           >
             Create Your Custom Canvas Now
-          </a>
+          </Link>
         </div>
       </section>
     </div>

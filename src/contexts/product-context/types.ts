@@ -1,4 +1,4 @@
-import { Product, ProductVariant } from "@/lib/shopify/types";
+import type { Product, ProductVariant } from "@/types/product";
 
 /**
  * Form values for customizing a canvas

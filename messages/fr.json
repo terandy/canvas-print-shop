@@ -633,5 +633,150 @@
   "price": {
     "total": "Total",
     "discount": "rabais"
+  },
+  "Checkout": {
+    "success": {
+      "title": "Merci pour votre commande !",
+      "orderNumber": "Commande #{orderNumber}",
+      "processing": "Votre paiement a été effectué avec succès. Vous recevrez un courriel de confirmation sous peu.",
+      "orderSummary": "Résumé de la commande",
+      "quantity": "Qté : {quantity}",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "tax": "Taxes",
+      "total": "Total",
+      "shippingAddress": "Adresse de livraison",
+      "confirmationSent": "Un courriel de confirmation a été envoyé à {email}",
+      "continueShopping": "Continuer vos achats",
+      "invalidSession": "Session invalide",
+      "noSessionMessage": "Aucune session de paiement trouvée. Veuillez réessayer.",
+      "returnHome": "Retour à l'accueil"
+    },
+    "cancelled": {
+      "title": "Paiement annulé",
+      "message": "Votre paiement a été annulé. Les articles de votre panier sont toujours sauvegardés si vous souhaitez compléter votre achat.",
+      "returnToCart": "Retourner au panier",
+      "continueShopping": "Continuer vos achats"
+    }
+  },
+  "Admin": {
+    "sidebar": {
+      "dashboard": "Tableau de bord",
+      "orders": "Commandes",
+      "products": "Produits",
+      "logout": "Déconnexion"
+    },
+    "login": {
+      "title": "Connexion Admin",
+      "email": "Courriel",
+      "emailPlaceholder": "admin@example.com",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "signingIn": "Connexion en cours..."
+    },
+    "dashboard": {
+      "title": "Tableau de bord",
+      "totalOrders": "Total des commandes",
+      "totalRevenue": "Revenu total",
+      "pendingOrders": "Commandes en attente",
+      "completed": "Complétées",
+      "recentOrders": "Commandes récentes",
+      "noOrders": "Aucune commande"
+    },
+    "orders": {
+      "title": "Commandes",
+      "allOrders": "Toutes les commandes",
+      "order": "Commande",
+      "customer": "Client",
+      "status": "Statut",
+      "total": "Total",
+      "date": "Date",
+      "noOrders": "Aucune commande trouvée",
+      "backToOrders": "Retour aux commandes",
+      "orderDetails": "Détails de la commande",
+      "items": "Articles",
+      "quantity": "Qté",
+      "price": "Prix",
+      "shippingAddress": "Adresse de livraison",
+      "noAddress": "Aucune adresse fournie",
+      "updateStatus": "Mettre à jour le statut",
+      "trackingNumber": "Numéro de suivi",
+      "trackingPlaceholder": "Entrez le numéro de suivi",
+      "trackingUrl": "URL de suivi",
+      "trackingUrlPlaceholder": "https://www.postescanada.ca/suivi/...",
+      "tracking": "Suivi",
+      "trackPackage": "Suivre le colis",
+      "shippedAt": "Expédié",
+      "updateButton": "Mettre à jour",
+      "updating": "Mise à jour...",
+      "updateSuccess": "Statut de la commande mis à jour",
+      "updateError": "Échec de la mise à jour"
+    },
+    "products": {
+      "title": "Produits",
+      "noProducts": "Aucun produit trouvé",
+      "willAppear": "Les produits apparaîtront ici une fois migrés de Shopify",
+      "variants": "variantes",
+      "view": "Voir",
+      "edit": "Modifier",
+      "inactive": "Inactif",
+      "backToProducts": "Retour aux produits",
+      "basicInfo": "Informations de base",
+      "titleEn": "Titre (Anglais)",
+      "titleFr": "Titre (Français)",
+      "handle": "Identifiant",
+      "status": "Statut",
+      "active": "Actif",
+      "options": "Options",
+      "noOptions": "Aucune option configurée",
+      "affectsPrice": "Affecte le prix",
+      "displayOnly": "Affichage seulement",
+      "sku": "SKU",
+      "featuredImage": "Image principale",
+      "noImage": "Aucune image",
+      "metadata": "Métadonnées",
+      "created": "Créé",
+      "updated": "Modifié",
+      "id": "ID",
+      "addProduct": "Ajouter un produit"
+    },
+    "status": {
+      "pending": "En attente",
+      "paid": "Payée",
+      "processing": "En traitement",
+      "shipped": "Expédiée",
+      "fulfilled": "Complétée",
+      "cancelled": "Annulée",
+      "refunded": "Remboursée"
+    }
+  },
+  "Email": {
+    "orderConfirmation": {
+      "subject": "Confirmation de commande #{orderNumber}",
+      "greeting": "Bonjour {name}",
+      "greetingDefault": "Bonjour",
+      "thankYou": "Merci pour votre commande !",
+      "received": "Nous avons reçu votre commande et nous la préparons. Nous vous enverrons un autre courriel lorsqu'elle sera expédiée.",
+      "items": "Articles",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "tax": "Taxes",
+      "total": "Total",
+      "shippingAddress": "Adresse de livraison",
+      "notProvided": "Non fournie",
+      "questions": "Si vous avez des questions, veuillez répondre à ce courriel ou nous contacter à info@canvasprintshop.ca",
+      "thankYouShopping": "Merci d'avoir magasiné chez Canvas Print Shop !"
+    },
+    "shippingUpdate": {
+      "subject": "Votre commande #{orderNumber} a été expédiée !",
+      "title": "Votre commande est en route !",
+      "greeting": "Bonjour {name}",
+      "greetingDefault": "Bonjour",
+      "message": "Bonne nouvelle ! Votre commande #{orderNumber} a été expédiée.",
+      "trackingInfo": "Informations de suivi",
+      "trackPackage": "Suivre votre colis",
+      "trackingNumber": "Numéro de suivi : {number}",
+      "thankYou": "Merci d'avoir magasiné chez Canvas Print Shop !"
+    }
   }
 }

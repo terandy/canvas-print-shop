@@ -43,17 +43,19 @@ const AddToCart: React.FC = () => {
           attributes: getAttributes(state),
         }
       );
-      const line =
+
+      // Find the cart item by matching the image URL
+      const cartItem =
         typeof res === "object" &&
-        res.lines.find(
-          (line) =>
-            line.attributes.find((attr) => attr.key === "imgURL")?.value ===
-            state.imgURL
+        "items" in res &&
+        res.items.find(
+          (item: { attributes?: { imageUrl?: string } }) =>
+            item.attributes?.imageUrl === state.imgURL
         );
 
-      if (line) {
-        localStorage.setItem("cartItemID", line.id);
-        router.push(`?cartItemID=${line.id}`);
+      if (cartItem) {
+        localStorage.setItem("cartItemID", cartItem.id);
+        router.push(`?cartItemID=${cartItem.id}`);
         cartContext.setIsOpen(true);
       }
     });

@@ -10,7 +10,6 @@ import { redirectToCheckout } from "@/lib/utils/cart-actions";
 import { PlusIcon, ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
-import Badge from "../badge";
 import type { CartState } from "@/contexts";
 import CartItemCard from "./cart-item-card";
 import { useLocale, useTranslations } from "next-intl";
@@ -64,8 +63,13 @@ const CartModal = () => {
 
   const { state, updateCartItemQuantity, isOpen, setIsOpen } = useCart();
   const quantityRef = useRef(state?.totalQuantity);
+  const [mounted, setMounted] = useState(false);
   const openCart = () => setIsOpen(true);
   const closeCart = () => setIsOpen(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (
@@ -83,15 +87,23 @@ const CartModal = () => {
 
   const items = state?.items ? Object.values(state?.items) : [];
 
+  // Only show badge count after hydration to prevent mismatch
+  const badgeCount = mounted ? state?.totalQuantity : undefined;
+
   return (
     <>
-      <Badge count={state?.totalQuantity}>
+      <div className="relative">
         <SquareButton
           aria-label={t("openCart")}
           icon={ShoppingCart}
           onClick={openCart}
         />
-      </Badge>
+        {badgeCount ? (
+          <span className="absolute px-[6px] py-[1px] -mt-2 -mr-2 rounded-full top-0 right-0 text-xs bg-primary text-white">
+            {badgeCount}
+          </span>
+        ) : null}
+      </div>
       <Transition show={isOpen}>
         <Dialog onClose={closeCart} className="relative z-50">
           <Transition.Child
@@ -165,9 +177,9 @@ const CartModal = () => {
                   <div className="border-t border-gray-light/10 p-4 space-y-4">
                     <Totals cartState={state} />
                     <form
-                      action={() => {
+                      action={async () => {
                         localStorage.clear();
-                        redirectToCheckout();
+                        await redirectToCheckout();
                       }}
                     >
                       <CheckoutButton />

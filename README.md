@@ -1,19 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Canvas Print Shop
+
+E-commerce platform for canvas prints built with Next.js.
+
+## Links
+
+- **Production**: https://canvasprintshop.ca
+- **Vercel Dashboard**: https://vercel.com/canvas-print-shop
+- **Stripe Dashboard**: https://dashboard.stripe.com
+- **AWS S3 Console**: https://s3.console.aws.amazon.com
+- **Resend Dashboard**: https://resend.com
+- **Domain Registrar (GoDaddy)**: https://dcc.godaddy.com
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
 
-```bash
-npm run dev
+   ```bash
+   npm install
+   ```
+
+2. Set up environment variables in `.env.local`
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. For Stripe webhooks in development:
+   ```bash
+   stripe listen --forward-to localhost:3000/api/stripe/webhooks
+   ```
+
+Open http://localhost:3000 to view the site.
+
+## Environment Variables
+
+Required variables:
+
+- `POSTGRES_URL` - Vercel Postgres connection string
+- `STRIPE_SECRET_KEY` - Stripe API key
+- `STRIPE_WEBHOOK_SECRET` - Stripe webhook signing secret
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Stripe publishable key
+- `AWS_ACCESS_KEY_ID` - AWS credentials for S3
+- `AWS_SECRET_ACCESS_KEY` - AWS credentials for S3
+- `AWS_REGION` - AWS region (e.g., ca-central-1)
+- `AWS_S3_BUCKET_NAME` - S3 bucket name
+- `RESEND_API_KEY` - Resend API key for emails
+- `ADMIN_EMAIL` - Email address to notifiy admin of new orders
+- `ORDER_EMAIL` - Sender email address for order updates
+- `NEXT_PUBLIC_BASE_URL` - Base URL for the site
+- `JWT_SECRET` - Secret for admin authentication
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Next.js App                          │
+│                    (Vercel Deployment)                      │
+├─────────────────────────────────────────────────────────────┤
+│  Frontend          │  Admin Dashboard    │  API Routes      │
+│  - Product pages   │  - Order management │  - Stripe        │
+│  - Cart            │  - Product editing  │    webhooks      │
+│  - Checkout        │  - Status updates   │                  │
+└─────────────────────────────────────────────────────────────┘
+           │                    │                    │
+           ▼                    ▼                    ▼
+┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+│  Vercel Postgres │  │     AWS S3       │  │     Stripe       │
+│  (Database)      │  │  (Image Storage) │  │  (Payments)      │
+│  - Products      │  │                  │  │                  │
+│  - Orders        │  │                  │  │                  │
+│  - Carts         │  │                  │  │                  │
+└──────────────────┘  └──────────────────┘  └──────────────────┘
+                                                    │
+                                                    ▼
+                                           ┌──────────────────┐
+                                           │     Resend       │
+                                           │  (Email Service) │
+                                           │  - Order confirm │
+                                           │  - Shipping      │
+                                           └──────────────────┘
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework**: Next.js 15 (App Router)
+- **Database**: Vercel Postgres with Drizzle ORM
+- **Payments**: Stripe Checkout
+- **Image Storage**: AWS S3
+- **Email**: Resend
+- **Styling**: Tailwind CSS
+- **i18n**: next-intl (English/French)

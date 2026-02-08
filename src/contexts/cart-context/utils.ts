@@ -1,23 +1,40 @@
-import { Attribute, Cart, LineItem, ProductVariant } from "@/lib/shopify/types";
-import { CartState, CartItem } from "./types";
+import type { Cart as DbCart, CartItem as DbCartItem } from "@/types/cart";
+import type { ProductVariant } from "@/types/product";
+import { CartState, CartItem, Attribute } from "./types";
 import { FormState } from "../product-context";
 import { v4 } from "uuid";
 import { EMPTY_CART_STATE } from "./data";
 
-const getCartItem = (lineItem: LineItem): CartItem => {
+// Convert DB cart item to context cart item
+const getCartItem = (dbItem: DbCartItem): CartItem => {
+  // Convert DB attributes to Attribute[] format
+  const attributes: Attribute[] = [];
+  if (dbItem.attributes.borderStyle) {
+    attributes.push({ key: "borderStyle", value: dbItem.attributes.borderStyle });
+  }
+  if (dbItem.attributes.imageUrl) {
+    attributes.push({ key: "imgURL", value: dbItem.attributes.imageUrl });
+  }
+  if (dbItem.attributes.orientation) {
+    attributes.push({ key: "direction", value: dbItem.attributes.orientation });
+  }
+
+  const unitPrice = dbItem.priceCents / 100;
+  const totalAmount = unitPrice * dbItem.quantity;
+
   return {
-    title: lineItem.merchandise.product.handle,
-    imgURL:
-      lineItem.attributes.find((value) => {
-        return value.key === "imgURL";
-      })?.value ?? lineItem.merchandise.product.featuredImage.url,
-    id: lineItem.id,
-    quantity: lineItem.quantity,
-    totalAmount: lineItem.cost.totalAmount,
-    variantID: lineItem.merchandise.id,
-    attributes: lineItem.attributes,
-    selectedOptions: lineItem.merchandise.selectedOptions,
-  } as CartItem;
+    title: dbItem.productHandle,
+    imgURL: dbItem.attributes.imageUrl ?? "",
+    id: dbItem.id,
+    quantity: dbItem.quantity,
+    totalAmount: {
+      amount: totalAmount.toFixed(2),
+      currencyCode: "CAD",
+    },
+    variantID: dbItem.variantId,
+    attributes,
+    selectedOptions: dbItem.selectedOptions,
+  };
 };
 
 export const isSelectOption = (fieldName: string) => {
@@ -40,9 +57,13 @@ export const getAttributes = (formState: {
 export const getSelectOptions = (formState: {
   [key: string]: string;
 }): CartItem["selectedOptions"] => {
-  return Object.entries(formState)
-    .map(([key, value]) => ({ name: key, value }))
-    .filter((item) => isSelectOption(item.name));
+  const result: Record<string, string> = {};
+  Object.entries(formState).forEach(([key, value]) => {
+    if (isSelectOption(key)) {
+      result[key] = value;
+    }
+  });
+  return result;
 };
 
 export const generateNewCartItem = (
@@ -65,9 +86,12 @@ export const generateNewCartItem = (
 export const toProductState = (cartItem: CartItem): FormState => {
   const interim: { [key: string]: string } = {};
   cartItem.attributes.forEach((attr) => (interim[attr.key] = attr.value));
-  cartItem.selectedOptions.forEach((opt) => (interim[opt.name] = opt.value));
+  Object.entries(cartItem.selectedOptions).forEach(
+    ([key, value]) => (interim[key] = value)
+  );
   return interim;
 };
+
 export const generateUpdatedCartItem = (
   prevItem: CartItem,
   updates: FormState,
@@ -76,20 +100,14 @@ export const generateUpdatedCartItem = (
   const prevAttributes = Object.fromEntries(
     prevItem.attributes.map((attr) => [attr.key, attr.value])
   );
-  const prevSelectedOptions = Object.fromEntries(
-    prevItem.selectedOptions.map((attr) => [attr.name, attr.value])
-  );
 
-  const updatedSelectedOptions = Object.fromEntries(
-    productVariant.selectedOptions.map((opt) => [opt.name, opt.value])
-  );
   return {
     ...prevItem,
     totalAmount: productVariant.price,
     attributes: getAttributes({ ...prevAttributes, ...updates }),
     selectedOptions: getSelectOptions({
-      ...prevSelectedOptions,
-      ...updatedSelectedOptions,
+      ...prevItem.selectedOptions,
+      ...productVariant.options,
     }),
     imgURL: prevAttributes.imgURL,
   };
@@ -128,17 +146,20 @@ export const generateUpdatedCartItemQuantity = (
   };
 };
 
-export const getInitialState = (cart?: Cart): CartState => {
+export const getInitialState = (cart?: DbCart): CartState => {
   if (!cart) return { ...EMPTY_CART_STATE };
   const items: CartState["items"] = {};
-  cart.lines.forEach((line) => {
-    const cartItemID = line.id;
-    items[cartItemID] = getCartItem(line);
+  cart.items.forEach((item) => {
+    items[item.id] = getCartItem(item);
   });
   return {
     id: cart.id,
     totalQuantity: cart.totalQuantity,
-    cost: cart.cost,
+    cost: {
+      subtotalAmount: cart.cost.subtotalAmount,
+      totalAmount: cart.cost.totalAmount,
+      totalTaxAmount: cart.cost.taxAmount,
+    },
     items,
   };
 };
