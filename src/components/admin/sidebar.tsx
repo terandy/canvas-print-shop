@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   Package,
   ShoppingCart,
+  Users,
   LogOut,
   Menu,
   X,
@@ -18,6 +19,7 @@ const NAVIGATION = [
   { key: "dashboard", href: "/admin", icon: LayoutDashboard },
   { key: "orders", href: "/admin/orders", icon: ShoppingCart },
   { key: "products", href: "/admin/products", icon: Package },
+  { key: "users", href: "/admin/users", icon: Users, superAdminOnly: true },
 ] as const;
 
 interface AdminSidebarProps {
@@ -90,6 +92,11 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
           {/* Navigation */}
           <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
             {NAVIGATION.map((item) => {
+              // Hide users link from non-super_admin
+              if ("superAdminOnly" in item && item.superAdminOnly && user.role !== "super_admin") {
+                return null;
+              }
+
               const active = isActive(item.href);
               return (
                 <Link

@@ -1,5 +1,6 @@
 import { resend, ORDER_EMAIL } from "./index";
 import type { Order } from "@/types/order";
+import { getAdminUsersForOrderEmails } from "@/lib/db/queries/admin-users";
 
 type Locale = "en" | "fr";
 
@@ -96,10 +97,29 @@ ${order.shippingAddress.country}`
   });
 }
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-
 export async function sendAdminOrderNotification(order: Order): Promise<void> {
-  if (!resend || !ADMIN_EMAIL) {
+  if (!resend) {
+    return;
+  }
+
+  // Get all admins who should receive order notification emails
+  let adminEmails: Array<{ email: string; name: string | null }> = [];
+
+  try {
+    adminEmails = await getAdminUsersForOrderEmails();
+  } catch (error) {
+    console.error("Error fetching admin users for emails:", error);
+  }
+
+  // Fallback to ADMIN_EMAIL environment variable if no admins have notifications enabled
+  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+  if (adminEmails.length === 0 && ADMIN_EMAIL) {
+    adminEmails = [{ email: ADMIN_EMAIL, name: null }];
+  }
+
+  // If no recipients, return early
+  if (adminEmails.length === 0) {
+    console.warn("No admin users configured to receive order notifications");
     return;
   }
 
@@ -116,40 +136,50 @@ ${order.shippingAddress.city}, ${order.shippingAddress.state} ${order.shippingAd
 ${order.shippingAddress.country}`
     : "Not provided";
 
-  await resend.emails.send({
-    from: ORDER_EMAIL,
-    to: ADMIN_EMAIL,
-    subject: `New Order #${order.orderNumber} - $${(order.totalCents / 100).toFixed(2)}`,
-    html: `
-      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #CC5500;">New Order Received</h1>
+  const emailHtml = `
+    <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+      <h1 style="color: #CC5500;">New Order Received</h1>
 
-        <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <h2 style="margin-top: 0;">Order #${order.orderNumber}</h2>
+      <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h2 style="margin-top: 0;">Order #${order.orderNumber}</h2>
 
-          <p><strong>Customer:</strong> ${order.customerName || "N/A"}</p>
-          <p><strong>Email:</strong> ${order.customerEmail}</p>
+        <p><strong>Customer:</strong> ${order.customerName || "N/A"}</p>
+        <p><strong>Email:</strong> ${order.customerEmail}</p>
 
-          <h3>Items:</h3>
-          <pre style="font-family: inherit; white-space: pre-wrap;">${itemsList}</pre>
+        <h3>Items:</h3>
+        <pre style="font-family: inherit; white-space: pre-wrap;">${itemsList}</pre>
 
-          <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
-          <p><strong>Subtotal:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
-          <p><strong>Shipping:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
-          <p><strong>Tax:</strong> $${(order.taxCents / 100).toFixed(2)}</p>
-          <p style="font-size: 1.2em;"><strong>Total:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
-        </div>
-
-        <div style="margin: 20px 0;">
-          <h3>Shipping Address:</h3>
-          <pre style="font-family: inherit; white-space: pre-wrap;">${shippingAddress}</pre>
-        </div>
-
-        <p><a href="https://canvasprintshop.ca/en/admin/orders/${order.id}" style="color: #CC5500;">View Order in Admin</a></p>
+        <p><strong>Subtotal:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
+        <p><strong>Shipping:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
+        <p><strong>Tax:</strong> $${(order.taxCents / 100).toFixed(2)}</p>
+        <p style="font-size: 1.2em;"><strong>Total:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
       </div>
-    `,
-  });
+
+      <div style="margin: 20px 0;">
+        <h3>Shipping Address:</h3>
+        <pre style="font-family: inherit; white-space: pre-wrap;">${shippingAddress}</pre>
+      </div>
+
+      <p><a href="https://canvasprintshop.ca/en/admin/orders/${order.id}" style="color: #CC5500;">View Order in Admin</a></p>
+    </div>
+  `;
+
+  // Send email to all configured admins
+  for (const admin of adminEmails) {
+    try {
+      await resend.emails.send({
+        from: ORDER_EMAIL,
+        to: admin.email,
+        subject: `New Order #${order.orderNumber} - $${(order.totalCents / 100).toFixed(2)}`,
+        html: emailHtml,
+      });
+    } catch (error) {
+      console.error(`Failed to send order notification to ${admin.email}:`, error);
+      // Continue sending to other admins even if one fails
+    }
+  }
 }
 
 export async function sendShippingUpdate(

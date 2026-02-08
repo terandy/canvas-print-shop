@@ -664,6 +664,7 @@
       "dashboard": "Tableau de bord",
       "orders": "Commandes",
       "products": "Produits",
+      "users": "Utilisateurs",
       "logout": "Déconnexion"
     },
     "login": {
@@ -739,6 +740,31 @@
       "updated": "Modifié",
       "id": "ID",
       "addProduct": "Ajouter un produit"
+    },
+    "users": {
+      "title": "Utilisateurs Admin",
+      "addUser": "Ajouter un Admin",
+      "editUser": "Modifier un Utilisateur Admin",
+      "noUsers": "Aucun utilisateur admin trouvé",
+      "name": "Nom",
+      "email": "Courriel",
+      "role": "Rôle",
+      "status": "Statut",
+      "active": "Actif",
+      "inactive": "Inactif",
+      "receiveEmails": "Courriels de commande",
+      "createdAt": "Créé",
+      "actions": "Actions",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer cet utilisateur admin ?",
+      "backToUsers": "Retour aux utilisateurs",
+      "password": "Mot de passe",
+      "passwordHelp": "Minimum 8 caractères, doit contenir une lettre et un chiffre",
+      "passwordOptional": "Laisser vide pour conserver le mot de passe actuel",
+      "receiveOrderEmails": "Recevoir les notifications par courriel pour les nouvelles commandes",
+      "roleAdmin": "Admin",
+      "roleSuperAdmin": "Super Admin"
     },
     "status": {
       "pending": "En attente",

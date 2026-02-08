@@ -659,6 +659,7 @@
       "dashboard": "Dashboard",
       "orders": "Orders",
       "products": "Products",
+      "users": "Users",
       "logout": "Logout"
     },
     "login": {
@@ -734,6 +735,31 @@
       "updated": "Updated",
       "id": "ID",
       "addProduct": "Add Product"
+    },
+    "users": {
+      "title": "Admin Users",
+      "addUser": "Add New Admin",
+      "editUser": "Edit Admin User",
+      "noUsers": "No admin users found",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "receiveEmails": "Order Emails",
+      "createdAt": "Created",
+      "actions": "Actions",
+      "edit": "Edit",
+      "delete": "Delete",
+      "confirmDelete": "Are you sure you want to delete this admin user?",
+      "backToUsers": "Back to users",
+      "password": "Password",
+      "passwordHelp": "Minimum 8 characters, must contain letter and number",
+      "passwordOptional": "Leave blank to keep current password",
+      "receiveOrderEmails": "Send email notifications for new orders",
+      "roleAdmin": "Admin",
+      "roleSuperAdmin": "Super Admin"
     },
     "status": {
       "pending": "Pending",

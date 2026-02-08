@@ -40,6 +40,57 @@ export async function getAdminById(
   };
 }
 
+// Get admin user by ID with all fields (for editing)
+export async function getAdminByIdWithDetails(id: string) {
+  const [user] = await db
+    .select({
+      id: adminUsers.id,
+      email: adminUsers.email,
+      name: adminUsers.name,
+      role: adminUsers.role,
+      isActive: adminUsers.isActive,
+      receiveOrderEmails: adminUsers.receiveOrderEmails,
+      createdAt: adminUsers.createdAt,
+    })
+    .from(adminUsers)
+    .where(eq(adminUsers.id, id));
+
+  return user;
+}
+
+// Get all admin users (excluding password hash)
+export async function getAllAdminUsers() {
+  const users = await db
+    .select({
+      id: adminUsers.id,
+      email: adminUsers.email,
+      name: adminUsers.name,
+      role: adminUsers.role,
+      isActive: adminUsers.isActive,
+      receiveOrderEmails: adminUsers.receiveOrderEmails,
+      createdAt: adminUsers.createdAt,
+    })
+    .from(adminUsers)
+    .orderBy(adminUsers.createdAt);
+
+  return users;
+}
+
+// Get admins who should receive order notification emails
+export async function getAdminUsersForOrderEmails(): Promise<
+  Array<{ email: string; name: string | null }>
+> {
+  const users = await db
+    .select({
+      email: adminUsers.email,
+      name: adminUsers.name,
+    })
+    .from(adminUsers)
+    .where(eq(adminUsers.receiveOrderEmails, true));
+
+  return users;
+}
+
 // Authenticate admin user
 export async function authenticateAdmin(
   email: string,
@@ -70,7 +121,8 @@ export async function createAdminUser(
   email: string,
   password: string,
   name: string,
-  role: "admin" | "super_admin" = "admin"
+  role: "admin" | "super_admin" = "admin",
+  receiveOrderEmails: boolean = false
 ): Promise<AdminUser> {
   const passwordHash = await hashPassword(password);
 
@@ -81,6 +133,7 @@ export async function createAdminUser(
       passwordHash,
       name,
       role,
+      receiveOrderEmails,
     })
     .returning();
 
@@ -103,4 +156,57 @@ export async function updateAdminPassword(
     .update(adminUsers)
     .set({ passwordHash })
     .where(eq(adminUsers.id, userId));
+}
+
+// Update admin user details
+export async function updateAdminUser(
+  userId: string,
+  data: {
+    email?: string;
+    name?: string;
+    role?: "admin" | "super_admin";
+    isActive?: boolean;
+    receiveOrderEmails?: boolean;
+    password?: string;
+  }
+): Promise<void> {
+  const updateData: Record<string, unknown> = {};
+
+  if (data.email !== undefined) {
+    updateData.email = data.email.toLowerCase();
+  }
+  if (data.name !== undefined) {
+    updateData.name = data.name;
+  }
+  if (data.role !== undefined) {
+    updateData.role = data.role;
+  }
+  if (data.isActive !== undefined) {
+    updateData.isActive = data.isActive;
+  }
+  if (data.receiveOrderEmails !== undefined) {
+    updateData.receiveOrderEmails = data.receiveOrderEmails;
+  }
+  if (data.password) {
+    updateData.passwordHash = await hashPassword(data.password);
+  }
+
+  await db.update(adminUsers).set(updateData).where(eq(adminUsers.id, userId));
+}
+
+// Delete admin user
+export async function deleteAdminUser(userId: string): Promise<void> {
+  await db.delete(adminUsers).where(eq(adminUsers.id, userId));
+}
+
+// Count super admin users
+export async function countSuperAdmins(): Promise<number> {
+  const result = await db
+    .select({
+      id: adminUsers.id,
+    })
+    .from(adminUsers)
+    .where(eq(adminUsers.role, "super_admin"));
+
+  return result.length;
 }
