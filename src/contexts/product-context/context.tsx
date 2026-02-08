@@ -53,6 +53,9 @@ const ProductProvider = ({
     return newState;
   };
 
+  /**
+   * Deletes the imgURL from the product's form state
+   */
   const deleteImgURL = () => {
     const update = { imgURL: DEFAULT_CANVAS_IMAGE };
     updateState(update);
@@ -63,9 +66,11 @@ const ProductProvider = ({
     return (
       product.variants.find((variant) => {
         // Match variant options against current form state
-        return Object.entries(variant.options).every(([optionName, optionValue]) => {
-          return state[optionName as keyof FormState] === optionValue;
-        });
+        return Object.entries(variant.options).every(
+          ([optionName, optionValue]) => {
+            return state[optionName as keyof FormState] === optionValue;
+          }
+        );
       }) ?? product.variants[0]
     );
   }, [state, product.variants]);
@@ -124,10 +129,6 @@ const ProductProvider = ({
       localStorage.removeItem("cartItemID");
     }
   }, [cartItemID, handle, isHydrated]);
-
-  useEffect(() => {
-    console.log(state.frame, state.depth);
-  }, [state.frame, state.depth]);
 
   return (
     <ProductContext.Provider key={product.handle + cartItemID} value={value}>

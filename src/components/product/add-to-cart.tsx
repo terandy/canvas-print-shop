@@ -22,18 +22,22 @@ const AddToCart: React.FC = () => {
     product: { handle },
     state,
     variant,
+    deleteImgURL,
   } = useProduct();
   const router = useRouter();
 
   const onCancel: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    if (state.imgURL !== DEFAULT_CANVAS_IMAGE) deleteImage(state.imgURL);
+    if (state.imgURL !== DEFAULT_CANVAS_IMAGE) {
+      deleteImgURL();
+      deleteImage(state.imgURL);
+    }
     router.replace("/");
   };
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    if (state.imgURL === DEFAULT_CANVAS_IMAGE || !variant) return;
+    if (!variant) return;
     startTransition(async () => {
       cartContext.addCartItem({ ...state }, variant, handle); // optimistic
       const res = await api.addItem(

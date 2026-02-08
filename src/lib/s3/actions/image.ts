@@ -7,7 +7,14 @@ import crypto from "crypto";
 
 import { s3Client } from "../s3Client";
 
-export async function deleteImage(url: string) {
+/**
+ * Delete the image from aws
+ *
+ * @param url - URL of the image as found in aws
+ *
+ * @returns true if successful, or false if there is an error. It logs an error in the console if the action fails
+ */
+export async function deleteImage(url: string): Promise<boolean> {
   try {
     const key = url.split(".amazonaws.com/")[1];
     await s3Client.send(

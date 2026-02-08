@@ -20,4 +20,4 @@ export const ADDRESS = {
   href: "https://maps.app.goo.gl/fdPr7qQHmF4rRbuD7",
 };
 
-export const DEFAULT_CANVAS_IMAGE = "/default-image.jpeg";
+export const DEFAULT_CANVAS_IMAGE = "";

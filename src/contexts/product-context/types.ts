@@ -33,7 +33,13 @@ export type TProductContext = {
    */
   state: FormState;
   variant: ProductVariant;
+  /**
+   * Deletes imgURL from the product's form state
+   */
   deleteImgURL: () => void;
+  /**
+   * Saves imgURL to the product's form state
+   */
   setImgFileUrl: React.Dispatch<React.SetStateAction<string | null>>;
   updateField: <U extends keyof FormState>(
     name: U,
