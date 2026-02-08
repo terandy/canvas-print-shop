@@ -4,6 +4,13 @@ import { carts, cartItems, productVariants, products } from "../schema";
 import type { Cart, CartItem, CartItemAttributes } from "@/types/cart";
 import type { Money } from "@/types/common";
 
+// Helper to validate UUID format
+function isValidUUID(id: string): boolean {
+  const uuidRegex =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  return uuidRegex.test(id);
+}
+
 // Helper to format cents to Money
 function formatMoney(cents: number, currency = "CAD"): Money {
   return {
@@ -30,6 +37,11 @@ export async function createCart(): Promise<{ id: string }> {
 
 // Get cart by ID with all items
 export async function getCart(cartId: string): Promise<Cart | undefined> {
+  // Validate UUID format (handle old Shopify cart IDs gracefully)
+  if (!isValidUUID(cartId)) {
+    return undefined;
+  }
+
   // Check if cart exists and is active
   const [cart] = await db
     .select()
