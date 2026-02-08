@@ -152,13 +152,18 @@ export const redirectToCheckout = async () => {
     return "Cart is empty";
   }
 
+  let checkoutUrl: string;
+
   try {
     const session = await createCheckoutSession(cartId, locale);
-    redirect(session.url!);
+    checkoutUrl = session.url!;
   } catch (error) {
     console.error("Error creating checkout session:", error);
     return "Error creating checkout session";
   }
+
+  // redirect() must be called outside try-catch as it throws a special error
+  redirect(checkoutUrl);
 };
 
 // Create cart and set cookie
@@ -178,4 +183,17 @@ export const getCart = async () => {
   }
 
   return cartDb.getCart(cartId);
+};
+
+// Clear all items from cart
+export const clearCartAction = async () => {
+  const cookieStore = await cookies();
+  const cartId = cookieStore.get("cartId")?.value;
+
+  if (!cartId) {
+    return;
+  }
+
+  await cartDb.clearCart(cartId);
+  revalidateTag(TAGS.cart);
 };

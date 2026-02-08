@@ -7,7 +7,7 @@ export interface Money {
 
 export interface Image {
   url: string;
-  altText: string;
+  altText: string | null;
   width?: number;
   height?: number;
 }

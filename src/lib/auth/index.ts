@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-const JWT_SECRET = process.env.ADMIN_JWT_SECRET || "dev-secret-change-in-production";
+const JWT_SECRET = process.env.ADMIN_JWT_SECRET;
 const JWT_EXPIRES_IN = "7d";
 
 export interface AdminUser {

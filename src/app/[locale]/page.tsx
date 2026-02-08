@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { ButtonLink, ProductPreview, SectionContainer } from "@/components";
-import { getProductList } from "@/lib/shopify";
+import { getProductList } from "@/lib/db/queries/products";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
@@ -29,7 +29,7 @@ export async function generateMetadata({
 const Home = async () => {
   const locale = await getLocale();
   const t = await getTranslations("Home");
-  const products = await getProductList({});
+  const products = await getProductList(locale as "en" | "fr");
 
   const benefits = [
     {

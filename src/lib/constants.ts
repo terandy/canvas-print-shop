@@ -7,7 +7,8 @@ export const TAGS = {
 
 export const DEFAULT_OPTION = "Default Title";
 
-export const BASE_URL = "https://canvasprintshop.ca";
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://canvasprintshop.ca";
 
 export const EMAIL = {
   label: "info@canvasprintshop.ca",

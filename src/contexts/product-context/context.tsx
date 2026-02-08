@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import type { TProductContext, FormState } from "./types";
-import { Product } from "@/lib/shopify/types";
+import type { Product } from "@/types/product";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import { getInitialFormState } from "./utils";
 
@@ -62,8 +62,9 @@ const ProductProvider = ({
   const variant = useMemo(() => {
     return (
       product.variants.find((variant) => {
-        return variant.selectedOptions.every((option) => {
-          return state[option.name as keyof FormState] === option.value;
+        // Match variant options against current form state
+        return Object.entries(variant.options).every(([optionName, optionValue]) => {
+          return state[optionName as keyof FormState] === optionValue;
         });
       }) ?? product.variants[0]
     );

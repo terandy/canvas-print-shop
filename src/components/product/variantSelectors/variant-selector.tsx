@@ -2,7 +2,7 @@
 
 import { useProduct, FormState } from "@/contexts";
 import { BASE_STATE } from "@/contexts/product-context/data";
-import { ProductOption, ProductVariant } from "@/lib/shopify/types";
+import type { ProductOption, ProductVariant } from "@/types/product";
 import { useTranslations } from "next-intl";
 import { startTransition } from "react";
 import Price from "../price";
@@ -33,19 +33,13 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
     id: variant.id,
     price: variant.price.amount,
     currencyCode: variant.price.currencyCode,
-    ...variant.selectedOptions.reduce(
-      (accumulator, option) => ({
-        ...accumulator,
-        [option.name.toLowerCase()]: option.value,
-      }),
-      {}
-    ),
+    ...variant.options,
   }));
 
   const key = option.name.toLowerCase() as keyof FormState;
 
   return (
-    <form key={option.id} className="mb-8">
+    <form key={option.name} className="mb-8">
       <label
         htmlFor={option.name}
         className="block mb-4 text-sm uppercase tracking-wide"

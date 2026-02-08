@@ -1,4 +1,4 @@
-import { getProductList } from "@/lib/shopify";
+import { getProductList } from "@/lib/db/queries/products";
 import { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/constants";
 import { routing } from "@/i18n/routing";
@@ -62,9 +62,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     const staticRoutes = generateStaticRoutes();
 
     // Fetch products (this will use the default locale for product fetching)
-    const products = await getProductList({
-      cache: "force-cache",
-    }).catch((error) => {
+    const products = await getProductList("en").catch((error) => {
       console.error("Error fetching products for sitemap:", error);
       return [];
     });

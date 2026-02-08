@@ -1,22 +1,38 @@
-import { Cart, LineItem, Money, ProductVariant } from "@/lib/shopify/types";
+import type { Money } from "@/types/common";
+import type { ProductVariant } from "@/types/product";
 import { FormState } from "../product-context";
 import { Dispatch, SetStateAction } from "react";
 
 /**
+ * Attribute for cart item (non-price options)
+ */
+export type Attribute = {
+  key: string;
+  value: string;
+};
+
+/**
  * The line item in the cart
  */
-export interface CartItem<T extends LineItem = LineItem> {
+export interface CartItem {
   title: string;
   imgURL: string;
   id: string;
   quantity: number;
   totalAmount: Money;
-  variantID: ProductVariant["id"];
-  attributes: T["attributes"];
-  selectedOptions: T["merchandise"]["selectedOptions"];
+  variantID: string;
+  attributes: Attribute[];
+  selectedOptions: Record<string, string>;
 }
 
-export interface CartState extends Pick<Cart, "id" | "cost" | "totalQuantity"> {
+export interface CartState {
+  id: string | undefined;
+  cost: {
+    subtotalAmount: Money;
+    totalAmount: Money;
+    totalTaxAmount: Money;
+  };
+  totalQuantity: number;
   items: Record<CartItem["id"], CartItem>;
 }
 
@@ -38,6 +54,10 @@ export type TCartContext = {
     cartItemID: CartItem["id"],
     action: UpdateQuantityType
   ) => CartState;
+  /**
+   * Clears all items from the cart
+   */
+  clearCart: () => void;
   /**
    * True if cart modal is visible
    */

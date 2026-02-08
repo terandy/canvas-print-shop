@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { authenticateAdmin } from "@/lib/db/queries/admin-users";
-import { getOrder, updateOrderStatus } from "@/lib/db/queries/orders";
+import { getOrder, updateOrderStatus, addTrackingInfo } from "@/lib/db/queries/orders";
 import { sendShippingUpdate } from "@/lib/email/send";
 import { generateToken } from "./index";
 import { setAdminSession, clearAdminSession, getAdminSession } from "./session";
@@ -55,7 +55,6 @@ export async function updateOrderStatusAction(
   prevState: OrderStatusState,
   formData: FormData
 ): Promise<OrderStatusState> {
-  // Check authentication
   const session = await getAdminSession();
   if (!session) {
     return { error: "Unauthorized" };
@@ -64,28 +63,31 @@ export async function updateOrderStatusAction(
   const orderId = formData.get("orderId") as string;
   const status = formData.get("status") as string;
   const trackingNumber = formData.get("trackingNumber") as string;
+  const trackingUrl = formData.get("trackingUrl") as string;
 
   if (!orderId || !status) {
     return { error: "Order ID and status are required" };
   }
 
   try {
-    // Get current order
     const order = await getOrder(orderId);
     if (!order) {
       return { error: "Order not found" };
     }
 
-    // Update order status
-    await updateOrderStatus(orderId, status as any);
+    // Update order status (use addTrackingInfo if shipping with tracking number)
+    if (status === "shipped" && trackingNumber) {
+      await addTrackingInfo(orderId, trackingNumber, trackingUrl || undefined);
+    } else {
+      await updateOrderStatus(orderId, status as any);
+    }
 
     // If status is "shipped" and we have a tracking number, send shipping email
     if (status === "shipped" && trackingNumber) {
       try {
-        const locale = "en"; // Could be stored on order if needed
-        await sendShippingUpdate(order, trackingNumber, undefined, locale);
-      } catch (emailError) {
-        console.error("Failed to send shipping update email:", emailError);
+        const locale = "en";
+        await sendShippingUpdate(order, trackingNumber, trackingUrl || undefined, locale);
+      } catch {
         // Don't fail the request if email fails
       }
     }
@@ -94,8 +96,7 @@ export async function updateOrderStatusAction(
     revalidatePath("/admin/orders");
 
     return { success: true };
-  } catch (error) {
-    console.error("Error updating order status:", error);
+  } catch {
     return { error: "Failed to update order status" };
   }
 }

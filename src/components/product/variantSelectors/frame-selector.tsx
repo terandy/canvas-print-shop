@@ -2,7 +2,7 @@
 
 import { useProduct } from "@/contexts";
 import { BASE_STATE } from "@/contexts/product-context/data";
-import { ProductOption, ProductVariant } from "@/lib/shopify/types";
+import type { ProductOption, ProductVariant } from "@/types/product";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -39,13 +39,7 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
     id: variant.id,
     price: variant.price.amount,
     currencyCode: variant.price.currencyCode,
-    ...variant.selectedOptions.reduce(
-      (accumulator, option) => ({
-        ...accumulator,
-        [option.name.toLowerCase()]: option.value,
-      }),
-      {}
-    ),
+    ...variant.options,
   }));
 
   const isRegularDepth = state.depth.toLowerCase() === "regular";

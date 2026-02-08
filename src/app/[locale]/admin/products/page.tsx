@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { products, productVariants } from "@/lib/db/schema";
 import { count } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
-import { Edit, Eye, Package } from "lucide-react";
+import { Edit, Eye, Package, Plus } from "lucide-react";
 
 export default async function AdminProductsPage() {
   const t = await getTranslations("Admin");
@@ -42,6 +42,13 @@ export default async function AdminProductsPage() {
         <h1 className="text-2xl font-bold text-gray-900">
           {t("products.title")}
         </h1>
+        <Link
+          href="/admin/products/new"
+          className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90"
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          {t("products.addProduct")}
+        </Link>
       </div>
 
       {/* Products Grid */}

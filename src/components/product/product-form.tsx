@@ -25,7 +25,7 @@ const ProductForm: React.FC<Props> = () => {
           case "frame":
             return (
               <FrameSelector
-                key={option.id}
+                key={option.name}
                 option={option}
                 options={product.options}
                 variants={product.variants}
@@ -34,7 +34,7 @@ const ProductForm: React.FC<Props> = () => {
           case "size":
             return (
               <SizeSelector
-                key={option.id}
+                key={option.name}
                 option={option}
                 options={product.options}
                 variants={product.variants}
@@ -43,7 +43,7 @@ const ProductForm: React.FC<Props> = () => {
           default:
             return (
               <VariantSelector
-                key={option.id}
+                key={option.name}
                 option={option}
                 options={product.options}
                 variants={product.variants}

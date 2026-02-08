@@ -5,7 +5,6 @@ import { useActionState } from "react";
 import { Minus, Plus } from "lucide-react";
 import Button from "../buttons/button";
 import { CartItem, TCartContext } from "@/contexts/cart-context/types";
-import { ProductVariant } from "@/lib/shopify/types";
 import { useTranslations } from "next-intl";
 
 interface SubmitButtonProps {

@@ -14,7 +14,8 @@ const envSchema = z.object({
 
   // Email (Resend)
   RESEND_API_KEY: z.string().optional(),
-  FROM_EMAIL: z.string().optional(),
+  ORDER_EMAIL: z.string().optional(),
+  ADMIN_EMAIL: z.string().optional(),
 
   // Admin Auth
   ADMIN_JWT_SECRET: z.string().optional(),

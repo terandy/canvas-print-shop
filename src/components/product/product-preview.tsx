@@ -1,4 +1,4 @@
-import { Product } from "@/lib/shopify/types";
+import type { Product } from "@/types/product";
 import Prose from "../prose";
 import React from "react";
 import Image from "next/image";

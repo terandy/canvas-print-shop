@@ -702,6 +702,11 @@
       "updateStatus": "Mettre à jour le statut",
       "trackingNumber": "Numéro de suivi",
       "trackingPlaceholder": "Entrez le numéro de suivi",
+      "trackingUrl": "URL de suivi",
+      "trackingUrlPlaceholder": "https://www.postescanada.ca/suivi/...",
+      "tracking": "Suivi",
+      "trackPackage": "Suivre le colis",
+      "shippedAt": "Expédié",
       "updateButton": "Mettre à jour",
       "updating": "Mise à jour...",
       "updateSuccess": "Statut de la commande mis à jour",
@@ -732,7 +737,8 @@
       "metadata": "Métadonnées",
       "created": "Créé",
       "updated": "Modifié",
-      "id": "ID"
+      "id": "ID",
+      "addProduct": "Ajouter un produit"
     },
     "status": {
       "pending": "En attente",

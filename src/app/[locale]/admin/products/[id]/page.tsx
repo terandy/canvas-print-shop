@@ -6,6 +6,9 @@ import { products, productVariants, productOptions } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { ArrowLeft } from "lucide-react";
+import ProductForm from "@/components/admin/product-form";
+import VariantList from "@/components/admin/variant-list";
+import OptionList from "@/components/admin/option-list";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -48,174 +51,43 @@ export default async function AdminProductEditPage({ params }: Props) {
           <ArrowLeft className="h-4 w-4 mr-1" />
           {t("products.backToProducts")}
         </Link>
-        <h1 className="text-2xl font-bold text-gray-900">{product.titleEn}</h1>
-        <p className="text-gray-500">/{product.handle}</p>
+        <div className="flex justify-between items-start">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">
+              {t("products.edit")}: {product.titleEn}
+            </h1>
+            <p className="text-gray-500">/{product.handle}</p>
+          </div>
+          <Link
+            href={`/product/${product.handle}`}
+            target="_blank"
+            className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-50"
+          >
+            View on Store
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Basic Info */}
+          {/* Basic Info Form */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
               {t("products.basicInfo")}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {t("products.titleEn")}
-                </label>
-                <p className="px-3 py-2 bg-gray-50 rounded-md">
-                  {product.titleEn}
-                </p>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {t("products.titleFr")}
-                </label>
-                <p className="px-3 py-2 bg-gray-50 rounded-md">
-                  {product.titleFr || "-"}
-                </p>
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {t("products.handle")}
-                </label>
-                <p className="px-3 py-2 bg-gray-50 rounded-md font-mono text-sm">
-                  {product.handle}
-                </p>
-              </div>
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {t("products.status")}
-                </label>
-                <p
-                  className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${
-                    product.isActive
-                      ? "bg-green-100 text-green-800"
-                      : "bg-red-100 text-red-800"
-                  }`}
-                >
-                  {product.isActive
-                    ? t("products.active")
-                    : t("products.inactive")}
-                </p>
-              </div>
-            </div>
+            <ProductForm product={product} />
           </div>
 
           {/* Options */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              {t("products.options")} ({options.length})
-            </h2>
-            {options.length === 0 ? (
-              <p className="text-gray-500">{t("products.noOptions")}</p>
-            ) : (
-              <div className="space-y-4">
-                {options.map((option) => (
-                  <div key={option.id} className="border rounded-lg p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-medium text-gray-900">
-                        {option.name}
-                      </h3>
-                      <span
-                        className={`text-xs px-2 py-1 rounded ${
-                          option.affectsPrice
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-gray-100 text-gray-600"
-                        }`}
-                      >
-                        {option.affectsPrice
-                          ? t("products.affectsPrice")
-                          : t("products.displayOnly")}
-                      </span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {(option.values || []).map((value, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2 py-1 bg-gray-100 rounded text-sm"
-                        >
-                          {value}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <OptionList productId={id} options={options} />
 
           {/* Variants */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              {t("products.variants")} ({variants.length})
-            </h2>
-            {variants.length === 0 ? (
-              <p className="text-gray-500">{t("products.noOptions")}</p>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-2 text-left font-medium text-gray-500">
-                        {t("products.sku")}
-                      </th>
-                      <th className="px-4 py-2 text-left font-medium text-gray-500">
-                        Title
-                      </th>
-                      <th className="px-4 py-2 text-left font-medium text-gray-500">
-                        {t("products.options")}
-                      </th>
-                      <th className="px-4 py-2 text-right font-medium text-gray-500">
-                        Price
-                      </th>
-                      <th className="px-4 py-2 text-center font-medium text-gray-500">
-                        {t("products.status")}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y">
-                    {variants.map((variant) => (
-                      <tr key={variant.id}>
-                        <td className="px-4 py-2 font-mono text-xs">
-                          {variant.sku || "-"}
-                        </td>
-                        <td className="px-4 py-2">{variant.title}</td>
-                        <td className="px-4 py-2">
-                          <div className="flex flex-wrap gap-1">
-                            {Object.entries(variant.options).map(
-                              ([key, value]) => (
-                                <span
-                                  key={key}
-                                  className="text-xs bg-gray-100 px-1.5 py-0.5 rounded"
-                                >
-                                  {key}: {value}
-                                </span>
-                              )
-                            )}
-                          </div>
-                        </td>
-                        <td className="px-4 py-2 text-right font-medium">
-                          ${(variant.priceCents / 100).toFixed(2)}
-                        </td>
-                        <td className="px-4 py-2 text-center">
-                          <span
-                            className={`inline-flex h-2 w-2 rounded-full ${
-                              variant.availableForSale
-                                ? "bg-green-500"
-                                : "bg-red-500"
-                            }`}
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
+          <VariantList
+            productId={id}
+            variants={variants}
+            productOptions={options}
+          />
         </div>
 
         {/* Sidebar */}
@@ -246,6 +118,26 @@ export default async function AdminProductEditPage({ params }: Props) {
               {t("products.metadata")}
             </h2>
             <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-gray-500">{t("products.status")}</span>
+                <span
+                  className={`px-2 py-0.5 rounded text-xs font-medium ${
+                    product.isActive
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {product.isActive ? "Active" : "Inactive"}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">{t("products.variants")}</span>
+                <span>{variants.length}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">{t("products.options")}</span>
+                <span>{options.length}</span>
+              </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">{t("products.created")}</span>
                 <span>

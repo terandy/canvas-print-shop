@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createOrderFromCheckout } from "@/lib/db/queries/orders";
-import { sendOrderConfirmation } from "@/lib/email/send";
+import { sendOrderConfirmation, sendAdminOrderNotification } from "@/lib/email/send";
 import type Stripe from "stripe";
 
 export async function POST(request: NextRequest) {
@@ -150,7 +150,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       | "fr";
     try {
       await sendOrderConfirmation(order, locale);
-      console.log(`Confirmation email sent for order ${order.orderNumber}`);
+      await sendAdminOrderNotification(order);
     } catch (emailError) {
       console.error("Failed to send confirmation email:", emailError);
       // Don't throw - order was created successfully

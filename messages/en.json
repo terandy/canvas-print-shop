@@ -697,6 +697,11 @@
       "updateStatus": "Update Status",
       "trackingNumber": "Tracking Number",
       "trackingPlaceholder": "Enter tracking number",
+      "trackingUrl": "Tracking URL",
+      "trackingUrlPlaceholder": "https://www.canadapost.ca/track/...",
+      "tracking": "Tracking",
+      "trackPackage": "Track Package",
+      "shippedAt": "Shipped",
       "updateButton": "Update Status",
       "updating": "Updating...",
       "updateSuccess": "Order status updated",
@@ -727,7 +732,8 @@
       "metadata": "Metadata",
       "created": "Created",
       "updated": "Updated",
-      "id": "ID"
+      "id": "ID",
+      "addProduct": "Add Product"
     },
     "status": {
       "pending": "Pending",

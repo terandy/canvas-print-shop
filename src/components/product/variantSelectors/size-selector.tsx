@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { useTranslations } from "use-intl";
 import { useState, useEffect, startTransition } from "react";
 import { InfoIcon } from "lucide-react";
-import { ProductOption, ProductVariant } from "@/lib/shopify/types";
+import type { ProductOption, ProductVariant } from "@/types/product";
 import { BASE_STATE } from "@/contexts/product-context/data";
 import Price from "../price";
 
@@ -37,13 +37,7 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     id: variant.id,
     price: variant.price.amount,
     currencyCode: variant.price.currencyCode,
-    ...variant.selectedOptions.reduce(
-      (accumulator, option) => ({
-        ...accumulator,
-        [option.name.toLowerCase()]: option.value,
-      }),
-      {}
-    ),
+    ...variant.options,
   }));
 
   const key = option.name.toLowerCase() as keyof FormState;

@@ -70,45 +70,84 @@ export default async function AdminOrderDetailPage({ params }: Props) {
               </h2>
             </div>
             <div className="divide-y">
-              {order.items.map((item) => (
-                <div key={item.id} className="px-6 py-4 flex gap-4">
-                  {item.attributes?.imageUrl && (
-                    <Image
-                      src={item.attributes.imageUrl}
-                      alt={item.productTitle}
-                      width={80}
-                      height={80}
-                      className="w-20 h-20 object-cover rounded"
-                    />
-                  )}
-                  <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">
-                      {item.productTitle}
-                    </h3>
-                    <p className="text-sm text-gray-500">{item.variantTitle}</p>
-                    {item.attributes && (
-                      <div className="mt-1 text-xs text-gray-500">
-                        {item.attributes.borderStyle && (
-                          <span>Border: {item.attributes.borderStyle}</span>
+              {order.items.map((item) => {
+                // Parse variant title for options (e.g., "20x30 / none / regular")
+                const variantParts = item.variantTitle?.split(" / ") || [];
+                const dimensions = variantParts[0] || item.selectedOptions?.size;
+                const frame = variantParts[1] || item.selectedOptions?.frame;
+                const depth = variantParts[2] || item.selectedOptions?.depth;
+
+                return (
+                  <div key={item.id} className="px-6 py-4 flex gap-4">
+                    {item.attributes?.imageUrl && (
+                      <Image
+                        src={item.attributes.imageUrl}
+                        alt={item.productTitle}
+                        width={80}
+                        height={80}
+                        className="w-20 h-20 object-cover rounded"
+                      />
+                    )}
+                    <div className="flex-1">
+                      <h3 className="font-medium text-gray-900">
+                        {item.productTitle}
+                      </h3>
+                      <div className="mt-2 space-y-1 text-sm text-gray-600">
+                        {dimensions && (
+                          <p>
+                            <span className="text-gray-500">Dimensions:</span>{" "}
+                            {dimensions}
+                          </p>
                         )}
-                        {item.attributes.orientation && (
-                          <span className="ml-2">
+                        {frame && (
+                          <p>
+                            <span className="text-gray-500">Frame:</span> {frame}
+                          </p>
+                        )}
+                        {depth && (
+                          <p>
+                            <span className="text-gray-500">Depth:</span> {depth}
+                          </p>
+                        )}
+                        {item.attributes?.borderStyle && (
+                          <p>
+                            <span className="text-gray-500">Border:</span>{" "}
+                            {item.attributes.borderStyle}
+                          </p>
+                        )}
+                        {item.attributes?.orientation && (
+                          <p>
+                            <span className="text-gray-500">Orientation:</span>{" "}
                             {item.attributes.orientation}
-                          </span>
+                          </p>
+                        )}
+                        <p>
+                          <span className="text-gray-500">Qty:</span>{" "}
+                          {item.quantity}
+                        </p>
+                        {item.attributes?.imageUrl && (
+                          <p>
+                            <span className="text-gray-500">Image:</span>{" "}
+                            <a
+                              href={item.attributes.imageUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary hover:underline break-all"
+                            >
+                              View Full Image
+                            </a>
+                          </p>
                         )}
                       </div>
-                    )}
-                    <div className="mt-2 flex justify-between">
-                      <span className="text-sm text-gray-500">
-                        {t("orders.quantity")}: {item.quantity}
-                      </span>
-                      <span className="font-medium">
-                        ${((item.priceCents * item.quantity) / 100).toFixed(2)}
-                      </span>
+                      <div className="mt-3 pt-2 border-t flex justify-end">
+                        <span className="font-medium">
+                          ${((item.priceCents * item.quantity) / 100).toFixed(2)}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -190,6 +229,37 @@ export default async function AdminOrderDetailPage({ params }: Props) {
                 {t("orders.shippingAddress")}
               </h2>
               <p className="text-sm text-gray-500">{t("orders.noAddress")}</p>
+            </div>
+          )}
+
+          {/* Tracking Info */}
+          {order.trackingNumber && (
+            <div className="bg-white rounded-lg shadow p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                {t("orders.tracking")}
+              </h2>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-500">{t("orders.trackingNumber")}</span>
+                  <span className="font-mono">{order.trackingNumber}</span>
+                </div>
+                {order.trackingUrl && (
+                  <a
+                    href={order.trackingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline block text-right"
+                  >
+                    {t("orders.trackPackage")}
+                  </a>
+                )}
+                {order.shippedAt && (
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">{t("orders.shippedAt")}</span>
+                    <span>{new Date(order.shippedAt).toLocaleDateString()}</span>
+                  </div>
+                )}
+              </div>
             </div>
           )}
 

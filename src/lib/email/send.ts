@@ -1,4 +1,4 @@
-import { resend, FROM_EMAIL } from "./index";
+import { resend, ORDER_EMAIL } from "./index";
 import type { Order } from "@/types/order";
 
 type Locale = "en" | "fr";
@@ -17,9 +17,8 @@ function interpolate(
   template: string,
   values: Record<string, string | number>
 ): string {
-  return template.replace(
-    /\{(\w+)\}/g,
-    (_, key) => String(values[key] ?? `{${key}}`)
+  return template.replace(/\{(\w+)\}/g, (_, key) =>
+    String(values[key] ?? `{${key}}`)
   );
 }
 
@@ -28,7 +27,6 @@ export async function sendOrderConfirmation(
   locale: Locale = "en"
 ): Promise<void> {
   if (!resend) {
-    console.log("Resend not configured - skipping email");
     return;
   }
 
@@ -52,7 +50,7 @@ ${order.shippingAddress.country}`
     : t.greetingDefault;
 
   await resend.emails.send({
-    from: FROM_EMAIL,
+    from: ORDER_EMAIL,
     to: order.customerEmail,
     subject: interpolate(t.subject, { orderNumber: order.orderNumber }),
     html: `
@@ -98,6 +96,62 @@ ${order.shippingAddress.country}`
   });
 }
 
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+
+export async function sendAdminOrderNotification(order: Order): Promise<void> {
+  if (!resend || !ADMIN_EMAIL) {
+    return;
+  }
+
+  const itemsList = order.items
+    .map(
+      (item) =>
+        `- ${item.productTitle} (${item.variantTitle}) x${item.quantity} - $${(item.priceCents / 100).toFixed(2)}`
+    )
+    .join("\n");
+
+  const shippingAddress = order.shippingAddress
+    ? `${order.shippingAddress.line1}${order.shippingAddress.line2 ? `, ${order.shippingAddress.line2}` : ""}
+${order.shippingAddress.city}, ${order.shippingAddress.state} ${order.shippingAddress.postalCode}
+${order.shippingAddress.country}`
+    : "Not provided";
+
+  await resend.emails.send({
+    from: ORDER_EMAIL,
+    to: ADMIN_EMAIL,
+    subject: `New Order #${order.orderNumber} - $${(order.totalCents / 100).toFixed(2)}`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #CC5500;">New Order Received</h1>
+
+        <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h2 style="margin-top: 0;">Order #${order.orderNumber}</h2>
+
+          <p><strong>Customer:</strong> ${order.customerName || "N/A"}</p>
+          <p><strong>Email:</strong> ${order.customerEmail}</p>
+
+          <h3>Items:</h3>
+          <pre style="font-family: inherit; white-space: pre-wrap;">${itemsList}</pre>
+
+          <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+
+          <p><strong>Subtotal:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
+          <p><strong>Shipping:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
+          <p><strong>Tax:</strong> $${(order.taxCents / 100).toFixed(2)}</p>
+          <p style="font-size: 1.2em;"><strong>Total:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
+        </div>
+
+        <div style="margin: 20px 0;">
+          <h3>Shipping Address:</h3>
+          <pre style="font-family: inherit; white-space: pre-wrap;">${shippingAddress}</pre>
+        </div>
+
+        <p><a href="https://canvasprintshop.ca/en/admin/orders/${order.id}" style="color: #CC5500;">View Order in Admin</a></p>
+      </div>
+    `,
+  });
+}
+
 export async function sendShippingUpdate(
   order: Order,
   trackingNumber: string,
@@ -105,7 +159,6 @@ export async function sendShippingUpdate(
   locale: Locale = "en"
 ): Promise<void> {
   if (!resend) {
-    console.log("Resend not configured - skipping email");
     return;
   }
 
@@ -120,7 +173,7 @@ export async function sendShippingUpdate(
     : interpolate(t.trackingNumber, { number: trackingNumber });
 
   await resend.emails.send({
-    from: FROM_EMAIL,
+    from: ORDER_EMAIL,
     to: order.customerEmail,
     subject: interpolate(t.subject, { orderNumber: order.orderNumber }),
     html: `

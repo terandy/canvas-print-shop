@@ -1,5 +1,5 @@
 import ProductForm from "@/components/product/product-form";
-import { getProduct } from "@/lib/shopify";
+import { getProduct } from "@/lib/db/queries/products";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Image from "next/image";
@@ -9,10 +9,9 @@ import type { Metadata, NextPage } from "next";
 import { ProductImagePreview, SectionContainer, Prose } from "@/components";
 import { ProductProvider } from "@/contexts/product-context";
 import { Star, ChevronDown } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
 import { addBusinessDays } from "@/lib/utils/base";
-import { getLocale } from "next-intl/server";
 
 /**
  * Page Props
@@ -27,8 +26,8 @@ export type Props = {
  */
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
-  const product = await getProduct(params?.handle ?? "");
   const locale = await getLocale();
+  const product = await getProduct(params?.handle ?? "", locale as "en" | "fr");
 
   if (!product) return notFound();
 
@@ -275,10 +274,10 @@ const ReviewCard = async ({ review }: { review: (typeof reviews)[0] }) => {
 const ProductPage: NextPage<Props> = async (props: Props) => {
   const params = await props.params;
   const searchParams = await props.searchParams;
-  const product = await getProduct(params.handle);
+  const locale = await getLocale();
+  const product = await getProduct(params.handle, locale as "en" | "fr");
   const cartItemID = searchParams?.["cartItemID"] as string | undefined;
   const t = await getTranslations("Product");
-  const locale = await getLocale();
   const qualityPageHref = `/${locale ?? "en"}/quality-guarantee`;
   const formatDate = (date: Date) =>
     date.toLocaleDateString(locale, {

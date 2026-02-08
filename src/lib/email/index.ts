@@ -8,5 +8,4 @@ export const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
-export const FROM_EMAIL =
-  process.env.FROM_EMAIL || "Canvas Print Shop <orders@canvasprintshop.ca>";
+export const ORDER_EMAIL = process.env.ORDER_EMAIL;

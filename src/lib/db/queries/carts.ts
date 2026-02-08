@@ -260,3 +260,14 @@ export async function getCartItemsForOrder(cartId: string) {
     attributes: item.cartItem.attributes as CartItemAttributes,
   }));
 }
+
+// Clear all items from cart
+export async function clearCart(cartId: string): Promise<void> {
+  await db.delete(cartItems).where(eq(cartItems.cartId, cartId));
+
+  // Update cart timestamp
+  await db
+    .update(carts)
+    .set({ updatedAt: new Date() })
+    .where(eq(carts.id, cartId));
+}

@@ -2,6 +2,7 @@ import { getOrderByStripeSession } from "@/lib/db/queries/orders";
 import { CheckCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import ClearCart from "@/components/checkout/clear-cart";
 
 interface Props {
   searchParams: Promise<{ session_id?: string }>;
@@ -34,6 +35,7 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
     // Show a generic success message
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
+        <ClearCart />
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-10 w-10 text-green-600" />
         </div>
@@ -51,6 +53,7 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
+      <ClearCart />
       <div className="text-center">
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-10 w-10 text-green-600" />
