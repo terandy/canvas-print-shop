@@ -149,12 +149,12 @@ ${order.shippingAddress.country}`
 
         <h3>Items:</h3>
         <pre style="font-family: inherit; white-space: pre-wrap;">${itemsList}</pre>
+        <p><a href="https://canvasprintshop.ca/en/admin/orders/${order.id}" style="color: #CC5500;">View Order in Admin</a></p>
 
         <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
         <p><strong>Subtotal:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
         <p><strong>Shipping:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
-        <p><strong>Tax:</strong> $${(order.taxCents / 100).toFixed(2)}</p>
         <p style="font-size: 1.2em;"><strong>Total:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
       </div>
 
@@ -163,23 +163,19 @@ ${order.shippingAddress.country}`
         <pre style="font-family: inherit; white-space: pre-wrap;">${shippingAddress}</pre>
       </div>
 
-      <p><a href="https://canvasprintshop.ca/en/admin/orders/${order.id}" style="color: #CC5500;">View Order in Admin</a></p>
     </div>
   `;
 
-  // Send email to all configured admins
-  for (const admin of adminEmails) {
-    try {
-      await resend.emails.send({
-        from: ORDER_EMAIL,
-        to: admin.email,
-        subject: `New Order #${order.orderNumber} - $${(order.totalCents / 100).toFixed(2)}`,
-        html: emailHtml,
-      });
-    } catch (error) {
-      console.error(`Failed to send order notification to ${admin.email}:`, error);
-      // Continue sending to other admins even if one fails
-    }
+  // Send a single email to all configured admins to avoid rate limiting
+  try {
+    await resend.emails.send({
+      from: ORDER_EMAIL,
+      to: adminEmails.map((admin) => admin.email),
+      subject: `New Order #${order.orderNumber} - $${(order.totalCents / 100).toFixed(2)}`,
+      html: emailHtml,
+    });
+  } catch (error) {
+    console.error("Failed to send admin order notification:", error);
   }
 }
 
@@ -247,9 +243,7 @@ export async function sendPasswordResetEmail(
   const t = getEmailTranslations(locale).passwordReset;
   const resetUrl = `${BASE_URL}/${locale}/admin/reset-password?token=${token}`;
 
-  const greeting = name
-    ? interpolate(t.greeting, { name })
-    : t.greetingDefault;
+  const greeting = name ? interpolate(t.greeting, { name }) : t.greetingDefault;
 
   await resend.emails.send({
     from: ORDER_EMAIL,

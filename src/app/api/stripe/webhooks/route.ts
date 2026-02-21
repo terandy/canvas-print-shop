@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createOrderFromCheckout } from "@/lib/db/queries/orders";
-import { sendOrderConfirmation, sendAdminOrderNotification } from "@/lib/email/send";
+import {
+  sendOrderConfirmation,
+  sendAdminOrderNotification,
+} from "@/lib/email/send";
 import type Stripe from "stripe";
 
 export async function POST(request: NextRequest) {
@@ -119,8 +122,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   // Get amounts (Stripe returns in cents)
   const subtotalCents = session.amount_subtotal || 0;
   const totalCents = session.amount_total || 0;
-  const taxCents = (session.total_details?.amount_tax || 0);
-  const shippingCents = (session.total_details?.amount_shipping || 0);
+  const taxCents = session.total_details?.amount_tax || 0;
+  const shippingCents = session.total_details?.amount_shipping || 0;
 
   try {
     // Create order in database
@@ -150,10 +153,15 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       | "fr";
     try {
       await sendOrderConfirmation(order, locale);
-      await sendAdminOrderNotification(order);
     } catch (emailError) {
       console.error("Failed to send confirmation email:", emailError);
       // Don't throw - order was created successfully
+    }
+
+    try {
+      await sendAdminOrderNotification(order);
+    } catch (emailError) {
+      console.error("Failed to send admin notification email:", emailError);
     }
   } catch (error) {
     console.error("Failed to create order:", error);
