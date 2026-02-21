@@ -730,7 +730,9 @@
       "updateButton": "Update Status",
       "updating": "Updating...",
       "updateSuccess": "Order status updated",
-      "updateError": "Update failed"
+      "updateError": "Update failed",
+      "actions": "Actions",
+      "view": "View"
     },
     "products": {
       "title": "Products",
