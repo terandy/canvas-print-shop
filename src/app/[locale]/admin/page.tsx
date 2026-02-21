@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { getOrders } from "@/lib/db/queries/orders";
 import { getTranslations } from "next-intl/server";
-import { Package, DollarSign, ShoppingCart, TrendingUp } from "lucide-react";
+import { Package, DollarSign, ShoppingCart, TrendingUp, Eye } from "lucide-react";
 
 const STATUS_COLORS: Record<string, string> = {
   pending: "bg-yellow-100 text-yellow-800",
@@ -112,13 +113,16 @@ export default async function AdminDashboardPage() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.date")}
                 </th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {t("orders.actions")}
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {latestOrders.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={5}
+                    colSpan={6}
                     className="px-6 py-8 text-center text-gray-500"
                   >
                     {t("dashboard.noOrders")}
@@ -157,6 +161,15 @@ export default async function AdminDashboardPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {new Date(order.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right">
+                      <Link
+                        href={`/admin/orders/${order.id}`}
+                        className="inline-flex items-center text-primary hover:text-primary/80"
+                      >
+                        <Eye className="h-4 w-4 mr-1" />
+                        {t("orders.view")}
+                      </Link>
                     </td>
                   </tr>
                 ))

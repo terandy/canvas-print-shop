@@ -735,7 +735,9 @@
       "updateButton": "Mettre à jour",
       "updating": "Mise à jour...",
       "updateSuccess": "Statut de la commande mis à jour",
-      "updateError": "Échec de la mise à jour"
+      "updateError": "Échec de la mise à jour",
+      "actions": "Actions",
+      "view": "Voir"
     },
     "products": {
       "title": "Produits",
