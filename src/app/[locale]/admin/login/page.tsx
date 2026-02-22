@@ -47,7 +47,7 @@ export default function AdminLoginPage() {
           <h1 className="text-2xl font-bold text-gray-900">
             {t("login.title")}
           </h1>
-          <p className="text-gray-600 mt-2">Canvas Print Shop Dashboard</p>
+          <p className="text-gray-600 mt-2">{t("login.subtitle")}</p>
         </div>
 
         <form action={formAction} className="space-y-6">

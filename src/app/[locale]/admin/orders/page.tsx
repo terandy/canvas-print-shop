@@ -94,7 +94,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                   {t("orders.date")}
                 </th>
                 <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
+                  {t("orders.actions")}
                 </th>
               </tr>
             </thead>
@@ -127,8 +127,10 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                       </div>
                     </td>
                     <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
-                      {order.items.length} item
-                      {order.items.length !== 1 ? "s" : ""}
+                      {order.items.length}{" "}
+                      {order.items.length !== 1
+                        ? t("orders.itemPlural")
+                        : t("orders.itemSingular")}
                     </td>
                     <td className="px-4 py-2 whitespace-nowrap">
                       <span
@@ -152,7 +154,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                         className="inline-flex items-center text-primary hover:text-primary/80"
                       >
                         <Eye className="h-4 w-4 mr-1" />
-                        View
+                        {t("orders.view")}
                       </Link>
                     </td>
                   </tr>
@@ -174,14 +176,16 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
               }`}
               aria-disabled={currentPage <= 1}
             >
-              Previous
+              {t("orders.previous")}
             </Link>
-            <span className="text-sm text-gray-500">Page {currentPage}</span>
+            <span className="text-sm text-gray-500">
+              {t("orders.pageNumber", { page: currentPage })}
+            </span>
             <Link
               href={`?${status ? `status=${status}&` : ""}page=${currentPage + 1}`}
               className="px-3 py-1 rounded border text-gray-700 hover:bg-gray-50"
             >
-              Next
+              {t("orders.next")}
             </Link>
           </div>
         )}

@@ -96,48 +96,62 @@ export default async function AdminOrderDetailPage({ params }: Props) {
                       <div className="mt-2 space-y-1 text-sm text-gray-600">
                         {dimensions && (
                           <p>
-                            <span className="text-gray-500">Dimensions:</span>
+                            <span className="text-gray-500">
+                              {t("orders.dimensions")}
+                            </span>{" "}
                             {dimensions}
                           </p>
                         )}
                         {frame && (
                           <p>
-                            <span className="text-gray-500">Frame:</span>
+                            <span className="text-gray-500">
+                              {t("orders.frameLine")}
+                            </span>{" "}
                             {frame}
                           </p>
                         )}
                         {depth && (
                           <p>
-                            <span className="text-gray-500">Depth:</span>
+                            <span className="text-gray-500">
+                              {t("orders.depthLine")}
+                            </span>{" "}
                             {depth}
                           </p>
                         )}
                         {item.attributes?.borderStyle && (
                           <p>
-                            <span className="text-gray-500">Border:</span>
+                            <span className="text-gray-500">
+                              {t("orders.border")}
+                            </span>{" "}
                             {item.attributes.borderStyle}
                           </p>
                         )}
                         {item.attributes?.orientation && (
                           <p>
-                            <span className="text-gray-500">Orientation:</span>
+                            <span className="text-gray-500">
+                              {t("orders.orientationLine")}
+                            </span>{" "}
                             {item.attributes.orientation}
                           </p>
                         )}
                         <p>
-                          <span className="text-gray-500">Qty:</span>
+                          <span className="text-gray-500">
+                            {t("orders.qtyLine")}
+                          </span>{" "}
                           {item.quantity}
                         </p>
                         {item.attributes?.imageUrl && (
                           <p>
-                            <span className="text-gray-500">Image:</span>
+                            <span className="text-gray-500">
+                              {t("orders.imageLine")}
+                            </span>{" "}
                             <Link
                               href={item.attributes.imageUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-primary hover:underline break-all"
                             >
-                              View Full Image
+                              {t("orders.viewFullImage")}
                             </Link>
                           </p>
                         )}
@@ -162,15 +176,15 @@ export default async function AdminOrderDetailPage({ params }: Props) {
             </h2>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Subtotal</span>
+                <span className="text-gray-500">{t("orders.subtotal")}</span>
                 <span>${(order.subtotalCents / 100).toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Shipping</span>
+                <span className="text-gray-500">{t("orders.shipping")}</span>
                 <span>${(order.shippingCents / 100).toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Tax</span>
+                <span className="text-gray-500">{t("orders.tax")}</span>
                 <span>${(order.taxCents / 100).toFixed(2)}</span>
               </div>
               <div className="flex justify-between font-semibold text-lg pt-2 border-t">
@@ -276,7 +290,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
           {/* Payment Info */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              Payment
+              {t("orders.payment")}
             </h2>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -285,7 +299,7 @@ export default async function AdminOrderDetailPage({ params }: Props) {
               </div>
               {order.stripePaymentIntentId && (
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Stripe ID</span>
+                  <span className="text-gray-500">{t("orders.stripeId")}</span>
                   <span className="font-mono text-xs truncate max-w-[150px]">
                     {order.stripePaymentIntentId}
                   </span>

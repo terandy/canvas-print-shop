@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import {
   createVariantAction,
@@ -36,6 +37,7 @@ export default function VariantForm({
   onClose,
   onSuccess,
 }: VariantFormProps) {
+  const t = useTranslations("Admin.variantForm");
   const isEditing = !!variant;
 
   const [state, formAction, isPending] = useActionState(
@@ -67,7 +69,7 @@ export default function VariantForm({
       <div className="bg-white rounded-lg shadow-xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center px-6 py-4 border-b">
           <h3 className="text-lg font-semibold">
-            {isEditing ? "Edit Variant" : "Add Variant"}
+            {isEditing ? t("editVariant") : t("addVariant")}
           </h3>
           <button
             onClick={onClose}
@@ -110,7 +112,9 @@ export default function VariantForm({
                   }
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
                 >
-                  <option value="">Select {option.name}</option>
+                  <option value="">
+                    {t("selectOption", { name: option.name })}
+                  </option>
                   {(option.values || []).map((value) => (
                     <option key={value} value={value}>
                       {value}
@@ -125,7 +129,7 @@ export default function VariantForm({
               htmlFor="title"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Variant Title *
+              {t("variantTitle")} *
             </label>
             <div className="flex gap-2">
               <input
@@ -145,7 +149,7 @@ export default function VariantForm({
                 }}
                 className="px-3 py-2 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
               >
-                Auto
+                {t("auto")}
               </button>
             </div>
           </div>
@@ -156,7 +160,7 @@ export default function VariantForm({
                 htmlFor="price"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                Price (CAD) *
+                {t("price")} *
               </label>
               <input
                 id="price"
@@ -176,7 +180,7 @@ export default function VariantForm({
                 htmlFor="sku"
                 className="block text-sm font-medium text-gray-700 mb-1"
               >
-                SKU
+                {t("sku")}
               </label>
               <input
                 id="sku"
@@ -199,7 +203,9 @@ export default function VariantForm({
                   defaultChecked={variant?.availableForSale !== false}
                   className="rounded border-gray-300 text-primary focus:ring-primary"
                 />
-                <span className="text-sm text-gray-700">Available for sale</span>
+                <span className="text-sm text-gray-700">
+                  {t("availableForSale")}
+                </span>
               </label>
             </div>
           )}
@@ -210,14 +216,18 @@ export default function VariantForm({
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
             >
-              Cancel
+              {t("cancel")}
             </button>
             <button
               type="submit"
               disabled={isPending}
               className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 disabled:opacity-50"
             >
-              {isPending ? "Saving..." : isEditing ? "Save" : "Add Variant"}
+              {isPending
+                ? t("saving")
+                : isEditing
+                  ? t("save")
+                  : t("addVariant")}
             </button>
           </div>
         </form>

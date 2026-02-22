@@ -63,7 +63,7 @@ export default async function AdminProductEditPage({ params }: Props) {
             target="_blank"
             className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-50"
           >
-            View on Store
+            {t("products.viewOnStore")}
           </Link>
         </div>
       </div>
@@ -127,7 +127,9 @@ export default async function AdminProductEditPage({ params }: Props) {
                       : "bg-red-100 text-red-800"
                   }`}
                 >
-                  {product.isActive ? "Active" : "Inactive"}
+                  {product.isActive
+                    ? t("products.active")
+                    : t("products.inactive")}
                 </span>
               </div>
               <div className="flex justify-between">
