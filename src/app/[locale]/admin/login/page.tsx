@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -12,6 +12,7 @@ const INITIAL_STATE: LoginState = {};
 export default function AdminLoginPage() {
   const t = useTranslations("Admin");
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
   const [state, formAction, isPending] = useActionState(
     loginAction,
@@ -22,10 +23,11 @@ export default function AdminLoginPage() {
 
   useEffect(() => {
     if (state.success) {
-      router.push("/admin");
+      const redirectTo = searchParams.get("redirectTo");
+      router.push(redirectTo && redirectTo.startsWith("/admin") ? redirectTo : "/admin");
       router.refresh();
     }
-  }, [state.success, router]);
+  }, [state.success, router, searchParams]);
 
   if (isRedirecting) {
     return (
