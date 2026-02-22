@@ -6,6 +6,8 @@ import { Minus, Plus } from "lucide-react";
 import Button from "../buttons/button";
 import { CartItem, TCartContext } from "@/contexts/cart-context/types";
 import { useTranslations } from "next-intl";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { deleteImage } from "@/lib/s3/actions/image";
 
 interface SubmitButtonProps {
   type: "plus" | "minus";
@@ -37,6 +39,9 @@ const EditItemQuantityButton: React.FC<EditItemQttyProps> = ({
   optimisticUpdate,
 }) => {
   const [message, formAction] = useActionState(updateCartItem, null);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const payload = {
     cartItemId: item.id,
     merchandiseId: item.variantID,
@@ -47,7 +52,14 @@ const EditItemQuantityButton: React.FC<EditItemQttyProps> = ({
     <form
       action={async () => {
         optimisticUpdate(item.id, type);
+        if (type === "minus" && item.quantity === 1) {
+          if (searchParams.get("cartItemID") === item.id)
+            router.replace(pathname);
+        }
         await formAction(payload);
+        if (type === "minus" && item.quantity === 1) {
+          if (item.imgURL) await deleteImage(item.imgURL);
+        }
       }}
     >
       <SubmitButton type={type} />
