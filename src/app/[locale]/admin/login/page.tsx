@@ -3,7 +3,7 @@
 import { useActionState, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { loginAction, type LoginState } from "@/lib/auth/actions";
 
@@ -18,12 +18,25 @@ export default function AdminLoginPage() {
     INITIAL_STATE
   );
 
+  const isRedirecting = state.success;
+
   useEffect(() => {
     if (state.success) {
       router.push("/admin");
       router.refresh();
     }
   }, [state.success, router]);
+
+  if (isRedirecting) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="flex flex-col items-center gap-3">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          <p className="text-gray-600 text-sm">{t("login.signingIn")}...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
