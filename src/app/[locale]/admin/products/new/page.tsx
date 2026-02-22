@@ -28,8 +28,7 @@ export default async function AdminNewProductPage() {
         </div>
 
         <p className="mt-4 text-sm text-gray-500">
-          After creating the product, you can add options and variants with
-          pricing.
+          {t("products.afterCreateNote")}
         </p>
       </div>
     </div>

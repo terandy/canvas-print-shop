@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   createAdminUserAction,
   updateAdminUserAction,
@@ -22,6 +23,7 @@ interface AdminUserFormProps {
 const INITIAL_STATE: AdminUserFormState = {};
 
 export default function AdminUserForm({ user }: AdminUserFormProps) {
+  const t = useTranslations("Admin.users");
   const router = useRouter();
   const isEditing = !!user;
 
@@ -48,7 +50,7 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
 
       {state.success && (
         <div className="bg-green-50 text-green-600 p-3 rounded-md text-sm">
-          Admin user saved successfully!
+          {t("userSaved")}
         </div>
       )}
 
@@ -58,7 +60,7 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Email *
+            {t("email")} *
           </label>
           <input
             id="email"
@@ -76,7 +78,7 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Name *
+            {t("name")} *
           </label>
           <input
             id="name"
@@ -96,20 +98,18 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             htmlFor="password"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Password {isEditing ? "" : "*"}
+            {t("password")} {isEditing ? "" : "*"}
           </label>
           <input
             id="password"
             name="password"
             type="password"
             required={!isEditing}
-            placeholder={isEditing ? "Leave blank to keep current" : "••••••••"}
+            placeholder={isEditing ? t("passwordOptional") : "••••••••"}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
           />
           <p className="mt-1 text-xs text-gray-500">
-            {isEditing
-              ? "Leave blank to keep current password"
-              : "Minimum 8 characters, must contain letter and number"}
+            {isEditing ? t("passwordOptional") : t("passwordHelp")}
           </p>
         </div>
 
@@ -118,7 +118,7 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             htmlFor="role"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Role *
+            {t("role")} *
           </label>
           <select
             id="role"
@@ -126,11 +126,11 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             defaultValue={user?.role || "admin"}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
           >
-            <option value="admin">Admin</option>
-            <option value="super_admin">Super Admin</option>
+            <option value="admin">{t("roleAdmin")}</option>
+            <option value="super_admin">{t("roleSuperAdmin")}</option>
           </select>
           <p className="mt-1 text-xs text-gray-500">
-            Super admins can manage other admin users
+            {t("roleHelp")}
           </p>
         </div>
       </div>
@@ -141,7 +141,7 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             htmlFor="isActive"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Status
+            {t("status")}
           </label>
           <select
             id="isActive"
@@ -149,8 +149,8 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             defaultValue={user?.isActive !== false ? "true" : "false"}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
           >
-            <option value="true">Active</option>
-            <option value="false">Inactive</option>
+            <option value="true">{t("active")}</option>
+            <option value="false">{t("inactive")}</option>
           </select>
         </div>
 
@@ -167,7 +167,7 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
             htmlFor="receiveOrderEmails"
             className="ml-2 block text-sm text-gray-700"
           >
-            Send email notifications for new orders
+            {t("receiveOrderEmails")}
           </label>
         </div>
       </div>
@@ -178,14 +178,18 @@ export default function AdminUserForm({ user }: AdminUserFormProps) {
           disabled={isPending}
           className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isPending ? "Saving..." : isEditing ? "Update Admin User" : "Create Admin User"}
+          {isPending
+            ? t("saving")
+            : isEditing
+              ? t("updateUser")
+              : t("createUser")}
         </button>
         <button
           type="button"
           onClick={() => router.push("/admin/users")}
           className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
         >
-          Cancel
+          {t("cancel")}
         </button>
       </div>
     </form>

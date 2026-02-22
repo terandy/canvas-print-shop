@@ -123,7 +123,11 @@ export default function AdminSidebar({ user }: AdminSidebarProps) {
                 <p className="text-sm font-medium text-gray-900 truncate">
                   {user.email}
                 </p>
-                <p className="text-xs text-gray-500 capitalize">{user.role}</p>
+                <p className="text-xs text-gray-500">
+                  {user.role === "super_admin"
+                    ? t("users.roleSuperAdmin")
+                    : t("users.roleAdmin")}
+                </p>
               </div>
               <form action={logoutAction}>
                 <button

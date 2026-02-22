@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import {
   createOptionAction,
@@ -28,6 +29,7 @@ export default function OptionForm({
   onClose,
   onSuccess,
 }: OptionFormProps) {
+  const t = useTranslations("Admin.optionForm");
   const isEditing = !!option;
 
   const [state, formAction, isPending] = useActionState(
@@ -45,7 +47,7 @@ export default function OptionForm({
       <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
         <div className="flex justify-between items-center px-6 py-4 border-b">
           <h3 className="text-lg font-semibold">
-            {isEditing ? "Edit Option" : "Add Option"}
+            {isEditing ? t("editOption") : t("addOption")}
           </h3>
           <button
             onClick={onClose}
@@ -70,7 +72,7 @@ export default function OptionForm({
               htmlFor="name"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Option Name *
+              {t("optionName")} *
             </label>
             <input
               id="name"
@@ -88,7 +90,7 @@ export default function OptionForm({
               htmlFor="values"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Values (comma-separated) *
+              {t("values")} *
             </label>
             <input
               id="values"
@@ -100,7 +102,7 @@ export default function OptionForm({
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
             />
             <p className="mt-1 text-xs text-gray-500">
-              Separate multiple values with commas
+              {t("valuesHelp")}
             </p>
           </div>
 
@@ -113,10 +115,10 @@ export default function OptionForm({
                 defaultChecked={option?.affectsPrice !== false}
                 className="rounded border-gray-300 text-primary focus:ring-primary"
               />
-              <span className="text-sm text-gray-700">Affects price</span>
+              <span className="text-sm text-gray-700">{t("affectsPrice")}</span>
             </label>
             <p className="mt-1 text-xs text-gray-500 ml-6">
-              If checked, this option will require variants with different prices
+              {t("affectsPriceHelp")}
             </p>
           </div>
 
@@ -126,14 +128,18 @@ export default function OptionForm({
               onClick={onClose}
               className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
             >
-              Cancel
+              {t("cancel")}
             </button>
             <button
               type="submit"
               disabled={isPending}
               className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 disabled:opacity-50"
             >
-              {isPending ? "Saving..." : isEditing ? "Save" : "Add Option"}
+              {isPending
+                ? t("saving")
+                : isEditing
+                  ? t("save")
+                  : t("addOption")}
             </button>
           </div>
         </form>

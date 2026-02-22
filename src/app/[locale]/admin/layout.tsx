@@ -20,7 +20,9 @@ export default async function AdminLayout({
   const session = await getAdminSession();
 
   if (!session) {
-    redirect("/admin/login");
+    // Strip locale prefix to get the app-relative path for redirect
+    const redirectTo = pathname.replace(/^\/(en|fr)/, "");
+    redirect(`/admin/login?redirectTo=${encodeURIComponent(redirectTo)}`);
   }
 
   return (

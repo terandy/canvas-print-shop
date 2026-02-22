@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import OptionForm from "./option-form";
 import { deleteOptionAction } from "@/lib/db/actions/products";
@@ -19,13 +20,14 @@ interface OptionListProps {
 }
 
 export default function OptionList({ productId, options }: OptionListProps) {
+  const t = useTranslations("Admin.optionForm");
   const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [editingOption, setEditingOption] = useState<ProductOption | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
 
   const handleDelete = async (optionId: string) => {
-    if (!confirm("Are you sure you want to delete this option?")) return;
+    if (!confirm(t("confirmDelete"))) return;
 
     setDeleting(optionId);
     const result = await deleteOptionAction(optionId, productId);
@@ -42,20 +44,20 @@ export default function OptionList({ productId, options }: OptionListProps) {
     <div className="bg-white rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-900">
-          Options ({options.length})
+          {t("title")} ({options.length})
         </h2>
         <button
           onClick={() => setShowForm(true)}
           className="inline-flex items-center px-3 py-1.5 bg-primary text-white text-sm rounded-md hover:bg-primary/90"
         >
           <Plus className="h-4 w-4 mr-1" />
-          Add Option
+          {t("addOption")}
         </button>
       </div>
 
       {options.length === 0 ? (
         <p className="text-gray-500 text-center py-8">
-          No options yet. Add options like size, frame, depth, etc.
+          {t("noOptions")}
         </p>
       ) : (
         <div className="space-y-3">
@@ -71,14 +73,16 @@ export default function OptionList({ productId, options }: OptionListProps) {
                         : "bg-gray-100 text-gray-600"
                     }`}
                   >
-                    {option.affectsPrice ? "Affects price" : "Display only"}
+                    {option.affectsPrice
+                      ? t("affectsPrice")
+                      : t("displayOnly")}
                   </span>
                 </div>
                 <div className="flex gap-2">
                   <button
                     onClick={() => setEditingOption(option)}
                     className="p-1 text-gray-400 hover:text-gray-600"
-                    title="Edit"
+                    title={t("edit")}
                   >
                     <Pencil className="h-4 w-4" />
                   </button>
@@ -86,7 +90,7 @@ export default function OptionList({ productId, options }: OptionListProps) {
                     onClick={() => handleDelete(option.id)}
                     disabled={deleting === option.id}
                     className="p-1 text-gray-400 hover:text-red-600 disabled:opacity-50"
-                    title="Delete"
+                    title={t("delete")}
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>

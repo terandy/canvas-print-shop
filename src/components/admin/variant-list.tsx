@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import VariantForm from "./variant-form";
 import { deleteVariantAction } from "@/lib/db/actions/products";
@@ -32,13 +33,14 @@ export default function VariantList({
   variants,
   productOptions,
 }: VariantListProps) {
+  const t = useTranslations("Admin.variantForm");
   const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [editingVariant, setEditingVariant] = useState<Variant | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
 
   const handleDelete = async (variantId: string) => {
-    if (!confirm("Are you sure you want to delete this variant?")) return;
+    if (!confirm(t("confirmDelete"))) return;
 
     setDeleting(variantId);
     const result = await deleteVariantAction(variantId, productId);
@@ -55,20 +57,20 @@ export default function VariantList({
     <div className="bg-white rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-900">
-          Variants ({variants.length})
+          {t("title")} ({variants.length})
         </h2>
         <button
           onClick={() => setShowForm(true)}
           className="inline-flex items-center px-3 py-1.5 bg-primary text-white text-sm rounded-md hover:bg-primary/90"
         >
           <Plus className="h-4 w-4 mr-1" />
-          Add Variant
+          {t("addVariant")}
         </button>
       </div>
 
       {variants.length === 0 ? (
         <p className="text-gray-500 text-center py-8">
-          No variants yet. Add your first variant to set pricing.
+          {t("noVariants")}
         </p>
       ) : (
         <div className="overflow-x-auto">
@@ -76,22 +78,22 @@ export default function VariantList({
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-4 py-2 text-left font-medium text-gray-500">
-                  SKU
+                  {t("tableSku")}
                 </th>
                 <th className="px-4 py-2 text-left font-medium text-gray-500">
-                  Title
+                  {t("tableTitle")}
                 </th>
                 <th className="px-4 py-2 text-left font-medium text-gray-500">
-                  Options
+                  {t("tableOptions")}
                 </th>
                 <th className="px-4 py-2 text-right font-medium text-gray-500">
-                  Price
+                  {t("tablePrice")}
                 </th>
                 <th className="px-4 py-2 text-center font-medium text-gray-500">
-                  Status
+                  {t("tableStatus")}
                 </th>
                 <th className="px-4 py-2 text-right font-medium text-gray-500">
-                  Actions
+                  {t("tableActions")}
                 </th>
               </tr>
             </thead>
@@ -129,7 +131,7 @@ export default function VariantList({
                       <button
                         onClick={() => setEditingVariant(variant)}
                         className="p-1 text-gray-400 hover:text-gray-600"
-                        title="Edit"
+                        title={t("edit")}
                       >
                         <Pencil className="h-4 w-4" />
                       </button>
@@ -137,7 +139,7 @@ export default function VariantList({
                         onClick={() => handleDelete(variant.id)}
                         disabled={deleting === variant.id}
                         className="p-1 text-gray-400 hover:text-red-600 disabled:opacity-50"
-                        title="Delete"
+                        title={t("delete")}
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>

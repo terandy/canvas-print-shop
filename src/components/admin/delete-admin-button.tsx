@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Trash2 } from "lucide-react";
 import { deleteAdminUserAction } from "@/lib/db/actions/admin-users";
 import { useRouter } from "next/navigation";
@@ -14,16 +15,17 @@ export default function DeleteAdminButton({
   userId,
   isCurrentUser,
 }: DeleteAdminButtonProps) {
+  const t = useTranslations("Admin.users");
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
     if (isCurrentUser) {
-      alert("You cannot delete your own account");
+      alert(t("cannotDeleteSelf"));
       return;
     }
 
-    if (!confirm("Are you sure you want to delete this admin user?")) {
+    if (!confirm(t("confirmDelete"))) {
       return;
     }
 
@@ -36,7 +38,7 @@ export default function DeleteAdminButton({
         router.refresh();
       }
     } catch (error) {
-      alert("Failed to delete admin user");
+      alert(t("deleteFailed"));
     } finally {
       setIsDeleting(false);
     }
@@ -47,7 +49,7 @@ export default function DeleteAdminButton({
       onClick={handleDelete}
       disabled={isDeleting}
       className="text-red-600 hover:text-red-800 p-1 disabled:opacity-50"
-      title="Delete"
+      title={t("delete")}
     >
       <Trash2 className="w-4 h-4" />
     </button>
