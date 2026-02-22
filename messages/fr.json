@@ -347,8 +347,7 @@
     "frame": {
       "title": "Cadre flottant",
       "none": "Aucun",
-      "black": "Noir",
-      "additionalMessage": "* Les cadres sont seulement disponible pour les toiles d'épaisseur standard"
+      "black": "Noir"
     },
     "depth": {
       "title": "Épaisseur",

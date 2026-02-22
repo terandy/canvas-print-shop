@@ -43,6 +43,8 @@ const ProductForm: React.FC<Props> = () => {
                 variants={product.variants}
               />
             );
+          case "depth":
+            return null;
           default:
             return (
               <VariantSelector
