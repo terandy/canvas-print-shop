@@ -75,25 +75,25 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.order")}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.customer")}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.items")}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.status")}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.total")}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.date")}
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -103,7 +103,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                 <tr>
                   <td
                     colSpan={7}
-                    className="px-6 py-8 text-center text-gray-500"
+                    className="px-4 py-6 text-center text-gray-500"
                   >
                     {t("orders.noOrders")}
                   </td>
@@ -111,12 +111,12 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
               ) : (
                 orders.map((order) => (
                   <tr key={order.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-4 py-2 whitespace-nowrap">
                       <span className="font-medium text-gray-900">
                         #{order.orderNumber}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-4 py-2 whitespace-nowrap">
                       <div>
                         <p className="text-sm text-gray-900">
                           {order.customerName || "-"}
@@ -126,11 +126,11 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                         </p>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
                       {order.items.length} item
                       {order.items.length !== 1 ? "s" : ""}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-4 py-2 whitespace-nowrap">
                       <span
                         className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                           STATUS_COLORS[order.status] ||
@@ -140,13 +140,13 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                         {t(`status.${order.status}`)}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
                       ${(order.totalCents / 100).toFixed(2)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
                       {new Date(order.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right">
+                    <td className="px-4 py-2 whitespace-nowrap text-right">
                       <Link
                         href={`/admin/orders/${order.id}`}
                         className="inline-flex items-center text-primary hover:text-primary/80"
@@ -164,7 +164,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
 
         {/* Pagination */}
         {orders.length >= limit && (
-          <div className="px-6 py-4 border-t flex justify-between items-center">
+          <div className="px-4 py-3 border-t flex justify-between items-center">
             <Link
               href={`?${status ? `status=${status}&` : ""}page=${currentPage - 1}`}
               className={`px-3 py-1 rounded border ${
