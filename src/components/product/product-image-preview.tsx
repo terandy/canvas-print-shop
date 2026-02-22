@@ -24,7 +24,7 @@ const ProductImagePreview: React.FC<Props> = ({ className }) => {
           src={imgFileUrl ?? state.imgURL}
           size={state.size}
           direction={state.direction}
-          borderStyle={"none"}
+          borderStyle={state.borderStyle}
           depth={state.depth}
         />
       )}

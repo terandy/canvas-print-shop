@@ -45,8 +45,16 @@ const ProductProvider = ({
       newState.depth = "regular";
     }
 
+    if (name === "frame" && value === "none") {
+      newState.depth = "gallery";
+    }
+
     if (name === "depth" && value === "gallery") {
       newState.frame = "none";
+    }
+
+    if (name === "depth" && value === "regular") {
+      newState.frame = "black";
     }
 
     updateState(newState);
