@@ -138,6 +138,26 @@ const ProductProvider = ({
     }
   }, [cartItemID, handle, isHydrated]);
 
+  // Validate that cached S3 image still exists
+  useEffect(() => {
+    if (
+      !isHydrated ||
+      !state.imgURL ||
+      state.imgURL === DEFAULT_CANVAS_IMAGE
+    )
+      return;
+
+    fetch(state.imgURL, { method: "HEAD" })
+      .then((res) => {
+        if (!res.ok) {
+          updateState({ imgURL: DEFAULT_CANVAS_IMAGE });
+        }
+      })
+      .catch(() => {
+        updateState({ imgURL: DEFAULT_CANVAS_IMAGE });
+      });
+  }, [isHydrated]);
+
   return (
     <ProductContext.Provider key={product.handle + cartItemID} value={value}>
       {children}
