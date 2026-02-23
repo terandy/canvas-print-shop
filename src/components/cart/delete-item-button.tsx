@@ -3,13 +3,11 @@
 import { removeItem } from "@/lib/utils/cart-actions";
 import { useActionState } from "react";
 import { deleteImage } from "@/lib/s3/actions/image";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Trash } from "lucide-react";
 import Button from "../buttons/button";
 import { CartItem, TCartContext } from "@/contexts";
 import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
 
 interface Props {
   item: CartItem;
@@ -18,9 +16,9 @@ interface Props {
 
 const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
   const t = useTranslations("Cart.DeleteItem");
-  const locale = useLocale();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
   const [message, formAction] = useActionState(removeItem, null);
   const cartItemId = item.id;
 
@@ -28,11 +26,10 @@ const DeleteItemButton: React.FC<Props> = ({ item, optimisticUpdate }) => {
     <form
       action={async () => {
         optimisticUpdate(cartItemId, "delete");
-        await formAction(cartItemId);
-        const imgUrl = item.imgURL;
-        if (imgUrl) await deleteImage(imgUrl);
         if (searchParams.get("cartItemID") === cartItemId)
-          router.replace(`/${locale}/`);
+          router.replace(pathname);
+        await formAction(cartItemId);
+        if (item.imgURL) await deleteImage(item.imgURL);
       }}
     >
       <Button

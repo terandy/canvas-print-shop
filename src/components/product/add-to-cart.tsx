@@ -10,6 +10,7 @@ import { Plus, X } from "lucide-react";
 import Button from "../buttons/button";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import { getAttributes } from "@/contexts/cart-context/utils";
+import { getInitialFormState } from "@/contexts/product-context/utils";
 import { useTranslations } from "next-intl";
 
 /**
@@ -22,17 +23,18 @@ const AddToCart: React.FC = () => {
     product: { handle },
     state,
     variant,
-    deleteImgURL,
+    updateState,
+    setImgFileUrl,
   } = useProduct();
   const router = useRouter();
 
   const onCancel: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     if (state.imgURL !== DEFAULT_CANVAS_IMAGE) {
-      deleteImgURL();
       deleteImage(state.imgURL);
     }
-    router.replace("/");
+    updateState(getInitialFormState(handle));
+    setImgFileUrl(null);
   };
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
