@@ -31,6 +31,10 @@ interface ImagePreviewerProps {
    * Selected depth for the canvas in inches
    */
   depth: string;
+  /**
+   * Selected frame option (e.g. "black" or "none")
+   */
+  frame?: string;
 }
 
 interface CanvasProps {
@@ -338,6 +342,9 @@ const TOP_NAVBAR_HEIGHT = 76;
 const MEASUREMENT_GAP = 40 + 8;
 const ADDITIONAL_PADDING = 24;
 
+const FRAME_GAP_IN = 0.15;
+const FRAME_BORDER_IN = 0.75 - FRAME_GAP_IN;
+
 const CanvasPreviewer: React.FC<
   ImagePreviewerProps & ComponentPropsWithoutRef<"div">
 > = ({
@@ -346,11 +353,13 @@ const CanvasPreviewer: React.FC<
   direction,
   borderStyle = "wrapped",
   depth = "regular",
+  frame = "none",
   ...props
 }) => {
   const componentRef = useRef<HTMLDivElement>(null);
   const resize = useResize(componentRef);
   const [canvasProps, setCanvasProps] = useState<CanvasProps>();
+  const [frameState, setFrameState] = useState({ framePx: 0, frameGapPx: 0 });
   const sizeArray = size.split("x").map(Number);
   const [x, y] =
     direction === "landscape"
@@ -375,31 +384,46 @@ const CanvasPreviewer: React.FC<
     let width: number;
     let height: number;
     let thicknessPx: number;
-    const thicknessIn = depth === "regular" ? 0.75 : 1.75;
+    const showFrame = frame === "black";
+    const canvasThicknessIn = depth === "regular" ? 0.75 : 1.75;
+    // When framed, edges are hidden — thickness doesn't affect visible layout
+    const visibleThicknessIn = showFrame ? 0 : canvasThicknessIn;
+    const frameIn = showFrame ? FRAME_BORDER_IN : 0;
+    const frameGapIn = showFrame ? FRAME_GAP_IN : 0;
+    const totalEdgeIn = visibleThicknessIn + frameIn + frameGapIn;
 
     if (direction === "landscape") {
-      // For landscape, fit to container width considering thickness
-      const totalWidthInches = x + 2 * thicknessIn;
+      // For landscape, fit to container width considering edges
+      const totalWidthInches = x + 2 * totalEdgeIn;
       pixelsPerInch = containerWidth / totalWidthInches;
 
       width = x * pixelsPerInch;
       height = y * pixelsPerInch;
-      thicknessPx = thicknessIn * pixelsPerInch;
+      thicknessPx = canvasThicknessIn * pixelsPerInch;
     } else {
-      // For portrait, fit to container height considering thickness
-      const totalHeightInches = y + 2 * thicknessIn;
+      // For portrait, fit to container height considering edges
+      const totalHeightInches = y + 2 * totalEdgeIn;
       pixelsPerInch = containerHeight / totalHeightInches;
 
       width = x * pixelsPerInch;
       height = y * pixelsPerInch;
-      thicknessPx = thicknessIn * pixelsPerInch;
+      thicknessPx = canvasThicknessIn * pixelsPerInch;
     }
+
+    const framePx = frameIn * pixelsPerInch;
+    const frameGapPx = frameGapIn * pixelsPerInch;
 
     // Check if the calculated dimensions fit within the container
     const totalHeight =
-      height + thicknessPx * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
+      height +
+      (thicknessPx + framePx + frameGapPx) * 2 +
+      MEASUREMENT_GAP +
+      2 * ADDITIONAL_PADDING;
     const totalWidth =
-      width + thicknessPx * 2 + MEASUREMENT_GAP + 2 * ADDITIONAL_PADDING;
+      width +
+      (thicknessPx + framePx + frameGapPx) * 2 +
+      MEASUREMENT_GAP +
+      2 * ADDITIONAL_PADDING;
 
     // If it doesn't fit, scale down proportionally
     if (totalHeight > containerHeight || totalWidth > containerWidth) {
@@ -419,6 +443,7 @@ const CanvasPreviewer: React.FC<
       borderStyle,
       src,
     });
+    setFrameState({ framePx, frameGapPx });
   }, [
     x,
     y,
@@ -427,6 +452,7 @@ const CanvasPreviewer: React.FC<
     borderStyle,
     src,
     direction,
+    frame,
     resize.height,
     resize.width,
   ]);
@@ -447,18 +473,49 @@ const CanvasPreviewer: React.FC<
         });
       }
     }
-  }, [src, size, direction, borderStyle, depth]);
+  }, [src, size, direction, borderStyle, depth, frame]);
 
   if (!canvasProps) return <Loading message={"Loading canvas preview"} />;
+
+  const showFrame = frame === "black";
 
   return (
     <div {...props} ref={componentRef}>
       <div className="grid grid-cols-[auto,1fr] gap-1 w-min mx-auto">
         <Badge>{x}</Badge>
         <div />
-        <CanvasContainer {...canvasProps}>
-          <Canvas {...canvasProps} />
-        </CanvasContainer>
+        {showFrame ? (
+          <div
+            className="border-black box-border bg-gray-900"
+            style={{
+              borderWidth: `${frameState.framePx}px`,
+              padding: `${frameState.frameGapPx}px`,
+            }}
+          >
+            <div
+              className="overflow-hidden"
+              style={{
+                width: `${canvasProps.width}px`,
+                height: `${canvasProps.height}px`,
+              }}
+            >
+              <div
+                style={{
+                  marginTop: `-${canvasProps.thickness}px`,
+                  marginLeft: `-${canvasProps.thickness}px`,
+                }}
+              >
+                <CanvasContainer {...canvasProps}>
+                  <Canvas {...canvasProps} />
+                </CanvasContainer>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <CanvasContainer {...canvasProps}>
+            <Canvas {...canvasProps} />
+          </CanvasContainer>
+        )}
         <Badge className="w-min flex align-middle">{y}</Badge>
       </div>
     </div>

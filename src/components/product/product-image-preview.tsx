@@ -26,6 +26,7 @@ const ProductImagePreview: React.FC<Props> = ({ className }) => {
           direction={state.direction}
           borderStyle={state.borderStyle}
           depth={state.depth}
+          frame={state.frame}
         />
       )}
       <ImageUploader className="max-w-full" />
