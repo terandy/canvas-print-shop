@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   Package,
   ShoppingCart,
+  ShoppingBasket,
   Users,
   LogOut,
   Menu,
@@ -21,6 +22,7 @@ const NAVIGATION = [
   { key: "orders", href: "/admin/orders", icon: ShoppingCart },
   { key: "products", href: "/admin/products", icon: Package },
   { key: "images", href: "/admin/images", icon: ImageIcon },
+  { key: "carts", href: "/admin/carts", icon: ShoppingBasket },
   { key: "users", href: "/admin/users", icon: Users, superAdminOnly: true },
 ] as const;
 

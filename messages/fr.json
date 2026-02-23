@@ -664,6 +664,7 @@
       "orders": "Commandes",
       "products": "Produits",
       "images": "Images",
+      "carts": "Paniers",
       "users": "Utilisateurs",
       "logout": "Déconnexion"
     },
@@ -899,6 +900,19 @@
       "deleteAllOrphaned": "Supprimer les orphelines ({count})",
       "deleting": "Suppression...",
       "deleteFailed": "Échec de la suppression de l'image"
+    },
+    "carts": {
+      "title": "Paniers actifs",
+      "cartId": "ID du panier",
+      "customer": "Client",
+      "anonymous": "Anonyme",
+      "items": "Articles",
+      "itemSingular": "article",
+      "itemPlural": "articles",
+      "total": "Total",
+      "created": "Créé",
+      "updated": "Dernière mise à jour",
+      "noCarts": "Aucun panier actif"
     },
     "status": {
       "pending": "En attente",

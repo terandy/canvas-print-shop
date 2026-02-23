@@ -659,6 +659,7 @@
       "orders": "Orders",
       "products": "Products",
       "images": "Images",
+      "carts": "Carts",
       "users": "Users",
       "logout": "Logout"
     },
@@ -894,6 +895,19 @@
       "deleteAllOrphaned": "Delete all orphaned ({count})",
       "deleting": "Deleting...",
       "deleteFailed": "Failed to delete image"
+    },
+    "carts": {
+      "title": "Active Carts",
+      "cartId": "Cart ID",
+      "customer": "Customer",
+      "anonymous": "Anonymous",
+      "items": "Items",
+      "itemSingular": "item",
+      "itemPlural": "items",
+      "total": "Total",
+      "created": "Created",
+      "updated": "Last Updated",
+      "noCarts": "No active carts"
     },
     "status": {
       "pending": "Pending",
