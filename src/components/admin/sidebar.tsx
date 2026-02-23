@@ -11,6 +11,7 @@ import {
   LogOut,
   Menu,
   X,
+  ImageIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { logoutAction } from "@/lib/auth/actions";
@@ -19,6 +20,7 @@ const NAVIGATION = [
   { key: "dashboard", href: "/admin", icon: LayoutDashboard },
   { key: "orders", href: "/admin/orders", icon: ShoppingCart },
   { key: "products", href: "/admin/products", icon: Package },
+  { key: "images", href: "/admin/images", icon: ImageIcon },
   { key: "users", href: "/admin/users", icon: Users, superAdminOnly: true },
 ] as const;
 
