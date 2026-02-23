@@ -63,11 +63,18 @@ export async function addItem(_prevState: any, payload: AddToCartPayload) {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
 
-  // Validate cart ID and create new cart if invalid
+  // Validate cart ID and create new cart if invalid or missing from DB
   if (!cartId || !isValidUUID(cartId)) {
     const newCart = await cartDb.createCart();
     cookieStore.set("cartId", newCart.id);
     cartId = newCart.id;
+  } else {
+    const existingCart = await cartDb.getCart(cartId);
+    if (!existingCart) {
+      const newCart = await cartDb.createCart();
+      cookieStore.set("cartId", newCart.id);
+      cartId = newCart.id;
+    }
   }
 
   if (!payload.selectedVariantId) {

@@ -663,6 +663,8 @@
       "dashboard": "Tableau de bord",
       "orders": "Commandes",
       "products": "Produits",
+      "images": "Images",
+      "carts": "Paniers",
       "users": "Utilisateurs",
       "logout": "Déconnexion"
     },
@@ -878,6 +880,39 @@
       "cannotDeleteSelf": "Vous ne pouvez pas supprimer votre propre compte",
       "deleteFailed": "Échec de la suppression de l'utilisateur admin",
       "roleHelp": "Les super admins peuvent gérer les autres utilisateurs admin"
+    },
+    "images": {
+      "title": "Images",
+      "allImages": "Toutes les images",
+      "filter": {
+        "order": "Commandes",
+        "cart": "Paniers",
+        "product": "Produits",
+        "orphaned": "Orphelines"
+      },
+      "orphaned": "Orpheline",
+      "cart": "Panier",
+      "product": "Produit",
+      "noImages": "Aucune image trouvée",
+      "delete": "Supprimer l'image",
+      "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette image orpheline ? Cette action est irréversible.",
+      "confirmDeleteAll": "Êtes-vous sûr de vouloir supprimer les {count} images orphelines ? Cette action est irréversible.",
+      "deleteAllOrphaned": "Supprimer les orphelines ({count})",
+      "deleting": "Suppression...",
+      "deleteFailed": "Échec de la suppression de l'image"
+    },
+    "carts": {
+      "title": "Paniers actifs",
+      "cartId": "ID du panier",
+      "customer": "Client",
+      "anonymous": "Anonyme",
+      "items": "Articles",
+      "itemSingular": "article",
+      "itemPlural": "articles",
+      "total": "Total",
+      "created": "Créé",
+      "updated": "Dernière mise à jour",
+      "noCarts": "Aucun panier actif"
     },
     "status": {
       "pending": "En attente",
