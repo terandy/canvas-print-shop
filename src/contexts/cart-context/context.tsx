@@ -20,7 +20,8 @@ import {
   generateUpdatedCartItemQuantity,
 } from "./utils";
 import { FormState } from "../product-context";
-import { createCartAndSetCookie } from "@/lib/utils/cart-actions";
+import { createCartAndSetCookie, removeItem } from "@/lib/utils/cart-actions";
+import { checkImageExists } from "@/lib/s3/actions/image";
 
 const CartContext = createContext<TCartContext | undefined>(undefined);
 
@@ -130,6 +131,22 @@ const CartProvider = ({
       createCartAndSetCookie();
     }
   }, [state.id]);
+
+  // Remove cart items whose S3 image no longer exists
+  useEffect(() => {
+    const items = Object.values(state.items);
+    items.forEach((item) => {
+      if (!item.imgURL) return;
+      checkImageExists(item.imgURL).then((exists) => {
+        if (!exists) {
+          startTransition(async () => {
+            updateCartItemQuantity(item.id, "delete");
+            await removeItem({}, item.id);
+          });
+        }
+      });
+    });
+  }, []);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

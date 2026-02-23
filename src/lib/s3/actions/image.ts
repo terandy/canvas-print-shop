@@ -30,6 +30,21 @@ export async function deleteImage(url: string): Promise<boolean> {
   }
 }
 
+/**
+ * Check if an image exists in S3 via a HEAD request.
+ *
+ * @returns true if the image exists (2xx), false if not (403/404).
+ *          Returns true on network errors to avoid removing items on transient failures.
+ */
+export async function checkImageExists(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, { method: "HEAD" });
+    return res.ok;
+  } catch {
+    return true;
+  }
+}
+
 export async function uploadImage(fileType: string) {
   try {
     // Parse fileType to handle different input formats
