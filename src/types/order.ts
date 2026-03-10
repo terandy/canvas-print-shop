@@ -97,3 +97,21 @@ export interface CreateOrderFromCheckout {
   shippingCents: number;
   totalCents: number;
 }
+
+// For creating orders from custom checkout (no cart)
+export interface CreateOrderFromCustomCheckout {
+  stripeCheckoutSessionId: string;
+  stripePaymentIntentId: string;
+  customerEmail: string;
+  customerName?: string;
+  customerPhone?: string;
+  shippingAddress?: Address;
+  billingAddress?: Address;
+  subtotalCents: number;
+  taxCents: number;
+  shippingCents: number;
+  totalCents: number;
+  description: string;
+  customSize?: string;
+  imageUrl?: string;
+}

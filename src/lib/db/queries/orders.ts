@@ -7,6 +7,7 @@ import type {
   OrderStatus,
   PaymentStatus,
   CreateOrderFromCheckout,
+  CreateOrderFromCustomCheckout,
 } from "@/types/order";
 import type { Money, Address } from "@/types/common";
 import { getCartItemsForOrder, markCartAsConverted } from "./carts";
@@ -91,6 +92,71 @@ export async function createOrderFromCheckout(
 
   // Mark cart as converted
   await markCartAsConverted(data.cartId);
+
+  return getOrder(order.id) as Promise<Order>;
+}
+
+// Create order from custom checkout session (no cart)
+export async function createOrderFromCustomCheckout(
+  data: CreateOrderFromCustomCheckout
+): Promise<Order> {
+  // Find or create customer
+  let customerId: string | null = null;
+  const [existingCustomer] = await db
+    .select()
+    .from(customers)
+    .where(eq(customers.email, data.customerEmail));
+
+  if (existingCustomer) {
+    customerId = existingCustomer.id;
+  } else {
+    const [newCustomer] = await db
+      .insert(customers)
+      .values({
+        email: data.customerEmail,
+        firstName: data.customerName?.split(" ")[0],
+        lastName: data.customerName?.split(" ").slice(1).join(" "),
+      })
+      .returning({ id: customers.id });
+    customerId = newCustomer.id;
+  }
+
+  // Create order
+  const [order] = await db
+    .insert(orders)
+    .values({
+      customerId,
+      stripeCheckoutSessionId: data.stripeCheckoutSessionId,
+      stripePaymentIntentId: data.stripePaymentIntentId,
+      status: "paid",
+      paymentStatus: "paid",
+      subtotalCents: data.subtotalCents,
+      taxCents: data.taxCents,
+      shippingCents: data.shippingCents,
+      totalCents: data.totalCents,
+      shippingAddress: data.shippingAddress,
+      billingAddress: data.billingAddress,
+      customerEmail: data.customerEmail,
+      customerName: data.customerName,
+      customerPhone: data.customerPhone,
+      notes: `Custom order: ${data.description}${data.customSize ? ` (${data.customSize})` : ""}`,
+      paidAt: new Date(),
+    })
+    .returning();
+
+  // Create a single order item for the custom order
+  await db.insert(orderItems).values({
+    orderId: order.id,
+    productHandle: "custom-order",
+    productTitle: data.description,
+    variantTitle: data.customSize ? `Custom ${data.customSize}` : "Custom",
+    quantity: 1,
+    priceCents: data.subtotalCents,
+    selectedOptions: data.customSize
+      ? { dimension: data.customSize }
+      : {},
+    attributes: data.imageUrl ? { imageUrl: data.imageUrl } : {},
+  });
 
   return getOrder(order.id) as Promise<Order>;
 }

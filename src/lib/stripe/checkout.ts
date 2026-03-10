@@ -118,6 +118,76 @@ export async function createCheckoutSession(cartId: string, locale: string) {
   return session;
 }
 
+// Create a checkout session for a custom order (no cart required)
+export async function createCustomCheckoutSession(params: {
+  description: string;
+  priceCents: number;
+  shippingCents: number;
+  customerEmail: string;
+  locale: string;
+  customSize?: string;
+  imageUrl?: string;
+}) {
+  const { description, priceCents, shippingCents, customerEmail, locale, customSize, imageUrl } = params;
+
+  const productDescription = customSize
+    ? `Custom size: ${customSize}`
+    : "Custom order";
+
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: [
+      {
+        price_data: {
+          currency: "cad",
+          product_data: {
+            name: description,
+            description: productDescription,
+            ...(imageUrl ? { images: [imageUrl] } : {}),
+          },
+          unit_amount: priceCents,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+    success_url: `${BASE_URL}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${BASE_URL}/${locale}/checkout/cancelled`,
+    shipping_address_collection: {
+      allowed_countries: ["CA", "US"],
+    },
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: {
+            amount: shippingCents,
+            currency: "cad",
+          },
+          display_name: "Shipping",
+          delivery_estimate: {
+            minimum: { unit: "business_day", value: 3 },
+            maximum: { unit: "business_day", value: 7 },
+          },
+        },
+      },
+    ],
+    billing_address_collection: "required",
+    phone_number_collection: { enabled: true },
+    customer_email: customerEmail,
+    metadata: {
+      isCustomOrder: "true",
+      description,
+      customSize: customSize || "",
+      imageUrl: imageUrl || "",
+      locale,
+    },
+    locale: locale === "fr" ? "fr-CA" : "en",
+  });
+
+  return session;
+}
+
 // Retrieve checkout session (for success page)
 export async function getCheckoutSession(sessionId: string) {
   const session = await stripe.checkout.sessions.retrieve(sessionId, {

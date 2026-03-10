@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { createOrderFromCheckout } from "@/lib/db/queries/orders";
+import {
+  createOrderFromCheckout,
+  createOrderFromCustomCheckout,
+} from "@/lib/db/queries/orders";
 import {
   sendOrderConfirmation,
   sendAdminOrderNotification,
@@ -74,10 +77,10 @@ export async function POST(request: NextRequest) {
 }
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
-  // Get cart ID from metadata
+  const isCustomOrder = session.metadata?.isCustomOrder === "true";
   const cartId = session.metadata?.cartId;
 
-  if (!cartId) {
+  if (!isCustomOrder && !cartId) {
     console.error("No cartId in session metadata");
     return;
   }
@@ -125,25 +128,49 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const taxCents = session.total_details?.amount_tax || 0;
   const shippingCents = session.total_details?.amount_shipping || 0;
 
+  const stripePaymentIntentId =
+    typeof session.payment_intent === "string"
+      ? session.payment_intent
+      : session.payment_intent?.id || "";
+
   try {
-    // Create order in database
-    const order = await createOrderFromCheckout({
-      stripeCheckoutSessionId: session.id,
-      stripePaymentIntentId:
-        typeof session.payment_intent === "string"
-          ? session.payment_intent
-          : session.payment_intent?.id || "",
-      cartId,
-      customerEmail,
-      customerName: customerName || undefined,
-      customerPhone: customerPhone || undefined,
-      shippingAddress,
-      billingAddress,
-      subtotalCents,
-      taxCents,
-      shippingCents,
-      totalCents,
-    });
+    let order;
+
+    if (isCustomOrder) {
+      // Custom order — no cart, create order directly from session metadata
+      order = await createOrderFromCustomCheckout({
+        stripeCheckoutSessionId: session.id,
+        stripePaymentIntentId,
+        customerEmail,
+        customerName: customerName || undefined,
+        customerPhone: customerPhone || undefined,
+        shippingAddress,
+        billingAddress,
+        subtotalCents,
+        taxCents,
+        shippingCents,
+        totalCents,
+        description: session.metadata?.description || "Custom Order",
+        customSize: session.metadata?.customSize || undefined,
+        imageUrl: session.metadata?.imageUrl || undefined,
+      });
+    } else {
+      // Standard cart-based order
+      order = await createOrderFromCheckout({
+        stripeCheckoutSessionId: session.id,
+        stripePaymentIntentId,
+        cartId: cartId!,
+        customerEmail,
+        customerName: customerName || undefined,
+        customerPhone: customerPhone || undefined,
+        shippingAddress,
+        billingAddress,
+        subtotalCents,
+        taxCents,
+        shippingCents,
+        totalCents,
+      });
+    }
 
     console.log(`Order ${order.orderNumber} created successfully`);
 
@@ -155,7 +182,6 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       await sendOrderConfirmation(order, locale);
     } catch (emailError) {
       console.error("Failed to send confirmation email:", emailError);
-      // Don't throw - order was created successfully
     }
 
     try {
