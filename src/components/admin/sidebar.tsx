@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   ImageIcon,
+  FileText,
 } from "lucide-react";
 import { useState } from "react";
 import { logoutAction } from "@/lib/auth/actions";
@@ -22,6 +23,7 @@ const NAVIGATION = [
   { key: "orders", href: "/admin/orders", icon: ShoppingCart },
   { key: "products", href: "/admin/products", icon: Package },
   { key: "images", href: "/admin/images", icon: ImageIcon },
+  { key: "customOrder", href: "/admin/custom-order", icon: FileText },
   { key: "carts", href: "/admin/carts", icon: ShoppingBasket },
   { key: "users", href: "/admin/users", icon: Users, superAdminOnly: true },
 ] as const;
