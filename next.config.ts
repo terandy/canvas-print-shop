@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   outputFileTracingRoot: process.cwd(),
   images: {
+    qualities: [25, 50, 75, 80, 100],
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
