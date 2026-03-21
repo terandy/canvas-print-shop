@@ -3,6 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  outputFileTracingRoot: process.cwd(),
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

@@ -7,11 +7,22 @@ import {
 } from "@/components";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Canvas Print Shop",
-  description:
-    "Learn about how Canvas Print Shop protects and handles your personal information. Our privacy policy outlines our data collection, use, and protection practices.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "PrivacyPolicy.metadata",
+  });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default async function PrivacyPolicy() {
   const t = await getTranslations("PrivacyPolicy");

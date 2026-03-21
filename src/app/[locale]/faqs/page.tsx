@@ -7,6 +7,7 @@ import {
   ContactSection,
 } from "@/components";
 import { getTranslations } from "next-intl/server";
+import Script from "next/script";
 
 // FAQ Item Component (reused from product-dropdowns)
 const FAQItem = ({
@@ -49,7 +50,37 @@ export default async function FAQ() {
   // Get translations using the existing Product namespace
   const t = await getTranslations("Product");
 
+  // FAQ items for JSON-LD structured data
+  const faqItems = [
+    { q: t("faq.questions.imageQuality.question"), a: t("faq.questions.imageQuality.answer") },
+    { q: t("faq.questions.depthDifference.question"), a: t("faq.questions.depthDifference.answer") },
+    { q: t("faq.questions.durability.question"), a: t("faq.questions.durability.answer") },
+    { q: t("faq.questions.multipleCanvases.question"), a: t("faq.questions.multipleCanvases.answer") },
+    { q: t("faq.questions.deliveryTime.question"), a: t("faq.questions.deliveryTime.answer") },
+    { q: t("faq.questions.localPickupAvailable.question"), a: t("faq.questions.localPickupAvailable.answer") },
+    { q: t("faq.questions.satisfaction.question"), a: t("faq.questions.satisfaction.answer") },
+  ];
+
   return (
+    <>
+      <Script
+        id="faq-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqItems.map((item) => ({
+              "@type": "Question",
+              name: item.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.a,
+              },
+            })),
+          }),
+        }}
+      />
     <main className="flex-1">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 max-w-4xl">
         <PageHeader>{t("faq.title")}</PageHeader>
@@ -208,5 +239,6 @@ export default async function FAQ() {
         </div>
       </div>
     </main>
+    </>
   );
 }

@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "Impressions sur toile personnalisées et encadrement | Canvas Print Shop",
-    "description": "Transformez vos photos en impressions sur toile de haute qualité avec notre service de téléchargement facile et encadrement optionnel. Savoir-faire expert, fabriqué au Canada. Commandez maintenant pour une livraison rapide !",
+    "title": "Impression sur Toile Canada | Toile Murale Personnalisée | Canvas Print Shop",
+    "description": "Commandez des impressions sur toile personnalisées au Canada. Impression photo sur toile de haute qualité avec technologie UVgel, fabriquée au Québec. Toile murale, toile décorative et livraison gratuite.",
     "og": {
-      "title": "Impressions sur toile personnalisées et encadrement | Canvas Print Shop",
-      "description": "Transformez vos photos en impressions sur toile de haute qualité avec notre service de téléchargement facile et encadrement optionnel. Savoir-faire expert, fabriqué au Canada."
+      "title": "Impression sur Toile Canada | Toile Murale Personnalisée | Canvas Print Shop",
+      "description": "Transformez vos photos en impressions sur toile haut de gamme. Savoir-faire expert au Canada avec technologie UVgel. Art mural sur toile, toile grand format et plus."
     }
   },
   "FAQ": {
@@ -287,6 +287,10 @@
     "questions": {
       "title": "Des questions ?",
       "content": "Si vous avez des questions sur notre politique de confidentialité, veuillez nous contacter :"
+    },
+    "metadata": {
+      "title": "Politique de confidentialité | Canvas Print Shop",
+      "description": "Découvrez comment Canvas Print Shop protège et gère vos informations personnelles. Notre politique de confidentialité décrit nos pratiques de collecte, d'utilisation et de protection des données."
     }
   },
   "Contact": {
@@ -988,6 +992,507 @@
       "buttonText": "Réinitialiser le mot de passe",
       "expiry": "Ce lien expirera dans 1 heure.",
       "ignore": "Si vous n'avez pas demandé de réinitialisation, vous pouvez ignorer ce courriel."
+    }
+  },
+  "QualityGuarantee": {
+    "metadata": {
+      "title": "Notre promesse de qualité | Canvas Print Shop",
+      "description": "Découvrez pourquoi Canvas Print Shop offre des impressions sur toile supérieures. Toile coton haut de gamme, technologie UVgel et étirement expert dans notre atelier de Québec."
+    }
+  },
+  "LandingPages": {
+    "common": {
+      "orderNow": "Commander maintenant",
+      "trustBadges": {
+        "secure": "Paiement sécurisé",
+        "shipping": "Livraison rapide partout au Canada",
+        "made": "Fabriqué au Québec, Canada",
+        "satisfaction": "Garantie satisfaction 100 %",
+        "guarantee": "Garantie d'impression 30 ans"
+      }
+    },
+    "toronto": {
+      "meta": {
+        "title": "Impression sur Toile Toronto | Photo sur Toile Personnalisée",
+        "description": "Commandez des impressions sur toile à Toronto. Impression photo sur toile haut de gamme avec livraison rapide à Toronto. Fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile Toronto",
+      "description": "Impressions sur toile haut de gamme livrées à Toronto et dans la région du Grand Toronto. Fabriquées au Canada avec des matériaux de qualité muséale.",
+      "subheading": "Livraison rapide à Toronto depuis notre atelier canadien",
+      "benefits": {
+        "one": {
+          "title": "Livraison rapide à Toronto",
+          "description": "Expédition rapide vers Toronto et les environs. Vos toiles personnalisées arrivent prêtes à accrocher."
+        },
+        "two": {
+          "title": "Qualité canadienne premium",
+          "description": "Fabriquées dans notre atelier québécois avec une toile coton haut de gamme et une technologie d'encre UVgel."
+        },
+        "three": {
+          "title": "Parfait pour les foyers torontois",
+          "description": "Transformez vos photos en art mural époustouflant. Idéal pour les condos, maisons et bureaux du Grand Toronto."
+        }
+      }
+    },
+    "calgary": {
+      "meta": {
+        "title": "Impression sur Toile Calgary | Photo sur Toile Personnalisée",
+        "description": "Commandez des impressions sur toile à Calgary. Impression photo haut de gamme avec livraison rapide en Alberta. Fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile Calgary",
+      "description": "Impressions sur toile haut de gamme livrées à Calgary et partout en Alberta. Savoir-faire expert avec garantie de qualité 30 ans.",
+      "subheading": "Livraison partout au Canada depuis notre atelier au Québec",
+      "benefits": {
+        "one": {
+          "title": "Livraison à Calgary",
+          "description": "Livraison rapide et sécurisée à Calgary et partout en Alberta. Chaque toile arrive prête à accrocher."
+        },
+        "two": {
+          "title": "Garantie qualité 30 ans",
+          "description": "Notre technologie d'encre UVgel assure que vos impressions ne terniront pas pendant plus de 30 ans."
+        },
+        "three": {
+          "title": "Matériaux premium",
+          "description": "Toile coton haut de gamme avec cadres en bois massif, étirée à la main pour un résultat galerie."
+        }
+      }
+    },
+    "vancouver": {
+      "meta": {
+        "title": "Impression sur Toile Vancouver | Photo sur Toile Personnalisée",
+        "description": "Commandez des impressions sur toile à Vancouver. Impression photo haut de gamme avec livraison rapide en C.-B. Fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile Vancouver",
+      "description": "Impressions sur toile haut de gamme livrées à Vancouver et en Colombie-Britannique. Transformez vos photos en art mural magnifique.",
+      "subheading": "Livraison rapide partout au Canada depuis notre atelier",
+      "benefits": {
+        "one": {
+          "title": "Livraison à Vancouver",
+          "description": "Livraison fiable à Vancouver et partout en C.-B. Votre toile arrive soigneusement emballée et prête à accrocher."
+        },
+        "two": {
+          "title": "Qualité photo exceptionnelle",
+          "description": "Impression Canon avancée avec technologie UVgel pour une vivacité et une netteté des couleurs exceptionnelles."
+        },
+        "three": {
+          "title": "Fabriqué au Canada",
+          "description": "Chaque toile est étirée à la main sur des cadres en bois massif dans notre atelier canadien."
+        }
+      }
+    },
+    "edmonton": {
+      "meta": {
+        "title": "Impression sur Toile Edmonton | Photo sur Toile Personnalisée",
+        "description": "Commandez des impressions sur toile à Edmonton. Impression photo haut de gamme avec livraison en Alberta. Fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile Edmonton",
+      "description": "Impressions sur toile haut de gamme livrées à Edmonton et partout en Alberta. Savoir-faire canadien avec des matériaux de qualité muséale.",
+      "subheading": "Livraison partout au Canada depuis notre atelier à Edmonton",
+      "benefits": {
+        "one": {
+          "title": "Livraison à Edmonton",
+          "description": "Livraison rapide à Edmonton et dans les communautés albertaines environnantes. Emballage sécurisé."
+        },
+        "two": {
+          "title": "Matériaux premium",
+          "description": "Toile coton 35 % avec opacité de 75 % — bien supérieure aux alternatives polyester économiques."
+        },
+        "three": {
+          "title": "Processus facile",
+          "description": "Téléchargez votre photo, choisissez votre taille, prévisualisez et commandez. C'est aussi simple que ça."
+        }
+      }
+    },
+    "montreal": {
+      "meta": {
+        "title": "Impression sur Toile Montréal | Photo sur Toile Personnalisée",
+        "description": "Commandez des impressions sur toile à Montréal. Impression photo haut de gamme avec livraison rapide locale. Fabriqué au Québec."
+      },
+      "heading": "Impression sur Toile Montréal",
+      "description": "Impressions sur toile haut de gamme avec livraison rapide à Montréal. Fabriquées ici même au Québec avec un savoir-faire expert.",
+      "subheading": "Fièrement fabriqué au Québec — livraison rapide à Montréal",
+      "benefits": {
+        "one": {
+          "title": "Livraison rapide à Montréal",
+          "description": "Expédition rapide depuis notre atelier québécois vers Montréal. Cueillette locale aussi disponible."
+        },
+        "two": {
+          "title": "Fabriqué au Québec",
+          "description": "Chaque toile est fabriquée à la main dans notre atelier de Québec, soutenant l'artisanat local canadien."
+        },
+        "three": {
+          "title": "Service bilingue",
+          "description": "Service complet en français et en anglais. Notre équipe québécoise est ravie de vous aider dans les deux langues."
+        }
+      }
+    },
+    "ottawa": {
+      "meta": {
+        "title": "Impression sur Toile Ottawa | Photo sur Toile Personnalisée",
+        "description": "Commandez des impressions sur toile à Ottawa. Impression photo haut de gamme avec livraison rapide depuis le Québec. Fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile Ottawa",
+      "description": "Impressions sur toile haut de gamme livrées rapidement à Ottawa et dans la région de la capitale nationale. Qualité canadienne de confiance.",
+      "subheading": "Livraison rapide depuis notre atelier québécois vers Ottawa",
+      "benefits": {
+        "one": {
+          "title": "Livraison rapide à Ottawa",
+          "description": "Livraison rapide du Québec voisin vers Ottawa et Gatineau. Votre toile arrive prête à accrocher."
+        },
+        "two": {
+          "title": "Qualité fabriquée au Canada",
+          "description": "Fabriquée dans notre atelier de Québec avec des matériaux premium et une technologie d'impression avancée."
+        },
+        "three": {
+          "title": "Garantie satisfaction 100 %",
+          "description": "Pas satisfait de votre toile ? Nous ferons le nécessaire. Votre satisfaction est notre priorité."
+        }
+      }
+    },
+    "quebec-city": {
+      "meta": {
+        "title": "Impression sur Toile Québec | Toile Photo Personnalisée Québec",
+        "description": "Commandez des impressions sur toile à Québec. Cueillette locale disponible. Impression photo haut de gamme fabriquée dans notre atelier de Québec."
+      },
+      "heading": "Impression sur Toile Québec",
+      "description": "Impressions sur toile haut de gamme fabriquées ici même à Québec. Visitez notre atelier pour la cueillette locale ou profitez de la livraison rapide locale.",
+      "subheading": "Fabriqué localement à Québec — cueillette disponible",
+      "benefits": {
+        "one": {
+          "title": "Cueillette locale disponible",
+          "description": "Visitez notre atelier de Québec pour récupérer vos impressions en personne. Pas d'attente de livraison !"
+        },
+        "two": {
+          "title": "Fabriqué ici même",
+          "description": "Votre toile est fabriquée à la main dans notre atelier de Québec — constatez la qualité par vous-même."
+        },
+        "three": {
+          "title": "Soutenez le local",
+          "description": "En commandant chez nous, vous soutenez une entreprise locale de Québec et des artisans qualifiés."
+        }
+      }
+    },
+    "16x20": {
+      "meta": {
+        "title": "Impression sur Toile 16x20 | Toile Photo 16x20 Personnalisée",
+        "description": "Commandez des impressions sur toile 16x20 en ligne. Taille moyenne parfaite pour photos et art mural. Qualité premium, fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile 16x20",
+      "description": "L'impression sur toile 16x20 est un choix populaire pour les photos, portraits et art mural. Une taille polyvalente qui s'intègre parfaitement à toute pièce.",
+      "subheading": "Un format populaire pour les portraits, photos de famille et chambres",
+      "benefits": {
+        "one": {
+          "title": "Taille polyvalente",
+          "description": "Le format 16x20 pouces est idéal pour les portraits, photos de famille, photos d'animaux et toute image à afficher."
+        },
+        "two": {
+          "title": "Qualité premium",
+          "description": "Imprimé sur toile coton haut de gamme avec encre UVgel résistante à la décoloration. Garanti 30 ans."
+        },
+        "three": {
+          "title": "Prêt à accrocher",
+          "description": "Étiré à la main sur cadres en bois massif avec quincaillerie incluse. Arrive prêt à afficher."
+        }
+      }
+    },
+    "24x36": {
+      "meta": {
+        "title": "Impression sur Toile 24x36 | Toile Grand Format Personnalisée",
+        "description": "Commandez des impressions sur toile 24x36 en ligne. Toile grand format parfaite pour salons et murs vedettes. Qualité premium, fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile 24x36",
+      "description": "Faites une déclaration avec une toile 24x36. Ce grand format est parfait pour les salons, bureaux et murs vedettes.",
+      "subheading": "Un grand format idéal pour les salons et murs vedettes",
+      "benefits": {
+        "one": {
+          "title": "Pièce maîtresse",
+          "description": "À 24x36 pouces, cette toile attire l'attention. Parfaite comme point focal dans votre salon ou bureau."
+        },
+        "two": {
+          "title": "Netteté à toute taille",
+          "description": "Notre impression Canon avancée avec technologie UVgel offre des détails époustouflants même en grand format."
+        },
+        "three": {
+          "title": "Cadre en bois massif",
+          "description": "Étirée à la main sur des barres en bois massif pour une tension parfaite et une présentation galerie."
+        }
+      }
+    },
+    "36x48": {
+      "meta": {
+        "title": "Impression sur Toile 36x48 | Toile Extra Grand Format",
+        "description": "Commandez des impressions sur toile 36x48 en ligne. Toile extra grand format pour un impact maximum. Qualité muséale, fabriqué au Canada."
+      },
+      "heading": "Impression sur Toile 36x48",
+      "description": "Voyez grand avec une toile 36x48. Notre format extra-large offre un impact visuel maximum pour vos photos les plus précieuses.",
+      "subheading": "Format extra-large pour un impact visuel maximum",
+      "benefits": {
+        "one": {
+          "title": "Impact maximum",
+          "description": "Une toile 36x48 fait une déclaration dramatique. Parfaite pour les grands murs, espaces ouverts et commerciaux."
+        },
+        "two": {
+          "title": "Impression qualité muséale",
+          "description": "Même à cette grande taille, notre technologie UVgel offre des détails nets et des couleurs vibrantes."
+        },
+        "three": {
+          "title": "Savoir-faire expert",
+          "description": "Les toiles extra-grandes nécessitent un étirement expert. Notre équipe assure une tension parfaite et des coins impeccables."
+        }
+      }
+    },
+    "wedding": {
+      "meta": {
+        "title": "Toile Photo Mariage | Impression Photo Mariage sur Toile",
+        "description": "Transformez vos photos de mariage en impressions sur toile. Préservez votre journée spéciale avec de l'art mural haut de gamme. Fabriqué au Canada."
+      },
+      "heading": "Toile Photo de Mariage",
+      "description": "Préservez vos moments de mariage les plus précieux sur toile haut de gamme. La façon parfaite de revivre votre journée spéciale, chaque jour.",
+      "subheading": "Un souvenir intemporel de votre journée spéciale",
+      "benefits": {
+        "one": {
+          "title": "Souvenir intemporel",
+          "description": "Une toile de votre photo de mariage est un rappel quotidien de votre amour. Elle ne se démode jamais."
+        },
+        "two": {
+          "title": "Résistant à la décoloration",
+          "description": "Notre encre UVgel est garantie contre la décoloration pendant 30+ ans — votre toile durera aussi longtemps que votre amour."
+        },
+        "three": {
+          "title": "Cadeau parfait",
+          "description": "Une toile photo de mariage est le cadeau d'anniversaire, de mariage ou de décoration parfait pour les jeunes mariés."
+        }
+      }
+    },
+    "family": {
+      "meta": {
+        "title": "Toile Photo Famille | Portrait de Famille sur Toile",
+        "description": "Transformez vos photos de famille en impressions sur toile. Portraits de famille personnalisés fabriqués au Canada. Parfait pour le salon."
+      },
+      "heading": "Toile Photo de Famille",
+      "description": "Célébrez votre famille avec des impressions sur toile personnalisées. Transformez vos photos de famille préférées en art mural chaleureux.",
+      "subheading": "Portraits de famille personnalisés faits pour durer toute une vie",
+      "benefits": {
+        "one": {
+          "title": "Célébrez la famille",
+          "description": "Rien de plus significatif qu'une photo de famille sur toile. Affichez fièrement vos proches."
+        },
+        "two": {
+          "title": "Idée cadeau",
+          "description": "Une toile photo familiale est le cadeau parfait pour Noël, la fête des Mères ou la fête des Pères."
+        },
+        "three": {
+          "title": "Plusieurs tailles",
+          "description": "Des petits formats aux grandes pièces de salon — choisissez la taille qui convient à votre espace."
+        }
+      }
+    },
+    "pet-portrait": {
+      "meta": {
+        "title": "Portrait d'Animal sur Toile | Photo d'Animal sur Toile",
+        "description": "Transformez les photos de votre animal en impressions sur toile. Portraits personnalisés pour chiens, chats et tous les animaux. Fabriqué au Canada."
+      },
+      "heading": "Portrait d'Animal sur Toile",
+      "description": "Honorez vos animaux de compagnie avec un portrait sur toile personnalisé. Chien, chat ou autre ami à fourrure — ils méritent une place sur votre mur.",
+      "subheading": "Parce que chaque animal mérite d'être une œuvre d'art",
+      "benefits": {
+        "one": {
+          "title": "Honorez votre animal",
+          "description": "Votre membre de famille à fourrure mérite une place d'honneur sur votre mur. Un portrait sur toile est le tribut parfait."
+        },
+        "two": {
+          "title": "Couleurs vibrantes",
+          "description": "Notre impression avancée capture chaque détail de la fourrure, des yeux et de la personnalité de votre animal."
+        },
+        "three": {
+          "title": "Souvenir commémoratif",
+          "description": "Un portrait sur toile est une belle façon de se souvenir d'un animal bien-aimé. Un tribut durable."
+        }
+      }
+    },
+    "bedroom": {
+      "meta": {
+        "title": "Toile Décorative Chambre | Art Mural Chambre sur Toile",
+        "description": "Impressions sur toile parfaites pour les chambres. Créez une atmosphère relaxante avec de l'art mural personnalisé. Fabriqué au Canada."
+      },
+      "heading": "Toile Décorative pour Chambre",
+      "description": "Créez un espace serein et personnel avec des impressions sur toile pour votre chambre. Photos romantiques, paysages apaisants — trouvez la pièce parfaite.",
+      "subheading": "Personnalisez votre espace le plus intime avec un art significatif",
+      "benefits": {
+        "one": {
+          "title": "Touche personnelle",
+          "description": "Votre chambre est votre sanctuaire. Les impressions sur toile ajoutent une touche personnelle et significative."
+        },
+        "two": {
+          "title": "Tailles parfaites",
+          "description": "Nous offrons des tailles de toile parfaites pour au-dessus du lit, les tables de chevet ou les arrangements muraux."
+        },
+        "three": {
+          "title": "Encres écologiques",
+          "description": "Nos encres UVgel sont inodores et écologiques — parfaites pour un espace de repos et de détente."
+        }
+      }
+    },
+    "living-room": {
+      "meta": {
+        "title": "Toile Décorative Salon | Art Mural Salon sur Toile",
+        "description": "Impressions sur toile pour salons. Toile grand format pour transformer votre espace de vie. Qualité premium, fabriqué au Canada."
+      },
+      "heading": "Toile Décorative pour Salon",
+      "description": "Transformez votre salon avec des impressions sur toile époustouflantes. Grands formats disponibles pour un impact dramatique au-dessus du canapé ou de la cheminée.",
+      "subheading": "Faites de votre salon la pièce maîtresse de votre maison",
+      "benefits": {
+        "one": {
+          "title": "Pièces maîtresses",
+          "description": "Une grande toile au-dessus du canapé ou de la cheminée crée un point focal époustouflant pour votre salon."
+        },
+        "two": {
+          "title": "Grands formats disponibles",
+          "description": "De 16x20 à 36x48 et au-delà — nous avons des tailles de toile parfaites pour tout mur de salon."
+        },
+        "three": {
+          "title": "Qualité galerie",
+          "description": "Étirée sur cadres en bois massif avec des coins impeccables. Votre salon mérite de l'art de qualité galerie."
+        }
+      }
+    },
+    "large": {
+      "meta": {
+        "title": "Toile Grand Format Canada | Grande Impression sur Toile",
+        "description": "Commandez des toiles grand format au Canada. Art mural grand format de 24x36 à 36x48 et plus. Qualité premium, fabriqué au Québec."
+      },
+      "heading": "Toile Grand Format Canada",
+      "description": "Voyez grand avec nos impressions sur toile grand format. Disponibles en tailles de 24x36 à 36x48 et au-delà. Parfaites pour salons, bureaux et murs vedettes.",
+      "subheading": "Grand, audacieux et beau — toiles grand format fabriquées au Canada",
+      "benefits": {
+        "one": {
+          "title": "Plusieurs grands formats",
+          "description": "Choisissez parmi 24x36, 30x40, 36x48 et d'autres grands formats. Tailles personnalisées aussi disponibles."
+        },
+        "two": {
+          "title": "Net à toute taille",
+          "description": "Notre impression Canon avec technologie UVgel offre des détails époustouflants même en très grand format."
+        },
+        "three": {
+          "title": "Cadres renforcés",
+          "description": "Les grandes toiles utilisent des barres en bois massif renforcées avec des traverses pour une stabilité durable."
+        }
+      }
+    },
+    "framed": {
+      "meta": {
+        "title": "Toile Encadrée Canada | Impression sur Toile avec Cadre",
+        "description": "Commandez des toiles encadrées au Canada. Toiles étirées sur cadres en bois massif. Qualité premium, fabriqué au Québec."
+      },
+      "heading": "Toile Encadrée",
+      "description": "Nos toiles encadrées gallery-wrap sont étirées à la main sur des cadres en bois massif. Prêtes à accrocher, aucun encadrement supplémentaire nécessaire.",
+      "subheading": "Encadrement gallery-wrap avec barres en bois massif",
+      "benefits": {
+        "one": {
+          "title": "Finition Gallery Wrap",
+          "description": "Notre technique gallery wrap étend l'image sur les bords pour un look moderne et sans cadre visible."
+        },
+        "two": {
+          "title": "Cadres en bois massif",
+          "description": "Chaque toile est étirée sur des barres en bois massif séché au four — pas d'alternatives en MDF ou plastique."
+        },
+        "three": {
+          "title": "Prêt à accrocher",
+          "description": "La quincaillerie est installée sur chaque toile. Déballez-la et accrochez-la — c'est aussi simple que ça."
+        }
+      }
+    },
+    "custom": {
+      "meta": {
+        "title": "Toile Personnalisée Canada | Impression Photo sur Toile",
+        "description": "Créez des toiles personnalisées à partir de vos photos. Téléchargez votre image et choisissez votre taille. Art sur toile fabriqué au Canada."
+      },
+      "heading": "Toile Personnalisée Canada",
+      "description": "Créez des impressions sur toile uniques à partir de vos propres photos. Téléchargez votre image, choisissez votre taille, et nous fabriquerons une toile haut de gamme pour vous.",
+      "subheading": "Vos photos, votre taille, votre toile personnalisée — fabriqué au Canada",
+      "benefits": {
+        "one": {
+          "title": "Téléchargez n'importe quelle photo",
+          "description": "Photos de famille, vacances, portraits d'animaux — toute image peut devenir une toile époustouflante."
+        },
+        "two": {
+          "title": "Choisissez votre taille",
+          "description": "Des petits accents aux grandes pièces. Choisissez la taille parfaite pour votre espace."
+        },
+        "three": {
+          "title": "Prévisualisez avant de commander",
+          "description": "Voyez exactement à quoi ressemblera votre toile avant de commander. Pas de surprises — juste de la satisfaction."
+        }
+      }
+    },
+    "wall-art": {
+      "meta": {
+        "title": "Art Mural sur Toile Canada | Décoration Murale Toile",
+        "description": "Commandez de l'art mural sur toile au Canada. Décoration murale personnalisée à partir de vos photos. Impression haut de gamme avec livraison rapide."
+      },
+      "heading": "Art Mural sur Toile Canada",
+      "description": "Sublimez vos murs avec de l'art mural sur toile personnalisé. Transformez vos photos préférées en pièces d'art premium qui transforment tout espace.",
+      "subheading": "Art mural sur toile personnalisé livré partout au Canada",
+      "benefits": {
+        "one": {
+          "title": "Transformez tout espace",
+          "description": "L'art mural sur toile sublime instantanément une pièce. Maison, bureau ou studio — embellissez vos murs."
+        },
+        "two": {
+          "title": "Matériaux premium",
+          "description": "Toile coton 35 % avec encre UVgel sur cadres en bois massif. Art mural conçu pour durer 30+ ans."
+        },
+        "three": {
+          "title": "Livraison partout au Canada",
+          "description": "Livraison rapide dans chaque province et territoire. Votre toile arrive emballée en sécurité et prête à accrocher."
+        }
+      }
+    },
+    "gallery-wrap": {
+      "meta": {
+        "title": "Toile Gallery Wrap | Impression Photo Gallery Wrap",
+        "description": "Commandez des toiles gallery wrap. L'image s'étend sur les bords pour un look moderne sans cadre. Qualité premium, fabriqué au Canada."
+      },
+      "heading": "Toile Gallery Wrap",
+      "description": "Nos impressions gallery wrap étendent votre image sur les bords pour un look moderne et sans cadre. Le choix préféré pour les espaces contemporains.",
+      "subheading": "La façon moderne et sans cadre d'afficher vos photos",
+      "benefits": {
+        "one": {
+          "title": "Bords sans couture",
+          "description": "L'image s'étend sur les quatre côtés pour un look contemporain et épuré. Pas de cadre ni d'agrafes visibles."
+        },
+        "two": {
+          "title": "Style tendance",
+          "description": "Le gallery wrap est le format de toile le plus populaire, en hausse de 129 % d'année en année. Un classique moderne."
+        },
+        "three": {
+          "title": "Plusieurs profondeurs",
+          "description": "Disponible en profils standard et extra-profond. Choisissez la profondeur qui convient à votre espace et style."
+        }
+      }
+    },
+    "personalized": {
+      "meta": {
+        "title": "Toile Personnalisée Canada | Photo sur Toile Personnalisée",
+        "description": "Créez des toiles personnalisées à partir de vos photos. Téléchargez votre image et personnalisez votre art sur toile. Fabriqué au Canada. Livraison rapide."
+      },
+      "heading": "Toile Personnalisée Canada",
+      "description": "Rendez-la personnelle. Téléchargez vos propres photos et créez des impressions sur toile uniques qui racontent votre histoire.",
+      "subheading": "Art sur toile unique à partir de vos photos personnelles",
+      "benefits": {
+        "one": {
+          "title": "Uniquement vôtre",
+          "description": "Aucune toile personnalisée n'est identique. Vos photos, vos souvenirs, votre art mural unique."
+        },
+        "two": {
+          "title": "Facile à créer",
+          "description": "Téléchargez votre photo, choisissez votre taille, prévisualisez et commandez — le tout en quelques minutes."
+        },
+        "three": {
+          "title": "Cadeaux significatifs",
+          "description": "Les toiles personnalisées font des cadeaux inoubliables pour anniversaires, fêtes et occasions spéciales."
+        }
+      }
     }
   }
 }

@@ -9,6 +9,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import { Geist } from "next/font/google";
+import Script from "next/script";
+import { BASE_URL, EMAIL, PHONE, ADDRESS } from "@/lib/constants";
 import GoogleAnalytics from "@/components/google-analytics";
 import HubSpotScript from "@/components/hubspot-script";
 
@@ -16,13 +18,24 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
-const BASE_URL = process.env.BASE_URL;
-
 export const metadata: Metadata = {
-  title: "Canvas Print Shop",
-  description: "Create your own custom decor",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Custom Canvas Prints & Framing | Canvas Print Shop",
+    template: "%s | Canvas Print Shop",
+  },
+  description:
+    "Transform your photos into high-quality canvas prints. Expert hand-crafted in Quebec, Canada with premium materials and UVgel technology. Free shipping available.",
   icons: {
     icon: "/favicon.svg",
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Canvas Print Shop",
+    url: BASE_URL,
   },
 };
 
@@ -129,6 +142,32 @@ const LocaleLayout = async ({ children, params }: Props) => {
       </head>
       <body className={geist.className}>
         <GoogleAnalytics />
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "Canvas Print Shop",
+              url: BASE_URL,
+              logo: `${BASE_URL}/favicon.svg`,
+              image: `${BASE_URL}/canvas-example.jpeg`,
+              email: "info@canvasprintshop.ca",
+              telephone: "(514) 441-2230",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "1172 Av. du Lac-Saint-Charles",
+                addressLocality: "Québec",
+                addressRegion: "QC",
+                postalCode: "G3G 2S7",
+                addressCountry: "CA",
+              },
+              priceRange: "$$",
+              sameAs: [],
+            }),
+          }}
+        />
         <NextIntlClientProvider messages={messages}>
           <CartProvider cart={cart}>
             <TrustStrip items={trustStripItems} />

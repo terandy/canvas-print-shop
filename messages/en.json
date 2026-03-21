@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "Custom Canvas Prints & Framing | Canvas Print Shop",
-    "description": "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada. Order now for fast delivery!",
+    "title": "Canvas Prints Canada | Custom Canvas Printing | Canvas Print Shop",
+    "description": "Order custom canvas prints in Canada. Premium photo canvas printing with UVgel technology, hand-crafted in Quebec. Canvas wall art, framed canvas prints & free shipping available.",
     "og": {
-      "title": "Custom Canvas Prints & Framing | Canvas Print Shop",
-      "description": "Transform your photos into high-quality canvas prints with our easy upload service and optional framing. Expert craftsmanship, made in Canada."
+      "title": "Canvas Prints Canada | Custom Canvas Printing | Canvas Print Shop",
+      "description": "Transform your photos into premium canvas prints. Expert hand-crafted in Canada with UVgel technology. Custom canvas wall art, large canvas prints & more."
     }
   },
   "FAQ": {
@@ -287,6 +287,10 @@
     "questions": {
       "title": "Questions?",
       "content": "If you have any questions about our privacy policy, please contact us:"
+    },
+    "metadata": {
+      "title": "Privacy Policy | Canvas Print Shop",
+      "description": "Learn about how Canvas Print Shop protects and handles your personal information. Our privacy policy outlines our data collection, use, and protection practices."
     }
   },
   "Contact": {
@@ -983,6 +987,507 @@
       "buttonText": "Reset Password",
       "expiry": "This link will expire in 1 hour.",
       "ignore": "If you didn't request a password reset, you can safely ignore this email."
+    }
+  },
+  "QualityGuarantee": {
+    "metadata": {
+      "title": "Our Quality Promise | Canvas Print Shop",
+      "description": "Discover why Canvas Print Shop delivers superior canvas prints. Premium cotton-blend canvas, UVgel technology, and expert hand-stretching in our Quebec City workshop."
+    }
+  },
+  "LandingPages": {
+    "common": {
+      "orderNow": "Order Now",
+      "trustBadges": {
+        "secure": "Secure Checkout",
+        "shipping": "Fast Canada-Wide Shipping",
+        "made": "Made in Quebec, Canada",
+        "satisfaction": "100% Satisfaction Guarantee",
+        "guarantee": "30-Year Print Guarantee"
+      }
+    },
+    "toronto": {
+      "meta": {
+        "title": "Canvas Prints Toronto | Custom Photo Canvas Printing",
+        "description": "Order custom canvas prints in Toronto. Premium photo canvas printing with fast shipping to Toronto & the GTA. Hand-crafted in Canada with UVgel technology."
+      },
+      "heading": "Canvas Prints Toronto",
+      "description": "Premium custom canvas prints delivered to your door in Toronto and the Greater Toronto Area. Hand-crafted in Canada with museum-quality materials.",
+      "subheading": "Fast shipping to Toronto & GTA from our Canadian workshop",
+      "benefits": {
+        "one": {
+          "title": "Fast Toronto Delivery",
+          "description": "Quick shipping to Toronto and surrounding areas. Your custom canvas prints arrive ready to hang."
+        },
+        "two": {
+          "title": "Premium Canadian Quality",
+          "description": "Hand-crafted in our Quebec workshop using premium cotton-blend canvas and UVgel ink technology."
+        },
+        "three": {
+          "title": "Perfect for Toronto Homes",
+          "description": "Transform your photos into stunning wall art. Ideal for condos, houses, and offices across the GTA."
+        }
+      }
+    },
+    "calgary": {
+      "meta": {
+        "title": "Canvas Prints Calgary | Custom Photo Canvas Printing",
+        "description": "Order custom canvas prints in Calgary. Premium photo canvas printing with fast shipping to Calgary & Alberta. Hand-crafted in Canada with 30-year guarantee."
+      },
+      "heading": "Canvas Prints Calgary",
+      "description": "Premium custom canvas prints shipped directly to Calgary and across Alberta. Expert craftsmanship with a 30-year print quality guarantee.",
+      "subheading": "Canada-wide shipping from our Quebec workshop to Calgary",
+      "benefits": {
+        "one": {
+          "title": "Shipped to Calgary",
+          "description": "Fast, secure shipping to Calgary and all Alberta locations. Every canvas arrives ready to hang."
+        },
+        "two": {
+          "title": "30-Year Quality Guarantee",
+          "description": "Our UVgel ink technology ensures your canvas prints won't fade for over 30 years."
+        },
+        "three": {
+          "title": "Premium Materials",
+          "description": "Premium cotton-blend canvas with solid wood stretcher bars, hand-stretched for gallery-quality results."
+        }
+      }
+    },
+    "vancouver": {
+      "meta": {
+        "title": "Canvas Prints Vancouver | Custom Photo Canvas Printing",
+        "description": "Order custom canvas prints in Vancouver. Premium photo canvas printing with fast shipping to Vancouver & BC. Hand-crafted in Canada."
+      },
+      "heading": "Canvas Prints Vancouver",
+      "description": "Premium custom canvas prints delivered to Vancouver and across British Columbia. Transform your photos into beautiful wall art.",
+      "subheading": "Fast Canada-wide shipping to Vancouver from our workshop",
+      "benefits": {
+        "one": {
+          "title": "Vancouver Delivery",
+          "description": "Reliable shipping to Vancouver and all BC locations. Your canvas arrives carefully packaged and ready to hang."
+        },
+        "two": {
+          "title": "Stunning Photo Quality",
+          "description": "Advanced Canon printing with UVgel technology delivers exceptional color vibrancy and sharpness."
+        },
+        "three": {
+          "title": "Hand-Crafted in Canada",
+          "description": "Every canvas is expertly hand-stretched over solid wood frames in our Canadian workshop."
+        }
+      }
+    },
+    "edmonton": {
+      "meta": {
+        "title": "Canvas Prints Edmonton | Custom Photo Canvas Printing",
+        "description": "Order custom canvas prints in Edmonton. Premium photo canvas printing with fast shipping to Edmonton & Alberta. Made in Canada."
+      },
+      "heading": "Canvas Prints Edmonton",
+      "description": "Premium custom canvas prints shipped to Edmonton and across Alberta. Expert Canadian craftsmanship with museum-quality materials.",
+      "subheading": "Canada-wide shipping from our workshop to Edmonton",
+      "benefits": {
+        "one": {
+          "title": "Edmonton Delivery",
+          "description": "Fast shipping to Edmonton and surrounding Alberta communities. Packaged securely for safe arrival."
+        },
+        "two": {
+          "title": "Premium Canvas Materials",
+          "description": "35% cotton-blend canvas with 75% opacity — far superior to budget polyester alternatives."
+        },
+        "three": {
+          "title": "Easy Upload Process",
+          "description": "Simply upload your photo, choose your size, preview your canvas and checkout. It's that easy."
+        }
+      }
+    },
+    "montreal": {
+      "meta": {
+        "title": "Canvas Prints Montreal | Custom Photo Canvas Printing",
+        "description": "Order custom canvas prints in Montreal. Premium photo canvas printing with fast local shipping. Hand-crafted in Quebec with UVgel technology."
+      },
+      "heading": "Canvas Prints Montreal",
+      "description": "Premium custom canvas prints with fast shipping to Montreal. Made right here in Quebec with expert craftsmanship and premium materials.",
+      "subheading": "Proudly made in Quebec — fast delivery to Montreal",
+      "benefits": {
+        "one": {
+          "title": "Fast Montreal Delivery",
+          "description": "Quick shipping from our Quebec workshop to Montreal. Local pickup also available."
+        },
+        "two": {
+          "title": "Made in Quebec",
+          "description": "Every canvas is hand-crafted in our Quebec City workshop, supporting local Canadian artisanship."
+        },
+        "three": {
+          "title": "Bilingual Service",
+          "description": "Full service in English and French. Our Quebec-based team is happy to help in both languages."
+        }
+      }
+    },
+    "ottawa": {
+      "meta": {
+        "title": "Canvas Prints Ottawa | Custom Photo Canvas Printing",
+        "description": "Order custom canvas prints in Ottawa. Premium photo canvas printing with fast shipping from Quebec. Hand-crafted in Canada."
+      },
+      "heading": "Canvas Prints Ottawa",
+      "description": "Premium custom canvas prints delivered quickly to Ottawa and the National Capital Region. Canadian-made quality you can trust.",
+      "subheading": "Fast shipping from our Quebec workshop to Ottawa",
+      "benefits": {
+        "one": {
+          "title": "Quick Ottawa Delivery",
+          "description": "Fast shipping from nearby Quebec to Ottawa and Gatineau. Your canvas arrives ready to hang."
+        },
+        "two": {
+          "title": "Canadian Made Quality",
+          "description": "Hand-crafted in our Quebec City workshop using premium materials and advanced printing technology."
+        },
+        "three": {
+          "title": "100% Satisfaction Guarantee",
+          "description": "Not happy with your canvas? We'll make it right. Your satisfaction is our top priority."
+        }
+      }
+    },
+    "quebec-city": {
+      "meta": {
+        "title": "Canvas Prints Quebec City | Impression sur Toile Québec",
+        "description": "Order custom canvas prints in Quebec City. Local pickup available. Premium photo canvas printing hand-crafted in our Quebec City workshop."
+      },
+      "heading": "Canvas Prints Quebec City",
+      "description": "Premium custom canvas prints made right here in Quebec City. Visit our workshop for local pickup or enjoy fast local delivery.",
+      "subheading": "Made locally in Quebec City — pickup available",
+      "benefits": {
+        "one": {
+          "title": "Local Pickup Available",
+          "description": "Visit our Quebec City workshop to pick up your canvas prints in person. No shipping wait!"
+        },
+        "two": {
+          "title": "Made Right Here",
+          "description": "Your canvas is hand-crafted in our Quebec City workshop — see the quality for yourself."
+        },
+        "three": {
+          "title": "Support Local",
+          "description": "By ordering from us, you're supporting a local Quebec City business and skilled artisans."
+        }
+      }
+    },
+    "16x20": {
+      "meta": {
+        "title": "16x20 Canvas Prints | Custom 16x20 Photo Canvas",
+        "description": "Order 16x20 canvas prints online. Perfect medium-sized canvas for photos and wall art. Premium quality, hand-crafted in Canada."
+      },
+      "heading": "16x20 Canvas Prints",
+      "description": "The 16x20 canvas print is a popular choice for photos, portraits, and wall art. A versatile medium size that fits perfectly in any room.",
+      "subheading": "A popular size for portraits, family photos, and bedroom wall art",
+      "benefits": {
+        "one": {
+          "title": "Versatile Size",
+          "description": "16x20 inches is ideal for portraits, family photos, pet photos, and any image you want to display beautifully."
+        },
+        "two": {
+          "title": "Premium Quality",
+          "description": "Printed on premium cotton-blend canvas with fade-resistant UVgel ink. Guaranteed for 30 years."
+        },
+        "three": {
+          "title": "Ready to Hang",
+          "description": "Hand-stretched over solid wood frames with hanging hardware included. Arrives ready to display."
+        }
+      }
+    },
+    "24x36": {
+      "meta": {
+        "title": "24x36 Canvas Prints | Large Custom Photo Canvas",
+        "description": "Order 24x36 canvas prints online. Large canvas prints perfect for living rooms and feature walls. Premium quality, made in Canada."
+      },
+      "heading": "24x36 Canvas Prints",
+      "description": "Make a statement with a 24x36 canvas print. This large format size is perfect for living rooms, offices, and feature walls.",
+      "subheading": "A large format canvas ideal for living rooms and feature walls",
+      "benefits": {
+        "one": {
+          "title": "Statement Piece",
+          "description": "At 24x36 inches, this canvas commands attention. Perfect as a focal point in your living room or office."
+        },
+        "two": {
+          "title": "Sharp at Any Size",
+          "description": "Our advanced Canon printing with UVgel technology delivers stunning detail even at large sizes."
+        },
+        "three": {
+          "title": "Solid Wood Frame",
+          "description": "Hand-stretched over solid wood stretcher bars for drum-tight tension and gallery-quality presentation."
+        }
+      }
+    },
+    "36x48": {
+      "meta": {
+        "title": "36x48 Canvas Prints | Extra Large Custom Photo Canvas",
+        "description": "Order 36x48 canvas prints online. Extra large canvas prints for maximum impact. Premium museum-quality, hand-crafted in Canada."
+      },
+      "heading": "36x48 Canvas Prints",
+      "description": "Go big with a 36x48 canvas print. Our extra-large format delivers maximum visual impact for your most cherished photos.",
+      "subheading": "Extra large format for maximum visual impact",
+      "benefits": {
+        "one": {
+          "title": "Maximum Impact",
+          "description": "A 36x48 canvas makes a dramatic statement. Perfect for large walls, open spaces, and commercial settings."
+        },
+        "two": {
+          "title": "Museum-Quality Printing",
+          "description": "Even at this large size, our UVgel technology delivers razor-sharp detail and vibrant, true-to-life colors."
+        },
+        "three": {
+          "title": "Expert Craftsmanship",
+          "description": "Extra-large canvases require expert stretching. Our skilled team ensures perfect tension and flawless corners."
+        }
+      }
+    },
+    "wedding": {
+      "meta": {
+        "title": "Wedding Photo Canvas Prints | Custom Wedding Canvas Art",
+        "description": "Turn your wedding photos into beautiful canvas prints. Preserve your special day with premium canvas wall art. Hand-crafted in Canada."
+      },
+      "heading": "Wedding Photo Canvas Prints",
+      "description": "Preserve your most cherished wedding moments on premium canvas. The perfect way to relive your special day, every day.",
+      "subheading": "A timeless keepsake of your special day",
+      "benefits": {
+        "one": {
+          "title": "Timeless Keepsake",
+          "description": "A canvas print of your wedding photo is a beautiful daily reminder of your love. It never goes out of style."
+        },
+        "two": {
+          "title": "Fade-Proof for Decades",
+          "description": "Our UVgel ink is guaranteed not to fade for 30+ years — your wedding canvas will last as long as your love."
+        },
+        "three": {
+          "title": "Perfect Gift",
+          "description": "A wedding photo canvas makes the perfect anniversary gift, wedding gift, or home decoration for newlyweds."
+        }
+      }
+    },
+    "family": {
+      "meta": {
+        "title": "Family Photo Canvas Prints | Custom Family Portrait Canvas",
+        "description": "Turn your family photos into canvas prints. Custom family portrait canvas art hand-crafted in Canada. Perfect for living rooms."
+      },
+      "heading": "Family Photo Canvas Prints",
+      "description": "Celebrate your family with custom canvas prints. Transform your favorite family photos into stunning wall art that brings warmth to any room.",
+      "subheading": "Custom family portraits made to last a lifetime",
+      "benefits": {
+        "one": {
+          "title": "Celebrate Family",
+          "description": "There's nothing more meaningful than a family photo on canvas. Display your loved ones proudly in any room."
+        },
+        "two": {
+          "title": "Holiday Gift Idea",
+          "description": "A family photo canvas makes the perfect Christmas, Mother's Day, or Father's Day gift. Meaningful and personal."
+        },
+        "three": {
+          "title": "Multiple Sizes",
+          "description": "From small desk-sized prints to large living room statement pieces — choose the size that fits your space."
+        }
+      }
+    },
+    "pet-portrait": {
+      "meta": {
+        "title": "Pet Portrait Canvas Prints | Custom Pet Photo Canvas",
+        "description": "Turn your pet photos into canvas prints. Custom pet portrait canvas art for dog lovers, cat lovers, and all pet owners. Made in Canada."
+      },
+      "heading": "Pet Portrait Canvas Prints",
+      "description": "Honor your beloved pets with a custom canvas portrait. Whether it's a dog, cat, or any furry friend — they deserve a place on your wall.",
+      "subheading": "Because every pet deserves to be a work of art",
+      "benefits": {
+        "one": {
+          "title": "Honor Your Pet",
+          "description": "Your furry family member deserves a place of honor on your wall. A pet portrait canvas is the perfect tribute."
+        },
+        "two": {
+          "title": "Vibrant Colors",
+          "description": "Our advanced printing captures every detail of your pet's fur, eyes, and personality in stunning clarity."
+        },
+        "three": {
+          "title": "Memorial Keepsake",
+          "description": "A pet portrait canvas is a beautiful way to remember a beloved pet. A lasting tribute to your best friend."
+        }
+      }
+    },
+    "bedroom": {
+      "meta": {
+        "title": "Canvas Prints for Bedroom | Bedroom Wall Art Canvas",
+        "description": "Custom canvas prints perfect for bedrooms. Create a relaxing atmosphere with personalized bedroom wall art. Made in Canada."
+      },
+      "heading": "Canvas Prints for Bedroom",
+      "description": "Create a serene, personal space with custom canvas prints for your bedroom. From romantic photos to calming landscapes — find the perfect piece.",
+      "subheading": "Personalize your most private space with meaningful art",
+      "benefits": {
+        "one": {
+          "title": "Personal Touch",
+          "description": "Your bedroom is your sanctuary. Custom canvas prints add a personal, meaningful touch to your most private space."
+        },
+        "two": {
+          "title": "Perfect Sizes",
+          "description": "We offer canvas sizes perfect for above the bed, beside tables, or gallery wall arrangements."
+        },
+        "three": {
+          "title": "Eco-Friendly Inks",
+          "description": "Our UVgel inks are odor-free and eco-friendly — perfect for a space where you sleep and relax."
+        }
+      }
+    },
+    "living-room": {
+      "meta": {
+        "title": "Canvas Prints for Living Room | Living Room Wall Art",
+        "description": "Custom canvas prints for living rooms. Large canvas wall art to transform your living space. Premium quality, made in Canada."
+      },
+      "heading": "Canvas Prints for Living Room",
+      "description": "Transform your living room with stunning custom canvas prints. Large format options available for making a dramatic statement above your sofa or fireplace.",
+      "subheading": "Make your living room the centerpiece of your home",
+      "benefits": {
+        "one": {
+          "title": "Statement Pieces",
+          "description": "A large canvas print above the sofa or fireplace creates a stunning focal point for your living room."
+        },
+        "two": {
+          "title": "Large Formats Available",
+          "description": "From 16x20 to 36x48 and beyond — we have canvas sizes perfect for any living room wall."
+        },
+        "three": {
+          "title": "Gallery-Ready Quality",
+          "description": "Hand-stretched on solid wood frames with impeccable corners. Your living room deserves gallery-quality art."
+        }
+      }
+    },
+    "large": {
+      "meta": {
+        "title": "Large Canvas Prints Canada | Big Canvas Wall Art",
+        "description": "Order large canvas prints in Canada. Big custom canvas wall art from 24x36 to 36x48 and beyond. Premium quality, hand-crafted in Quebec."
+      },
+      "heading": "Large Canvas Prints Canada",
+      "description": "Go big with our large format canvas prints. Available in sizes from 24x36 up to 36x48 and beyond. Perfect for living rooms, offices, and feature walls.",
+      "subheading": "Big, bold, and beautiful — large canvas prints made in Canada",
+      "benefits": {
+        "one": {
+          "title": "Multiple Large Sizes",
+          "description": "Choose from 24x36, 30x40, 36x48 and other large formats. We can accommodate custom sizes too."
+        },
+        "two": {
+          "title": "Sharp at Any Size",
+          "description": "Our Canon printing with UVgel technology delivers stunning detail and color accuracy even at very large sizes."
+        },
+        "three": {
+          "title": "Reinforced Frames",
+          "description": "Large canvases use reinforced solid wood stretcher bars with cross bracing for lasting stability."
+        }
+      }
+    },
+    "framed": {
+      "meta": {
+        "title": "Framed Canvas Prints Canada | Gallery Wrap Canvas Framing",
+        "description": "Order framed canvas prints in Canada. Gallery wrap canvas prints hand-stretched on solid wood frames. Premium quality, made in Quebec."
+      },
+      "heading": "Framed Canvas Prints",
+      "description": "Our gallery-wrap framed canvas prints feature premium cotton-blend canvas hand-stretched over solid wood frames. Ready to hang, no additional framing needed.",
+      "subheading": "Gallery-wrap framing with solid wood stretcher bars",
+      "benefits": {
+        "one": {
+          "title": "Gallery Wrap Finish",
+          "description": "Our gallery wrap technique extends the image around the edges for a clean, modern, frameless look."
+        },
+        "two": {
+          "title": "Solid Wood Frames",
+          "description": "Every canvas is stretched over kiln-dried solid wood stretcher bars — not cheap MDF or plastic alternatives."
+        },
+        "three": {
+          "title": "Ready to Hang",
+          "description": "Hanging hardware is installed on every canvas. Unbox it and hang it — it's that simple."
+        }
+      }
+    },
+    "custom": {
+      "meta": {
+        "title": "Custom Canvas Prints Canada | Personalized Photo Canvas",
+        "description": "Create custom canvas prints from your photos. Upload any image and choose your size. Personalized canvas art hand-crafted in Canada."
+      },
+      "heading": "Custom Canvas Prints Canada",
+      "description": "Create truly custom canvas prints from your own photos. Upload any image, choose your perfect size, and we'll hand-craft a premium canvas just for you.",
+      "subheading": "Your photos, your size, your custom canvas — made in Canada",
+      "benefits": {
+        "one": {
+          "title": "Upload Any Photo",
+          "description": "Family photos, vacation shots, pet portraits, artwork — any image can become a stunning canvas print."
+        },
+        "two": {
+          "title": "Choose Your Size",
+          "description": "From small accent pieces to large statement canvases. Pick the perfect size for your space."
+        },
+        "three": {
+          "title": "Preview Before You Order",
+          "description": "See exactly how your canvas will look before placing your order. No surprises — just satisfaction."
+        }
+      }
+    },
+    "wall-art": {
+      "meta": {
+        "title": "Canvas Wall Art Canada | Custom Wall Art Prints",
+        "description": "Order canvas wall art in Canada. Custom wall art prints from your photos. Premium canvas printing with fast Canada-wide shipping."
+      },
+      "heading": "Canvas Wall Art Canada",
+      "description": "Elevate your walls with custom canvas wall art. Turn your favorite photos into premium art pieces that transform any space in your home or office.",
+      "subheading": "Custom canvas wall art shipped across Canada",
+      "benefits": {
+        "one": {
+          "title": "Transform Any Space",
+          "description": "Canvas wall art instantly elevates a room. Whether your home, office, or studio — make your walls beautiful."
+        },
+        "two": {
+          "title": "Premium Materials",
+          "description": "35% cotton-blend canvas with UVgel ink on solid wood frames. This is wall art built to last 30+ years."
+        },
+        "three": {
+          "title": "Canada-Wide Shipping",
+          "description": "Fast shipping to every province and territory. Your canvas wall art arrives safely packaged and ready to hang."
+        }
+      }
+    },
+    "gallery-wrap": {
+      "meta": {
+        "title": "Gallery Wrap Canvas Prints | Gallery Wrapped Photo Canvas",
+        "description": "Order gallery wrap canvas prints. Image wraps around the edges for a modern, frameless look. Premium quality, hand-crafted in Canada."
+      },
+      "heading": "Gallery Wrap Canvas Prints",
+      "description": "Our gallery wrap canvas prints feature your image extending around the edges for a sleek, modern, frameless look. The preferred choice for contemporary spaces.",
+      "subheading": "The modern, frameless way to display your photos — trending up 129% YoY",
+      "benefits": {
+        "one": {
+          "title": "Seamless Edges",
+          "description": "The image wraps around all four sides for a clean, contemporary look. No visible frame or staples."
+        },
+        "two": {
+          "title": "Trending Style",
+          "description": "Gallery wrap is the most popular canvas format, trending up 129% year over year. A modern classic."
+        },
+        "three": {
+          "title": "Multiple Depths",
+          "description": "Available in standard and extra-deep profiles. Choose the depth that best suits your space and style."
+        }
+      }
+    },
+    "personalized": {
+      "meta": {
+        "title": "Personalized Canvas Prints Canada | Custom Photo Canvas",
+        "description": "Create personalized canvas prints from your photos. Upload your image and customize your canvas art. Hand-crafted in Canada. Fast shipping."
+      },
+      "heading": "Personalized Canvas Prints Canada",
+      "description": "Make it personal. Upload your own photos and create one-of-a-kind canvas prints that tell your unique story. Trending up 133% year over year.",
+      "subheading": "One-of-a-kind canvas art from your personal photos",
+      "benefits": {
+        "one": {
+          "title": "Uniquely Yours",
+          "description": "No two personalized canvases are alike. Your photos, your memories, your one-of-a-kind wall art."
+        },
+        "two": {
+          "title": "Easy to Create",
+          "description": "Upload your photo, choose your size, preview your canvas, and order — all in minutes. Simple and fun."
+        },
+        "three": {
+          "title": "Meaningful Gifts",
+          "description": "Personalized canvas prints make unforgettable gifts for birthdays, anniversaries, holidays, and special occasions."
+        }
+      }
     }
   }
 }

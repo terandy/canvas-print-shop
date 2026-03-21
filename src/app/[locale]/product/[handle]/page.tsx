@@ -12,6 +12,7 @@ import { Star, ChevronDown } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
 import { addBusinessDays } from "@/lib/utils/base";
+import { BASE_URL } from "@/lib/constants";
 
 /**
  * Page Props
@@ -34,8 +35,8 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const { url, width, height, altText: alt } = product.featuredImage || {};
   const indexable = true;
   const defaultTitle = locale?.startsWith("fr")
-    ? "Toiles sur mesure | Fabrication canadienne"
-    : "Custom Canvas Prints | Made In Canada";
+    ? "Impression sur Toile Personnalisée | Photo sur Toile Canada | Canvas Print Shop"
+    : "Custom Canvas Prints Canada | Photo Canvas Printing | Canvas Print Shop";
 
   return {
     title: product.seo.title || defaultTitle,
@@ -503,6 +504,50 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
           gtag('config', 'AW-17600505431');
         `}
       </Script>
+      <Script
+        id="product-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.title,
+            description: product.description,
+            image: product.featuredImage?.url,
+            url: `${BASE_URL}/${locale}/product/${product.handle}`,
+            brand: {
+              "@type": "Brand",
+              name: "Canvas Print Shop",
+            },
+            offers: {
+              "@type": "AggregateOffer",
+              priceCurrency:
+                product.priceRange.minVariantPrice.currencyCode,
+              lowPrice: product.priceRange.minVariantPrice.amount,
+              highPrice: product.priceRange.maxVariantPrice.amount,
+              availability: "https://schema.org/InStock",
+              url: `${BASE_URL}/${locale}/product/${product.handle}`,
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: averageRating,
+              reviewCount: reviews.length,
+              bestRating: 5,
+            },
+            review: reviews.map((r) => ({
+              "@type": "Review",
+              author: { "@type": "Person", name: r.author },
+              reviewRating: {
+                "@type": "Rating",
+                ratingValue: r.rating,
+                bestRating: 5,
+              },
+              reviewBody: r.comment,
+              datePublished: r.date,
+            })),
+          }),
+        }}
+      />
       <div className="container mx-auto max-w-screen-2xl lg:px-4 lg:py-6">
         <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 lg:p-8">
           {/* Image container - adapts for mobile/desktop with sticky functionality */}

@@ -33,6 +33,34 @@ const generateStaticRoutes = (): MetadataRoute.Sitemap => {
     { path: "/quality-guarantee", priority: 0.7 },
   ];
 
+  // SEO landing pages
+  const landingPages = [
+    // City pages
+    { path: "/canvas-prints/toronto", priority: 0.8 },
+    { path: "/canvas-prints/calgary", priority: 0.8 },
+    { path: "/canvas-prints/vancouver", priority: 0.8 },
+    { path: "/canvas-prints/edmonton", priority: 0.8 },
+    { path: "/canvas-prints/montreal", priority: 0.8 },
+    { path: "/canvas-prints/ottawa", priority: 0.7 },
+    { path: "/canvas-prints/quebec-city", priority: 0.7 },
+    // Size pages
+    { path: "/canvas-prints/16x20", priority: 0.7 },
+    { path: "/canvas-prints/24x36", priority: 0.7 },
+    { path: "/canvas-prints/36x48", priority: 0.7 },
+    // Use-case pages
+    { path: "/canvas-prints/wedding", priority: 0.7 },
+    { path: "/canvas-prints/family", priority: 0.7 },
+    { path: "/canvas-prints/pet-portrait", priority: 0.7 },
+    { path: "/canvas-prints/bedroom", priority: 0.7 },
+    { path: "/canvas-prints/living-room", priority: 0.7 },
+    { path: "/canvas-prints/large", priority: 0.8 },
+    { path: "/canvas-prints/framed", priority: 0.8 },
+    { path: "/canvas-prints/custom", priority: 0.8 },
+    { path: "/canvas-prints/wall-art", priority: 0.8 },
+    { path: "/canvas-prints/gallery-wrap", priority: 0.7 },
+    { path: "/canvas-prints/personalized", priority: 0.7 },
+  ];
+
   routing.locales.forEach((locale) => {
     staticPages.forEach(({ path, priority }) => {
       const url = `${BASE_URL}/${locale}${path}`;
@@ -40,6 +68,25 @@ const generateStaticRoutes = (): MetadataRoute.Sitemap => {
         url,
         lastModified: new Date(),
         changeFrequency: path === "" ? "weekly" : "monthly",
+        priority,
+        alternates: {
+          languages: {
+            en: `${BASE_URL}/en${path}`,
+            fr: `${BASE_URL}/fr${path}`,
+          },
+        },
+      });
+    });
+  });
+
+  // Landing pages for each locale
+  routing.locales.forEach((locale) => {
+    landingPages.forEach(({ path, priority }) => {
+      const url = `${BASE_URL}/${locale}${path}`;
+      routes.push({
+        url,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
         priority,
         alternates: {
           languages: {

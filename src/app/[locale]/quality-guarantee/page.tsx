@@ -3,6 +3,25 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { getTranslations, getLocale } from "next-intl/server";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({
+    locale,
+    namespace: "QualityGuarantee.metadata",
+  });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 // --- Reusable Feature Card Component --- //
 interface QualityFeatureProps {
@@ -30,7 +49,10 @@ const QualityFeature: React.FC<QualityFeatureProps> = ({
 );
 
 // --- Main Component --- //
-const OurQualityPage = () => (
+const OurQualityPage = async () => {
+  const locale = await getLocale();
+
+  return (
   <div className="bg-gray-50 text-secondary font-sans">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* --- Header --- */}
@@ -233,7 +255,7 @@ const OurQualityPage = () => (
         </p>
         <div className="mt-8">
           <Link
-            href="/en/product/canvas"
+            href={`/${locale}/product/canvas`}
             className="inline-block bg-primary text-white font-bold text-lg py-4 px-12 rounded-full hover:bg-primary-dark transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
           >
             Create Your Custom Canvas Now
@@ -242,6 +264,7 @@ const OurQualityPage = () => (
       </section>
     </div>
   </div>
-);
+  );
+};
 
 export default OurQualityPage;
