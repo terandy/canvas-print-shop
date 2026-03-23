@@ -809,7 +809,19 @@
       "saving": "Enregistrement...",
       "saveChanges": "Enregistrer",
       "createProduct": "Créer le produit",
-      "productSaved": "Produit enregistré avec succès !"
+      "productSaved": "Produit enregistré avec succès !",
+      "seoSectionTitle": "Optimisation pour les moteurs de recherche (SEO)",
+      "seoHelp": "Personnalisez l'apparence de ce produit dans les résultats des moteurs de recherche. Laissez vide pour utiliser les valeurs par défaut.",
+      "seoEnglish": "Anglais",
+      "seoFrench": "Français",
+      "seoTitle": "Titre SEO",
+      "seoTitlePlaceholder": "Saisir le titre SEO...",
+      "seoDescription": "Méta description",
+      "seoDescriptionPlaceholder": "Saisir la méta description...",
+      "seoPreview": "Aperçu du résultat de recherche",
+      "seoPreviewTitlePlaceholder": "Le titre de la page sera utilisé",
+      "seoPreviewDescPlaceholder": "La description du produit sera utilisée",
+      "characters": "caractères"
     },
     "variantForm": {
       "title": "Variantes",

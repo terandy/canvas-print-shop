@@ -804,7 +804,19 @@
       "saving": "Saving...",
       "saveChanges": "Save Changes",
       "createProduct": "Create Product",
-      "productSaved": "Product saved successfully!"
+      "productSaved": "Product saved successfully!",
+      "seoSectionTitle": "Search Engine Optimization (SEO)",
+      "seoHelp": "Customize how this product appears in search engine results. Leave blank to use defaults.",
+      "seoEnglish": "English",
+      "seoFrench": "French",
+      "seoTitle": "SEO Title",
+      "seoTitlePlaceholder": "Enter SEO title...",
+      "seoDescription": "Meta Description",
+      "seoDescriptionPlaceholder": "Enter meta description...",
+      "seoPreview": "Search Result Preview",
+      "seoPreviewTitlePlaceholder": "Page title will be used",
+      "seoPreviewDescPlaceholder": "Product description will be used",
+      "characters": "characters"
     },
     "variantForm": {
       "title": "Variants",

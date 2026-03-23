@@ -39,6 +39,10 @@ export async function createProductAction(
   const descriptionHtmlFr = (formData.get("descriptionHtmlFr") as string) || null;
   const featuredImageUrl = (formData.get("featuredImageUrl") as string) || null;
   const isActive = formData.get("isActive") === "true";
+  const seoTitleEn = (formData.get("seoTitleEn") as string) || null;
+  const seoTitleFr = (formData.get("seoTitleFr") as string) || null;
+  const seoDescriptionEn = (formData.get("seoDescriptionEn") as string) || null;
+  const seoDescriptionFr = (formData.get("seoDescriptionFr") as string) || null;
 
   if (!handle || !titleEn) {
     return { error: "Handle and English title are required" };
@@ -62,6 +66,10 @@ export async function createProductAction(
         descriptionHtmlFr,
         featuredImageUrl,
         isActive,
+        seoTitleEn,
+        seoTitleFr,
+        seoDescriptionEn,
+        seoDescriptionFr,
       })
       .returning();
 
@@ -95,6 +103,10 @@ export async function updateProductAction(
   const descriptionHtmlFr = (formData.get("descriptionHtmlFr") as string) || null;
   const featuredImageUrl = (formData.get("featuredImageUrl") as string) || null;
   const isActive = formData.get("isActive") === "true";
+  const seoTitleEn = (formData.get("seoTitleEn") as string) || null;
+  const seoTitleFr = (formData.get("seoTitleFr") as string) || null;
+  const seoDescriptionEn = (formData.get("seoDescriptionEn") as string) || null;
+  const seoDescriptionFr = (formData.get("seoDescriptionFr") as string) || null;
 
   if (!productId || !handle || !titleEn) {
     return { error: "Product ID, handle, and English title are required" };
@@ -113,6 +125,10 @@ export async function updateProductAction(
         descriptionHtmlFr,
         featuredImageUrl,
         isActive,
+        seoTitleEn,
+        seoTitleFr,
+        seoDescriptionEn,
+        seoDescriptionFr,
         updatedAt: new Date(),
       })
       .where(eq(products.id, productId));
