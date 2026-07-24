@@ -76,14 +76,20 @@ export async function getProduct(
     options: v.options,
   }));
 
-  // Calculate price range
-  const prices = formattedVariants.map((v) => v.priceCents);
+  // Calculate price range over what can actually be bought, so the range (and
+  // the Product schema built from it) never advertises a deactivated variant.
+  const sellableVariants = formattedVariants.filter((v) => v.availableForSale);
+  const prices = (
+    sellableVariants.length > 0 ? sellableVariants : formattedVariants
+  ).map((v) => v.priceCents);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
 
   // Get locale-specific fields
   const title =
-    locale === "fr" ? productRow.titleFr || productRow.titleEn : productRow.titleEn;
+    locale === "fr"
+      ? productRow.titleFr || productRow.titleEn
+      : productRow.titleEn;
   const description =
     locale === "fr"
       ? productRow.descriptionFr || productRow.descriptionEn
@@ -133,7 +139,9 @@ export async function getProduct(
 }
 
 // Get all products
-export async function getProductList(locale: Locale = "en"): Promise<Product[]> {
+export async function getProductList(
+  locale: Locale = "en"
+): Promise<Product[]> {
   const productRows = await db
     .select()
     .from(products)
@@ -194,7 +202,10 @@ export async function findVariant(
     sku: matchingVariant.sku,
     title: matchingVariant.title,
     priceCents: matchingVariant.priceCents,
-    price: formatMoney(matchingVariant.priceCents, matchingVariant.currency || "CAD"),
+    price: formatMoney(
+      matchingVariant.priceCents,
+      matchingVariant.currency || "CAD"
+    ),
     availableForSale: matchingVariant.availableForSale ?? true,
     options: matchingVariant.options,
   };
@@ -219,7 +230,10 @@ export async function getVariantWithProduct(variantId: string) {
       sku: result.variant.sku,
       title: result.variant.title,
       priceCents: result.variant.priceCents,
-      price: formatMoney(result.variant.priceCents, result.variant.currency || "CAD"),
+      price: formatMoney(
+        result.variant.priceCents,
+        result.variant.currency || "CAD"
+      ),
       availableForSale: result.variant.availableForSale ?? true,
       options: result.variant.options,
     },

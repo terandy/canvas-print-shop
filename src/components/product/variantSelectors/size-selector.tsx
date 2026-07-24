@@ -5,7 +5,7 @@ import { useTranslations } from "use-intl";
 import { useState, useEffect, startTransition } from "react";
 import { InfoIcon } from "lucide-react";
 import type { ProductOption, ProductVariant } from "@/types/product";
-import { BASE_STATE } from "@/contexts/product-context/data";
+import { BASE_STATE, depthForFrame } from "@/contexts/product-context/data";
 import Price from "../price";
 
 const INCHES_TO_CM = 2.54; // Conversion factor: 1 inch = 2.54 cm
@@ -184,9 +184,12 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
       <div className="space-y-3">
         {option.values.map((value) => {
           const isActive = state[key] === value;
+          const frame = state.frame ?? BASE_STATE.frame;
           const optionParams = {
             ...BASE_STATE,
             size: value,
+            frame,
+            depth: depthForFrame(frame),
           };
 
           const productOption = Object.entries(optionParams).filter(
@@ -260,9 +263,12 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
           <tbody>
             {option.values.map((value) => {
               const isActive = state[key] === value;
+              const frame = state.frame ?? BASE_STATE.frame;
               const optionParams = {
                 ...BASE_STATE,
                 size: value,
+                frame,
+                depth: depthForFrame(frame),
               };
 
               const productOption = Object.entries(optionParams).filter(

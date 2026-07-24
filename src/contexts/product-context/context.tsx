@@ -11,6 +11,7 @@ import type { TProductContext, FormState } from "./types";
 import type { Product } from "@/types/product";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 import { getInitialFormState } from "./utils";
+import { depthForFrame } from "./data";
 
 const ProductContext = createContext<TProductContext | undefined>(undefined);
 
@@ -41,12 +42,8 @@ const ProductProvider = ({
   ): FormState => {
     const newState = { ...state, [name]: value };
 
-    if (name === "frame" && value === "black") {
-      newState.depth = "regular";
-    }
-
-    if (name === "frame" && value === "none") {
-      newState.depth = "gallery";
+    if (name === "frame") {
+      newState.depth = depthForFrame(value);
     }
 
     if (name === "depth" && value === "gallery") {
@@ -140,11 +137,7 @@ const ProductProvider = ({
 
   // Validate that cached S3 image still exists
   useEffect(() => {
-    if (
-      !isHydrated ||
-      !state.imgURL ||
-      state.imgURL === DEFAULT_CANVAS_IMAGE
-    )
+    if (!isHydrated || !state.imgURL || state.imgURL === DEFAULT_CANVAS_IMAGE)
       return;
 
     fetch(state.imgURL, { method: "HEAD" })

@@ -18,3 +18,11 @@ export const BASE_STATE: FormState = {
   frame: "none",
   depth: "gallery",
 };
+
+/**
+ * Frames are only fitted to regular-depth canvases, and unframed prints are
+ * always gallery depth. Depth is therefore never picked directly — it follows
+ * from the frame. Any other combination is not sold.
+ */
+export const depthForFrame = (frame: string): string =>
+  frame === "none" ? "gallery" : "regular";

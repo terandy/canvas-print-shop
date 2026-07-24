@@ -1,7 +1,7 @@
 "use-client";
 
 import { useProduct } from "@/contexts";
-import { BASE_STATE } from "@/contexts/product-context/data";
+import { BASE_STATE, depthForFrame } from "@/contexts/product-context/data";
 import type { ProductOption, ProductVariant } from "@/types/product";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
@@ -51,10 +51,13 @@ const FrameSelector: React.FC<Props> = ({ option, options, variants }) => {
         <dd className="flex flex-wrap gap-3">
           {option.values.map((value) => {
             const isActive = state.frame?.toLowerCase() === value.toLowerCase();
+            // Picking a frame also sets the depth, so price the variant this
+            // button actually selects — not the frame against a fixed depth.
             const optionParams = {
               ...BASE_STATE,
               size: state.size,
               [option.name]: value,
+              depth: depthForFrame(value.toLowerCase()),
             };
 
             const filtered = Object.entries(optionParams).filter(
