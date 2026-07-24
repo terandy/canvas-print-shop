@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# price snapshots taken before running scripts/update-variant-prices.ts
+variant-prices-backup-*.json
