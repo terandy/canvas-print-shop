@@ -11,8 +11,9 @@ import { ProductProvider } from "@/contexts/product-context";
 import { Star, ChevronDown } from "lucide-react";
 import { getTranslations, getLocale } from "next-intl/server";
 import ProductDropdowns from "@/components/product/product-dropdowns";
-import { addBusinessDays } from "@/lib/utils/base";
+import { getDeliveryEstimate } from "@/lib/delivery";
 import { BASE_URL } from "@/lib/constants";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 /**
  * Page Props
@@ -38,6 +39,8 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
     ? "Impression sur Toile Personnalisée | Photo sur Toile Canada | Canvas Print Shop"
     : "Custom Canvas Prints Canada | Photo Canvas Printing | Canvas Print Shop";
 
+  const path = `/product/${product.handle}`;
+
   return {
     title: product.seo.title || defaultTitle,
     description: product.seo.description || product.description,
@@ -49,18 +52,22 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
         follow: indexable,
       },
     },
-    openGraph: url
-      ? {
-          images: [
-            {
-              url,
-              width,
-              height,
-              alt: alt || "",
-            },
-          ],
-        }
-      : null,
+    ...canonicalMetadata(locale, path),
+    openGraph: {
+      ...openGraphMetadata(locale, path),
+      ...(url
+        ? {
+            images: [
+              {
+                url,
+                width,
+                height,
+                alt: alt || product.title,
+              },
+            ],
+          }
+        : {}),
+    },
   };
 };
 
@@ -156,13 +163,13 @@ const reviews = [
 ];
 
 const trustedBy = [
-  { src: "/Starbucks Logo for website.png", alt: "Starbucks logo" },
-  { src: "/CNESST Logo for site.png", alt: "CNESST logo" },
+  { src: "/starbucks-logo.png", alt: "Starbucks logo" },
+  { src: "/cnesst-logo.png", alt: "CNESST logo" },
   {
-    src: "/Christyna Merette Logo.png",
+    src: "/christyna-merette-logo.png",
     alt: "Christyna Mérette logo",
   },
-  { src: "/Inkpicx Logo for website.avif", alt: "Créations Inkpicx logo" },
+  { src: "/inkpicx-logo.avif", alt: "Créations Inkpicx logo" },
 ];
 
 const canvasFeatureCardConfig = [
@@ -279,6 +286,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   const product = await getProduct(params.handle, locale as "en" | "fr");
   const cartItemID = searchParams?.["cartItemID"] as string | undefined;
   const t = await getTranslations("Product");
+  const tBreadcrumb = await getTranslations("LandingPages.common.breadcrumb");
   const qualityPageHref = `/${locale ?? "en"}/quality-guarantee`;
   const formatDate = (date: Date) =>
     date.toLocaleDateString(locale, {
@@ -286,7 +294,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
       month: "short",
     });
 
-  const today = new Date();
+  const deliveryEstimate = getDeliveryEstimate();
   const isCanvasProduct = params.handle === "canvas";
   const qualitySectionCopy = {
     title: t("canvasPage.qualitySection.title"),
@@ -385,58 +393,58 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
     </>
   );
 
-const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
-  <>
-    {showHeading && (
-      <h2 className="text-2xl font-bold text-secondary mb-6">
-        {t("reviews.title")}
-      </h2>
-    )}
+  const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
+    <>
+      {showHeading && (
+        <h2 className="text-2xl font-bold text-secondary mb-6">
+          {t("reviews.title")}
+        </h2>
+      )}
 
-    {/* Rating summary */}
-    <div className="bg-gray-50 rounded-lg p-4 mb-6">
-      <div className="flex flex-col md:flex-row md:items-center gap-4">
-        <div className="text-center">
-          <div className="text-3xl font-bold text-secondary">
-            {averageRating.toFixed(1)}
+      {/* Rating summary */}
+      <div className="bg-gray-50 rounded-lg p-4 mb-6">
+        <div className="flex flex-col md:flex-row md:items-center gap-4">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-secondary">
+              {averageRating.toFixed(1)}
+            </div>
+            <StarRating rating={averageRating} />
+            <div className="text-sm text-gray-500 mt-1">
+              {t("averageRating", {
+                rating: "",
+                count: reviews.length,
+              }).replace(/^[0-9.]+ /, "")}
+            </div>
           </div>
-          <StarRating rating={averageRating} />
-          <div className="text-sm text-gray-500 mt-1">
-            {t("averageRating", {
-              rating: "",
-              count: reviews.length,
-            }).replace(/^[0-9.]+ /, "")}
-          </div>
-        </div>
-        <div className="flex-1">
-          {[5, 4, 3, 2, 1].map((stars) => {
-            const count = reviews.filter((r) => r.rating === stars).length;
-            const percentage = (count / reviews.length) * 100;
-            return (
-              <div key={stars} className="flex items-center gap-2 mb-1">
-                <span className="text-sm w-8">{stars}</span>
-                <Star className="w-3 h-3 fill-gray-300 text-gray-300" />
-                <div className="flex-1 bg-gray-200 rounded-full h-2">
-                  <div
-                    className="bg-primary h-2 rounded-full"
-                    style={{ width: `${percentage}%` }}
-                  />
+          <div className="flex-1">
+            {[5, 4, 3, 2, 1].map((stars) => {
+              const count = reviews.filter((r) => r.rating === stars).length;
+              const percentage = (count / reviews.length) * 100;
+              return (
+                <div key={stars} className="flex items-center gap-2 mb-1">
+                  <span className="text-sm w-8">{stars}</span>
+                  <Star className="w-3 h-3 fill-gray-300 text-gray-300" />
+                  <div className="flex-1 bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-primary h-2 rounded-full"
+                      style={{ width: `${percentage}%` }}
+                    />
+                  </div>
+                  <span className="text-xs text-gray-500 w-8">{count}</span>
                 </div>
-                <span className="text-xs text-gray-500 w-8">{count}</span>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
 
-    {/* Individual reviews */}
-    <div className="space-y-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pr-2">
-      {reviews.map((review) => (
-        <ReviewCard key={review.id} review={review} />
-      ))}
-    </div>
-  </>
+      {/* Individual reviews */}
+      <div className="space-y-4 max-h-96 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] pr-2">
+        {reviews.map((review) => (
+          <ReviewCard key={review.id} review={review} />
+        ))}
+      </div>
+    </>
   );
 
   const HomepageGallerySection = () => (
@@ -504,7 +512,19 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
           gtag('config', 'AW-17600505431');
         `}
       </Script>
-      <Script
+      {/*
+        Product schema.
+
+        AggregateRating and Review were deliberately removed. The `reviews`
+        array below is a hardcoded list of the parent print shop's general
+        Google reviews — several of them are about labels and laminating rather
+        than canvas — and the identical set was emitted on every product.
+        Google requires review rich results to be genuine reviews of the
+        specific product; publishing these as Product review markup risks a
+        structured-data manual action. Reintroduce both fields once real,
+        per-product reviews are collected and stored in the database.
+      */}
+      <script
         id="product-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -521,30 +541,53 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
             },
             offers: {
               "@type": "AggregateOffer",
-              priceCurrency:
-                product.priceRange.minVariantPrice.currencyCode,
+              priceCurrency: product.priceRange.minVariantPrice.currencyCode,
               lowPrice: product.priceRange.minVariantPrice.amount,
               highPrice: product.priceRange.maxVariantPrice.amount,
               availability: "https://schema.org/InStock",
               url: `${BASE_URL}/${locale}/product/${product.handle}`,
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: averageRating,
-              reviewCount: reviews.length,
-              bestRating: 5,
-            },
-            review: reviews.map((r) => ({
-              "@type": "Review",
-              author: { "@type": "Person", name: r.author },
-              reviewRating: {
-                "@type": "Rating",
-                ratingValue: r.rating,
-                bestRating: 5,
+              seller: { "@id": `${BASE_URL}/#organization` },
+              shippingDetails: {
+                "@type": "OfferShippingDetails",
+                shippingDestination: [
+                  {
+                    "@type": "DefinedRegion",
+                    addressCountry: "CA",
+                    addressRegion: ["QC", "ON"],
+                  },
+                ],
               },
-              reviewBody: r.comment,
-              datePublished: r.date,
-            })),
+            },
+          }),
+        }}
+      />
+      <script
+        id="product-breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: tBreadcrumb("home"),
+                item: `${BASE_URL}/${locale}`,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: tBreadcrumb("canvasPrints"),
+                item: `${BASE_URL}/${locale}/shop`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: product.title,
+                item: `${BASE_URL}/${locale}/product/${product.handle}`,
+              },
+            ],
           }),
         }}
       />
@@ -580,7 +623,7 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                     <p className="text-sm text-green-800">
                       📦 {t("delivery.getItBy")}{" "}
                       <strong>
-                        {`${formatDate(addBusinessDays(today, 5))} - ${formatDate(addBusinessDays(today, 10))}`}
+                        {`${formatDate(deliveryEstimate.earliest)} - ${formatDate(deliveryEstimate.latest)}`}
                       </strong>{" "}
                       {t("delivery.ifOrderToday")}
                     </p>
@@ -612,7 +655,10 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
               {trustedBy.map(({ src, alt }) => (
-                <div key={alt} className="flex h-10 w-28 sm:h-12 sm:w-36 items-center justify-center">
+                <div
+                  key={alt}
+                  className="flex h-10 w-28 sm:h-12 sm:w-36 items-center justify-center"
+                >
                   <Image
                     src={src}
                     alt={alt}
@@ -718,14 +764,18 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
               </div>
               <div className="rounded-[32px] border border-[#FFD8B1] bg-white/90 shadow-[0_20px_60px_rgba(255,153,51,0.25)] overflow-hidden">
                 <div className="hidden md:grid grid-cols-[0.9fr_1fr_1fr] text-sm font-semibold text-[#9A3412]">
-                  <div className="px-6 py-4">{comparisonSectionCopy.labels.feature}</div>
+                  <div className="px-6 py-4">
+                    {comparisonSectionCopy.labels.feature}
+                  </div>
                   <div className="px-6 py-4 border-x border-[#FFE7CF]">
                     <div>{comparisonSectionCopy.labels.ours}</div>
                     <div className="text-xs uppercase tracking-[0.3em] text-[#F97316]">
                       {comparisonSectionCopy.labels.badge}
                     </div>
                   </div>
-                  <div className="px-6 py-4">{comparisonSectionCopy.labels.theirs}</div>
+                  <div className="px-6 py-4">
+                    {comparisonSectionCopy.labels.theirs}
+                  </div>
                 </div>
                 <div className="divide-y divide-[#FFE7CF]">
                   {comparisonRows.map((row) => (
@@ -744,7 +794,10 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                           {comparisonSectionCopy.labels.ours}
                         </p>
                         <div className="flex items-start gap-3">
-                          <span aria-hidden="true" className="text-[#F97316] mt-1">
+                          <span
+                            aria-hidden="true"
+                            className="text-[#F97316] mt-1"
+                          >
                             ✔
                           </span>
                           <p>{row.canvasPrintShop}</p>
@@ -832,7 +885,10 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
           <HomepageGallerySection />
 
           {/* Reviews */}
-          <section id="reviews" className="relative isolate bg-[#020617] py-16 md:py-24 text-white">
+          <section
+            id="reviews"
+            className="relative isolate bg-[#020617] py-16 md:py-24 text-white"
+          >
             <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/10 to-transparent" />
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-start">
@@ -848,7 +904,9 @@ const ReviewsPanel = ({ showHeading = true }: { showHeading?: boolean }) => (
                     {reviewsSectionCopy.subtitle}
                   </p>
                   <div className="mt-6 flex items-center gap-4">
-                    <div className="text-5xl font-semibold">{averageRating.toFixed(1)}</div>
+                    <div className="text-5xl font-semibold">
+                      {averageRating.toFixed(1)}
+                    </div>
                     <div>
                       <StarRating rating={averageRating} />
                     </div>

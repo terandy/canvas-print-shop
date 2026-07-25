@@ -1,11 +1,25 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CreditCard } from "lucide-react";
 import ContactInfo from "./contact-info";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { QuickLinks } from "./navbar";
+import { CITY_SLUGS, USE_CASE_SLUGS } from "@/lib/landing-pages";
+
+/** A handful of the highest-intent landing pages, linked site-wide. */
+const FOOTER_USE_CASES = [
+  "custom",
+  "framed",
+  "large",
+  "wall-art",
+  "wedding",
+  "family",
+] as const satisfies readonly (typeof USE_CASE_SLUGS)[number][];
 
 const Footer = async () => {
   const t = await getTranslations("Footer");
+  const tLanding = await getTranslations("LandingPages");
+  const locale = await getLocale();
 
   const paymentMethods = [
     { name: "Visa", icon: "/visa.svg", width: 48, height: 32 },
@@ -41,6 +55,75 @@ const Footer = async () => {
                 {t("contactUs")}
               </h3>
               <ContactInfo className="mt-4 text-sm" />
+            </div>
+          </div>
+        </div>
+
+        {/*
+          Site-wide links into the landing-page hub. Before this, nothing on the
+          site linked to /canvas-prints/* at all — every one of those pages was
+          an orphan reachable only from the sitemap.
+        */}
+        <div className="border-t border-gray-200 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">
+                {t("explore")}
+              </h3>
+              <ul className="mt-4 space-y-2 text-sm">
+                <li>
+                  <Link
+                    href={`/${locale}/shop`}
+                    className="text-gray-600 hover:text-gray-900 hover:underline"
+                  >
+                    {t("shop")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={`/${locale}/blog`}
+                    className="text-gray-600 hover:text-gray-900 hover:underline"
+                  >
+                    {t("blog")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">
+                {t("cities")}
+              </h3>
+              <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                {CITY_SLUGS.map((slug) => (
+                  <li key={slug}>
+                    <Link
+                      href={`/${locale}/canvas-prints/${slug}`}
+                      className="text-gray-600 hover:text-gray-900 hover:underline"
+                    >
+                      {tLanding(`${slug}.heading`)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">
+                {t("popular")}
+              </h3>
+              <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                {FOOTER_USE_CASES.map((slug) => (
+                  <li key={slug}>
+                    <Link
+                      href={`/${locale}/canvas-prints/${slug}`}
+                      className="text-gray-600 hover:text-gray-900 hover:underline"
+                    >
+                      {tLanding(`${slug}.heading`)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

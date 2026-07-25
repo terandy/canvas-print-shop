@@ -20,6 +20,8 @@ const QuickLinks: React.FC<Props> = ({ size, onClick }) => {
   const t = useTranslations("Footer");
   const locale = useLocale();
 
+  // Support/policy links only. Shop and Guides are primary navigation and are
+  // rendered separately — they do not belong under "Customer Service".
   const companyLinks = [
     {
       name: t("links.privacy"),

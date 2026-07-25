@@ -4,6 +4,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Search from "./search";
 import { Menu as MenuIcon, X } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import Button from "../buttons/button";
 import SquareButton from "../buttons/square-button";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -15,6 +17,9 @@ const MobileMenu: React.FC<Props> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openMobileMenu = () => setIsOpen(true);
   const closeMobileMenu = () => setIsOpen(false);
+  const t = useTranslations("Nav");
+  const locale = useLocale();
+
   return (
     <>
       <SquareButton
@@ -55,9 +60,30 @@ const MobileMenu: React.FC<Props> = () => {
                     variant="ghost"
                   />
                 </div>
-                <div className="mb-4 w-full">
+                <div className="mb-2 w-full">
                   <Search onSearch={closeMobileMenu} />
                 </div>
+
+                {/* Primary navigation, above the support links. */}
+                <nav className="mb-6 border-b border-gray-200 pb-6">
+                  <ul className="space-y-1">
+                    {[
+                      { name: t("shop"), href: `/${locale}/shop` },
+                      { name: t("guides"), href: `/${locale}/blog` },
+                    ].map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          onClick={closeMobileMenu}
+                          className="block py-2 text-xl font-semibold text-secondary hover:text-primary"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+
                 <QuickLinks onClick={closeMobileMenu} />
               </div>
             </Dialog.Panel>

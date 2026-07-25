@@ -9,7 +9,6 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import { Geist } from "next/font/google";
-import Script from "next/script";
 import { BASE_URL, EMAIL, PHONE, ADDRESS } from "@/lib/constants";
 import GoogleAnalytics from "@/components/google-analytics";
 import HubSpotScript from "@/components/hubspot-script";
@@ -29,9 +28,10 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
-  alternates: {
-    canonical: BASE_URL,
-  },
+  // NOTE: no `alternates` here on purpose. Metadata is inherited by every child
+  // route, so a canonical set at the layout level made every page on the site
+  // declare the homepage as its canonical. Each page sets its own via
+  // `canonicalMetadata()` in `@/lib/seo`.
   openGraph: {
     type: "website",
     siteName: "Canvas Print Shop",
@@ -104,20 +104,12 @@ const LocaleLayout = async ({ children, params }: Props) => {
 
   const messages = await getMessages();
 
-  const alternates = routing.locales.map((loc) => ({
-    hrefLang: `${loc}-CA`, // e.g. en-CA, fr-CA
-    href: `${BASE_URL}/${loc}`,
-  }));
-
   const trustStripItems = getTrustStripItems(locale, messages);
 
   // Admin pages get a minimal layout without navbar/footer
   if (isAdminRoute) {
     return (
       <html lang={locale}>
-        <head>
-          <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
-        </head>
         <body className={geist.className}>
           <NextIntlClientProvider messages={messages}>
             {children}
@@ -129,32 +121,27 @@ const LocaleLayout = async ({ children, params }: Props) => {
 
   return (
     <html lang={locale}>
-      <head>
-        {alternates.map(({ hrefLang, href }) => (
-          <link
-            key={hrefLang}
-            rel="alternate"
-            hrefLang={hrefLang}
-            href={href}
-          />
-        ))}
-        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
-      </head>
+      {/*
+        hreflang is no longer hand-rolled here. It used to point every page at
+        the locale *root*, so /en/faqs claimed /fr as its French equivalent.
+        Each page now emits correct per-path alternates via `canonicalMetadata()`.
+      */}
       <body className={geist.className}>
         <GoogleAnalytics />
-        <Script
+        <script
           id="organization-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
+              "@id": `${BASE_URL}/#organization`,
               name: "Canvas Print Shop",
               url: BASE_URL,
               logo: `${BASE_URL}/favicon.svg`,
               image: `${BASE_URL}/canvas-example.jpeg`,
-              email: "info@canvasprintshop.ca",
-              telephone: "(514) 441-2230",
+              email: EMAIL.label,
+              telephone: PHONE.label,
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "1172 Av. du Lac-Saint-Charles",
@@ -163,6 +150,14 @@ const LocaleLayout = async ({ children, params }: Props) => {
                 postalCode: "G3G 2S7",
                 addressCountry: "CA",
               },
+              hasMap: ADDRESS.href,
+              // We only ship to Quebec and Ontario — declaring it keeps us out
+              // of local results for provinces we cannot serve.
+              areaServed: [
+                { "@type": "State", name: "Quebec" },
+                { "@type": "State", name: "Ontario" },
+              ],
+              knowsLanguage: ["en-CA", "fr-CA"],
               priceRange: "$$",
               sameAs: [],
             }),

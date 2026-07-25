@@ -4,6 +4,7 @@ import { getProductList } from "@/lib/db/queries/products";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,13 +16,13 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    // Self-referencing canonical per locale. This previously inherited a
+    // site-wide canonical from the layout, so /fr pointed at the English home.
+    ...canonicalMetadata(locale),
     openGraph: {
       title: t("og.title"),
       description: t("og.description"),
-      url: "https://canvasprintshop.ca",
-      siteName: "Canvas Print Shop",
-      locale: locale === "fr" ? "fr_CA" : "en_CA",
-      type: "website",
+      ...openGraphMetadata(locale),
     },
   };
 }

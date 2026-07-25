@@ -4,6 +4,7 @@ import { EMAIL, PHONE, ADDRESS } from "@/lib/constants";
 import { PageHeader, SectionHeader, SectionContainer } from "@/components";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,12 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    ...canonicalMetadata(locale, "/contact"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      ...openGraphMetadata(locale, "/contact"),
+    },
   };
 }
 

@@ -6,14 +6,22 @@ import {
   PageHeader,
   ContactSection,
 } from "@/components";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
   const t = await getTranslations("ReturnsPolicy.metadata");
 
   return {
     title: t("title"),
     description: t("description"),
+    ...canonicalMetadata(locale, "/returns-policy"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      ...openGraphMetadata(locale, "/returns-policy"),
+    },
   };
 }
 

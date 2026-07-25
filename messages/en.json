@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Canvas Prints Canada | Custom Canvas Printing | Canvas Print Shop",
-    "description": "Order custom canvas prints in Canada. Premium photo canvas printing with UVgel technology, hand-crafted in Quebec. Canvas wall art, framed canvas prints & free shipping available.",
+    "title": "Custom Canvas Prints | Quebec & Ontario | Canvas Print Shop",
+    "description": "Custom canvas prints hand-made in Quebec. Upload a photo and get a ready-to-hang canvas delivered across Quebec and Ontario. 30-year fade guarantee.",
     "og": {
       "title": "Canvas Prints Canada | Custom Canvas Printing | Canvas Print Shop",
       "description": "Transform your photos into premium canvas prints. Expert hand-crafted in Canada with UVgel technology. Custom canvas wall art, large canvas prints & more."
@@ -9,7 +9,7 @@
   },
   "FAQ": {
     "metadata": {
-      "title": "Frequently Asked Questions | Canvas Print Shop",
+      "title": "Frequently Asked Questions",
       "description": "Find answers to common questions about our canvas prints, shipping, quality guarantee, and more. Get help with your custom canvas printing needs."
     }
   },
@@ -98,11 +98,16 @@
       "shipping": "Shipping Policy",
       "returns": "Returns Policy",
       "contact": "Contact Us"
-    }
+    },
+    "explore": "Explore",
+    "cities": "Canvas prints by city",
+    "popular": "Popular",
+    "shop": "Shop all canvas prints",
+    "blog": "Guides"
   },
   "ShippingPolicy": {
     "metadata": {
-      "title": "Shipping Policy | Canvas Print Shop",
+      "title": "Shipping Policy",
       "description": "Learn about our shipping options including Canada Post delivery and local pickup in Quebec City."
     },
     "pageTitle": "Shipping Policy",
@@ -148,7 +153,7 @@
   },
   "ReturnsPolicy": {
     "metadata": {
-      "title": "Returns Policy | Canvas Print Shop",
+      "title": "Returns Policy",
       "description": "Learn about our 30-day return policy and our commitment to customer satisfaction. We make returns easy with our hassle-free process."
     },
     "pageTitle": "Returns Policy",
@@ -214,7 +219,7 @@
   },
   "CanvasProcess": {
     "metadata": {
-      "title": "Canvas Making Process | Canvas Print Shop",
+      "title": "Canvas Making Process",
       "description": "Learn about our premium canvas production process - from material selection to quality control, see how we craft our high-quality canvas prints."
     },
     "hero": {
@@ -289,13 +294,13 @@
       "content": "If you have any questions about our privacy policy, please contact us:"
     },
     "metadata": {
-      "title": "Privacy Policy | Canvas Print Shop",
+      "title": "Privacy Policy",
       "description": "Learn about how Canvas Print Shop protects and handles your personal information. Our privacy policy outlines our data collection, use, and protection practices."
     }
   },
   "Contact": {
     "metadata": {
-      "title": "Contact us | Canvas Print Shop",
+      "title": "Contact us",
       "description": "We're here to help! Choose the best way to reach us below."
     },
     "pageTitle": "Contact us",
@@ -1003,503 +1008,2532 @@
   },
   "QualityGuarantee": {
     "metadata": {
-      "title": "Our Quality Promise | Canvas Print Shop",
+      "title": "Our Quality Promise",
       "description": "Discover why Canvas Print Shop delivers superior canvas prints. Premium cotton-blend canvas, UVgel technology, and expert hand-stretching in our Quebec City workshop."
     }
   },
   "LandingPages": {
     "common": {
       "orderNow": "Order Now",
+      "faqHeading": "Frequently asked questions",
+      "delivery": {
+        "getItBy": "Order today, get it by"
+      },
+      "relatedHeading": "Related pages",
+      "breadcrumb": {
+        "home": "Home",
+        "canvasPrints": "Canvas Prints"
+      },
       "trustBadges": {
         "secure": "Secure Checkout",
-        "shipping": "Fast Canada-Wide Shipping",
+        "shipping": "Quebec & Ontario Delivery",
         "made": "Made in Quebec, Canada",
         "satisfaction": "100% Satisfaction Guarantee",
         "guarantee": "30-Year Print Guarantee"
       }
     },
-    "toronto": {
-      "meta": {
-        "title": "Canvas Prints Toronto | Custom Photo Canvas Printing",
-        "description": "Order custom canvas prints in Toronto. Premium photo canvas printing with fast shipping to Toronto & the GTA. Hand-crafted in Canada with UVgel technology."
-      },
-      "heading": "Canvas Prints Toronto",
-      "description": "Premium custom canvas prints delivered to your door in Toronto and the Greater Toronto Area. Hand-crafted in Canada with museum-quality materials.",
-      "subheading": "Fast shipping to Toronto & GTA from our Canadian workshop",
-      "benefits": {
-        "one": {
-          "title": "Fast Toronto Delivery",
-          "description": "Quick shipping to Toronto and surrounding areas. Your custom canvas prints arrive ready to hang."
-        },
-        "two": {
-          "title": "Premium Canadian Quality",
-          "description": "Hand-crafted in our Quebec workshop using premium cotton-blend canvas and UVgel ink technology."
-        },
-        "three": {
-          "title": "Perfect for Toronto Homes",
-          "description": "Transform your photos into stunning wall art. Ideal for condos, houses, and offices across the GTA."
-        }
-      }
-    },
-    "calgary": {
-      "meta": {
-        "title": "Canvas Prints Calgary | Custom Photo Canvas Printing",
-        "description": "Order custom canvas prints in Calgary. Premium photo canvas printing with fast shipping to Calgary & Alberta. Hand-crafted in Canada with 30-year guarantee."
-      },
-      "heading": "Canvas Prints Calgary",
-      "description": "Premium custom canvas prints shipped directly to Calgary and across Alberta. Expert craftsmanship with a 30-year print quality guarantee.",
-      "subheading": "Canada-wide shipping from our Quebec workshop to Calgary",
-      "benefits": {
-        "one": {
-          "title": "Shipped to Calgary",
-          "description": "Fast, secure shipping to Calgary and all Alberta locations. Every canvas arrives ready to hang."
-        },
-        "two": {
-          "title": "30-Year Quality Guarantee",
-          "description": "Our UVgel ink technology ensures your canvas prints won't fade for over 30 years."
-        },
-        "three": {
-          "title": "Premium Materials",
-          "description": "Premium cotton-blend canvas with solid wood stretcher bars, hand-stretched for gallery-quality results."
-        }
-      }
-    },
-    "vancouver": {
-      "meta": {
-        "title": "Canvas Prints Vancouver | Custom Photo Canvas Printing",
-        "description": "Order custom canvas prints in Vancouver. Premium photo canvas printing with fast shipping to Vancouver & BC. Hand-crafted in Canada."
-      },
-      "heading": "Canvas Prints Vancouver",
-      "description": "Premium custom canvas prints delivered to Vancouver and across British Columbia. Transform your photos into beautiful wall art.",
-      "subheading": "Fast Canada-wide shipping to Vancouver from our workshop",
-      "benefits": {
-        "one": {
-          "title": "Vancouver Delivery",
-          "description": "Reliable shipping to Vancouver and all BC locations. Your canvas arrives carefully packaged and ready to hang."
-        },
-        "two": {
-          "title": "Stunning Photo Quality",
-          "description": "Advanced Canon printing with UVgel technology delivers exceptional color vibrancy and sharpness."
-        },
-        "three": {
-          "title": "Hand-Crafted in Canada",
-          "description": "Every canvas is expertly hand-stretched over solid wood frames in our Canadian workshop."
-        }
-      }
-    },
-    "edmonton": {
-      "meta": {
-        "title": "Canvas Prints Edmonton | Custom Photo Canvas Printing",
-        "description": "Order custom canvas prints in Edmonton. Premium photo canvas printing with fast shipping to Edmonton & Alberta. Made in Canada."
-      },
-      "heading": "Canvas Prints Edmonton",
-      "description": "Premium custom canvas prints shipped to Edmonton and across Alberta. Expert Canadian craftsmanship with museum-quality materials.",
-      "subheading": "Canada-wide shipping from our workshop to Edmonton",
-      "benefits": {
-        "one": {
-          "title": "Edmonton Delivery",
-          "description": "Fast shipping to Edmonton and surrounding Alberta communities. Packaged securely for safe arrival."
-        },
-        "two": {
-          "title": "Premium Canvas Materials",
-          "description": "35% cotton-blend canvas with 75% opacity — far superior to budget polyester alternatives."
-        },
-        "three": {
-          "title": "Easy Upload Process",
-          "description": "Simply upload your photo, choose your size, preview your canvas and checkout. It's that easy."
-        }
-      }
-    },
     "montreal": {
       "meta": {
-        "title": "Canvas Prints Montreal | Custom Photo Canvas Printing",
-        "description": "Order custom canvas prints in Montreal. Premium photo canvas printing with fast local shipping. Hand-crafted in Quebec with UVgel technology."
+        "title": "Canvas Prints Montreal",
+        "description": "Custom canvas prints delivered to Montreal, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
-      "heading": "Canvas Prints Montreal",
-      "description": "Premium custom canvas prints with fast shipping to Montreal. Made right here in Quebec with expert craftsmanship and premium materials.",
-      "subheading": "Proudly made in Quebec — fast delivery to Montreal",
+      "heading": "Canvas Prints in Montreal",
+      "description": "Upload a photo and we will print, stretch and deliver it to Montreal — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Montreal",
+        "body": "Montreal orders are printed and hand-stretched at our Lac-Saint-Charles studio and shipped by courier, whether you are in the Plateau, Rosemont, Verdun or the West Island. Because we print in Quebec rather than importing from an overseas plant, your canvas never clears customs and never sits in a consolidation warehouse."
+      },
       "benefits": {
         "one": {
-          "title": "Fast Montreal Delivery",
-          "description": "Quick shipping from our Quebec workshop to Montreal. Local pickup also available."
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Montreal within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
-          "title": "Made in Quebec",
-          "description": "Every canvas is hand-crafted in our Quebec City workshop, supporting local Canadian artisanship."
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
         },
         "three": {
-          "title": "Bilingual Service",
-          "description": "Full service in English and French. Our Quebec-based team is happy to help in both languages."
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
         }
-      }
-    },
-    "ottawa": {
-      "meta": {
-        "title": "Canvas Prints Ottawa | Custom Photo Canvas Printing",
-        "description": "Order custom canvas prints in Ottawa. Premium photo canvas printing with fast shipping from Quebec. Hand-crafted in Canada."
       },
-      "heading": "Canvas Prints Ottawa",
-      "description": "Premium custom canvas prints delivered quickly to Ottawa and the National Capital Region. Canadian-made quality you can trust.",
-      "subheading": "Fast shipping from our Quebec workshop to Ottawa",
-      "benefits": {
-        "one": {
-          "title": "Quick Ottawa Delivery",
-          "description": "Fast shipping from nearby Quebec to Ottawa and Gatineau. Your canvas arrives ready to hang."
+      "details": {
+        "title": "Ordering from Montreal",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Montreal take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
-        "two": {
-          "title": "Canadian Made Quality",
-          "description": "Hand-crafted in our Quebec City workshop using premium materials and advanced printing technology."
+        {
+          "q": "Do you charge extra to ship to Montreal?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
         },
-        "three": {
-          "title": "100% Satisfaction Guarantee",
-          "description": "Not happy with your canvas? We'll make it right. Your satisfaction is our top priority."
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
         }
-      }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Quebec City",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Canvas prints Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Canvas prints Gatineau",
+          "slug": "gatineau"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
     },
     "quebec-city": {
       "meta": {
-        "title": "Canvas Prints Quebec City | Impression sur Toile Québec",
-        "description": "Order custom canvas prints in Quebec City. Local pickup available. Premium photo canvas printing hand-crafted in our Quebec City workshop."
+        "title": "Canvas Prints Quebec City",
+        "description": "Custom canvas prints delivered to Quebec City, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
-      "heading": "Canvas Prints Quebec City",
-      "description": "Premium custom canvas prints made right here in Quebec City. Visit our workshop for local pickup or enjoy fast local delivery.",
-      "subheading": "Made locally in Quebec City — pickup available",
+      "heading": "Canvas Prints in Quebec City",
+      "description": "Upload a photo and we will print, stretch and deliver it to Quebec City — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Quebec City",
+        "body": "Our studio is at 1172 Avenue du Lac-Saint-Charles, so Quebec City is our home market. Local customers are welcome to arrange pickup directly from the shop instead of waiting on a courier, which is the one case where you can have a finished canvas in hand sooner than the usual window."
+      },
       "benefits": {
         "one": {
-          "title": "Local Pickup Available",
-          "description": "Visit our Quebec City workshop to pick up your canvas prints in person. No shipping wait!"
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Quebec City within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
-          "title": "Made Right Here",
-          "description": "Your canvas is hand-crafted in our Quebec City workshop — see the quality for yourself."
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
         },
         "three": {
-          "title": "Support Local",
-          "description": "By ordering from us, you're supporting a local Quebec City business and skilled artisans."
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
         }
-      }
+      },
+      "details": {
+        "title": "Ordering from Quebec City",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Quebec City take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Quebec City?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Canvas prints Gatineau",
+          "slug": "gatineau"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "laval": {
+      "meta": {
+        "title": "Canvas Prints Laval",
+        "description": "Custom canvas prints delivered to Laval, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Laval",
+      "description": "Upload a photo and we will print, stretch and deliver it to Laval — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Laval",
+        "body": "Laval sits just north of Montreal across Rivière des Prairies, and Chomedey, Sainte-Dorothée, Vimont and Duvernay addresses are all inside our standard delivery zone. Tracking is emailed the moment your canvas leaves the studio."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Laval within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Laval",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Laval take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Laval?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Quebec City",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Canvas prints Gatineau",
+          "slug": "gatineau"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "gatineau": {
+      "meta": {
+        "title": "Canvas Prints Gatineau",
+        "description": "Custom canvas prints delivered to Gatineau, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Gatineau",
+      "description": "Upload a photo and we will print, stretch and deliver it to Gatineau — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Gatineau",
+        "body": "Because we serve both Quebec and Ontario, Gatineau customers can send a print across the river to an Ottawa address in the same order. Hull, Aylmer and Buckingham are all inside our standard delivery zone at no surcharge."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Gatineau within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Gatineau",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Gatineau take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Gatineau?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Quebec City",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Canvas prints Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "sherbrooke": {
+      "meta": {
+        "title": "Canvas Prints Sherbrooke",
+        "description": "Custom canvas prints delivered to Sherbrooke, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Sherbrooke",
+      "description": "Upload a photo and we will print, stretch and deliver it to Sherbrooke — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Sherbrooke",
+        "body": "Sherbrooke and the wider Estrie region are inside our standard delivery area. Canvases travel flat-packed in a rigid corner-protected carton rather than rolled in a tube, so the stretched frame arrives ready to hang and there is no need to re-tension anything on arrival."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Sherbrooke within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Sherbrooke",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Sherbrooke take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Sherbrooke?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Quebec City",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Canvas prints Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "trois-rivieres": {
+      "meta": {
+        "title": "Canvas Prints Trois-Rivières",
+        "description": "Custom canvas prints delivered to Trois-Rivières, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Trois-Rivières",
+      "description": "Upload a photo and we will print, stretch and deliver it to Trois-Rivières — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Trois-Rivières",
+        "body": "Trois-Rivières sits roughly halfway between our studio and Montreal, and the whole Mauricie region is covered — including Cap-de-la-Madeleine, Shawinigan and Bécancour addresses."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Trois-Rivières within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Trois-Rivières",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Trois-Rivières take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Trois-Rivières?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Quebec City",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Canvas prints Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "longueuil": {
+      "meta": {
+        "title": "Canvas Prints Longueuil",
+        "description": "Custom canvas prints delivered to Longueuil, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Longueuil",
+      "description": "Upload a photo and we will print, stretch and deliver it to Longueuil — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Longueuil",
+        "body": "Longueuil and the Montérégie south shore are fully covered, including Saint-Hubert, Greenfield Park, Brossard and Saint-Lambert. Every order ships with the same 30-year fade guarantee regardless of where it lands."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Longueuil within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Longueuil",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Longueuil take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Longueuil?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Quebec City",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Canvas prints Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "toronto": {
+      "meta": {
+        "title": "Canvas Prints Toronto",
+        "description": "Custom canvas prints delivered to Toronto, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Toronto",
+      "description": "Upload a photo and we will print, stretch and deliver it to Toronto — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Toronto",
+        "body": "Toronto is our largest Ontario market, covering downtown condos, Scarborough, Etobicoke and North York. Ordering from a Canadian studio means no cross-border duty, no US exchange rate markup and no surprise brokerage fee on delivery."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Toronto within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Toronto",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Toronto take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Toronto?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Canvas prints Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Canvas prints Hamilton",
+          "slug": "hamilton"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "ottawa": {
+      "meta": {
+        "title": "Canvas Prints Ottawa",
+        "description": "Custom canvas prints delivered to Ottawa, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Ottawa",
+      "description": "Upload a photo and we will print, stretch and deliver it to Ottawa — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Ottawa",
+        "body": "We handle Ottawa and Gatineau addresses on the same routes, so if you are sending prints to family on both sides of the river they travel together rather than being split across two shipments."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Ottawa within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Ottawa",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Ottawa take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Ottawa?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Canvas prints Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Canvas prints Hamilton",
+          "slug": "hamilton"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "mississauga": {
+      "meta": {
+        "title": "Canvas Prints Mississauga",
+        "description": "Custom canvas prints delivered to Mississauga, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Mississauga",
+      "description": "Upload a photo and we will print, stretch and deliver it to Mississauga — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Mississauga",
+        "body": "Mississauga ships on the same Ontario routes as Toronto, covering Port Credit, Streetsville, Meadowvale and Erin Mills. Larger sizes ship in the same protective packaging as small ones at no extra handling cost."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Mississauga within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Mississauga",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Mississauga take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Mississauga?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Canvas prints Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Canvas prints Hamilton",
+          "slug": "hamilton"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "hamilton": {
+      "meta": {
+        "title": "Canvas Prints Hamilton",
+        "description": "Custom canvas prints delivered to Hamilton, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Hamilton",
+      "description": "Upload a photo and we will print, stretch and deliver it to Hamilton — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Hamilton",
+        "body": "Hamilton, Dundas, Ancaster and Stoney Creek are all covered. Our canvas is a cotton-poly blend with a higher opacity than the thin stock used by most online printers, which matters in bright rooms — light does not pass through and wash out the darker tones in your photo."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Hamilton within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Hamilton",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Hamilton take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Hamilton?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Canvas prints Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Canvas prints Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "london": {
+      "meta": {
+        "title": "Canvas Prints London",
+        "description": "Custom canvas prints delivered to London, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in London",
+      "description": "Upload a photo and we will print, stretch and deliver it to London — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to London",
+        "body": "London and southwestern Ontario are inside our delivery area. Every canvas is printed on a Canon Colorado using UVgel ink, which cures instantly and does not off-gas the solvent smell that latex-printed canvas often arrives with."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches London within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from London",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to London take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to London?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Canvas prints Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Canvas prints Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "kingston": {
+      "meta": {
+        "title": "Canvas Prints Kingston",
+        "description": "Custom canvas prints delivered to Kingston, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Kingston",
+      "description": "Upload a photo and we will print, stretch and deliver it to Kingston — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Kingston",
+        "body": "Kingston sits along the corridor between Montreal and Toronto and is fully covered. If you are ordering a gift for a specific date, give yourself a couple of weeks — production is scheduled before the courier clock even starts."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Kingston within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Kingston",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Kingston take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Kingston?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Canvas prints Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Canvas prints Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
+    },
+    "windsor": {
+      "meta": {
+        "title": "Canvas Prints Windsor",
+        "description": "Custom canvas prints delivered to Windsor, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+      },
+      "heading": "Canvas Prints in Windsor",
+      "description": "Upload a photo and we will print, stretch and deliver it to Windsor — typically 5 to 10 business days from order to doorstep.",
+      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "intro": {
+        "title": "Delivering canvas prints to Windsor",
+        "body": "Windsor is the furthest point in our delivery area, and there is no remote-area surcharge — shipping is priced exactly as it is for Montreal, and free shipping promotions apply identically."
+      },
+      "benefits": {
+        "one": {
+          "title": "Delivered in 5–10 business days",
+          "description": "Order today and your canvas typically reaches Windsor within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+        },
+        "two": {
+          "title": "Printed in Quebec, not overseas",
+          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+        },
+        "three": {
+          "title": "30-year fade guarantee",
+          "description": "Canon Colorado UVgel ink on cotton-blend canvas, rated to hold its colour for 30 years indoors."
+        }
+      },
+      "details": {
+        "title": "Ordering from Windsor",
+        "items": [
+          {
+            "title": "Total time",
+            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
+          },
+          {
+            "title": "Packaging",
+            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long does delivery to Windsor take?",
+          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+        },
+        {
+          "q": "Do you charge extra to ship to Windsor?",
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+        },
+        {
+          "q": "Do you deliver outside Quebec and Ontario?",
+          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+        },
+        {
+          "q": "Does the canvas arrive ready to hang?",
+          "a": "Yes. It is stretched on a solid wood frame with hanging hardware already fitted, packed flat rather than rolled."
+        }
+      ],
+      "related": [
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Canvas prints Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Canvas prints Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        }
+      ]
     },
     "16x20": {
       "meta": {
-        "title": "16x20 Canvas Prints | Custom 16x20 Photo Canvas",
-        "description": "Order 16x20 canvas prints online. Perfect medium-sized canvas for photos and wall art. Premium quality, hand-crafted in Canada."
+        "title": "16x20 Canvas Prints",
+        "description": "Custom 16x20 canvas prints made in Quebec. Upload a photo, choose gallery wrap or framed, and get a ready-to-hang canvas delivered across Quebec and Ontario."
       },
       "heading": "16x20 Canvas Prints",
-      "description": "The 16x20 canvas print is a popular choice for photos, portraits, and wall art. A versatile medium size that fits perfectly in any room.",
-      "subheading": "A popular size for portraits, family photos, and bedroom wall art",
+      "description": "16x20 inches — 40 × 50 cm — printed on demand and hand-stretched in Quebec.",
+      "subheading": "Gallery wrap or floater frame, ready to hang.",
+      "intro": {
+        "title": "Is 16x20 the right size?",
+        "body": "A 16x20 canvas (40 × 50 cm) is the size most people start with. It is large enough to hold a portrait or a landscape without the subject getting lost, but small enough to sit above a desk, in a hallway, or as one panel in a gallery wall without dominating the room.\n\nFor a sharp result at this size, upload an image of at least 1600 × 2000 pixels. Most photos taken on a phone from the last five years clear that comfortably. If your file is smaller we will tell you before printing rather than shipping something soft."
+      },
       "benefits": {
         "one": {
-          "title": "Versatile Size",
-          "description": "16x20 inches is ideal for portraits, family photos, pet photos, and any image you want to display beautifully."
+          "title": "16x20 inches (40 × 50 cm)",
+          "description": "Delivered stretched on a solid wood frame, ready to hang straight out of the box."
         },
         "two": {
-          "title": "Premium Quality",
-          "description": "Printed on premium cotton-blend canvas with fade-resistant UVgel ink. Guaranteed for 30 years."
+          "title": "Upload at least 1600 × 2000 px",
+          "description": "We check every file against your chosen size before printing and contact you if it will not hold detail."
         },
         "three": {
-          "title": "Ready to Hang",
-          "description": "Hand-stretched over solid wood frames with hanging hardware included. Arrives ready to display."
+          "title": "Gallery wrap or floater frame",
+          "description": "Choose a borderless wrap or add a floater frame for a finished gallery edge."
         }
-      }
+      },
+      "details": {
+        "title": "Specifications",
+        "items": [
+          {
+            "title": "Dimensions",
+            "description": "16x20 inches (40 × 50 cm)."
+          },
+          {
+            "title": "Minimum resolution",
+            "description": "1600 × 2000 pixels for a sharp result at this size."
+          },
+          {
+            "title": "Finish options",
+            "description": "Gallery wrap, or add a floater frame for a finished edge."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "What resolution do I need for a 16x20 canvas?",
+          "a": "At least 1600 × 2000 pixels. Most recent phone photos exceed this. We check your file before printing and contact you if it falls short."
+        },
+        {
+          "q": "How much does a 16x20 canvas weigh?",
+          "a": "Light enough for standard drywall anchors. Hanging hardware is fitted before the canvas leaves our studio."
+        },
+        {
+          "q": "Can I get this size framed?",
+          "a": "Yes. A floater frame can be added when you configure your canvas on the product page."
+        },
+        {
+          "q": "How is it shipped?",
+          "a": "Flat, in a rigid carton with corner protection. We never roll a stretched canvas into a tube."
+        }
+      ],
+      "related": [
+        {
+          "label": "24x36 canvas prints",
+          "slug": "24x36"
+        },
+        {
+          "label": "36x48 canvas prints",
+          "slug": "36x48"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Canvas wall art",
+          "slug": "wall-art"
+        }
+      ]
     },
     "24x36": {
       "meta": {
-        "title": "24x36 Canvas Prints | Large Custom Photo Canvas",
-        "description": "Order 24x36 canvas prints online. Large canvas prints perfect for living rooms and feature walls. Premium quality, made in Canada."
+        "title": "24x36 Canvas Prints",
+        "description": "Custom 24x36 canvas prints hand-stretched in Quebec. A true statement size for living rooms and above-sofa placement. Delivered across Quebec and Ontario."
       },
       "heading": "24x36 Canvas Prints",
-      "description": "Make a statement with a 24x36 canvas print. This large format size is perfect for living rooms, offices, and feature walls.",
-      "subheading": "A large format canvas ideal for living rooms and feature walls",
+      "description": "24x36 inches — 60 × 90 cm — printed on demand and hand-stretched in Quebec.",
+      "subheading": "Gallery wrap or floater frame, ready to hang.",
+      "intro": {
+        "title": "Is 24x36 the right size?",
+        "body": "At 24x36 (60 × 90 cm) a canvas stops being an accent and becomes the focal point of a wall. This is the size we recommend above a sofa, a bed, or a fireplace, where a smaller print would look stranded in the middle of too much empty wall.\n\nThe general rule for above-furniture placement is that artwork should span roughly two-thirds of the furniture below it. A 24x36 works well over a loveseat or a queen bed; over a full-length sectional you may want to step up to 36x48 or hang a pair side by side."
+      },
       "benefits": {
         "one": {
-          "title": "Statement Piece",
-          "description": "At 24x36 inches, this canvas commands attention. Perfect as a focal point in your living room or office."
+          "title": "24x36 inches (60 × 90 cm)",
+          "description": "Delivered stretched on a solid wood frame, ready to hang straight out of the box."
         },
         "two": {
-          "title": "Sharp at Any Size",
-          "description": "Our advanced Canon printing with UVgel technology delivers stunning detail even at large sizes."
+          "title": "Upload at least 2400 × 3600 px",
+          "description": "We check every file against your chosen size before printing and contact you if it will not hold detail."
         },
         "three": {
-          "title": "Solid Wood Frame",
-          "description": "Hand-stretched over solid wood stretcher bars for drum-tight tension and gallery-quality presentation."
+          "title": "Gallery wrap or floater frame",
+          "description": "Choose a borderless wrap or add a floater frame for a finished gallery edge."
         }
-      }
+      },
+      "details": {
+        "title": "Specifications",
+        "items": [
+          {
+            "title": "Dimensions",
+            "description": "24x36 inches (60 × 90 cm)."
+          },
+          {
+            "title": "Minimum resolution",
+            "description": "2400 × 3600 pixels for a sharp result at this size."
+          },
+          {
+            "title": "Finish options",
+            "description": "Gallery wrap, or add a floater frame for a finished edge."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "What resolution do I need for a 24x36 canvas?",
+          "a": "At least 2400 × 3600 pixels. Most recent phone photos exceed this. We check your file before printing and contact you if it falls short."
+        },
+        {
+          "q": "How much does a 24x36 canvas weigh?",
+          "a": "Light enough for standard drywall anchors. Hanging hardware is fitted before the canvas leaves our studio."
+        },
+        {
+          "q": "Can I get this size framed?",
+          "a": "Yes. A floater frame can be added when you configure your canvas on the product page."
+        },
+        {
+          "q": "How is it shipped?",
+          "a": "Flat, in a rigid carton with corner protection. We never roll a stretched canvas into a tube."
+        }
+      ],
+      "related": [
+        {
+          "label": "16x20 canvas prints",
+          "slug": "16x20"
+        },
+        {
+          "label": "36x48 canvas prints",
+          "slug": "36x48"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Canvas wall art",
+          "slug": "wall-art"
+        }
+      ]
     },
     "36x48": {
       "meta": {
-        "title": "36x48 Canvas Prints | Extra Large Custom Photo Canvas",
-        "description": "Order 36x48 canvas prints online. Extra large canvas prints for maximum impact. Premium museum-quality, hand-crafted in Canada."
+        "title": "36x48 Canvas Prints",
+        "description": "Extra large 36x48 canvas prints made to order in Quebec. Built on a reinforced stretcher frame and shipped flat. Delivery across Quebec and Ontario."
       },
       "heading": "36x48 Canvas Prints",
-      "description": "Go big with a 36x48 canvas print. Our extra-large format delivers maximum visual impact for your most cherished photos.",
-      "subheading": "Extra large format for maximum visual impact",
+      "description": "36x48 inches — 90 × 120 cm — printed on demand and hand-stretched in Quebec.",
+      "subheading": "Gallery wrap or floater frame, ready to hang.",
+      "intro": {
+        "title": "Is 36x48 the right size?",
+        "body": "36x48 (90 × 120 cm) is our largest standard size and it is genuinely architectural — it fills a stairwell wall, anchors an open-plan living area, or works as a single dramatic piece behind a dining table.\n\nAt this scale the frame matters as much as the print. We build 36x48 canvases on a reinforced stretcher with a centre brace so the bars cannot bow inward over time, which is the usual failure mode on cheap large canvases. Source images should be at least 3600 × 4800 pixels; if you are working from an older photo, send it to us before ordering and we will assess it."
+      },
       "benefits": {
         "one": {
-          "title": "Maximum Impact",
-          "description": "A 36x48 canvas makes a dramatic statement. Perfect for large walls, open spaces, and commercial settings."
+          "title": "36x48 inches (90 × 120 cm)",
+          "description": "Delivered stretched on a solid wood frame, ready to hang straight out of the box."
         },
         "two": {
-          "title": "Museum-Quality Printing",
-          "description": "Even at this large size, our UVgel technology delivers razor-sharp detail and vibrant, true-to-life colors."
+          "title": "Upload at least 3600 × 4800 px",
+          "description": "We check every file against your chosen size before printing and contact you if it will not hold detail."
         },
         "three": {
-          "title": "Expert Craftsmanship",
-          "description": "Extra-large canvases require expert stretching. Our skilled team ensures perfect tension and flawless corners."
+          "title": "Gallery wrap or floater frame",
+          "description": "Choose a borderless wrap or add a floater frame for a finished gallery edge."
         }
-      }
+      },
+      "details": {
+        "title": "Specifications",
+        "items": [
+          {
+            "title": "Dimensions",
+            "description": "36x48 inches (90 × 120 cm)."
+          },
+          {
+            "title": "Minimum resolution",
+            "description": "3600 × 4800 pixels for a sharp result at this size."
+          },
+          {
+            "title": "Finish options",
+            "description": "Gallery wrap, or add a floater frame for a finished edge."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "What resolution do I need for a 36x48 canvas?",
+          "a": "At least 3600 × 4800 pixels. Most recent phone photos exceed this. We check your file before printing and contact you if it falls short."
+        },
+        {
+          "q": "How much does a 36x48 canvas weigh?",
+          "a": "Light enough for standard drywall anchors. Hanging hardware is fitted before the canvas leaves our studio."
+        },
+        {
+          "q": "Can I get this size framed?",
+          "a": "Yes. A floater frame can be added when you configure your canvas on the product page."
+        },
+        {
+          "q": "How is it shipped?",
+          "a": "Flat, in a rigid carton with corner protection. We never roll a stretched canvas into a tube."
+        }
+      ],
+      "related": [
+        {
+          "label": "16x20 canvas prints",
+          "slug": "16x20"
+        },
+        {
+          "label": "24x36 canvas prints",
+          "slug": "24x36"
+        },
+        {
+          "label": "Large canvas prints",
+          "slug": "large"
+        },
+        {
+          "label": "Framed canvas prints",
+          "slug": "framed"
+        },
+        {
+          "label": "Custom canvas prints",
+          "slug": "custom"
+        },
+        {
+          "label": "Canvas wall art",
+          "slug": "wall-art"
+        }
+      ]
     },
     "wedding": {
       "meta": {
-        "title": "Wedding Photo Canvas Prints | Custom Wedding Canvas Art",
-        "description": "Turn your wedding photos into beautiful canvas prints. Preserve your special day with premium canvas wall art. Hand-crafted in Canada."
+        "title": "Wedding Canvas Prints",
+        "description": "Turn your wedding photos into hand-stretched canvas prints made in Quebec. Archival UVgel ink with a 30-year guarantee. Delivered across Quebec and Ontario."
       },
-      "heading": "Wedding Photo Canvas Prints",
-      "description": "Preserve your most cherished wedding moments on premium canvas. The perfect way to relive your special day, every day.",
-      "subheading": "A timeless keepsake of your special day",
+      "heading": "Wedding Canvas Prints",
+      "description": "Your photographer delivered hundreds of files. Put the three or four that actually matter on the wall.",
+      "subheading": "Hand-stretched in Quebec, guaranteed for 30 years.",
+      "intro": {
+        "title": "Choosing which wedding photo to print",
+        "body": "Wedding galleries are overwhelming precisely because they are complete. The images that work best on canvas are rarely the formal group shots — they are the ones with a single clear subject and some breathing room around it: the first look, a candid during the speeches, the two of you leaving.\n\nCanvas is a matte surface, which is an advantage here. Wedding photography tends to be high-contrast with bright whites in the dress, and a glossy print will throw glare across exactly that area under ceiling lights. A matte canvas holds the detail in the fabric instead.\n\nIf your photographer supplied both edited JPEGs and RAW files, send the edited JPEG. It reflects the colour grading you paid for, and our printer profiles handle it without further adjustment."
+      },
       "benefits": {
         "one": {
-          "title": "Timeless Keepsake",
-          "description": "A canvas print of your wedding photo is a beautiful daily reminder of your love. It never goes out of style."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Fade-Proof for Decades",
-          "description": "Our UVgel ink is guaranteed not to fade for 30+ years — your wedding canvas will last as long as your love."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Perfect Gift",
-          "description": "A wedding photo canvas makes the perfect anniversary gift, wedding gift, or home decoration for newlyweds."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "What to know before ordering",
+        "items": [
+          {
+            "title": "Ask for full-resolution files",
+            "description": "Photographers often deliver a web-sized gallery by default. Request the full-resolution export before ordering anything above 16x20."
+          },
+          {
+            "title": "Watch the crop on the wrap",
+            "description": "Gallery wrap pulls about 1.5 inches of image around the frame edge. If a detail sits close to the edge of the frame, choose the framed option instead."
+          },
+          {
+            "title": "Order the set together",
+            "description": "Colour matching is most consistent when multiple canvases are printed in the same run, which matters if you are hanging a series."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "How long after the wedding can I still order?",
+          "a": "There is no time limit. We print from whatever digital file you have, and archival UVgel ink means a canvas ordered ten years later will look identical to one ordered the week after."
+        },
+        {
+          "q": "Can I print a photo taken by a guest on a phone?",
+          "a": "Often yes. Recent phone cameras produce files large enough for a 16x20. Upload it and we will flag it before printing if the resolution is too low."
+        },
+        {
+          "q": "Do you offer multi-panel wedding canvases?",
+          "a": "We print single-panel canvases in standard and custom sizes. For a multi-panel look, many customers order two or three separate canvases and hang them as a set."
+        },
+        {
+          "q": "What if the colours do not match my screen?",
+          "a": "Screens are backlit and canvas is not, so a canvas always reads slightly warmer. Our 100% happiness guarantee covers you if the result is not what you expected."
+        }
+      ],
+      "related": [
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Living room canvas art",
+          "slug": "living-room"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "family": {
       "meta": {
-        "title": "Family Photo Canvas Prints | Custom Family Portrait Canvas",
-        "description": "Turn your family photos into canvas prints. Custom family portrait canvas art hand-crafted in Canada. Perfect for living rooms."
+        "title": "Family Photo Canvas Prints",
+        "description": "Custom family photo canvas prints made in Quebec. Hand-stretched, ready to hang, with a 30-year fade guarantee. Delivered across Quebec and Ontario."
       },
       "heading": "Family Photo Canvas Prints",
-      "description": "Celebrate your family with custom canvas prints. Transform your favorite family photos into stunning wall art that brings warmth to any room.",
-      "subheading": "Custom family portraits made to last a lifetime",
+      "description": "The photos worth looking at every day should not be trapped on a phone.",
+      "subheading": "Printed and hand-stretched in our Quebec studio.",
+      "intro": {
+        "title": "Making a family photo work on canvas",
+        "body": "Family photos are usually taken for the people in them rather than for the wall, which means the composition needs a second look before printing. Check where everyone's heads sit in the frame: if they are near the top edge, a gallery wrap will pull part of that around the side of the stretcher.\n\nGroup shots generally do better at 24x36 or larger. At 16x20 an eight-person photo renders each face at roughly the size of a coin, and the image reads as a crowd rather than as your family.\n\nMixed indoor lighting is the other common issue — a photo shot half under a window and half under warm bulbs will show that split more plainly on canvas than on a screen. We correct obvious colour casts as part of standard prepress, at no extra cost."
+      },
       "benefits": {
         "one": {
-          "title": "Celebrate Family",
-          "description": "There's nothing more meaningful than a family photo on canvas. Display your loved ones proudly in any room."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Holiday Gift Idea",
-          "description": "A family photo canvas makes the perfect Christmas, Mother's Day, or Father's Day gift. Meaningful and personal."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Multiple Sizes",
-          "description": "From small desk-sized prints to large living room statement pieces — choose the size that fits your space."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Practical notes",
+        "items": [
+          {
+            "title": "Leave headroom",
+            "description": "Aim for a few centimetres of space above the tallest person so the gallery wrap does not clip anyone."
+          },
+          {
+            "title": "Bigger for groups",
+            "description": "One or two people work at 16x20. Four or more read better at 24x36 and up."
+          },
+          {
+            "title": "Scanned prints are fine",
+            "description": "Older photographs scan well. Scan at 600 dpi or higher and send the untouched file."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Can you print an old photo that is damaged?",
+          "a": "Minor scratches and fading can often be improved during prepress. Send us the scan first and we will tell you honestly whether it is worth printing large."
+        },
+        {
+          "q": "What size works above a sofa?",
+          "a": "24x36 is the usual answer. Artwork should span roughly two-thirds the width of the furniture beneath it."
+        },
+        {
+          "q": "Can I order several canvases in different sizes?",
+          "a": "Yes, and printing them in one order keeps the colour consistent across the set."
+        },
+        {
+          "q": "How do I hang it?",
+          "a": "Every canvas ships ready to hang with hardware attached. No framing shop visit required."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Living room canvas art",
+          "slug": "living-room"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "pet-portrait": {
       "meta": {
-        "title": "Pet Portrait Canvas Prints | Custom Pet Photo Canvas",
-        "description": "Turn your pet photos into canvas prints. Custom pet portrait canvas art for dog lovers, cat lovers, and all pet owners. Made in Canada."
+        "title": "Pet Portrait Canvas Prints",
+        "description": "Custom pet portrait canvas prints made in Quebec. Upload your dog or cat photo and get a hand-stretched canvas delivered across Quebec and Ontario."
       },
       "heading": "Pet Portrait Canvas Prints",
-      "description": "Honor your beloved pets with a custom canvas portrait. Whether it's a dog, cat, or any furry friend — they deserve a place on your wall.",
-      "subheading": "Because every pet deserves to be a work of art",
+      "description": "The good photo you finally managed to get, printed properly.",
+      "subheading": "Matte canvas, hand-stretched in Quebec.",
+      "intro": {
+        "title": "Why canvas suits pet photography",
+        "body": "Fur is texture, and canvas is a textured surface — the two work together in a way that glossy photo paper does not. A matte canvas softens the harsh edge that flash photography often leaves on a dark coat, and it holds detail in black fur, which is the hardest thing to print well.\n\nThe practical challenge with pet photos is usually motion blur rather than resolution. Look at the eyes at full zoom before uploading: if they are sharp, the print will be fine even if the tail is not. If the whole frame is soft, no amount of enlargement will fix it.\n\nClose crops work better than full-body shots. A head-and-shoulders composition at 16x20 has far more presence than a full-length photo of a small dog in a large room."
+      },
       "benefits": {
         "one": {
-          "title": "Honor Your Pet",
-          "description": "Your furry family member deserves a place of honor on your wall. A pet portrait canvas is the perfect tribute."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Vibrant Colors",
-          "description": "Our advanced printing captures every detail of your pet's fur, eyes, and personality in stunning clarity."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Memorial Keepsake",
-          "description": "A pet portrait canvas is a beautiful way to remember a beloved pet. A lasting tribute to your best friend."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Getting a printable pet photo",
+        "items": [
+          {
+            "title": "Shoot in daylight",
+            "description": "Window light beats flash. Flash flattens fur texture and produces eye-shine."
+          },
+          {
+            "title": "Get down to their level",
+            "description": "Photographing from standing height distorts proportions. Kneel."
+          },
+          {
+            "title": "Check the eyes at 100%",
+            "description": "Sharp eyes are the whole print. Zoom in before you upload."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Can you remove the background?",
+          "a": "We print the photo as supplied. If you want a background removed, edit the file before uploading or ask us about a custom order."
+        },
+        {
+          "q": "Will black fur print as a solid block?",
+          "a": "Not on our printer. UVgel ink holds separation in dark tones better than the dye-based systems most online printers use."
+        },
+        {
+          "q": "Is a phone photo good enough?",
+          "a": "For 16x20, almost always. For 24x36 and larger, check that the file is at least 2400 pixels on the short edge."
+        },
+        {
+          "q": "Can I print a memorial portrait from an old photo?",
+          "a": "Yes. Send us the best scan you have and we will advise on the largest size it will support."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Living room canvas art",
+          "slug": "living-room"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "bedroom": {
       "meta": {
-        "title": "Canvas Prints for Bedroom | Bedroom Wall Art Canvas",
-        "description": "Custom canvas prints perfect for bedrooms. Create a relaxing atmosphere with personalized bedroom wall art. Made in Canada."
+        "title": "Bedroom Canvas Wall Art",
+        "description": "Custom canvas prints for bedroom walls, made in Quebec. Matte, non-reflective, hand-stretched and ready to hang. Delivered across Quebec and Ontario."
       },
-      "heading": "Canvas Prints for Bedroom",
-      "description": "Create a serene, personal space with custom canvas prints for your bedroom. From romantic photos to calming landscapes — find the perfect piece.",
-      "subheading": "Personalize your most private space with meaningful art",
+      "heading": "Canvas Prints for the Bedroom",
+      "description": "Quiet, matte, and sized to sit properly above a bed.",
+      "subheading": "Made in Quebec, ready to hang.",
+      "intro": {
+        "title": "Sizing artwork above a bed",
+        "body": "Above-bed placement has a clear rule of thumb: the artwork should span roughly two-thirds the width of the bed, with the bottom edge sitting about 15 to 25 cm above the headboard. For a queen bed that points to a 24x36 canvas. For a king, either a 36x48 or two 24x36 canvases hung as a pair.\n\nBedrooms are also the room where surface finish matters most. Bedside lamps sit low and throw light upward at exactly the angle that produces glare on a glossy print. Canvas is matte by nature, so it stays readable from the bed rather than turning into a reflective panel.\n\nOn subject matter, bedrooms tend to suit calmer images — landscapes, abstracts, a single portrait — better than busy, high-contrast compositions."
+      },
       "benefits": {
         "one": {
-          "title": "Personal Touch",
-          "description": "Your bedroom is your sanctuary. Custom canvas prints add a personal, meaningful touch to your most private space."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Perfect Sizes",
-          "description": "We offer canvas sizes perfect for above the bed, beside tables, or gallery wall arrangements."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Eco-Friendly Inks",
-          "description": "Our UVgel inks are odor-free and eco-friendly — perfect for a space where you sleep and relax."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Placement guide",
+        "items": [
+          {
+            "title": "Queen bed",
+            "description": "A single 24x36 centred on the headboard, or two 16x20 canvases side by side."
+          },
+          {
+            "title": "King bed",
+            "description": "A 36x48, or a pair of 24x36 canvases with about 10 cm between them."
+          },
+          {
+            "title": "Hanging height",
+            "description": "Bottom edge 15–25 cm above the headboard, so the piece reads as connected to the bed."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Will a canvas reflect light from bedside lamps?",
+          "a": "No. Our canvas has a matte finish with no glass or acrylic glazing, so it does not produce glare."
+        },
+        {
+          "q": "Is canvas heavy enough to worry about above a bed?",
+          "a": "A 24x36 canvas weighs under 2 kg. Use the supplied hardware into a stud or a drywall anchor and it is secure."
+        },
+        {
+          "q": "Do you offer a set of matching canvases?",
+          "a": "Yes. Order them together and we print them in the same run so the tones match."
+        },
+        {
+          "q": "Does canvas fade in a sunny bedroom?",
+          "a": "Our UVgel ink carries a 30-year fade guarantee under normal indoor light, including rooms with direct sun."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Living room canvas art",
+          "slug": "living-room"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "living-room": {
       "meta": {
-        "title": "Canvas Prints for Living Room | Living Room Wall Art",
-        "description": "Custom canvas prints for living rooms. Large canvas wall art to transform your living space. Premium quality, made in Canada."
+        "title": "Living Room Canvas Art",
+        "description": "Large custom canvas prints for living room walls, hand-stretched in Quebec. Above-sofa sizing guidance and a 30-year guarantee. Quebec and Ontario delivery."
       },
-      "heading": "Canvas Prints for Living Room",
-      "description": "Transform your living room with stunning custom canvas prints. Large format options available for making a dramatic statement above your sofa or fireplace.",
-      "subheading": "Make your living room the centerpiece of your home",
+      "heading": "Canvas Prints for the Living Room",
+      "description": "The wall above the sofa is the one people actually look at.",
+      "subheading": "Hand-stretched in Quebec, delivered ready to hang.",
+      "intro": {
+        "title": "Getting the scale right above a sofa",
+        "body": "The most common mistake in living rooms is hanging something too small. A standard three-seat sofa is around 210 cm wide, which calls for artwork spanning roughly 140 cm — that is a 36x48 canvas, or two 24x36 canvases hung together with a small gap.\n\nHeight matters too. The bottom edge of the canvas should sit 15 to 25 cm above the back of the sofa. Higher than that and the piece floats free of the furniture; lower and people knock it with their heads.\n\nLiving rooms usually have the most natural light in the house, which is where our UVgel ink earns its keep. It carries a 30-year fade guarantee, so a canvas on a south-facing wall will not go magenta after a couple of summers the way dye-based prints do."
+      },
       "benefits": {
         "one": {
-          "title": "Statement Pieces",
-          "description": "A large canvas print above the sofa or fireplace creates a stunning focal point for your living room."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Large Formats Available",
-          "description": "From 16x20 to 36x48 and beyond — we have canvas sizes perfect for any living room wall."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Gallery-Ready Quality",
-          "description": "Hand-stretched on solid wood frames with impeccable corners. Your living room deserves gallery-quality art."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Sizing by sofa width",
+        "items": [
+          {
+            "title": "Loveseat (150 cm)",
+            "description": "A single 24x36 canvas centred above it."
+          },
+          {
+            "title": "Three-seat sofa (210 cm)",
+            "description": "A 36x48, or two 24x36 canvases side by side."
+          },
+          {
+            "title": "Sectional (250 cm+)",
+            "description": "A 36x48 plus a smaller canvas offset, or three canvases in a row."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "What is the largest canvas you make?",
+          "a": "36x48 is our largest standard size. Contact us for custom dimensions beyond that."
+        },
+        {
+          "q": "Will direct sunlight damage the canvas?",
+          "a": "Our UVgel ink is rated for 30 years indoors. Direct sun is fine; we still suggest avoiding a wall that gets hours of unfiltered afternoon light."
+        },
+        {
+          "q": "Can I hang two canvases as a pair?",
+          "a": "Yes. Order them together so they print in the same run and leave about 5–10 cm between them."
+        },
+        {
+          "q": "How far from the sofa should it hang?",
+          "a": "15 to 25 cm above the sofa back. That keeps the artwork visually anchored to the furniture."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "large": {
       "meta": {
-        "title": "Large Canvas Prints Canada | Big Canvas Wall Art",
-        "description": "Order large canvas prints in Canada. Big custom canvas wall art from 24x36 to 36x48 and beyond. Premium quality, hand-crafted in Quebec."
+        "title": "Large Canvas Prints",
+        "description": "Large custom canvas prints up to 36x48, built on reinforced stretcher frames in Quebec. Shipped flat, ready to hang. Quebec and Ontario delivery."
       },
-      "heading": "Large Canvas Prints Canada",
-      "description": "Go big with our large format canvas prints. Available in sizes from 24x36 up to 36x48 and beyond. Perfect for living rooms, offices, and feature walls.",
-      "subheading": "Big, bold, and beautiful — large canvas prints made in Canada",
+      "heading": "Large Canvas Prints",
+      "description": "Sizes that fill a wall instead of apologising for it.",
+      "subheading": "Reinforced frames, shipped flat, made in Quebec.",
+      "intro": {
+        "title": "What changes when a canvas gets large",
+        "body": "Two things fail on cheap large canvases: the frame and the file. We address both. Above 24x36 we build on a reinforced stretcher with a centre brace, because unbraced bars on a wide canvas bow inward over a year or two and the canvas goes slack.\n\nResolution is the other constraint. A 36x48 needs roughly 3600 × 4800 pixels to hold detail at normal viewing distance. That said, large prints are viewed from further away, so the requirement is more forgiving than the arithmetic suggests — we assess every file individually and tell you before we print rather than after.\n\nLarge canvases ship flat in a rigid carton with reinforced corners, not rolled in a tube. A rolled canvas has to be re-stretched at the other end, which is a job for a framing shop."
+      },
       "benefits": {
         "one": {
-          "title": "Multiple Large Sizes",
-          "description": "Choose from 24x36, 30x40, 36x48 and other large formats. We can accommodate custom sizes too."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Sharp at Any Size",
-          "description": "Our Canon printing with UVgel technology delivers stunning detail and color accuracy even at very large sizes."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Reinforced Frames",
-          "description": "Large canvases use reinforced solid wood stretcher bars with cross bracing for lasting stability."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Large format specifics",
+        "items": [
+          {
+            "title": "Reinforced stretcher",
+            "description": "Canvases above 24x36 get a centre brace so the frame cannot bow."
+          },
+          {
+            "title": "Shipped flat",
+            "description": "Rigid carton with corner protection. Never rolled."
+          },
+          {
+            "title": "Resolution guidance",
+            "description": "We check every file and contact you if the size you chose will not hold detail."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "What is the biggest size you offer?",
+          "a": "36x48 as standard. Larger custom dimensions are possible — contact us with your measurements."
+        },
+        {
+          "q": "Does a large canvas need special wall anchors?",
+          "a": "A 36x48 weighs about 3 kg. Standard drywall anchors rated for 10 kg or a stud fixing are more than sufficient."
+        },
+        {
+          "q": "Will my photo be sharp enough?",
+          "a": "Send it and we will tell you. We check resolution against the chosen size before printing, not after."
+        },
+        {
+          "q": "Does a large canvas cost more to ship?",
+          "a": "Shipping is the same across our Quebec and Ontario delivery area regardless of size."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "framed": {
       "meta": {
-        "title": "Framed Canvas Prints Canada | Gallery Wrap Canvas Framing",
-        "description": "Order framed canvas prints in Canada. Gallery wrap canvas prints hand-stretched on solid wood frames. Premium quality, made in Quebec."
+        "title": "Framed Canvas Prints",
+        "description": "Framed canvas prints made in Quebec. Add a floater frame to a gallery-wrapped canvas for a finished gallery look. Quebec and Ontario delivery."
       },
       "heading": "Framed Canvas Prints",
-      "description": "Our gallery-wrap framed canvas prints feature premium cotton-blend canvas hand-stretched over solid wood frames. Ready to hang, no additional framing needed.",
-      "subheading": "Gallery-wrap framing with solid wood stretcher bars",
+      "description": "A floater frame turns a canvas into a finished piece.",
+      "subheading": "Framed and hand-stretched in Quebec.",
+      "intro": {
+        "title": "Floater frames versus gallery wrap",
+        "body": "A gallery wrap pulls the image around the sides of the stretcher bars and hangs with no frame at all — clean, modern, and the more common choice. A floater frame instead surrounds the stretched canvas with a thin border, leaving a small visible gap so the canvas appears to sit inside the frame rather than being clamped by it.\n\nThe practical reason to choose framed over gallery wrap is composition. Gallery wrap consumes roughly 1.5 inches of image on every edge. If your photo has a subject close to the border, or text, or a horizon you do not want bending around a corner, the frame keeps the full image flat and visible.\n\nFramed canvases ship ready to hang with hardware attached, exactly like the unframed ones. There is no assembly."
+      },
       "benefits": {
         "one": {
-          "title": "Gallery Wrap Finish",
-          "description": "Our gallery wrap technique extends the image around the edges for a clean, modern, frameless look."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Solid Wood Frames",
-          "description": "Every canvas is stretched over kiln-dried solid wood stretcher bars — not cheap MDF or plastic alternatives."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Ready to Hang",
-          "description": "Hanging hardware is installed on every canvas. Unbox it and hang it — it's that simple."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Choosing between the two",
+        "items": [
+          {
+            "title": "Choose framed if",
+            "description": "Your composition runs close to the edges, or you want a more traditional finish."
+          },
+          {
+            "title": "Choose gallery wrap if",
+            "description": "The subject is well centred and you prefer a borderless, contemporary look."
+          },
+          {
+            "title": "Either way",
+            "description": "Both ship ready to hang with hardware attached — no framing shop needed."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "What frame colours do you offer?",
+          "a": "Frame options are shown on the product page when you select the framed finish."
+        },
+        {
+          "q": "Does the frame add much weight?",
+          "a": "A floater frame adds roughly 20% to the weight. A framed 24x36 still hangs on standard hardware."
+        },
+        {
+          "q": "Is there glass over the canvas?",
+          "a": "No. Canvas is never glazed, which is why it does not produce glare."
+        },
+        {
+          "q": "Can I add a frame to any size?",
+          "a": "Framing is available across our standard sizes. Select it when configuring your canvas."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "custom": {
       "meta": {
-        "title": "Custom Canvas Prints Canada | Personalized Photo Canvas",
-        "description": "Create custom canvas prints from your photos. Upload any image and choose your size. Personalized canvas art hand-crafted in Canada."
+        "title": "Custom Canvas Prints",
+        "description": "Custom canvas prints made to order in Quebec. Upload any photo, pick your size and finish, and get a hand-stretched canvas across Quebec and Ontario."
       },
-      "heading": "Custom Canvas Prints Canada",
-      "description": "Create truly custom canvas prints from your own photos. Upload any image, choose your perfect size, and we'll hand-craft a premium canvas just for you.",
-      "subheading": "Your photos, your size, your custom canvas — made in Canada",
+      "heading": "Custom Canvas Prints",
+      "description": "Your photo, your size, printed and stretched in Quebec.",
+      "subheading": "No templates, no stock art — just your image.",
+      "intro": {
+        "title": "How a custom order works",
+        "body": "Everything we make is custom — there is no catalogue of pre-printed designs. You upload a file, choose a size and a finish, and we print that single canvas for you. Nothing is warehoused and nothing is drop-shipped.\n\nAfter you order, the file goes through prepress, where we check resolution against your chosen size and correct any obvious colour cast. If something will not print well, we contact you before production rather than shipping a poor result and dealing with it afterwards.\n\nFrom order to doorstep is typically 5 to 10 business days — about one to two weeks. The canvas is printed on a Canon Colorado with UVgel ink, hand-stretched over a solid wood frame, fitted with hanging hardware, and packed flat for delivery across Quebec and Ontario."
+      },
       "benefits": {
         "one": {
-          "title": "Upload Any Photo",
-          "description": "Family photos, vacation shots, pet portraits, artwork — any image can become a stunning canvas print."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Choose Your Size",
-          "description": "From small accent pieces to large statement canvases. Pick the perfect size for your space."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Preview Before You Order",
-          "description": "See exactly how your canvas will look before placing your order. No surprises — just satisfaction."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "What you choose",
+        "items": [
+          {
+            "title": "Size",
+            "description": "Standard sizes from 16x20 to 36x48, or contact us for custom dimensions."
+          },
+          {
+            "title": "Finish",
+            "description": "Gallery wrap for a borderless look, or a floater frame for a finished edge."
+          },
+          {
+            "title": "File",
+            "description": "JPEG or PNG. We check resolution before printing and tell you if it is short."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Can I order a size that is not listed?",
+          "a": "Yes. Contact us with the dimensions you need and we will quote a custom order."
+        },
+        {
+          "q": "What file formats do you accept?",
+          "a": "JPEG and PNG. Send the highest-resolution version you have, unedited if possible."
+        },
+        {
+          "q": "How long does a custom order take?",
+          "a": "Typically 5 to 10 business days from order to delivery — roughly one to two weeks — including production."
+        },
+        {
+          "q": "What if I am not happy with the result?",
+          "a": "Our 100% happiness guarantee applies to every order, custom included."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "wall-art": {
       "meta": {
-        "title": "Canvas Wall Art Canada | Custom Wall Art Prints",
-        "description": "Order canvas wall art in Canada. Custom wall art prints from your photos. Premium canvas printing with fast Canada-wide shipping."
+        "title": "Canvas Wall Art",
+        "description": "Custom canvas wall art printed and hand-stretched in Quebec. Turn your own photography into gallery-quality wall art. Quebec and Ontario delivery."
       },
-      "heading": "Canvas Wall Art Canada",
-      "description": "Elevate your walls with custom canvas wall art. Turn your favorite photos into premium art pieces that transform any space in your home or office.",
-      "subheading": "Custom canvas wall art shipped across Canada",
+      "heading": "Canvas Wall Art",
+      "description": "Wall art made from your photographs, not someone else's stock library.",
+      "subheading": "Printed, stretched and finished in Quebec.",
+      "intro": {
+        "title": "Building a wall around your own images",
+        "body": "Mass-produced wall art is designed to be inoffensive in any room, which is exactly why it rarely holds anyone's attention. Photographs you took have the opposite quality: they mean something specific, and they are the only copy in existence.\n\nIf you are assembling a gallery wall, the usual approach is one larger anchor piece with two or three smaller canvases arranged around it, keeping 5 to 8 cm of spacing throughout. A 24x36 anchor with a pair of 16x20 canvases is a reliable starting configuration.\n\nConsistency matters more than matching. Canvases printed in the same run share the same colour handling, so a set ordered together will hang as a group rather than looking like three separate purchases."
+      },
       "benefits": {
         "one": {
-          "title": "Transform Any Space",
-          "description": "Canvas wall art instantly elevates a room. Whether your home, office, or studio — make your walls beautiful."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Premium Materials",
-          "description": "35% cotton-blend canvas with UVgel ink on solid wood frames. This is wall art built to last 30+ years."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Canada-Wide Shipping",
-          "description": "Fast shipping to every province and territory. Your canvas wall art arrives safely packaged and ready to hang."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Gallery wall basics",
+        "items": [
+          {
+            "title": "Pick an anchor",
+            "description": "One larger canvas — usually 24x36 — sets the centre of gravity for the arrangement."
+          },
+          {
+            "title": "Keep spacing even",
+            "description": "5 to 8 cm between canvases reads as deliberate. Uneven gaps read as accidental."
+          },
+          {
+            "title": "Order as a set",
+            "description": "Same print run means consistent colour across every piece on the wall."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Do you sell ready-made wall art designs?",
+          "a": "No. Everything we print is made from a file you upload, so every canvas is one of one."
+        },
+        {
+          "q": "How high should wall art hang?",
+          "a": "Centre the piece at about 145 cm from the floor — standard gallery eye level — unless it sits above furniture."
+        },
+        {
+          "q": "Can I mix sizes on one wall?",
+          "a": "Yes, and it usually looks better than a grid of identical sizes. Anchor with the largest piece."
+        },
+        {
+          "q": "Is canvas better than framed paper?",
+          "a": "For photographs it usually is — no glass means no glare, and the matte surface suits skin tones and texture."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "gallery-wrap": {
       "meta": {
-        "title": "Gallery Wrap Canvas Prints | Gallery Wrapped Photo Canvas",
-        "description": "Order gallery wrap canvas prints. Image wraps around the edges for a modern, frameless look. Premium quality, hand-crafted in Canada."
+        "title": "Gallery Wrap Canvas Prints",
+        "description": "Gallery wrapped canvas prints hand-stretched in Quebec over solid wood frames. Borderless, ready to hang. Delivered across Quebec and Ontario."
       },
       "heading": "Gallery Wrap Canvas Prints",
-      "description": "Our gallery wrap canvas prints feature your image extending around the edges for a sleek, modern, frameless look. The preferred choice for contemporary spaces.",
-      "subheading": "The modern, frameless way to display your photos — trending up 129% YoY",
+      "description": "Image wrapped around the edge, no frame, nothing between you and the print.",
+      "subheading": "Hand-stretched over solid wood in Quebec.",
+      "intro": {
+        "title": "What gallery wrap actually means",
+        "body": "Gallery wrap means the printed image continues around the sides of the stretcher bars and is stapled on the back, so no staples or raw canvas are visible from any angle. The result hangs without a frame and sits slightly proud of the wall.\n\nThe trade-off is that roughly 1.5 inches of image on each edge ends up on the side of the frame rather than facing forward. We account for this in prepress by checking your composition before printing — if a face, a horizon or text falls inside that margin, we will tell you and suggest the framed option instead.\n\nStretching is done by hand over kiln-dried solid wood. Machine-stretched canvas from high-volume printers tends to tension unevenly, which shows up months later as a visible ripple across the face."
+      },
       "benefits": {
         "one": {
-          "title": "Seamless Edges",
-          "description": "The image wraps around all four sides for a clean, contemporary look. No visible frame or staples."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Trending Style",
-          "description": "Gallery wrap is the most popular canvas format, trending up 129% year over year. A modern classic."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Multiple Depths",
-          "description": "Available in standard and extra-deep profiles. Choose the depth that best suits your space and style."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Gallery wrap details",
+        "items": [
+          {
+            "title": "Wrap depth",
+            "description": "About 1.5 inches of image folds around each edge onto the side of the frame."
+          },
+          {
+            "title": "Hidden staples",
+            "description": "Stapled on the back, not the sides, so the canvas looks finished from every angle."
+          },
+          {
+            "title": "Hand-stretched",
+            "description": "Kiln-dried solid wood, tensioned by hand so it stays flat over time."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Will part of my photo be lost?",
+          "a": "About 1.5 inches on each edge moves to the side of the frame. We check your file first and flag it if that is a problem."
+        },
+        {
+          "q": "Can I choose a mirrored edge instead?",
+          "a": "Contact us before ordering and we can discuss edge treatment options for your image."
+        },
+        {
+          "q": "Does gallery wrap need a frame?",
+          "a": "No. It is designed to hang unframed, and ships with hardware already attached."
+        },
+        {
+          "q": "How thick is the canvas?",
+          "a": "Our standard stretcher gives the canvas a substantial depth that reads well from the side without looking bulky."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "personalized": {
       "meta": {
-        "title": "Personalized Canvas Prints Canada | Custom Photo Canvas",
-        "description": "Create personalized canvas prints from your photos. Upload your image and customize your canvas art. Hand-crafted in Canada. Fast shipping."
+        "title": "Personalized Canvas Prints",
+        "description": "Personalized canvas prints made in Quebec from your own photos. A one-of-one gift, hand-stretched and ready to hang. Quebec and Ontario delivery."
       },
-      "heading": "Personalized Canvas Prints Canada",
-      "description": "Make it personal. Upload your own photos and create one-of-a-kind canvas prints that tell your unique story. Trending up 133% year over year.",
-      "subheading": "One-of-a-kind canvas art from your personal photos",
+      "heading": "Personalized Canvas Prints",
+      "description": "A gift that only makes sense for one person.",
+      "subheading": "Made to order in Quebec.",
+      "intro": {
+        "title": "Ordering a canvas as a gift",
+        "body": "The main thing to get right when ordering a canvas as a gift is timing. From order to doorstep is typically 5 to 10 business days — about one to two weeks — because every canvas is made to order rather than pulled off a shelf. Order two to three weeks ahead of the date you need it and there is comfortable margin.\n\nChoosing the photo is the harder part. Images that work as gifts are usually ones the recipient has not seen enlarged — a candid rather than a posed portrait, or a photo of a place that matters to them rather than a picture of them.\n\nIf you are ordering on someone else's behalf and are unsure about the file, send it to us before you order. We will tell you what size it will support."
+      },
       "benefits": {
         "one": {
-          "title": "Uniquely Yours",
-          "description": "No two personalized canvases are alike. Your photos, your memories, your one-of-a-kind wall art."
+          "title": "Hand-stretched in Quebec",
+          "description": "Tensioned by hand over kiln-dried solid wood so the surface stays flat for years."
         },
         "two": {
-          "title": "Easy to Create",
-          "description": "Upload your photo, choose your size, preview your canvas, and order — all in minutes. Simple and fun."
+          "title": "Matte, glare-free surface",
+          "description": "No glass and no gloss, so the image stays readable under lamps and daylight alike."
         },
         "three": {
-          "title": "Meaningful Gifts",
-          "description": "Personalized canvas prints make unforgettable gifts for birthdays, anniversaries, holidays, and special occasions."
+          "title": "Ready to hang on arrival",
+          "description": "Hardware fitted before it leaves the studio. Nothing to assemble, no framing shop visit."
         }
-      }
+      },
+      "details": {
+        "title": "Gift timing",
+        "items": [
+          {
+            "title": "Order to doorstep",
+            "description": "Typically 5 to 10 business days — about one to two weeks — across our whole Quebec and Ontario delivery area."
+          },
+          {
+            "title": "Made to order",
+            "description": "Nothing is pre-printed, so the clock starts when you upload rather than when a warehouse picks a box."
+          },
+          {
+            "title": "Order two to three weeks ahead",
+            "description": "That covers production, transit and any file issue we need to raise with you."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Can you ship directly to the recipient?",
+          "a": "Yes. Enter their address at checkout and the canvas goes straight to them."
+        },
+        {
+          "q": "Is there a gift message option?",
+          "a": "Contact us after ordering and we will include a note with the package."
+        },
+        {
+          "q": "How is it packaged?",
+          "a": "Flat, in a rigid carton with corner protection, ready to hang the moment it is unboxed."
+        },
+        {
+          "q": "What if the photo turns out to be too low resolution?",
+          "a": "We check before printing and contact you, so there are no surprises on the recipient's end."
+        }
+      ],
+      "related": [
+        {
+          "label": "Wedding canvas prints",
+          "slug": "wedding"
+        },
+        {
+          "label": "Family photo canvas",
+          "slug": "family"
+        },
+        {
+          "label": "Pet portrait canvas",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Bedroom canvas art",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Canvas prints Montreal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Canvas prints Toronto",
+          "slug": "toronto"
+        }
+      ]
     }
+  },
+  "Shop": {
+    "metadata": {
+      "title": "Shop Canvas Prints",
+      "description": "Browse custom canvas prints made in Quebec. Choose a size, a finish and upload your photo. Delivered across Quebec and Ontario."
+    },
+    "heading": "Canvas Prints",
+    "intro": "Every canvas is printed on demand and hand-stretched in our Quebec studio. Upload any photo, choose your size and finish, and we will deliver it ready to hang.",
+    "browseHeading": "Browse by city, size and occasion",
+    "groups": {
+      "cities": "By city",
+      "sizes": "By size",
+      "useCases": "By occasion"
+    },
+    "processLink": "See how we make our canvas prints"
+  },
+  "Blog": {
+    "metadata": {
+      "title": "Canvas Printing Guides",
+      "description": "Practical guides on choosing canvas print sizes, photo resolution, and how canvas compares to framed prints. From our Quebec studio."
+    },
+    "heading": "Guides",
+    "intro": "Practical advice on sizing, resolution and choosing the right print for your wall — written by the people who make them.",
+    "readMore": "Read the guide",
+    "moreReading": "More guides",
+    "cta": {
+      "text": "Ready to put your own photo on the wall?",
+      "button": "Browse canvas prints"
+    }
+  },
+  "NotFound": {
+    "heading": "Page not found",
+    "body": "The page you are looking for does not exist or has moved. It may have been one of our older location pages.",
+    "home": "Go to homepage",
+    "shop": "Browse canvas prints"
+  },
+  "Nav": {
+    "shop": "Shop",
+    "guides": "Guides"
   }
 }

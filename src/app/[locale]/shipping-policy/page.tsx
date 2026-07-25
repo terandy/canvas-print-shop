@@ -7,6 +7,7 @@ import {
   ContactSection,
 } from "@/components";
 import { getTranslations } from "next-intl/server";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -22,6 +23,12 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    ...canonicalMetadata(locale, "/shipping-policy"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      ...openGraphMetadata(locale, "/shipping-policy"),
+    },
   };
 }
 

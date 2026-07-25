@@ -1,6 +1,7 @@
 import { ProductGridItems, Grid } from "@/components";
 import { getProductList } from "@/lib/db/queries/products";
 import { getTranslations, getLocale } from "next-intl/server";
+import { noIndexMetadata } from "@/lib/seo";
 
 export async function generateMetadata() {
   const t = await getTranslations("Search.metadata");
@@ -8,6 +9,9 @@ export async function generateMetadata() {
   return {
     title: t("title"),
     description: t("description"),
+    // Search result URLs vary by `?q=`, producing unlimited near-duplicate
+    // pages with no unique value. Browse intent is served by /shop instead.
+    ...noIndexMetadata,
   };
 }
 

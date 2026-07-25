@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Impression sur Toile Canada | Toile Murale Personnalisée | Canvas Print Shop",
-    "description": "Commandez des impressions sur toile personnalisées au Canada. Impression photo sur toile de haute qualité avec technologie UVgel, fabriquée au Québec. Toile murale, toile décorative et livraison gratuite.",
+    "title": "Impression sur toile | Québec et Ontario | Canvas Print Shop",
+    "description": "Impressions sur toile personnalisées fabriquées au Québec. Téléversez une photo et recevez une toile prête à accrocher au Québec et en Ontario.",
     "og": {
       "title": "Impression sur Toile Canada | Toile Murale Personnalisée | Canvas Print Shop",
       "description": "Transformez vos photos en impressions sur toile haut de gamme. Savoir-faire expert au Canada avec technologie UVgel. Art mural sur toile, toile grand format et plus."
@@ -9,7 +9,7 @@
   },
   "FAQ": {
     "metadata": {
-      "title": "Foire aux questions sur les impressions sur toile | Canvas Print Shop",
+      "title": "Foire aux questions sur les impressions sur toile",
       "description": "Trouvez des réponses aux questions courantes sur nos impressions sur toile, expédition, garantie de qualité, et plus encore. Obtenez de l'aide avec vos besoins d'impression sur toile personnalisée."
     }
   },
@@ -98,11 +98,16 @@
       "shipping": "Politique d'expédition",
       "returns": "Politique de retours",
       "contact": "Contactez-nous"
-    }
+    },
+    "explore": "Explorer",
+    "cities": "Toiles par ville",
+    "popular": "Populaire",
+    "shop": "Toutes les toiles",
+    "blog": "Guides"
   },
   "ShippingPolicy": {
     "metadata": {
-      "title": "Politique d'expédition  sur les impressions sur toile | Canvas Print Shop",
+      "title": "Politique d'expédition sur les impressions sur toile",
       "description": "Découvrez nos options d'expédition, y compris la livraison par Postes Canada et la collecte locale à Québec."
     },
     "pageTitle": "Politique d'expédition",
@@ -148,7 +153,7 @@
   },
   "ReturnsPolicy": {
     "metadata": {
-      "title": "Politique de retours sur les impressions sur toile | Canvas Print Shop",
+      "title": "Politique de retours sur les impressions sur toile",
       "description": "Découvrez notre politique de retour de 30 jours et notre engagement envers la satisfaction client. Nous facilitons les retours avec notre processus sans tracas."
     },
     "pageTitle": "Politique de retours",
@@ -214,7 +219,7 @@
   },
   "CanvasProcess": {
     "metadata": {
-      "title": "Processus de fabrication de toile | Canvas Print Shop",
+      "title": "Processus de fabrication de toile",
       "description": "Découvrez notre processus de production de toiles premium - de la sélection des matériaux au contrôle qualité, voyez comment nous fabriquons nos impressions sur toile de haute qualité."
     },
     "hero": {
@@ -289,13 +294,13 @@
       "content": "Si vous avez des questions sur notre politique de confidentialité, veuillez nous contacter :"
     },
     "metadata": {
-      "title": "Politique de confidentialité | Canvas Print Shop",
+      "title": "Politique de confidentialité",
       "description": "Découvrez comment Canvas Print Shop protège et gère vos informations personnelles. Notre politique de confidentialité décrit nos pratiques de collecte, d'utilisation et de protection des données."
     }
   },
   "Contact": {
     "metadata": {
-      "title": "Nous contacter | Canvas Print Shop",
+      "title": "Nous contacter",
       "description": "Nous sommes là pour vous aider ! Choisissez la meilleure façon de nous contacter ci-dessous."
     },
     "pageTitle": "Contactez-nous",
@@ -1008,503 +1013,2532 @@
   },
   "QualityGuarantee": {
     "metadata": {
-      "title": "Notre promesse de qualité | Canvas Print Shop",
+      "title": "Notre promesse de qualité",
       "description": "Découvrez pourquoi Canvas Print Shop offre des impressions sur toile supérieures. Toile coton haut de gamme, technologie UVgel et étirement expert dans notre atelier de Québec."
     }
   },
   "LandingPages": {
     "common": {
-      "orderNow": "Commander maintenant",
+      "orderNow": "Commander",
+      "faqHeading": "Questions fréquentes",
+      "delivery": {
+        "getItBy": "Commandez aujourd'hui, recevez-la entre le"
+      },
+      "relatedHeading": "Pages connexes",
+      "breadcrumb": {
+        "home": "Accueil",
+        "canvasPrints": "Toiles"
+      },
       "trustBadges": {
         "secure": "Paiement sécurisé",
-        "shipping": "Livraison rapide partout au Canada",
+        "shipping": "Livraison Québec et Ontario",
         "made": "Fabriqué au Québec, Canada",
-        "satisfaction": "Garantie satisfaction 100 %",
-        "guarantee": "Garantie d'impression 30 ans"
-      }
-    },
-    "toronto": {
-      "meta": {
-        "title": "Impression sur Toile Toronto | Photo sur Toile Personnalisée",
-        "description": "Commandez des impressions sur toile à Toronto. Impression photo sur toile haut de gamme avec livraison rapide à Toronto. Fabriqué au Canada."
-      },
-      "heading": "Impression sur Toile Toronto",
-      "description": "Impressions sur toile haut de gamme livrées à Toronto et dans la région du Grand Toronto. Fabriquées au Canada avec des matériaux de qualité muséale.",
-      "subheading": "Livraison rapide à Toronto depuis notre atelier canadien",
-      "benefits": {
-        "one": {
-          "title": "Livraison rapide à Toronto",
-          "description": "Expédition rapide vers Toronto et les environs. Vos toiles personnalisées arrivent prêtes à accrocher."
-        },
-        "two": {
-          "title": "Qualité canadienne premium",
-          "description": "Fabriquées dans notre atelier québécois avec une toile coton haut de gamme et une technologie d'encre UVgel."
-        },
-        "three": {
-          "title": "Parfait pour les foyers torontois",
-          "description": "Transformez vos photos en art mural époustouflant. Idéal pour les condos, maisons et bureaux du Grand Toronto."
-        }
-      }
-    },
-    "calgary": {
-      "meta": {
-        "title": "Impression sur Toile Calgary | Photo sur Toile Personnalisée",
-        "description": "Commandez des impressions sur toile à Calgary. Impression photo haut de gamme avec livraison rapide en Alberta. Fabriqué au Canada."
-      },
-      "heading": "Impression sur Toile Calgary",
-      "description": "Impressions sur toile haut de gamme livrées à Calgary et partout en Alberta. Savoir-faire expert avec garantie de qualité 30 ans.",
-      "subheading": "Livraison partout au Canada depuis notre atelier au Québec",
-      "benefits": {
-        "one": {
-          "title": "Livraison à Calgary",
-          "description": "Livraison rapide et sécurisée à Calgary et partout en Alberta. Chaque toile arrive prête à accrocher."
-        },
-        "two": {
-          "title": "Garantie qualité 30 ans",
-          "description": "Notre technologie d'encre UVgel assure que vos impressions ne terniront pas pendant plus de 30 ans."
-        },
-        "three": {
-          "title": "Matériaux premium",
-          "description": "Toile coton haut de gamme avec cadres en bois massif, étirée à la main pour un résultat galerie."
-        }
-      }
-    },
-    "vancouver": {
-      "meta": {
-        "title": "Impression sur Toile Vancouver | Photo sur Toile Personnalisée",
-        "description": "Commandez des impressions sur toile à Vancouver. Impression photo haut de gamme avec livraison rapide en C.-B. Fabriqué au Canada."
-      },
-      "heading": "Impression sur Toile Vancouver",
-      "description": "Impressions sur toile haut de gamme livrées à Vancouver et en Colombie-Britannique. Transformez vos photos en art mural magnifique.",
-      "subheading": "Livraison rapide partout au Canada depuis notre atelier",
-      "benefits": {
-        "one": {
-          "title": "Livraison à Vancouver",
-          "description": "Livraison fiable à Vancouver et partout en C.-B. Votre toile arrive soigneusement emballée et prête à accrocher."
-        },
-        "two": {
-          "title": "Qualité photo exceptionnelle",
-          "description": "Impression Canon avancée avec technologie UVgel pour une vivacité et une netteté des couleurs exceptionnelles."
-        },
-        "three": {
-          "title": "Fabriqué au Canada",
-          "description": "Chaque toile est étirée à la main sur des cadres en bois massif dans notre atelier canadien."
-        }
-      }
-    },
-    "edmonton": {
-      "meta": {
-        "title": "Impression sur Toile Edmonton | Photo sur Toile Personnalisée",
-        "description": "Commandez des impressions sur toile à Edmonton. Impression photo haut de gamme avec livraison en Alberta. Fabriqué au Canada."
-      },
-      "heading": "Impression sur Toile Edmonton",
-      "description": "Impressions sur toile haut de gamme livrées à Edmonton et partout en Alberta. Savoir-faire canadien avec des matériaux de qualité muséale.",
-      "subheading": "Livraison partout au Canada depuis notre atelier à Edmonton",
-      "benefits": {
-        "one": {
-          "title": "Livraison à Edmonton",
-          "description": "Livraison rapide à Edmonton et dans les communautés albertaines environnantes. Emballage sécurisé."
-        },
-        "two": {
-          "title": "Matériaux premium",
-          "description": "Toile coton 35 % avec opacité de 75 % — bien supérieure aux alternatives polyester économiques."
-        },
-        "three": {
-          "title": "Processus facile",
-          "description": "Téléchargez votre photo, choisissez votre taille, prévisualisez et commandez. C'est aussi simple que ça."
-        }
+        "satisfaction": "Garantie de satisfaction 100 %",
+        "guarantee": "Impression garantie 30 ans"
       }
     },
     "montreal": {
       "meta": {
-        "title": "Impression sur Toile Montréal | Photo sur Toile Personnalisée",
-        "description": "Commandez des impressions sur toile à Montréal. Impression photo haut de gamme avec livraison rapide locale. Fabriqué au Québec."
+        "title": "Impression sur toile Montréal",
+        "description": "Impressions sur toile personnalisées livrées à Montréal (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
       },
-      "heading": "Impression sur Toile Montréal",
-      "description": "Impressions sur toile haut de gamme avec livraison rapide à Montréal. Fabriquées ici même au Québec avec un savoir-faire expert.",
-      "subheading": "Fièrement fabriqué au Québec — livraison rapide à Montréal",
+      "heading": "Impression sur toile à Montréal",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Montréal — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Montréal",
+        "body": "Les commandes montréalaises sont imprimées et tendues à la main à notre atelier du Lac-Saint-Charles, puis expédiées par messagerie, que vous soyez sur le Plateau, à Rosemont, à Verdun ou dans l'Ouest-de-l'Île. Comme nous imprimons au Québec plutôt que d'importer d'une usine à l'étranger, votre toile ne passe jamais aux douanes et ne dort pas dans un entrepôt de consolidation."
+      },
       "benefits": {
         "one": {
-          "title": "Livraison rapide à Montréal",
-          "description": "Expédition rapide depuis notre atelier québécois vers Montréal. Cueillette locale aussi disponible."
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Montréal en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
-          "title": "Fabriqué au Québec",
-          "description": "Chaque toile est fabriquée à la main dans notre atelier de Québec, soutenant l'artisanat local canadien."
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
         },
         "three": {
-          "title": "Service bilingue",
-          "description": "Service complet en français et en anglais. Notre équipe québécoise est ravie de vous aider dans les deux langues."
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
         }
-      }
-    },
-    "ottawa": {
-      "meta": {
-        "title": "Impression sur Toile Ottawa | Photo sur Toile Personnalisée",
-        "description": "Commandez des impressions sur toile à Ottawa. Impression photo haut de gamme avec livraison rapide depuis le Québec. Fabriqué au Canada."
       },
-      "heading": "Impression sur Toile Ottawa",
-      "description": "Impressions sur toile haut de gamme livrées rapidement à Ottawa et dans la région de la capitale nationale. Qualité canadienne de confiance.",
-      "subheading": "Livraison rapide depuis notre atelier québécois vers Ottawa",
-      "benefits": {
-        "one": {
-          "title": "Livraison rapide à Ottawa",
-          "description": "Livraison rapide du Québec voisin vers Ottawa et Gatineau. Votre toile arrive prête à accrocher."
+      "details": {
+        "title": "Commander depuis Montréal",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Montréal ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
-        "two": {
-          "title": "Qualité fabriquée au Canada",
-          "description": "Fabriquée dans notre atelier de Québec avec des matériaux premium et une technologie d'impression avancée."
+        {
+          "q": "Facturez-vous un supplément pour livrer à Montréal ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
         },
-        "three": {
-          "title": "Garantie satisfaction 100 %",
-          "description": "Pas satisfait de votre toile ? Nous ferons le nécessaire. Votre satisfaction est notre priorité."
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
         }
-      }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Québec",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Impression sur toile Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Impression sur toile Gatineau",
+          "slug": "gatineau"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
     },
     "quebec-city": {
       "meta": {
-        "title": "Impression sur Toile Québec | Toile Photo Personnalisée Québec",
-        "description": "Commandez des impressions sur toile à Québec. Cueillette locale disponible. Impression photo haut de gamme fabriquée dans notre atelier de Québec."
+        "title": "Impression sur toile Québec",
+        "description": "Impressions sur toile personnalisées livrées à Québec (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
       },
-      "heading": "Impression sur Toile Québec",
-      "description": "Impressions sur toile haut de gamme fabriquées ici même à Québec. Visitez notre atelier pour la cueillette locale ou profitez de la livraison rapide locale.",
-      "subheading": "Fabriqué localement à Québec — cueillette disponible",
+      "heading": "Impression sur toile à Québec",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Québec — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Québec",
+        "body": "Notre atelier se trouve au 1172, avenue du Lac-Saint-Charles : Québec est donc notre marché local. La clientèle de la région peut venir chercher sa toile directement à l'atelier plutôt que d'attendre le transporteur — le seul cas où une toile finie peut être en main plus tôt que le délai habituel."
+      },
       "benefits": {
         "one": {
-          "title": "Cueillette locale disponible",
-          "description": "Visitez notre atelier de Québec pour récupérer vos impressions en personne. Pas d'attente de livraison !"
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Québec en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
-          "title": "Fabriqué ici même",
-          "description": "Votre toile est fabriquée à la main dans notre atelier de Québec — constatez la qualité par vous-même."
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
         },
         "three": {
-          "title": "Soutenez le local",
-          "description": "En commandant chez nous, vous soutenez une entreprise locale de Québec et des artisans qualifiés."
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
         }
-      }
+      },
+      "details": {
+        "title": "Commander depuis Québec",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Québec ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Québec ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Impression sur toile Gatineau",
+          "slug": "gatineau"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "laval": {
+      "meta": {
+        "title": "Impression sur toile Laval",
+        "description": "Impressions sur toile personnalisées livrées à Laval (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Laval",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Laval — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Laval",
+        "body": "Laval se trouve juste au nord de Montréal, de l'autre côté de la rivière des Prairies, et les adresses de Chomedey, Sainte-Dorothée, Vimont et Duvernay font toutes partie de notre zone de livraison standard. Le suivi est envoyé par courriel dès que votre toile quitte l'atelier."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Laval en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Laval",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Laval ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Laval ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Québec",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Impression sur toile Gatineau",
+          "slug": "gatineau"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "gatineau": {
+      "meta": {
+        "title": "Impression sur toile Gatineau",
+        "description": "Impressions sur toile personnalisées livrées à Gatineau (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Gatineau",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Gatineau — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Gatineau",
+        "body": "Comme nous desservons à la fois le Québec et l'Ontario, la clientèle de Gatineau peut envoyer une impression de l'autre côté de la rivière à une adresse d'Ottawa dans la même commande. Hull, Aylmer et Buckingham font tous partie de notre zone de livraison standard, sans supplément."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Gatineau en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Gatineau",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Gatineau ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Gatineau ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Québec",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Impression sur toile Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "sherbrooke": {
+      "meta": {
+        "title": "Impression sur toile Sherbrooke",
+        "description": "Impressions sur toile personnalisées livrées à Sherbrooke (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Sherbrooke",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Sherbrooke — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Sherbrooke",
+        "body": "Sherbrooke et l'ensemble de l'Estrie font partie de notre zone de livraison standard. Les toiles voyagent à plat dans une boîte rigide à coins protégés plutôt qu'enroulées dans un tube : le châssis tendu arrive donc prêt à accrocher, sans avoir à retendre quoi que ce soit."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Sherbrooke en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Sherbrooke",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Sherbrooke ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Sherbrooke ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Québec",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Impression sur toile Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "trois-rivieres": {
+      "meta": {
+        "title": "Impression sur toile Trois-Rivières",
+        "description": "Impressions sur toile personnalisées livrées à Trois-Rivières (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Trois-Rivières",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Trois-Rivières — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Trois-Rivières",
+        "body": "Trois-Rivières se situe à peu près à mi-chemin entre notre atelier et Montréal, et toute la Mauricie est desservie, y compris Cap-de-la-Madeleine, Shawinigan et Bécancour."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Trois-Rivières en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Trois-Rivières",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Trois-Rivières ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Trois-Rivières ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Québec",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Impression sur toile Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "longueuil": {
+      "meta": {
+        "title": "Impression sur toile Longueuil",
+        "description": "Impressions sur toile personnalisées livrées à Longueuil (Québec) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Longueuil",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Longueuil — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Longueuil",
+        "body": "Longueuil et la Rive-Sud en Montérégie sont entièrement desservies, y compris Saint-Hubert, Greenfield Park, Brossard et Saint-Lambert. Chaque commande est expédiée avec la même garantie de 30 ans contre la décoloration, peu importe la destination."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Longueuil en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Longueuil",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Longueuil ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Longueuil ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Québec",
+          "slug": "quebec-city"
+        },
+        {
+          "label": "Impression sur toile Laval",
+          "slug": "laval"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "toronto": {
+      "meta": {
+        "title": "Impression sur toile Toronto",
+        "description": "Impressions sur toile personnalisées livrées à Toronto (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Toronto",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Toronto — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Toronto",
+        "body": "Toronto est notre plus grand marché ontarien : condos du centre-ville, Scarborough, Etobicoke et North York sont tous desservis. Commander d'un atelier canadien signifie aucun droit de douane, aucune majoration de taux de change américain et aucuns frais de courtage surprise à la livraison."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Toronto en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Toronto",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Toronto ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Toronto ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Impression sur toile Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Impression sur toile Hamilton",
+          "slug": "hamilton"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "ottawa": {
+      "meta": {
+        "title": "Impression sur toile Ottawa",
+        "description": "Impressions sur toile personnalisées livrées à Ottawa (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Ottawa",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Ottawa — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Ottawa",
+        "body": "Nous traitons les adresses d'Ottawa et de Gatineau sur les mêmes circuits : si vous envoyez des impressions à de la famille des deux côtés de la rivière, elles voyagent ensemble plutôt que d'être séparées en deux envois."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Ottawa en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Ottawa",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Ottawa ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Ottawa ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Impression sur toile Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Impression sur toile Hamilton",
+          "slug": "hamilton"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "mississauga": {
+      "meta": {
+        "title": "Impression sur toile Mississauga",
+        "description": "Impressions sur toile personnalisées livrées à Mississauga (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Mississauga",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Mississauga — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Mississauga",
+        "body": "Mississauga est desservie par les mêmes circuits ontariens que Toronto : Port Credit, Streetsville, Meadowvale et Erin Mills en font partie. Les grands formats sont expédiés dans le même emballage protecteur que les petits, sans frais de manutention supplémentaires."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Mississauga en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Mississauga",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Mississauga ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Mississauga ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Impression sur toile Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Impression sur toile Hamilton",
+          "slug": "hamilton"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "hamilton": {
+      "meta": {
+        "title": "Impression sur toile Hamilton",
+        "description": "Impressions sur toile personnalisées livrées à Hamilton (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Hamilton",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Hamilton — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Hamilton",
+        "body": "Hamilton, Dundas, Ancaster et Stoney Creek sont toutes desservies. Notre toile est un mélange coton-polyester dont l'opacité est supérieure au support mince utilisé par la plupart des imprimeurs en ligne, ce qui compte dans les pièces lumineuses : la lumière ne traverse pas et ne délave pas les tons foncés de votre photo."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Hamilton en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Hamilton",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Hamilton ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Hamilton ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Impression sur toile Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Impression sur toile Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "london": {
+      "meta": {
+        "title": "Impression sur toile London",
+        "description": "Impressions sur toile personnalisées livrées à London (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à London",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à London — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à London",
+        "body": "London et le sud-ouest de l'Ontario font partie de notre zone de livraison. Chaque toile est imprimée sur une Canon Colorado avec de l'encre UVgel, qui sèche instantanément et ne dégage pas l'odeur de solvant que les toiles imprimées au latex ont souvent à l'arrivée."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à London en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis London",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à London ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à London ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Impression sur toile Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Impression sur toile Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "kingston": {
+      "meta": {
+        "title": "Impression sur toile Kingston",
+        "description": "Impressions sur toile personnalisées livrées à Kingston (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Kingston",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Kingston — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Kingston",
+        "body": "Kingston se trouve sur le corridor entre Montréal et Toronto et est entièrement desservie. Si vous commandez un cadeau pour une date précise, prévoyez quelques semaines : la production est planifiée avant même que le délai de transport commence."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Kingston en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Kingston",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Kingston ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Kingston ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Impression sur toile Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Impression sur toile Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
+    },
+    "windsor": {
+      "meta": {
+        "title": "Impression sur toile Windsor",
+        "description": "Impressions sur toile personnalisées livrées à Windsor (Ontario) en 5 à 10 jours ouvrables. Imprimées et tendues à la main dans notre atelier québécois."
+      },
+      "heading": "Impression sur toile à Windsor",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Windsor — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "intro": {
+        "title": "Livraison de toiles à Windsor",
+        "body": "Windsor est le point le plus éloigné de notre zone de livraison, et il n'y a aucun supplément pour région éloignée : la livraison est facturée exactement comme pour Montréal, et les promotions de livraison gratuite s'appliquent de la même façon."
+      },
+      "benefits": {
+        "one": {
+          "title": "Livraison en 5 à 10 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Windsor en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+        },
+        "two": {
+          "title": "Imprimé au Québec, pas à l'étranger",
+          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+        },
+        "three": {
+          "title": "Garantie 30 ans contre la décoloration",
+          "description": "Encre UVgel Canon Colorado sur toile mélangée coton, certifiée pour conserver ses couleurs 30 ans à l'intérieur."
+        }
+      },
+      "details": {
+        "title": "Commander depuis Windsor",
+        "items": [
+          {
+            "title": "Délai total",
+            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
+          },
+          {
+            "title": "Emballage",
+            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps prend la livraison à Windsor ?",
+          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+        },
+        {
+          "q": "Facturez-vous un supplément pour livrer à Windsor ?",
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+        },
+        {
+          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
+          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+        },
+        {
+          "q": "La toile arrive-t-elle prête à accrocher ?",
+          "a": "Oui. Elle est tendue sur un châssis en bois massif, quincaillerie déjà installée, et emballée à plat plutôt qu'enroulée."
+        }
+      ],
+      "related": [
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        },
+        {
+          "label": "Impression sur toile Ottawa",
+          "slug": "ottawa"
+        },
+        {
+          "label": "Impression sur toile Mississauga",
+          "slug": "mississauga"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        }
+      ]
     },
     "16x20": {
       "meta": {
-        "title": "Impression sur Toile 16x20 | Toile Photo 16x20 Personnalisée",
-        "description": "Commandez des impressions sur toile 16x20 en ligne. Taille moyenne parfaite pour photos et art mural. Qualité premium, fabriqué au Canada."
+        "title": "Impression sur toile 16x20",
+        "description": "Impressions sur toile 16x20 personnalisées fabriquées au Québec. Téléversez une photo, choisissez la toile galerie ou encadrée, et recevez une toile prête à accrocher au Québec et en Ontario."
       },
-      "heading": "Impression sur Toile 16x20",
-      "description": "L'impression sur toile 16x20 est un choix populaire pour les photos, portraits et art mural. Une taille polyvalente qui s'intègre parfaitement à toute pièce.",
-      "subheading": "Un format populaire pour les portraits, photos de famille et chambres",
+      "heading": "Impressions sur toile 16x20",
+      "description": "16x20 pouces — 40 × 50 cm — imprimée sur commande et tendue à la main au Québec.",
+      "subheading": "Toile galerie ou cadre flottant, prête à accrocher.",
+      "intro": {
+        "title": "Le 16x20 est-il le bon format ?",
+        "body": "Une toile 16x20 (40 × 50 cm) est le format par lequel la plupart des gens commencent. Elle est assez grande pour mettre en valeur un portrait ou un paysage sans que le sujet s'y perde, mais assez discrète pour se placer au-dessus d'un bureau, dans un couloir ou comme panneau d'un mur-galerie sans écraser la pièce.\n\nPour un résultat net à ce format, téléversez une image d'au moins 1600 × 2000 pixels. La plupart des photos prises au téléphone depuis cinq ans dépassent largement ce seuil. Si votre fichier est plus petit, nous vous le dirons avant l'impression plutôt que de vous expédier une image floue."
+      },
       "benefits": {
         "one": {
-          "title": "Taille polyvalente",
-          "description": "Le format 16x20 pouces est idéal pour les portraits, photos de famille, photos d'animaux et toute image à afficher."
+          "title": "16x20 pouces (40 × 50 cm)",
+          "description": "Livrée tendue sur châssis en bois massif, prête à accrocher dès l'ouverture de la boîte."
         },
         "two": {
-          "title": "Qualité premium",
-          "description": "Imprimé sur toile coton haut de gamme avec encre UVgel résistante à la décoloration. Garanti 30 ans."
+          "title": "Téléversez au moins 1600 × 2000 px",
+          "description": "Nous vérifions chaque fichier par rapport au format choisi avant l'impression et vous contactons s'il ne conservera pas le détail."
         },
         "three": {
-          "title": "Prêt à accrocher",
-          "description": "Étiré à la main sur cadres en bois massif avec quincaillerie incluse. Arrive prêt à afficher."
+          "title": "Toile galerie ou cadre flottant",
+          "description": "Choisissez un contour sans bordure ou ajoutez un cadre flottant pour un bord de galerie fini."
         }
-      }
+      },
+      "details": {
+        "title": "Spécifications",
+        "items": [
+          {
+            "title": "Dimensions",
+            "description": "16x20 pouces (40 × 50 cm)."
+          },
+          {
+            "title": "Résolution minimale",
+            "description": "1600 × 2000 pixels pour un résultat net à ce format."
+          },
+          {
+            "title": "Options de fini",
+            "description": "Toile galerie, ou ajoutez un cadre flottant pour un bord fini."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quelle résolution faut-il pour une toile 16x20 ?",
+          "a": "Au moins 1600 × 2000 pixels. La plupart des photos de téléphone récentes dépassent ce seuil. Nous vérifions votre fichier avant l'impression et vous contactons s'il est insuffisant."
+        },
+        {
+          "q": "Combien pèse une toile 16x20 ?",
+          "a": "Assez peu pour des ancres à gypse standards. La quincaillerie est installée avant le départ de l'atelier."
+        },
+        {
+          "q": "Ce format peut-il être encadré ?",
+          "a": "Oui. Un cadre flottant peut être ajouté au moment de configurer votre toile sur la page produit."
+        },
+        {
+          "q": "Comment est-elle expédiée ?",
+          "a": "À plat, dans une boîte rigide avec protection des coins. Nous n'enroulons jamais une toile tendue dans un tube."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toile 24x36",
+          "slug": "24x36"
+        },
+        {
+          "label": "Toile 36x48",
+          "slug": "36x48"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Art mural sur toile",
+          "slug": "wall-art"
+        }
+      ]
     },
     "24x36": {
       "meta": {
-        "title": "Impression sur Toile 24x36 | Toile Grand Format Personnalisée",
-        "description": "Commandez des impressions sur toile 24x36 en ligne. Toile grand format parfaite pour salons et murs vedettes. Qualité premium, fabriqué au Canada."
+        "title": "Impression sur toile 24x36",
+        "description": "Impressions sur toile 24x36 personnalisées tendues à la main au Québec. Un vrai format vedette pour le salon et au-dessus du canapé. Livrées au Québec et en Ontario."
       },
-      "heading": "Impression sur Toile 24x36",
-      "description": "Faites une déclaration avec une toile 24x36. Ce grand format est parfait pour les salons, bureaux et murs vedettes.",
-      "subheading": "Un grand format idéal pour les salons et murs vedettes",
+      "heading": "Impressions sur toile 24x36",
+      "description": "24x36 pouces — 60 × 90 cm — imprimée sur commande et tendue à la main au Québec.",
+      "subheading": "Toile galerie ou cadre flottant, prête à accrocher.",
+      "intro": {
+        "title": "Le 24x36 est-il le bon format ?",
+        "body": "À 24x36 (60 × 90 cm), une toile cesse d'être un accent pour devenir le point focal d'un mur. C'est le format que nous recommandons au-dessus d'un canapé, d'un lit ou d'un foyer, là où une impression plus petite paraîtrait perdue au milieu d'un trop grand mur vide.\n\nLa règle générale au-dessus d'un meuble : l'œuvre devrait occuper environ les deux tiers de la largeur du meuble. Un 24x36 fonctionne bien au-dessus d'une causeuse ou d'un lit queen ; au-dessus d'un sectionnel pleine longueur, envisagez plutôt un 36x48 ou deux toiles côte à côte."
+      },
       "benefits": {
         "one": {
-          "title": "Pièce maîtresse",
-          "description": "À 24x36 pouces, cette toile attire l'attention. Parfaite comme point focal dans votre salon ou bureau."
+          "title": "24x36 pouces (60 × 90 cm)",
+          "description": "Livrée tendue sur châssis en bois massif, prête à accrocher dès l'ouverture de la boîte."
         },
         "two": {
-          "title": "Netteté à toute taille",
-          "description": "Notre impression Canon avancée avec technologie UVgel offre des détails époustouflants même en grand format."
+          "title": "Téléversez au moins 2400 × 3600 px",
+          "description": "Nous vérifions chaque fichier par rapport au format choisi avant l'impression et vous contactons s'il ne conservera pas le détail."
         },
         "three": {
-          "title": "Cadre en bois massif",
-          "description": "Étirée à la main sur des barres en bois massif pour une tension parfaite et une présentation galerie."
+          "title": "Toile galerie ou cadre flottant",
+          "description": "Choisissez un contour sans bordure ou ajoutez un cadre flottant pour un bord de galerie fini."
         }
-      }
+      },
+      "details": {
+        "title": "Spécifications",
+        "items": [
+          {
+            "title": "Dimensions",
+            "description": "24x36 pouces (60 × 90 cm)."
+          },
+          {
+            "title": "Résolution minimale",
+            "description": "2400 × 3600 pixels pour un résultat net à ce format."
+          },
+          {
+            "title": "Options de fini",
+            "description": "Toile galerie, ou ajoutez un cadre flottant pour un bord fini."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quelle résolution faut-il pour une toile 24x36 ?",
+          "a": "Au moins 2400 × 3600 pixels. La plupart des photos de téléphone récentes dépassent ce seuil. Nous vérifions votre fichier avant l'impression et vous contactons s'il est insuffisant."
+        },
+        {
+          "q": "Combien pèse une toile 24x36 ?",
+          "a": "Assez peu pour des ancres à gypse standards. La quincaillerie est installée avant le départ de l'atelier."
+        },
+        {
+          "q": "Ce format peut-il être encadré ?",
+          "a": "Oui. Un cadre flottant peut être ajouté au moment de configurer votre toile sur la page produit."
+        },
+        {
+          "q": "Comment est-elle expédiée ?",
+          "a": "À plat, dans une boîte rigide avec protection des coins. Nous n'enroulons jamais une toile tendue dans un tube."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toile 16x20",
+          "slug": "16x20"
+        },
+        {
+          "label": "Toile 36x48",
+          "slug": "36x48"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Art mural sur toile",
+          "slug": "wall-art"
+        }
+      ]
     },
     "36x48": {
       "meta": {
-        "title": "Impression sur Toile 36x48 | Toile Extra Grand Format",
-        "description": "Commandez des impressions sur toile 36x48 en ligne. Toile extra grand format pour un impact maximum. Qualité muséale, fabriqué au Canada."
+        "title": "Impression sur toile 36x48",
+        "description": "Très grandes impressions sur toile 36x48 fabriquées sur mesure au Québec. Montées sur châssis renforcé et expédiées à plat. Livraison au Québec et en Ontario."
       },
-      "heading": "Impression sur Toile 36x48",
-      "description": "Voyez grand avec une toile 36x48. Notre format extra-large offre un impact visuel maximum pour vos photos les plus précieuses.",
-      "subheading": "Format extra-large pour un impact visuel maximum",
+      "heading": "Impressions sur toile 36x48",
+      "description": "36x48 pouces — 90 × 120 cm — imprimée sur commande et tendue à la main au Québec.",
+      "subheading": "Toile galerie ou cadre flottant, prête à accrocher.",
+      "intro": {
+        "title": "Le 36x48 est-il le bon format ?",
+        "body": "Le 36x48 (90 × 120 cm) est notre plus grand format standard et il est véritablement architectural : il remplit le mur d'une cage d'escalier, ancre une aire ouverte ou fait office de pièce unique et spectaculaire derrière une table à manger.\n\nÀ cette échelle, le châssis compte autant que l'impression. Nous montons les toiles 36x48 sur un châssis renforcé avec une traverse centrale afin que les barres ne se courbent pas vers l'intérieur avec le temps — le mode de défaillance habituel des grandes toiles bon marché. Les images sources devraient faire au moins 3600 × 4800 pixels ; si vous partez d'une photo plus ancienne, envoyez-la-nous avant de commander et nous l'évaluerons."
+      },
       "benefits": {
         "one": {
-          "title": "Impact maximum",
-          "description": "Une toile 36x48 fait une déclaration dramatique. Parfaite pour les grands murs, espaces ouverts et commerciaux."
+          "title": "36x48 pouces (90 × 120 cm)",
+          "description": "Livrée tendue sur châssis en bois massif, prête à accrocher dès l'ouverture de la boîte."
         },
         "two": {
-          "title": "Impression qualité muséale",
-          "description": "Même à cette grande taille, notre technologie UVgel offre des détails nets et des couleurs vibrantes."
+          "title": "Téléversez au moins 3600 × 4800 px",
+          "description": "Nous vérifions chaque fichier par rapport au format choisi avant l'impression et vous contactons s'il ne conservera pas le détail."
         },
         "three": {
-          "title": "Savoir-faire expert",
-          "description": "Les toiles extra-grandes nécessitent un étirement expert. Notre équipe assure une tension parfaite et des coins impeccables."
+          "title": "Toile galerie ou cadre flottant",
+          "description": "Choisissez un contour sans bordure ou ajoutez un cadre flottant pour un bord de galerie fini."
         }
-      }
+      },
+      "details": {
+        "title": "Spécifications",
+        "items": [
+          {
+            "title": "Dimensions",
+            "description": "36x48 pouces (90 × 120 cm)."
+          },
+          {
+            "title": "Résolution minimale",
+            "description": "3600 × 4800 pixels pour un résultat net à ce format."
+          },
+          {
+            "title": "Options de fini",
+            "description": "Toile galerie, ou ajoutez un cadre flottant pour un bord fini."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quelle résolution faut-il pour une toile 36x48 ?",
+          "a": "Au moins 3600 × 4800 pixels. La plupart des photos de téléphone récentes dépassent ce seuil. Nous vérifions votre fichier avant l'impression et vous contactons s'il est insuffisant."
+        },
+        {
+          "q": "Combien pèse une toile 36x48 ?",
+          "a": "Assez peu pour des ancres à gypse standards. La quincaillerie est installée avant le départ de l'atelier."
+        },
+        {
+          "q": "Ce format peut-il être encadré ?",
+          "a": "Oui. Un cadre flottant peut être ajouté au moment de configurer votre toile sur la page produit."
+        },
+        {
+          "q": "Comment est-elle expédiée ?",
+          "a": "À plat, dans une boîte rigide avec protection des coins. Nous n'enroulons jamais une toile tendue dans un tube."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toile 16x20",
+          "slug": "16x20"
+        },
+        {
+          "label": "Toile 24x36",
+          "slug": "24x36"
+        },
+        {
+          "label": "Grandes toiles",
+          "slug": "large"
+        },
+        {
+          "label": "Toiles encadrées",
+          "slug": "framed"
+        },
+        {
+          "label": "Toiles personnalisées",
+          "slug": "custom"
+        },
+        {
+          "label": "Art mural sur toile",
+          "slug": "wall-art"
+        }
+      ]
     },
     "wedding": {
       "meta": {
-        "title": "Toile Photo Mariage | Impression Photo Mariage sur Toile",
-        "description": "Transformez vos photos de mariage en impressions sur toile. Préservez votre journée spéciale avec de l'art mural haut de gamme. Fabriqué au Canada."
+        "title": "Toiles de mariage",
+        "description": "Transformez vos photos de mariage en toiles tendues à la main au Québec. Encre UVgel d'archive garantie 30 ans. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Photo de Mariage",
-      "description": "Préservez vos moments de mariage les plus précieux sur toile haut de gamme. La façon parfaite de revivre votre journée spéciale, chaque jour.",
-      "subheading": "Un souvenir intemporel de votre journée spéciale",
+      "heading": "Toiles de mariage",
+      "description": "Votre photographe vous a remis des centaines de fichiers. Mettez au mur les trois ou quatre qui comptent vraiment.",
+      "subheading": "Tendues à la main au Québec, garanties 30 ans.",
+      "intro": {
+        "title": "Choisir quelle photo de mariage imprimer",
+        "body": "Les galeries de mariage sont accablantes précisément parce qu'elles sont exhaustives. Les images qui fonctionnent le mieux sur toile sont rarement les photos de groupe officielles : ce sont celles avec un sujet unique et clair, entouré d'un peu d'espace — le premier regard, un moment spontané pendant les discours, votre sortie à deux.\n\nLa toile est une surface mate, ce qui est un avantage ici. La photographie de mariage est souvent très contrastée, avec des blancs éclatants dans la robe, et une impression lustrée renverra des reflets précisément à cet endroit sous les plafonniers. Une toile mate préserve plutôt le détail du tissu.\n\nSi votre photographe vous a remis à la fois des JPEG retouchés et des fichiers RAW, envoyez le JPEG retouché : il reflète l'étalonnage que vous avez payé, et nos profils d'impression le traitent sans autre ajustement."
+      },
       "benefits": {
         "one": {
-          "title": "Souvenir intemporel",
-          "description": "Une toile de votre photo de mariage est un rappel quotidien de votre amour. Elle ne se démode jamais."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Résistant à la décoloration",
-          "description": "Notre encre UVgel est garantie contre la décoloration pendant 30+ ans — votre toile durera aussi longtemps que votre amour."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Cadeau parfait",
-          "description": "Une toile photo de mariage est le cadeau d'anniversaire, de mariage ou de décoration parfait pour les jeunes mariés."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "À savoir avant de commander",
+        "items": [
+          {
+            "title": "Demandez les fichiers pleine résolution",
+            "description": "Les photographes livrent souvent une galerie au format web par défaut. Demandez l'export pleine résolution avant de commander plus grand qu'un 16x20."
+          },
+          {
+            "title": "Attention au recadrage du contour",
+            "description": "La toile galerie replie environ 4 cm d'image sur le bord du châssis. Si un détail se trouve près du bord, choisissez plutôt l'option encadrée."
+          },
+          {
+            "title": "Commandez la série d'un coup",
+            "description": "La correspondance des couleurs est plus constante lorsque plusieurs toiles sont imprimées dans la même série — ce qui compte si vous accrochez un ensemble."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Combien de temps après le mariage puis-je commander ?",
+          "a": "Il n'y a aucune limite. Nous imprimons à partir du fichier numérique que vous avez, et l'encre UVgel d'archive fait qu'une toile commandée dix ans plus tard sera identique à une commandée la semaine suivante."
+        },
+        {
+          "q": "Puis-je imprimer une photo prise au téléphone par un invité ?",
+          "a": "Souvent oui. Les appareils photo de téléphone récents produisent des fichiers assez grands pour un 16x20. Téléversez-la et nous vous préviendrons avant l'impression si la résolution est insuffisante."
+        },
+        {
+          "q": "Offrez-vous des toiles de mariage multi-panneaux ?",
+          "a": "Nous imprimons des toiles à panneau unique en formats standards et sur mesure. Pour un effet multi-panneaux, beaucoup de clients commandent deux ou trois toiles distinctes et les accrochent en ensemble."
+        },
+        {
+          "q": "Et si les couleurs ne correspondent pas à mon écran ?",
+          "a": "Un écran est rétroéclairé, pas une toile : une toile paraît donc toujours légèrement plus chaude. Notre garantie bonheur 100 % vous protège si le résultat n'est pas celui attendu."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Toiles pour le salon",
+          "slug": "living-room"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "family": {
       "meta": {
-        "title": "Toile Photo Famille | Portrait de Famille sur Toile",
-        "description": "Transformez vos photos de famille en impressions sur toile. Portraits de famille personnalisés fabriqués au Canada. Parfait pour le salon."
+        "title": "Toiles photo de famille",
+        "description": "Toiles photo de famille personnalisées fabriquées au Québec. Tendues à la main, prêtes à accrocher, garanties 30 ans. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Photo de Famille",
-      "description": "Célébrez votre famille avec des impressions sur toile personnalisées. Transformez vos photos de famille préférées en art mural chaleureux.",
-      "subheading": "Portraits de famille personnalisés faits pour durer toute une vie",
+      "heading": "Toiles photo de famille",
+      "description": "Les photos qui méritent d'être vues chaque jour ne devraient pas rester prisonnières d'un téléphone.",
+      "subheading": "Imprimées et tendues à la main dans notre atelier québécois.",
+      "intro": {
+        "title": "Réussir une photo de famille sur toile",
+        "body": "Les photos de famille sont généralement prises pour les personnes qui y figurent plutôt que pour le mur : la composition mérite donc un second regard avant l'impression. Vérifiez où se situent les têtes dans le cadre — si elles sont près du bord supérieur, la toile galerie en repliera une partie sur le côté du châssis.\n\nLes photos de groupe donnent généralement de meilleurs résultats en 24x36 ou plus grand. En 16x20, une photo de huit personnes rend chaque visage à peu près à la taille d'une pièce de monnaie, et l'image se lit comme une foule plutôt que comme votre famille.\n\nL'éclairage intérieur mixte est l'autre problème courant : une photo prise à moitié devant une fenêtre et à moitié sous des ampoules chaudes montrera cette césure plus nettement sur toile que sur écran. Nous corrigeons les dominantes de couleur évidentes dans le cadre du prépresse standard, sans frais."
+      },
       "benefits": {
         "one": {
-          "title": "Célébrez la famille",
-          "description": "Rien de plus significatif qu'une photo de famille sur toile. Affichez fièrement vos proches."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Idée cadeau",
-          "description": "Une toile photo familiale est le cadeau parfait pour Noël, la fête des Mères ou la fête des Pères."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Plusieurs tailles",
-          "description": "Des petits formats aux grandes pièces de salon — choisissez la taille qui convient à votre espace."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Notes pratiques",
+        "items": [
+          {
+            "title": "Laissez de l'espace au-dessus",
+            "description": "Prévoyez quelques centimètres au-dessus de la personne la plus grande pour que le contour galerie ne coupe personne."
+          },
+          {
+            "title": "Plus grand pour les groupes",
+            "description": "Une ou deux personnes conviennent en 16x20. Quatre personnes ou plus rendent mieux en 24x36 et plus."
+          },
+          {
+            "title": "Les photos numérisées conviennent",
+            "description": "Les anciennes photographies se numérisent bien. Numérisez à 600 ppp ou plus et envoyez le fichier non retouché."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Pouvez-vous imprimer une vieille photo abîmée ?",
+          "a": "Les égratignures et la décoloration légères peuvent souvent être améliorées au prépresse. Envoyez-nous d'abord la numérisation et nous vous dirons honnêtement si l'agrandissement en vaut la peine."
+        },
+        {
+          "q": "Quel format au-dessus d'un canapé ?",
+          "a": "Le 24x36 est la réponse habituelle. L'œuvre devrait occuper environ les deux tiers de la largeur du meuble."
+        },
+        {
+          "q": "Puis-je commander plusieurs toiles de formats différents ?",
+          "a": "Oui, et les imprimer dans une même commande garde les couleurs cohérentes sur l'ensemble."
+        },
+        {
+          "q": "Comment l'accrocher ?",
+          "a": "Chaque toile est expédiée prête à accrocher, quincaillerie installée. Aucun passage chez l'encadreur n'est nécessaire."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Toiles pour le salon",
+          "slug": "living-room"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "pet-portrait": {
       "meta": {
-        "title": "Portrait d'Animal sur Toile | Photo d'Animal sur Toile",
-        "description": "Transformez les photos de votre animal en impressions sur toile. Portraits personnalisés pour chiens, chats et tous les animaux. Fabriqué au Canada."
+        "title": "Portraits d'animaux sur toile",
+        "description": "Portraits d'animaux sur toile personnalisés fabriqués au Québec. Téléversez la photo de votre chien ou chat et recevez une toile tendue à la main au Québec et en Ontario."
       },
-      "heading": "Portrait d'Animal sur Toile",
-      "description": "Honorez vos animaux de compagnie avec un portrait sur toile personnalisé. Chien, chat ou autre ami à fourrure — ils méritent une place sur votre mur.",
-      "subheading": "Parce que chaque animal mérite d'être une œuvre d'art",
+      "heading": "Portraits d'animaux sur toile",
+      "description": "La bonne photo que vous avez enfin réussi à prendre, imprimée comme il faut.",
+      "subheading": "Toile mate, tendue à la main au Québec.",
+      "intro": {
+        "title": "Pourquoi la toile convient à la photo animalière",
+        "body": "Le poil est une texture, et la toile est une surface texturée : les deux se marient d'une façon que le papier photo lustré n'égale pas. Une toile mate adoucit le contour dur que le flash laisse souvent sur un pelage foncé, et elle conserve le détail dans le poil noir — ce qui est le plus difficile à bien imprimer.\n\nLe défi pratique des photos d'animaux est généralement le flou de mouvement plutôt que la résolution. Regardez les yeux à pleine échelle avant de téléverser : s'ils sont nets, l'impression sera réussie même si la queue ne l'est pas. Si toute l'image est floue, aucun agrandissement n'y changera rien.\n\nLes cadrages serrés fonctionnent mieux que les plans d'ensemble. Une composition tête-et-épaules en 16x20 a beaucoup plus de présence qu'une photo en pied d'un petit chien dans une grande pièce."
+      },
       "benefits": {
         "one": {
-          "title": "Honorez votre animal",
-          "description": "Votre membre de famille à fourrure mérite une place d'honneur sur votre mur. Un portrait sur toile est le tribut parfait."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Couleurs vibrantes",
-          "description": "Notre impression avancée capture chaque détail de la fourrure, des yeux et de la personnalité de votre animal."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Souvenir commémoratif",
-          "description": "Un portrait sur toile est une belle façon de se souvenir d'un animal bien-aimé. Un tribut durable."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Obtenir une photo imprimable",
+        "items": [
+          {
+            "title": "Photographiez à la lumière du jour",
+            "description": "La lumière d'une fenêtre vaut mieux que le flash, qui aplatit la texture du poil et provoque des reflets dans les yeux."
+          },
+          {
+            "title": "Descendez à leur hauteur",
+            "description": "Photographier debout déforme les proportions. Mettez-vous à genoux."
+          },
+          {
+            "title": "Vérifiez les yeux à 100 %",
+            "description": "Des yeux nets font toute l'impression. Zoomez avant de téléverser."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Pouvez-vous retirer l'arrière-plan ?",
+          "a": "Nous imprimons la photo telle que fournie. Pour un détourage, retouchez le fichier avant de le téléverser ou demandez-nous une commande sur mesure."
+        },
+        {
+          "q": "Le poil noir s'imprimera-t-il en aplat ?",
+          "a": "Pas sur notre imprimante. L'encre UVgel conserve la séparation des tons foncés mieux que les systèmes à colorants utilisés par la plupart des imprimeurs en ligne."
+        },
+        {
+          "q": "Une photo de téléphone suffit-elle ?",
+          "a": "Pour un 16x20, presque toujours. Pour un 24x36 et plus, vérifiez que le fichier fait au moins 2400 pixels sur le petit côté."
+        },
+        {
+          "q": "Puis-je faire un portrait commémoratif d'une vieille photo ?",
+          "a": "Oui. Envoyez-nous la meilleure numérisation dont vous disposez et nous vous conseillerons sur le plus grand format possible."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Toiles pour le salon",
+          "slug": "living-room"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "bedroom": {
       "meta": {
-        "title": "Toile Décorative Chambre | Art Mural Chambre sur Toile",
-        "description": "Impressions sur toile parfaites pour les chambres. Créez une atmosphère relaxante avec de l'art mural personnalisé. Fabriqué au Canada."
+        "title": "Toiles pour chambre à coucher",
+        "description": "Toiles personnalisées pour la chambre à coucher, fabriquées au Québec. Mates, non réfléchissantes, tendues à la main et prêtes à accrocher. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Décorative pour Chambre",
-      "description": "Créez un espace serein et personnel avec des impressions sur toile pour votre chambre. Photos romantiques, paysages apaisants — trouvez la pièce parfaite.",
-      "subheading": "Personnalisez votre espace le plus intime avec un art significatif",
+      "heading": "Toiles pour la chambre à coucher",
+      "description": "Discrètes, mates, et dimensionnées pour bien se placer au-dessus d'un lit.",
+      "subheading": "Fabriquées au Québec, prêtes à accrocher.",
+      "intro": {
+        "title": "Dimensionner une œuvre au-dessus d'un lit",
+        "body": "Le placement au-dessus d'un lit obéit à une règle simple : l'œuvre devrait occuper environ les deux tiers de la largeur du lit, le bord inférieur se situant à 15 à 25 cm au-dessus de la tête de lit. Pour un lit queen, cela correspond à une toile 24x36. Pour un king, soit un 36x48, soit deux toiles 24x36 accrochées en paire.\n\nLa chambre est aussi la pièce où le fini de surface compte le plus. Les lampes de chevet sont basses et projettent la lumière vers le haut, précisément à l'angle qui crée des reflets sur une impression lustrée. La toile est mate par nature : elle reste donc lisible depuis le lit au lieu de se transformer en panneau réfléchissant.\n\nCôté sujet, la chambre convient mieux aux images calmes — paysages, abstraits, un portrait unique — qu'aux compositions chargées et très contrastées."
+      },
       "benefits": {
         "one": {
-          "title": "Touche personnelle",
-          "description": "Votre chambre est votre sanctuaire. Les impressions sur toile ajoutent une touche personnelle et significative."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Tailles parfaites",
-          "description": "Nous offrons des tailles de toile parfaites pour au-dessus du lit, les tables de chevet ou les arrangements muraux."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Encres écologiques",
-          "description": "Nos encres UVgel sont inodores et écologiques — parfaites pour un espace de repos et de détente."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Guide de placement",
+        "items": [
+          {
+            "title": "Lit queen",
+            "description": "Une seule toile 24x36 centrée sur la tête de lit, ou deux toiles 16x20 côte à côte."
+          },
+          {
+            "title": "Lit king",
+            "description": "Un 36x48, ou une paire de toiles 24x36 avec environ 10 cm entre elles."
+          },
+          {
+            "title": "Hauteur d'accrochage",
+            "description": "Bord inférieur à 15–25 cm au-dessus de la tête de lit, pour que l'œuvre se lie visuellement au lit."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Une toile reflète-t-elle la lumière des lampes de chevet ?",
+          "a": "Non. Notre toile a un fini mat, sans verre ni acrylique, elle ne produit donc pas de reflets."
+        },
+        {
+          "q": "Une toile est-elle lourde au-dessus d'un lit ?",
+          "a": "Une toile 24x36 pèse moins de 2 kg. Avec la quincaillerie fournie, fixée dans un montant ou une ancre à gypse, c'est sécuritaire."
+        },
+        {
+          "q": "Offrez-vous des ensembles assortis ?",
+          "a": "Oui. Commandez-les ensemble et nous les imprimons dans la même série pour que les tons concordent."
+        },
+        {
+          "q": "Une toile pâlit-elle dans une chambre ensoleillée ?",
+          "a": "Notre encre UVgel est garantie 30 ans contre la décoloration à la lumière intérieure normale, y compris les pièces au soleil direct."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour le salon",
+          "slug": "living-room"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "living-room": {
       "meta": {
-        "title": "Toile Décorative Salon | Art Mural Salon sur Toile",
-        "description": "Impressions sur toile pour salons. Toile grand format pour transformer votre espace de vie. Qualité premium, fabriqué au Canada."
+        "title": "Toiles pour le salon",
+        "description": "Grandes toiles personnalisées pour le salon, tendues à la main au Québec. Conseils de format au-dessus du canapé et garantie 30 ans. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Décorative pour Salon",
-      "description": "Transformez votre salon avec des impressions sur toile époustouflantes. Grands formats disponibles pour un impact dramatique au-dessus du canapé ou de la cheminée.",
-      "subheading": "Faites de votre salon la pièce maîtresse de votre maison",
+      "heading": "Toiles pour le salon",
+      "description": "Le mur au-dessus du canapé est celui que les gens regardent vraiment.",
+      "subheading": "Tendues à la main au Québec, livrées prêtes à accrocher.",
+      "intro": {
+        "title": "Bien doser l'échelle au-dessus d'un canapé",
+        "body": "L'erreur la plus courante au salon est d'accrocher quelque chose de trop petit. Un canapé trois places standard mesure environ 210 cm de large, ce qui appelle une œuvre d'environ 140 cm — soit une toile 36x48, soit deux toiles 24x36 accrochées ensemble avec un petit espace.\n\nLa hauteur compte aussi. Le bord inférieur de la toile devrait se situer de 15 à 25 cm au-dessus du dossier du canapé. Plus haut, l'œuvre flotte, détachée du meuble ; plus bas, on s'y cogne la tête.\n\nLe salon est habituellement la pièce la plus lumineuse de la maison, et c'est là que notre encre UVgel fait ses preuves. Elle est garantie 30 ans contre la décoloration : une toile sur un mur exposé au sud ne virera pas au magenta après deux étés, contrairement aux impressions à colorants."
+      },
       "benefits": {
         "one": {
-          "title": "Pièces maîtresses",
-          "description": "Une grande toile au-dessus du canapé ou de la cheminée crée un point focal époustouflant pour votre salon."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Grands formats disponibles",
-          "description": "De 16x20 à 36x48 et au-delà — nous avons des tailles de toile parfaites pour tout mur de salon."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Qualité galerie",
-          "description": "Étirée sur cadres en bois massif avec des coins impeccables. Votre salon mérite de l'art de qualité galerie."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Format selon la largeur du canapé",
+        "items": [
+          {
+            "title": "Causeuse (150 cm)",
+            "description": "Une seule toile 24x36 centrée au-dessus."
+          },
+          {
+            "title": "Canapé trois places (210 cm)",
+            "description": "Un 36x48, ou deux toiles 24x36 côte à côte."
+          },
+          {
+            "title": "Sectionnel (250 cm et plus)",
+            "description": "Un 36x48 accompagné d'une toile plus petite en décalé, ou trois toiles alignées."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quel est le plus grand format offert ?",
+          "a": "Le 36x48 est notre plus grand format standard. Contactez-nous pour des dimensions sur mesure au-delà."
+        },
+        {
+          "q": "Le soleil direct abîme-t-il la toile ?",
+          "a": "Notre encre UVgel est certifiée 30 ans à l'intérieur. Le soleil direct convient ; nous suggérons tout de même d'éviter un mur recevant des heures de lumière d'après-midi non filtrée."
+        },
+        {
+          "q": "Puis-je accrocher deux toiles en paire ?",
+          "a": "Oui. Commandez-les ensemble pour qu'elles soient imprimées dans la même série et laissez environ 5 à 10 cm entre elles."
+        },
+        {
+          "q": "À quelle hauteur au-dessus du canapé ?",
+          "a": "De 15 à 25 cm au-dessus du dossier, ce qui garde l'œuvre visuellement ancrée au meuble."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "large": {
       "meta": {
-        "title": "Toile Grand Format Canada | Grande Impression sur Toile",
-        "description": "Commandez des toiles grand format au Canada. Art mural grand format de 24x36 à 36x48 et plus. Qualité premium, fabriqué au Québec."
+        "title": "Grandes toiles",
+        "description": "Grandes toiles personnalisées jusqu'à 36x48, montées sur châssis renforcés au Québec. Expédiées à plat, prêtes à accrocher. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Grand Format Canada",
-      "description": "Voyez grand avec nos impressions sur toile grand format. Disponibles en tailles de 24x36 à 36x48 et au-delà. Parfaites pour salons, bureaux et murs vedettes.",
-      "subheading": "Grand, audacieux et beau — toiles grand format fabriquées au Canada",
+      "heading": "Grandes toiles",
+      "description": "Des formats qui remplissent un mur au lieu de s'en excuser.",
+      "subheading": "Châssis renforcés, expédiées à plat, fabriquées au Québec.",
+      "intro": {
+        "title": "Ce qui change sur un grand format",
+        "body": "Deux choses lâchent sur les grandes toiles bon marché : le châssis et le fichier. Nous traitons les deux. Au-delà du 24x36, nous montons sur un châssis renforcé avec traverse centrale, car des barres non renforcées sur une toile large se courbent vers l'intérieur en un an ou deux et la toile se détend.\n\nLa résolution est l'autre contrainte. Un 36x48 exige environ 3600 × 4800 pixels pour conserver le détail à distance normale. Cela dit, les grands formats se regardent de plus loin : l'exigence est donc plus souple que le calcul ne le laisse croire. Nous évaluons chaque fichier individuellement et vous prévenons avant l'impression, pas après.\n\nLes grandes toiles sont expédiées à plat dans une boîte rigide à coins renforcés, jamais enroulées dans un tube. Une toile enroulée doit être retendue à l'arrivée, ce qui est un travail d'encadreur."
+      },
       "benefits": {
         "one": {
-          "title": "Plusieurs grands formats",
-          "description": "Choisissez parmi 24x36, 30x40, 36x48 et d'autres grands formats. Tailles personnalisées aussi disponibles."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Net à toute taille",
-          "description": "Notre impression Canon avec technologie UVgel offre des détails époustouflants même en très grand format."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Cadres renforcés",
-          "description": "Les grandes toiles utilisent des barres en bois massif renforcées avec des traverses pour une stabilité durable."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Particularités des grands formats",
+        "items": [
+          {
+            "title": "Châssis renforcé",
+            "description": "Les toiles de plus de 24x36 reçoivent une traverse centrale pour empêcher le châssis de se courber."
+          },
+          {
+            "title": "Expédition à plat",
+            "description": "Boîte rigide avec protection des coins. Jamais enroulée."
+          },
+          {
+            "title": "Conseils de résolution",
+            "description": "Nous vérifions chaque fichier et vous contactons si le format choisi ne conservera pas le détail."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quel est le plus grand format offert ?",
+          "a": "Le 36x48 en standard. De plus grandes dimensions sur mesure sont possibles — contactez-nous avec vos mesures."
+        },
+        {
+          "q": "Une grande toile exige-t-elle des ancrages spéciaux ?",
+          "a": "Un 36x48 pèse environ 3 kg. Des ancres à gypse standards de 10 kg ou une fixation dans un montant suffisent amplement."
+        },
+        {
+          "q": "Ma photo sera-t-elle assez nette ?",
+          "a": "Envoyez-la et nous vous le dirons. Nous vérifions la résolution par rapport au format choisi avant l'impression, pas après."
+        },
+        {
+          "q": "La livraison d'une grande toile coûte-t-elle plus cher ?",
+          "a": "La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, peu importe le format."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "framed": {
       "meta": {
-        "title": "Toile Encadrée Canada | Impression sur Toile avec Cadre",
-        "description": "Commandez des toiles encadrées au Canada. Toiles étirées sur cadres en bois massif. Qualité premium, fabriqué au Québec."
+        "title": "Toiles encadrées",
+        "description": "Toiles encadrées fabriquées au Québec. Ajoutez un cadre flottant à une toile galerie pour un fini de galerie. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Encadrée",
-      "description": "Nos toiles encadrées gallery-wrap sont étirées à la main sur des cadres en bois massif. Prêtes à accrocher, aucun encadrement supplémentaire nécessaire.",
-      "subheading": "Encadrement gallery-wrap avec barres en bois massif",
+      "heading": "Toiles encadrées",
+      "description": "Un cadre flottant transforme une toile en pièce achevée.",
+      "subheading": "Encadrées et tendues à la main au Québec.",
+      "intro": {
+        "title": "Cadre flottant ou toile galerie",
+        "body": "La toile galerie replie l'image sur les côtés du châssis et s'accroche sans aucun cadre : épuré, moderne, et c'est le choix le plus courant. Le cadre flottant, lui, entoure la toile tendue d'une bordure mince en laissant un petit espace visible, de sorte que la toile semble posée dans le cadre plutôt que serrée par lui.\n\nLa raison pratique de choisir l'encadrement plutôt que la toile galerie, c'est la composition. La toile galerie consomme environ 4 cm d'image sur chaque bord. Si votre photo comporte un sujet près de la bordure, du texte, ou une ligne d'horizon que vous ne voulez pas voir se replier dans un coin, le cadre garde l'image entière à plat et visible.\n\nLes toiles encadrées sont expédiées prêtes à accrocher, quincaillerie installée, exactement comme les toiles sans cadre. Aucun assemblage requis."
+      },
       "benefits": {
         "one": {
-          "title": "Finition Gallery Wrap",
-          "description": "Notre technique gallery wrap étend l'image sur les bords pour un look moderne et sans cadre visible."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Cadres en bois massif",
-          "description": "Chaque toile est étirée sur des barres en bois massif séché au four — pas d'alternatives en MDF ou plastique."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Prêt à accrocher",
-          "description": "La quincaillerie est installée sur chaque toile. Déballez-la et accrochez-la — c'est aussi simple que ça."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Choisir entre les deux",
+        "items": [
+          {
+            "title": "Choisissez l'encadrée si",
+            "description": "Votre composition va jusqu'aux bords, ou si vous préférez un fini plus traditionnel."
+          },
+          {
+            "title": "Choisissez la toile galerie si",
+            "description": "Le sujet est bien centré et que vous préférez un look contemporain sans bordure."
+          },
+          {
+            "title": "Dans les deux cas",
+            "description": "Les deux sont expédiées prêtes à accrocher, quincaillerie installée — aucun encadreur requis."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Quelles couleurs de cadre offrez-vous ?",
+          "a": "Les options de cadre s'affichent sur la page produit lorsque vous sélectionnez le fini encadré."
+        },
+        {
+          "q": "Le cadre ajoute-t-il beaucoup de poids ?",
+          "a": "Un cadre flottant ajoute environ 20 % du poids. Une toile 24x36 encadrée s'accroche toujours avec la quincaillerie standard."
+        },
+        {
+          "q": "Y a-t-il une vitre sur la toile ?",
+          "a": "Non. Une toile n'est jamais sous verre, c'est pourquoi elle ne produit aucun reflet."
+        },
+        {
+          "q": "Puis-je encadrer n'importe quel format ?",
+          "a": "L'encadrement est offert sur tous nos formats standards. Sélectionnez-le en configurant votre toile."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "custom": {
       "meta": {
-        "title": "Toile Personnalisée Canada | Impression Photo sur Toile",
-        "description": "Créez des toiles personnalisées à partir de vos photos. Téléchargez votre image et choisissez votre taille. Art sur toile fabriqué au Canada."
+        "title": "Toiles personnalisées",
+        "description": "Toiles personnalisées fabriquées sur commande au Québec. Téléversez une photo, choisissez format et fini, et recevez une toile tendue à la main au Québec et en Ontario."
       },
-      "heading": "Toile Personnalisée Canada",
-      "description": "Créez des impressions sur toile uniques à partir de vos propres photos. Téléchargez votre image, choisissez votre taille, et nous fabriquerons une toile haut de gamme pour vous.",
-      "subheading": "Vos photos, votre taille, votre toile personnalisée — fabriqué au Canada",
+      "heading": "Toiles personnalisées",
+      "description": "Votre photo, votre format, imprimée et tendue au Québec.",
+      "subheading": "Aucun gabarit, aucune image de banque — seulement la vôtre.",
+      "intro": {
+        "title": "Comment fonctionne une commande sur mesure",
+        "body": "Tout ce que nous fabriquons est sur mesure : il n'y a aucun catalogue de motifs préimprimés. Vous téléversez un fichier, choisissez un format et un fini, et nous imprimons cette toile unique pour vous. Rien n'est entreposé, rien n'est expédié par un tiers.\n\nAprès votre commande, le fichier passe au prépresse, où nous vérifions la résolution par rapport au format choisi et corrigeons toute dominante de couleur évidente. Si quelque chose ne s'imprimera pas bien, nous vous contactons avant la production plutôt que d'expédier un résultat médiocre et de le régler ensuite.\n\nDe la commande à la livraison, comptez généralement de 5 à 10 jours ouvrables — environ une à deux semaines. La toile est imprimée sur une Canon Colorado avec de l'encre UVgel, tendue à la main sur un châssis en bois massif, munie de sa quincaillerie et emballée à plat pour la livraison au Québec et en Ontario."
+      },
       "benefits": {
         "one": {
-          "title": "Téléchargez n'importe quelle photo",
-          "description": "Photos de famille, vacances, portraits d'animaux — toute image peut devenir une toile époustouflante."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Choisissez votre taille",
-          "description": "Des petits accents aux grandes pièces. Choisissez la taille parfaite pour votre espace."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Prévisualisez avant de commander",
-          "description": "Voyez exactement à quoi ressemblera votre toile avant de commander. Pas de surprises — juste de la satisfaction."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Ce que vous choisissez",
+        "items": [
+          {
+            "title": "Format",
+            "description": "Formats standards du 16x20 au 36x48, ou contactez-nous pour des dimensions sur mesure."
+          },
+          {
+            "title": "Fini",
+            "description": "Toile galerie pour un look sans bordure, ou cadre flottant pour un bord fini."
+          },
+          {
+            "title": "Fichier",
+            "description": "JPEG ou PNG. Nous vérifions la résolution avant l'impression et vous prévenons si elle est insuffisante."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Puis-je commander un format non listé ?",
+          "a": "Oui. Contactez-nous avec les dimensions souhaitées et nous vous ferons une soumission sur mesure."
+        },
+        {
+          "q": "Quels formats de fichier acceptez-vous ?",
+          "a": "JPEG et PNG. Envoyez la version la plus haute résolution dont vous disposez, non retouchée si possible."
+        },
+        {
+          "q": "Combien de temps prend une commande sur mesure ?",
+          "a": "Généralement de 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production comprise."
+        },
+        {
+          "q": "Et si je ne suis pas satisfait du résultat ?",
+          "a": "Notre garantie bonheur 100 % s'applique à chaque commande, y compris sur mesure."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "wall-art": {
       "meta": {
-        "title": "Art Mural sur Toile Canada | Décoration Murale Toile",
-        "description": "Commandez de l'art mural sur toile au Canada. Décoration murale personnalisée à partir de vos photos. Impression haut de gamme avec livraison rapide."
+        "title": "Art mural sur toile",
+        "description": "Art mural sur toile personnalisé, imprimé et tendu à la main au Québec. Transformez vos photos en art mural de qualité galerie. Livraison au Québec et en Ontario."
       },
-      "heading": "Art Mural sur Toile Canada",
-      "description": "Sublimez vos murs avec de l'art mural sur toile personnalisé. Transformez vos photos préférées en pièces d'art premium qui transforment tout espace.",
-      "subheading": "Art mural sur toile personnalisé livré partout au Canada",
+      "heading": "Art mural sur toile",
+      "description": "De l'art mural fait de vos photos, pas de la banque d'images d'un autre.",
+      "subheading": "Imprimé, tendu et fini au Québec.",
+      "intro": {
+        "title": "Composer un mur avec vos propres images",
+        "body": "L'art mural produit en série est conçu pour ne heurter personne dans n'importe quelle pièce, ce qui explique précisément qu'il retienne rarement l'attention. Les photos que vous avez prises ont la qualité inverse : elles signifient quelque chose de précis, et il n'en existe qu'un exemplaire.\n\nSi vous composez un mur-galerie, l'approche habituelle est une pièce d'ancrage plus grande entourée de deux ou trois toiles plus petites, en gardant de 5 à 8 cm d'espacement partout. Une toile d'ancrage 24x36 avec une paire de 16x20 est une configuration de départ fiable.\n\nLa cohérence compte plus que l'assortiment. Les toiles imprimées dans une même série partagent le même traitement des couleurs : un ensemble commandé d'un coup s'accrochera comme un groupe plutôt que comme trois achats distincts."
+      },
       "benefits": {
         "one": {
-          "title": "Transformez tout espace",
-          "description": "L'art mural sur toile sublime instantanément une pièce. Maison, bureau ou studio — embellissez vos murs."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Matériaux premium",
-          "description": "Toile coton 35 % avec encre UVgel sur cadres en bois massif. Art mural conçu pour durer 30+ ans."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Livraison partout au Canada",
-          "description": "Livraison rapide dans chaque province et territoire. Votre toile arrive emballée en sécurité et prête à accrocher."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Les bases du mur-galerie",
+        "items": [
+          {
+            "title": "Choisissez une pièce d'ancrage",
+            "description": "Une toile plus grande — habituellement 24x36 — établit le centre de gravité de la composition."
+          },
+          {
+            "title": "Gardez un espacement régulier",
+            "description": "De 5 à 8 cm entre les toiles paraît voulu. Des écarts inégaux paraissent accidentels."
+          },
+          {
+            "title": "Commandez en ensemble",
+            "description": "Une même série d'impression assure une couleur constante sur toutes les pièces du mur."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Vendez-vous des motifs d'art mural prêts à l'emploi ?",
+          "a": "Non. Tout ce que nous imprimons provient d'un fichier que vous téléversez : chaque toile est unique."
+        },
+        {
+          "q": "À quelle hauteur accrocher ?",
+          "a": "Centrez la pièce à environ 145 cm du sol — la hauteur de regard standard en galerie — sauf si elle surplombe un meuble."
+        },
+        {
+          "q": "Puis-je mélanger les formats sur un mur ?",
+          "a": "Oui, et c'est généralement plus réussi qu'une grille de formats identiques. Ancrez avec la plus grande pièce."
+        },
+        {
+          "q": "La toile vaut-elle mieux que le papier encadré ?",
+          "a": "Pour la photographie, généralement oui : sans verre, aucun reflet, et la surface mate met en valeur les teints et la texture."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "gallery-wrap": {
       "meta": {
-        "title": "Toile Gallery Wrap | Impression Photo Gallery Wrap",
-        "description": "Commandez des toiles gallery wrap. L'image s'étend sur les bords pour un look moderne sans cadre. Qualité premium, fabriqué au Canada."
+        "title": "Toiles galerie",
+        "description": "Toiles galerie tendues à la main au Québec sur châssis en bois massif. Sans bordure, prêtes à accrocher. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Gallery Wrap",
-      "description": "Nos impressions gallery wrap étendent votre image sur les bords pour un look moderne et sans cadre. Le choix préféré pour les espaces contemporains.",
-      "subheading": "La façon moderne et sans cadre d'afficher vos photos",
+      "heading": "Toiles galerie",
+      "description": "L'image repliée sur les bords, sans cadre, rien entre vous et l'impression.",
+      "subheading": "Tendues à la main sur bois massif au Québec.",
+      "intro": {
+        "title": "Ce que signifie vraiment la toile galerie",
+        "body": "La toile galerie signifie que l'image imprimée se prolonge sur les côtés du châssis et est agrafée à l'arrière : aucune agrafe ni toile brute n'est visible, quel que soit l'angle. Le résultat s'accroche sans cadre et se détache légèrement du mur.\n\nLe compromis : environ 4 cm d'image sur chaque bord se retrouvent sur le côté du châssis plutôt que face à vous. Nous en tenons compte au prépresse en vérifiant votre composition avant l'impression — si un visage, une ligne d'horizon ou du texte tombe dans cette marge, nous vous le signalons et suggérons plutôt l'option encadrée.\n\nLa tension est faite à la main sur du bois massif séché au four. Les toiles tendues à la machine par les imprimeurs à grand volume ont tendance à être tendues inégalement, ce qui se manifeste des mois plus tard par une ondulation visible en surface."
+      },
       "benefits": {
         "one": {
-          "title": "Bords sans couture",
-          "description": "L'image s'étend sur les quatre côtés pour un look contemporain et épuré. Pas de cadre ni d'agrafes visibles."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Style tendance",
-          "description": "Le gallery wrap est le format de toile le plus populaire, en hausse de 129 % d'année en année. Un classique moderne."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Plusieurs profondeurs",
-          "description": "Disponible en profils standard et extra-profond. Choisissez la profondeur qui convient à votre espace et style."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Détails de la toile galerie",
+        "items": [
+          {
+            "title": "Profondeur du contour",
+            "description": "Environ 4 cm d'image se replient sur chaque bord, sur le côté du châssis."
+          },
+          {
+            "title": "Agrafes cachées",
+            "description": "Agrafées à l'arrière et non sur les côtés : la toile paraît finie sous tous les angles."
+          },
+          {
+            "title": "Tendue à la main",
+            "description": "Bois massif séché au four, tendu à la main pour rester plat dans le temps."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Une partie de ma photo sera-t-elle perdue ?",
+          "a": "Environ 4 cm sur chaque bord passent sur le côté du châssis. Nous vérifions votre fichier au préalable et vous prévenons si cela pose problème."
+        },
+        {
+          "q": "Puis-je choisir un bord en miroir ?",
+          "a": "Contactez-nous avant de commander et nous pourrons discuter des options de traitement des bords pour votre image."
+        },
+        {
+          "q": "La toile galerie nécessite-t-elle un cadre ?",
+          "a": "Non. Elle est conçue pour s'accrocher sans cadre et arrive avec la quincaillerie déjà installée."
+        },
+        {
+          "q": "Quelle est l'épaisseur de la toile ?",
+          "a": "Notre châssis standard donne à la toile une profondeur substantielle, bien visible de côté sans paraître massive."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     },
     "personalized": {
       "meta": {
-        "title": "Toile Personnalisée Canada | Photo sur Toile Personnalisée",
-        "description": "Créez des toiles personnalisées à partir de vos photos. Téléchargez votre image et personnalisez votre art sur toile. Fabriqué au Canada. Livraison rapide."
+        "title": "Toiles photo personnalisées",
+        "description": "Toiles personnalisées fabriquées au Québec à partir de vos photos. Un cadeau unique, tendu à la main et prêt à accrocher. Livraison au Québec et en Ontario."
       },
-      "heading": "Toile Personnalisée Canada",
-      "description": "Rendez-la personnelle. Téléchargez vos propres photos et créez des impressions sur toile uniques qui racontent votre histoire.",
-      "subheading": "Art sur toile unique à partir de vos photos personnelles",
+      "heading": "Toiles personnalisées",
+      "description": "Un cadeau qui n'a de sens que pour une seule personne.",
+      "subheading": "Fabriquées sur commande au Québec.",
+      "intro": {
+        "title": "Commander une toile en cadeau",
+        "body": "Le principal point à surveiller en commandant une toile-cadeau, c'est le calendrier. De la commande à la livraison, comptez généralement de 5 à 10 jours ouvrables — environ une à deux semaines — puisque chaque toile est fabriquée sur commande plutôt que prise sur une tablette. Commandez deux à trois semaines avant la date voulue et la marge est confortable.\n\nChoisir la photo est la partie la plus difficile. Les images qui font de bons cadeaux sont généralement celles que la personne n'a jamais vues agrandies : un moment spontané plutôt qu'un portrait posé, ou une photo d'un lieu qui compte pour elle plutôt qu'une photo d'elle.\n\nSi vous commandez pour quelqu'un d'autre et hésitez sur le fichier, envoyez-le-nous avant de commander. Nous vous dirons quel format il peut supporter."
+      },
       "benefits": {
         "one": {
-          "title": "Uniquement vôtre",
-          "description": "Aucune toile personnalisée n'est identique. Vos photos, vos souvenirs, votre art mural unique."
+          "title": "Tendue à la main au Québec",
+          "description": "Tendue à la main sur bois massif séché au four pour que la surface reste plane des années durant."
         },
         "two": {
-          "title": "Facile à créer",
-          "description": "Téléchargez votre photo, choisissez votre taille, prévisualisez et commandez — le tout en quelques minutes."
+          "title": "Surface mate, sans reflet",
+          "description": "Ni verre ni lustre : l'image reste lisible sous les lampes comme à la lumière du jour."
         },
         "three": {
-          "title": "Cadeaux significatifs",
-          "description": "Les toiles personnalisées font des cadeaux inoubliables pour anniversaires, fêtes et occasions spéciales."
+          "title": "Prête à accrocher à l'arrivée",
+          "description": "Quincaillerie installée avant le départ de l'atelier. Rien à assembler, aucun passage chez l'encadreur."
         }
-      }
+      },
+      "details": {
+        "title": "Délais pour un cadeau",
+        "items": [
+          {
+            "title": "De la commande à la livraison",
+            "description": "Généralement de 5 à 10 jours ouvrables — environ une à deux semaines — dans toute notre zone du Québec et de l'Ontario."
+          },
+          {
+            "title": "Fabriquée sur commande",
+            "description": "Rien n'est préimprimé : le compte à rebours commence au téléversement, pas à la préparation d'une boîte en entrepôt."
+          },
+          {
+            "title": "Commandez deux à trois semaines à l'avance",
+            "description": "Cela couvre la production, le transport et tout problème de fichier à vous signaler."
+          }
+        ]
+      },
+      "faq": [
+        {
+          "q": "Pouvez-vous expédier directement au destinataire ?",
+          "a": "Oui. Saisissez son adresse au paiement et la toile lui est envoyée directement."
+        },
+        {
+          "q": "Y a-t-il une option de message-cadeau ?",
+          "a": "Contactez-nous après la commande et nous joindrons un mot au colis."
+        },
+        {
+          "q": "Comment est-ce emballé ?",
+          "a": "À plat, dans une boîte rigide avec protection des coins, prête à accrocher dès le déballage."
+        },
+        {
+          "q": "Et si la photo est trop basse résolution ?",
+          "a": "Nous vérifions avant l'impression et vous contactons : aucune surprise pour le destinataire."
+        }
+      ],
+      "related": [
+        {
+          "label": "Toiles de mariage",
+          "slug": "wedding"
+        },
+        {
+          "label": "Toiles photo de famille",
+          "slug": "family"
+        },
+        {
+          "label": "Portraits d'animaux",
+          "slug": "pet-portrait"
+        },
+        {
+          "label": "Toiles pour la chambre",
+          "slug": "bedroom"
+        },
+        {
+          "label": "Impression sur toile Montréal",
+          "slug": "montreal"
+        },
+        {
+          "label": "Impression sur toile Toronto",
+          "slug": "toronto"
+        }
+      ]
     }
+  },
+  "Shop": {
+    "metadata": {
+      "title": "Boutique de toiles",
+      "description": "Parcourez nos impressions sur toile personnalisées fabriquées au Québec. Choisissez un format, un fini et téléversez votre photo. Livraison au Québec et en Ontario."
+    },
+    "heading": "Impressions sur toile",
+    "intro": "Chaque toile est imprimée sur commande et tendue à la main dans notre atelier québécois. Téléversez une photo, choisissez format et fini, et nous la livrons prête à accrocher.",
+    "browseHeading": "Parcourir par ville, format et occasion",
+    "groups": {
+      "cities": "Par ville",
+      "sizes": "Par format",
+      "useCases": "Par occasion"
+    },
+    "processLink": "Découvrez comment nous fabriquons nos toiles"
+  },
+  "Blog": {
+    "metadata": {
+      "title": "Guides d'impression sur toile",
+      "description": "Guides pratiques sur le choix du format, la résolution des photos et la comparaison entre toile et impression encadrée. Depuis notre atelier québécois."
+    },
+    "heading": "Guides",
+    "intro": "Conseils pratiques sur le format, la résolution et le choix de l'impression adaptée à votre mur — rédigés par ceux qui les fabriquent.",
+    "readMore": "Lire le guide",
+    "moreReading": "Autres guides",
+    "cta": {
+      "text": "Prêt à mettre votre propre photo au mur ?",
+      "button": "Voir les toiles"
+    }
+  },
+  "NotFound": {
+    "heading": "Page introuvable",
+    "body": "La page que vous cherchez n'existe pas ou a été déplacée. Il s'agissait peut-être d'une de nos anciennes pages de région.",
+    "home": "Retour à l'accueil",
+    "shop": "Voir les toiles"
+  },
+  "Nav": {
+    "shop": "Boutique",
+    "guides": "Guides"
   }
 }

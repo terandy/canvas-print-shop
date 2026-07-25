@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { ButtonLink } from "@/components";
 import { getLocale, getTranslations } from "next-intl/server";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 interface ProcessStep {
   title: string;
@@ -58,11 +59,18 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
 };
 
 export async function generateMetadata() {
+  const locale = await getLocale();
   const t = await getTranslations("CanvasProcess.metadata");
 
   return {
     title: t("title"),
     description: t("description"),
+    ...canonicalMetadata(locale, "/how-we-make-our-canvas-prints"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      ...openGraphMetadata(locale, "/how-we-make-our-canvas-prints"),
+    },
   };
 }
 
@@ -80,22 +88,22 @@ const CanvasProcessPage = async () => {
     {
       title: t("steps.printing.title"),
       description: t("steps.printing.description"),
-      videoUrl: "/UV Curing.mp4",
+      videoUrl: "/uv-curing.mp4",
     },
     {
       title: t("steps.frame.title"),
       description: t("steps.frame.description"),
-      imageUrl: "/stretcher frame example.jpeg",
+      imageUrl: "/stretcher-frame-example.jpeg",
     },
     {
       title: t("steps.stretching.title"),
       description: t("steps.stretching.description"),
-      imageUrl: "/canvas stretching.jpeg",
+      imageUrl: "/canvas-stretching.jpeg",
     },
     {
       title: t("steps.quality.title"),
       description: t("steps.quality.description"),
-      imageUrl: "/quality control.jpeg",
+      imageUrl: "/quality-control.jpeg",
     },
   ];
 

@@ -6,6 +6,7 @@ import {
   ContactInfo,
 } from "@/components";
 import { Metadata } from "next";
+import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -21,6 +22,12 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    ...canonicalMetadata(locale, "/privacy-policy"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      ...openGraphMetadata(locale, "/privacy-policy"),
+    },
   };
 }
 

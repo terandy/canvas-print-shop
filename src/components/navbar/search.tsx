@@ -36,10 +36,9 @@ const Search: React.FC<Props> = ({ onSearch }) => {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="w-max-[550px] relative w-full lg:w-80 xl:w-full"
-    >
+    // Width is set by the parent. Fixed breakpoint widths used to live here
+    // and fought the header layout at tablet sizes.
+    <form onSubmit={onSubmit} className="relative w-full">
       <input
         key={searchParams?.get("q")}
         type="text"
@@ -47,10 +46,11 @@ const Search: React.FC<Props> = ({ onSearch }) => {
         placeholder={t("placeholder")}
         autoComplete="off"
         defaultValue={searchParams?.get("q") || ""}
-        className="text-md w-full rounded-lg border bg-white px-4 py-2 text-black placeholder:text-neutral-500 md:text-sm"
+        // pr-10 keeps the placeholder clear of the icon.
+        className="text-md w-full rounded-lg border bg-white py-2 pl-4 pr-10 text-black placeholder:text-neutral-500 md:text-sm"
       />
-      <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
-        <SearchIcon className="h-4" />
+      <div className="pointer-events-none absolute right-0 top-0 mr-3 flex h-full items-center">
+        <SearchIcon className="h-4 text-neutral-500" />
       </div>
     </form>
   );
