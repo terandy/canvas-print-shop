@@ -6,6 +6,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import crypto from "crypto";
 
 import { s3Client } from "../s3Client";
+import { UPLOADABLE_IMAGE_TYPES } from "@/lib/images/formats";
 
 /**
  * Delete the image from aws
@@ -68,6 +69,13 @@ export async function uploadImage(fileType: string) {
       mimeType = getMimeType(extension);
     }
 
+    // This action is callable by anyone, and the objects it signs for are
+    // written public-read, so only hand out URLs for image types. Without this
+    // the bucket would happily host uploaded HTML or SVG under our domain.
+    if (!UPLOADABLE_IMAGE_TYPES.includes(mimeType.toLowerCase())) {
+      throw new Error(`Unsupported upload type: ${mimeType}`);
+    }
+
     // Extract extension from MIME type if not already set
     if (!extension) {
       extension = getExtensionFromMimeType(mimeType);
@@ -112,9 +120,9 @@ function getExtensionFromMimeType(mimeType: string): string {
     "image/png": "png",
     "image/gif": "gif",
     "image/webp": "webp",
-    "image/svg+xml": "svg",
-    "application/pdf": "pdf",
-    // Add more as needed
+    "image/avif": "avif",
+    "image/heic": "heic",
+    "image/heif": "heif",
   };
 
   return mimeToExt[mimeType.toLowerCase()] || mimeType.split("/")[1] || "bin";
@@ -128,9 +136,9 @@ function getMimeType(extension: string): string {
     png: "image/png",
     gif: "image/gif",
     webp: "image/webp",
-    svg: "image/svg+xml",
-    pdf: "application/pdf",
-    // Add more as needed
+    avif: "image/avif",
+    heic: "image/heic",
+    heif: "image/heif",
   };
 
   return extToMime[extension.toLowerCase()] || "application/octet-stream";

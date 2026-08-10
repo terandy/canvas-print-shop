@@ -7,17 +7,14 @@ import { useProduct } from "@/contexts/product-context";
 import { useTranslations } from "next-intl";
 import { uploadImage } from "@/lib/s3/actions/image";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
+import { IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/images/formats";
+import { prepareImageForUpload } from "@/lib/images/prepare-image";
 
 interface ImageUploaderProps {
-  maxSizeMB?: number;
-  acceptedTypes?: string[];
   className?: string;
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({
-  acceptedTypes = ["image/jpeg", "image/png", "image/webp"],
-  className,
-}) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
   // Get translations for this component
   const t = useTranslations("ImageUploader");
 
@@ -30,12 +27,12 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isConverting, setIsConverting] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleImageSelect = async (file: File) => {
     setImgFileUrl(URL.createObjectURL(file));
     try {
-      setIsUploading(true);
       setUploadProgress(0);
 
       // Get presigned URL
@@ -82,27 +79,26 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     }
   };
 
-  const validateFile = (file: File): boolean => {
-    // Check file type
-    if (!acceptedTypes.includes(file.type)) {
-      setError(t("errors.fileType", { types: acceptedTypes.join(", ") }));
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleFile = (file: File) => {
+  const handleFile = async (file: File) => {
     setError(null);
+    setIsUploading(true);
+    setIsConverting(true);
 
-    if (!validateFile(file)) {
+    // HEIC photos are decoded to JPEG here, which takes a moment on a big file.
+    const prepared = await prepareImageForUpload(file);
+    setIsConverting(false);
+
+    if (!prepared.ok) {
+      setError(
+        prepared.reason === "conversionFailed"
+          ? t("errors.conversionFailed")
+          : t("errors.fileType")
+      );
+      setIsUploading(false);
       return;
     }
 
-    // Create preview
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    handleImageSelect(file);
+    handleImageSelect(prepared.file);
   };
 
   const handleDrag = (e: React.DragEvent) => {
@@ -147,7 +143,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         >
           <input
             type="file"
-            accept={acceptedTypes.join(",")}
+            accept={IMAGE_ACCEPT_ATTRIBUTE}
             onChange={(e) =>
               e.target.files?.[0] && handleFile(e.target.files[0])
             }
@@ -175,16 +171,21 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         <div className="mt-4">
           <div className="flex items-center justify-between mb-1.5">
             <p className="text-sm font-medium text-primary">
-              {t("uploading.status")}
+              {isConverting ? t("uploading.converting") : t("uploading.status")}
             </p>
-            <span className="text-sm font-medium text-primary">
-              {uploadProgress}%
-            </span>
+            {!isConverting && (
+              <span className="text-sm font-medium text-primary">
+                {uploadProgress}%
+              </span>
+            )}
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
             <div
-              className="bg-primary h-full rounded-full transition-all duration-300 ease-in-out"
-              style={{ width: `${uploadProgress}%` }}
+              className={clsx(
+                "bg-primary h-full rounded-full transition-all duration-300 ease-in-out",
+                isConverting && "animate-pulse"
+              )}
+              style={{ width: isConverting ? "100%" : `${uploadProgress}%` }}
             />
           </div>
         </div>

@@ -575,14 +575,16 @@
   "ImageUploader": {
     "dropzone": {
       "mainText": "Déposez votre image ici, ou cliquez pour parcourir",
-      "supportedFormats": "Formats pris en charge: JPG, PNG, WebP"
+      "supportedFormats": "Formats pris en charge: JPG, PNG, HEIC, WebP, AVIF, GIF"
     },
     "uploading": {
-      "status": "Téléchargement en cours..."
+      "status": "Téléchargement en cours...",
+      "converting": "Préparation de votre photo..."
     },
     "errors": {
       "uploadFailed": "Échec du téléchargement. Veuillez réessayer.",
-      "fileType": "Types de fichiers acceptés: {types}"
+      "fileType": "Ce type de fichier n'est pas pris en charge. Utilisez JPG, PNG, HEIC, WebP, AVIF ou GIF.",
+      "conversionFailed": "Nous n'avons pas pu lire cette photo. Essayez un autre fichier ou enregistrez-la d'abord en JPG."
     }
   },
   "common": {
@@ -959,9 +961,11 @@
       "createAnother": "Créer un autre",
       "image": "Image du client",
       "imageDropzone": "Glissez-déposez une image ou cliquez pour parcourir",
-      "imageFormats": "JPG, PNG ou WebP",
-      "imageTypeError": "Le fichier doit être au format JPG, PNG ou WebP",
-      "imageUploadFailed": "Le téléchargement a échoué. Veuillez réessayer."
+      "imageFormats": "JPG, PNG, HEIC, WebP, AVIF ou GIF",
+      "imageTypeError": "Le fichier doit être au format JPG, PNG, HEIC, WebP, AVIF ou GIF",
+      "imageUploadFailed": "Le téléchargement a échoué. Veuillez réessayer.",
+      "imageConverting": "Préparation de la photo...",
+      "imageConversionFailed": "Impossible de lire cette photo. Essayez un autre fichier ou enregistrez-la d'abord en JPG."
     },
     "status": {
       "pending": "En attente",

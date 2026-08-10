@@ -10,9 +10,10 @@ import {
   type CustomOrderFormState,
 } from "@/lib/db/actions/custom-orders";
 import { uploadImage } from "@/lib/s3/actions/image";
+import { IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/images/formats";
+import { prepareImageForUpload } from "@/lib/images/prepare-image";
 
 const INITIAL_STATE: CustomOrderFormState = {};
-const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export default function CustomOrderForm() {
   const t = useTranslations("Admin.customOrder");
@@ -27,6 +28,7 @@ export default function CustomOrderForm() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [isConverting, setIsConverting] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -39,53 +41,68 @@ export default function CustomOrderForm() {
     }
   };
 
-  const handleImageUpload = useCallback(async (file: File) => {
-    if (!ACCEPTED_TYPES.includes(file.type)) {
-      setUploadError(t("imageTypeError"));
-      return;
-    }
+  const handleImageUpload = useCallback(
+    async (selectedFile: File) => {
+      setUploadError(null);
+      setIsUploading(true);
+      setIsConverting(true);
 
-    setUploadError(null);
-    setImagePreview(URL.createObjectURL(file));
-    setIsUploading(true);
-    setUploadProgress(0);
+      // HEIC photos are decoded to JPEG here before anything else sees them.
+      const prepared = await prepareImageForUpload(selectedFile);
+      setIsConverting(false);
 
-    try {
-      const { uploadUrl, publicUrl } = await uploadImage(
-        JSON.stringify({ fileType: file.type })
-      );
+      if (!prepared.ok) {
+        setUploadError(
+          prepared.reason === "conversionFailed"
+            ? t("imageConversionFailed")
+            : t("imageTypeError")
+        );
+        setIsUploading(false);
+        return;
+      }
 
-      const xhr = new XMLHttpRequest();
+      const file = prepared.file;
+      setImagePreview(URL.createObjectURL(file));
+      setUploadProgress(0);
 
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-          setUploadProgress(Math.round((event.loaded / event.total) * 100));
-        }
-      };
+      try {
+        const { uploadUrl, publicUrl } = await uploadImage(
+          JSON.stringify({ fileType: file.type })
+        );
 
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          setImageUrl(publicUrl);
-          setIsUploading(false);
-        } else {
+        const xhr = new XMLHttpRequest();
+
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            setUploadProgress(Math.round((event.loaded / event.total) * 100));
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            setImageUrl(publicUrl);
+            setIsUploading(false);
+          } else {
+            setUploadError(t("imageUploadFailed"));
+            setIsUploading(false);
+          }
+        };
+
+        xhr.onerror = () => {
           setUploadError(t("imageUploadFailed"));
           setIsUploading(false);
-        }
-      };
+        };
 
-      xhr.onerror = () => {
+        xhr.open("PUT", uploadUrl);
+        xhr.setRequestHeader("Content-Type", file.type);
+        xhr.send(file);
+      } catch {
         setUploadError(t("imageUploadFailed"));
         setIsUploading(false);
-      };
-
-      xhr.open("PUT", uploadUrl);
-      xhr.setRequestHeader("Content-Type", file.type);
-      xhr.send(file);
-    } catch {
-      setUploadError(t("imageUploadFailed"));
-      setIsUploading(false);
-    }
-  }, [t]);
+      }
+    },
+    [t]
+  );
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -169,7 +186,11 @@ export default function CustomOrderForm() {
           </button>
         </div>
       ) : (
-        <form ref={formRef} action={formAction} className="bg-white rounded-lg shadow p-6 space-y-4">
+        <form
+          ref={formRef}
+          action={formAction}
+          className="bg-white rounded-lg shadow p-6 space-y-4"
+        >
           {state.error && (
             <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm">
               {state.error}
@@ -236,7 +257,13 @@ export default function CustomOrderForm() {
               {t("image")}
             </label>
 
-            {imageUrl || imagePreview ? (
+            {isConverting ? (
+              <div className="w-40 h-40 rounded-md border border-gray-300 bg-gray-50 flex items-center justify-center p-4">
+                <p className="text-sm text-gray-500 text-center animate-pulse">
+                  {t("imageConverting")}
+                </p>
+              </div>
+            ) : imageUrl || imagePreview ? (
               <div className="relative inline-block">
                 <div className="relative w-40 h-40 rounded-md overflow-hidden border border-gray-300">
                   <Image
@@ -277,7 +304,7 @@ export default function CustomOrderForm() {
               >
                 <input
                   type="file"
-                  accept={ACCEPTED_TYPES.join(",")}
+                  accept={IMAGE_ACCEPT_ATTRIBUTE}
                   onChange={(e) => {
                     const file = e.target.files?.[0];
                     if (file) handleImageUpload(file);

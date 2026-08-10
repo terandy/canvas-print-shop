@@ -575,14 +575,16 @@
   "ImageUploader": {
     "dropzone": {
       "mainText": "Drop your image here, or click to browse",
-      "supportedFormats": "Supported formats: JPG, PNG, WebP"
+      "supportedFormats": "Supported formats: JPG, PNG, HEIC, WebP, AVIF, GIF"
     },
     "uploading": {
-      "status": "Uploading..."
+      "status": "Uploading...",
+      "converting": "Preparing your photo..."
     },
     "errors": {
       "uploadFailed": "Upload failed. Please try again.",
-      "fileType": "Accepted file types: {types}"
+      "fileType": "That file type isn't supported. Please use JPG, PNG, HEIC, WebP, AVIF or GIF.",
+      "conversionFailed": "We couldn't read that photo. Please try another file, or save it as a JPG first."
     }
   },
   "common": {
@@ -954,9 +956,11 @@
       "createAnother": "Create Another",
       "image": "Customer Image",
       "imageDropzone": "Drag & drop an image or click to browse",
-      "imageFormats": "JPG, PNG, or WebP",
-      "imageTypeError": "File must be JPG, PNG, or WebP",
-      "imageUploadFailed": "Image upload failed. Please try again."
+      "imageFormats": "JPG, PNG, HEIC, WebP, AVIF or GIF",
+      "imageTypeError": "File must be JPG, PNG, HEIC, WebP, AVIF or GIF",
+      "imageUploadFailed": "Image upload failed. Please try again.",
+      "imageConverting": "Preparing photo...",
+      "imageConversionFailed": "Couldn't read that photo. Try another file, or save it as a JPG first."
     },
     "status": {
       "pending": "Pending",
