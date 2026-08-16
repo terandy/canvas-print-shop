@@ -101,7 +101,7 @@ const Home = async () => {
         <div className="absolute inset-0" aria-hidden="true">
           <Image
             src="/canvas-example.jpeg"
-            alt="Banner background"
+            alt=""
             fill
             priority
             quality={80}

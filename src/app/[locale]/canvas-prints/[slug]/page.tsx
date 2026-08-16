@@ -7,6 +7,16 @@ import LandingPage from "@/components/landing-page";
 import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 import { isValidSlug } from "@/lib/landing-pages";
 import { formatDeliveryRange } from "@/lib/delivery";
+import {
+  BUSINESS_DATA,
+  getLocationAddressLines,
+  type SupportedLocale,
+} from "@/lib/business-data";
+import { formatAcceptedImageFormats } from "@/lib/images/formats";
+import {
+  buildMontrealWebPageStructuredData,
+  serializeJsonLd,
+} from "@/lib/structured-data";
 
 /**
  * Rendered on demand rather than prerendered.
@@ -77,6 +87,9 @@ export default async function LandingPageRoute({ params }: PageParams) {
   const t = await getTranslations(`LandingPages.${slug}`);
   const tCommon = await getTranslations("LandingPages.common");
   const products = await getProductList(locale as "en" | "fr");
+  const acceptedFormats = formatAcceptedImageFormats(locale);
+  const fillOperationalFacts = (value: string) =>
+    value.replaceAll("{formats}", acceptedFormats);
 
   const benefits = [
     {
@@ -101,8 +114,14 @@ export default async function LandingPageRoute({ params }: PageParams) {
     tCommon("trustBadges.guarantee"),
   ];
 
-  const faq = readFaq(t);
-  const detailItems = readDetailItems(t);
+  const faq = readFaq(t).map(({ q, a }) => ({
+    q: fillOperationalFacts(q),
+    a: fillOperationalFacts(a),
+  }));
+  const detailItems = readDetailItems(t).map(({ title, description }) => ({
+    title: fillOperationalFacts(title),
+    description: fillOperationalFacts(description),
+  }));
   const pageUrl = `${BASE_URL}/${locale}/canvas-prints/${slug}`;
 
   const structuredData: Record<string, unknown>[] = [
@@ -144,13 +163,25 @@ export default async function LandingPageRoute({ params }: PageParams) {
     });
   }
 
+  if (slug === "montreal") {
+    structuredData.push(
+      buildMontrealWebPageStructuredData(
+        locale as SupportedLocale,
+        t("heading"),
+        t("meta.description")
+      )
+    );
+  }
+
+  const montrealLocation = BUSINESS_DATA.locations.montrealBranch;
+
   return (
     <>
       {structuredData.map((data, i) => (
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(data) }}
         />
       ))}
       <LandingPage
@@ -177,6 +208,18 @@ export default async function LandingPageRoute({ params }: PageParams) {
           label: tCommon("delivery.getItBy"),
           range: formatDeliveryRange(locale),
         }}
+        location={
+          slug === "montreal"
+            ? {
+                heading: t("location.heading"),
+                name: montrealLocation.name,
+                addressLines: getLocationAddressLines(
+                  montrealLocation,
+                  locale as SupportedLocale
+                ),
+              }
+            : undefined
+        }
       />
     </>
   );

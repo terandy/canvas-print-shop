@@ -10,13 +10,19 @@ import {
   type CustomOrderFormState,
 } from "@/lib/db/actions/custom-orders";
 import { uploadImage } from "@/lib/s3/actions/image";
-import { IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/images/formats";
+import {
+  formatAcceptedImageFormats,
+  IMAGE_ACCEPT_ATTRIBUTE,
+} from "@/lib/images/formats";
 import { prepareImageForUpload } from "@/lib/images/prepare-image";
+import { useLocale } from "next-intl";
 
 const INITIAL_STATE: CustomOrderFormState = {};
 
 export default function CustomOrderForm() {
   const t = useTranslations("Admin.customOrder");
+  const locale = useLocale();
+  const acceptedFormats = formatAcceptedImageFormats(locale);
   const [state, formAction, isPending] = useActionState(
     createCustomOrderAction,
     INITIAL_STATE
@@ -55,7 +61,7 @@ export default function CustomOrderForm() {
         setUploadError(
           prepared.reason === "conversionFailed"
             ? t("imageConversionFailed")
-            : t("imageTypeError")
+            : t("imageTypeError", { formats: acceptedFormats })
         );
         setIsUploading(false);
         return;
@@ -101,7 +107,7 @@ export default function CustomOrderForm() {
         setIsUploading(false);
       }
     },
-    [t]
+    [acceptedFormats, t]
   );
 
   const handleDrag = (e: React.DragEvent) => {
@@ -318,7 +324,9 @@ export default function CustomOrderForm() {
                     <Upload className="h-8 w-8 text-gray-400" />
                   )}
                   <p className="text-sm text-gray-600">{t("imageDropzone")}</p>
-                  <p className="text-xs text-gray-400">{t("imageFormats")}</p>
+                  <p className="text-xs text-gray-400">
+                    {t("imageFormats", { formats: acceptedFormats })}
+                  </p>
                 </div>
               </div>
             )}

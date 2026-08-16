@@ -22,6 +22,24 @@ export const HEIC_IMAGE_TYPES = [
   "image/heif-sequence",
 ] as const;
 
+/** Human-readable labels derived from the operationally accepted formats. */
+export const ACCEPTED_IMAGE_FORMAT_LABELS = [
+  "JPG",
+  "JPEG",
+  "PNG",
+  "WebP",
+  "AVIF",
+  "GIF",
+  "HEIC",
+  "HEIF",
+] as const;
+
+export const formatAcceptedImageFormats = (locale: string): string =>
+  new Intl.ListFormat(locale, {
+    style: "long",
+    type: "disjunction",
+  }).format(ACCEPTED_IMAGE_FORMAT_LABELS);
+
 /** Types the server will hand out a presigned upload URL for. */
 export const UPLOADABLE_IMAGE_TYPES: readonly string[] = [
   ...DISPLAYABLE_IMAGE_TYPES,

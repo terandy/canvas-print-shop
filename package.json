@@ -10,6 +10,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "tsc": "tsc",
+    "test:seo": "tsx --test tests/seo-consistency.test.ts",
     "import:orders": "tsx scripts/import-shopify-orders.ts",
     "verify:order": "tsx scripts/verify-latest-order.ts",
     "test:tracking": "tsx scripts/test-tracking-email.ts",
@@ -57,6 +58,7 @@
     "prettier": "^3.5.1",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   }
 }

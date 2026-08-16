@@ -21,25 +21,25 @@
     "benefits": {
       "heading": "Pourquoi choisir les impressions sur toile chez Canvas Print Shop ?",
       "premium": {
-        "title": "Matériaux Premium",
-        "description": "Toile mélange coton premium avec une densité 10x plus élevée et 75% d'opacité - largement supérieure aux matériaux de qualité inférieure des concurrents."
+        "title": "Matériaux haut de gamme",
+        "description": "Toile haut de gamme en mélange de coton, avec une densité dix fois plus élevée et jusqu'à 75 % d'opacité — bien supérieure aux matériaux plus légers."
       },
       "craftsmanship": {
-        "title": "Savoir-faire Expert",
-        "description": "Toutes les impressions sur toile sont expertes fabriquées à la main dans notre studio canadien, basé à Québec."
+        "title": "Savoir-faire québécois",
+        "description": "Toutes nos impressions sur toile sont fabriquées avec soin dans notre atelier de Québec."
       },
       "process": {
-        "title": "Processus Facile",
+        "title": "Processus simple",
         "description": "Téléversez simplement votre image, choisissez vos dimensions, prévisualisez votre impression sur toile puis passez à la caisse."
       },
       "technology": {
         "title": "Technologie UVgel",
-        "description": "Technologie d'impression Canon avancée offrant une vibrance de couleur et une durabilité exceptionnelles, soutenue par notre garantie de qualité d'impression de 30 ans. Impressions écologiques, sans odeur parfaites pour l'affichage intérieur."
+        "description": "La technologie d'impression Canon produit des couleurs éclatantes et durables, avec notre garantie de qualité d'impression de 30 ans. Des impressions écologiques et sans odeur, parfaitement adaptées à l'intérieur."
       }
     },
     "featured": {
       "heading": "Créez votre impression sur toile personnalisée",
-      "description": "Transformez vos moments favoris en art mural époustouflant avec nos impressions sur toile premium"
+      "description": "Transformez vos moments préférés en art mural saisissant grâce à nos impressions sur toile haut de gamme."
     },
     "process": {
       "heading": "Comment ça fonctionne",
@@ -49,7 +49,7 @@
       },
       "select": {
         "title": "Sélectionnez votre style",
-        "description": "Choisissez votre taille et options d'encadrement"
+        "description": "Choisissez votre format et vos options d'encadrement"
       },
       "create": {
         "title": "Nous créons votre chef-d'œuvre",
@@ -76,7 +76,7 @@
       "ssl": "Cryptage SSL",
       "shipping": "Expédition rapide et fiable",
       "made": "Fabriqué au Canada",
-      "satisfaction": "Satisfaction 100% garantie"
+      "satisfaction": "Satisfaction garantie à 100 %"
     }
   },
   "Error": {
@@ -86,61 +86,62 @@
   },
   "Footer": {
     "companyName": "Canvas Print Shop",
-    "companyDescription": "Créer de belles impressions sur toile de haute qualité pour votre maison ou bureau. Fièrement canadien, servant les clients à travers le pays.",
+    "companyDescription": "Toiles fabriquées sur commande au Québec et livrées partout au Québec et en Ontario.",
     "customerService": "Service client",
     "contactUs": "Contactez-nous",
+    "emailUs": "Écrivez-nous",
     "securePayment": "Méthodes de paiement sécurisées",
     "copyright": "Tous droits réservés.",
     "paymentAlt": "Paiement {method} accepté",
     "links": {
       "privacy": "Politique de confidentialité",
-      "faqs": "FAQs",
+      "faqs": "FAQ",
       "shipping": "Politique d'expédition",
       "returns": "Politique de retours",
       "contact": "Contactez-nous"
     },
     "explore": "Explorer",
     "cities": "Toiles par ville",
-    "popular": "Populaire",
+    "popular": "Pages populaires",
     "shop": "Toutes les toiles",
     "blog": "Guides"
   },
   "ShippingPolicy": {
     "metadata": {
       "title": "Politique d'expédition sur les impressions sur toile",
-      "description": "Découvrez nos options d'expédition, y compris la livraison par Postes Canada et la collecte locale à Québec."
+      "description": "Découvrez nos options de livraison par Postes Canada et de cueillette locale à Québec."
     },
     "pageTitle": "Politique d'expédition",
     "localPickup": {
-      "title": "Cueillette Locale",
-      "description": "Nous offrons la cueillette locale gratuite à notre emplacement de Québec pour votre commodité.",
-      "hours": "Disponible pendant les heures d'affaires : Lundi au vendredi, 9h - 17h EST",
-      "select": "Sélectionnez \"Cueillette Locale\" lors du paiement",
-      "email": "Vous recevrez un courriel quand votre commande sera prête pour la cueillette"
+      "title": "Cueillette locale",
+      "description": "Nous offrons la cueillette locale gratuite à notre atelier de Québec.",
+      "hours": "Disponible pendant les heures d'ouverture : du lundi au vendredi, de 9 h à 17 h (heure de l'Est)",
+      "select": "Sélectionnez « Cueillette locale » lors du paiement",
+      "email": "Vous recevrez un courriel lorsque votre commande sera prête pour la cueillette"
     },
     "canadaPost": {
       "title": "Livraison par Postes Canada",
-      "description": "Nous expédions toutes les commandes via Postes Canada avec suivi fourni pour chaque envoi.",
-      "estimatedTitle": "Temps de Livraison Estimés :",
-      "local": "Local (Québec) : 1-2 jours ouvrables",
-      "majorCities": "Grandes villes : 2-3 jours ouvrables",
-      "ruralAreas": "Régions rurales : 3-7 jours ouvrables",
-      "remoteLocations": "Emplacements éloignés : 7-14 jours ouvrables",
-      "disclaimer": "*Les temps de livraison sont des estimations et peuvent varier selon les conditions météorologiques et les mises à jour de service de Postes Canada."
+      "description": "Nous expédions les commandes au Québec et en Ontario par Postes Canada, avec un numéro de suivi pour chaque envoi.",
+      "estimatedTitle": "Délais estimatifs :",
+      "local": "Zone de livraison : Québec et Ontario",
+      "majorCities": "Production : généralement de 2 à 4 jours ouvrables",
+      "ruralAreas": "De la commande à la livraison : généralement de 5 à 10 jours ouvrables",
+      "remoteLocations": "L'estimation du produit et la caisse indiquent le délai à jour pour chaque commande",
+      "disclaimer": "*Les délais peuvent varier selon la production, la destination, la météo et le service du transporteur."
     },
     "processingTime": {
-      "title": "Temps de Traitement",
+      "title": "Temps de traitement",
       "description": "Chaque impression sur toile est soigneusement fabriquée sur commande :",
-      "standard": "Commandes standard : 2-3 jours ouvrables de temps de traitement",
+      "standard": "Commandes standards : généralement de 2 à 4 jours ouvrables de production et de traitement",
       "payment": "Le traitement commence une fois le paiement confirmé",
       "tracking": "Vous recevrez un courriel avec les informations de suivi une fois votre commande expédiée",
       "rush": "Un traitement accéléré peut être disponible sur demande"
     },
     "shippingCosts": {
       "title": "Frais d'expédition",
-      "localPickup": "Collecte locale : Gratuit",
-      "standard": "Expédition standard : Calculée lors du paiement en fonction de la taille et de la destination",
-      "free": "Livraison gratuite pour les commandes de plus de 150$ (certains endroits éloignés exclus)"
+      "localPickup": "Cueillette locale : gratuite",
+      "standard": "Expédition standard : calculée à la caisse selon le format et la destination",
+      "free": "Livraison gratuite pour les commandes de plus de 150 $ (certaines destinations éloignées sont exclues)"
     },
     "orderTracking": {
       "title": "Suivi de commande",
@@ -148,59 +149,59 @@
       "number": "Numéro de suivi fourni par courriel une fois la commande expédiée",
       "website": "Suivez votre colis directement sur le site web de Postes Canada",
       "notifications": "Notifications par courriel pour confirmation de commande, traitement et expédition",
-      "support": "Contactez notre équipe de service client pour une assistance supplémentaire de suivi"
+      "support": "Communiquez avec notre service à la clientèle pour obtenir de l'aide avec le suivi"
     }
   },
   "ReturnsPolicy": {
     "metadata": {
-      "title": "Politique de retours sur les impressions sur toile",
-      "description": "Découvrez notre politique de retour de 30 jours et notre engagement envers la satisfaction client. Nous facilitons les retours avec notre processus sans tracas."
+      "title": "Politique de retour des impressions sur toile",
+      "description": "Consultez notre politique de retour de 30 jours, ses conditions et la marche à suivre pour demander un remplacement ou un remboursement."
     },
     "pageTitle": "Politique de retours",
-    "introduction": "Chez Canvas Print Shop, nous sommes fiers de livrer des impressions sur toile de qualité exceptionnelle. Votre satisfaction est notre priorité absolue, c'est pourquoi nous offrons une politique de retour complète de 30 jours. Nous garantissons nos produits et travaillerons avec vous pour nous assurer que vous êtes complètement satisfait de votre achat.",
+    "introduction": "Chez Canvas Print Shop, nous sommes fiers de la qualité de nos impressions sur toile. Vous disposez de 30 jours pour demander un retour, et notre équipe vous accompagnera afin de trouver une solution satisfaisante.",
     "returnWindow": {
-      "title": "Fenêtre de retour de 30 Jours",
-      "description": "Vous pouvez initier un retour dans les 30 jours suivant la réception de votre commande si vous n'êtes pas complètement satisfait. Ceci s'applique à :",
+      "title": "Délai de retour de 30 jours",
+      "description": "Vous pouvez amorcer un retour dans les 30 jours suivant la réception de votre commande si vous n'êtes pas entièrement satisfait. Cette politique s'applique notamment aux situations suivantes :",
       "reasons": {
         "quality": "Impressions avec des problèmes de qualité",
         "damage": "Articles endommagés",
-        "incorrect": "Tailles ou spécifications incorrectes",
+        "incorrect": "Formats ou caractéristiques incorrects",
         "expectations": "Articles qui ne répondent pas à vos attentes"
       }
     },
     "returnProcess": {
       "title": "Comment retourner votre commande",
-      "description": "Commencer un retour est simple. Envoyez-nous un courriel à returns@canvasprintshop.ca avec :",
+      "description": "Pour amorcer un retour, écrivez-nous à returns@canvasprintshop.ca en fournissant :",
       "requirements": {
-        "orderInfo": "Votre numéro de commande et adresse courriel utilisée pour l'achat",
+        "orderInfo": "Votre numéro de commande et l'adresse courriel utilisée lors de l'achat",
         "reason": "La raison de votre retour",
-        "photos": "Photos de l'article (requis pour les problèmes de qualité ou dommages)",
-        "preference": "Votre préférence pour un remplacement ou remboursement"
+        "photos": "Des photos de l'article (requises en cas de problème de qualité ou de dommage)",
+        "preference": "Votre préférence entre un remplacement et un remboursement"
       },
-      "response": "Notre équipe de service client répondra dans un jour ouvrable avec des instructions de retour détaillées."
+      "response": "Notre équipe du service à la clientèle vous répondra dans un délai d'un jour ouvrable avec les instructions de retour."
     },
     "guarantee": {
       "title": "Notre garantie de qualité",
       "description": "Nous garantissons la qualité de nos produits :",
       "benefits": {
         "replacements": "Remplacements gratuits pour tout problème de qualité",
-        "refunds": "Remboursements complets disponibles si nous ne pouvons pas satisfaire votre satisfaction",
-        "shipping": "Pas de frais d'expédition de retour pour les articles défectueux ou incorrects",
-        "support": "Support dédié tout au long du processus de retour"
+        "refunds": "Remboursement intégral si nous ne pouvons pas trouver une solution satisfaisante",
+        "shipping": "Aucuns frais de retour pour les articles défectueux ou incorrects",
+        "support": "Soutien personnalisé tout au long du processus de retour"
       }
     },
     "refundProcess": {
       "title": "Informations de remboursement",
       "timeline": "Les remboursements sont traités dans les 3 à 5 jours ouvrables suivant la réception du retour",
       "method": "Les remboursements sont émis sur le mode de paiement d'origine",
-      "confirmation": "Vous recevrez une confirmation par email lorsque votre remboursement sera traité",
+      "confirmation": "Vous recevrez une confirmation par courriel lorsque votre remboursement sera traité",
       "bankProcessing": "Les délais de traitement bancaire peuvent varier pour que le remboursement apparaisse sur votre compte"
     },
     "exceptions": {
       "title": "Exceptions de retour",
-      "description": "Veuillez noter que certains articles peuvent ne pas être éligibles au retour :",
+      "description": "Veuillez noter que certains articles peuvent ne pas être admissibles au retour :",
       "items": {
-        "customSizes": "Impressions de tailles personnalisées en dehors de nos dimensions standard",
+        "customSizes": "Impressions dans des formats sur mesure qui ne figurent pas parmi les options en ligne",
         "misuse": "Articles endommagés en raison d'une mauvaise utilisation ou d'une manipulation inappropriée",
         "lateReturns": "Retours initiés après la période de 30 jours"
       }
@@ -220,38 +221,39 @@
   "CanvasProcess": {
     "metadata": {
       "title": "Processus de fabrication de toile",
-      "description": "Découvrez notre processus de production de toiles premium - de la sélection des matériaux au contrôle qualité, voyez comment nous fabriquons nos impressions sur toile de haute qualité."
+      "description": "Découvrez notre processus de production, de la sélection des matériaux au contrôle de la qualité, et voyez comment nous fabriquons nos impressions sur toile haut de gamme."
     },
     "hero": {
       "title": "Comment nous fabriquons nos toiles",
       "description": "Découvrez le savoir-faire et l'attention aux détails qui caractérisent chaque toile que nous produisons."
     },
+    "videoFallback": "Votre navigateur ne peut pas lire cette vidéo.",
     "steps": {
       "materials": {
-        "title": "Sélection des matériaux premium",
-        "description": "Nous commençons par une toile soigneusement sélectionnée en mélange de coton de haute qualité. Chaque rouleau est inspecté pour sa qualité et sa consistance, garantissant que seuls les meilleurs matériaux arrivent à notre atelier de production. Notre toile a une opacité allant jusqu'à 75%, plus de 7 fois supérieure à Best Canvas."
+        "title": "Sélection des matériaux haut de gamme",
+        "description": "Nous commençons par une toile haut de gamme en mélange de coton. Chaque rouleau est inspecté pour vérifier sa qualité et son uniformité avant d'entrer en production. Notre toile offre jusqu'à 75 % d'opacité."
       },
       "printing": {
         "title": "Processus d'impression de haute qualité",
-        "description": "Nous utilisons la technologie d'impression Canon avancée pour offrir une vibrance et une durabilité exceptionnelles des couleurs. Après l'impression de votre image avec de l'encre UVgel, l'impression subit un durcissement par LED UV. Le résultat ? Une finition durable et flexible qui ne nécessite aucune protection supplémentaire. C'est si durable que nos toiles sont garanties par notre garantie de qualité d'impression de 30 ans !"
+        "description": "Nous utilisons la technologie Canon Colorado pour produire des couleurs éclatantes et durables. Après l'impression avec l'encre UVgel, la toile est durcie par DEL UV. On obtient ainsi un fini souple et résistant, couvert par notre garantie de qualité d'impression de 30 ans."
       },
       "frame": {
-        "title": "Assemblage de cadre tendeur personnalisé",
-        "description": "Nos artisans qualifiés construisent des cadres tendeurs robustes à partir de bois premium, coupés et assemblés avec précision pour créer la base de votre toile. Chaque coin est renforcé pour une durabilité à long terme."
+        "title": "Assemblage du châssis sur mesure",
+        "description": "Nos artisans fabriquent des châssis robustes en bois massif, coupés et assemblés avec précision pour former la base de votre toile. Chaque coin est renforcé pour assurer une durabilité à long terme."
       },
       "stretching": {
-        "title": "Processus de tension professionnel",
+        "title": "Tension professionnelle de la toile",
         "description": "En utilisant des équipements et des techniques spécialisés, nous tendons la toile sur le cadre avec une tension parfaite. Cette étape critique garantit que votre toile maintiendra sa forme et sa stabilité au fil du temps."
       },
       "quality": {
         "title": "Contrôle qualité",
-        "description": "Chaque toile subit des contrôles de qualité rigoureux tout au long du processus de production. Nous examinons la tension, les plis d'angle et la construction globale pour nous assurer que chaque pièce répond à nos normes exigeantes."
+        "description": "Chaque toile est inspectée tout au long de la production. Nous vérifions la tension, les plis aux coins et l'assemblage général pour nous assurer que chaque pièce respecte nos normes."
       }
     },
     "cta": {
       "title": "Prêt à découvrir notre qualité ?",
       "description": "Chaque toile est fabriquée avec soin et soutenue par notre garantie de satisfaction.",
-      "button": "Acheter Nos Toiles"
+      "button": "Créer votre toile"
     }
   },
   "PrivacyPolicy": {
@@ -306,48 +308,51 @@
     "pageTitle": "Contactez-nous",
     "subtitle": "Nous sommes là pour vous aider ! Choisissez la meilleure façon de nous contacter ci-dessous.",
     "email": {
-      "title": "Envoyez un email",
+      "title": "Envoyez-nous un courriel",
       "subtitle": "Disponible à tout moment",
       "label": "Courriel"
     },
     "phone": {
       "title": "Appelez-nous",
-      "label": "Telephone"
+      "label": "Téléphone"
     },
     "address": {
       "title": "Visitez notre magasin",
-      "label": "Addresse"
+      "label": "Adresse"
     },
     "openingHours": {
-      "value": "Lundi-Vendredi 9h-17h EST",
+      "value": "Du lundi au vendredi, de 9 h à 17 h (heure de l'Est)",
       "label": "Heures d'ouverture"
     },
-    "needHelp": "Besoin d'aide?",
-    "customerServiceMessage": "Notre service clientèle est là pour répondre à toutes vos questions :"
+    "needHelp": "Besoin d'aide ?",
+    "customerServiceMessage": "Notre service à la clientèle est là pour répondre à toutes vos questions :"
   },
   "Product": {
+    "metadata": {
+      "canvasDescription": "Toile personnalisée fabriquée sur commande à partir de votre photo, de votre œuvre ou de votre création. Imprimée et finie au Québec, puis livrée au Québec et en Ontario."
+    },
     "direction": {
       "title": "Orientation",
       "landscape": "Paysage",
       "portrait": "Portrait"
     },
     "borderStyle": {
-      "title": "Style de Bordure",
+      "title": "Style de bordure",
       "black": "Noir",
       "white": "Blanc",
       "wrapped": "Enveloppé",
-      "fill": "Genéré"
+      "fill": "Remplissage automatique"
     },
     "size": {
-      "title": "Taille",
-      "select": "Sélectionner la taille",
+      "title": "Format",
+      "select": "Sélectionner le format",
       "width": "Largeur",
       "height": "Hauteur",
       "price": "Prix",
       "add": "Ajouter",
       "quality": {
         "title": "Qualité de résolution",
-        "poorDescription": "La qualité représente la résolution de l'image téléversée. Si la résolution n'est pas assez élevée et que nous imprimons sur une grande toile, la qualité sera médiocre. Assurez-vous donc que la qualité de l'image téléversée est suffisante pour la taille souhaitée.",
+        "poorDescription": "La qualité dépend de la résolution de l'image téléversée. Si elle est insuffisante pour le format choisi, l'impression risque de manquer de netteté. Utilisez l'image ayant la meilleure résolution possible.",
         "lowQuality": "Médiocre",
         "normalQuality": "Bonne",
         "goodQuality": "Haute"
@@ -362,33 +367,33 @@
       "title": "Épaisseur",
       "select": "Sélectionner l'épaisseur de la toile",
       "regular": "Standard (0,75 pouces)",
-      "gallery": "Galerie (1.5 pouces)"
+      "gallery": "Galerie (1,5 pouce)"
     },
-    "noImage": "Aucun image",
+    "noImage": "Aucune image",
     "startCreating": "Commencez votre création",
     "canvas-roll-prints": "Rouleaux de toile",
     "canvas": "Toile",
     "details": {
       "title": "Détails",
-      "premiumCanvas": "Toile mélange coton premium 35%",
+      "premiumCanvas": "Toile haut de gamme composée à 35 % de coton",
       "fadeResistant": "Résistant à la décoloration pendant plus de 30 ans",
       "handStretched": "Tendue à la main sur un cadre en bois massif",
       "readyToHang": "Prête à accrocher avec le matériel inclus",
-      "madeInQuebec": "Fièrement fabriqué à Québec"
+      "madeInQuebec": "Fièrement fabriquée à Québec"
     },
     "shippingTime": {
-      "title": "Délais de Livraison",
-      "production": "Production : 2-3 jours ouvrables",
-      "localPickup": "Collecte locale disponible le jour même",
-      "canadaPost": "Postes Canada : 3-7 jours ouvrables",
+      "title": "Délais de livraison",
+      "production": "Production : généralement de 2 à 4 jours ouvrables",
+      "localPickup": "Cueillette gratuite à Québec lorsque la commande est prête",
+      "canadaPost": "De la commande à la livraison : généralement de 5 à 10 jours ouvrables",
       "expressAvailable": "Expédition express disponible à la caisse"
     },
     "qualityAssurance": {
       "title": "Assurance qualité",
       "description": "Nous garantissons chaque toile que nous créons.",
-      "satisfaction": "Garantie de satisfaction à 100%",
+      "satisfaction": "Garantie de satisfaction à 100 %",
       "replacement": "Remplacement gratuit pour tout défaut",
-      "expertSupport": "Support client expert"
+      "expertSupport": "Soutien spécialisé à la clientèle"
     },
     "reviews": {
       "title": "Avis des clients"
@@ -400,15 +405,16 @@
       "ifOrderToday": "si vous commandez aujourd'hui"
     },
     "verified": "Vérifié",
-    "averageRating": "{rating} ({count} avis)",
+    "averageRating": "{rating} sur 5 ({count} avis)",
+    "reviewsCount": "{count} avis",
     "deliveryDetails": {
-      "title": "Détails de Livraison",
+      "title": "Détails de livraison",
       "processingTime": "Temps de traitement :",
-      "processingTimeValue": "2-4 jours ouvrables",
-      "localPickup": "Collecte locale :",
-      "localPickupValue": "Disponible après 4 jours ouvrables",
+      "processingTimeValue": "Généralement de 2 à 4 jours ouvrables",
+      "localPickup": "Cueillette locale :",
+      "localPickupValue": "Gratuite à Québec lorsque la commande est prête",
       "totalDeliveryTime": "Temps de livraison total :",
-      "totalDeliveryTimeValue": "Environ 5-10 jours ouvrables",
+      "totalDeliveryTimeValue": "Généralement de 5 à 10 jours ouvrables",
       "shippingCost": "Frais d'expédition :",
       "shippingCostValue": "Disponible à la caisse (Livraison GRATUITE pour les commandes de plus de 150$)"
     },
@@ -422,15 +428,15 @@
       "questions": {
         "imageQuality": {
           "question": "Comment savoir si la qualité de mon image est suffisante ?",
-          "answer": "Notre système vérifie automatiquement la résolution de votre image et affiche un indicateur de qualité (Médiocre, Bonne ou Parfaite) lorsque vous sélectionnez une taille de toile. Nous recommandons une qualité 'Parfaite' pour de meilleurs résultats."
+          "answer": "Notre système vérifie automatiquement la résolution de votre image et affiche un indicateur de qualité lorsque vous sélectionnez un format de toile. Pour un résultat optimal, utilisez l'image ayant la meilleure résolution possible."
         },
         "depthDifference": {
           "question": "Quelle est la différence entre l'épaisseur Standard et Galerie ?",
           "answer": "L'épaisseur Standard (0,75 pouces) est notre option standard, tandis que l'épaisseur Galerie (1,5 pouces) crée un aspect plus dramatique, semblable à un musée, avec des côtés plus profonds."
         },
         "localPickupAvailable": {
-          "question": "Offrez-vous la collecte locale ?",
-          "answer": "Oui ! Nous offrons une collecte locale gratuite à notre emplacement de Québec pendant les heures d'ouverture (lundi-vendredi, 9h-17h HNE). Vous recevrez un email lorsque votre commande sera prête."
+          "question": "Offrez-vous la cueillette locale ?",
+          "answer": "Oui. Nous offrons la cueillette gratuite à notre atelier de Québec pendant les heures d'ouverture. Vous recevrez un courriel lorsque votre commande sera prête."
         },
         "satisfaction": {
           "question": "Que se passe-t-il si je ne suis pas satisfait de ma toile ?",
@@ -442,15 +448,16 @@
         },
         "deliveryTime": {
           "question": "Combien de temps prend la livraison ?",
-          "answer": "Nous avons généralement besoin de 2 à 4 jours pour produire, emballer et expédier votre toile. Veuillez prévoir du temps de transit supplémentaire selon l'option d'expédition que vous choisissez."
+          "answer": "La production et le traitement prennent généralement de 2 à 4 jours ouvrables. Au Québec et en Ontario, le délai total entre la commande et la livraison est généralement de 5 à 10 jours ouvrables ; l'estimation du produit et la caisse font foi pour votre commande."
         },
         "multipleCanvases": {
           "question": "Puis-je commander plusieurs toiles de la même image ?",
-          "answer": "Absolument ! Vous pouvez créer plusieurs designs de toile avec différentes tailles et options d'encadrement à partir de la même image."
+          "answer": "Absolument. Vous pouvez créer plusieurs toiles de formats et d'encadrements différents à partir de la même image."
         }
       }
     },
     "canvasPage": {
+      "productDescription": "Fabriquée sur commande à partir de votre photo, de votre œuvre ou de votre création. Choisissez l'un des formats proposés dans notre configurateur en ligne ou contactez-nous pour des dimensions entièrement sur mesure. Il n'y a pas de format maximal fixe ; les projets de très grand format font l'objet d'une soumission selon l'image, le châssis, la manutention et la livraison.",
       "qualitySection": {
         "title": "Pourquoi notre toile est différente",
         "description": "La plupart des toiles en ligne se ressemblent à l'écran, mais offrent une sensation très différente en vrai. Nous misons sur les matériaux et le procédé d'impression pour que votre toile ait réellement un aspect haut de gamme sur votre mur.",
@@ -522,7 +529,7 @@
         "description": "Un aperçu de nos outils, de nos artisans et des toiles finies — puis découvrez toute l'histoire sur « Comment nous fabriquons nos toiles ».",
         "cta": "Voir comment nous fabriquons nos toiles",
         "images": {
-          "tools": "Matériaux premium et outils prêts pour l'impression",
+          "tools": "Matériaux haut de gamme et outils prêts pour l'impression",
           "craftsmanship": "Toile tendue à la main à Québec",
           "livingRoom": "Toile terminée mise en scène dans un salon chaleureux"
         }
@@ -563,19 +570,19 @@
       },
       "reviewsSection": {
         "title": "Avis des clients",
-        "subtitle": "Découvrez ce que les gens pensent de leurs toiles Canvas Print Shop.",
+        "subtitle": "Découvrez ce que les gens disent de Canvas Print Shop.",
         "ratingLabel": "Basé sur {count} avis"
       }
     },
     "guarantee": {
       "title": "Garantie de qualité d'impression de 30 ans",
-      "description": "Nous soutenons notre technologie d'impression UVgel premium avec une garantie leader de l'industrie."
+      "description": "Notre technologie d'impression UVgel haut de gamme est couverte par une garantie de qualité d'impression de 30 ans."
     }
   },
   "ImageUploader": {
     "dropzone": {
       "mainText": "Déposez votre image ici, ou cliquez pour parcourir",
-      "supportedFormats": "Formats pris en charge: JPG, PNG, HEIC, WebP, AVIF, GIF"
+      "supportedFormats": "Formats pris en charge : {formats}"
     },
     "uploading": {
       "status": "Téléversement en cours...",
@@ -583,7 +590,7 @@
     },
     "errors": {
       "uploadFailed": "Échec du téléversement. Veuillez réessayer.",
-      "fileType": "Ce type de fichier n'est pas pris en charge. Utilisez JPG, PNG, HEIC, WebP, AVIF ou GIF.",
+      "fileType": "Ce type de fichier n'est pas pris en charge. Utilisez {formats}.",
       "conversionFailed": "Nous n'avons pas pu lire cette photo. Essayez un autre fichier ou enregistrez-la d'abord en JPG."
     }
   },
@@ -961,8 +968,8 @@
       "createAnother": "Créer un autre",
       "image": "Image du client",
       "imageDropzone": "Glissez-déposez une image ou cliquez pour parcourir",
-      "imageFormats": "JPG, PNG, HEIC, WebP, AVIF ou GIF",
-      "imageTypeError": "Le fichier doit être au format JPG, PNG, HEIC, WebP, AVIF ou GIF",
+      "imageFormats": "{formats}",
+      "imageTypeError": "Le fichier doit être au format {formats}",
       "imageUploadFailed": "Le téléversement a échoué. Veuillez réessayer.",
       "imageConverting": "Préparation de la photo...",
       "imageConversionFailed": "Impossible de lire cette photo. Essayez un autre fichier ou enregistrez-la d'abord en JPG."
@@ -1018,7 +1025,95 @@
   "QualityGuarantee": {
     "metadata": {
       "title": "Notre promesse de qualité",
-      "description": "Découvrez pourquoi Canvas Print Shop offre des impressions sur toile supérieures. Toile coton haut de gamme, technologie UVgel et étirement expert dans notre atelier de Québec."
+      "description": "Découvrez la qualité Canvas Print Shop : toile haut de gamme en mélange de coton, impression UVgel et finition soignée dans notre atelier de Québec."
+    },
+    "hero": {
+      "title": "La promesse de qualité Canvas Print Shop",
+      "description": "Toutes les impressions sur toile ne se valent pas. Nous misons sur des matériaux, une impression et une finition sans compromis.",
+      "workshop": "Chaque toile fabriquée sur commande est produite et inspectée dans notre atelier de Québec."
+    },
+    "features": {
+      "canvas": {
+        "title": "1. Notre toile",
+        "description": "Nous utilisons une toile haut de gamme composée à 35 % de coton, avec une texture riche et jusqu'à 75 % d'opacité pour réduire la transparence du châssis.",
+        "alt": "Gros plan d'une toile haut de gamme en mélange de coton"
+      },
+      "technology": {
+        "title": "2. Notre technologie",
+        "description": "L'impression Canon Colorado UVgel produit un fini mat, résistant aux rayures et à l'eau, couvert par notre garantie de qualité d'impression de 30 ans.",
+        "alt": "Imprimante Canon Colorado utilisée pour l'impression sur toile"
+      },
+      "craftsmanship": {
+        "title": "3. Notre savoir-faire",
+        "description": "Chaque toile est tendue à la main sur un châssis en bois massif, finie au Québec et livrée avec sa quincaillerie prête à accrocher.",
+        "alt": "Toile tendue à la main dans l'atelier de Québec"
+      }
+    },
+    "comparison": {
+      "title": "La différence est claire",
+      "labels": {
+        "feature": "Caractéristique",
+        "budget": "Imprimeurs à bas prix typiques"
+      },
+      "rows": {
+        "material": {
+          "feature": "Matériau de la toile",
+          "ours": "Toile haut de gamme composée à 35 % de coton",
+          "budget": "Polyester léger"
+        },
+        "technology": {
+          "feature": "Technologie d'impression",
+          "ours": "Canon Colorado UVgel avec garantie de qualité d'impression de 30 ans",
+          "budget": "Encre liquide de base qui résiste moins longtemps à la décoloration"
+        },
+        "opacity": {
+          "feature": "Opacité de la toile",
+          "ours": "Jusqu'à 75 % d'opacité",
+          "budget": "Opacité plus faible et châssis plus visible"
+        },
+        "frame": {
+          "feature": "Matériau du châssis",
+          "ours": "Châssis en bois massif",
+          "budget": "Châssis en MDF ou en plastique"
+        },
+        "craftsmanship": {
+          "feature": "Savoir-faire",
+          "ours": "Finition à la main au Québec",
+          "budget": "Production à grand volume"
+        },
+        "readyToHang": {
+          "feature": "Prête à accrocher",
+          "ours": "Oui, avec la quincaillerie installée",
+          "budget": "Assemblage parfois requis"
+        }
+      }
+    },
+    "workshop": {
+      "title": "De notre atelier à votre mur",
+      "description": "Découvrez les matériaux, l'équipement et la finition manuelle derrière chaque toile fabriquée sur commande.",
+      "images": {
+        "printer": {
+          "alt": "Imprimante Canon Colorado dans l'atelier de Québec",
+          "caption": "Canon Colorado UVgel"
+        },
+        "canvas": {
+          "alt": "Gros plan de la texture d'une toile en mélange de coton",
+          "caption": "Toile en mélange de coton"
+        },
+        "stretching": {
+          "alt": "Toile tendue à la main",
+          "caption": "Tension à la main"
+        },
+        "frames": {
+          "alt": "Châssis de toile en bois massif",
+          "caption": "Châssis en bois massif"
+        }
+      }
+    },
+    "cta": {
+      "title": "Découvrez la différence",
+      "description": "Transformez votre photo, votre œuvre ou votre création en une toile sur mesure faite pour durer.",
+      "button": "Créer votre toile personnalisée"
     }
   },
   "LandingPages": {
@@ -1043,24 +1138,27 @@
     },
     "montreal": {
       "meta": {
-        "title": "Impression sur toile Montréal",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Montréal (Québec) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "title": "Impression sur toile Montréal | Canvas Print Shop Montreal",
+        "description": "Impression sur toile à Montréal avec une véritable succursale au 1350, rue Mazurette. Fabrication sur commande à notre atelier de Québec."
       },
       "heading": "Impression sur toile à Montréal",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Montréal — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
-      "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
+      "description": "Téléversez votre photo, votre œuvre ou votre création pour obtenir une toile sur mesure auprès d'une véritable succursale montréalaise.",
+      "subheading": "Succursale à Montréal. Atelier de production à Québec. Livraison au Québec et en Ontario.",
       "intro": {
-        "title": "Livraison de toiles et canevas à Montréal",
-        "body": "Les commandes montréalaises sont imprimées et tendues à la main à notre atelier du Lac-Saint-Charles, puis expédiées par messagerie, que vous soyez sur le Plateau, à Rosemont, à Verdun ou dans l'Ouest-de-l'Île. Comme nous imprimons au Québec plutôt que d'importer d'une usine à l'étranger, votre toile ne passe jamais aux douanes et ne dort pas dans un entrepôt de consolidation."
+        "title": "Une véritable succursale montréalaise d'impression sur toile",
+        "body": "Canvas Print Shop Montreal est notre succursale physique située au 1350, rue Mazurette. Les toiles fabriquées sur commande sont produites et finies à la main dans notre atelier de Québec, puis livrées au Québec et en Ontario.\n\nChoisissez un format dans le configurateur en ligne et téléversez votre photo, votre œuvre ou votre création. Si les dimensions voulues ne sont pas proposées, communiquez avec nous pour obtenir une soumission ; il n'y a pas de format maximal fixe."
+      },
+      "location": {
+        "heading": "Succursale de Montréal"
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Montréal en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Une adresse montréalaise confirmée",
+          "description": "Canvas Print Shop Montreal est située au 1350, rue Mazurette, Montréal (Québec) H4N 1H2."
         },
         "two": {
-          "title": "Imprimé au Québec, pas à l'étranger",
-          "description": "Aucune douane, aucun droit transfrontalier, aucun entrepôt de consolidation. Votre fichier est imprimé et tendu par la même équipe."
+          "title": "Produite dans notre atelier de Québec",
+          "description": "Votre image est imprimée avec la technologie Canon Colorado UVgel, tendue à la main sur du bois massif et finie au Québec."
         },
         "three": {
           "title": "Garantie 30 ans contre la décoloration",
@@ -1068,34 +1166,34 @@
         }
       },
       "details": {
-        "title": "Commander depuis Montréal",
+        "title": "Succursale de Montréal et détails de commande",
         "items": [
           {
-            "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "title": "Production",
+            "description": "La production et le traitement prennent généralement de 2 à 4 jours ouvrables dans notre atelier de Québec."
+          },
+          {
+            "title": "Livraison",
+            "description": "Au Québec et en Ontario, le délai total entre la commande et la livraison est généralement de 5 à 10 jours ouvrables. L'estimation du produit et la caisse font foi pour votre commande."
           },
           {
             "title": "Fabriquée sur commande",
-            "description": "Rien n'est préimprimé ni entreposé. Votre fichier passe au prépresse, puis la toile est imprimée, tendue à la main et emballée pour vous."
-          },
-          {
-            "title": "Emballage",
-            "description": "Expédiée à plat dans une boîte rigide à coins protégés, jamais enroulée dans un tube."
+            "description": "Rien n'est préimprimé. Votre photo, votre œuvre ou votre création est vérifiée, imprimée, tendue à la main et emballée pour vous."
           }
         ]
       },
       "faq": [
         {
+          "q": "Où se trouve Canvas Print Shop Montreal ?",
+          "a": "La succursale de Montréal se trouve au 1350, rue Mazurette, Montréal (Québec) H4N 1H2."
+        },
+        {
           "q": "Combien de temps prend la livraison à Montréal ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "Le délai total entre la commande et la livraison est généralement de 5 à 10 jours ouvrables. Consultez l'estimation du produit et la caisse pour connaître le délai de votre commande."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Montréal ?",
           "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
-        },
-        {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2459,7 +2557,7 @@
       "subheading": "Toile galerie ou cadre flottant, prête à accrocher.",
       "intro": {
         "title": "Le 36x48 est-il le bon format ?",
-        "body": "Le 36x48 (90 × 120 cm) est notre plus grand format standard et il est véritablement architectural : il remplit le mur d'une cage d'escalier, ancre une aire ouverte ou fait office de pièce unique et spectaculaire derrière une table à manger.\n\nÀ cette échelle, le châssis compte autant que l'impression. Nous montons les canevas 36x48 sur un châssis renforcé avec une traverse centrale afin que les barres ne se courbent pas vers l'intérieur avec le temps — le mode de défaillance habituel des grandes toiles bon marché. Les images sources devraient faire au moins 3600 × 4800 pixels ; si vous partez d'une photo plus ancienne, envoyez-la-nous avant de commander et nous l'évaluerons."
+        "body": "Le 36x48 (90 × 120 cm) fait partie des grands formats proposés dans notre configurateur en ligne et il est véritablement architectural : il remplit le mur d'une cage d'escalier, ancre une aire ouverte ou fait office de pièce unique et spectaculaire derrière une table à manger. Les dimensions qui ne figurent pas parmi les options en ligne font l'objet d'une soumission ; il n'y a pas de format maximal fixe.\n\nÀ cette échelle, le châssis compte autant que l'impression. Nous montons les canevas 36x48 sur un châssis renforcé avec une traverse centrale afin que les barres ne se courbent pas vers l'intérieur avec le temps — le mode de défaillance habituel des grandes toiles bon marché. Les images sources devraient faire au moins 3600 × 4800 pixels ; si vous partez d'une photo plus ancienne, envoyez-la-nous avant de commander et nous l'évaluerons."
       },
       "benefits": {
         "one": {
@@ -2934,8 +3032,8 @@
       },
       "faq": [
         {
-          "q": "Quel est le plus grand format offert ?",
-          "a": "Le 36x48 est notre plus grand format standard. Contactez-nous pour des dimensions sur mesure au-delà."
+          "q": "Pouvez-vous fabriquer une toile plus grande que les formats en ligne ?",
+          "a": "Oui. Il n'y a pas de format maximal fixe ; les projets qui sortent du configurateur en ligne font l'objet d'une soumission selon l'image, le châssis, la manutention et la livraison."
         },
         {
           "q": "Le soleil direct abîme-t-il la toile ?",
@@ -2980,7 +3078,7 @@
     "large": {
       "meta": {
         "title": "Impression sur toile grand format",
-        "description": "Grands canevas jusqu'à 36x48 sur châssis renforcé, fabriqués au Québec. Expédiés à plat, prêts à accrocher. Québec et Ontario."
+        "description": "Toiles grand format sans format maximal fixe. Les dimensions hors configurateur font l'objet d'une soumission. Fabrication au Québec, livraison au Québec et en Ontario."
       },
       "heading": "Impression sur toile grand format",
       "description": "Des formats qui remplissent un mur au lieu de s'en excuser.",
@@ -3022,8 +3120,8 @@
       },
       "faq": [
         {
-          "q": "Quel est le plus grand format offert ?",
-          "a": "Le 36x48 en standard. De plus grandes dimensions sur mesure sont possibles — contactez-nous avec vos mesures."
+          "q": "Y a-t-il un format maximal pour une toile sur mesure ?",
+          "a": "Il n'y a pas de format maximal fixe. Choisissez un format dans notre configurateur en ligne ou demandez une soumission selon l'image, le châssis, la manutention et la livraison."
         },
         {
           "q": "Une grande toile exige-t-elle des ancrages spéciaux ?",
@@ -3184,7 +3282,7 @@
         "items": [
           {
             "title": "Format",
-            "description": "Formats standards du 16x20 au 36x48, ou contactez-nous pour des dimensions sur mesure."
+            "description": "Choisissez l'un des formats proposés dans notre configurateur en ligne ou contactez-nous pour des dimensions entièrement sur mesure. Il n'y a pas de format maximal fixe ; les projets de très grand format font l'objet d'une soumission selon l'image, le châssis, la manutention et la livraison."
           },
           {
             "title": "Fini",
@@ -3192,18 +3290,18 @@
           },
           {
             "title": "Fichier",
-            "description": "JPEG ou PNG. Nous vérifions la résolution avant l'impression et vous prévenons si elle est insuffisante."
+            "description": "{formats}. Nous vérifions la résolution avant l'impression et vous prévenons si elle est insuffisante."
           }
         ]
       },
       "faq": [
         {
           "q": "Puis-je commander un format non listé ?",
-          "a": "Oui. Contactez-nous avec les dimensions souhaitées et nous vous ferons une soumission sur mesure."
+          "a": "Oui. Il n'y a pas de format maximal fixe. Communiquez avec nous avec les dimensions souhaitées pour obtenir une soumission selon l'image, le châssis, la manutention et la livraison."
         },
         {
           "q": "Quels formats de fichier acceptez-vous ?",
-          "a": "JPEG et PNG. Envoyez la version la plus haute résolution dont vous disposez, non retouchée si possible."
+          "a": "Nous acceptons {formats}. Envoyez la version la plus haute résolution dont vous disposez."
         },
         {
           "q": "Combien de temps prend une commande sur mesure ?",

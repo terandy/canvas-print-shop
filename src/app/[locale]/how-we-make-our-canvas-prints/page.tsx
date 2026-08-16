@@ -14,6 +14,7 @@ interface ProcessStep {
 
 interface ProcessStepProps extends ProcessStep {
   isLeft: boolean;
+  videoFallback: string;
 }
 
 const ProcessStep: React.FC<ProcessStepProps> = ({
@@ -22,6 +23,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
   imageUrl,
   videoUrl,
   isLeft,
+  videoFallback,
 }) => {
   return (
     <div
@@ -36,10 +38,9 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
           <video
             className="w-full rounded-lg shadow-lg"
             controls
-            poster="/api/placeholder/640/360"
           >
             <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
+            {videoFallback}
           </video>
         ) : (
           <div className="relative aspect-video w-full">
@@ -83,7 +84,7 @@ const CanvasProcessPage = async () => {
     {
       title: t("steps.materials.title"),
       description: t("steps.materials.description"),
-      imageUrl: "/Canvas Cotton.png",
+      imageUrl: "/canvas-cotton.jpeg",
     },
     {
       title: t("steps.printing.title"),
@@ -126,7 +127,12 @@ const CanvasProcessPage = async () => {
       {/* Process Steps */}
       <div className="divide-y divide-gray-200">
         {steps.map((step, index) => (
-          <ProcessStep key={index} {...step} isLeft={index % 2 === 0} />
+          <ProcessStep
+            key={index}
+            {...step}
+            isLeft={index % 2 === 0}
+            videoFallback={t("videoFallback")}
+          />
         ))}
       </div>
 

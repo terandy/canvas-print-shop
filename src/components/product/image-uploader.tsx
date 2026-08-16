@@ -7,8 +7,12 @@ import { useProduct } from "@/contexts/product-context";
 import { useTranslations } from "next-intl";
 import { uploadImage } from "@/lib/s3/actions/image";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
-import { IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/images/formats";
+import {
+  formatAcceptedImageFormats,
+  IMAGE_ACCEPT_ATTRIBUTE,
+} from "@/lib/images/formats";
 import { prepareImageForUpload } from "@/lib/images/prepare-image";
+import { useLocale } from "next-intl";
 
 interface ImageUploaderProps {
   className?: string;
@@ -17,6 +21,8 @@ interface ImageUploaderProps {
 const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
   // Get translations for this component
   const t = useTranslations("ImageUploader");
+  const locale = useLocale();
+  const acceptedFormats = formatAcceptedImageFormats(locale);
 
   const {
     updateField,
@@ -92,7 +98,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
       setError(
         prepared.reason === "conversionFailed"
           ? t("errors.conversionFailed")
-          : t("errors.fileType")
+          : t("errors.fileType", { formats: acceptedFormats })
       );
       setIsUploading(false);
       return;
@@ -155,7 +161,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
                 {t("dropzone.mainText")}
               </p>
               <p className="text-sm text-gray-500 mt-2">
-                {t("dropzone.supportedFormats")}
+                {t("dropzone.supportedFormats", { formats: acceptedFormats })}
               </p>
             </div>
             <Upload

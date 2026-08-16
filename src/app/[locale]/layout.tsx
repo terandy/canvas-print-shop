@@ -3,15 +3,19 @@ import "./globals.css";
 import { cookies, headers } from "next/headers";
 import { getCart } from "@/lib/db/queries/carts";
 import { Navbar, Footer, TrustStrip } from "@/components";
+import EmailHelpButton from "@/components/email-help-button";
 import { CartProvider } from "@/contexts";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, type AbstractIntlMessages } from "next-intl";
 import { Geist } from "next/font/google";
-import { BASE_URL, EMAIL, PHONE, ADDRESS } from "@/lib/constants";
+import { BASE_URL } from "@/lib/constants";
 import GoogleAnalytics from "@/components/google-analytics";
-import HubSpotScript from "@/components/hubspot-script";
+import {
+  buildBusinessEntityGraph,
+  serializeJsonLd,
+} from "@/lib/structured-data";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -84,7 +88,7 @@ const getTrustStripItems = (
 
 interface Props {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }
 
 const LocaleLayout = async ({ children, params }: Props) => {
@@ -129,38 +133,10 @@ const LocaleLayout = async ({ children, params }: Props) => {
       <body className={geist.className}>
         <GoogleAnalytics />
         <script
-          id="organization-jsonld"
+          id="business-entity-graph-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "@id": `${BASE_URL}/#organization`,
-              name: "Canvas Print Shop",
-              url: BASE_URL,
-              logo: `${BASE_URL}/favicon.svg`,
-              image: `${BASE_URL}/canvas-example.jpeg`,
-              email: EMAIL.label,
-              telephone: PHONE.label,
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "1172 Av. du Lac-Saint-Charles",
-                addressLocality: "Québec",
-                addressRegion: "QC",
-                postalCode: "G3G 2S7",
-                addressCountry: "CA",
-              },
-              hasMap: ADDRESS.href,
-              // We only ship to Quebec and Ontario — declaring it keeps us out
-              // of local results for provinces we cannot serve.
-              areaServed: [
-                { "@type": "State", name: "Quebec" },
-                { "@type": "State", name: "Ontario" },
-              ],
-              knowsLanguage: ["en-CA", "fr-CA"],
-              priceRange: "$$",
-              sameAs: [],
-            }),
+            __html: serializeJsonLd(buildBusinessEntityGraph()),
           }}
         />
         <NextIntlClientProvider messages={messages}>
@@ -169,9 +145,9 @@ const LocaleLayout = async ({ children, params }: Props) => {
             <Navbar />
             {children}
             <Footer />
+            <EmailHelpButton />
           </CartProvider>
         </NextIntlClientProvider>
-        <HubSpotScript />
       </body>
     </html>
   );

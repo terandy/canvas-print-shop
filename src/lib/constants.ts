@@ -1,3 +1,5 @@
+import { BUSINESS_DATA, SITE_URL } from "@/lib/business-data";
+
 export const SHOPIFY_GRAPHQL_API_ENDPOINT = "/api/2025-01/graphql.json";
 
 export const TAGS = {
@@ -7,17 +9,18 @@ export const TAGS = {
 
 export const DEFAULT_OPTION = "Default Title";
 
-export const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://canvasprintshop.ca";
-
+export const BASE_URL = SITE_URL;
 export const EMAIL = {
-  label: "info@canvasprintshop.ca",
-  href: "mailto:info@canvasprintshop.ca",
+  label: BUSINESS_DATA.organization.email,
+  href: `mailto:${BUSINESS_DATA.organization.email}`,
 };
-export const PHONE = { label: "(514) 441-2230", href: "tel:5144412230" };
+export const PHONE = {
+  label: "(514) 441-2230",
+  href: `tel:${BUSINESS_DATA.organization.telephone.replace(/[^+\d]/g, "")}`,
+};
 export const ADDRESS = {
-  label: "1172 Av. du Lac-Saint-Charles:: Québec, QC, G3G 2S7 :: Canada",
-  href: "https://maps.app.goo.gl/fdPr7qQHmF4rRbuD7",
+  label: `${BUSINESS_DATA.locations.quebecCityWorkshop.address.streetAddress}:: Québec, QC, G3G 2S7 :: Canada`,
+  href: BUSINESS_DATA.locations.quebecCityWorkshop.mapUrl!,
 };
 
 export const DEFAULT_CANVAS_IMAGE = "";

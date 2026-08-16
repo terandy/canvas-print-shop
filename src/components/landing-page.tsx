@@ -22,6 +22,11 @@ interface LandingPageProps {
   related: { label: string; slug: string }[];
   /** Live "order today, get it by ..." estimate — same source as the product page. */
   delivery?: { label: string; range: string };
+  location?: {
+    heading: string;
+    name: string;
+    addressLines: readonly string[];
+  };
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({
@@ -41,6 +46,7 @@ const LandingPage: React.FC<LandingPageProps> = ({
   relatedHeading,
   related,
   delivery,
+  location,
 }) => {
   const primaryProduct = products[0];
 
@@ -126,6 +132,26 @@ const LandingPage: React.FC<LandingPageProps> = ({
           </div>
         </div>
       </section>
+
+      {location && (
+        <section className="border-b border-gray-light/10 bg-background py-12">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-primary/20 bg-white p-6 shadow-sm">
+              <h2 className="text-2xl font-bold text-secondary">
+                {location.heading}
+              </h2>
+              <address className="mt-4 not-italic text-gray leading-relaxed">
+                <strong className="text-secondary">{location.name}</strong>
+                {location.addressLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </address>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Benefits Section */}
       <section className="py-16 bg-background">

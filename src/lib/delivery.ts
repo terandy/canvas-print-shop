@@ -1,4 +1,5 @@
 import { addBusinessDays } from "@/lib/utils/base";
+import { BUSINESS_DATA } from "@/lib/business-data";
 
 /**
  * Single source of truth for delivery timing.
@@ -10,8 +11,10 @@ import { addBusinessDays } from "@/lib/utils/base";
  *
  * The window covers production plus transit, end to end.
  */
-export const DELIVERY_MIN_BUSINESS_DAYS = 5;
-export const DELIVERY_MAX_BUSINESS_DAYS = 10;
+export const DELIVERY_MIN_BUSINESS_DAYS =
+  BUSINESS_DATA.productionAndDelivery.orderToDeliveryBusinessDays.min;
+export const DELIVERY_MAX_BUSINESS_DAYS =
+  BUSINESS_DATA.productionAndDelivery.orderToDeliveryBusinessDays.max;
 
 /**
  * The estimated delivery window for an order placed on `from`.

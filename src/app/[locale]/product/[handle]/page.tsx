@@ -14,6 +14,11 @@ import ProductDropdowns from "@/components/product/product-dropdowns";
 import { getDeliveryEstimate } from "@/lib/delivery";
 import { BASE_URL } from "@/lib/constants";
 import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
+import { BUSINESS_DATA, SHOP_REVIEWS } from "@/lib/business-data";
+import {
+  buildProductStructuredData,
+  serializeJsonLd,
+} from "@/lib/structured-data";
 
 /**
  * Page Props
@@ -33,6 +38,8 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 
   if (!product) return notFound();
 
+  const t = await getTranslations({ locale, namespace: "Product" });
+
   const { url, width, height, altText: alt } = product.featuredImage || {};
   const indexable = true;
   const defaultTitle = locale?.startsWith("fr")
@@ -40,10 +47,14 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
     : "Custom Canvas Prints Canada | Photo Canvas Printing | Canvas Print Shop";
 
   const path = `/product/${product.handle}`;
+  const description =
+    product.handle === "canvas"
+      ? t("metadata.canvasDescription")
+      : product.seo.description || product.description;
 
   return {
     title: product.seo.title || defaultTitle,
-    description: product.seo.description || product.description,
+    description,
     robots: {
       index: indexable,
       follow: indexable,
@@ -54,6 +65,8 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
     },
     ...canonicalMetadata(locale, path),
     openGraph: {
+      title: product.seo.title || defaultTitle,
+      description,
       ...openGraphMetadata(locale, path),
       ...(url
         ? {
@@ -71,96 +84,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   };
 };
 
-/**
- * Static reviews data – replace with dynamic data when available
- */
-const reviews = [
-  {
-    id: 1,
-    author: "lesproduitsfleurie",
-    rating: 5,
-    comment:
-      "I highly recommend! Very satisfied with my labels! Great customer service, very fast. Thank you very much.",
-    date: "2024-12-15",
-    verified: true,
-  },
-  {
-    id: 2,
-    author: "Andréanne Blackburn",
-    rating: 5,
-    comment:
-      "I recommend 100% family business, attentive to our needs, with attention to detail",
-    date: "2024-12-10",
-    verified: true,
-  },
-  {
-    id: 3,
-    author: "Mélissa Guérard",
-    rating: 5,
-    comment:
-      "L'équipe est incroyable! Ils savent répondre à nos besoins tant pour le laminage que l'impression",
-    date: "2024-12-08",
-    verified: true,
-  },
-  {
-    id: 4,
-    author: "Carrossier ProColor Lac St-Charles",
-    rating: 5,
-    comment: "Always quality work! Thank you for your excellent service!",
-    date: "2024-12-05",
-    verified: true,
-  },
-  {
-    id: 5,
-    author: "Guy Tremblay",
-    rating: 5,
-    comment: "Very satisfied with the work accomplished.",
-    date: "2024-12-01",
-    verified: true,
-  },
-  {
-    id: 6,
-    author: "France Paul",
-    rating: 5,
-    comment: "Very satisfied with the result and the service!",
-    date: "2024-11-28",
-    verified: true,
-  },
-  {
-    id: 7,
-    author: "Renald Lafleur",
-    rating: 5,
-    comment: "Best place for imaging in Quebec.",
-    date: "2024-11-25",
-    verified: true,
-  },
-  {
-    id: 8,
-    author: "France Bouchard",
-    rating: 5,
-    comment: "Always perfect!!!!",
-    date: "2024-11-20",
-    verified: true,
-  },
-  {
-    id: 9,
-    author: "Arka",
-    rating: 3,
-    comment:
-      "Contacted by email for a quote. I assume the project was not within the company's capabilities.",
-    date: "2024-11-18",
-    verified: false,
-  },
-  {
-    id: 10,
-    author: "Andrew G",
-    rating: 5,
-    comment:
-      "Really happy with my canvas. Looks great and came well packed. Took a few days but worth the wait.",
-    date: "2025-11-11",
-    verified: true,
-  },
-];
+const reviews = SHOP_REVIEWS;
 
 const trustedBy = [
   { src: "/starbucks-logo.png", alt: "Starbucks logo" },
@@ -210,8 +134,7 @@ const canvasFaqQuestionKeys = [
 /**
  * Average rating helper
  */
-const averageRating =
-  reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
+const averageRating = BUSINESS_DATA.reviews.ratingValue;
 
 /**
  * Star rating component
@@ -220,10 +143,12 @@ const StarRating = async ({
   rating,
   showNumber = false,
   reviewCount,
+  formattedRating,
 }: {
   rating: number;
   showNumber?: boolean;
   reviewCount?: number;
+  formattedRating?: string;
 }) => {
   const t = await getTranslations("Product");
 
@@ -242,7 +167,7 @@ const StarRating = async ({
       {showNumber && t && reviewCount && (
         <span className="ml-2 text-sm text-gray-600">
           {t("averageRating", {
-            rating: rating.toFixed(1),
+            rating: formattedRating ?? rating.toFixed(1),
             count: reviewCount,
           })}
         </span>
@@ -284,6 +209,8 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
   const searchParams = await props.searchParams;
   const locale = await getLocale();
   const product = await getProduct(params.handle, locale as "en" | "fr");
+  if (!product) return notFound();
+
   const cartItemID = searchParams?.["cartItemID"] as string | undefined;
   const t = await getTranslations("Product");
   const tBreadcrumb = await getTranslations("LandingPages.common.breadcrumb");
@@ -295,7 +222,15 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
     });
 
   const deliveryEstimate = getDeliveryEstimate();
+  const formattedAverageRating = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(averageRating);
   const isCanvasProduct = params.handle === "canvas";
+  const canvasProductDescription = t("canvasPage.productDescription");
+  const structuredProduct = isCanvasProduct
+    ? { ...product, description: canvasProductDescription }
+    : product;
   const qualitySectionCopy = {
     title: t("canvasPage.qualitySection.title"),
     description: t("canvasPage.qualitySection.description"),
@@ -406,14 +341,11 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
         <div className="flex flex-col md:flex-row md:items-center gap-4">
           <div className="text-center">
             <div className="text-3xl font-bold text-secondary">
-              {averageRating.toFixed(1)}
+              {formattedAverageRating}
             </div>
             <StarRating rating={averageRating} />
             <div className="text-sm text-gray-500 mt-1">
-              {t("averageRating", {
-                rating: "",
-                count: reviews.length,
-              }).replace(/^[0-9.]+ /, "")}
+              {t("reviewsCount", { count: reviews.length })}
             </div>
           </div>
           <div className="flex-1">
@@ -495,8 +427,6 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
     </section>
   );
 
-  if (!product) return notFound();
-
   return (
     <ProductProvider product={product} cartItemID={cartItemID ?? null}>
       <Script
@@ -515,8 +445,8 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
       {/*
         Product schema.
 
-        AggregateRating and Review were deliberately removed. The `reviews`
-        array below is a hardcoded list of the parent print shop's general
+        AggregateRating and Review are deliberately omitted. The visible
+        reviews are the parent print shop's general
         Google reviews — several of them are about labels and laminating rather
         than canvas — and the identical set was emitted on every product.
         Google requires review rich results to be genuine reviews of the
@@ -528,37 +458,12 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
         id="product-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: product.title,
-            description: product.description,
-            image: product.featuredImage?.url,
-            url: `${BASE_URL}/${locale}/product/${product.handle}`,
-            brand: {
-              "@type": "Brand",
-              name: "Canvas Print Shop",
-            },
-            offers: {
-              "@type": "AggregateOffer",
-              priceCurrency: product.priceRange.minVariantPrice.currencyCode,
-              lowPrice: product.priceRange.minVariantPrice.amount,
-              highPrice: product.priceRange.maxVariantPrice.amount,
-              availability: "https://schema.org/InStock",
-              url: `${BASE_URL}/${locale}/product/${product.handle}`,
-              seller: { "@id": `${BASE_URL}/#organization` },
-              shippingDetails: {
-                "@type": "OfferShippingDetails",
-                shippingDestination: [
-                  {
-                    "@type": "DefinedRegion",
-                    addressCountry: "CA",
-                    addressRegion: ["QC", "ON"],
-                  },
-                ],
-              },
-            },
-          }),
+            __html: serializeJsonLd(
+              buildProductStructuredData(
+                structuredProduct,
+                locale as "en" | "fr"
+              )
+            ),
         }}
       />
       <script
@@ -616,6 +521,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
                     rating={averageRating}
                     showNumber
                     reviewCount={reviews.length}
+                    formattedRating={formattedAverageRating}
                   />
 
                   {/* Delivery date estimate */}
@@ -632,11 +538,19 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
 
                 {/* Product description */}
                 <SectionContainer className="-mx-6 rounded-none">
-                  {product.descriptionHtml && (
+                  {isCanvasProduct ? (
+                    <p className="text-sm leading-relaxed text-gray-600">
+                      {canvasProductDescription}
+                    </p>
+                  ) : product.descriptionHtml ? (
                     <Prose
                       className="text-sm leading-light"
                       html={product.descriptionHtml}
                     />
+                  ) : (
+                    <p className="text-sm leading-relaxed text-gray-600">
+                      {product.description}
+                    </p>
                   )}
                 </SectionContainer>
 
@@ -718,7 +632,7 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
                   <div className="mt-6 flex flex-wrap items-center gap-4">
                     <div>
                       <div className="text-4xl md:text-5xl font-semibold tracking-tight">
-                        {averageRating.toFixed(1)}
+                        {formattedAverageRating}
                       </div>
                     </div>
                     <div className="flex-1 min-w-[140px]">

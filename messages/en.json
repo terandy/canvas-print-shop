@@ -86,9 +86,10 @@
   },
   "Footer": {
     "companyName": "Canvas Print Shop",
-    "companyDescription": "Creating beautiful, high-quality canvas prints for your home or office. Proudly Canadian, serving customers nationwide.",
+    "companyDescription": "Made-to-order canvas prints, produced in Quebec and delivered across Quebec and Ontario.",
     "customerService": "Customer Service",
     "contactUs": "Contact Us",
+    "emailUs": "Email us",
     "securePayment": "Secure Payment Methods",
     "copyright": "All rights reserved.",
     "paymentAlt": "{method} payment accepted",
@@ -122,16 +123,16 @@
       "title": "Canada Post Delivery",
       "description": "We ship all orders through Canada Post with tracking provided on every shipment.",
       "estimatedTitle": "Estimated Delivery Times:",
-      "local": "Local (Quebec): 1-2 business days",
-      "majorCities": "Major cities: 2-3 business days",
-      "ruralAreas": "Rural areas: 3-7 business days",
-      "remoteLocations": "Remote locations: 7-14 business days",
-      "disclaimer": "*Delivery times are estimates and may vary based on weather conditions and Canada Post service updates."
+      "local": "Delivery area: Quebec and Ontario",
+      "majorCities": "Production: typically 2–4 business days",
+      "ruralAreas": "Order to delivery: typically 5–10 business days",
+      "remoteLocations": "Your product estimate and checkout show the current timing for an individual order",
+      "disclaimer": "*Estimates may vary with production requirements, destination, weather and carrier service."
     },
     "processingTime": {
       "title": "Processing Time",
       "description": "Each canvas print is carefully crafted to order:",
-      "standard": "Standard orders: 2-3 business days processing time",
+      "standard": "Standard orders: typically 2–4 business days of production and processing",
       "payment": "Processing begins once payment is confirmed",
       "tracking": "You'll receive an email with tracking information once your order ships",
       "rush": "Rush processing may be available upon request"
@@ -226,6 +227,7 @@
       "title": "How We Make Our Canvases",
       "description": "Discover the craftsmanship and attention to detail that goes into every canvas we produce."
     },
+    "videoFallback": "Your browser does not support this video.",
     "steps": {
       "materials": {
         "title": "Selecting Premium Materials",
@@ -326,6 +328,9 @@
     "customerServiceMessage": "Our customer service team is here to help with any questions:"
   },
   "Product": {
+    "metadata": {
+      "canvasDescription": "Made-to-order custom canvas prints from your photo, artwork or design. Printed and hand-finished in Quebec, with delivery across Quebec and Ontario."
+    },
     "direction": {
       "title": "Orientation",
       "landscape": "Landscape",
@@ -378,9 +383,9 @@
     },
     "shippingTime": {
       "title": "Shipping Time",
-      "production": "Production: 2-3 business days",
-      "localPickup": "Local pickup available same day",
-      "canadaPost": "Canada Post: 3-7 business days",
+      "production": "Production: typically 2–4 business days",
+      "localPickup": "Free local pickup in Quebec City when your order is ready",
+      "canadaPost": "Order to delivery: typically 5–10 business days",
       "expressAvailable": "Express shipping available at checkout"
     },
     "qualityAssurance": {
@@ -400,15 +405,16 @@
       "ifOrderToday": "if you order today"
     },
     "verified": "Verified",
-    "averageRating": "{rating} ({count} reviews)",
+    "averageRating": "{rating} out of 5 ({count} reviews)",
+    "reviewsCount": "{count} reviews",
     "deliveryDetails": {
       "title": "Delivery Details",
       "processingTime": "Processing time:",
-      "processingTimeValue": "2-4 business days",
+      "processingTimeValue": "Typically 2–4 business days",
       "localPickup": "Local pickup:",
-      "localPickupValue": "Available after 4 business days",
+      "localPickupValue": "Free in Quebec City when your order is ready",
       "totalDeliveryTime": "Total delivery time:",
-      "totalDeliveryTimeValue": "Approximately 5-10 business days",
+      "totalDeliveryTimeValue": "Typically 5–10 business days",
       "shippingCost": "Shipping Cost:",
       "shippingCostValue": "Available at checkout (FREE shipping on orders over $150)"
     },
@@ -442,7 +448,7 @@
         },
         "deliveryTime": {
           "question": "How long does delivery take?",
-          "answer": "We typically need 2 - 4 days to produce, package and dispatch your canvas. Please allow additional transit time based on the shipping option you choose."
+          "answer": "Production and processing typically take 2–4 business days. The total order-to-delivery estimate within Quebec and Ontario is typically 5–10 business days; the product estimate and checkout are authoritative for your order."
         },
         "multipleCanvases": {
           "question": "Can I order multiple canvases of the same image?",
@@ -451,6 +457,7 @@
       }
     },
     "canvasPage": {
+      "productDescription": "Made to order from your photo, artwork or design. Choose a size in the online configurator, or contact us for completely custom dimensions. There is no fixed maximum custom size; larger projects are quoted individually based on the image, frame, handling and delivery requirements.",
       "qualitySection": {
         "title": "Why our canvas feels different",
         "description": "Most online canvas prints look similar on screen, but feel very different in real life. We focus on the materials and print process so your canvas actually looks and feels premium when it's on the wall.",
@@ -563,7 +570,7 @@
       },
       "reviewsSection": {
         "title": "Customer reviews",
-        "subtitle": "See what people think of their Canvas Print Shop canvases.",
+        "subtitle": "See what people say about Canvas Print Shop.",
         "ratingLabel": "Based on {count} reviews"
       }
     },
@@ -575,7 +582,7 @@
   "ImageUploader": {
     "dropzone": {
       "mainText": "Drop your image here, or click to browse",
-      "supportedFormats": "Supported formats: JPG, PNG, HEIC, WebP, AVIF, GIF"
+      "supportedFormats": "Supported formats: {formats}"
     },
     "uploading": {
       "status": "Uploading...",
@@ -583,7 +590,7 @@
     },
     "errors": {
       "uploadFailed": "Upload failed. Please try again.",
-      "fileType": "That file type isn't supported. Please use JPG, PNG, HEIC, WebP, AVIF or GIF.",
+      "fileType": "That file type isn't supported. Please use {formats}.",
       "conversionFailed": "We couldn't read that photo. Please try another file, or save it as a JPG first."
     }
   },
@@ -956,8 +963,8 @@
       "createAnother": "Create Another",
       "image": "Customer Image",
       "imageDropzone": "Drag & drop an image or click to browse",
-      "imageFormats": "JPG, PNG, HEIC, WebP, AVIF or GIF",
-      "imageTypeError": "File must be JPG, PNG, HEIC, WebP, AVIF or GIF",
+      "imageFormats": "{formats}",
+      "imageTypeError": "File must be {formats}",
       "imageUploadFailed": "Image upload failed. Please try again.",
       "imageConverting": "Preparing photo...",
       "imageConversionFailed": "Couldn't read that photo. Try another file, or save it as a JPG first."
@@ -1014,6 +1021,94 @@
     "metadata": {
       "title": "Our Quality Promise",
       "description": "Discover why Canvas Print Shop delivers superior canvas prints. Premium cotton-blend canvas, UVgel technology, and expert hand-stretching in our Quebec City workshop."
+    },
+    "hero": {
+      "title": "The Canvas Print Shop Quality Promise",
+      "description": "Not all canvas prints are created equal. We focus on uncompromising materials, printing and hand-finishing.",
+      "workshop": "Every made-to-order canvas is produced and checked in our Quebec City workshop."
+    },
+    "features": {
+      "canvas": {
+        "title": "1. Our Canvas",
+        "description": "We use a premium 35% cotton-blend canvas with rich texture and up to 75% opacity, reducing frame show-through.",
+        "alt": "Close-up of premium cotton-blend canvas"
+      },
+      "technology": {
+        "title": "2. Our Technology",
+        "description": "Canon Colorado UVgel printing produces a matte, scratch-resistant and water-resistant print backed by our 30-year print-quality guarantee.",
+        "alt": "Canon Colorado printer used for canvas printing"
+      },
+      "craftsmanship": {
+        "title": "3. Our Craftsmanship",
+        "description": "Each canvas is hand-stretched over a solid-wood stretcher frame, finished in Quebec and supplied with ready-to-hang hardware.",
+        "alt": "Canvas being hand-stretched in the Quebec City workshop"
+      }
+    },
+    "comparison": {
+      "title": "The Difference Is Clear",
+      "labels": {
+        "feature": "Feature",
+        "budget": "Typical budget printers"
+      },
+      "rows": {
+        "material": {
+          "feature": "Canvas material",
+          "ours": "Premium 35% cotton-blend canvas",
+          "budget": "Lightweight polyester"
+        },
+        "technology": {
+          "feature": "Print technology",
+          "ours": "Canon Colorado UVgel with a 30-year print-quality guarantee",
+          "budget": "Basic liquid ink with shorter fade resistance"
+        },
+        "opacity": {
+          "feature": "Print opacity",
+          "ours": "Up to 75% opacity",
+          "budget": "Lower opacity and more show-through"
+        },
+        "frame": {
+          "feature": "Frame material",
+          "ours": "Solid-wood stretcher frames",
+          "budget": "MDF or plastic frames"
+        },
+        "craftsmanship": {
+          "feature": "Craftsmanship",
+          "ours": "Hand-finished in Quebec",
+          "budget": "High-volume production"
+        },
+        "readyToHang": {
+          "feature": "Ready to hang",
+          "ours": "Yes, with hardware installed",
+          "budget": "May require assembly"
+        }
+      }
+    },
+    "workshop": {
+      "title": "From Our Workshop to Your Wall",
+      "description": "A closer look at the materials, equipment and hand-finishing behind each made-to-order canvas.",
+      "images": {
+        "printer": {
+          "alt": "Canon Colorado printer in the Quebec City workshop",
+          "caption": "Canon Colorado UVgel"
+        },
+        "canvas": {
+          "alt": "Close-up of cotton-blend canvas texture",
+          "caption": "Cotton-blend canvas"
+        },
+        "stretching": {
+          "alt": "Canvas being stretched by hand",
+          "caption": "Hand-stretching"
+        },
+        "frames": {
+          "alt": "Solid-wood canvas stretcher frame",
+          "caption": "Solid-wood frames"
+        }
+      }
+    },
+    "cta": {
+      "title": "Experience the Difference",
+      "description": "Turn your photo, artwork or design into a made-to-order canvas built to last.",
+      "button": "Create Your Custom Canvas"
     }
   },
   "LandingPages": {
@@ -1038,24 +1133,27 @@
     },
     "montreal": {
       "meta": {
-        "title": "Canvas Prints Montreal",
-        "description": "Custom canvas prints delivered to Montreal, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "title": "Canvas Prints Montreal | Canvas Print Shop Montreal",
+        "description": "Custom canvas printing in Montreal with a genuine branch at 1350 Rue Mazurette. Made to order in our Quebec City workshop for Quebec and Ontario."
       },
       "heading": "Canvas Prints in Montreal",
-      "description": "Upload a photo and we will print, stretch and deliver it to Montreal — typically 5 to 10 business days from order to doorstep.",
-      "subheading": "Made in Quebec. No customs, no cross-border shipping.",
+      "description": "Upload your photo or artwork for a made-to-order canvas, with a genuine Canvas Print Shop branch in Montreal.",
+      "subheading": "Montreal branch. Quebec City production workshop. Quebec and Ontario delivery.",
       "intro": {
-        "title": "Delivering canvas prints to Montreal",
-        "body": "Montreal orders are printed and hand-stretched at our Lac-Saint-Charles studio and shipped by courier, whether you are in the Plateau, Rosemont, Verdun or the West Island. Because we print in Quebec rather than importing from an overseas plant, your canvas never clears customs and never sits in a consolidation warehouse."
+        "title": "A real Montreal branch for custom canvas printing",
+        "body": "Canvas Print Shop Montreal is our physical branch at 1350 Rue Mazurette. Made-to-order canvases are produced and hand-finished at our Quebec City workshop, then delivered across Quebec and Ontario.\n\nChoose a size in the online configurator and upload your photo, artwork or design. If the dimensions you need are not listed, contact us for an individual quote; there is no fixed maximum custom size."
+      },
+      "location": {
+        "heading": "Montreal branch"
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Montreal within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "A confirmed Montreal address",
+          "description": "Canvas Print Shop Montreal is located at 1350 Rue Mazurette, Montreal, Quebec H4N 1H2."
         },
         "two": {
-          "title": "Printed in Quebec, not overseas",
-          "description": "No customs, no cross-border duty and no consolidation warehouse. Your file is printed and stretched by the same team."
+          "title": "Produced in our Quebec City workshop",
+          "description": "Your image is printed with Canon Colorado UVgel technology, hand-stretched on solid wood and finished in Quebec."
         },
         "three": {
           "title": "30-year fade guarantee",
@@ -1063,34 +1161,34 @@
         }
       },
       "details": {
-        "title": "Ordering from Montreal",
+        "title": "Montreal branch and order details",
         "items": [
           {
-            "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "title": "Production",
+            "description": "Production and processing typically take 2–4 business days at our Quebec City workshop."
+          },
+          {
+            "title": "Delivery",
+            "description": "The total order-to-delivery estimate within Quebec and Ontario is typically 5–10 business days. The product estimate and checkout are authoritative for your order."
           },
           {
             "title": "Made to order",
-            "description": "Nothing is pre-printed or warehoused. Your file goes through prepress, then the canvas is printed, hand-stretched and packed for you."
-          },
-          {
-            "title": "Packaging",
-            "description": "Shipped flat in a rigid corner-protected carton, never rolled in a tube."
+            "description": "Nothing is pre-printed. Your own photo, artwork or design is checked, printed, hand-stretched and packed for you."
           }
         ]
       },
       "faq": [
         {
+          "q": "Where is Canvas Print Shop Montreal?",
+          "a": "The Montreal branch is at 1350 Rue Mazurette, Montreal, Quebec H4N 1H2."
+        },
+        {
           "q": "How long does delivery to Montreal take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "The total order-to-delivery estimate is typically 5–10 business days. Check the current product estimate and checkout for the timing of your order."
         },
         {
           "q": "Do you charge extra to ship to Montreal?",
           "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
-        },
-        {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2454,7 +2552,7 @@
       "subheading": "Gallery wrap or floater frame, ready to hang.",
       "intro": {
         "title": "Is 36x48 the right size?",
-        "body": "36x48 (90 × 120 cm) is our largest standard size and it is genuinely architectural — it fills a stairwell wall, anchors an open-plan living area, or works as a single dramatic piece behind a dining table.\n\nAt this scale the frame matters as much as the print. We build 36x48 canvases on a reinforced stretcher with a centre brace so the bars cannot bow inward over time, which is the usual failure mode on cheap large canvases. Source images should be at least 3600 × 4800 pixels; if you are working from an older photo, send it to us before ordering and we will assess it."
+        "body": "36x48 (90 × 120 cm) is one of the large formats available in our online configurator, and it is genuinely architectural — it fills a stairwell wall, anchors an open-plan living area, or works as a single dramatic piece behind a dining table. Custom dimensions beyond the online options are quoted individually, with no fixed maximum custom size.\n\nAt this scale the frame matters as much as the print. We build 36x48 canvases on a reinforced stretcher with a centre brace so the bars cannot bow inward over time, which is the usual failure mode on cheap large canvases. Source images should be at least 3600 × 4800 pixels; if you are working from an older photo, send it to us before ordering and we will assess it."
       },
       "benefits": {
         "one": {
@@ -2929,8 +3027,8 @@
       },
       "faq": [
         {
-          "q": "What is the largest canvas you make?",
-          "a": "36x48 is our largest standard size. Contact us for custom dimensions beyond that."
+          "q": "Can you make a canvas larger than the online sizes?",
+          "a": "Yes. There is no fixed maximum custom size; projects outside the online configurator are quoted individually based on the image, frame, handling and delivery requirements."
         },
         {
           "q": "Will direct sunlight damage the canvas?",
@@ -2975,7 +3073,7 @@
     "large": {
       "meta": {
         "title": "Large Canvas Prints",
-        "description": "Large custom canvas prints up to 36x48, built on reinforced stretcher frames in Quebec. Shipped flat, ready to hang. Quebec and Ontario delivery."
+        "description": "Large custom canvas prints with no fixed maximum custom size. Online options use reinforced frames; other dimensions are quoted individually. Quebec and Ontario delivery."
       },
       "heading": "Large Canvas Prints",
       "description": "Sizes that fill a wall instead of apologising for it.",
@@ -3017,8 +3115,8 @@
       },
       "faq": [
         {
-          "q": "What is the biggest size you offer?",
-          "a": "36x48 as standard. Larger custom dimensions are possible — contact us with your measurements."
+          "q": "Is there a maximum custom canvas size?",
+          "a": "There is no fixed maximum custom size. Choose from the sizes in our online configurator, or contact us for a quote based on the image, frame, handling and delivery requirements."
         },
         {
           "q": "Does a large canvas need special wall anchors?",
@@ -3179,7 +3277,7 @@
         "items": [
           {
             "title": "Size",
-            "description": "Standard sizes from 16x20 to 36x48, or contact us for custom dimensions."
+            "description": "Choose from the sizes available in our online configurator, or contact us for completely custom dimensions. There is no fixed maximum custom size; larger projects are quoted individually based on the image, frame, handling and delivery requirements."
           },
           {
             "title": "Finish",
@@ -3187,18 +3285,18 @@
           },
           {
             "title": "File",
-            "description": "JPEG or PNG. We check resolution before printing and tell you if it is short."
+            "description": "{formats}. We check resolution before printing and tell you if it is insufficient."
           }
         ]
       },
       "faq": [
         {
           "q": "Can I order a size that is not listed?",
-          "a": "Yes. Contact us with the dimensions you need and we will quote a custom order."
+          "a": "Yes. There is no fixed maximum custom size. Contact us with the dimensions you need and we will quote the project based on the image, frame, handling and delivery requirements."
         },
         {
           "q": "What file formats do you accept?",
-          "a": "JPEG and PNG. Send the highest-resolution version you have, unedited if possible."
+          "a": "We accept {formats}. Send the highest-resolution version you have."
         },
         {
           "q": "How long does a custom order take?",
