@@ -18,6 +18,21 @@ type Entry = {
   lastModified?: Date;
 };
 
+/**
+ * When the marketing copy in `messages/*.json` last changed.
+ *
+ * `lastModified` used to fall back to `new Date()`, and this route revalidates
+ * hourly — so 76 of the 84 URLs advertised a lastmod of "today", every day,
+ * indefinitely. Google discounts a lastmod that is always current, which spent
+ * the strongest recrawl signal available on noise and left it unable to tell a
+ * real copy change from an ordinary revalidation.
+ *
+ * BUMP THIS when you edit the copy for these pages. Leaving it stale is safe —
+ * it simply tells Google nothing changed, which is true. Blog posts and
+ * products carry their own genuine dates and are unaffected.
+ */
+const CONTENT_LAST_UPDATED = new Date("2026-08-15T00:00:00Z");
+
 const STATIC_PAGES: Entry[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/shop", priority: 0.9, changeFrequency: "weekly" },
@@ -39,7 +54,7 @@ const STATIC_PAGES: Entry[] = [
 const localized = (entry: Entry): MetadataRoute.Sitemap =>
   routing.locales.map((locale) => ({
     url: `${BASE_URL}/${locale}${entry.path}`,
-    lastModified: entry.lastModified ?? new Date(),
+    lastModified: entry.lastModified ?? CONTENT_LAST_UPDATED,
     changeFrequency: entry.changeFrequency,
     priority: entry.priority,
     alternates: {
