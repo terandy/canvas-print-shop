@@ -121,6 +121,12 @@ const QUEBEC_TAX_RATE = 0.14975;
 // matching the margin convention used for the canvas prices above.
 const FRAME_MARGIN = 0.2;
 
+// The framer charges a flat $16 assembly fee per frame on top of the article
+// cost above. We pass on a flat $15 per frame, applied after the margin
+// calculation so it lands as exactly $15 on every size (a $5 multiple, so the
+// upcharge stays on the same rounding grid).
+const FRAME_ASSEMBLY_SURCHARGE = 15;
+
 function getFrameArticleCode(size: string): number | null {
   const [width, height] = size.split("x").map((s) => parseInt(s.trim(), 10));
   if (!width || !height) return null;
@@ -137,7 +143,8 @@ function getFrameUpcharge(size: string): number | null {
 
   const landedCost = supplierCost * (1 + QUEBEC_TAX_RATE);
   // Round UP to the nearest $5 so the upcharge always clears the floor.
-  return Math.ceil(landedCost / (1 - FRAME_MARGIN) / 5) * 5;
+  const marginPrice = Math.ceil(landedCost / (1 - FRAME_MARGIN) / 5) * 5;
+  return marginPrice + FRAME_ASSEMBLY_SURCHARGE;
 }
 
 function isSellable(frame: string, depth: string): boolean {
