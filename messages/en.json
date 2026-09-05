@@ -114,25 +114,26 @@
     "pageTitle": "Shipping Policy",
     "localPickup": {
       "title": "Local Pickup",
-      "description": "We offer free local pickup at our Quebec City location for your convenience.",
-      "hours": "Available during business hours: Monday to Friday, 9am - 5pm EST",
-      "select": "Select \"Local Pickup\" during checkout",
-      "email": "You'll receive an email when your order is ready for pickup"
+      "description": "We offer free local pickup at both of our locations. Choose it at checkout and we will email you when your order is ready to collect.",
+      "select": "Select your pickup location during checkout",
+      "email": "You will receive an email when your order is ready for pickup",
+      "hoursLine": "{name}: {address} — {hours}",
+      "weekdayHours": "Monday to Friday, {opens} – {closes} EST"
     },
     "canadaPost": {
       "title": "Canada Post Delivery",
       "description": "We ship all orders through Canada Post with tracking provided on every shipment.",
       "estimatedTitle": "Estimated Delivery Times:",
       "local": "Delivery area: Quebec and Ontario",
-      "majorCities": "Production: typically 2–4 business days",
-      "ruralAreas": "Order to delivery: typically 5–10 business days",
+      "majorCities": "Every canvas is printed and hand-stretched to order",
+      "ruralAreas": "Order to delivery: within 15 working days",
       "remoteLocations": "Your product estimate and checkout show the current timing for an individual order",
       "disclaimer": "*Estimates may vary with production requirements, destination, weather and carrier service."
     },
     "processingTime": {
       "title": "Processing Time",
       "description": "Each canvas print is carefully crafted to order:",
-      "standard": "Standard orders: typically 2–4 business days of production and processing",
+      "standard": "Standard orders: every canvas is printed and hand-stretched to order",
       "payment": "Processing begins once payment is confirmed",
       "tracking": "You'll receive an email with tracking information once your order ships",
       "rush": "Rush processing may be available upon request"
@@ -140,8 +141,7 @@
     "shippingCosts": {
       "title": "Shipping Costs",
       "localPickup": "Local Pickup: Free",
-      "standard": "Standard Shipping: Calculated at checkout based on size and destination",
-      "free": "Free shipping on orders over $150 (some remote locations excluded)"
+      "standard": "Standard Shipping: Calculated at checkout based on size and destination"
     },
     "orderTracking": {
       "title": "Order Tracking",
@@ -333,7 +333,7 @@
       "montrealName": "Montreal",
       "montrealNote": "Free pickup available. Please order online and wait for your ready-for-pickup email before collecting.",
       "pickupBadge": "Free pickup",
-      "hoursUnavailable": "Contact us to arrange a collection time."
+      "weekdayHours": "Monday to Friday, {opens} – {closes}"
     }
   },
   "Product": {
@@ -392,9 +392,9 @@
     },
     "shippingTime": {
       "title": "Shipping Time",
-      "production": "Production: typically 2–4 business days",
+      "production": "Every canvas is printed and hand-stretched to order",
       "localPickup": "Free local pickup in Quebec City when your order is ready",
-      "canadaPost": "Order to delivery: typically 5–10 business days",
+      "canadaPost": "Order to delivery: within 15 working days",
       "expressAvailable": "Express shipping available at checkout"
     },
     "qualityAssurance": {
@@ -419,13 +419,13 @@
     "deliveryDetails": {
       "title": "Delivery Details",
       "processingTime": "Processing time:",
-      "processingTimeValue": "Typically 2–4 business days",
+      "processingTimeValue": "Made to order once payment is confirmed",
       "localPickup": "Local pickup:",
       "localPickupValue": "Free in Quebec City when your order is ready",
       "totalDeliveryTime": "Total delivery time:",
-      "totalDeliveryTimeValue": "Typically 5–10 business days",
+      "totalDeliveryTimeValue": "Within 15 working days",
       "shippingCost": "Shipping Cost:",
-      "shippingCostValue": "Available at checkout (FREE shipping on orders over $150)"
+      "shippingCostValue": "Available at checkout"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -457,7 +457,7 @@
         },
         "deliveryTime": {
           "question": "How long does delivery take?",
-          "answer": "Production and processing typically take 2–4 business days. The total order-to-delivery estimate within Quebec and Ontario is typically 5–10 business days; the product estimate and checkout are authoritative for your order."
+          "answer": "The total order-to-delivery estimate within Quebec and Ontario is within 15 working days; the product estimate and checkout are authoritative for your order."
         },
         "multipleCanvases": {
           "question": "Can I order multiple canvases of the same image?",
@@ -570,7 +570,7 @@
           },
           "shippingCost": {
             "title": "Shipping cost",
-            "description": "Available at checkout (FREE shipping on orders over $150)."
+            "description": "Available at checkout."
           }
         }
       },
@@ -1047,8 +1047,10 @@
       "message": "Your order #{orderNumber} is printed, stretched and ready to collect.",
       "whereTitle": "Where to collect it",
       "bring": "Please bring your order number (#{orderNumber}) with you.",
-      "hours": "Contact us at {email} to confirm a collection time before you travel.",
-      "thankYou": "Thank you for shopping with Canvas Print Shop!"
+      "hours": "Open {days}, {opens} – {closes}. Please bring your order number.",
+      "thankYou": "Thank you for shopping with Canvas Print Shop!",
+      "contact": "Questions? Email us at {email}.",
+      "days": "Monday to Friday"
     }
   },
   "QualityGuarantee": {
@@ -1199,11 +1201,11 @@
         "items": [
           {
             "title": "Production",
-            "description": "Production and processing typically take 2–4 business days at our Quebec City workshop."
+            "description": "Every canvas is printed, hand-stretched and finished to order at our Quebec City workshop."
           },
           {
             "title": "Delivery",
-            "description": "The total order-to-delivery estimate within Quebec and Ontario is typically 5–10 business days. The product estimate and checkout are authoritative for your order."
+            "description": "The total order-to-delivery estimate within Quebec and Ontario is within 15 working days. The product estimate and checkout are authoritative for your order."
           },
           {
             "title": "Made to order",
@@ -1218,11 +1220,11 @@
         },
         {
           "q": "How long does delivery to Montreal take?",
-          "a": "The total order-to-delivery estimate is typically 5–10 business days. Check the current product estimate and checkout for the timing of your order."
+          "a": "The total order-to-delivery estimate is within 15 working days. Check the current product estimate and checkout for the timing of your order."
         },
         {
           "q": "Do you charge extra to ship to Montreal?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -1259,10 +1261,10 @@
     "quebec-city": {
       "meta": {
         "title": "Canvas Prints Quebec City",
-        "description": "Custom canvas prints delivered to Quebec City, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Quebec City, Quebec within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Quebec City",
-      "description": "Upload a photo and we will print, stretch and deliver it to Quebec City — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Quebec City — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Quebec City",
@@ -1270,8 +1272,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Quebec City within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Quebec City within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1287,7 +1289,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1302,11 +1304,11 @@
       "faq": [
         {
           "q": "How long does delivery to Quebec City take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Quebec City?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1347,10 +1349,10 @@
     "laval": {
       "meta": {
         "title": "Canvas Prints Laval",
-        "description": "Custom canvas prints delivered to Laval, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Laval, Quebec within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Laval",
-      "description": "Upload a photo and we will print, stretch and deliver it to Laval — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Laval — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Laval",
@@ -1358,8 +1360,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Laval within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Laval within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1375,7 +1377,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1390,11 +1392,11 @@
       "faq": [
         {
           "q": "How long does delivery to Laval take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Laval?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1435,10 +1437,10 @@
     "gatineau": {
       "meta": {
         "title": "Canvas Prints Gatineau",
-        "description": "Custom canvas prints delivered to Gatineau, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Gatineau, Quebec within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Gatineau",
-      "description": "Upload a photo and we will print, stretch and deliver it to Gatineau — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Gatineau — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Gatineau",
@@ -1446,8 +1448,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Gatineau within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Gatineau within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1463,7 +1465,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1478,11 +1480,11 @@
       "faq": [
         {
           "q": "How long does delivery to Gatineau take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Gatineau?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1523,10 +1525,10 @@
     "sherbrooke": {
       "meta": {
         "title": "Canvas Prints Sherbrooke",
-        "description": "Custom canvas prints delivered to Sherbrooke, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Sherbrooke, Quebec within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Sherbrooke",
-      "description": "Upload a photo and we will print, stretch and deliver it to Sherbrooke — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Sherbrooke — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Sherbrooke",
@@ -1534,8 +1536,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Sherbrooke within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Sherbrooke within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1551,7 +1553,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1566,11 +1568,11 @@
       "faq": [
         {
           "q": "How long does delivery to Sherbrooke take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Sherbrooke?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1611,10 +1613,10 @@
     "trois-rivieres": {
       "meta": {
         "title": "Canvas Prints Trois-Rivières",
-        "description": "Custom canvas prints delivered to Trois-Rivières, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Trois-Rivières, Quebec within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Trois-Rivières",
-      "description": "Upload a photo and we will print, stretch and deliver it to Trois-Rivières — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Trois-Rivières — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Trois-Rivières",
@@ -1622,8 +1624,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Trois-Rivières within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Trois-Rivières within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1639,7 +1641,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1654,11 +1656,11 @@
       "faq": [
         {
           "q": "How long does delivery to Trois-Rivières take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Trois-Rivières?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1699,10 +1701,10 @@
     "longueuil": {
       "meta": {
         "title": "Canvas Prints Longueuil",
-        "description": "Custom canvas prints delivered to Longueuil, Quebec in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Longueuil, Quebec within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Longueuil",
-      "description": "Upload a photo and we will print, stretch and deliver it to Longueuil — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Longueuil — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Longueuil",
@@ -1710,8 +1712,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Longueuil within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Longueuil within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1727,7 +1729,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1742,11 +1744,11 @@
       "faq": [
         {
           "q": "How long does delivery to Longueuil take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Longueuil?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1787,10 +1789,10 @@
     "toronto": {
       "meta": {
         "title": "Canvas Prints Toronto",
-        "description": "Custom canvas prints delivered to Toronto, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Toronto, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Toronto",
-      "description": "Upload a photo and we will print, stretch and deliver it to Toronto — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Toronto — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Toronto",
@@ -1798,8 +1800,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Toronto within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Toronto within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1815,7 +1817,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1830,11 +1832,11 @@
       "faq": [
         {
           "q": "How long does delivery to Toronto take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Toronto?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1875,10 +1877,10 @@
     "ottawa": {
       "meta": {
         "title": "Canvas Prints Ottawa",
-        "description": "Custom canvas prints delivered to Ottawa, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Ottawa, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Ottawa",
-      "description": "Upload a photo and we will print, stretch and deliver it to Ottawa — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Ottawa — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Ottawa",
@@ -1886,8 +1888,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Ottawa within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Ottawa within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1903,7 +1905,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -1918,11 +1920,11 @@
       "faq": [
         {
           "q": "How long does delivery to Ottawa take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Ottawa?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -1963,10 +1965,10 @@
     "mississauga": {
       "meta": {
         "title": "Canvas Prints Mississauga",
-        "description": "Custom canvas prints delivered to Mississauga, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Mississauga, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Mississauga",
-      "description": "Upload a photo and we will print, stretch and deliver it to Mississauga — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Mississauga — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Mississauga",
@@ -1974,8 +1976,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Mississauga within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Mississauga within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -1991,7 +1993,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -2006,11 +2008,11 @@
       "faq": [
         {
           "q": "How long does delivery to Mississauga take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Mississauga?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -2051,10 +2053,10 @@
     "hamilton": {
       "meta": {
         "title": "Canvas Prints Hamilton",
-        "description": "Custom canvas prints delivered to Hamilton, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Hamilton, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Hamilton",
-      "description": "Upload a photo and we will print, stretch and deliver it to Hamilton — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Hamilton — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Hamilton",
@@ -2062,8 +2064,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Hamilton within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Hamilton within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -2079,7 +2081,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -2094,11 +2096,11 @@
       "faq": [
         {
           "q": "How long does delivery to Hamilton take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Hamilton?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -2139,10 +2141,10 @@
     "london": {
       "meta": {
         "title": "Canvas Prints London",
-        "description": "Custom canvas prints delivered to London, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to London, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in London",
-      "description": "Upload a photo and we will print, stretch and deliver it to London — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to London — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to London",
@@ -2150,8 +2152,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches London within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches London within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -2167,7 +2169,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -2182,11 +2184,11 @@
       "faq": [
         {
           "q": "How long does delivery to London take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to London?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -2227,10 +2229,10 @@
     "kingston": {
       "meta": {
         "title": "Canvas Prints Kingston",
-        "description": "Custom canvas prints delivered to Kingston, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Kingston, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Kingston",
-      "description": "Upload a photo and we will print, stretch and deliver it to Kingston — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Kingston — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Kingston",
@@ -2238,8 +2240,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Kingston within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Kingston within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -2255,7 +2257,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -2270,11 +2272,11 @@
       "faq": [
         {
           "q": "How long does delivery to Kingston take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Kingston?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -2315,19 +2317,19 @@
     "windsor": {
       "meta": {
         "title": "Canvas Prints Windsor",
-        "description": "Custom canvas prints delivered to Windsor, Ontario in 5 to 10 business days. Printed and hand-stretched in our Quebec studio, ready to hang."
+        "description": "Custom canvas prints delivered to Windsor, Ontario within 15 working days. Printed and hand-stretched in our Quebec studio, ready to hang."
       },
       "heading": "Canvas Prints in Windsor",
-      "description": "Upload a photo and we will print, stretch and deliver it to Windsor — typically 5 to 10 business days from order to doorstep.",
+      "description": "Upload a photo and we will print, stretch and deliver it to Windsor — within 15 working days from order to doorstep.",
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Windsor",
-        "body": "Windsor is the furthest point in our delivery area, and there is no remote-area surcharge — shipping is priced exactly as it is for Montreal, and free shipping promotions apply identically."
+        "body": "Windsor is the furthest point in our delivery area, and there is no remote-area surcharge — shipping is priced exactly as it is for Montreal."
       },
       "benefits": {
         "one": {
-          "title": "Delivered in 5–10 business days",
-          "description": "Order today and your canvas typically reaches Windsor within 5 to 10 business days — production and shipping combined — packed flat and ready to hang."
+          "title": "Delivered within 15 working days",
+          "description": "Order today and your canvas typically reaches Windsor within 15 working days — production and shipping combined — packed flat and ready to hang."
         },
         "two": {
           "title": "Printed in Quebec, not overseas",
@@ -2343,7 +2345,7 @@
         "items": [
           {
             "title": "Total time",
-            "description": "5 to 10 business days from order to delivery — roughly one to two weeks — covering production and shipping together."
+            "description": "Within 15 working days from order to delivery — one to three weeks — covering production and shipping together."
           },
           {
             "title": "Made to order",
@@ -2358,11 +2360,11 @@
       "faq": [
         {
           "q": "How long does delivery to Windsor take?",
-          "a": "Typically 5 to 10 business days from the moment you order — about one to two weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
+          "a": "Within 15 working days from the moment you order — one to three weeks — covering production and shipping. If you need it for a specific date, give yourself a little more room than that."
         },
         {
           "q": "Do you charge extra to ship to Windsor?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area, and free shipping promotions apply here too."
+          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
         },
         {
           "q": "Do you deliver outside Quebec and Ontario?",
@@ -3290,7 +3292,7 @@
       "subheading": "No templates, no stock art — just your image.",
       "intro": {
         "title": "How a custom order works",
-        "body": "Everything we make is custom — there is no catalogue of pre-printed designs. You upload a file, choose a size and a finish, and we print that single canvas for you. Nothing is warehoused and nothing is drop-shipped.\n\nAfter you order, the file goes through prepress, where we check resolution against your chosen size and correct any obvious colour cast. If something will not print well, we contact you before production rather than shipping a poor result and dealing with it afterwards.\n\nFrom order to doorstep is typically 5 to 10 business days — about one to two weeks. The canvas is printed on a Canon Colorado with UVgel ink, hand-stretched over a solid wood frame, fitted with hanging hardware, and packed flat for delivery across Quebec and Ontario."
+        "body": "Everything we make is custom — there is no catalogue of pre-printed designs. You upload a file, choose a size and a finish, and we print that single canvas for you. Nothing is warehoused and nothing is drop-shipped.\n\nAfter you order, the file goes through prepress, where we check resolution against your chosen size and correct any obvious colour cast. If something will not print well, we contact you before production rather than shipping a poor result and dealing with it afterwards.\n\nFrom order to doorstep is within 15 working days — one to three weeks. The canvas is printed on a Canon Colorado with UVgel ink, hand-stretched over a solid wood frame, fitted with hanging hardware, and packed flat for delivery across Quebec and Ontario."
       },
       "benefits": {
         "one": {
@@ -3334,7 +3336,7 @@
         },
         {
           "q": "How long does a custom order take?",
-          "a": "Typically 5 to 10 business days from order to delivery — roughly one to two weeks — including production."
+          "a": "Within 15 working days from order to delivery — one to three weeks — including production."
         },
         {
           "q": "What if I am not happy with the result?",
@@ -3554,7 +3556,7 @@
       "subheading": "Made to order in Quebec.",
       "intro": {
         "title": "Ordering a canvas as a gift",
-        "body": "The main thing to get right when ordering a canvas as a gift is timing. From order to doorstep is typically 5 to 10 business days — about one to two weeks — because every canvas is made to order rather than pulled off a shelf. Order two to three weeks ahead of the date you need it and there is comfortable margin.\n\nChoosing the photo is the harder part. Images that work as gifts are usually ones the recipient has not seen enlarged — a candid rather than a posed portrait, or a photo of a place that matters to them rather than a picture of them.\n\nIf you are ordering on someone else's behalf and are unsure about the file, send it to us before you order. We will tell you what size it will support."
+        "body": "The main thing to get right when ordering a canvas as a gift is timing. From order to doorstep is within 15 working days — one to three weeks — because every canvas is made to order rather than pulled off a shelf. Order three to four weeks ahead of the date you need it and there is comfortable margin.\n\nChoosing the photo is the harder part. Images that work as gifts are usually ones the recipient has not seen enlarged — a candid rather than a posed portrait, or a photo of a place that matters to them rather than a picture of them.\n\nIf you are ordering on someone else's behalf and are unsure about the file, send it to us before you order. We will tell you what size it will support."
       },
       "benefits": {
         "one": {
@@ -3575,14 +3577,14 @@
         "items": [
           {
             "title": "Order to doorstep",
-            "description": "Typically 5 to 10 business days — about one to two weeks — across our whole Quebec and Ontario delivery area."
+            "description": "Within 15 working days — one to three weeks — across our whole Quebec and Ontario delivery area."
           },
           {
             "title": "Made to order",
             "description": "Nothing is pre-printed, so the clock starts when you upload rather than when a warehouse picks a box."
           },
           {
-            "title": "Order two to three weeks ahead",
+            "title": "Order three to four weeks ahead",
             "description": "That covers production, transit and any file issue we need to raise with you."
           }
         ]

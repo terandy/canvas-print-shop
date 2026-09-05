@@ -178,9 +178,14 @@ const montrealBranch: PhysicalLocation = {
   // Confirmed as a collection point; printing still happens in Quebec City.
   localPickup: true,
   email: "info@canvasprintshop.ca",
-  // No telephone, opening hours or map link are published for this address
-  // until they are confirmed. Structured data omits what is not known rather
-  // than inheriting the Quebec City workshop's details.
+  openingHours: {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "16:00",
+  },
+  // No telephone or map link is published for this address until confirmed.
+  // Structured data omits what is not known rather than inheriting the Quebec
+  // City workshop's details.
 };
 
 /**
@@ -232,8 +237,16 @@ export const BUSINESS_DATA = {
     quoteRequiredOutsideConfigurator: true,
   },
   productionAndDelivery: {
-    productionBusinessDays: { min: 2, max: 4 },
-    orderToDeliveryBusinessDays: { min: 5, max: 10 },
+    /**
+     * Order to delivery or pickup, end to end. A single commitment of "within
+     * 15 working days" — the separate 2-4 day production figure this used to
+     * carry was not achievable and has been dropped rather than restated.
+     *
+     * The lower bound is what the product page shows as the earliest possible
+     * date. Five to fifteen working days is the one-to-three-week window the
+     * marketing copy quotes.
+     */
+    orderToDeliveryBusinessDays: { min: 5, max: 15 },
     individualOrderSource: "checkout-and-product-estimate" as const,
   },
   reviews: {
@@ -256,6 +269,29 @@ export function getOnlineSizeValues(
       keys.includes(option.name.toLowerCase() as (typeof keys)[number])
     )?.values ?? []
   );
+}
+
+/**
+ * Renders a "HH:MM" opening time the way each language writes it.
+ *
+ * Quebec French writes 9 h and 16 h 30, not 09:00 — printing the raw 24-hour
+ * value on a bilingual Quebec site reads as untranslated.
+ */
+export function formatOpeningTime(
+  time: string,
+  locale: SupportedLocale
+): string {
+  const [rawHour, rawMinute] = time.split(":");
+  const hour = Number(rawHour);
+  const minute = Number(rawMinute);
+
+  if (locale === "fr") {
+    return minute ? `${hour} h ${rawMinute}` : `${hour} h`;
+  }
+
+  const suffix = hour < 12 ? "am" : "pm";
+  const twelve = hour % 12 || 12;
+  return minute ? `${twelve}:${rawMinute}${suffix}` : `${twelve}${suffix}`;
 }
 
 export function getLocationAddressLines(

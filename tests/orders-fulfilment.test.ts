@@ -68,6 +68,8 @@ test("the pickup email has every string it interpolates, in both locales", () =>
       "whereTitle",
       "bring",
       "hours",
+      "days",
+      "contact",
       "thankYou",
     ]) {
       assert.equal(typeof t[key], "string", `Email.pickupReady.${key} missing`);
@@ -76,8 +78,11 @@ test("the pickup email has every string it interpolates, in both locales", () =>
     assert.ok(t.subject.includes("{orderNumber}"));
     assert.ok(t.message.includes("{orderNumber}"));
     assert.ok(t.bring.includes("{orderNumber}"));
-    assert.ok(t.hours.includes("{email}"));
+    assert.ok(t.contact.includes("{email}"));
     assert.ok(t.greeting.includes("{name}"));
+    for (const token of ["{days}", "{opens}", "{closes}"]) {
+      assert.ok(t.hours.includes(token), `pickupReady.hours needs ${token}`);
+    }
   }
 });
 
@@ -148,4 +153,58 @@ test("the breakdown column has a label for everything it renders", () => {
       );
     }
   }
+});
+
+test("no page claims free shipping or the old production window", () => {
+  // Free shipping was withdrawn and the 2-4 day production figure was not
+  // achievable; neither may reappear in copy, in either language.
+  const banned = [
+    /free ship/i,
+    /livraison gratuite/i,
+    /5\s*(?:to|à|[–-])\s*10 (?:business days|jours)/i,
+    /2\s*(?:to|à|[–-])\s*4 (?:business days|jours)/i,
+  ];
+  const walk = (node: unknown, path: string): string[] =>
+    typeof node === "string"
+      ? banned.some((r) => r.test(node))
+        ? [`${path}: ${node.slice(0, 80)}`]
+        : []
+      : node && typeof node === "object"
+        ? Object.entries(node).flatMap(([k, v]) =>
+            walk(v, path ? `${path}.${k}` : k)
+          )
+        : [];
+
+  for (const [locale, messages] of [
+    ["en", en],
+    ["fr", fr],
+  ] as const) {
+    assert.deepEqual(walk(messages, ""), [], `${locale} still makes the claim`);
+  }
+});
+
+test("the delivery commitment is a single 15 working day bound", () => {
+  const { orderToDeliveryBusinessDays } = BUSINESS_DATA.productionAndDelivery;
+  // Five to fifteen working days is the one-to-three-week window the copy
+  // quotes; the two must not drift apart.
+  assert.deepEqual(orderToDeliveryBusinessDays, { min: 5, max: 15 });
+  // The separate production figure was removed rather than restated.
+  assert.equal(
+    "productionBusinessDays" in BUSINESS_DATA.productionAndDelivery,
+    false
+  );
+});
+
+test("every pickup counter publishes hours the shipping page can render", () => {
+  const pickup = Object.values(BUSINESS_DATA.locations).filter(
+    (l) => l.localPickup === true
+  );
+  assert.equal(pickup.length, 2);
+  for (const location of pickup) {
+    assert.ok(location.openingHours, `${location.name} has no opening hours`);
+    assert.ok(location.openingHours!.opens);
+    assert.ok(location.openingHours!.closes);
+  }
+  const montreal = pickup.find((l) => l.name.includes("Montreal"))!;
+  assert.equal(montreal.openingHours!.closes, "16:00");
 });

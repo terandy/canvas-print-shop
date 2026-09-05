@@ -4,6 +4,7 @@ import { getAdminUsersForOrderEmails } from "@/lib/db/queries/admin-users";
 import { BASE_URL } from "@/lib/constants";
 import {
   BUSINESS_DATA,
+  formatOpeningTime,
   getLocationAddressLines,
   type SupportedLocale,
 } from "@/lib/business-data";
@@ -283,7 +284,22 @@ export async function sendPickupReady(
         <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h3>${t.whereTitle}:</h3>
           <p>${location.name}<br>${addressHtml}</p>
-          <p>${interpolate(t.hours, { email: contactEmail })}</p>
+          ${
+            location.openingHours
+              ? `<p>${interpolate(t.hours, {
+                  days: t.days,
+                  opens: formatOpeningTime(
+                    location.openingHours.opens,
+                    locale as SupportedLocale
+                  ),
+                  closes: formatOpeningTime(
+                    location.openingHours.closes,
+                    locale as SupportedLocale
+                  ),
+                })}</p>`
+              : ""
+          }
+          <p>${interpolate(t.contact, { email: contactEmail })}</p>
         </div>
 
         <p>${interpolate(t.bring, { orderNumber: String(order.orderNumber) })}</p>

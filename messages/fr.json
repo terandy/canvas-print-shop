@@ -114,25 +114,26 @@
     "pageTitle": "Politique d'expédition",
     "localPickup": {
       "title": "Cueillette locale",
-      "description": "Nous offrons la cueillette locale gratuite à notre atelier de Québec.",
-      "hours": "Disponible pendant les heures d'ouverture : du lundi au vendredi, de 9 h à 17 h (heure de l'Est)",
-      "select": "Sélectionnez « Cueillette locale » lors du paiement",
-      "email": "Vous recevrez un courriel lorsque votre commande sera prête pour la cueillette"
+      "description": "Nous offrons la cueillette locale gratuite à nos deux emplacements. Choisissez-la à la caisse et nous vous écrirons dès que votre commande sera prête.",
+      "select": "Sélectionnez votre lieu de cueillette lors du paiement",
+      "email": "Vous recevrez un courriel lorsque votre commande sera prête pour la cueillette",
+      "hoursLine": "{name} : {address} — {hours}",
+      "weekdayHours": "Du lundi au vendredi, de {opens} à {closes} (heure de l'Est)"
     },
     "canadaPost": {
       "title": "Livraison par Postes Canada",
       "description": "Nous expédions les commandes au Québec et en Ontario par Postes Canada, avec un numéro de suivi pour chaque envoi.",
       "estimatedTitle": "Délais estimatifs :",
       "local": "Zone de livraison : Québec et Ontario",
-      "majorCities": "Production : généralement de 2 à 4 jours ouvrables",
-      "ruralAreas": "De la commande à la livraison : généralement de 5 à 10 jours ouvrables",
+      "majorCities": "Chaque toile est imprimée et tendue à la main sur commande",
+      "ruralAreas": "De la commande à la livraison : en moins de 15 jours ouvrables",
       "remoteLocations": "L'estimation du produit et la caisse indiquent le délai à jour pour chaque commande",
       "disclaimer": "*Les délais peuvent varier selon la production, la destination, la météo et le service du transporteur."
     },
     "processingTime": {
       "title": "Temps de traitement",
       "description": "Chaque impression sur toile est soigneusement fabriquée sur commande :",
-      "standard": "Commandes standards : généralement de 2 à 4 jours ouvrables de production et de traitement",
+      "standard": "Commandes standards : chaque toile est imprimée et tendue à la main sur commande",
       "payment": "Le traitement commence une fois le paiement confirmé",
       "tracking": "Vous recevrez un courriel avec les informations de suivi une fois votre commande expédiée",
       "rush": "Un traitement accéléré peut être disponible sur demande"
@@ -140,8 +141,7 @@
     "shippingCosts": {
       "title": "Frais d'expédition",
       "localPickup": "Cueillette locale : gratuite",
-      "standard": "Expédition standard : calculée à la caisse selon le format et la destination",
-      "free": "Livraison gratuite pour les commandes de plus de 150 $ (certaines destinations éloignées sont exclues)"
+      "standard": "Expédition standard : calculée à la caisse selon le format et la destination"
     },
     "orderTracking": {
       "title": "Suivi de commande",
@@ -333,7 +333,7 @@
       "montrealName": "Montréal",
       "montrealNote": "Cueillette gratuite offerte. Commandez en ligne et attendez le courriel de confirmation avant de vous présenter.",
       "pickupBadge": "Cueillette gratuite",
-      "hoursUnavailable": "Contactez-nous pour convenir d’une heure de cueillette."
+      "weekdayHours": "Du lundi au vendredi, de {opens} à {closes}"
     }
   },
   "Product": {
@@ -392,9 +392,9 @@
     },
     "shippingTime": {
       "title": "Délais de livraison",
-      "production": "Production : généralement de 2 à 4 jours ouvrables",
+      "production": "Chaque toile est imprimée et tendue à la main sur commande",
       "localPickup": "Cueillette gratuite à Québec lorsque la commande est prête",
-      "canadaPost": "De la commande à la livraison : généralement de 5 à 10 jours ouvrables",
+      "canadaPost": "De la commande à la livraison : en moins de 15 jours ouvrables",
       "expressAvailable": "Expédition express disponible à la caisse"
     },
     "qualityAssurance": {
@@ -419,13 +419,13 @@
     "deliveryDetails": {
       "title": "Détails de livraison",
       "processingTime": "Temps de traitement :",
-      "processingTimeValue": "Généralement de 2 à 4 jours ouvrables",
+      "processingTimeValue": "Fabriquée sur commande dès la confirmation du paiement",
       "localPickup": "Cueillette locale :",
       "localPickupValue": "Gratuite à Québec lorsque la commande est prête",
       "totalDeliveryTime": "Temps de livraison total :",
-      "totalDeliveryTimeValue": "Généralement de 5 à 10 jours ouvrables",
+      "totalDeliveryTimeValue": "En moins de 15 jours ouvrables",
       "shippingCost": "Frais d'expédition :",
-      "shippingCostValue": "Disponible à la caisse (Livraison GRATUITE pour les commandes de plus de 150$)"
+      "shippingCostValue": "Disponible à la caisse"
     },
     "faq": {
       "title": "Foire aux questions",
@@ -457,7 +457,7 @@
         },
         "deliveryTime": {
           "question": "Combien de temps prend la livraison ?",
-          "answer": "La production et le traitement prennent généralement de 2 à 4 jours ouvrables. Au Québec et en Ontario, le délai total entre la commande et la livraison est généralement de 5 à 10 jours ouvrables ; l'estimation du produit et la caisse font foi pour votre commande."
+          "answer": "Au Québec et en Ontario, le délai total entre la commande et la livraison est en moins de 15 jours ouvrables ; l'estimation du produit et la caisse font foi pour votre commande."
         },
         "multipleCanvases": {
           "question": "Puis-je commander plusieurs toiles de la même image ?",
@@ -550,7 +550,7 @@
         "items": {
           "productionTime": {
             "title": "Temps de production",
-            "description": "Nous avons généralement besoin de 2 à 4 jours pour imprimer, tendre et emballer votre toile avant l'expédition."
+            "description": "Chaque toile est imprimée, tendue et emballée sur commande avant l'expédition."
           },
           "delivery": {
             "title": "Livraison",
@@ -570,7 +570,7 @@
           },
           "shippingCost": {
             "title": "Frais d'expédition",
-            "description": "Affichés à la caisse (livraison GRATUITE pour les commandes de plus de 150 $)."
+            "description": "Affichés à la caisse."
           }
         }
       },
@@ -1052,8 +1052,10 @@
       "message": "Votre commande #{orderNumber} est imprimée, montée sur châssis et prête à être récupérée.",
       "whereTitle": "Où la récupérer",
       "bring": "Veuillez apporter votre numéro de commande (#{orderNumber}).",
-      "hours": "Écrivez-nous à {email} pour convenir d’une heure de cueillette avant de vous déplacer.",
-      "thankYou": "Merci d’avoir choisi Canvas Print Shop!"
+      "hours": "Ouvert {days}, de {opens} à {closes}. Veuillez apporter votre numéro de commande.",
+      "thankYou": "Merci d’avoir choisi Canvas Print Shop!",
+      "contact": "Des questions? Écrivez-nous à {email}.",
+      "days": "du lundi au vendredi"
     }
   },
   "QualityGuarantee": {
@@ -1204,11 +1206,11 @@
         "items": [
           {
             "title": "Production",
-            "description": "La production et le traitement prennent généralement de 2 à 4 jours ouvrables dans notre atelier de Québec."
+            "description": "Chaque toile est imprimée, tendue à la main et finie sur commande dans notre atelier de Québec."
           },
           {
             "title": "Livraison",
-            "description": "Au Québec et en Ontario, le délai total entre la commande et la livraison est généralement de 5 à 10 jours ouvrables. L'estimation du produit et la caisse font foi pour votre commande."
+            "description": "Au Québec et en Ontario, le délai total entre la commande et la livraison est en moins de 15 jours ouvrables. L'estimation du produit et la caisse font foi pour votre commande."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1223,11 +1225,11 @@
         },
         {
           "q": "Combien de temps prend la livraison à Montréal ?",
-          "a": "Le délai total entre la commande et la livraison est généralement de 5 à 10 jours ouvrables. Consultez l'estimation du produit et la caisse pour connaître le délai de votre commande."
+          "a": "Le délai total entre la commande et la livraison est en moins de 15 jours ouvrables. Consultez l'estimation du produit et la caisse pour connaître le délai de votre commande."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Montréal ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -1264,10 +1266,10 @@
     "quebec-city": {
       "meta": {
         "title": "Impression sur toile Québec",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Québec (Québec) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Québec (Québec) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Québec",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Québec — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Québec — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Québec",
@@ -1275,8 +1277,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Québec en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Québec en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1292,7 +1294,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1307,11 +1309,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Québec ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Québec ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1352,10 +1354,10 @@
     "laval": {
       "meta": {
         "title": "Impression sur toile Laval",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Laval (Québec) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Laval (Québec) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Laval",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Laval — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Laval — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Laval",
@@ -1363,8 +1365,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Laval en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Laval en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1380,7 +1382,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1395,11 +1397,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Laval ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Laval ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1440,10 +1442,10 @@
     "gatineau": {
       "meta": {
         "title": "Impression sur toile Gatineau",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Gatineau (Québec) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Gatineau (Québec) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Gatineau",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Gatineau — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Gatineau — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Gatineau",
@@ -1451,8 +1453,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Gatineau en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Gatineau en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1468,7 +1470,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1483,11 +1485,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Gatineau ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Gatineau ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1528,10 +1530,10 @@
     "sherbrooke": {
       "meta": {
         "title": "Impression sur toile Sherbrooke",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Sherbrooke (Québec) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Sherbrooke (Québec) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Sherbrooke",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Sherbrooke — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Sherbrooke — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Sherbrooke",
@@ -1539,8 +1541,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Sherbrooke en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Sherbrooke en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1556,7 +1558,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1571,11 +1573,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Sherbrooke ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Sherbrooke ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1616,10 +1618,10 @@
     "trois-rivieres": {
       "meta": {
         "title": "Impression sur toile Trois-Rivières",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Trois-Rivières en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier de Québec."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Trois-Rivières en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier de Québec."
       },
       "heading": "Impression sur toile à Trois-Rivières",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Trois-Rivières — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Trois-Rivières — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Trois-Rivières",
@@ -1627,8 +1629,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Trois-Rivières en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Trois-Rivières en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1644,7 +1646,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1659,11 +1661,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Trois-Rivières ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Trois-Rivières ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1704,10 +1706,10 @@
     "longueuil": {
       "meta": {
         "title": "Impression sur toile Longueuil",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Longueuil (Québec) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Longueuil (Québec) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Longueuil",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Longueuil — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Longueuil — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Longueuil",
@@ -1715,8 +1717,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Longueuil en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Longueuil en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1732,7 +1734,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1747,11 +1749,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Longueuil ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Longueuil ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1792,10 +1794,10 @@
     "toronto": {
       "meta": {
         "title": "Impression sur toile Toronto",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Toronto (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Toronto (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Toronto",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Toronto — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Toronto — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Toronto",
@@ -1803,8 +1805,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Toronto en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Toronto en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1820,7 +1822,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1835,11 +1837,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Toronto ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Toronto ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1880,10 +1882,10 @@
     "ottawa": {
       "meta": {
         "title": "Impression sur toile Ottawa",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Ottawa (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Ottawa (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Ottawa",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Ottawa — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Ottawa — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Ottawa",
@@ -1891,8 +1893,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Ottawa en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Ottawa en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1908,7 +1910,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1923,11 +1925,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Ottawa ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Ottawa ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -1968,10 +1970,10 @@
     "mississauga": {
       "meta": {
         "title": "Impression sur toile Mississauga",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Mississauga (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Mississauga (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Mississauga",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Mississauga — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Mississauga — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Mississauga",
@@ -1979,8 +1981,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Mississauga en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Mississauga en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -1996,7 +1998,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -2011,11 +2013,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Mississauga ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Mississauga ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -2056,10 +2058,10 @@
     "hamilton": {
       "meta": {
         "title": "Impression sur toile Hamilton",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Hamilton (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Hamilton (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Hamilton",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Hamilton — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Hamilton — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Hamilton",
@@ -2067,8 +2069,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Hamilton en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Hamilton en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -2084,7 +2086,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -2099,11 +2101,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Hamilton ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Hamilton ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -2144,10 +2146,10 @@
     "london": {
       "meta": {
         "title": "Impression sur toile London",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à London (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à London (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à London",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à London — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à London — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à London",
@@ -2155,8 +2157,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à London en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à London en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -2172,7 +2174,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -2187,11 +2189,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à London ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à London ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -2232,10 +2234,10 @@
     "kingston": {
       "meta": {
         "title": "Impression sur toile Kingston",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Kingston (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Kingston (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Kingston",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Kingston — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Kingston — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Kingston",
@@ -2243,8 +2245,8 @@
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Kingston en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Kingston en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -2260,7 +2262,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -2275,11 +2277,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Kingston ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Kingston ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -2320,19 +2322,19 @@
     "windsor": {
       "meta": {
         "title": "Impression sur toile Windsor",
-        "description": "Impression photo sur toile et canevas personnalisés, livrés à Windsor (Ontario) en 5 à 10 jours. Imprimés et tendus à la main dans notre atelier québécois."
+        "description": "Impression photo sur toile et canevas personnalisés, livrés à Windsor (Ontario) en moins de 15 jours ouvrables. Imprimés et tendus à la main dans notre atelier québécois."
       },
       "heading": "Impression sur toile à Windsor",
-      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Windsor — généralement de 5 à 10 jours ouvrables entre la commande et la livraison.",
+      "description": "Téléversez une photo et nous l'imprimerons, la tendrons et la livrerons à Windsor — en moins de 15 jours ouvrables entre la commande et la livraison.",
       "subheading": "Fabriqué au Québec. Aucune douane, aucune expédition transfrontalière.",
       "intro": {
         "title": "Livraison de toiles et canevas à Windsor",
-        "body": "Windsor est le point le plus éloigné de notre zone de livraison, et il n'y a aucun supplément pour région éloignée : la livraison est facturée exactement comme pour Montréal, et les promotions de livraison gratuite s'appliquent de la même façon."
+        "body": "Windsor est le point le plus éloigné de notre zone de livraison, et il n'y a aucun supplément pour région éloignée : la livraison est facturée exactement comme pour Montréal."
       },
       "benefits": {
         "one": {
-          "title": "Livraison en 5 à 10 jours ouvrables",
-          "description": "Commandez aujourd'hui et votre toile arrive généralement à Windsor en 5 à 10 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
+          "title": "Livraison en moins de 15 jours ouvrables",
+          "description": "Commandez aujourd'hui et votre toile arrive généralement à Windsor en moins de 15 jours ouvrables — production et expédition comprises — emballée à plat et prête à accrocher."
         },
         "two": {
           "title": "Imprimé au Québec, pas à l'étranger",
@@ -2348,7 +2350,7 @@
         "items": [
           {
             "title": "Délai total",
-            "description": "De 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production et expédition comprises."
+            "description": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production et expédition comprises."
           },
           {
             "title": "Fabriquée sur commande",
@@ -2363,11 +2365,11 @@
       "faq": [
         {
           "q": "Combien de temps prend la livraison à Windsor ?",
-          "a": "Généralement de 5 à 10 jours ouvrables à partir de la commande — environ une à deux semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
+          "a": "En moins de 15 jours ouvrables à partir de la commande — d'une à trois semaines — production et expédition comprises. Pour une date précise, prévoyez un peu plus de marge."
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Windsor ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, et les promotions de livraison gratuite s'y appliquent aussi."
+          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
         },
         {
           "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
@@ -3295,7 +3297,7 @@
       "subheading": "Aucun gabarit, aucune image de banque — seulement la vôtre.",
       "intro": {
         "title": "Comment fonctionne une commande sur mesure",
-        "body": "Tout ce que nous fabriquons est sur mesure : il n'y a aucun catalogue de motifs préimprimés. Vous téléversez un fichier, choisissez un format et un fini, et nous imprimons cette toile unique pour vous. Rien n'est entreposé, rien n'est expédié par un tiers.\n\nAprès votre commande, le fichier passe au prépresse, où nous vérifions la résolution par rapport au format choisi et corrigeons toute dominante de couleur évidente. Si quelque chose ne s'imprimera pas bien, nous vous contactons avant la production plutôt que d'expédier un résultat médiocre et de le régler ensuite.\n\nDe la commande à la livraison, comptez généralement de 5 à 10 jours ouvrables — environ une à deux semaines. La toile est imprimée sur une Canon Colorado avec de l'encre UVgel, tendue à la main sur un châssis en bois massif, munie de sa quincaillerie et emballée à plat pour la livraison au Québec et en Ontario."
+        "body": "Tout ce que nous fabriquons est sur mesure : il n'y a aucun catalogue de motifs préimprimés. Vous téléversez un fichier, choisissez un format et un fini, et nous imprimons cette toile unique pour vous. Rien n'est entreposé, rien n'est expédié par un tiers.\n\nAprès votre commande, le fichier passe au prépresse, où nous vérifions la résolution par rapport au format choisi et corrigeons toute dominante de couleur évidente. Si quelque chose ne s'imprimera pas bien, nous vous contactons avant la production plutôt que d'expédier un résultat médiocre et de le régler ensuite.\n\nDe la commande à la livraison, comptez en moins de 15 jours ouvrables — d'une à trois semaines. La toile est imprimée sur une Canon Colorado avec de l'encre UVgel, tendue à la main sur un châssis en bois massif, munie de sa quincaillerie et emballée à plat pour la livraison au Québec et en Ontario."
       },
       "benefits": {
         "one": {
@@ -3339,7 +3341,7 @@
         },
         {
           "q": "Combien de temps prend une commande sur mesure ?",
-          "a": "Généralement de 5 à 10 jours ouvrables entre la commande et la livraison — environ une à deux semaines — production comprise."
+          "a": "En moins de 15 jours ouvrables entre la commande et la livraison — d'une à trois semaines — production comprise."
         },
         {
           "q": "Et si je ne suis pas satisfait du résultat ?",
@@ -3559,7 +3561,7 @@
       "subheading": "Fabriqué sur commande au Québec, jamais en série.",
       "intro": {
         "title": "Offrir un canevas personnalisé",
-        "body": "Le principal point à surveiller en commandant une toile-cadeau, c'est le calendrier. De la commande à la livraison, comptez généralement de 5 à 10 jours ouvrables — environ une à deux semaines — puisque chaque toile est fabriquée sur commande plutôt que prise sur une tablette. Commandez deux à trois semaines avant la date voulue et la marge est confortable.\n\nChoisir la photo est la partie la plus difficile. Les images qui font de bons cadeaux sont généralement celles que la personne n'a jamais vues agrandies : un moment spontané plutôt qu'un portrait posé, ou une photo d'un lieu qui compte pour elle plutôt qu'une photo d'elle.\n\nSi vous commandez pour quelqu'un d'autre et hésitez sur le fichier, envoyez-le-nous avant de commander. Nous vous dirons quel format il peut supporter."
+        "body": "Le principal point à surveiller en commandant une toile-cadeau, c'est le calendrier. De la commande à la livraison, comptez en moins de 15 jours ouvrables — d'une à trois semaines — puisque chaque toile est fabriquée sur commande plutôt que prise sur une tablette. Commandez deux à trois semaines avant la date voulue et la marge est confortable.\n\nChoisir la photo est la partie la plus difficile. Les images qui font de bons cadeaux sont généralement celles que la personne n'a jamais vues agrandies : un moment spontané plutôt qu'un portrait posé, ou une photo d'un lieu qui compte pour elle plutôt qu'une photo d'elle.\n\nSi vous commandez pour quelqu'un d'autre et hésitez sur le fichier, envoyez-le-nous avant de commander. Nous vous dirons quel format il peut supporter."
       },
       "benefits": {
         "one": {
@@ -3580,14 +3582,14 @@
         "items": [
           {
             "title": "De la commande à la livraison",
-            "description": "Généralement de 5 à 10 jours ouvrables — environ une à deux semaines — dans toute notre zone du Québec et de l'Ontario."
+            "description": "En moins de 15 jours ouvrables — d'une à trois semaines — dans toute notre zone du Québec et de l'Ontario."
           },
           {
             "title": "Fabriquée sur commande",
             "description": "Rien n'est préimprimé : le compte à rebours commence au téléversement, pas à la préparation d'une boîte en entrepôt."
           },
           {
-            "title": "Commandez deux à trois semaines à l'avance",
+            "title": "Commandez trois à quatre semaines à l'avance",
             "description": "Cela couvre la production, le transport et tout problème de fichier à vous signaler."
           }
         ]

@@ -119,11 +119,16 @@ test("Montreal address lines are exact and localized without inventing fields", 
     "Montréal (Québec) H4N 1H2",
     "Canada",
   ]);
-  // The shared inbox is confirmed for this address. Telephone, map link and
-  // opening hours are still unverified and must not be inherited from the
-  // Quebec City workshop.
+  // The shared inbox and the opening hours are confirmed for this address.
+  // A telephone and a map link are still unverified and must not be inherited
+  // from the Quebec City workshop.
   assert.equal(location.email, "info@canvasprintshop.ca");
-  for (const field of ["telephone", "mapUrl", "openingHours"]) {
+  assert.deepEqual(location.openingHours, {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "16:00",
+  });
+  for (const field of ["telephone", "mapUrl"]) {
     assert.equal(field in location, false);
   }
 });
@@ -146,12 +151,11 @@ test("business JSON-LD has one organization and two distinct locations", () => {
   );
   assert.deepEqual((montreal.address as JsonObject).postalCode, "H4N 1H2");
   assert.equal(montreal.email, "info@canvasprintshop.ca");
-  for (const field of [
-    "telephone",
-    "hasMap",
-    "geo",
-    "openingHoursSpecification",
-  ]) {
+  assert.deepEqual(
+    (montreal.openingHoursSpecification as JsonObject[])[0].closes,
+    "16:00"
+  );
+  for (const field of ["telephone", "hasMap", "geo"]) {
     assert.equal(field in montreal, false);
   }
   assert.equal(

@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, LucideIcon, Store } from "lucide-react";
 import { EMAIL, PHONE, ADDRESS } from "@/lib/constants";
 import {
   BUSINESS_DATA,
+  formatOpeningTime,
   getLocationAddressLines,
   type SupportedLocale,
 } from "@/lib/business-data";
@@ -81,16 +82,32 @@ export default async function ContactPage({
       location: quebecCityWorkshop,
       name: t("locations.quebecCityName"),
       note: t("locations.quebecCityNote"),
-      hours: t("openingHours.value"),
+      hours: null,
     },
     {
       location: montrealBranch,
       name: t("locations.montrealName"),
       note: t("locations.montrealNote"),
-      // No confirmed opening hours are published for Montreal yet.
-      hours: t("locations.hoursUnavailable"),
+      hours: null,
     },
-  ].filter(({ location }) => location.localPickup === true);
+  ]
+    .filter(({ location }) => location.localPickup === true)
+    // Hours come from the location record so the two never disagree.
+    .map((entry) => ({
+      ...entry,
+      hours: entry.location.openingHours
+        ? t("locations.weekdayHours", {
+            opens: formatOpeningTime(
+              entry.location.openingHours.opens,
+              locale as SupportedLocale
+            ),
+            closes: formatOpeningTime(
+              entry.location.openingHours.closes,
+              locale as SupportedLocale
+            ),
+          })
+        : entry.hours,
+    }));
 
   return (
     <main className="flex-1">

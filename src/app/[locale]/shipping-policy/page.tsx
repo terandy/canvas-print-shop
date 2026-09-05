@@ -8,6 +8,12 @@ import {
 } from "@/components";
 import { getTranslations } from "next-intl/server";
 import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
+import {
+  BUSINESS_DATA,
+  formatOpeningTime,
+  getLocationAddressLines,
+  type SupportedLocale,
+} from "@/lib/business-data";
 
 export async function generateMetadata({
   params,
@@ -32,9 +38,33 @@ export async function generateMetadata({
   };
 }
 
-export default async function ShippingPolicy() {
+export default async function ShippingPolicy({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   // Get translations for this page
   const t = await getTranslations("ShippingPolicy");
+
+  // Every location that actually accepts collection, with its own hours.
+  const pickupLocations = Object.values(BUSINESS_DATA.locations)
+    .filter((location) => location.localPickup === true)
+    .map((location) => ({
+      location,
+      hours: location.openingHours
+        ? t("localPickup.weekdayHours", {
+            opens: formatOpeningTime(
+              location.openingHours.opens,
+              locale as SupportedLocale
+            ),
+            closes: formatOpeningTime(
+              location.openingHours.closes,
+              locale as SupportedLocale
+            ),
+          })
+        : "",
+    }));
 
   return (
     <main className="flex-1">
@@ -50,7 +80,20 @@ export default async function ShippingPolicy() {
             <SectionContainer>
               <p>{t("localPickup.description")}</p>
               <ul>
-                <li>{t("localPickup.hours")}</li>
+                {/* Both counters and their hours come from BUSINESS_DATA, so
+                    this page cannot drift from what checkout actually offers. */}
+                {pickupLocations.map(({ location, hours }) => (
+                  <li key={location.id}>
+                    {t("localPickup.hoursLine", {
+                      name: location.name,
+                      address: getLocationAddressLines(
+                        location,
+                        locale as SupportedLocale
+                      )[0],
+                      hours,
+                    })}
+                  </li>
+                ))}
                 <li>{t("localPickup.select")}</li>
                 <li>{t("localPickup.email")}</li>
               </ul>
@@ -98,7 +141,6 @@ export default async function ShippingPolicy() {
               <ul>
                 <li>{t("shippingCosts.localPickup")}</li>
                 <li>{t("shippingCosts.standard")}</li>
-                <li>{t("shippingCosts.free")}</li>
               </ul>
             </SectionContainer>
           </section>

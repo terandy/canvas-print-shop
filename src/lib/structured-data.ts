@@ -88,9 +88,21 @@ export function buildBusinessEntityGraph(): JsonLd {
     image: organization.image,
     priceRange: "$$",
     address: postalAddress(montrealBranch.address),
-    // Only what is confirmed: no telephone or openingHours are asserted for
-    // this address, and none are inherited from the Quebec City workshop.
+    // Only what is confirmed: no telephone is asserted for this address, and
+    // nothing is inherited from the Quebec City workshop.
     ...(montrealBranch.email ? { email: montrealBranch.email } : {}),
+    ...(montrealBranch.openingHours
+      ? {
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: montrealBranch.openingHours.days,
+              opens: montrealBranch.openingHours.opens,
+              closes: montrealBranch.openingHours.closes,
+            },
+          ],
+        }
+      : {}),
     areaServed,
     subjectOf: [
       { "@type": "WebPage", "@id": `${SITE_URL}/en/canvas-prints/montreal` },

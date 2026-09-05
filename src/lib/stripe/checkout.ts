@@ -39,8 +39,16 @@ async function buildShippingOptions(
       fixed_amount: { amount: shippingCost, currency: "cad" },
       display_name: t("delivery"),
       delivery_estimate: {
-        minimum: { unit: "business_day", value: 3 },
-        maximum: { unit: "business_day", value: 7 },
+        minimum: {
+          unit: "business_day",
+          value:
+            BUSINESS_DATA.productionAndDelivery.orderToDeliveryBusinessDays.min,
+        },
+        maximum: {
+          unit: "business_day",
+          value:
+            BUSINESS_DATA.productionAndDelivery.orderToDeliveryBusinessDays.max,
+        },
       },
       metadata: { fulfilmentMethod: "delivery" },
     },
@@ -60,8 +68,18 @@ async function buildShippingOptions(
           fixed_amount: { amount: 0, currency: "cad" },
           display_name: t(`pickup.${PICKUP_LOCATION_KEYS[key]}`),
           delivery_estimate: {
-            minimum: { unit: "business_day", value: 2 },
-            maximum: { unit: "business_day", value: 4 },
+            minimum: {
+              unit: "business_day",
+              value:
+                BUSINESS_DATA.productionAndDelivery.orderToDeliveryBusinessDays
+                  .min,
+            },
+            maximum: {
+              unit: "business_day",
+              value:
+                BUSINESS_DATA.productionAndDelivery.orderToDeliveryBusinessDays
+                  .max,
+            },
           },
           metadata: {
             fulfilmentMethod: "pickup",
