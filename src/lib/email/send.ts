@@ -2,6 +2,11 @@ import { resend, ORDER_EMAIL } from "./index";
 import type { Order } from "@/types/order";
 import { getAdminUsersForOrderEmails } from "@/lib/db/queries/admin-users";
 import { BASE_URL } from "@/lib/constants";
+import {
+  BUSINESS_DATA,
+  getLocationAddressLines,
+  type SupportedLocale,
+} from "@/lib/business-data";
 
 type Locale = "en" | "fr";
 
@@ -224,6 +229,72 @@ export async function sendShippingUpdate(
           Canvas Print Shop<br>
           1172 Av. du Lac-Saint-Charles<br>
           Québec, QC, G3G 2S7, Canada
+        </p>
+      </div>
+    `,
+  });
+}
+
+/**
+ * Tells a customer their order is waiting at the counter they chose.
+ *
+ * Pickup orders never get a tracking number, so `sendShippingUpdate` never
+ * fires for them — without this they would hear nothing after paying. The
+ * address shown is the counter they actually selected, not the workshop.
+ */
+export async function sendPickupReady(
+  order: Order,
+  locale: Locale = "en"
+): Promise<void> {
+  if (!resend) {
+    return;
+  }
+
+  const t = getEmailTranslations(locale).pickupReady;
+
+  const location =
+    order.pickupLocation === "montreal"
+      ? BUSINESS_DATA.locations.montrealBranch
+      : BUSINESS_DATA.locations.quebecCityWorkshop;
+
+  const greeting = order.customerName
+    ? interpolate(t.greeting, { name: order.customerName })
+    : t.greetingDefault;
+
+  const addressHtml = getLocationAddressLines(
+    location,
+    locale as SupportedLocale
+  ).join("<br>");
+
+  const contactEmail = location.email ?? ORDER_EMAIL;
+
+  await resend.emails.send({
+    from: ORDER_EMAIL,
+    to: order.customerEmail,
+    subject: interpolate(t.subject, { orderNumber: order.orderNumber }),
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #CC5500;">${t.title}</h1>
+
+        <p>${greeting},</p>
+
+        <p>${interpolate(t.message, { orderNumber: String(order.orderNumber) })}</p>
+
+        <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <h3>${t.whereTitle}:</h3>
+          <p>${location.name}<br>${addressHtml}</p>
+          <p>${interpolate(t.hours, { email: contactEmail })}</p>
+        </div>
+
+        <p>${interpolate(t.bring, { orderNumber: String(order.orderNumber) })}</p>
+
+        <p>${t.thankYou}</p>
+
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+
+        <p style="color: #666; font-size: 12px;">
+          Canvas Print Shop<br>
+          ${addressHtml}
         </p>
       </div>
     `,

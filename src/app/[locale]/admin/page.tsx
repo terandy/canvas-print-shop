@@ -1,17 +1,14 @@
 import Link from "next/link";
 import { getOrders } from "@/lib/db/queries/orders";
 import { getTranslations } from "next-intl/server";
-import { Package, DollarSign, ShoppingCart, TrendingUp, Eye } from "lucide-react";
-
-const STATUS_COLORS: Record<string, string> = {
-  pending: "bg-yellow-100 text-yellow-800",
-  paid: "bg-blue-100 text-blue-800",
-  processing: "bg-blue-100 text-blue-800",
-  shipped: "bg-purple-100 text-purple-800",
-  fulfilled: "bg-green-100 text-green-800",
-  cancelled: "bg-red-100 text-red-800",
-  refunded: "bg-gray-100 text-gray-800",
-};
+import {
+  Package,
+  DollarSign,
+  ShoppingCart,
+  TrendingUp,
+  Eye,
+} from "lucide-react";
+import { statusColor } from "@/lib/orders/status";
 
 export default async function AdminDashboardPage() {
   const t = await getTranslations("Admin");
@@ -26,7 +23,7 @@ export default async function AdminDashboardPage() {
     0
   );
   const pendingOrders = recentOrders.filter(
-    (o) => o.status === "pending" || o.status === "processing"
+    (o) => o.status === "pending"
   ).length;
   const completedOrders = recentOrders.filter(
     (o) => o.status === "fulfilled" || o.status === "shipped"
@@ -148,10 +145,9 @@ export default async function AdminDashboardPage() {
                     </td>
                     <td className="px-4 py-2 whitespace-nowrap">
                       <span
-                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          STATUS_COLORS[order.status] ||
-                          "bg-gray-100 text-gray-800"
-                        }`}
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusColor(
+                          order.status
+                        )}`}
                       >
                         {t(`status.${order.status}`)}
                       </span>

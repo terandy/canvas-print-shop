@@ -1,6 +1,11 @@
 import React from "react";
-import { Mail, Phone, MapPin, LucideIcon } from "lucide-react";
+import { Mail, Phone, MapPin, LucideIcon, Store } from "lucide-react";
 import { EMAIL, PHONE, ADDRESS } from "@/lib/constants";
+import {
+  BUSINESS_DATA,
+  getLocationAddressLines,
+  type SupportedLocale,
+} from "@/lib/business-data";
 import { PageHeader, SectionHeader, SectionContainer } from "@/components";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
@@ -63,8 +68,29 @@ const ContactSection = ({
   </SectionContainer>
 );
 
-export default async function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const t = await getTranslations("Contact");
+  const { quebecCityWorkshop, montrealBranch } = BUSINESS_DATA.locations;
+  const pickupLocations = [
+    {
+      location: quebecCityWorkshop,
+      name: t("locations.quebecCityName"),
+      note: t("locations.quebecCityNote"),
+      hours: t("openingHours.value"),
+    },
+    {
+      location: montrealBranch,
+      name: t("locations.montrealName"),
+      note: t("locations.montrealNote"),
+      // No confirmed opening hours are published for Montreal yet.
+      hours: t("locations.hoursUnavailable"),
+    },
+  ].filter(({ location }) => location.localPickup === true);
 
   return (
     <main className="flex-1">
@@ -107,6 +133,43 @@ export default async function ContactPage() {
             }
           />
         </div>
+
+        {pickupLocations.length > 0 && (
+          <section className="mt-16" aria-labelledby="locations-heading">
+            <SectionHeader id="locations-heading">
+              {t("locations.heading")}
+            </SectionHeader>
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              {pickupLocations.map(({ location, name, note, hours }) => (
+                <SectionContainer key={location.id}>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/10 rounded-full p-3">
+                      <Store className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-semibold text-secondary">{name}</h3>
+                      <address className="not-italic text-sm text-gray">
+                        {getLocationAddressLines(
+                          location,
+                          locale as SupportedLocale
+                        ).map((line) => (
+                          <span key={line} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </address>
+                      <p className="text-sm text-gray">{hours}</p>
+                      <p className="text-sm text-gray">{note}</p>
+                      <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                        {t("locations.pickupBadge")}
+                      </span>
+                    </div>
+                  </div>
+                </SectionContainer>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   );

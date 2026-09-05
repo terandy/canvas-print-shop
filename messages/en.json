@@ -325,7 +325,16 @@
       "label": "Opening Hours"
     },
     "needHelp": "Need Help?",
-    "customerServiceMessage": "Our customer service team is here to help with any questions:"
+    "customerServiceMessage": "Our customer service team is here to help with any questions:",
+    "locations": {
+      "heading": "Where to find us",
+      "quebecCityName": "Quebec City workshop",
+      "quebecCityNote": "Printing, stretching and finishing. Free pickup available.",
+      "montrealName": "Montreal",
+      "montrealNote": "Free pickup available. Please order online and wait for your ready-for-pickup email before collecting.",
+      "pickupBadge": "Free pickup",
+      "hoursUnavailable": "Contact us to arrange a collection time."
+    }
   },
   "Product": {
     "metadata": {
@@ -669,6 +678,13 @@
       "message": "Your checkout was cancelled. Your cart items are still saved if you'd like to complete your purchase.",
       "returnToCart": "Return to Cart",
       "continueShopping": "Continue Shopping"
+    },
+    "fulfilment": {
+      "delivery": "Shipping",
+      "pickup": {
+        "quebec-city": "Free pickup — Quebec City",
+        "montreal": "Free pickup — Montreal"
+      }
     }
   },
   "Admin": {
@@ -771,7 +787,13 @@
       "viewFullImage": "View Full Image",
       "previous": "Previous",
       "next": "Next",
-      "pageNumber": "Page {page}"
+      "pageNumber": "Page {page}",
+      "breakdown": "Breakdown",
+      "pickupLabel": "Pickup",
+      "pickupQuebecCity": "Quebec City — free",
+      "pickupMontreal": "Montreal — free",
+      "showDetails": "Show details",
+      "hideDetails": "Hide details"
     },
     "products": {
       "title": "Products",
@@ -972,11 +994,12 @@
     "status": {
       "pending": "Pending",
       "paid": "Paid",
-      "processing": "Processing",
       "shipped": "Shipped",
       "fulfilled": "Fulfilled",
       "cancelled": "Cancelled",
-      "refunded": "Refunded"
+      "refunded": "Refunded",
+      "printed": "Printed",
+      "ready_for_pickup": "Ready for pickup"
     }
   },
   "Email": {
@@ -1015,6 +1038,17 @@
       "buttonText": "Reset Password",
       "expiry": "This link will expire in 1 hour.",
       "ignore": "If you didn't request a password reset, you can safely ignore this email."
+    },
+    "pickupReady": {
+      "subject": "Your order #{orderNumber} is ready for pickup",
+      "title": "Your canvas is ready to collect",
+      "greeting": "Hi {name}",
+      "greetingDefault": "Hi there",
+      "message": "Your order #{orderNumber} is printed, stretched and ready to collect.",
+      "whereTitle": "Where to collect it",
+      "bring": "Please bring your order number (#{orderNumber}) with you.",
+      "hours": "Contact us at {email} to confirm a collection time before you travel.",
+      "thankYou": "Thank you for shopping with Canvas Print Shop!"
     }
   },
   "QualityGuarantee": {
@@ -3637,5 +3671,69 @@
   "Nav": {
     "shop": "Shop",
     "guides": "Guides"
+  },
+  "RoomVisualiser": {
+    "eyebrow": "Studio preview · prototype",
+    "title": "Your image. In perspective.",
+    "subtitle": "Find the right canvas size in a thoughtfully furnished sample room. Try your own photo and see the difference instantly.",
+    "preview": "Room preview",
+    "controls": "Canvas controls",
+    "roomName": "The warm minimal living room",
+    "fixedCamera": "Fixed camera · real-world proportions",
+    "yourImage": "01  Your image",
+    "sourceImage": "Original image before canvas cropping",
+    "sampleName": "Quiet horizons · sample artwork",
+    "useSample": "Use the sample artwork",
+    "chooseImage": "Choose your image",
+    "preparing": "Preparing your image…",
+    "privacy": "Stays in this browser. Preview copy up to 2,048 px; original unchanged. Up to 40 MB.",
+    "canvasSize": "02  Canvas dimensions",
+    "standardSizes": "Shop sizes · landscape shown",
+    "customSize": "Custom dimensions",
+    "width": "Width (inches)",
+    "height": "Height (inches)",
+    "sizeLabel": "{width} × {height} inches",
+    "standardHint": "A standard shop size. Swap width and height for portrait.",
+    "customHint": "Custom-size illustration. Dimensions outside the shop sizes need an individual quote; availability is not confirmed here.",
+    "demo": "Try 72 × 48 inches · custom-size demonstration",
+    "finish": "03  Canvas finish",
+    "depth": "Unframed gallery canvas · {depth} in / {cm} cm deep",
+    "edge": "Canvas edge treatment",
+    "edges": {
+      "wrapped": "Image wrapped around the edges",
+      "white": "White edges",
+      "black": "Black edges"
+    },
+    "wrapHint": "The image continues around the 1.5-inch edges. That part of the image leaves the front face.",
+    "solidHint": "Solid sides preserve the front crop; no image is used for the edges.",
+    "cropTitle": "04  Adjust the crop",
+    "cropHint": "Fills the canvas without stretching. Move the crop where there is spare image; an axis may have no movement.",
+    "centreCrop": "Centre",
+    "horizontal": "Left / right",
+    "vertical": "Up / down",
+    "showMeasurements": "Show size references",
+    "sofaLabel": "Sofa width: {width} m",
+    "reset": "Reset view",
+    "resetHelp": "Restore 48 × 36 inches, wrapped edges and a centred crop. Keeps your chosen image.",
+    "download": "Download preview",
+    "downloadHint": "PNG · a room mockup, not a print file",
+    "downloadDisclaimer": "Scale relative to this sample room. Custom sizes require a quote.",
+    "disclaimer": "Scale is relative to this sample room, with a 2.4 m sofa. This is not a reconstruction of your home. Screen colours and crop are an illustration, not a print proof.",
+    "viewerLabel": "{size} canvas in a furnished sample living room",
+    "loading": "Preparing the room…",
+    "ready": "Preview ready",
+    "invalidSize": "Enter a positive width and height in inches.",
+    "wallLimit": "This size exceeds the sample wall area ({width} m wide × {height} m high above the sofa). The canvas is hidden; choose a smaller size to preview. This is a room limit, not a shop size limit.",
+    "fallback": "3D is unavailable. This flat room mockup keeps the same camera, scale and front crop. Edge depth and measurement lines are simplified.",
+    "retry": "Try 3D again",
+    "errors": {
+      "tooLarge": "Choose an image smaller than 40 MB for this prototype.",
+      "unsupportedType": "Choose a JPG, PNG, WebP, AVIF, GIF or HEIC/HEIF image.",
+      "conversionFailed": "This HEIC/HEIF image could not be converted. Try exporting it as a JPG.",
+      "decodeFailed": "This image could not be opened. Try another image or use the sample.",
+      "download": "The preview could not be downloaded. Please try again."
+    },
+    "savePng": "PNG ready · Save preview",
+    "mobileRoom": "Sample room · 2.4 m sofa · fixed camera"
   }
 }

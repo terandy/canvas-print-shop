@@ -136,7 +136,7 @@ export const orders = pgTable("orders", {
   stripePaymentIntentId: varchar("stripe_payment_intent_id", { length: 255 }),
 
   // Status tracking
-  status: varchar("status", { length: 50 }).default("pending"), // "pending", "paid", "processing", "shipped", "fulfilled", "cancelled", "refunded"
+  status: varchar("status", { length: 50 }).default("pending"), // "pending", "paid", "printed", "shipped", "fulfilled", "cancelled", "refunded"
   paymentStatus: varchar("payment_status", { length: 50 }).default("pending"), // "pending", "paid", "failed", "refunded"
 
   // Pricing (stored at time of order)
@@ -169,6 +169,18 @@ export const orders = pgTable("orders", {
   customerName: varchar("customer_name", { length: 255 }),
   customerPhone: varchar("customer_phone", { length: 50 }),
 
+  // Language the customer checked out in, so later emails (shipping, ready for
+  // pickup) reach them in the same language. Null on pre-existing orders.
+  locale: varchar("locale", { length: 5 }),
+
+  // Fulfilment method chosen at checkout: "delivery" or "pickup".
+  // Null on orders placed before pickup was offered.
+  fulfilmentMethod: varchar("fulfilment_method", { length: 20 }),
+  // Which counter the customer collects from, when fulfilmentMethod is
+  // "pickup": "quebec-city" or "montreal". Matches the location ids in
+  // `@/lib/business-data`.
+  pickupLocation: varchar("pickup_location", { length: 50 }),
+
   // Shipping tracking
   trackingNumber: varchar("tracking_number", { length: 255 }),
   trackingUrl: text("tracking_url"),
@@ -176,6 +188,7 @@ export const orders = pgTable("orders", {
 
   // Timestamps
   paidAt: timestamp("paid_at"),
+  printedAt: timestamp("printed_at"),
   shippedAt: timestamp("shipped_at"),
   fulfilledAt: timestamp("fulfilled_at"),
   cancelledAt: timestamp("cancelled_at"),

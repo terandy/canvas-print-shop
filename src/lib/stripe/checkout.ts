@@ -1,6 +1,112 @@
+import { getTranslations } from "next-intl/server";
+import type Stripe from "stripe";
 import { stripe } from "./index";
 import * as cartDb from "@/lib/db/queries/carts";
 import { BASE_URL } from "@/lib/constants";
+import { BUSINESS_DATA } from "@/lib/business-data";
+
+/** Stable keys stored on the order, and used as the Checkout metadata values
+ *  the webhook reads back. Not user-facing — the labels come from next-intl. */
+export const PICKUP_LOCATION_KEYS = {
+  quebecCityWorkshop: "quebec-city",
+  montrealBranch: "montreal",
+} as const;
+
+export type PickupLocationKey =
+  (typeof PICKUP_LOCATION_KEYS)[keyof typeof PICKUP_LOCATION_KEYS];
+
+export type FulfilmentChoice = {
+  fulfilmentMethod: "delivery" | "pickup";
+  pickupLocation: PickupLocationKey | null;
+};
+
+/**
+ * Zero-rated collection options, one per location flagged `localPickup`.
+ *
+ * Stripe Checkout has no first-class pickup mode, so collection is modelled as
+ * a $0 shipping rate. The rate carries metadata rather than relying on its
+ * display name, which is localised and would otherwise have to be parsed back.
+ */
+async function buildShippingOptions(
+  shippingCost: number,
+  locale: string
+): Promise<Stripe.Checkout.SessionCreateParams.ShippingOption[]> {
+  const t = await getTranslations({ locale, namespace: "Checkout.fulfilment" });
+
+  const delivery: Stripe.Checkout.SessionCreateParams.ShippingOption = {
+    shipping_rate_data: {
+      type: "fixed_amount",
+      fixed_amount: { amount: shippingCost, currency: "cad" },
+      display_name: t("delivery"),
+      delivery_estimate: {
+        minimum: { unit: "business_day", value: 3 },
+        maximum: { unit: "business_day", value: 7 },
+      },
+      metadata: { fulfilmentMethod: "delivery" },
+    },
+  };
+
+  const pickups = (
+    Object.entries(BUSINESS_DATA.locations) as [
+      keyof typeof PICKUP_LOCATION_KEYS,
+      (typeof BUSINESS_DATA.locations)[keyof typeof BUSINESS_DATA.locations],
+    ][]
+  )
+    .filter(([, location]) => location.localPickup === true)
+    .map(
+      ([key]): Stripe.Checkout.SessionCreateParams.ShippingOption => ({
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: { amount: 0, currency: "cad" },
+          display_name: t(`pickup.${PICKUP_LOCATION_KEYS[key]}`),
+          delivery_estimate: {
+            minimum: { unit: "business_day", value: 2 },
+            maximum: { unit: "business_day", value: 4 },
+          },
+          metadata: {
+            fulfilmentMethod: "pickup",
+            pickupLocation: PICKUP_LOCATION_KEYS[key],
+          },
+        },
+      })
+    );
+
+  // Delivery stays first so it remains the preselected default.
+  return [delivery, ...pickups];
+}
+
+/**
+ * Which option the customer actually chose. The webhook event carries only the
+ * shipping rate's id, so the session is re-read with that rate expanded.
+ * Falls back to delivery, which is what every pre-pickup order was.
+ */
+export async function resolveFulfilment(
+  sessionId: string
+): Promise<FulfilmentChoice> {
+  try {
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["shipping_cost.shipping_rate"],
+    });
+    const rate = session.shipping_cost?.shipping_rate;
+    const metadata =
+      rate && typeof rate !== "string" ? rate.metadata : undefined;
+
+    if (metadata?.fulfilmentMethod === "pickup") {
+      const location = metadata.pickupLocation;
+      const valid = Object.values(PICKUP_LOCATION_KEYS).includes(
+        location as PickupLocationKey
+      );
+      return {
+        fulfilmentMethod: "pickup",
+        pickupLocation: valid ? (location as PickupLocationKey) : null,
+      };
+    }
+  } catch (error) {
+    console.error("Could not resolve fulfilment method:", error);
+  }
+
+  return { fulfilmentMethod: "delivery", pickupLocation: null };
+}
 
 // Calculate shipping cost based on canvas dimensions
 function calculateShippingCost(
@@ -82,28 +188,7 @@ export async function createCheckoutSession(cartId: string, locale: string) {
     shipping_address_collection: {
       allowed_countries: ["CA", "US"],
     },
-    shipping_options: [
-      {
-        shipping_rate_data: {
-          type: "fixed_amount",
-          fixed_amount: {
-            amount: shippingCost,
-            currency: "cad",
-          },
-          display_name: "Shipping",
-          delivery_estimate: {
-            minimum: {
-              unit: "business_day",
-              value: 3,
-            },
-            maximum: {
-              unit: "business_day",
-              value: 7,
-            },
-          },
-        },
-      },
-    ],
+    shipping_options: await buildShippingOptions(shippingCost, locale),
     billing_address_collection: "required",
     phone_number_collection: {
       enabled: true,
@@ -128,7 +213,15 @@ export async function createCustomCheckoutSession(params: {
   customSize?: string;
   imageUrl?: string;
 }) {
-  const { description, priceCents, shippingCents, customerEmail, locale, customSize, imageUrl } = params;
+  const {
+    description,
+    priceCents,
+    shippingCents,
+    customerEmail,
+    locale,
+    customSize,
+    imageUrl,
+  } = params;
 
   const productDescription = customSize
     ? `Custom size: ${customSize}`
@@ -156,22 +249,7 @@ export async function createCustomCheckoutSession(params: {
     shipping_address_collection: {
       allowed_countries: ["CA", "US"],
     },
-    shipping_options: [
-      {
-        shipping_rate_data: {
-          type: "fixed_amount",
-          fixed_amount: {
-            amount: shippingCents,
-            currency: "cad",
-          },
-          display_name: "Shipping",
-          delivery_estimate: {
-            minimum: { unit: "business_day", value: 3 },
-            maximum: { unit: "business_day", value: 7 },
-          },
-        },
-      },
-    ],
+    shipping_options: await buildShippingOptions(shippingCents, locale),
     billing_address_collection: "required",
     phone_number_collection: { enabled: true },
     customer_email: customerEmail,

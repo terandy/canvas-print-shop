@@ -98,7 +98,8 @@ test("central business data separates the two verified physical entities", () =>
   assert.equal(montrealBranch.address.streetAddress, "1350 Rue Mazurette");
   assert.equal(montrealBranch.address.postalCode, "H4N 1H2");
   assert.equal(montrealBranch.productionLocation, null);
-  assert.equal(montrealBranch.localPickup, null);
+  // Confirmed as a collection point; printing is still Quebec City only.
+  assert.equal(montrealBranch.localPickup, true);
   assert.notEqual(quebecCityWorkshop.id, montrealBranch.id);
   assert.deepEqual(
     BUSINESS_DATA.deliveryCoverage.regions.map(({ code }) => code),
@@ -118,7 +119,11 @@ test("Montreal address lines are exact and localized without inventing fields", 
     "Montréal (Québec) H4N 1H2",
     "Canada",
   ]);
-  for (const field of ["email", "telephone", "mapUrl", "openingHours"]) {
+  // The shared inbox is confirmed for this address. Telephone, map link and
+  // opening hours are still unverified and must not be inherited from the
+  // Quebec City workshop.
+  assert.equal(location.email, "info@canvasprintshop.ca");
+  for (const field of ["telephone", "mapUrl", "openingHours"]) {
     assert.equal(field in location, false);
   }
 });
@@ -140,8 +145,8 @@ test("business JSON-LD has one organization and two distinct locations", () => {
     "1350 Rue Mazurette"
   );
   assert.deepEqual((montreal.address as JsonObject).postalCode, "H4N 1H2");
+  assert.equal(montreal.email, "info@canvasprintshop.ca");
   for (const field of [
-    "email",
     "telephone",
     "hasMap",
     "geo",

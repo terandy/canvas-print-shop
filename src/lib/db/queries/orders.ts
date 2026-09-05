@@ -71,6 +71,9 @@ export async function createOrderFromCheckout(
       customerEmail: data.customerEmail,
       customerName: data.customerName,
       customerPhone: data.customerPhone,
+      locale: data.locale ?? "en",
+      fulfilmentMethod: data.fulfilmentMethod ?? "delivery",
+      pickupLocation: data.pickupLocation ?? null,
       paidAt: new Date(),
     })
     .returning();
@@ -139,6 +142,9 @@ export async function createOrderFromCustomCheckout(
       customerEmail: data.customerEmail,
       customerName: data.customerName,
       customerPhone: data.customerPhone,
+      locale: data.locale ?? "en",
+      fulfilmentMethod: data.fulfilmentMethod ?? "delivery",
+      pickupLocation: data.pickupLocation ?? null,
       notes: `Custom order: ${data.description}${data.customSize ? ` (${data.customSize})` : ""}`,
       paidAt: new Date(),
     })
@@ -207,11 +213,16 @@ export async function getOrder(orderId: string): Promise<Order | undefined> {
     customerEmail: order.customerEmail,
     customerName: order.customerName,
     customerPhone: order.customerPhone,
+    locale: order.locale,
+    fulfilmentMethod:
+      (order.fulfilmentMethod as "delivery" | "pickup" | null) ?? null,
+    pickupLocation: order.pickupLocation,
     trackingNumber: order.trackingNumber,
     trackingUrl: order.trackingUrl,
     notes: order.notes,
     items: formattedItems,
     paidAt: order.paidAt,
+    printedAt: order.printedAt,
     shippedAt: order.shippedAt,
     fulfilledAt: order.fulfilledAt,
     cancelledAt: order.cancelledAt,
@@ -290,7 +301,9 @@ export async function updateOrderStatus(
   };
 
   // Set timestamp based on status
-  if (status === "shipped") {
+  if (status === "printed") {
+    updates.printedAt = new Date();
+  } else if (status === "shipped") {
     updates.shippedAt = new Date();
   } else if (status === "fulfilled") {
     updates.fulfilledAt = new Date();

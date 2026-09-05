@@ -8,6 +8,20 @@
       "when": 1770589123899,
       "tag": "0000_eminent_major_mapleleaf",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788569408772,
+      "tag": "0001_many_centennial",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788571921966,
+      "tag": "0002_flaky_black_widow",
+      "breakpoints": true
     }
   ]
 }

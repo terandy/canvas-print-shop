@@ -4,7 +4,8 @@ import type { CartItemAttributes } from "./cart";
 export type OrderStatus =
   | "pending"
   | "paid"
-  | "processing"
+  | "printed"
+  | "ready_for_pickup"
   | "shipped"
   | "fulfilled"
   | "cancelled"
@@ -56,6 +57,11 @@ export interface Order {
   shipping: Money;
   total: Money;
 
+  // Fulfilment
+  locale: string | null;
+  fulfilmentMethod: "delivery" | "pickup" | null;
+  pickupLocation: string | null;
+
   // Addresses
   shippingAddress: Address | null;
   billingAddress: Address | null;
@@ -75,6 +81,7 @@ export interface Order {
 
   // Timestamps
   paidAt: Date | null;
+  printedAt: Date | null;
   shippedAt: Date | null;
   fulfilledAt: Date | null;
   cancelledAt: Date | null;
@@ -96,6 +103,9 @@ export interface CreateOrderFromCheckout {
   taxCents: number;
   shippingCents: number;
   totalCents: number;
+  locale?: string;
+  fulfilmentMethod?: "delivery" | "pickup";
+  pickupLocation?: string | null;
 }
 
 // For creating orders from custom checkout (no cart)
@@ -114,4 +124,7 @@ export interface CreateOrderFromCustomCheckout {
   description: string;
   customSize?: string;
   imageUrl?: string;
+  locale?: string;
+  fulfilmentMethod?: "delivery" | "pickup";
+  pickupLocation?: string | null;
 }

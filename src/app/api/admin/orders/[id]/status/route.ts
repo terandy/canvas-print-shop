@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/auth/session";
 import { getOrder, updateOrderStatus } from "@/lib/db/queries/orders";
-import { sendShippingUpdate } from "@/lib/email/send";
+import { sendShippingUpdate, sendPickupReady } from "@/lib/email/send";
+import { isOrderStatus } from "@/lib/orders/status";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -26,6 +27,14 @@ export async function PATCH(request: NextRequest, { params }: Props) {
       );
     }
 
+    // Same guard as the server action: the column is a free-form varchar.
+    if (!isOrderStatus(status)) {
+      return NextResponse.json(
+        { error: "Unknown order status" },
+        { status: 400 }
+      );
+    }
+
     // Get current order
     const order = await getOrder(id);
     if (!order) {
@@ -35,15 +44,26 @@ export async function PATCH(request: NextRequest, { params }: Props) {
     // Update order status
     await updateOrderStatus(id, status);
 
+    // Emails are sent in the language the customer checked out in.
+    const locale = order.locale === "fr" ? "fr" : "en";
+
     // If status is "shipped" and we have a tracking number, send shipping email
     if (status === "shipped" && trackingNumber) {
       try {
-        // Determine locale from order metadata or default to 'en'
-        const locale = "en"; // Could be stored on order if needed
         await sendShippingUpdate(order, trackingNumber, undefined, locale);
       } catch (emailError) {
         console.error("Failed to send shipping update email:", emailError);
         // Don't fail the request if email fails
+      }
+    }
+
+    // A pickup order never gets a tracking number, so this is the only message
+    // telling the customer their canvas is waiting for them.
+    if (status === "ready_for_pickup") {
+      try {
+        await sendPickupReady(order, locale);
+      } catch (emailError) {
+        console.error("Failed to send pickup ready email:", emailError);
       }
     }
 

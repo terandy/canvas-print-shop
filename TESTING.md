@@ -224,9 +224,6 @@ npm run verify:order
 # Test tracking email
 npm run test:tracking <order_number>
 
-# Import Shopify orders
-npm run import:orders
-
 # Start webhook listener
 stripe listen --forward-to localhost:3000/api/stripe/webhooks
 

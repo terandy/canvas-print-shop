@@ -2,27 +2,10 @@ import Link from "next/link";
 import { getOrders } from "@/lib/db/queries/orders";
 import { getTranslations } from "next-intl/server";
 import { Eye } from "lucide-react";
+import { ORDER_STATUSES, statusColor } from "@/lib/orders/status";
+import OrderBreakdown from "@/components/admin/order-breakdown";
 
-const STATUS_COLORS: Record<string, string> = {
-  pending: "bg-yellow-100 text-yellow-800",
-  paid: "bg-blue-100 text-blue-800",
-  processing: "bg-blue-100 text-blue-800",
-  shipped: "bg-purple-100 text-purple-800",
-  fulfilled: "bg-green-100 text-green-800",
-  cancelled: "bg-red-100 text-red-800",
-  refunded: "bg-gray-100 text-gray-800",
-};
-
-const STATUS_VALUES = [
-  "",
-  "pending",
-  "paid",
-  "processing",
-  "shipped",
-  "fulfilled",
-  "cancelled",
-  "refunded",
-] as const;
+const STATUS_VALUES = ["", ...ORDER_STATUSES] as const;
 
 interface Props {
   searchParams: Promise<{
@@ -47,7 +30,9 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">{t("orders.title")}</h1>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {t("orders.title")}
+        </h1>
       </div>
 
       {/* Filters */}
@@ -85,6 +70,9 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                   {t("orders.items")}
                 </th>
                 <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {t("orders.breakdown")}
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("orders.status")}
                 </th>
                 <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -102,7 +90,7 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
               {orders.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={7}
+                    colSpan={8}
                     className="px-4 py-6 text-center text-gray-500"
                   >
                     {t("orders.noOrders")}
@@ -132,12 +120,14 @@ export default async function AdminOrdersPage({ searchParams }: Props) {
                         ? t("orders.itemPlural")
                         : t("orders.itemSingular")}
                     </td>
+                    <td className="px-4 py-2 align-top">
+                      <OrderBreakdown order={order} />
+                    </td>
                     <td className="px-4 py-2 whitespace-nowrap">
                       <span
-                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          STATUS_COLORS[order.status] ||
-                          "bg-gray-100 text-gray-800"
-                        }`}
+                        className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusColor(
+                          order.status
+                        )}`}
                       >
                         {t(`status.${order.status}`)}
                       </span>

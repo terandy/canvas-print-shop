@@ -1,0 +1,33 @@
+{
+  "units": "metres",
+  "sofaWidth": 2.4,
+  "sofaTop": 0.88,
+  "wallWidth": 6.4,
+  "wallHeight": 4.4,
+  "usableWidth": 3.8,
+  "usableBottom": 1.1,
+  "usableTop": 2.95,
+  "canvasCentreHeight": 1.72,
+  "galleryDepthInches": 1.5,
+  "camera": {
+    "position": [
+      2.5,
+      3.1,
+      8
+    ],
+    "target": [
+      0,
+      1.45,
+      0.4
+    ],
+    "width": 5.8
+  },
+  "demoInches": [
+    72,
+    48
+  ],
+  "demoMetres": [
+    1.8288,
+    1.2192
+  ]
+}

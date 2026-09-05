@@ -11,10 +11,12 @@
     "format:check": "prettier --check .",
     "tsc": "tsc",
     "test:seo": "tsx --test tests/seo-consistency.test.ts",
-    "import:orders": "tsx scripts/import-shopify-orders.ts",
     "verify:order": "tsx scripts/verify-latest-order.ts",
     "test:tracking": "tsx scripts/test-tracking-email.ts",
-    "debug:checkout": "tsx scripts/debug-checkout.ts"
+    "debug:checkout": "tsx scripts/debug-checkout.ts",
+    "test:room": "node --import tsx --test tests/room-visualiser.test.ts",
+    "test:orders": "node --import tsx --test tests/orders-fulfilment.test.ts",
+    "test": "node --import tsx --test tests/*.test.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.732.0",
@@ -38,6 +40,7 @@
     "resend": "^6.6.0",
     "stream-browserify": "^3.0.0",
     "stripe": "^20.1.0",
+    "three": "^0.185.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -48,6 +51,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.185.4",
     "@types/uuid": "^10.0.0",
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.8",

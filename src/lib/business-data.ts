@@ -175,7 +175,12 @@ const montrealBranch: PhysicalLocation = {
     addressCountry: "CA",
   },
   productionLocation: null,
-  localPickup: null,
+  // Confirmed as a collection point; printing still happens in Quebec City.
+  localPickup: true,
+  email: "info@canvasprintshop.ca",
+  // No telephone, opening hours or map link are published for this address
+  // until they are confirmed. Structured data omits what is not known rather
+  // than inheriting the Quebec City workshop's details.
 };
 
 /**

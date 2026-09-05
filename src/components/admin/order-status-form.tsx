@@ -6,16 +6,7 @@ import {
   updateOrderStatusAction,
   type OrderStatusState,
 } from "@/lib/auth/actions";
-
-const STATUS_VALUES = [
-  "pending",
-  "paid",
-  "processing",
-  "shipped",
-  "fulfilled",
-  "cancelled",
-  "refunded",
-] as const;
+import { ORDER_STATUSES } from "@/lib/orders/status";
 
 const INITIAL_STATE: OrderStatusState = {};
 
@@ -65,7 +56,7 @@ export default function OrderStatusForm({
           onChange={(e) => setSelectedStatus(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
         >
-          {STATUS_VALUES.map((s) => (
+          {ORDER_STATUSES.map((s) => (
             <option key={s} value={s}>
               {t(`status.${s}`)}
             </option>

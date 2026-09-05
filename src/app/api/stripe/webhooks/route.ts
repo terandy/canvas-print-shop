@@ -9,6 +9,7 @@ import {
   sendAdminOrderNotification,
 } from "@/lib/email/send";
 import type Stripe from "stripe";
+import { resolveFulfilment } from "@/lib/stripe/checkout";
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
@@ -133,6 +134,13 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       ? session.payment_intent
       : session.payment_intent?.id || "";
 
+  // Which shipping option the customer picked — delivery, or collection from
+  // one of the counters. Never fails the order: falls back to delivery.
+  const fulfilment = await resolveFulfilment(session.id);
+
+  // The language the customer checked out in, kept so later emails match it.
+  const orderLocale = session.metadata?.locale === "fr" ? "fr" : "en";
+
   try {
     let order;
 
@@ -153,6 +161,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         description: session.metadata?.description || "Custom Order",
         customSize: session.metadata?.customSize || undefined,
         imageUrl: session.metadata?.imageUrl || undefined,
+        ...fulfilment,
+        locale: orderLocale,
       });
     } else {
       // Standard cart-based order
@@ -169,6 +179,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
         taxCents,
         shippingCents,
         totalCents,
+        ...fulfilment,
+        locale: orderLocale,
       });
     }
 

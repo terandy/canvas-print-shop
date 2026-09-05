@@ -1,0 +1,272 @@
+{
+  "checkedAt": "2026-09-04T21:30:52.207Z",
+  "options": [
+    {
+      "handle": "canvas",
+      "description_en": "Transform your image into canvas art in just a few clicks. Simply upload your photo, choose your preferred size, and customize your canvas edges. Optionally, add our custom framing to your order. For custom sizes, please email info@canvasprintshop.ca and we will send you a personalized quote. *All prices include tax.",
+      "name": "size",
+      "values": [
+        "8x10",
+        "8x12",
+        "11x14",
+        "10x15",
+        "12x12",
+        "12x18",
+        "16x20",
+        "16x24",
+        "20x20",
+        "20x30",
+        "24x24",
+        "24x36",
+        "30x40",
+        "30x45",
+        "36x48",
+        "40x60"
+      ]
+    },
+    {
+      "handle": "canvas",
+      "description_en": "Transform your image into canvas art in just a few clicks. Simply upload your photo, choose your preferred size, and customize your canvas edges. Optionally, add our custom framing to your order. For custom sizes, please email info@canvasprintshop.ca and we will send you a personalized quote. *All prices include tax.",
+      "name": "frame",
+      "values": [
+        "none",
+        "black"
+      ]
+    },
+    {
+      "handle": "canvas",
+      "description_en": "Transform your image into canvas art in just a few clicks. Simply upload your photo, choose your preferred size, and customize your canvas edges. Optionally, add our custom framing to your order. For custom sizes, please email info@canvasprintshop.ca and we will send you a personalized quote. *All prices include tax.",
+      "name": "depth",
+      "values": [
+        "regular",
+        "gallery"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "options": {
+        "size": "30x45",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "12x12",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "40x60",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "24x36",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "20x20",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "8x12",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "8x12",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "20x30",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "16x20",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "8x10",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "10x15",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "12x12",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "20x30",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "10x15",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "30x40",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "24x24",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "12x18",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "20x20",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "30x40",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "24x36",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "30x45",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "36x48",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "11x14",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "11x14",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "16x20",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "24x24",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "16x24",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "12x18",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    },
+    {
+      "options": {
+        "size": "8x10",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "16x24",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "40x60",
+        "depth": "regular",
+        "frame": "black"
+      }
+    },
+    {
+      "options": {
+        "size": "36x48",
+        "depth": "gallery",
+        "frame": "none"
+      }
+    }
+  ]
+}

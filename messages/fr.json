@@ -325,7 +325,16 @@
       "label": "Heures d'ouverture"
     },
     "needHelp": "Besoin d'aide ?",
-    "customerServiceMessage": "Notre service à la clientèle est là pour répondre à toutes vos questions :"
+    "customerServiceMessage": "Notre service à la clientèle est là pour répondre à toutes vos questions :",
+    "locations": {
+      "heading": "Où nous trouver",
+      "quebecCityName": "Atelier de Québec",
+      "quebecCityNote": "Impression, montage sur châssis et finition. Cueillette gratuite offerte.",
+      "montrealName": "Montréal",
+      "montrealNote": "Cueillette gratuite offerte. Commandez en ligne et attendez le courriel de confirmation avant de vous présenter.",
+      "pickupBadge": "Cueillette gratuite",
+      "hoursUnavailable": "Contactez-nous pour convenir d’une heure de cueillette."
+    }
   },
   "Product": {
     "metadata": {
@@ -674,6 +683,13 @@
       "message": "Votre paiement a été annulé. Les articles de votre panier sont toujours sauvegardés si vous souhaitez compléter votre achat.",
       "returnToCart": "Retourner au panier",
       "continueShopping": "Continuer vos achats"
+    },
+    "fulfilment": {
+      "delivery": "Livraison",
+      "pickup": {
+        "quebec-city": "Cueillette gratuite — Québec",
+        "montreal": "Cueillette gratuite — Montréal"
+      }
     }
   },
   "Admin": {
@@ -776,7 +792,13 @@
       "viewFullImage": "Voir l'image complète",
       "previous": "Précédent",
       "next": "Suivant",
-      "pageNumber": "Page {page}"
+      "pageNumber": "Page {page}",
+      "breakdown": "Détail",
+      "pickupLabel": "Cueillette",
+      "pickupQuebecCity": "Québec — gratuite",
+      "pickupMontreal": "Montréal — gratuite",
+      "showDetails": "Afficher les détails",
+      "hideDetails": "Masquer les détails"
     },
     "products": {
       "title": "Produits",
@@ -977,11 +999,12 @@
     "status": {
       "pending": "En attente",
       "paid": "Payée",
-      "processing": "En traitement",
       "shipped": "Expédiée",
       "fulfilled": "Complétée",
       "cancelled": "Annulée",
-      "refunded": "Remboursée"
+      "refunded": "Remboursée",
+      "printed": "Imprimée",
+      "ready_for_pickup": "Prête pour cueillette"
     }
   },
   "Email": {
@@ -1020,6 +1043,17 @@
       "buttonText": "Réinitialiser le mot de passe",
       "expiry": "Ce lien expirera dans 1 heure.",
       "ignore": "Si vous n'avez pas demandé de réinitialisation, vous pouvez ignorer ce courriel."
+    },
+    "pickupReady": {
+      "subject": "Votre commande #{orderNumber} est prête pour la cueillette",
+      "title": "Votre toile est prête à être récupérée",
+      "greeting": "Bonjour {name}",
+      "greetingDefault": "Bonjour",
+      "message": "Votre commande #{orderNumber} est imprimée, montée sur châssis et prête à être récupérée.",
+      "whereTitle": "Où la récupérer",
+      "bring": "Veuillez apporter votre numéro de commande (#{orderNumber}).",
+      "hours": "Écrivez-nous à {email} pour convenir d’une heure de cueillette avant de vous déplacer.",
+      "thankYou": "Merci d’avoir choisi Canvas Print Shop!"
     }
   },
   "QualityGuarantee": {
@@ -3642,5 +3676,69 @@
   "Nav": {
     "shop": "Boutique",
     "guides": "Guides"
+  },
+  "RoomVisualiser": {
+    "eyebrow": "Aperçu studio · prototype",
+    "title": "Votre image. En perspective.",
+    "subtitle": "Trouvez la bonne taille de toile dans un salon témoin soigneusement aménagé. Essayez votre photo et comparez les dimensions instantanément.",
+    "preview": "Aperçu de la pièce",
+    "controls": "Réglages de la toile",
+    "roomName": "Le salon chaleureux et minimaliste",
+    "fixedCamera": "Caméra fixe · proportions réelles",
+    "yourImage": "01  Votre image",
+    "sourceImage": "Image originale avant le recadrage de la toile",
+    "sampleName": "Horizons paisibles · image de démonstration",
+    "useSample": "Utiliser l’image de démonstration",
+    "chooseImage": "Choisir votre image",
+    "preparing": "Préparation de votre image…",
+    "privacy": "L’image reste dans ce navigateur. Copie d’aperçu de 2 048 px maximum; original inchangé. Jusqu’à 40 Mo.",
+    "canvasSize": "02  Dimensions de la toile",
+    "standardSizes": "Formats de la boutique · paysage",
+    "customSize": "Dimensions sur mesure",
+    "width": "Largeur (pouces)",
+    "height": "Hauteur (pouces)",
+    "sizeLabel": "{width} × {height} pouces",
+    "standardHint": "Un format standard de la boutique. Inversez largeur et hauteur pour le mode portrait.",
+    "customHint": "Illustration sur mesure. Les dimensions hors formats standard nécessitent une soumission individuelle; leur disponibilité n’est pas confirmée ici.",
+    "demo": "Essayer 72 × 48 pouces · démonstration sur mesure",
+    "finish": "03  Finition de la toile",
+    "depth": "Toile galerie sans cadre · profondeur de {depth} po / {cm} cm",
+    "edge": "Finition des côtés de la toile",
+    "edges": {
+      "wrapped": "Image repliée sur les côtés",
+      "white": "Côtés blancs",
+      "black": "Côtés noirs"
+    },
+    "wrapHint": "L’image se poursuit sur les côtés de 1,5 pouce. Cette partie de l’image n’apparaît plus sur la face avant.",
+    "solidHint": "Les côtés unis préservent le recadrage avant; ils n’utilisent aucune partie de l’image.",
+    "cropTitle": "04  Ajuster le recadrage",
+    "cropHint": "Remplit la toile sans étirer l’image. Déplacez le recadrage là où l’image dépasse; un axe peut rester immobile.",
+    "centreCrop": "Centrer",
+    "horizontal": "Gauche / droite",
+    "vertical": "Haut / bas",
+    "showMeasurements": "Afficher les repères de taille",
+    "sofaLabel": "Largeur du canapé : {width} m",
+    "reset": "Réinitialiser la vue",
+    "resetHelp": "Rétablir 48 × 36 pouces, les côtés imprimés et un recadrage centré. Conserve votre image.",
+    "download": "Télécharger l’aperçu",
+    "downloadHint": "PNG · une simulation, pas un fichier d’impression",
+    "downloadDisclaimer": "Échelle relative à cette pièce témoin. Soumission requise pour les formats sur mesure.",
+    "disclaimer": "L’échelle est relative à cette pièce témoin, avec un canapé de 2,4 m. Il ne s’agit pas d’une reproduction de votre maison. Les couleurs à l’écran et le recadrage sont indicatifs et ne constituent pas une épreuve d’impression.",
+    "viewerLabel": "Toile de {size} dans un salon témoin meublé",
+    "loading": "Préparation de la pièce…",
+    "ready": "Aperçu prêt",
+    "invalidSize": "Saisissez une largeur et une hauteur positives en pouces.",
+    "wallLimit": "Ce format dépasse l’espace disponible au-dessus du canapé ({width} m de large × {height} m de haut). La toile est masquée; réduisez ses dimensions pour l’afficher. Cette limite concerne la pièce, pas la boutique.",
+    "fallback": "La 3D est indisponible. Cette simulation plane conserve la même caméra, l’échelle et le recadrage avant. L’épaisseur et les lignes de mesure sont simplifiées.",
+    "retry": "Réessayer la 3D",
+    "errors": {
+      "tooLarge": "Choisissez une image de moins de 40 Mo pour ce prototype.",
+      "unsupportedType": "Choisissez une image JPG, PNG, WebP, AVIF, GIF ou HEIC/HEIF.",
+      "conversionFailed": "Impossible de convertir cette image HEIC/HEIF. Essayez de l’exporter en JPG.",
+      "decodeFailed": "Impossible d’ouvrir cette image. Essayez une autre image ou celle de démonstration.",
+      "download": "Impossible de télécharger l’aperçu. Veuillez réessayer."
+    },
+    "savePng": "PNG prêt · Enregistrer l’aperçu",
+    "mobileRoom": "Pièce témoin · canapé de 2,4 m · caméra fixe"
   }
 }

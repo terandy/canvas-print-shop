@@ -7,15 +7,24 @@ import {
   getAdminByEmail,
   updateAdminPassword,
 } from "@/lib/db/queries/admin-users";
-import { getOrder, updateOrderStatus, addTrackingInfo } from "@/lib/db/queries/orders";
+import {
+  getOrder,
+  updateOrderStatus,
+  addTrackingInfo,
+} from "@/lib/db/queries/orders";
 import {
   createPasswordResetToken,
   verifyPasswordResetToken,
   markTokenUsed,
 } from "@/lib/db/queries/password-reset";
-import { sendShippingUpdate, sendPasswordResetEmail } from "@/lib/email/send";
+import {
+  sendShippingUpdate,
+  sendPickupReady,
+  sendPasswordResetEmail,
+} from "@/lib/email/send";
 import { generateToken } from "./index";
 import { setAdminSession, clearAdminSession, getAdminSession } from "./session";
+import { isOrderStatus } from "@/lib/orders/status";
 
 export interface LoginState {
   error?: string;
@@ -161,6 +170,12 @@ export async function updateOrderStatusAction(
     return { error: "Order ID and status are required" };
   }
 
+  // The column is an unconstrained varchar, so an unrecognised value would be
+  // written happily and then render as a blank badge everywhere.
+  if (!isOrderStatus(status)) {
+    return { error: "Unknown order status" };
+  }
+
   try {
     const order = await getOrder(orderId);
     if (!order) {
@@ -171,16 +186,33 @@ export async function updateOrderStatusAction(
     if (status === "shipped" && trackingNumber) {
       await addTrackingInfo(orderId, trackingNumber, trackingUrl || undefined);
     } else {
-      await updateOrderStatus(orderId, status as any);
+      await updateOrderStatus(orderId, status);
     }
+
+    // Emails are sent in the language the customer checked out in.
+    const locale = order.locale === "fr" ? "fr" : "en";
 
     // If status is "shipped" and we have a tracking number, send shipping email
     if (status === "shipped" && trackingNumber) {
       try {
-        const locale = "en";
-        await sendShippingUpdate(order, trackingNumber, trackingUrl || undefined, locale);
+        await sendShippingUpdate(
+          order,
+          trackingNumber,
+          trackingUrl || undefined,
+          locale
+        );
       } catch {
         // Don't fail the request if email fails
+      }
+    }
+
+    // A pickup order never gets a tracking number, so this is the only message
+    // telling the customer their canvas is waiting for them.
+    if (status === "ready_for_pickup") {
+      try {
+        await sendPickupReady(order, locale);
+      } catch {
+        // Don't fail the status update if email fails
       }
     }
 
