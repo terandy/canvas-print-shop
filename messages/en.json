@@ -586,7 +586,15 @@
     "guarantee": {
       "title": "30-Year Print Quality Guarantee",
       "description": "We stand behind our premium UVgel printing technology with an industry-leading guarantee."
-    }
+    },
+    "margin": {
+      "title": "Stretching margin",
+      "select": "Choose a margin",
+      "with": "Add 2 in blank margin (for stretching)",
+      "without": "No margin — print to the edge",
+      "help": "Same price either way. Choose the 2-inch margin if you plan to stretch the canvas over your own bars; choose no margin for framing or flat mounting."
+    },
+    "customSizeNote": "Need a size that is not listed? Email us at {email} and we will quote it — there is no fixed maximum."
   },
   "ImageUploader": {
     "dropzone": {

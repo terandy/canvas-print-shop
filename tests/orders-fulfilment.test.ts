@@ -11,6 +11,11 @@ import {
   statusColor,
 } from "../src/lib/orders/status";
 import { BUSINESS_DATA } from "../src/lib/business-data";
+import {
+  PRICES as ROLL_PRICES,
+  SIZES,
+  MARGINS,
+} from "../scripts/seed-rolled-canvas";
 
 const root = process.cwd();
 const en = JSON.parse(
@@ -207,4 +212,68 @@ test("every pickup counter publishes hours the shipping page can render", () => 
   }
   const montreal = pickup.find((l) => l.name.includes("Montreal"))!;
   assert.equal(montreal.openingHours!.closes, "16:00");
+});
+
+test("rolled canvas is offered in the same sizes as stretched, and always cheaper", () => {
+  // The stretched regular-depth unframed price for each size, as sold. Rolled
+  // has to undercut this clearly or the product has no reason to exist.
+  const stretched: Record<string, number> = {
+    "8x10": 5000,
+    "8x12": 5500,
+    "12x12": 6000,
+    "10x15": 6500,
+    "11x14": 6500,
+    "12x18": 7000,
+    "16x20": 8500,
+    "16x24": 9000,
+    "20x20": 10000,
+    "24x24": 11500,
+    "20x30": 12000,
+    "24x36": 15000,
+    "30x40": 18000,
+    "30x45": 20000,
+    "36x48": 24500,
+    "40x60": 35000,
+  };
+
+  assert.deepEqual(
+    [...SIZES].sort(),
+    Object.keys(stretched).sort(),
+    "rolled and stretched must offer the same size list"
+  );
+
+  for (const size of SIZES) {
+    const rolled = ROLL_PRICES[size];
+    assert.ok(rolled < stretched[size], `${size}: rolled must be cheaper`);
+    const ratio = rolled / stretched[size];
+    assert.ok(
+      ratio >= 0.45 && ratio <= 0.65,
+      `${size}: rolled is ${Math.round(ratio * 100)}% of stretched, outside the intended 50-60% band`
+    );
+  }
+});
+
+test("rolled prices never go down as the canvas gets bigger", () => {
+  const area = (s: string) => s.split("x").reduce((a, b) => a * Number(b), 1);
+  const ordered = [...SIZES].sort((a, b) => area(a) - area(b));
+  for (let i = 1; i < ordered.length; i++) {
+    assert.ok(
+      ROLL_PRICES[ordered[i]] >= ROLL_PRICES[ordered[i - 1]],
+      `${ordered[i]} costs less than the smaller ${ordered[i - 1]}`
+    );
+  }
+});
+
+test("the margin choice is free and both options are labelled", () => {
+  assert.deepEqual([...MARGINS].sort(), ["with", "without"]);
+  for (const messages of [en, fr]) {
+    for (const key of ["title", "select", "with", "without", "help"]) {
+      assert.equal(
+        typeof messages.Product.margin[key],
+        "string",
+        `Product.margin.${key} is missing`
+      );
+    }
+    assert.ok(messages.Product.customSizeNote.includes("{email}"));
+  }
 });

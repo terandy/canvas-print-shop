@@ -22,7 +22,15 @@ export interface CanvasFormState extends BaseFormState {
   frame: "none" | "black";
 }
 
-export interface CanvasRollFormState extends BaseFormState {}
+/**
+ * A rolled print has no frame and is never stretched, so it carries neither a
+ * frame nor a depth. It does carry a margin: whether to leave 2in of blank
+ * canvas around the image for the customer to stretch it themselves later.
+ */
+export interface CanvasRollFormState extends Omit<BaseFormState, "depth"> {
+  borderStyle: "none";
+  margin: "with" | "without";
+}
 
 export type TProductContext = {
   cartItemID: string | null;

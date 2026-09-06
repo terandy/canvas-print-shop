@@ -586,7 +586,15 @@
     "guarantee": {
       "title": "Garantie de qualité d'impression de 30 ans",
       "description": "Notre technologie d'impression UVgel haut de gamme est couverte par une garantie de qualité d'impression de 30 ans."
-    }
+    },
+    "margin": {
+      "title": "Marge de tension",
+      "select": "Choisissez une marge",
+      "with": "Ajouter une marge vierge de 2 po (pour la tension)",
+      "without": "Aucune marge — impression jusqu'au bord",
+      "help": "Le prix est le même dans les deux cas. Choisissez la marge de 2 pouces si vous comptez tendre la toile sur vos propres châssis; choisissez sans marge pour un encadrement ou un montage à plat."
+    },
+    "customSizeNote": "Besoin d'un format qui n'est pas offert? Écrivez-nous à {email} et nous vous ferons une soumission — il n'y a aucun maximum."
   },
   "ImageUploader": {
     "dropzone": {
