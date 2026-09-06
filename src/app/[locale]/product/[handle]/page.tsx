@@ -15,6 +15,7 @@ import { getDeliveryEstimate } from "@/lib/delivery";
 import { BASE_URL } from "@/lib/constants";
 import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 import { BUSINESS_DATA, SHOP_REVIEWS } from "@/lib/business-data";
+import { getProductPageContent } from "@/lib/product-page-content";
 import {
   buildProductStructuredData,
   serializeJsonLd,
@@ -95,41 +96,6 @@ const trustedBy = [
   },
   { src: "/inkpicx-logo.avif", alt: "Créations Inkpicx logo" },
 ];
-
-const canvasFeatureCardConfig = [
-  { key: "premiumCanvas", icon: "01" },
-  { key: "archivalPrinting", icon: "02" },
-  { key: "handStretched", icon: "03" },
-  { key: "readyToHang", icon: "04" },
-] as const;
-
-const canvasComparisonRowKeys = [
-  "material",
-  "opacity",
-  "technology",
-  "frames",
-  "origin",
-  "guarantee",
-] as const;
-
-const canvasKeyDetailKeys = [
-  "productionTime",
-  "delivery",
-  "builtToLast",
-  "satisfaction",
-  "localPickup",
-  "shippingCost",
-] as const;
-
-const canvasFaqQuestionKeys = [
-  "imageQuality",
-  "depthDifference",
-  "localPickupAvailable",
-  "satisfaction",
-  "durability",
-  "deliveryTime",
-  "multipleCanvases",
-] as const;
 
 /**
  * Average rating helper
@@ -226,74 +192,82 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   }).format(averageRating);
-  const isCanvasProduct = params.handle === "canvas";
-  const canvasProductDescription = t("canvasPage.productDescription");
-  const structuredProduct = isCanvasProduct
+  // Products with an entry here get the full marketing layout; anything else
+  // falls back to the plain one.
+  const pageContent = getProductPageContent(params.handle);
+  const isCanvasProduct = pageContent !== null;
+  const ns = pageContent?.namespace ?? "canvasPage";
+  const canvasProductDescription = pageContent
+    ? t(`${ns}.productDescription`)
+    : product.description;
+  const structuredProduct = pageContent
     ? { ...product, description: canvasProductDescription }
     : product;
   const qualitySectionCopy = {
-    title: t("canvasPage.qualitySection.title"),
-    description: t("canvasPage.qualitySection.description"),
+    title: t(`${ns}.qualitySection.title`),
+    description: t(`${ns}.qualitySection.description`),
   };
-  const featureCards = canvasFeatureCardConfig.map(({ key, icon }) => ({
-    icon,
-    title: t(`canvasPage.qualitySection.cards.${key}.title`),
-    description: t(`canvasPage.qualitySection.cards.${key}.description`),
-  }));
+  const featureCards = (pageContent?.featureCards ?? []).map(
+    ({ key, icon }) => ({
+      icon,
+      title: t(`${ns}.qualitySection.cards.${key}.title`),
+      description: t(`${ns}.qualitySection.cards.${key}.description`),
+    })
+  );
   const comparisonSectionCopy = {
-    title: t("canvasPage.comparisonSection.title"),
-    description: t("canvasPage.comparisonSection.description"),
+    title: t(`${ns}.comparisonSection.title`),
+    description: t(`${ns}.comparisonSection.description`),
     labels: {
-      feature: t("canvasPage.comparisonSection.labels.feature"),
-      ours: t("canvasPage.comparisonSection.labels.ours"),
-      badge: t("canvasPage.comparisonSection.labels.badge"),
-      theirs: t("canvasPage.comparisonSection.labels.theirs"),
+      feature: t(`${ns}.comparisonSection.labels.feature`),
+      ours: t(`${ns}.comparisonSection.labels.ours`),
+      badge: t(`${ns}.comparisonSection.labels.badge`),
+      theirs: t(`${ns}.comparisonSection.labels.theirs`),
     },
-    footer: t("canvasPage.comparisonSection.footer"),
+    footer: t(`${ns}.comparisonSection.footer`),
   };
-  const comparisonRows = canvasComparisonRowKeys.map((key) => ({
-    feature: t(`canvasPage.comparisonSection.rows.${key}.feature`),
-    canvasPrintShop: t(`canvasPage.comparisonSection.rows.${key}.ours`),
-    discount: t(`canvasPage.comparisonSection.rows.${key}.theirs`),
+  const comparisonRows = (pageContent?.comparisonRows ?? []).map((key) => ({
+    feature: t(`${ns}.comparisonSection.rows.${key}.feature`),
+    canvasPrintShop: t(`${ns}.comparisonSection.rows.${key}.ours`),
+    discount: t(`${ns}.comparisonSection.rows.${key}.theirs`),
   }));
   const keyDetailsCopy = {
-    eyebrow: t("canvasPage.keyDetails.eyebrow"),
-    title: t("canvasPage.keyDetails.title"),
-    description: t("canvasPage.keyDetails.description"),
+    eyebrow: t(`${ns}.keyDetails.eyebrow`),
+    title: t(`${ns}.keyDetails.title`),
+    description: t(`${ns}.keyDetails.description`),
   };
-  const keyDetails = canvasKeyDetailKeys.map((key) => ({
-    title: t(`canvasPage.keyDetails.items.${key}.title`),
-    description: t(`canvasPage.keyDetails.items.${key}.description`),
+  const keyDetails = (pageContent?.keyDetails ?? []).map((key) => ({
+    title: t(`${ns}.keyDetails.items.${key}.title`),
+    description: t(`${ns}.keyDetails.items.${key}.description`),
   }));
-  const faqIntro = t("canvasPage.faq.intro");
-  const faqItems = canvasFaqQuestionKeys.map((key) => ({
+  const faqIntro = t(`${ns}.faq.intro`);
+  const faqItems = (pageContent?.faqQuestions ?? []).map((key) => ({
     question: t(`faq.questions.${key}.question`),
     answer: t(`faq.questions.${key}.answer`),
   }));
   const reviewsSectionCopy = {
-    title: t("canvasPage.reviewsSection.title"),
-    subtitle: t("canvasPage.reviewsSection.subtitle"),
-    ratingLabel: t("canvasPage.reviewsSection.ratingLabel", {
+    title: t(`${ns}.reviewsSection.title`),
+    subtitle: t(`${ns}.reviewsSection.subtitle`),
+    ratingLabel: t(`${ns}.reviewsSection.ratingLabel`, {
       count: reviews.length,
     }),
   };
   const gallerySectionCopy = {
-    eyebrow: t("canvasPage.gallerySection.eyebrow"),
-    title: t("canvasPage.gallerySection.title"),
-    description: t("canvasPage.gallerySection.description"),
-    cta: t("canvasPage.gallerySection.cta"),
+    eyebrow: t(`${ns}.gallerySection.eyebrow`),
+    title: t(`${ns}.gallerySection.title`),
+    description: t(`${ns}.gallerySection.description`),
+    cta: t(`${ns}.gallerySection.cta`),
     images: [
       {
         src: "/canvas-tools.jpeg",
-        alt: t("canvasPage.gallerySection.images.tools"),
+        alt: t(`${ns}.gallerySection.images.tools`),
       },
       {
         src: "/canvas-making.jpeg",
-        alt: t("canvasPage.gallerySection.images.craftsmanship"),
+        alt: t(`${ns}.gallerySection.images.craftsmanship`),
       },
       {
         src: "/canvas-in-living-room.jpeg",
-        alt: t("canvasPage.gallerySection.images.livingRoom"),
+        alt: t(`${ns}.gallerySection.images.livingRoom`),
       },
     ],
   };
@@ -458,12 +432,9 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
         id="product-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(
-              buildProductStructuredData(
-                structuredProduct,
-                locale as "en" | "fr"
-              )
-            ),
+          __html: serializeJsonLd(
+            buildProductStructuredData(structuredProduct, locale as "en" | "fr")
+          ),
         }}
       />
       <script

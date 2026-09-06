@@ -462,6 +462,18 @@
         "multipleCanvases": {
           "question": "Puis-je commander plusieurs toiles de la même image ?",
           "answer": "Absolument. Vous pouvez créer plusieurs toiles de formats et d'encadrements différents à partir de la même image."
+        },
+        "rollWhatArrives": {
+          "question": "Que contient exactement le tube?",
+          "answer": "Une seule feuille de toile imprimée, enroulée impression vers l'extérieur autour d'un large noyau, dans un tube rigide. Aucun châssis, aucune quincaillerie et aucun montage : l'impression elle-même est le produit."
+        },
+        "rollMargin": {
+          "question": "Devrais-je choisir la marge de 2 pouces?",
+          "answer": "Choisissez-la si vous comptez tendre la toile sur vos propres châssis : c'est la marge vierge que vous saisissez et agrafez, sans quoi il faudrait replier une partie de l'image sur les côtés. Choisissez sans marge pour un encadrement sous verre ou un montage à plat. Le prix est le même dans les deux cas."
+        },
+        "rollStretching": {
+          "question": "Que faut-il pour la tendre soi-même?",
+          "answer": "Des châssis coupés à votre format, une agrafeuse et idéalement des pinces à toile. Sinon, n'importe quel encadreur peut la tendre ou la monter pour vous : apportez-lui le rouleau tel quel."
         }
       }
     },
@@ -550,7 +562,7 @@
         "items": {
           "productionTime": {
             "title": "Temps de production",
-            "description": "Chaque toile est imprimée, tendue et emballée sur commande avant l'expédition."
+            "description": "Chaque toile est imprimée, tendue à la main et emballée sur commande avant l'expédition."
           },
           "delivery": {
             "title": "Livraison",
@@ -594,7 +606,125 @@
       "without": "Aucune marge — impression jusqu'au bord",
       "help": "Le prix est le même dans les deux cas. Choisissez la marge de 2 pouces si vous comptez tendre la toile sur vos propres châssis; choisissez sans marge pour un encadrement ou un montage à plat."
     },
-    "customSizeNote": "Besoin d'un format qui n'est pas offert? Écrivez-nous à {email} et nous vous ferons une soumission — il n'y a aucun maximum."
+    "customSizeNote": "Besoin d'un format qui n'est pas offert? Écrivez-nous à {email} et nous vous ferons une soumission — il n'y a aucun maximum.",
+    "rollsPage": {
+      "productDescription": "Notre toile, imprimée au format choisi et expédiée à plat dans un tube rigide. Sans châssis ni quincaillerie — vous la tendez, la montez ou la faites encadrer vous-même. Marge vierge de 2 pouces optionnelle, sans supplément. Formats sur mesure sur demande par courriel.",
+      "qualitySection": {
+        "title": "La même impression, sans le châssis",
+        "description": "Une toile en rouleau n'est pas un produit au rabais : c'est la même toile imprimée que nous tendons nous-mêmes, expédiée à plat. Vous fournissez le châssis et le travail, et vous payez environ la moitié.",
+        "cards": {
+          "premiumCanvas": {
+            "title": "Toile de coton mélangé de qualité supérieure",
+            "description": "La même toile de coton mélangé haute densité, jusqu'à 75 % d'opacité, que nous utilisons pour nos toiles tendues. Couleurs riches, blancs propres, très peu de transparence."
+          },
+          "archivalPrinting": {
+            "title": "Impression UVgel de qualité archive",
+            "description": "Imprimée sur notre presse Canon Colorado UVgel et garantie sans décoloration pendant plus de 30 ans, exactement comme nos toiles tendues."
+          },
+          "printedToSize": {
+            "title": "Imprimée exactement à votre format",
+            "description": "Votre fichier est imprimé au format commandé plutôt que découpé dans une feuille standard : les proportions choisies sont celles que vous recevez."
+          },
+          "shippedFlat": {
+            "title": "Expédiée à plat dans un tube rigide",
+            "description": "Enroulée impression vers l'extérieur autour d'un large noyau et expédiée dans un tube rigide, pour qu'elle arrive sans pli ni marque."
+          }
+        }
+      },
+      "comparisonSection": {
+        "title": "Notre toile en rouleau vs les rouleaux bon marché",
+        "description": "C'est sur les rouleaux qu'on rogne le plus, parce que rien ne se voit avant d'essayer de les tendre. Voici quoi comparer.",
+        "labels": {
+          "feature": "Caractéristique",
+          "ours": "Canvas Print Shop",
+          "badge": "Meilleur choix",
+          "theirs": "Rouleaux à rabais typiques"
+        },
+        "rows": {
+          "material": {
+            "feature": "Matériau",
+            "ours": "Toile de coton mélangé de qualité supérieure, haute opacité.",
+            "theirs": "Toile de polyester légère, plus transparente."
+          },
+          "opacity": {
+            "feature": "Opacité",
+            "ours": "Jusqu'à 75 % d'opacité : la couleur reste dense une fois tendue.",
+            "theirs": "Support mince qui pâlit et laisse voir les châssis."
+          },
+          "technology": {
+            "feature": "Technologie d'impression",
+            "ours": "Canon Colorado UVgel, garantie plus de 30 ans.",
+            "theirs": "Encres à colorant ou à solvant qui virent en quelques années."
+          },
+          "margin": {
+            "feature": "Marge de tension",
+            "ours": "Marge vierge de 2 pouces optionnelle sur chaque côté, sans supplément.",
+            "theirs": "Imprimée jusqu'au bord, sans rien pour saisir la toile."
+          },
+          "origin": {
+            "feature": "Lieu de fabrication",
+            "ours": "Imprimée et vérifiée dans notre atelier de Québec.",
+            "theirs": "Expédiée de l'étranger sans vérification de prépresse."
+          },
+          "guarantee": {
+            "feature": "Garantie",
+            "ours": "Garantie de qualité d'impression de 30 ans et garantie de satisfaction de 30 jours.",
+            "theirs": "Garantie limitée ou inexistante une fois le tube ouvert."
+          }
+        },
+        "footer": "Imprimée et vérifiée au Canada, avec une garantie de qualité d'impression de 30 ans."
+      },
+      "gallerySection": {
+        "eyebrow": "Dans l'atelier",
+        "title": "Le même établi, la même toile.",
+        "description": "Les rouleaux sortent de la même presse et passent la même vérification de prépresse que tout ce que nous tendons nous-mêmes.",
+        "cta": "Découvrez comment nous fabriquons nos toiles",
+        "images": {
+          "tools": "Matériaux et outils de qualité prêts pour l'impression",
+          "craftsmanship": "Tension d'une toile à la main à Québec",
+          "livingRoom": "Toile finie mise en valeur dans un salon chaleureux"
+        }
+      },
+      "keyDetails": {
+        "eyebrow": "Informations sur le produit",
+        "title": "L'essentiel en un coup d'œil",
+        "description": "Ce que vous recevez, ce qui n'est pas inclus, et ce qu'il vous faudra pour la finir vous-même.",
+        "items": {
+          "productionTime": {
+            "title": "Délai de production",
+            "description": "Chaque rouleau est imprimé et vérifié sur commande avant l'expédition."
+          },
+          "delivery": {
+            "title": "Livraison",
+            "description": "Expédiée à plat dans un tube rigide. Les options et les délais s'affichent à la caisse."
+          },
+          "assembly": {
+            "title": "Le montage vous revient",
+            "description": "Ni châssis, ni quincaillerie, ni montage ne sont inclus. Tendez-la sur vos propres châssis, montez-la à plat ou confiez-la à un encadreur."
+          },
+          "satisfaction": {
+            "title": "Garantie de satisfaction",
+            "description": "Garantie de satisfaction de 30 jours. Si vous n'êtes pas satisfait, nous corrigerons la situation."
+          },
+          "localPickup": {
+            "title": "Cueillette locale",
+            "description": "Cueillette gratuite à nos emplacements de Québec ou de Montréal pendant les heures d'ouverture."
+          },
+          "shippingCost": {
+            "title": "Frais de livraison",
+            "description": "Affichés à la caisse."
+          }
+        }
+      },
+      "faq": {
+        "intro": "Réponses aux questions les plus fréquentes sur la toile en rouleau, la marge de tension et ce que contient le tube."
+      },
+      "reviewsSection": {
+        "title": "Avis des clients",
+        "subtitle": "Découvrez ce que les gens disent de Canvas Print Shop.",
+        "ratingLabel": "Basé sur {count} avis"
+      }
+    }
   },
   "ImageUploader": {
     "dropzone": {

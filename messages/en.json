@@ -462,6 +462,18 @@
         "multipleCanvases": {
           "question": "Can I order multiple canvases of the same image?",
           "answer": "Absolutely! You can create multiple canvas designs with different sizes and framing options from the same image."
+        },
+        "rollWhatArrives": {
+          "question": "What exactly arrives in the tube?",
+          "answer": "A single sheet of printed canvas, rolled print-side out around a wide core inside a rigid tube. There are no stretcher bars, no hanging hardware and no assembly — the print itself is the product."
+        },
+        "rollMargin": {
+          "question": "Should I choose the 2 inch margin?",
+          "answer": "Choose it if you intend to stretch the canvas over your own bars: the blank margin is what you grip and staple, and without it you would have to fold image into the sides. Choose no margin if you are framing it behind glass or mounting it flat. It costs the same either way."
+        },
+        "rollStretching": {
+          "question": "What do I need to stretch it myself?",
+          "answer": "Stretcher bars cut to your size, a staple gun and ideally canvas pliers. If you would rather not, any picture framer can stretch or mount it for you — bring the roll in as it arrives."
         }
       }
     },
@@ -550,7 +562,7 @@
         "items": {
           "productionTime": {
             "title": "Production time",
-            "description": "We typically need 2 – 4 days to print, stretch and pack your canvas before dispatch."
+            "description": "Every canvas is printed, hand-stretched and packed to order before dispatch."
           },
           "delivery": {
             "title": "Delivery",
@@ -594,7 +606,125 @@
       "without": "No margin — print to the edge",
       "help": "Same price either way. Choose the 2-inch margin if you plan to stretch the canvas over your own bars; choose no margin for framing or flat mounting."
     },
-    "customSizeNote": "Need a size that is not listed? Email us at {email} and we will quote it — there is no fixed maximum."
+    "customSizeNote": "Need a size that is not listed? Email us at {email} and we will quote it — there is no fixed maximum.",
+    "rollsPage": {
+      "productDescription": "Our canvas, printed at the size you choose and shipped flat-rolled in a rigid tube. No stretcher bars, no hardware — you stretch it, mount it or frame it yourself. Optional 2 inch blank margin for stretching, at no extra cost. Custom sizes quoted by email.",
+      "qualitySection": {
+        "title": "The same print, without the frame",
+        "description": "A rolled canvas is not a lesser product — it is the same printed canvas we stretch ourselves, sent to you flat. You supply the frame and the labour, and you pay about half.",
+        "cards": {
+          "premiumCanvas": {
+            "title": "Premium cotton-blend canvas",
+            "description": "The same high-density cotton-blend canvas with up to 75% opacity that we use on our stretched pieces. Rich colour, clean whites, very little show-through."
+          },
+          "archivalPrinting": {
+            "title": "Archival UVgel printing",
+            "description": "Printed on our Canon Colorado UVgel press and guaranteed not to fade for over 30 years, exactly as our stretched canvases are."
+          },
+          "printedToSize": {
+            "title": "Printed to your exact size",
+            "description": "Your file is printed at the size you order rather than trimmed down from a stock sheet, so the proportions you choose are the proportions you get."
+          },
+          "shippedFlat": {
+            "title": "Shipped flat in a rigid tube",
+            "description": "Rolled print-side out around a wide core and sent in a rigid tube, so it arrives without creases or pressure marks along the fold."
+          }
+        }
+      },
+      "comparisonSection": {
+        "title": "Our rolled canvas vs cheap rolled prints",
+        "description": "Rolled prints are where corners get cut hardest, because nothing is visible until you try to stretch it. Here is what to compare.",
+        "labels": {
+          "feature": "Feature",
+          "ours": "Canvas Print Shop",
+          "badge": "Best choice",
+          "theirs": "Typical discount rolled prints"
+        },
+        "rows": {
+          "material": {
+            "feature": "Canvas material",
+            "ours": "Premium cotton-blend canvas with high opacity.",
+            "theirs": "Lightweight polyester canvas with more show-through."
+          },
+          "opacity": {
+            "feature": "Opacity",
+            "ours": "Up to 75% opacity, so colour stays dense once stretched.",
+            "theirs": "Thin stock that lightens and shows the bars through."
+          },
+          "technology": {
+            "feature": "Print technology",
+            "ours": "Canon Colorado UVgel, guaranteed for over 30 years.",
+            "theirs": "Dye or solvent inks that shift within a few years."
+          },
+          "margin": {
+            "feature": "Stretching margin",
+            "ours": "Optional 2 inch blank margin on every side, at no extra cost.",
+            "theirs": "Printed to the edge, leaving nothing to grip when stretching."
+          },
+          "origin": {
+            "feature": "Where it is made",
+            "ours": "Printed and checked in our Quebec City workshop.",
+            "theirs": "Drop-shipped from overseas with no prepress check."
+          },
+          "guarantee": {
+            "feature": "Guarantee",
+            "ours": "30-year print quality guarantee and a 30-day satisfaction guarantee.",
+            "theirs": "Limited or no guarantee once the tube is opened."
+          }
+        },
+        "footer": "Printed and checked in Canada, backed by a 30-year print quality guarantee."
+      },
+      "gallerySection": {
+        "eyebrow": "Inside the studio",
+        "title": "The same bench, the same canvas.",
+        "description": "Rolled prints come off the same press and through the same prepress check as everything we stretch ourselves.",
+        "cta": "See how we make our canvas prints",
+        "images": {
+          "tools": "Premium materials and canvas tools ready for printing",
+          "craftsmanship": "Hand-stretching a canvas in Quebec City",
+          "livingRoom": "Finished canvas styled inside a cozy living room"
+        }
+      },
+      "keyDetails": {
+        "eyebrow": "Product information",
+        "title": "Key details at a glance",
+        "description": "What arrives, what does not, and what you will need to finish it yourself.",
+        "items": {
+          "productionTime": {
+            "title": "Production time",
+            "description": "Every roll is printed and checked to order before dispatch."
+          },
+          "delivery": {
+            "title": "Delivery",
+            "description": "Shipped flat-rolled in a rigid tube. You will see options and estimates at checkout."
+          },
+          "assembly": {
+            "title": "Assembly is yours",
+            "description": "No stretcher bars, hanging hardware or assembly are included. Stretch it over your own bars, mount it flat, or take it to a framer."
+          },
+          "satisfaction": {
+            "title": "Satisfaction guarantee",
+            "description": "30-day satisfaction guarantee. If you are not happy, we will make it right."
+          },
+          "localPickup": {
+            "title": "Local pickup",
+            "description": "Free pickup from our Quebec City or Montreal location during opening hours."
+          },
+          "shippingCost": {
+            "title": "Shipping cost",
+            "description": "Available at checkout."
+          }
+        }
+      },
+      "faq": {
+        "intro": "Answers to the most common questions about rolled canvas, the stretching margin and what arrives in the tube."
+      },
+      "reviewsSection": {
+        "title": "Customer reviews",
+        "subtitle": "See what people say about Canvas Print Shop.",
+        "ratingLabel": "Based on {count} reviews"
+      }
+    }
   },
   "ImageUploader": {
     "dropzone": {

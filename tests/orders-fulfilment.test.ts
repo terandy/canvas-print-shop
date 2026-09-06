@@ -11,6 +11,7 @@ import {
   statusColor,
 } from "../src/lib/orders/status";
 import { BUSINESS_DATA } from "../src/lib/business-data";
+import { getProductPageContent } from "../src/lib/product-page-content";
 import {
   PRICES as ROLL_PRICES,
   SIZES,
@@ -166,8 +167,11 @@ test("no page claims free shipping or the old production window", () => {
   const banned = [
     /free ship/i,
     /livraison gratuite/i,
-    /5\s*(?:to|à|[–-])\s*10 (?:business days|jours)/i,
-    /2\s*(?:to|à|[–-])\s*4 (?:business days|jours)/i,
+    // Any 5-10 or 2-4 day range, however the unit is written. The first
+    // version of this required "business days"/"jours" and so missed
+    // "2 - 4 days" on the canvas product page.
+    /\b5\s*(?:to|à|[–-])\s*10\s*(?:business |working |jours? |days?)/i,
+    /\b2\s*(?:to|à|[–-])\s*4\s*(?:business |working |jours? |days?)/i,
   ];
   const walk = (node: unknown, path: string): string[] =>
     typeof node === "string"
@@ -275,5 +279,55 @@ test("the margin choice is free and both options are labelled", () => {
       );
     }
     assert.ok(messages.Product.customSizeNote.includes("{email}"));
+  }
+});
+
+test("every product with the rich page layout has the copy it renders", () => {
+  // The layout is shared, so a missing key would surface as a raw
+  // "Product.rollsPage.x" string on a live product page.
+  for (const handle of ["canvas", "canvas-rolls"]) {
+    const content = getProductPageContent(handle);
+    assert.ok(content, `${handle} has no page content`);
+
+    for (const messages of [en, fr]) {
+      const page = messages.Product[content!.namespace];
+      assert.ok(page, `${content!.namespace} missing`);
+
+      for (const section of [
+        "productDescription",
+        "qualitySection",
+        "comparisonSection",
+        "gallerySection",
+        "keyDetails",
+        "faq",
+        "reviewsSection",
+      ]) {
+        assert.ok(page[section], `${content!.namespace}.${section} missing`);
+      }
+      for (const { key } of content!.featureCards) {
+        assert.ok(
+          page.qualitySection.cards[key],
+          `${content!.namespace}.qualitySection.cards.${key} missing`
+        );
+      }
+      for (const key of content!.comparisonRows) {
+        assert.ok(
+          page.comparisonSection.rows[key],
+          `${content!.namespace}.comparisonSection.rows.${key} missing`
+        );
+      }
+      for (const key of content!.keyDetails) {
+        assert.ok(
+          page.keyDetails.items[key],
+          `${content!.namespace}.keyDetails.items.${key} missing`
+        );
+      }
+      for (const key of content!.faqQuestions) {
+        assert.ok(
+          messages.Product.faq.questions[key],
+          `Product.faq.questions.${key} missing`
+        );
+      }
+    }
   }
 });
