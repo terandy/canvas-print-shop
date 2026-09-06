@@ -465,7 +465,7 @@
         },
         "rollWhatArrives": {
           "question": "What exactly arrives in the tube?",
-          "answer": "A single sheet of printed canvas, rolled print-side out around a wide core inside a rigid tube. There are no stretcher bars, no hanging hardware and no assembly — the print itself is the product."
+          "answer": "One printed canvas sheet at the size you ordered, sent flat in a protective tube. There are no stretcher bars, no hanging hardware and no assembly — the print itself is the product, and it is not ready to hang."
         },
         "rollMargin": {
           "question": "Should I choose the 2 inch margin?",
@@ -593,6 +593,17 @@
         "title": "Customer reviews",
         "subtitle": "See what people say about Canvas Print Shop.",
         "ratingLabel": "Based on {count} reviews"
+      },
+      "alternative": {
+        "title": "Stretched or rolled?",
+        "description": "Every canvas on this page arrives finished. If you would rather do the finishing yourself — or ship it somewhere flat — we sell the same print unstretched.",
+        "points": {
+          "one": "Stretched arrives on solid wood bars with hanging hardware fitted, ready for the wall.",
+          "two": "Rolled costs about half as much, ships flat in a tube, and you stretch, mount or frame it yourself.",
+          "three": "Both are printed to order in Quebec and carry the same 30-year print quality guarantee."
+        },
+        "ctaLead": "Happy to stretch it yourself, or need it shipped flat?",
+        "ctaLabel": "Shop rolled canvas prints"
       }
     },
     "guarantee": {
@@ -626,14 +637,14 @@
             "description": "Your file is printed at the size you order rather than trimmed down from a stock sheet, so the proportions you choose are the proportions you get."
           },
           "shippedFlat": {
-            "title": "Shipped flat in a rigid tube",
-            "description": "Rolled print-side out around a wide core and sent in a rigid tube, so it arrives without creases or pressure marks along the fold."
+            "title": "Shipped flat in a protective tube",
+            "description": "The print is rolled and sent flat in a protective tube rather than folded or boxed, so it travels without a crease across the image."
           }
         }
       },
       "comparisonSection": {
         "title": "Our rolled canvas vs cheap rolled prints",
-        "description": "Rolled prints are where corners get cut hardest, because nothing is visible until you try to stretch it. Here is what to compare.",
+        "description": "A rolled print is judged after you have already paid for it, when you try to stretch it. These are the things worth checking before you order.",
         "labels": {
           "feature": "Feature",
           "ours": "Canvas Print Shop",
@@ -649,27 +660,27 @@
           "opacity": {
             "feature": "Opacity",
             "ours": "Up to 75% opacity, so colour stays dense once stretched.",
-            "theirs": "Thin stock that lightens and shows the bars through."
+            "theirs": "Lower opacity, more visible texture and show-through on light walls."
           },
           "technology": {
             "feature": "Print technology",
             "ours": "Canon Colorado UVgel, guaranteed for over 30 years.",
-            "theirs": "Dye or solvent inks that shift within a few years."
+            "theirs": "Standard dye or solvent printing, more prone to fading."
           },
           "margin": {
             "feature": "Stretching margin",
             "ours": "Optional 2 inch blank margin on every side, at no extra cost.",
-            "theirs": "Printed to the edge, leaving nothing to grip when stretching."
+            "theirs": "Often printed to the edge, leaving nothing to grip when stretching."
           },
           "origin": {
             "feature": "Where it is made",
             "ours": "Printed and checked in our Quebec City workshop.",
-            "theirs": "Drop-shipped from overseas with no prepress check."
+            "theirs": "Often produced in high-volume overseas facilities."
           },
           "guarantee": {
             "feature": "Guarantee",
             "ours": "30-year print quality guarantee and a 30-day satisfaction guarantee.",
-            "theirs": "Limited or no guarantee once the tube is opened."
+            "theirs": "Shorter warranties and more limited support."
           }
         },
         "footer": "Printed and checked in Canada, backed by a 30-year print quality guarantee."
@@ -723,6 +734,53 @@
         "title": "Customer reviews",
         "subtitle": "See what people say about Canvas Print Shop.",
         "ratingLabel": "Based on {count} reviews"
+      },
+      "buyingGuide": {
+        "eyebrow": "Sizes and prices",
+        "title": "Rolled canvas print sizes and prices",
+        "description": "Prices in Canadian dollars for every size we print. The size you order is the size of the printed image; if you take the stretching margin, the sheet that arrives is larger.",
+        "table": {
+          "caption": "Rolled canvas print sizes, total sheet sizes and prices in Canadian dollars",
+          "imageSize": "Printed image",
+          "totalSize": "Total sheet with {margin} in margin",
+          "price": "Price (CAD)",
+          "footnote": "The margin adds {margin} inches of blank canvas on all four sides and does not change the price. Without it, the sheet is the printed image size. Need a size that is not listed? Email us for a quote — there is no fixed maximum."
+        },
+        "contents": {
+          "title": "What arrives in the tube",
+          "included": {
+            "print": "One printed canvas sheet at the size you ordered",
+            "margin": "A 2 inch blank stretching margin on every side, if you choose it",
+            "prepress": "A prepress check of your file before we print it"
+          },
+          "notIncluded": {
+            "bars": "No wooden stretcher bars or frame",
+            "hardware": "No hanging hardware",
+            "assembly": "No stretching or assembly done for you"
+          },
+          "notReadyToHang": "This product is not ready to hang. You will need to stretch it over your own bars, mount it, or have a framer finish it. If you would rather it arrived finished, order the stretched canvas instead."
+        },
+        "upload": {
+          "title": "What your image needs",
+          "body": "Upload a JPEG, PNG, HEIC or WebP. The configurator checks your file against the size you pick and warns you before you order if the resolution is too low for it. Canvas is viewed from further away than a photo print, so it needs fewer pixels than the usual 300 DPI advice suggests.",
+          "link": "How many pixels you actually need for a canvas print"
+        },
+        "delivery": {
+          "title": "Delivery and pickup",
+          "body": "Shipping is calculated at checkout from the size of your order. Order to delivery is within {max} working days.",
+          "pickup": "Free pickup is available from our Quebec City and Montreal locations."
+        }
+      },
+      "alternative": {
+        "title": "Rolled or stretched?",
+        "description": "They are the same print on the same canvas from the same press. The only difference is how much of the work we do and how much you do.",
+        "points": {
+          "one": "Rolled costs about half as much, arrives flat in a tube, and you stretch, mount or frame it yourself.",
+          "two": "Stretched arrives finished on solid wood bars with hanging hardware fitted, ready to go straight on the wall.",
+          "three": "Both are printed to order in Quebec and carry the same 30-year print quality guarantee."
+        },
+        "ctaLead": "Would you rather it arrived finished and ready to hang?",
+        "ctaLabel": "Shop stretched canvas prints"
       }
     }
   },

@@ -34,18 +34,40 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     const retired = ["calgary", "vancouver", "edmonton"];
-    return retired.flatMap((slug) => [
+
+    /**
+     * "canvas rolls" is what blank-material suppliers sell; this product is
+     * rolled canvas prints, and the URL now says so. Permanent, so whatever
+     * history the old path has transfers to the new one.
+     */
+    const rolledCanvasRename = [
       {
-        source: `/:locale(en|fr)/canvas-prints/${slug}`,
-        destination: "/:locale/canvas-prints/custom",
+        source: "/:locale(en|fr)/product/canvas-rolls",
+        destination: "/:locale/product/rolled-canvas-prints",
         permanent: true,
       },
       {
-        source: `/canvas-prints/${slug}`,
-        destination: "/en/canvas-prints/custom",
+        source: "/product/canvas-rolls",
+        destination: "/en/product/rolled-canvas-prints",
         permanent: true,
       },
-    ]);
+    ];
+
+    return [
+      ...rolledCanvasRename,
+      ...retired.flatMap((slug) => [
+        {
+          source: `/:locale(en|fr)/canvas-prints/${slug}`,
+          destination: "/:locale/canvas-prints/custom",
+          permanent: true,
+        },
+        {
+          source: `/canvas-prints/${slug}`,
+          destination: "/en/canvas-prints/custom",
+          permanent: true,
+        },
+      ]),
+    ];
   },
   webpack: (config) => {
     config.resolve.fallback = {

@@ -15,7 +15,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 import { sql } from "@vercel/postgres";
 
-const HANDLE = "canvas-rolls";
+const HANDLE = "rolled-canvas-prints";
 const APPLY = process.argv.includes("--apply");
 
 /**

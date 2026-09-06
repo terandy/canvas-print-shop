@@ -16,6 +16,8 @@ import { BASE_URL } from "@/lib/constants";
 import { canonicalMetadata, openGraphMetadata } from "@/lib/seo";
 import { BUSINESS_DATA, SHOP_REVIEWS } from "@/lib/business-data";
 import { getProductPageContent } from "@/lib/product-page-content";
+import RolledBuyingGuide from "@/components/product/rolled-buying-guide";
+import ProductAlternative from "@/components/product/product-alternative";
 import {
   buildProductStructuredData,
   serializeJsonLd,
@@ -557,6 +559,17 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           </div>
         </section>
       </div>
+
+      {pageContent?.buyingGuide && (
+        <RolledBuyingGuide product={product} locale={locale} />
+      )}
+
+      {pageContent?.alternateHandle && (
+        <ProductAlternative
+          namespace={ns}
+          href={`/${locale}/product/${pageContent.alternateHandle}`}
+        />
+      )}
 
       {isCanvasProduct ? (
         <div className="w-full">

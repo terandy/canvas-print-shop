@@ -465,7 +465,7 @@
         },
         "rollWhatArrives": {
           "question": "Que contient exactement le tube?",
-          "answer": "Une seule feuille de toile imprimée, enroulée impression vers l'extérieur autour d'un large noyau, dans un tube rigide. Aucun châssis, aucune quincaillerie et aucun montage : l'impression elle-même est le produit."
+          "answer": "Une feuille de toile imprimée au format commandé, expédiée à plat dans un tube protecteur. Aucun châssis, aucune quincaillerie et aucun montage : l'impression elle-même est le produit, et elle n'est pas prête à accrocher."
         },
         "rollMargin": {
           "question": "Devrais-je choisir la marge de 2 pouces?",
@@ -593,6 +593,17 @@
         "title": "Avis des clients",
         "subtitle": "Découvrez ce que les gens disent de Canvas Print Shop.",
         "ratingLabel": "Basé sur {count} avis"
+      },
+      "alternative": {
+        "title": "Tendue ou en rouleau?",
+        "description": "Toutes les toiles de cette page arrivent finies. Si vous préférez faire la finition vous-même — ou l'expédier à plat — nous vendons la même impression non tendue.",
+        "points": {
+          "one": "La toile tendue arrive sur châssis de bois massif, quincaillerie installée, prête pour le mur.",
+          "two": "Le rouleau coûte environ la moitié, s'expédie à plat dans un tube, et vous le tendez, le montez ou le faites encadrer vous-même.",
+          "three": "Les deux sont imprimées sur commande au Québec et bénéficient de la même garantie de qualité d'impression de 30 ans."
+        },
+        "ctaLead": "Prêt à la tendre vous-même, ou besoin d'un envoi à plat?",
+        "ctaLabel": "Voir les toiles en rouleau"
       }
     },
     "guarantee": {
@@ -626,14 +637,14 @@
             "description": "Votre fichier est imprimé au format commandé plutôt que découpé dans une feuille standard : les proportions choisies sont celles que vous recevez."
           },
           "shippedFlat": {
-            "title": "Expédiée à plat dans un tube rigide",
-            "description": "Enroulée impression vers l'extérieur autour d'un large noyau et expédiée dans un tube rigide, pour qu'elle arrive sans pli ni marque."
+            "title": "Expédiée à plat dans un tube protecteur",
+            "description": "L'impression est enroulée et expédiée à plat dans un tube protecteur plutôt que pliée ou mise en boîte, pour qu'elle voyage sans pli en travers de l'image."
           }
         }
       },
       "comparisonSection": {
         "title": "Notre toile en rouleau vs les rouleaux bon marché",
-        "description": "C'est sur les rouleaux qu'on rogne le plus, parce que rien ne se voit avant d'essayer de les tendre. Voici quoi comparer.",
+        "description": "Un rouleau se juge une fois payé, au moment de le tendre. Voici ce qu'il vaut la peine de vérifier avant de commander.",
         "labels": {
           "feature": "Caractéristique",
           "ours": "Canvas Print Shop",
@@ -644,32 +655,32 @@
           "material": {
             "feature": "Matériau",
             "ours": "Toile de coton mélangé de qualité supérieure, haute opacité.",
-            "theirs": "Toile de polyester légère, plus transparente."
+            "theirs": "Toile en polyester léger avec plus de transparence."
           },
           "opacity": {
             "feature": "Opacité",
             "ours": "Jusqu'à 75 % d'opacité : la couleur reste dense une fois tendue.",
-            "theirs": "Support mince qui pâlit et laisse voir les châssis."
+            "theirs": "Opacité plus faible, texture plus visible et transparence sur les murs pâles."
           },
           "technology": {
             "feature": "Technologie d'impression",
             "ours": "Canon Colorado UVgel, garantie plus de 30 ans.",
-            "theirs": "Encres à colorant ou à solvant qui virent en quelques années."
+            "theirs": "Impression à colorants ou solvants standard, qui se décolore plus rapidement."
           },
           "margin": {
             "feature": "Marge de tension",
             "ours": "Marge vierge de 2 pouces optionnelle sur chaque côté, sans supplément.",
-            "theirs": "Imprimée jusqu'au bord, sans rien pour saisir la toile."
+            "theirs": "Souvent imprimée jusqu'au bord, sans rien pour saisir la toile."
           },
           "origin": {
             "feature": "Lieu de fabrication",
             "ours": "Imprimée et vérifiée dans notre atelier de Québec.",
-            "theirs": "Expédiée de l'étranger sans vérification de prépresse."
+            "theirs": "Souvent produite dans des usines à grand volume à l'étranger."
           },
           "guarantee": {
             "feature": "Garantie",
             "ours": "Garantie de qualité d'impression de 30 ans et garantie de satisfaction de 30 jours.",
-            "theirs": "Garantie limitée ou inexistante une fois le tube ouvert."
+            "theirs": "Garanties plus courtes et support limité."
           }
         },
         "footer": "Imprimée et vérifiée au Canada, avec une garantie de qualité d'impression de 30 ans."
@@ -723,6 +734,53 @@
         "title": "Avis des clients",
         "subtitle": "Découvrez ce que les gens disent de Canvas Print Shop.",
         "ratingLabel": "Basé sur {count} avis"
+      },
+      "buyingGuide": {
+        "eyebrow": "Formats et prix",
+        "title": "Formats et prix des toiles en rouleau",
+        "description": "Prix en dollars canadiens pour chaque format que nous imprimons. Le format commandé correspond à l'image imprimée; avec la marge de tension, la feuille reçue est plus grande.",
+        "table": {
+          "caption": "Formats des toiles en rouleau, dimensions totales et prix en dollars canadiens",
+          "imageSize": "Image imprimée",
+          "totalSize": "Feuille totale avec marge de {margin} po",
+          "price": "Prix (CAD)",
+          "footnote": "La marge ajoute {margin} pouces de toile vierge sur les quatre côtés et ne change pas le prix. Sans elle, la feuille correspond au format de l'image. Besoin d'un format qui n'est pas offert? Écrivez-nous pour une soumission — il n'y a aucun maximum."
+        },
+        "contents": {
+          "title": "Ce que contient le tube",
+          "included": {
+            "print": "Une feuille de toile imprimée au format commandé",
+            "margin": "Une marge de tension vierge de 2 pouces sur chaque côté, si vous la choisissez",
+            "prepress": "Une vérification de prépresse de votre fichier avant l'impression"
+          },
+          "notIncluded": {
+            "bars": "Aucun châssis ni cadre de bois",
+            "hardware": "Aucune quincaillerie d'accrochage",
+            "assembly": "Aucune tension ni montage effectué pour vous"
+          },
+          "notReadyToHang": "Ce produit n'est pas prêt à accrocher. Vous devrez le tendre sur vos propres châssis, le monter ou le confier à un encadreur. Si vous préférez le recevoir fini, commandez plutôt la toile tendue."
+        },
+        "upload": {
+          "title": "Ce dont votre image a besoin",
+          "body": "Téléversez un fichier JPEG, PNG, HEIC ou WebP. Le configurateur vérifie votre fichier par rapport au format choisi et vous avertit avant la commande si la résolution est insuffisante. Une toile se regarde de plus loin qu'une photo : elle demande moins de pixels que la règle habituelle des 300 DPI ne le laisse croire.",
+          "link": "Combien de pixels faut-il réellement pour une toile"
+        },
+        "delivery": {
+          "title": "Livraison et cueillette",
+          "body": "Les frais de livraison sont calculés à la caisse selon le format de votre commande. De la commande à la livraison : en moins de {max} jours ouvrables.",
+          "pickup": "La cueillette gratuite est offerte à nos emplacements de Québec et de Montréal."
+        }
+      },
+      "alternative": {
+        "title": "En rouleau ou tendue?",
+        "description": "C'est la même impression, sur la même toile, sortie de la même presse. La seule différence : la part du travail que nous faisons et celle qui vous revient.",
+        "points": {
+          "one": "Le rouleau coûte environ la moitié, arrive à plat dans un tube, et vous le tendez, le montez ou le faites encadrer vous-même.",
+          "two": "La toile tendue arrive finie sur châssis de bois massif, quincaillerie installée, prête à accrocher.",
+          "three": "Les deux sont imprimées sur commande au Québec et bénéficient de la même garantie de qualité d'impression de 30 ans."
+        },
+        "ctaLead": "Vous préférez la recevoir finie et prête à accrocher?",
+        "ctaLabel": "Voir les toiles tendues"
       }
     }
   },

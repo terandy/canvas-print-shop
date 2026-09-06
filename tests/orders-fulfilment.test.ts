@@ -13,6 +13,10 @@ import {
 import { BUSINESS_DATA } from "../src/lib/business-data";
 import { getProductPageContent } from "../src/lib/product-page-content";
 import {
+  getRolledSizeRows,
+  STRETCHING_MARGIN_INCHES,
+} from "../src/lib/rolled-canvas";
+import {
   PRICES as ROLL_PRICES,
   SIZES,
   MARGINS,
@@ -285,7 +289,7 @@ test("the margin choice is free and both options are labelled", () => {
 test("every product with the rich page layout has the copy it renders", () => {
   // The layout is shared, so a missing key would surface as a raw
   // "Product.rollsPage.x" string on a live product page.
-  for (const handle of ["canvas", "canvas-rolls"]) {
+  for (const handle of ["canvas", "rolled-canvas-prints"]) {
     const content = getProductPageContent(handle);
     assert.ok(content, `${handle} has no page content`);
 
@@ -328,6 +332,106 @@ test("every product with the rich page layout has the copy it renders", () => {
           `Product.faq.questions.${key} missing`
         );
       }
+      // The cross-link and the buying guide render only when configured, but
+      // when they do every string they use has to exist.
+      if (content!.alternateHandle) {
+        assert.ok(
+          page.alternative?.ctaLabel,
+          `${content!.namespace}.alternative missing`
+        );
+        assert.ok(
+          getProductPageContent(content!.alternateHandle),
+          "alternate has no page"
+        );
+      }
+      if (content!.buyingGuide) {
+        const g = page.buyingGuide;
+        assert.ok(g, `${content!.namespace}.buyingGuide missing`);
+        for (const key of ["eyebrow", "title", "description"]) {
+          assert.ok(g[key], `buyingGuide.${key} missing`);
+        }
+        for (const key of [
+          "caption",
+          "imageSize",
+          "totalSize",
+          "price",
+          "footnote",
+        ]) {
+          assert.ok(g.table[key], `buyingGuide.table.${key} missing`);
+        }
+        assert.ok(g.table.totalSize.includes("{margin}"));
+        assert.ok(g.table.footnote.includes("{margin}"));
+        assert.ok(g.delivery.body.includes("{max}"));
+        for (const key of ["print", "margin", "prepress"]) {
+          assert.ok(g.contents.included[key], `included.${key} missing`);
+        }
+        for (const key of ["bars", "hardware", "assembly"]) {
+          assert.ok(g.contents.notIncluded[key], `notIncluded.${key} missing`);
+        }
+        assert.ok(g.contents.notReadyToHang);
+      }
     }
   }
+});
+
+test("the rolled size table separates image size from total sheet size", () => {
+  // Confusing the two is the most common way a rolled canvas order goes wrong,
+  // so the margin has to actually be added on all four sides.
+  const rows = getRolledSizeRows({
+    variants: [
+      {
+        options: { size: "16x20", margin: "with" },
+        priceCents: 5000,
+        availableForSale: true,
+      },
+      {
+        options: { size: "16x20", margin: "without" },
+        priceCents: 5000,
+        availableForSale: true,
+      },
+      {
+        options: { size: "8x10", margin: "with" },
+        priceCents: 3000,
+        availableForSale: true,
+      },
+    ],
+  } as never);
+
+  assert.equal(rows.length, 2, "one row per size, not per margin choice");
+  assert.deepEqual(rows[0], {
+    size: "8x10",
+    image: { width: 8, height: 10 },
+    total: { width: 12, height: 14 },
+    priceCents: 3000,
+  });
+  const large = rows[1];
+  assert.equal(
+    large.total.width - large.image.width,
+    2 * STRETCHING_MARGIN_INCHES
+  );
+  assert.equal(
+    large.total.height - large.image.height,
+    2 * STRETCHING_MARGIN_INCHES
+  );
+});
+
+test("the size table never advertises a price that is not on sale", () => {
+  const rows = getRolledSizeRows({
+    variants: [
+      {
+        options: { size: "8x10", margin: "with" },
+        priceCents: 3000,
+        availableForSale: false,
+      },
+      {
+        options: { size: "16x20", margin: "with" },
+        priceCents: 5000,
+        availableForSale: true,
+      },
+    ],
+  } as never);
+  assert.deepEqual(
+    rows.map((r) => r.size),
+    ["16x20"]
+  );
 });

@@ -8,6 +8,7 @@ export const getInitialFormState = (productHandle: string) => {
     // product, so this branch never ran and rolls fell through to the
     // stretched defaults.
     case "canvas-rolls":
+    case "rolled-canvas-prints":
       return {
         size: INITIAL_FORM_STATE.size,
         direction: INITIAL_FORM_STATE.direction,

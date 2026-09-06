@@ -20,6 +20,14 @@ export type ProductPageContent = {
   keyDetails: readonly string[];
   /** Keys under `Product.faq.questions`. */
   faqQuestions: readonly string[];
+  /**
+   * Renders the server-side size/price table and buying guide. Only the rolled
+   * print needs it: its price varies by size alone, and the total sheet size
+   * differs from the size ordered.
+   */
+  buyingGuide?: boolean;
+  /** The other finish of the same print, cross-linked in both directions. */
+  alternateHandle?: string;
 };
 
 const canvas: ProductPageContent = {
@@ -55,6 +63,7 @@ const canvas: ProductPageContent = {
     "deliveryTime",
     "multipleCanvases",
   ],
+  alternateHandle: "rolled-canvas-prints",
 };
 
 /**
@@ -96,10 +105,16 @@ const canvasRolls: ProductPageContent = {
     "satisfaction",
     "deliveryTime",
   ],
+  buyingGuide: true,
+  alternateHandle: "canvas",
 };
 
 const BY_HANDLE: Record<string, ProductPageContent> = {
   canvas,
+  "rolled-canvas-prints": canvasRolls,
+  // Pre-rename handle. Kept so the page keeps its layout either side of the
+  // rename, and if the rename is ever rolled back. Safe to drop once the
+  // redirect below has been crawled.
   "canvas-rolls": canvasRolls,
 };
 
