@@ -30,7 +30,16 @@ export const metadata: Metadata = {
   description:
     "Transform your photos into high-quality canvas prints. Expert hand-crafted in Quebec, Canada with premium materials and UVgel technology. Delivery or free local pickup across Quebec and Ontario.",
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: {
+      url: "/apple-touch-icon.png",
+      sizes: "180x180",
+      type: "image/png",
+    },
   },
   // NOTE: no `alternates` here on purpose. Metadata is inherited by every child
   // route, so a canonical set at the layout level made every page on the site

@@ -1,77 +1,67 @@
 "use client";
 
 import { createUrl } from "@/lib/utils/base";
-import { SearchIcon } from "lucide-react";
+import { ArrowRight, SearchIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
+import { useId } from "react";
 
 interface Props {
-  /**
-   * Callback triggered when search input is submitted
-   */
   onSearch?: () => void;
 }
 
-const Search: React.FC<Props> = ({ onSearch }) => {
+export default function Search({ onSearch }: Props) {
   const t = useTranslations("Search");
   const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const inputId = useId();
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    const val = e.target as HTMLFormElement;
-    const search = val.search as HTMLInputElement;
+    const search = new FormData(e.currentTarget)
+      .get("search")
+      ?.toString()
+      .trim();
     const newParams = new URLSearchParams(searchParams.toString());
-
-    if (search.value) {
-      newParams.set("q", search.value);
-    } else {
-      newParams.delete("q");
-    }
-
+    if (search) newParams.set("q", search);
+    else newParams.delete("q");
     router.push(createUrl(`/${locale}/search`, newParams));
     onSearch?.();
   }
 
   return (
-    // Width is set by the parent. Fixed breakpoint widths used to live here
-    // and fought the header layout at tablet sizes.
-    <form onSubmit={onSubmit} className="relative w-full">
+    <form
+      role="search"
+      aria-label={t("title")}
+      onSubmit={onSubmit}
+      className="relative w-full"
+    >
+      <label htmlFor={inputId} className="sr-only">
+        {t("title")}
+      </label>
+      <SearchIcon
+        className="pointer-events-none absolute left-3.5 top-3.5 h-[18px] w-[18px] text-gray"
+        strokeWidth={1.5}
+        aria-hidden="true"
+      />
       <input
-        key={searchParams?.get("q")}
-        type="text"
+        id={inputId}
+        key={searchParams.get("q")}
+        type="search"
         name="search"
         placeholder={t("placeholder")}
         autoComplete="off"
-        defaultValue={searchParams?.get("q") || ""}
-        // pr-10 keeps the placeholder clear of the icon.
-        className="text-md w-full rounded-lg border bg-white py-2 pl-4 pr-10 text-black placeholder:text-neutral-500 md:text-sm"
+        defaultValue={searchParams.get("q") || ""}
+        className="h-12 w-full rounded-sm border border-secondary/15 bg-white/60 pl-11 pr-14 text-base text-secondary outline-none transition-colors placeholder:text-gray focus:border-primary-dark focus:ring-1 focus:ring-primary-dark lg:text-sm"
       />
-      <div className="pointer-events-none absolute right-0 top-0 mr-3 flex h-full items-center">
-        <SearchIcon className="h-4 text-neutral-500" />
-      </div>
+      <button
+        type="submit"
+        aria-label={t("submit")}
+        className="absolute right-0.5 top-0.5 flex h-11 w-11 items-center justify-center rounded-sm text-secondary transition-colors hover:text-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+      >
+        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+      </button>
     </form>
   );
-};
-
-const SearchSkeleton = () => {
-  const t = useTranslations("Search");
-
-  return (
-    <form className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
-      <input
-        type="text"
-        placeholder={t("placeholder")}
-        className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-black placeholder:text-neutral-500"
-      />
-      <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
-        <SearchIcon className="h-4" />
-      </div>
-    </form>
-  );
-};
-
-export default Search;
-export { SearchSkeleton };
+}

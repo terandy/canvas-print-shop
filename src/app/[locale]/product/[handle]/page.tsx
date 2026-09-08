@@ -18,6 +18,7 @@ import { BUSINESS_DATA, SHOP_REVIEWS } from "@/lib/business-data";
 import { getProductPageContent } from "@/lib/product-page-content";
 import RolledBuyingGuide from "@/components/product/rolled-buying-guide";
 import ProductAlternative from "@/components/product/product-alternative";
+import CanvasProductPage from "@/components/product/canvas-product-page";
 import {
   buildProductStructuredData,
   serializeJsonLd,
@@ -469,369 +470,377 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
           }),
         }}
       />
-      <div className="container mx-auto max-w-screen-2xl lg:px-4 lg:py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 lg:p-8">
-          {/* Image container - adapts for mobile/desktop with sticky functionality */}
-          <div
-            className="lg:col-span-3 sticky top-0 lg:static z-10 lg:z-auto bg-white lg:bg-transparent pb-4 lg:pb-0 px-6 lg:mx-0 lg:px-0 z-30 pt-2 lg:pt-0"
-            id="product-image-preview-container"
-          >
-            <Suspense fallback={<div className="aspect-square h-96 w-full" />}>
-              <ProductImagePreview className="max-h-[40vh] lg:max-h-none lg:sticky lg:top-28" />
-            </Suspense>
-          </div>
-
-          {/* Product details container */}
-          <div className="lg:col-span-2 mt-4 lg:mt-0 relative z-20 lg:z-auto bg-white lg:bg-transparent">
-            <Suspense fallback={null}>
-              <div className="space-y-6 rounded-lg border border-gray/10 shadow-lg p-6">
-                {/* Title and rating */}
-                <div className="text-left">
-                  <h1 className="text-2xl lg:text-3xl font-bold text-secondary mb-2">
-                    {product.title}
-                  </h1>
-                  <StarRating
-                    rating={averageRating}
-                    showNumber
-                    reviewCount={reviews.length}
-                    formattedRating={formattedAverageRating}
-                  />
-
-                  {/* Delivery date estimate */}
-                  <div className="mt-3 p-2 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-sm text-green-800">
-                      📦 {t("delivery.getItBy")}{" "}
-                      <strong>
-                        {`${formatDate(deliveryEstimate.earliest)} - ${formatDate(deliveryEstimate.latest)}`}
-                      </strong>{" "}
-                      {t("delivery.ifOrderToday")}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Product description */}
-                <SectionContainer className="-mx-6 rounded-none">
-                  {isCanvasProduct ? (
-                    <p className="text-sm leading-relaxed text-gray-600">
-                      {canvasProductDescription}
-                    </p>
-                  ) : product.descriptionHtml ? (
-                    <Prose
-                      className="text-sm leading-light"
-                      html={product.descriptionHtml}
-                    />
-                  ) : (
-                    <p className="text-sm leading-relaxed text-gray-600">
-                      {product.description}
-                    </p>
-                  )}
-                </SectionContainer>
-
-                {/* Product form */}
-                <ProductForm />
-              </div>
-            </Suspense>
-          </div>
-        </div>
-
-        {/* Trusted By strip */}
-        <section className="mt-10 px-4 sm:px-6">
-          <div className="text-center space-y-4">
-            <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-slate-500">
-              {t("trustedBy")}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
-              {trustedBy.map(({ src, alt }) => (
-                <div
-                  key={alt}
-                  className="flex h-10 w-28 sm:h-12 sm:w-36 items-center justify-center"
+      {product.handle === "canvas" ? (
+        <CanvasProductPage product={product} locale={locale} />
+      ) : (
+        <>
+          <div className="container mx-auto max-w-screen-2xl lg:px-4 lg:py-6">
+            <div className="grid grid-cols-1 lg:grid-cols-5 lg:gap-8 lg:p-8">
+              {/* Image container - adapts for mobile/desktop with sticky functionality */}
+              <div
+                className="lg:col-span-3 sticky top-0 lg:static z-10 lg:z-auto bg-white lg:bg-transparent pb-4 lg:pb-0 px-6 lg:mx-0 lg:px-0 z-30 pt-2 lg:pt-0"
+                id="product-image-preview-container"
+              >
+                <Suspense
+                  fallback={<div className="aspect-square h-96 w-full" />}
                 >
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={180}
-                    height={56}
-                    className="h-full w-auto object-contain opacity-90"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
+                  <ProductImagePreview className="max-h-[40vh] lg:max-h-none lg:sticky lg:top-28" />
+                </Suspense>
+              </div>
 
-      {pageContent?.buyingGuide && (
-        <RolledBuyingGuide product={product} locale={locale} />
-      )}
+              {/* Product details container */}
+              <div className="lg:col-span-2 mt-4 lg:mt-0 relative z-20 lg:z-auto bg-white lg:bg-transparent">
+                <Suspense fallback={null}>
+                  <div className="space-y-6 rounded-lg border border-gray/10 shadow-lg p-6">
+                    {/* Title and rating */}
+                    <div className="text-left">
+                      <h1 className="text-2xl lg:text-3xl font-bold text-secondary mb-2">
+                        {product.title}
+                      </h1>
+                      <StarRating
+                        rating={averageRating}
+                        showNumber
+                        reviewCount={reviews.length}
+                        formattedRating={formattedAverageRating}
+                      />
 
-      {pageContent?.alternateHandle && (
-        <ProductAlternative
-          namespace={ns}
-          href={`/${locale}/product/${pageContent.alternateHandle}`}
-        />
-      )}
-
-      {isCanvasProduct ? (
-        <div className="w-full">
-          {/* Canvas craft story */}
-          <section className="relative isolate overflow-hidden bg-[#050E24] py-16 md:py-24 text-white">
-            <div className="absolute inset-0">
-              <div className="absolute -left-10 top-24 h-64 w-64 rounded-full bg-[#FF9933]/20 blur-3xl" />
-              <div className="absolute -right-10 bottom-12 h-72 w-72 rounded-full bg-slate-500/20 blur-3xl" />
-            </div>
-            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-              <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
-                    {qualitySectionCopy.title}
-                  </h2>
-                  <p className="mt-4 text-base md:text-lg text-white/70 max-w-3xl">
-                    {qualitySectionCopy.description}
-                  </p>
-                  <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                    {featureCards.map((feature) => (
-                      <div
-                        key={feature.title}
-                        className="group flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-xl backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/30"
-                      >
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF9933]/20 text-[#FF9933] text-base font-semibold">
-                          {feature.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-semibold text-white">
-                            {feature.title}
-                          </h3>
-                          <p className="mt-1 text-sm text-white/70 leading-relaxed">
-                            {feature.description}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 sm:p-8 shadow-2xl backdrop-blur">
-                  <p className="text-sm text-white/70">
-                    {reviewsSectionCopy.subtitle}
-                  </p>
-                  <div className="mt-6 flex flex-wrap items-center gap-4">
-                    <div>
-                      <div className="text-4xl md:text-5xl font-semibold tracking-tight">
-                        {formattedAverageRating}
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-[140px]">
-                      <StarRating rating={averageRating} />
-                    </div>
-                  </div>
-                  <div className="mt-8 grid gap-4">
-                    {keyDetails.slice(0, 2).map((detail) => (
-                      <div
-                        key={`highlight-${detail.title}`}
-                        className="rounded-2xl border border-white/10 bg-white/5 p-4"
-                      >
-                        <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-                          {detail.title}
-                        </p>
-                        <p className="mt-2 text-base text-white">
-                          {detail.description}
+                      {/* Delivery date estimate */}
+                      <div className="mt-3 p-2 bg-green-50 border border-green-200 rounded-lg">
+                        <p className="text-sm text-green-800">
+                          📦 {t("delivery.getItBy")}{" "}
+                          <strong>
+                            {`${formatDate(deliveryEstimate.earliest)} - ${formatDate(deliveryEstimate.latest)}`}
+                          </strong>{" "}
+                          {t("delivery.ifOrderToday")}
                         </p>
                       </div>
-                    ))}
+                    </div>
+
+                    {/* Product description */}
+                    <SectionContainer className="-mx-6 rounded-none">
+                      {isCanvasProduct ? (
+                        <p className="text-sm leading-relaxed text-gray-600">
+                          {canvasProductDescription}
+                        </p>
+                      ) : product.descriptionHtml ? (
+                        <Prose
+                          className="text-sm leading-light"
+                          html={product.descriptionHtml}
+                        />
+                      ) : (
+                        <p className="text-sm leading-relaxed text-gray-600">
+                          {product.description}
+                        </p>
+                      )}
+                    </SectionContainer>
+
+                    {/* Product form */}
+                    <ProductForm />
                   </div>
-                  <p className="mt-8 text-xs text-white/50">
-                    {comparisonSectionCopy.footer}
-                  </p>
-                </div>
+                </Suspense>
               </div>
             </div>
-          </section>
 
-          {/* Comparison */}
-          <section className="bg-[#FFF7ED] py-16 md:py-24">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-              <div className="max-w-4xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#EA580C]">
-                  {comparisonSectionCopy.labels.badge}
+            {/* Trusted By strip */}
+            <section className="mt-10 px-4 sm:px-6">
+              <div className="text-center space-y-4">
+                <p className="text-xs sm:text-sm uppercase tracking-[0.35em] text-slate-500">
+                  {t("trustedBy")}
                 </p>
-                <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-[#0F172A]">
-                  {comparisonSectionCopy.title}
-                </h2>
-                <p className="mt-3 text-base md:text-lg text-slate-700">
-                  {comparisonSectionCopy.description}
-                </p>
-              </div>
-              <div className="rounded-[32px] border border-[#FFD8B1] bg-white/90 shadow-[0_20px_60px_rgba(255,153,51,0.25)] overflow-hidden">
-                <div className="hidden md:grid grid-cols-[0.9fr_1fr_1fr] text-sm font-semibold text-[#9A3412]">
-                  <div className="px-6 py-4">
-                    {comparisonSectionCopy.labels.feature}
-                  </div>
-                  <div className="px-6 py-4 border-x border-[#FFE7CF]">
-                    <div>{comparisonSectionCopy.labels.ours}</div>
-                    <div className="text-xs uppercase tracking-[0.3em] text-[#F97316]">
-                      {comparisonSectionCopy.labels.badge}
-                    </div>
-                  </div>
-                  <div className="px-6 py-4">
-                    {comparisonSectionCopy.labels.theirs}
-                  </div>
-                </div>
-                <div className="divide-y divide-[#FFE7CF]">
-                  {comparisonRows.map((row) => (
+                <div className="flex flex-wrap items-center justify-center gap-6 pb-4">
+                  {trustedBy.map(({ src, alt }) => (
                     <div
-                      key={row.feature}
-                      className="grid grid-cols-1 md:grid-cols-[0.9fr_1fr_1fr] text-sm md:text-base"
+                      key={alt}
+                      className="flex h-10 w-28 sm:h-12 sm:w-36 items-center justify-center"
                     >
-                      <div className="px-5 py-4 font-medium text-[#0F172A] bg-white">
-                        <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2">
-                          {comparisonSectionCopy.labels.feature}
-                        </p>
-                        {row.feature}
-                      </div>
-                      <div className="px-5 py-4 bg-[#FFF4E5] border-y md:border-y-0 border-[#FFE7CF] text-slate-800 md:border-x md:border-[#FFE7CF]">
-                        <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-[#F97316] mb-2">
-                          {comparisonSectionCopy.labels.ours}
-                        </p>
-                        <div className="flex items-start gap-3">
-                          <span
-                            aria-hidden="true"
-                            className="text-[#F97316] mt-1"
-                          >
-                            ✔
-                          </span>
-                          <p>{row.canvasPrintShop}</p>
-                        </div>
-                      </div>
-                      <div className="px-5 py-4 bg-[#FFF9F3] text-slate-600">
-                        <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2">
-                          {comparisonSectionCopy.labels.theirs}
-                        </p>
-                        {row.discount}
-                      </div>
+                      <Image
+                        src={src}
+                        alt={alt}
+                        width={180}
+                        height={56}
+                        className="h-full w-auto object-contain opacity-90"
+                      />
                     </div>
                   ))}
                 </div>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 px-6 py-4 text-xs md:text-sm text-[#9A3412] bg-[#FFF4E5]">
-                  <p>{comparisonSectionCopy.footer}</p>
-                  <p className="uppercase tracking-[0.35em] font-semibold">
-                    {t("trustedBy")}
-                  </p>
-                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
 
-          {/* Key details + FAQ */}
-          <section className="bg-white py-16 md:py-24">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-                <div className="rounded-[32px] border border-slate-200 bg-slate-50/70 p-6 sm:p-10 shadow-xl">
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#FF9933]">
-                    {keyDetailsCopy.eyebrow}
-                  </p>
-                  <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                    {keyDetailsCopy.title}
-                  </h3>
-                  <p className="mt-3 text-sm md:text-base text-slate-700 max-w-2xl">
-                    {keyDetailsCopy.description}
-                  </p>
-                  <dl className="mt-8 grid gap-6 sm:grid-cols-2">
-                    {keyDetails.map((detail) => (
-                      <div
-                        key={detail.title}
-                        className="rounded-2xl bg-white p-4 shadow-sm border border-white"
-                      >
-                        <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                          {detail.title}
-                        </dt>
-                        <dd className="mt-2 text-base text-[#0F172A]">
-                          {detail.description}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
+          {pageContent?.buyingGuide && (
+            <RolledBuyingGuide product={product} locale={locale} />
+          )}
+
+          {pageContent?.alternateHandle && (
+            <ProductAlternative
+              namespace={ns}
+              href={`/${locale}/product/${pageContent.alternateHandle}`}
+            />
+          )}
+
+          {isCanvasProduct ? (
+            <div className="w-full">
+              {/* Canvas craft story */}
+              <section className="relative isolate overflow-hidden bg-[#050E24] py-16 md:py-24 text-white">
+                <div className="absolute inset-0">
+                  <div className="absolute -left-10 top-24 h-64 w-64 rounded-full bg-[#FF9933]/20 blur-3xl" />
+                  <div className="absolute -right-10 bottom-12 h-72 w-72 rounded-full bg-slate-500/20 blur-3xl" />
                 </div>
-                <div className="rounded-[32px] border border-slate-100 bg-white shadow-xl p-4 sm:p-8">
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
-                      {t("faq.title")}
-                    </h3>
-                    <p className="text-sm md:text-base text-slate-600">
-                      {faqIntro}
+                <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                  <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
+                    <div>
+                      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white">
+                        {qualitySectionCopy.title}
+                      </h2>
+                      <p className="mt-4 text-base md:text-lg text-white/70 max-w-3xl">
+                        {qualitySectionCopy.description}
+                      </p>
+                      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                        {featureCards.map((feature) => (
+                          <div
+                            key={feature.title}
+                            className="group flex items-start gap-4 rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6 shadow-xl backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/30"
+                          >
+                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FF9933]/20 text-[#FF9933] text-base font-semibold">
+                              {feature.icon}
+                            </div>
+                            <div>
+                              <h3 className="text-lg font-semibold text-white">
+                                {feature.title}
+                              </h3>
+                              <p className="mt-1 text-sm text-white/70 leading-relaxed">
+                                {feature.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 sm:p-8 shadow-2xl backdrop-blur">
+                      <p className="text-sm text-white/70">
+                        {reviewsSectionCopy.subtitle}
+                      </p>
+                      <div className="mt-6 flex flex-wrap items-center gap-4">
+                        <div>
+                          <div className="text-4xl md:text-5xl font-semibold tracking-tight">
+                            {formattedAverageRating}
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-[140px]">
+                          <StarRating rating={averageRating} />
+                        </div>
+                      </div>
+                      <div className="mt-8 grid gap-4">
+                        {keyDetails.slice(0, 2).map((detail) => (
+                          <div
+                            key={`highlight-${detail.title}`}
+                            className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                          >
+                            <p className="text-xs uppercase tracking-[0.2em] text-white/60">
+                              {detail.title}
+                            </p>
+                            <p className="mt-2 text-base text-white">
+                              {detail.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-8 text-xs text-white/50">
+                        {comparisonSectionCopy.footer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Comparison */}
+              <section className="bg-[#FFF7ED] py-16 md:py-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                  <div className="max-w-4xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#EA580C]">
+                      {comparisonSectionCopy.labels.badge}
+                    </p>
+                    <h2 className="mt-3 text-3xl md:text-4xl font-semibold text-[#0F172A]">
+                      {comparisonSectionCopy.title}
+                    </h2>
+                    <p className="mt-3 text-base md:text-lg text-slate-700">
+                      {comparisonSectionCopy.description}
                     </p>
                   </div>
-                  <div className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-100">
-                    {faqItems.map((faq) => (
-                      <details
-                        key={faq.question}
-                        className="group open:bg-slate-50/60 transition"
-                      >
-                        <summary className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-sm md:text-base font-medium text-[#0F172A] [&::-webkit-details-marker]:hidden">
-                          <span>{faq.question}</span>
-                          <ChevronDown className="h-5 w-5 flex-shrink-0 text-[#FF9933] transition-transform duration-300 group-open:rotate-180" />
-                        </summary>
-                        <div className="px-5 pb-5 text-sm md:text-base text-slate-700">
-                          {faq.answer}
+                  <div className="rounded-[32px] border border-[#FFD8B1] bg-white/90 shadow-[0_20px_60px_rgba(255,153,51,0.25)] overflow-hidden">
+                    <div className="hidden md:grid grid-cols-[0.9fr_1fr_1fr] text-sm font-semibold text-[#9A3412]">
+                      <div className="px-6 py-4">
+                        {comparisonSectionCopy.labels.feature}
+                      </div>
+                      <div className="px-6 py-4 border-x border-[#FFE7CF]">
+                        <div>{comparisonSectionCopy.labels.ours}</div>
+                        <div className="text-xs uppercase tracking-[0.3em] text-[#F97316]">
+                          {comparisonSectionCopy.labels.badge}
                         </div>
-                      </details>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <HomepageGallerySection />
-
-          {/* Reviews */}
-          <section
-            id="reviews"
-            className="relative isolate bg-[#020617] py-16 md:py-24 text-white"
-          >
-            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/10 to-transparent" />
-            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-start">
-                <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 sm:p-10 shadow-2xl backdrop-blur">
-                  <div className="inline-flex items-center gap-3 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/80">
-                    <Star className="h-4 w-4 text-[#FF9933] fill-[#FF9933]" />
-                    {t("reviews.title")}
-                  </div>
-                  <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-white">
-                    {reviewsSectionCopy.title}
-                  </h2>
-                  <p className="mt-3 text-sm md:text-base text-white/70">
-                    {reviewsSectionCopy.subtitle}
-                  </p>
-                  <div className="mt-6 flex items-center gap-4">
-                    <div className="text-5xl font-semibold">
-                      {averageRating.toFixed(1)}
+                      </div>
+                      <div className="px-6 py-4">
+                        {comparisonSectionCopy.labels.theirs}
+                      </div>
                     </div>
-                    <div>
-                      <StarRating rating={averageRating} />
+                    <div className="divide-y divide-[#FFE7CF]">
+                      {comparisonRows.map((row) => (
+                        <div
+                          key={row.feature}
+                          className="grid grid-cols-1 md:grid-cols-[0.9fr_1fr_1fr] text-sm md:text-base"
+                        >
+                          <div className="px-5 py-4 font-medium text-[#0F172A] bg-white">
+                            <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2">
+                              {comparisonSectionCopy.labels.feature}
+                            </p>
+                            {row.feature}
+                          </div>
+                          <div className="px-5 py-4 bg-[#FFF4E5] border-y md:border-y-0 border-[#FFE7CF] text-slate-800 md:border-x md:border-[#FFE7CF]">
+                            <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-[#F97316] mb-2">
+                              {comparisonSectionCopy.labels.ours}
+                            </p>
+                            <div className="flex items-start gap-3">
+                              <span
+                                aria-hidden="true"
+                                className="text-[#F97316] mt-1"
+                              >
+                                ✔
+                              </span>
+                              <p>{row.canvasPrintShop}</p>
+                            </div>
+                          </div>
+                          <div className="px-5 py-4 bg-[#FFF9F3] text-slate-600">
+                            <p className="md:hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 mb-2">
+                              {comparisonSectionCopy.labels.theirs}
+                            </p>
+                            {row.discount}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 px-6 py-4 text-xs md:text-sm text-[#9A3412] bg-[#FFF4E5]">
+                      <p>{comparisonSectionCopy.footer}</p>
+                      <p className="uppercase tracking-[0.35em] font-semibold">
+                        {t("trustedBy")}
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div className="rounded-[32px] bg-white shadow-2xl p-4 sm:p-8">
-                  <ReviewsPanel showHeading={false} />
+              </section>
+
+              {/* Key details + FAQ */}
+              <section className="bg-white py-16 md:py-24">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+                    <div className="rounded-[32px] border border-slate-200 bg-slate-50/70 p-6 sm:p-10 shadow-xl">
+                      <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#FF9933]">
+                        {keyDetailsCopy.eyebrow}
+                      </p>
+                      <h3 className="mt-3 text-2xl md:text-3xl font-semibold text-[#0F172A]">
+                        {keyDetailsCopy.title}
+                      </h3>
+                      <p className="mt-3 text-sm md:text-base text-slate-700 max-w-2xl">
+                        {keyDetailsCopy.description}
+                      </p>
+                      <dl className="mt-8 grid gap-6 sm:grid-cols-2">
+                        {keyDetails.map((detail) => (
+                          <div
+                            key={detail.title}
+                            className="rounded-2xl bg-white p-4 shadow-sm border border-white"
+                          >
+                            <dt className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                              {detail.title}
+                            </dt>
+                            <dd className="mt-2 text-base text-[#0F172A]">
+                              {detail.description}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                    <div className="rounded-[32px] border border-slate-100 bg-white shadow-xl p-4 sm:p-8">
+                      <div className="flex flex-col gap-2">
+                        <h3 className="text-2xl md:text-3xl font-semibold text-[#0F172A]">
+                          {t("faq.title")}
+                        </h3>
+                        <p className="text-sm md:text-base text-slate-600">
+                          {faqIntro}
+                        </p>
+                      </div>
+                      <div className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-100">
+                        {faqItems.map((faq) => (
+                          <details
+                            key={faq.question}
+                            className="group open:bg-slate-50/60 transition"
+                          >
+                            <summary className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left text-sm md:text-base font-medium text-[#0F172A] [&::-webkit-details-marker]:hidden">
+                              <span>{faq.question}</span>
+                              <ChevronDown className="h-5 w-5 flex-shrink-0 text-[#FF9933] transition-transform duration-300 group-open:rotate-180" />
+                            </summary>
+                            <div className="px-5 pb-5 text-sm md:text-base text-slate-700">
+                              {faq.answer}
+                            </div>
+                          </details>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <HomepageGallerySection />
+
+              {/* Reviews */}
+              <section
+                id="reviews"
+                className="relative isolate bg-[#020617] py-16 md:py-24 text-white"
+              >
+                <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/10 to-transparent" />
+                <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-start">
+                    <div className="rounded-[32px] border border-white/15 bg-white/5 p-6 sm:p-10 shadow-2xl backdrop-blur">
+                      <div className="inline-flex items-center gap-3 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/80">
+                        <Star className="h-4 w-4 text-[#FF9933] fill-[#FF9933]" />
+                        {t("reviews.title")}
+                      </div>
+                      <h2 className="mt-4 text-3xl md:text-4xl font-semibold text-white">
+                        {reviewsSectionCopy.title}
+                      </h2>
+                      <p className="mt-3 text-sm md:text-base text-white/70">
+                        {reviewsSectionCopy.subtitle}
+                      </p>
+                      <div className="mt-6 flex items-center gap-4">
+                        <div className="text-5xl font-semibold">
+                          {averageRating.toFixed(1)}
+                        </div>
+                        <div>
+                          <StarRating rating={averageRating} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="rounded-[32px] bg-white shadow-2xl p-4 sm:p-8">
+                      <ReviewsPanel showHeading={false} />
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          ) : (
+            <>
+              <HomepageGallerySection />
+              <div className="bg-slate-50 border-t border-slate-200 py-16 md:py-20">
+                <div className="container mx-auto max-w-screen-2xl px-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
+                      <ReviewsPanel />
+                    </div>
+                    <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
+                      <ProductInformationPanel />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-        </div>
-      ) : (
-        <>
-          <HomepageGallerySection />
-          <div className="bg-slate-50 border-t border-slate-200 py-16 md:py-20">
-            <div className="container mx-auto max-w-screen-2xl px-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
-                  <ReviewsPanel />
-                </div>
-                <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-xl border border-slate-100">
-                  <ProductInformationPanel />
-                </div>
-              </div>
-            </div>
-          </div>
+            </>
+          )}
         </>
       )}
     </ProductProvider>

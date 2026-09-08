@@ -7,9 +7,8 @@ import Price from "../product/price";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
 import { redirectToCheckout } from "@/lib/utils/cart-actions";
-import { PlusIcon, ShoppingCart, X } from "lucide-react";
+import { PlusIcon, ShoppingBag, ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
-import SquareButton from "../buttons/square-button";
 import type { CartState } from "@/contexts";
 import CartItemCard from "./cart-item-card";
 import { useLocale, useTranslations } from "next-intl";
@@ -93,13 +92,28 @@ const CartModal = () => {
   return (
     <>
       <div className="relative">
-        <SquareButton
-          aria-label={t("openCart")}
-          icon={ShoppingCart}
+        <button
+          type="button"
+          aria-label={
+            badgeCount
+              ? t("openCartWithCount", { count: badgeCount })
+              : t("openCart")
+          }
+          aria-haspopup="dialog"
           onClick={openCart}
-        />
+          className="flex h-11 w-11 items-center justify-center rounded-full text-secondary transition-colors hover:bg-secondary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        >
+          <ShoppingBag
+            className="h-5 w-5"
+            strokeWidth={1.5}
+            aria-hidden="true"
+          />
+        </button>
         {badgeCount ? (
-          <span className="absolute px-[6px] py-[1px] -mt-2 -mr-2 rounded-full top-0 right-0 text-xs bg-primary text-white">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-0.5 top-0 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary-dark px-1 text-[10px] font-medium text-white ring-2 ring-[#FCFBF8]"
+          >
             {badgeCount}
           </span>
         ) : null}
@@ -121,17 +135,17 @@ const CartModal = () => {
             as={Fragment}
             enter="transition-all ease-in-out duration-300"
             enterFrom="translate-x-full"
-          enterTo="translate-x-0"
-          leave="transition-all ease-in-out duration-200"
-          leaveFrom="translate-x-0"
-          leaveTo="translate-x-full"
-        >
-          <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex flex-1 w-full min-h-0 flex-col overflow-hidden border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
-            <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
-              <p className="flex gap-2 text-lg font-semibold text-secondary">
-                {t("myCart")}
-              </p>
-              <Button
+            enterTo="translate-x-0"
+            leave="transition-all ease-in-out duration-200"
+            leaveFrom="translate-x-0"
+            leaveTo="translate-x-full"
+          >
+            <Dialog.Panel className="fixed bottom-0 right-0 top-0 flex flex-1 w-full min-h-0 flex-col overflow-hidden border-l border-gray-light/10 bg-white/80 backdrop-blur-xl md:w-[400px] z-[999]">
+              <div className="flex items-center justify-between p-4 border-b border-gray-light/10">
+                <p className="flex gap-2 text-lg font-semibold text-secondary">
+                  {t("myCart")}
+                </p>
+                <Button
                   aria-label={t("closeCart")}
                   onClick={closeCart}
                   icon={X}

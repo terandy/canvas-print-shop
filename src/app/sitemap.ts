@@ -34,7 +34,12 @@ type Entry = {
 const CONTENT_LAST_UPDATED = new Date("2026-08-15T00:00:00Z");
 
 const STATIC_PAGES: Entry[] = [
-  { path: "", priority: 1, changeFrequency: "weekly" },
+  {
+    path: "",
+    priority: 1,
+    changeFrequency: "weekly",
+    lastModified: new Date("2026-09-07T00:00:00Z"),
+  },
   { path: "/shop", priority: 0.9, changeFrequency: "weekly" },
   { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },

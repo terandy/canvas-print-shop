@@ -1,5 +1,32 @@
 import { INITIAL_FORM_STATE } from "./data";
 import { CanvasFormState, CanvasRollFormState } from "./types";
+import type { FormState } from "./types";
+import type { Product, ProductVariant } from "@/types/product";
+
+/** Invalid or stale selections must never substitute a different item. */
+export function getSelectedVariant(
+  product: Pick<Product, "options" | "variants">,
+  state: FormState
+): ProductVariant | undefined {
+  if (
+    !product.options.every((option) =>
+      option.values.includes(state[option.name])
+    )
+  ) {
+    return undefined;
+  }
+
+  return product.variants.find(
+    (variant) =>
+      variant.availableForSale &&
+      product.options.every(
+        (option) => variant.options[option.name] === state[option.name]
+      ) &&
+      Object.entries(variant.options).every(
+        ([name, value]) => state[name] === value
+      )
+  );
+}
 
 export const getInitialFormState = (productHandle: string) => {
   switch (productHandle) {

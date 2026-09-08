@@ -129,7 +129,7 @@ export const SHOP_REVIEWS: readonly ShopReview[] = [
   },
   {
     id: 10,
-    author: "Andrew G",
+    author: "Jennifer T",
     rating: 5,
     comment:
       "Really happy with my canvas. Looks great and came well packed. Took a few days but worth the wait.",

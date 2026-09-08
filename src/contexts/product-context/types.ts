@@ -40,7 +40,7 @@ export type TProductContext = {
    * Form values as selected by the user
    */
   state: FormState;
-  variant: ProductVariant;
+  variant: ProductVariant | undefined;
   /**
    * Deletes imgURL from the product's form state
    */

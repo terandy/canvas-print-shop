@@ -16,9 +16,10 @@ import { useTranslations } from "next-intl";
 /**
  * Find the variant that matches the form selections (as stored in the useProduct context
  */
-const AddToCart: React.FC = () => {
+const AddToCart = ({ appearance }: { appearance?: "editorial" } = {}) => {
   const cartContext = useCart();
   const t = useTranslations("Cart");
+  const productT = useTranslations("Product");
   const {
     product: { handle },
     state,
@@ -39,7 +40,8 @@ const AddToCart: React.FC = () => {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    if (!variant) return;
+    if (!variant || !state.imgURL || state.imgURL === DEFAULT_CANVAS_IMAGE)
+      return;
     startTransition(async () => {
       cartContext.addCartItem({ ...state }, variant, handle); // optimistic
       const res = await api.addItem(
@@ -70,15 +72,33 @@ const AddToCart: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2">
       <Button
-        disabledMessage={t("AddToCart.disabledMessage")}
+        disabledMessage={
+          !variant
+            ? productT("selectionUnavailable")
+            : t("AddToCart.disabledMessage")
+        }
         icon={Plus}
         type="submit"
-        className="bg-secondary hover:bg-primary-light"
+        className={
+          appearance === "editorial"
+            ? "min-h-12 items-center !bg-secondary px-6 text-sm hover:!bg-primary-dark disabled:!bg-secondary/15 disabled:!text-secondary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-dark"
+            : "bg-secondary hover:bg-primary-light"
+        }
         disabled={state.imgURL === DEFAULT_CANVAS_IMAGE || !variant}
       >
         {t("AddToCart.label")}
       </Button>
-      <Button onClick={onCancel} icon={X} variant="ghost">
+      <Button
+        type="button"
+        onClick={onCancel}
+        icon={X}
+        variant="ghost"
+        className={
+          appearance === "editorial"
+            ? "min-h-11 items-center text-xs"
+            : undefined
+        }
+      >
         {t("AddToCart.cancel")}
       </Button>
     </form>

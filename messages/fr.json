@@ -15,68 +15,81 @@
   },
   "Home": {
     "hero": {
-      "title": "Impression photo sur toile et canevas personnalisés",
-      "description": "Transformez vos souvenirs précieux en magnifiques toiles — ou canevas, comme on dit ici — fabriquées à la main au Québec et prêtes à accrocher chez vous."
+      "eyebrow": "Vos photos. Notre savoir-faire.",
+      "title": "Vos photos sur toile.",
+      "accent": "Tout un art.",
+      "description": "Les lieux, les gens et les moments que vous aimez, imprimés sur toile et réalisés sur mesure dans notre atelier de Québec.",
+      "create": "Créer ma toile",
+      "explore": "Découvrir nos toiles",
+      "price": "À partir de {price} CA · Sur mesure",
+      "madeToOrder": "Réalisé sur mesure au Québec",
+      "imageAlt": "Une toile aux couleurs riches sur le manteau d'un foyer dans un salon lumineux.",
+      "imageCaption": "Une vue qu'on aime. Une place dans le quotidien."
     },
-    "benefits": {
-      "heading": "Pourquoi choisir les impressions sur toile chez Canvas Print Shop ?",
-      "premium": {
-        "title": "Matériaux haut de gamme",
-        "description": "Toile haut de gamme en mélange de coton, avec une densité dix fois plus élevée et jusqu'à 75 % d'opacité — bien supérieure aux matériaux plus légers."
+    "details": {
+      "canvas": "Une belle toile en mélange de coton",
+      "colour": "Des couleurs riches. Impression UVgel.",
+      "pickup": "Cueillette gratuite à Montréal et Québec"
+    },
+    "collection": {
+      "eyebrow": "Trouvez votre finition",
+      "title": "Une photo. Deux possibilités.",
+      "description": "Prête à accrocher ou à encadrer à votre goût. Choisissez la finition qui vous ressemble.",
+      "price": "À partir de {price} CA",
+      "canvas": {
+        "title": "Impressions sur toile",
+        "label": "Prêtes à accrocher",
+        "description": "Votre photo, tendue à la main sur un châssis en bois massif. Ajoutez un cadre flottant pour la touche finale.",
+        "imageAlt": "Une impression sur toile que l'on installe au mur."
       },
-      "craftsmanship": {
-        "title": "Savoir-faire québécois",
-        "description": "Toutes nos impressions sur toile sont fabriquées avec soin dans notre atelier de Québec."
-      },
-      "process": {
-        "title": "Processus simple",
-        "description": "Téléversez simplement votre image, choisissez vos dimensions, prévisualisez votre impression sur toile puis passez à la caisse."
-      },
-      "technology": {
-        "title": "Technologie UVgel",
-        "description": "La technologie d'impression Canon produit des couleurs éclatantes et durables, avec notre garantie de qualité d'impression de 30 ans. Des impressions écologiques et sans odeur, parfaitement adaptées à l'intérieur."
+      "rolledCanvas": {
+        "title": "Toiles en rouleau",
+        "label": "À encadrer à votre goût",
+        "description": "La même toile et la même qualité d'impression, livrées dans un tube protecteur. À tendre, monter ou encadrer selon vos envies.",
+        "imageAlt": "Une impression colorée sur toile enroulée, montrant l'image et la texture du mélange de coton."
       }
     },
-    "featured": {
-      "heading": "Créez votre impression sur toile personnalisée",
-      "description": "Transformez vos moments préférés en art mural saisissant grâce à nos impressions sur toile haut de gamme."
+    "craft": {
+      "eyebrow": "Dans notre atelier de Québec",
+      "title": "La qualité se voit dans les détails.",
+      "description": "De la texture de la toile au pli d'un coin, nous soignons les petits détails qui font toute la différence.",
+      "imageAlt": "Une toile tendue et agrafée à la main dans l'atelier.",
+      "material": {
+        "title": "Une texture qui se voit",
+        "description": "Notre toile en mélange de coton donne de la profondeur et du relief à vos photographies."
+      },
+      "printing": {
+        "title": "Des couleurs qui durent",
+        "description": "L'impression UVgel Canon Colorado, avec notre garantie de qualité d'impression de {years} ans."
+      },
+      "finishing": {
+        "title": "Du soin jusqu'aux bords",
+        "description": "Nos toiles tendues sont finies à la main sur des châssis en bois massif, avec le matériel d'accrochage inclus."
+      },
+      "link": "Entrez dans notre atelier"
     },
     "process": {
-      "heading": "Comment ça fonctionne",
+      "eyebrow": "Simple dès le départ",
+      "title": "De votre téléphone à votre mur.",
+      "help": "Quelques réponses utiles",
+      "choose": {
+        "title": "Choisissez votre toile",
+        "description": "Optez pour une toile tendue ou en rouleau, puis choisissez le format et les options de finition."
+      },
       "upload": {
-        "title": "Téléversez votre photo",
-        "description": "Choisissez votre image favorite depuis n'importe quel appareil"
-      },
-      "select": {
-        "title": "Sélectionnez votre style",
-        "description": "Choisissez votre format et vos options d'encadrement"
-      },
-      "create": {
-        "title": "Nous créons votre chef-d'œuvre",
-        "description": "Impression experte et savoir-faire"
+        "title": "Donnez-lui votre touche",
+        "description": "Téléversez votre photo, ajustez le cadrage et prévisualisez votre impression avant de commander."
       },
       "enjoy": {
-        "title": "Profitez de votre art personnalisé",
-        "description": "Livraison prête à accrocher à votre porte"
+        "title": "On s'occupe de la suite",
+        "description": "Nous l'imprimons avec soin. Choisissez la livraison au Québec et en Ontario ou la cueillette gratuite à Montréal ou à Québec."
       }
     },
-    "testimonials": {
-      "heading": "Ce que disent nos clients",
-      "first": {
-        "quote": "La qualité a dépassé mes attentes. Les couleurs sont vibrantes, et l'encadrement est absolument parfait.",
-        "author": "Jennifer T., Toronto"
-      },
-      "second": {
-        "quote": "Du téléversement à la livraison, tout le processus était fluide. La pièce finie est magnifique !",
-        "author": "Michel B., Montréal"
-      }
-    },
-    "trustBadges": {
-      "secure": "Paiement sécurisé",
-      "ssl": "Cryptage SSL",
-      "shipping": "Expédition rapide et fiable",
-      "made": "Fabriqué au Canada",
-      "satisfaction": "Satisfaction garantie à 100 %"
+    "closing": {
+      "eyebrow": "Faites place à vos coups de cœur",
+      "title": "Certaines photos méritent mieux qu'un écran.",
+      "create": "Créer ma toile",
+      "help": "Besoin d'un coup de main?"
     }
   },
   "Error": {
@@ -216,7 +229,11 @@
     "noResults": "Il n'y a aucun produit correspondant à",
     "showingResults": "Affichage de {count} {resultsText} pour ",
     "singleResult": "résultat",
-    "multipleResults": "résultats"
+    "multipleResults": "résultats",
+    "title": "Trouvez votre toile",
+    "open": "Ouvrir la recherche",
+    "close": "Fermer la recherche",
+    "submit": "Rechercher des produits"
   },
   "CanvasProcess": {
     "metadata": {
@@ -610,6 +627,7 @@
       "title": "Garantie de qualité d'impression de 30 ans",
       "description": "Notre technologie d'impression UVgel haut de gamme est couverte par une garantie de qualité d'impression de 30 ans."
     },
+    "selectionUnavailable": "Choisissez un format disponible et toutes les options pour voir le prix et continuer.",
     "margin": {
       "title": "Marge de tension",
       "select": "Choisissez une marge",
@@ -782,12 +800,114 @@
         "ctaLead": "Vous préférez la recevoir finie et prête à accrocher?",
         "ctaLabel": "Voir les toiles tendues"
       }
+    },
+    "studio": {
+      "breadcrumb": "Fil d’Ariane",
+      "eyebrow": "Votre photo. Notre savoir-faire.",
+      "description": "Vos moments préférés, imprimés sur une toile en mélange de coton et tendus à la main au Québec. Choisissez le format, ajoutez la touche finale et créez une toile à votre image.",
+      "readyToHang": "Faite sur mesure. Prête à accrocher.",
+      "sizeTitle": "Format et orientation",
+      "canvasOnly": "Toile sans cadre",
+      "blackFrame": "Cadre flottant noir",
+      "included": "Inclus",
+      "canvasHelp": "Une toile de profondeur galerie, tendue sur un châssis en bois massif.",
+      "framedHelp": "Une toile de profondeur régulière, avec un cadre flottant noir.",
+      "edgeTitle": "Finition des bords",
+      "resolutionGood": "La résolution de votre image convient à ce format.",
+      "uploadToStart": "Ajoutez votre photo pour continuer",
+      "checkoutNote": "Prix en dollars canadiens. Livraison et taxes calculées à la caisse.",
+      "customSize": "Vous imaginez un format plus grand ou différent?",
+      "customSizeLink": "Demandez une soumission sur mesure.",
+      "previewHelp": "L’aperçu de votre toile. Changez le format, l’orientation ou la finition pour voir le résultat.",
+      "previewLoading": "Préparation de l’aperçu de votre toile…",
+      "gallery": {
+        "room": "Une impression sur toile colorée dans un salon lumineux.",
+        "hanging": "Une impression sur toile en cours d’installation au mur.",
+        "workshop": "Une toile tendue et agrafée à la main dans notre atelier.",
+        "sample": "Un peu d’inspiration",
+        "caption": "Vos plus beaux moments trouvent leur place."
+      },
+      "assurances": {
+        "guarantee": "Qualité d’impression garantie {years} ans",
+        "hanging": "Matériel d’accrochage inclus",
+        "pickup": "Cueillette gratuite à Montréal et Québec"
+      },
+      "craft": {
+        "eyebrow": "Fabriquée dans notre atelier au Québec",
+        "title": "Belle sous",
+        "accent": "tous les angles.",
+        "material": {
+          "title": "Une toile de caractère",
+          "description": "Le mélange de coton apporte une texture tangible et de la profondeur à vos photos préférées."
+        },
+        "colour": {
+          "title": "Des couleurs qui restent",
+          "description": "L’impression Canon Colorado UVgel offre des couleurs riches et des détails nets, avec notre garantie de qualité d’impression de {years} ans."
+        },
+        "finish": {
+          "title": "Le soin jusque dans les coins",
+          "description": "Tendue à la main sur un châssis en bois massif, avec des coins soignés et le matériel d’accrochage inclus."
+        },
+        "link": "Découvrez notre atelier"
+      },
+      "details": {
+        "eyebrow": "Les détails qui comptent",
+        "title": "Faite avec soin. Livrée chez vous.",
+        "description": "Quelques renseignements pratiques avant que votre photo prenne sa place sur votre mur.",
+        "guaranteeLink": "Notre promesse de qualité",
+        "delivery": {
+          "title": "Arrivée estimée",
+          "description": "Du {earliest} au {latest} si vous commandez aujourd’hui. Chaque toile est fabriquée sur commande."
+        },
+        "pickup": {
+          "title": "Cueillette sur place",
+          "description": "Récupérez votre commande gratuitement à Montréal ou à Québec. Nous vous aviserons lorsqu’elle sera prête."
+        },
+        "shipping": {
+          "title": "Livraison",
+          "description": "Livraison au Québec et en Ontario. Les options et les frais sont indiqués à la caisse."
+        },
+        "guarantee": {
+          "title": "Notre promesse",
+          "description": "Une garantie de qualité d’impression de {years} ans et une garantie de satisfaction de {days} jours."
+        },
+        "custom": {
+          "title": "Dimensions sur mesure",
+          "description": "Vous souhaitez un format différent de ceux offerts en ligne? Contactez-nous pour une soumission adaptée à votre image et à votre espace."
+        }
+      },
+      "faq": {
+        "eyebrow": "Pour vous guider",
+        "title": "Avant de créer votre toile.",
+        "contact": "Parlez à notre équipe"
+      },
+      "alternative": {
+        "eyebrow": "Une autre façon de créer",
+        "title": "Vous préférez faire l’encadrement?",
+        "description": "Nos toiles en rouleau offrent la même toile et la même impression, livrées sans châssis dans un tube protecteur. À encadrer ou à finir à votre façon."
+      },
+      "photoTitle": "Votre photo",
+      "photoAdded": "Votre photo est prête à être prévisualisée.",
+      "comparison": {
+        "eyebrow": "La qualité de plus près",
+        "title": "La différence est",
+        "accent": "dans les détails."
+      },
+      "reviews": {
+        "eyebrow": "Les voix de notre communauté",
+        "description": "Les commentaires de clients de notre atelier au Québec, pour leurs toiles et leurs autres projets d’impression.",
+        "stars": "{rating} étoiles sur 5",
+        "showAll": "Lire les {count} avis",
+        "showLess": "Afficher moins d’avis"
+      }
     }
   },
   "ImageUploader": {
     "dropzone": {
       "mainText": "Déposez votre image ici, ou cliquez pour parcourir",
-      "supportedFormats": "Formats pris en charge : {formats}"
+      "supportedFormats": "Formats pris en charge : {formats}",
+      "choosePhoto": "Ajoutez votre photo",
+      "photoHint": "Glissez-la ici ou cliquez pour parcourir vos fichiers. L’aperçu de votre toile commence ici."
     },
     "uploading": {
       "status": "Téléversement en cours...",
@@ -836,7 +956,8 @@
       "taxes": "Taxes",
       "shipping": "Livraison",
       "shippingCalculation": "Calculée à la caisse",
-      "total": "Total"
+      "total": "Total",
+      "openCartWithCount": "Ouvrir le panier ({count, plural, one {# article} other {# articles}})"
     },
     "NotFound": {
       "title": "Page introuvable",
@@ -3872,8 +3993,35 @@
     "shop": "Voir les toiles"
   },
   "Nav": {
-    "shop": "Boutique",
-    "guides": "Guides"
+    "shop": "Nos toiles",
+    "guides": "Guides",
+    "brandCanvas": "Canvas",
+    "brandPrintShop": "Print Shop",
+    "home": "Canvas Print Shop — accueil",
+    "mainNavigation": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "ourCraft": "Notre savoir-faire",
+    "createPrint": "Créer ma toile",
+    "collection": "Pour habiller vos murs",
+    "collectionTitle": "Vos photos. Tout un art.",
+    "collectionDescription": "Découvrez nos impressions sur toile, réalisées sur mesure avec soin au Québec.",
+    "viewAll": "Découvrir toutes les toiles",
+    "language": "Choisir votre langue",
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    },
+    "products": {
+      "canvas": {
+        "title": "Impressions sur toile",
+        "description": "Tendues à la main. Prêtes à accrocher."
+      },
+      "rolledCanvas": {
+        "title": "Toiles en rouleau",
+        "description": "Imprimées avec soin. À encadrer à votre goût."
+      }
+    }
   },
   "RoomVisualiser": {
     "eyebrow": "Aperçu studio · prototype",

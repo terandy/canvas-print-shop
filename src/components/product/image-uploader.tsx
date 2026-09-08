@@ -16,9 +16,13 @@ import { useLocale } from "next-intl";
 
 interface ImageUploaderProps {
   className?: string;
+  appearance?: "editorial";
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({
+  className,
+  appearance,
+}) => {
   // Get translations for this component
   const t = useTranslations("ImageUploader");
   const locale = useLocale();
@@ -132,7 +136,13 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
   if (imgURL !== DEFAULT_CANVAS_IMAGE && !isUploading && !error) return null;
 
   return (
-    <div className={clsx("w-full max-w-xl mx-auto", className)}>
+    <div
+      className={clsx(
+        "w-full mx-auto",
+        appearance !== "editorial" && "max-w-xl",
+        className
+      )}
+    >
       {!isUploading && (
         <div
           onDragEnter={handleDrag}
@@ -140,7 +150,9 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
           onDragOver={handleDrag}
           onDrop={handleDrop}
           className={clsx(
-            "relative border-2 border-dashed rounded-lg p-8 text-center",
+            appearance === "editorial"
+              ? "relative border border-secondary/25 bg-[#F3F1EB] p-5 text-left focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-primary-dark sm:p-6"
+              : "relative border-2 border-dashed rounded-lg p-8 text-center",
             "transition-all duration-200 ease-in-out",
             isDragging
               ? "border-primary bg-primary/10 scale-[1.02]"
@@ -149,25 +161,53 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ className }) => {
         >
           <input
             type="file"
+            aria-label={
+              appearance === "editorial"
+                ? t("dropzone.choosePhoto")
+                : t("dropzone.mainText")
+            }
             accept={IMAGE_ACCEPT_ATTRIBUTE}
             onChange={(e) =>
               e.target.files?.[0] && handleFile(e.target.files[0])
             }
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
           />
-          <div className="flex items-center">
+          <div className="flex items-center gap-5">
             <div>
-              <p className="text-base font-medium text-gray/70">
-                {t("dropzone.mainText")}
+              <p
+                className={
+                  appearance === "editorial"
+                    ? "text-sm font-medium text-secondary"
+                    : "text-base font-medium text-gray/70"
+                }
+              >
+                {appearance === "editorial"
+                  ? t("dropzone.choosePhoto")
+                  : t("dropzone.mainText")}
               </p>
-              <p className="text-sm text-gray-500 mt-2">
+              {appearance === "editorial" && (
+                <p className="mt-1 text-xs leading-5 text-gray">
+                  {t("dropzone.photoHint")}
+                </p>
+              )}
+              <p
+                className={
+                  appearance === "editorial"
+                    ? "mt-3 text-[10px] leading-5 text-gray"
+                    : "text-sm text-gray-500 mt-2"
+                }
+              >
                 {t("dropzone.supportedFormats", { formats: acceptedFormats })}
               </p>
             </div>
             <Upload
               className={clsx(
-                "w-12 h-12 mx-auto transition-colors duration-200",
-                isDragging ? "text-primary" : "text-gray/40"
+                appearance === "editorial"
+                  ? "h-6 w-6 shrink-0 text-primary-dark"
+                  : "w-12 h-12 mx-auto transition-colors duration-200",
+                isDragging
+                  ? "text-primary"
+                  : appearance !== "editorial" && "text-gray/40"
               )}
             />
           </div>

@@ -2,6 +2,7 @@ import Loading from "@/app/[locale]/loading";
 import { useResize } from "@/lib/hooks/useResize";
 import clsx from "clsx";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import React, {
   ComponentPropsWithoutRef,
   useEffect,
@@ -35,6 +36,8 @@ interface ImagePreviewerProps {
    * Selected frame option (e.g. "black" or "none")
    */
   frame?: string;
+  /** Fit the preview into a fixed gallery panel without scrolling the form. */
+  contained?: boolean;
 }
 
 interface CanvasProps {
@@ -354,8 +357,10 @@ const CanvasPreviewer: React.FC<
   borderStyle = "wrapped",
   depth = "regular",
   frame = "none",
+  contained = false,
   ...props
 }) => {
+  const t = useTranslations("Product.studio");
   const componentRef = useRef<HTMLDivElement>(null);
   const resize = useResize(componentRef);
   const [canvasProps, setCanvasProps] = useState<CanvasProps>();
@@ -391,6 +396,30 @@ const CanvasPreviewer: React.FC<
     const frameIn = showFrame ? FRAME_BORDER_IN : 0;
     const frameGapIn = showFrame ? FRAME_GAP_IN : 0;
     const totalEdgeIn = visibleThicknessIn + frameIn + frameGapIn;
+
+    if (contained && componentRef.current) {
+      const availableWidth = Math.max(1, componentRef.current.clientWidth - 72);
+      const availableHeight = Math.max(
+        1,
+        componentRef.current.clientHeight - 64
+      );
+      const scale = Math.min(
+        availableWidth / (x + 2 * totalEdgeIn),
+        availableHeight / (y + 2 * totalEdgeIn)
+      );
+      setCanvasProps({
+        width: x * scale,
+        height: y * scale,
+        thickness: canvasThicknessIn * scale,
+        borderStyle,
+        src,
+      });
+      setFrameState({
+        framePx: frameIn * scale,
+        frameGapPx: frameGapIn * scale,
+      });
+      return;
+    }
 
     if (direction === "landscape") {
       // For landscape, fit to container width considering edges
@@ -453,12 +482,14 @@ const CanvasPreviewer: React.FC<
     src,
     direction,
     frame,
+    contained,
     resize.height,
     resize.width,
   ]);
 
   // Watch for changes in props and state that should trigger scrolling
   useEffect(() => {
+    if (contained) return;
     if (componentRef.current) {
       const element = componentRef.current;
 
@@ -473,16 +504,21 @@ const CanvasPreviewer: React.FC<
         });
       }
     }
-  }, [src, size, direction, borderStyle, depth, frame]);
+  }, [src, size, direction, borderStyle, depth, frame, contained]);
 
-  if (!canvasProps) return <Loading message={"Loading canvas preview"} />;
+  if (!canvasProps)
+    return (
+      <div {...props} ref={componentRef}>
+        <Loading message={t("previewLoading")} />
+      </div>
+    );
 
   const showFrame = frame === "black";
 
   return (
     <div {...props} ref={componentRef}>
       <div className="grid grid-cols-[auto,1fr] gap-1 w-min mx-auto">
-        <Badge>{x}</Badge>
+        <Badge>{x}&quot;</Badge>
         <div />
         {showFrame ? (
           <div
@@ -516,7 +552,7 @@ const CanvasPreviewer: React.FC<
             <Canvas {...canvasProps} />
           </CanvasContainer>
         )}
-        <Badge className="w-min flex align-middle">{y}</Badge>
+        <Badge className="w-min flex align-middle">{y}&quot;</Badge>
       </div>
     </div>
   );

@@ -13,10 +13,11 @@ import Link from "next/link";
 
 interface Props {
   size?: "sm";
+  variant?: "menu";
   onClick?: () => void;
 }
 
-const QuickLinks: React.FC<Props> = ({ size, onClick }) => {
+const QuickLinks: React.FC<Props> = ({ size, variant, onClick }) => {
   const t = useTranslations("Footer");
   const locale = useLocale();
 
@@ -46,12 +47,20 @@ const QuickLinks: React.FC<Props> = ({ size, onClick }) => {
       <h3
         className={clsx(
           size === "sm" && "text-sm",
-          "font-semibold text-gray-900"
+          variant === "menu"
+            ? "text-[10px] font-medium uppercase tracking-[0.18em] text-gray"
+            : "font-semibold text-gray-900"
         )}
       >
         {t("customerService")}
       </h3>
-      <ul className="mt-4 space-y-2">
+      <ul
+        className={
+          variant === "menu"
+            ? "mt-3 grid grid-cols-2 gap-x-4"
+            : "mt-4 space-y-2"
+        }
+      >
         {companyLinks.map((link) => {
           const IconComponent = link.icon;
           return (
@@ -59,12 +68,16 @@ const QuickLinks: React.FC<Props> = ({ size, onClick }) => {
               <Link
                 href={link.href}
                 className={clsx(
-                  "text-gray-600 hover:text-gray-900 flex items-center gap-2",
+                  variant === "menu"
+                    ? "flex min-h-11 items-center rounded-sm py-2 text-xs leading-relaxed text-secondary transition-colors hover:text-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    : "text-gray-600 hover:text-gray-900 flex items-center gap-2",
                   size === "sm" && "text-sm"
                 )}
                 onClick={onClick}
               >
-                <IconComponent className={clsx(size === "sm" && "h-4 w-4")} />
+                {variant !== "menu" && (
+                  <IconComponent className={clsx(size === "sm" && "h-4 w-4")} />
+                )}
                 {link.name}
               </Link>
             </li>

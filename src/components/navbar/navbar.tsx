@@ -1,92 +1,43 @@
-import MobileMenu from "./mobile-menu";
-import Search from "./search";
-import { ButtonLink, CartModal } from "@/components";
-import React from "react";
 import Link from "next/link";
-import LanguageSwitcher from "./LanguageSwitcher";
-import Logo from "../Logo";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
+import CartModal from "../cart/cart-modal";
+import Brand from "./brand";
+import DesktopMenu from "./desktop-menu";
+import LanguageSwitcher from "./LanguageSwitcher";
+import MobileMenu from "./mobile-menu";
+import SearchPopover from "./search-popover";
 
-const ProudlyCanadian: React.FC<{ className?: string }> = async ({
-  className,
-}) => {
-  const t = await getTranslations("canadian");
-  return (
-    <div className={className}>
-      <div className="flex text-xs uppercase items-center gap-1">
-        <span>{t("proudly")}</span>
-        {/* Decorative — the adjacent text already says "Proudly Canadian". */}
-        <Image src="/canadian-leaf.png" height={12} width={12} alt="" />
-        <span>{t("canadian")}</span>
-      </div>
-    </div>
-  );
-};
-
-const Navbar: React.FC = async () => {
+const Navbar = async () => {
   const locale = await getLocale();
-  const tNav = await getTranslations("Nav");
+  const t = await getTranslations("Nav");
 
   return (
-    <>
-      {/* Stacked above the bar until the inline copy below has room at xl.
-          The two breakpoints must stay in sync or the tagline vanishes. */}
-      <ProudlyCanadian className="pt-3 px-3 xl:hidden" />
-      {/*
-        Single flex row rather than three rigid `w-1/3` columns. The thirds
-        could not fit the brand, the tagline, two nav links and the search box
-        at tablet widths, so items collided and wrapped. Everything fixed-width
-        is `shrink-0`; the search box is the only flexible element.
-      */}
-      <nav className="flex items-center gap-3 p-4 lg:gap-5 lg:px-6">
-        <div className="block flex-none md:hidden">
-          <MobileMenu />
-        </div>
-
-        <ButtonLink
-          href={"/"}
-          prefetch={true}
-          icon={Logo}
-          iconPosition="left"
-          variant="outline"
-          className="shrink-0 whitespace-nowrap bg-white items-center uppercase text-xs text-gray-700"
-        >
-          <span>Canvas Print Shop</span>
-        </ButtonLink>
-
-        {/* Tagline only once there is genuinely room for it. */}
-        <ProudlyCanadian className="hidden shrink-0 xl:block" />
-
-        {/* Primary navigation. The header previously had no links at all,
-            which left /shop and the landing pages with no site-wide entry
-            point above the fold. */}
-        <div className="hidden shrink-0 items-center gap-5 md:flex lg:gap-6">
+    <header className="relative z-30 border-b border-secondary/10 bg-[#FCFBF8] text-secondary">
+      <div className="relative mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-3 px-4 sm:px-8 lg:h-24 lg:gap-8 lg:px-10">
+        <Brand />
+        <DesktopMenu />
+        <div className="flex shrink-0 items-center gap-0 lg:gap-2">
+          <SearchPopover />
+          <LanguageSwitcher compact className="hidden lg:flex" />
+          <div
+            aria-hidden="true"
+            className="mx-2 hidden h-5 w-px bg-secondary/15 lg:block"
+          />
+          <CartModal />
           <Link
             href={`/${locale}/shop`}
-            className="whitespace-nowrap text-xs uppercase tracking-wide text-gray-700 transition-colors hover:text-gray-900"
+            className="ml-4 hidden min-h-11 items-center gap-5 rounded-full bg-secondary px-5 text-[13px] font-medium text-white transition-colors hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary xl:inline-flex"
           >
-            {tNav("shop")}
+            {t("createPrint")}
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
-          <Link
-            href={`/${locale}/blog`}
-            className="whitespace-nowrap text-xs uppercase tracking-wide text-gray-700 transition-colors hover:text-gray-900"
-          >
-            {tNav("guides")}
-          </Link>
+          <div className="lg:hidden">
+            <MobileMenu />
+          </div>
         </div>
-
-        {/* Absorbs the leftover space and shrinks first when the row tightens. */}
-        <div className="ml-auto hidden min-w-0 max-w-sm flex-1 md:block">
-          <Search />
-        </div>
-
-        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
-          <LanguageSwitcher className="hidden md:flex" />
-          <CartModal />
-        </div>
-      </nav>
-    </>
+      </div>
+    </header>
   );
 };
 

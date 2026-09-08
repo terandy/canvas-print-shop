@@ -8,6 +8,7 @@ import Button from "../buttons/button";
 import { getAttributes, toProductState } from "@/contexts/cart-context/utils";
 import { ButtonLink } from "../buttons";
 import { useLocale, useTranslations } from "next-intl";
+import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
 
 interface SubmitButtonProps {
   saved?: boolean;
@@ -38,9 +39,10 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
 
 interface SaveCartItemProps {
   cartItemID: string;
+  appearance?: "editorial";
 }
 
-const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
+const SaveCartItem = ({ cartItemID, appearance }: SaveCartItemProps) => {
   const {
     state: cartState,
     updateCartItem: contextUpdateCartItem,
@@ -71,7 +73,13 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
     <>
       <form
         action={async () => {
-          if (!state.imgURL || !variant || !cartItemID) return;
+          if (
+            !state.imgURL ||
+            state.imgURL === DEFAULT_CANVAS_IMAGE ||
+            !variant ||
+            !cartItemID
+          )
+            return;
           contextUpdateCartItem(cartItemID, state, variant); // optimistic
           await updateCartItem({
             cartItemId: cartItemID,
@@ -81,9 +89,23 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
           });
           setIsOpen(true);
         }}
-        className="flex flex-col gap-2 bg-white sticky bottom-1 lg:static"
+        className={
+          appearance === "editorial"
+            ? "flex flex-col gap-2"
+            : "flex flex-col gap-2 bg-white sticky bottom-1 lg:static"
+        }
       >
-        <SubmitButton saved={!hasDiff} disabled={!state.imgURL} />
+        <SubmitButton
+          className={
+            appearance === "editorial"
+              ? "min-h-12 items-center !bg-secondary text-sm hover:!bg-primary-dark disabled:!bg-secondary/15 disabled:!text-secondary/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-dark"
+              : undefined
+          }
+          saved={!hasDiff}
+          disabled={
+            !variant || !state.imgURL || state.imgURL === DEFAULT_CANVAS_IMAGE
+          }
+        />
         <p className="sr-only" role="status" aria-label="polite">
           {message}
         </p>
@@ -98,7 +120,11 @@ const SaveCartItem = ({ cartItemID }: SaveCartItemProps) => {
           localStorage.removeItem("cartItemID");
         }}
         replace
-        className="mt-1"
+        className={
+          appearance === "editorial"
+            ? "mt-3 min-h-11 items-center text-xs"
+            : "mt-1"
+        }
       >
         {t("createNew")}
       </ButtonLink>

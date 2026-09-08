@@ -15,68 +15,81 @@
   },
   "Home": {
     "hero": {
-      "title": "Custom Canvas Prints Made to Order",
-      "description": "Turn your cherished memories into beautiful canvas prints, expertly hand-crafted in Canada and ready to hang in your home."
+      "eyebrow": "Your photo. Our craft.",
+      "title": "Canvas prints.",
+      "accent": "Made personal.",
+      "description": "The places, people and moments you love, beautifully printed on canvas and made to order in our Quebec workshop.",
+      "create": "Create your canvas",
+      "explore": "Explore our prints",
+      "price": "From {price} CAD · Made to order",
+      "madeToOrder": "Made to order in Quebec",
+      "imageAlt": "A colourful canvas print displayed on a mantel in a bright living room.",
+      "imageCaption": "A favourite view. A place in your everyday."
     },
-    "benefits": {
-      "heading": "Why Choose Canvas Print Shop?",
-      "premium": {
-        "title": "Premium Materials",
-        "description": "Premium cotton-blend canvas with 10x higher density and 75% opacity - far superior to competitors' lower quality materials."
+    "details": {
+      "canvas": "Beautiful cotton-blend canvas",
+      "colour": "Rich colour. Canon UVgel printing.",
+      "pickup": "Free pickup in Montreal & Quebec City"
+    },
+    "collection": {
+      "eyebrow": "Find your finish",
+      "title": "One photo. Two possibilities.",
+      "description": "Ready for your wall, or ready for your own frame. Choose the finish that feels like you.",
+      "price": "From {price} CAD",
+      "canvas": {
+        "title": "Canvas prints",
+        "label": "Ready to hang",
+        "description": "Your photo, stretched by hand over a solid wood frame. Add a floating frame for the finishing touch.",
+        "imageAlt": "A canvas print being positioned on a wall."
       },
-      "craftsmanship": {
-        "title": "Expert Craftsmanship",
-        "description": "All canvas prints are expertly handcrafted in our Canadian studio, based in Quebec City."
-      },
-      "process": {
-        "title": "Easy Process",
-        "description": "Simply upload your image, choose your dimensions, preview your canvas print and then checkout."
-      },
-      "technology": {
-        "title": "UVgel Technology",
-        "description": "Advanced Canon printing technology delivering exceptional color vibrancy and durability, backed by our 30-year print quality guarantee. Eco-friendly, no-odor prints perfect for indoor display."
+      "rolledCanvas": {
+        "title": "Rolled canvas prints",
+        "label": "Yours to frame",
+        "description": "The same beautiful canvas and printing, delivered in a protective tube. Stretch, mount or frame it your way.",
+        "imageAlt": "A colourful printed canvas rolled up to show the artwork and cotton-blend texture."
       }
     },
-    "featured": {
-      "heading": "Create Your Custom Canvas Print",
-      "description": "Transform your favorite moments into stunning wall art with our premium canvas prints"
+    "craft": {
+      "eyebrow": "From our Quebec workshop",
+      "title": "Good printing is in the details.",
+      "description": "From the texture of the canvas to the fold of a corner, we take care of the things that make a print feel special.",
+      "imageAlt": "A canvas being stretched and stapled by hand in the workshop.",
+      "material": {
+        "title": "A texture you can see",
+        "description": "Cotton-blend canvas gives your photographs depth and a beautifully tactile finish."
+      },
+      "printing": {
+        "title": "Colour made to last",
+        "description": "Canon Colorado UVgel printing, backed by our {years}-year print quality guarantee."
+      },
+      "finishing": {
+        "title": "Craft, right to the edges",
+        "description": "Our stretched canvases are finished by hand over solid wood frames, with hanging hardware included."
+      },
+      "link": "Take a look inside our workshop"
     },
     "process": {
-      "heading": "How It Works",
+      "eyebrow": "Simple from the start",
+      "title": "From your camera roll to your wall.",
+      "help": "A few helpful answers",
+      "choose": {
+        "title": "Choose your canvas",
+        "description": "Pick a stretched or rolled print, then choose your size and finishing options."
+      },
       "upload": {
-        "title": "Upload Your Photo",
-        "description": "Choose your favorite image from any device"
-      },
-      "select": {
-        "title": "Select Your Style",
-        "description": "Pick your size and frame options"
-      },
-      "create": {
-        "title": "We Create Your Masterpiece",
-        "description": "Expert printing and craftsmanship"
+        "title": "Make it yours",
+        "description": "Upload your photo, adjust the crop and preview your print before you order."
       },
       "enjoy": {
-        "title": "Enjoy Your Custom Art",
-        "description": "Ready-to-hang delivery to your door"
+        "title": "We'll take it from here",
+        "description": "We print it with care. Choose delivery across Quebec and Ontario, or free pickup in Montreal or Quebec City."
       }
     },
-    "testimonials": {
-      "heading": "What Our Customers Say",
-      "first": {
-        "quote": "The quality exceeded my expectations. The colors are vibrant, and the framing is absolutely perfect.",
-        "author": "Jennifer T., Toronto"
-      },
-      "second": {
-        "quote": "From upload to delivery, the whole process was seamless. The finished piece looks amazing!",
-        "author": "Michel B., Montreal"
-      }
-    },
-    "trustBadges": {
-      "secure": "Secure checkout",
-      "ssl": "SSL encrypted",
-      "shipping": "Fast, reliable shipping",
-      "made": "Made in Canada",
-      "satisfaction": "100% satisfaction guaranteed"
+    "closing": {
+      "eyebrow": "Make room for a favourite",
+      "title": "Some photos deserve more than a screen.",
+      "create": "Create your print",
+      "help": "Need a hand choosing?"
     }
   },
   "Error": {
@@ -216,7 +229,11 @@
     "noResults": "There are no products that match",
     "showingResults": "Showing {count} {resultsText} for ",
     "singleResult": "result",
-    "multipleResults": "results"
+    "multipleResults": "results",
+    "title": "Find your print",
+    "open": "Open search",
+    "close": "Close search",
+    "submit": "Search products"
   },
   "CanvasProcess": {
     "metadata": {
@@ -610,6 +627,7 @@
       "title": "30-Year Print Quality Guarantee",
       "description": "We stand behind our premium UVgel printing technology with an industry-leading guarantee."
     },
+    "selectionUnavailable": "Choose an available size and all product options to see the price and continue.",
     "margin": {
       "title": "Stretching margin",
       "select": "Choose a margin",
@@ -782,12 +800,114 @@
         "ctaLead": "Would you rather it arrived finished and ready to hang?",
         "ctaLabel": "Shop stretched canvas prints"
       }
+    },
+    "studio": {
+      "breadcrumb": "Breadcrumb",
+      "eyebrow": "Your photo. Our craft.",
+      "description": "The moments you love, printed on cotton-blend canvas and stretched by hand in Quebec. Choose your size, add a finishing touch and make it yours.",
+      "readyToHang": "Made to order. Ready for your wall.",
+      "sizeTitle": "Size & orientation",
+      "canvasOnly": "Canvas only",
+      "blackFrame": "Black floating frame",
+      "included": "Included",
+      "canvasHelp": "A gallery-depth canvas, stretched over solid wood bars.",
+      "framedHelp": "A regular-depth canvas, finished with a black floating frame.",
+      "edgeTitle": "Edge finish",
+      "resolutionGood": "Your image has enough resolution for this size.",
+      "uploadToStart": "Upload your photo to continue",
+      "checkoutNote": "Prices in CAD. Shipping and taxes calculated at checkout.",
+      "customSize": "Have something bigger or a different size in mind?",
+      "customSizeLink": "Ask us for a custom quote.",
+      "previewHelp": "Your canvas preview. Change the size, orientation or finish to see it take shape.",
+      "previewLoading": "Preparing your canvas preview…",
+      "gallery": {
+        "room": "A colourful canvas print displayed in a bright living room.",
+        "hanging": "A canvas print being positioned on a wall.",
+        "workshop": "A canvas being stretched and stapled by hand in our workshop.",
+        "sample": "A little inspiration",
+        "caption": "Your favourite moments, beautifully at home."
+      },
+      "assurances": {
+        "guarantee": "{years}-year print quality guarantee",
+        "hanging": "Hanging hardware included",
+        "pickup": "Free Montreal & Quebec City pickup"
+      },
+      "craft": {
+        "eyebrow": "Made in our Quebec workshop",
+        "title": "Beautiful from",
+        "accent": "every angle.",
+        "material": {
+          "title": "A canvas with character",
+          "description": "Cotton-blend canvas brings a tactile texture and depth to your favourite photographs."
+        },
+        "colour": {
+          "title": "Colour worth keeping",
+          "description": "Canon Colorado UVgel printing delivers rich colour and sharp detail, backed by our {years}-year print quality guarantee."
+        },
+        "finish": {
+          "title": "The care is in the corners",
+          "description": "Stretched by hand over solid wood bars, finished with crisp corners and supplied with hanging hardware."
+        },
+        "link": "Inside our workshop"
+      },
+      "details": {
+        "eyebrow": "The finer details",
+        "title": "Made with care. Delivered to you.",
+        "description": "A few practical things to know before your photo becomes your next favourite piece.",
+        "guaranteeLink": "Our quality promise",
+        "delivery": {
+          "title": "Estimated arrival",
+          "description": "{earliest} – {latest} when you order today. Each canvas is made to order."
+        },
+        "pickup": {
+          "title": "Local pickup",
+          "description": "Collect for free in Montreal or Quebec City. We will let you know when your order is ready."
+        },
+        "shipping": {
+          "title": "Delivery",
+          "description": "Delivery across Quebec and Ontario. Shipping options and costs are shown at checkout."
+        },
+        "guarantee": {
+          "title": "Our promise",
+          "description": "A {years}-year print quality guarantee and a {days}-day satisfaction guarantee."
+        },
+        "custom": {
+          "title": "Custom dimensions",
+          "description": "Need a size beyond the online selection? Contact us for a quote tailored to your image and space."
+        }
+      },
+      "faq": {
+        "eyebrow": "A little guidance",
+        "title": "Before you make it yours.",
+        "contact": "Talk to our team"
+      },
+      "alternative": {
+        "eyebrow": "Another way to make it yours",
+        "title": "Prefer to do the framing yourself?",
+        "description": "Our rolled canvas prints use the same canvas and printing, delivered unstretched in a protective tube. Ready for your own frame or finishing."
+      },
+      "photoTitle": "Your photo",
+      "photoAdded": "Your photo is ready to preview.",
+      "comparison": {
+        "eyebrow": "A closer look at quality",
+        "title": "The difference is",
+        "accent": "in the details."
+      },
+      "reviews": {
+        "eyebrow": "From our print-shop community",
+        "description": "Feedback from customers of our Quebec print shop, from canvas prints to other printing projects.",
+        "stars": "{rating} out of 5 stars",
+        "showAll": "Read all {count} reviews",
+        "showLess": "Show fewer reviews"
+      }
     }
   },
   "ImageUploader": {
     "dropzone": {
       "mainText": "Drop your image here, or click to browse",
-      "supportedFormats": "Supported formats: {formats}"
+      "supportedFormats": "Supported formats: {formats}",
+      "choosePhoto": "Upload your photo",
+      "photoHint": "Drop it here or click to browse. Your canvas preview starts here."
     },
     "uploading": {
       "status": "Uploading...",
@@ -836,7 +956,8 @@
       "taxes": "Taxes",
       "shipping": "Shipping",
       "shippingCalculation": "Calculated at checkout",
-      "total": "Total"
+      "total": "Total",
+      "openCartWithCount": "Open cart ({count, plural, one {# item} other {# items}})"
     }
   },
   "canadian": {
@@ -3867,8 +3988,35 @@
     "shop": "Browse canvas prints"
   },
   "Nav": {
-    "shop": "Shop",
-    "guides": "Guides"
+    "shop": "Shop prints",
+    "guides": "Guides",
+    "brandCanvas": "Canvas",
+    "brandPrintShop": "Print Shop",
+    "home": "Canvas Print Shop — home",
+    "mainNavigation": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "ourCraft": "Our craft",
+    "createPrint": "Create a print",
+    "collection": "Made for your walls",
+    "collectionTitle": "Your photos. Beautifully printed.",
+    "collectionDescription": "Discover canvas prints, made to order and finished with care in Quebec.",
+    "viewAll": "Explore all prints",
+    "language": "Choose your language",
+    "languages": {
+      "en": "English",
+      "fr": "Français"
+    },
+    "products": {
+      "canvas": {
+        "title": "Canvas prints",
+        "description": "Stretched by hand. Ready to hang."
+      },
+      "rolledCanvas": {
+        "title": "Rolled canvas prints",
+        "description": "Beautifully printed. Yours to frame."
+      }
+    }
   },
   "RoomVisualiser": {
     "eyebrow": "Studio preview · prototype",

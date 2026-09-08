@@ -10,7 +10,7 @@ import React, {
 import type { TProductContext, FormState } from "./types";
 import type { Product } from "@/types/product";
 import { DEFAULT_CANVAS_IMAGE } from "@/lib/constants";
-import { getInitialFormState } from "./utils";
+import { getInitialFormState, getSelectedVariant } from "./utils";
 import { depthForFrame } from "./data";
 
 const ProductContext = createContext<TProductContext | undefined>(undefined);
@@ -67,18 +67,10 @@ const ProductProvider = ({
     return update;
   };
 
-  const variant = useMemo(() => {
-    return (
-      product.variants.find((variant) => {
-        // Match variant options against current form state
-        return Object.entries(variant.options).every(
-          ([optionName, optionValue]) => {
-            return state[optionName as keyof FormState] === optionValue;
-          }
-        );
-      }) ?? product.variants[0]
-    );
-  }, [state, product.variants]);
+  const variant = useMemo(
+    () => getSelectedVariant(product, state),
+    [state, product]
+  );
 
   const value = useMemo<TProductContext>(
     () => ({
