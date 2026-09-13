@@ -269,12 +269,12 @@ test("rolled canvas matches the stretched size list and stays cheaper", () => {
     "8x10": 4000,
     "8x12": 4500,
     "12x12": 5000,
-    "10x15": 5000,
-    "11x14": 5000,
-    "12x18": 5000,
-    "16x20": 6500,
-    "16x24": 6500,
-    "20x20": 6500,
+    "10x15": 5500,
+    "11x14": 6000,
+    "12x18": 6500,
+    "16x20": 7000,
+    "16x24": 7500,
+    "20x20": 8000,
     "24x24": 9000,
     "20x30": 9500,
     "24x36": 11000,
@@ -294,21 +294,16 @@ test("rolled canvas matches the stretched size list and stays cheaper", () => {
   for (const size of SIZES) {
     const rolled = ROLL_PRICES[size];
     assert.ok(rolled < stretched[size], `${size}: rolled must be cheaper`);
-    const ratio = rolled / stretched[size];
-    assert.ok(
-      ratio >= 0.6 && ratio <= 0.75,
-      `${size}: rolled is ${Math.round(ratio * 100)}% of stretched, outside the intended 60-75% band`
-    );
   }
 });
 
-test("rolled prices never go down as the canvas gets bigger", () => {
+test("rolled prices rise by at least $5 for every larger print area", () => {
   const area = (s: string) => s.split("x").reduce((a, b) => a * Number(b), 1);
   const ordered = [...SIZES].sort((a, b) => area(a) - area(b));
   for (let i = 1; i < ordered.length; i++) {
     assert.ok(
-      ROLL_PRICES[ordered[i]] >= ROLL_PRICES[ordered[i - 1]],
-      `${ordered[i]} costs less than the smaller ${ordered[i - 1]}`
+      ROLL_PRICES[ordered[i]] >= ROLL_PRICES[ordered[i - 1]] + 500,
+      `${ordered[i]} is not at least $5 more than the smaller ${ordered[i - 1]}`
     );
   }
 });

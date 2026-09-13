@@ -114,15 +114,49 @@ export function getStretchedCanvasPriceCents(size: string): number | null {
 /**
  * Customer price policy approved on 13 September 2026:
  * start 40% below the matched stretched retail price, round up to the $5 grid,
- * then apply a 10% uplift and round to the nearest $5.
+ * then apply a 10% uplift and round to the nearest $5. Finally, enforce at
+ * least one $5 increase for every larger printed area so no two sizes share a
+ * customer price.
  */
-export function getRolledCanvasPriceCents(size: string): number | null {
+function getCalculatedRolledCanvasPriceCents(size: string): number | null {
   const stretchedPrice = getStretchedCanvasPriceCents(size);
   if (stretchedPrice === null) return null;
   const discounted = roundUpToPriceIncrement(
     stretchedPrice * (1 - ROLLED_STARTING_DISCOUNT_FROM_STRETCHED)
   );
   return roundToPriceIncrement(discounted * (1 + ROLLED_APPROVED_UPLIFT));
+}
+
+function getCanvasArea(size: string): number | null {
+  const match = /^(\d+)x(\d+)$/.exec(size.trim());
+  if (!match) return null;
+  return Number(match[1]) * Number(match[2]);
+}
+
+function buildRolledCanvasPrices(): Record<string, number> {
+  let previousArea = 0;
+  let previousPrice = 0;
+
+  return Object.fromEntries(
+    CANVAS_SIZES.map((size) => {
+      const area = getCanvasArea(size);
+      const calculatedPrice = getCalculatedRolledCanvasPriceCents(size);
+      if (area === null || calculatedPrice === null) {
+        throw new Error(`No rolled price for ${size}`);
+      }
+      if (area <= previousArea) {
+        throw new Error(`Canvas sizes are not ordered by area at ${size}`);
+      }
+
+      const price = Math.max(
+        calculatedPrice,
+        previousPrice + PRICE_INCREMENT_CENTS
+      );
+      previousArea = area;
+      previousPrice = price;
+      return [size, price];
+    })
+  );
 }
 
 export const STRETCHED_CANVAS_PRICES_CENTS: Record<string, number> =
@@ -134,11 +168,8 @@ export const STRETCHED_CANVAS_PRICES_CENTS: Record<string, number> =
     })
   );
 
-export const ROLLED_CANVAS_PRICES_CENTS: Record<string, number> =
-  Object.fromEntries(
-    CANVAS_SIZES.map((size) => {
-      const price = getRolledCanvasPriceCents(size);
-      if (price === null) throw new Error(`No rolled price for ${size}`);
-      return [size, price];
-    })
-  );
+export const ROLLED_CANVAS_PRICES_CENTS = buildRolledCanvasPrices();
+
+export function getRolledCanvasPriceCents(size: string): number | null {
+  return ROLLED_CANVAS_PRICES_CENTS[size] ?? null;
+}

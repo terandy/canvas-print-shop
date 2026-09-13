@@ -20,10 +20,10 @@ const HANDLE = "rolled-canvas-prints";
 const APPLY = process.argv.includes("--apply");
 
 /**
- * Priced at roughly two-thirds of the matching unframed gallery-depth
- * stretched canvas, rounded to the nearest $5. A rolled print avoids stretcher
- * bars, hand-stretching, hardware and a box, while still carrying the fixed
- * costs of prepress, printing, a protective tube and handling.
+ * Starts from the approved gallery-relative calculation, then applies a strict
+ * $5 step for every larger printed area. A rolled print avoids stretcher bars,
+ * hand-stretching, hardware and a box, while still carrying the fixed costs of
+ * prepress, printing, a protective tube and handling.
  */
 export const PRICES = ROLLED_CANVAS_PRICES_CENTS;
 
