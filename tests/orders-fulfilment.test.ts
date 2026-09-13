@@ -222,27 +222,47 @@ test("every pickup counter publishes hours the shipping page can render", () => 
   assert.equal(montreal.openingHours!.closes, "16:00");
 });
 
-test("rolled canvas is offered in the same sizes as stretched, and always cheaper", () => {
-  // The stretched regular-depth unframed price for each size, as sold. Rolled
-  // has to undercut this clearly or the product has no reason to exist.
+test("rolled canvas matches the stretched size list and stays cheaper", () => {
+  // The gallery-depth unframed price for each stretched size, as sold. Rolled
+  // remains the lower-priced unfinished option.
   const stretched: Record<string, number> = {
-    "8x10": 5000,
-    "8x12": 5500,
-    "12x12": 6000,
-    "10x15": 6500,
-    "11x14": 6500,
-    "12x18": 7000,
-    "16x20": 8500,
-    "16x24": 9000,
-    "20x20": 10000,
-    "24x24": 11500,
-    "20x30": 12000,
-    "24x36": 15000,
-    "30x40": 18000,
-    "30x45": 20000,
-    "36x48": 24500,
-    "40x60": 35000,
+    "8x10": 5500,
+    "8x12": 6000,
+    "12x12": 6500,
+    "10x15": 7000,
+    "11x14": 7000,
+    "12x18": 7500,
+    "16x20": 9500,
+    "16x24": 10000,
+    "20x20": 11000,
+    "24x24": 13000,
+    "20x30": 13500,
+    "24x36": 16500,
+    "30x40": 20500,
+    "30x45": 22500,
+    "36x48": 27500,
+    "40x60": 40000,
   };
+
+  const expectedRolledPrices: Record<string, number> = {
+    "8x10": 4000,
+    "8x12": 4500,
+    "12x12": 4500,
+    "10x15": 5000,
+    "11x14": 5000,
+    "12x18": 5000,
+    "16x20": 6500,
+    "16x24": 6500,
+    "20x20": 7500,
+    "24x24": 9000,
+    "20x30": 9500,
+    "24x36": 11000,
+    "30x40": 14000,
+    "30x45": 15000,
+    "36x48": 18000,
+    "40x60": 26500,
+  };
+  assert.deepEqual(ROLL_PRICES, expectedRolledPrices);
 
   assert.deepEqual(
     [...SIZES].sort(),
@@ -255,8 +275,8 @@ test("rolled canvas is offered in the same sizes as stretched, and always cheape
     assert.ok(rolled < stretched[size], `${size}: rolled must be cheaper`);
     const ratio = rolled / stretched[size];
     assert.ok(
-      ratio >= 0.45 && ratio <= 0.65,
-      `${size}: rolled is ${Math.round(ratio * 100)}% of stretched, outside the intended 50-60% band`
+      ratio >= 0.6 && ratio <= 0.75,
+      `${size}: rolled is ${Math.round(ratio * 100)}% of stretched, outside the intended 60-75% band`
     );
   }
 });

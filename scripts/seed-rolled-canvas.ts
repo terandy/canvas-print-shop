@@ -19,31 +19,28 @@ const HANDLE = "rolled-canvas-prints";
 const APPLY = process.argv.includes("--apply");
 
 /**
- * Priced against the regular-depth unframed stretched canvas, tapering from
- * 60% of it at 8x10 down to 50% at 40x60.
- *
- * The saving grows with size because what a rolled print avoids — stretcher
- * bars, hand-stretching, hardware, a box — scales with the canvas, while
- * prepress, the print itself and the tube do not. Half price at 8x10 would not
- * cover the fixed costs.
+ * Priced at roughly two-thirds of the matching unframed gallery-depth
+ * stretched canvas, rounded to the nearest $5. A rolled print avoids stretcher
+ * bars, hand-stretching, hardware and a box, while still carrying the fixed
+ * costs of prepress, printing, a protective tube and handling.
  */
 export const PRICES: Record<string, number> = {
-  "8x10": 3000,
-  "8x12": 3500,
-  "12x12": 3500,
-  "10x15": 4000,
-  "11x14": 4000,
-  "12x18": 4000,
-  "16x20": 5000,
-  "16x24": 5000,
-  "20x20": 5500,
-  "24x24": 6000,
-  "20x30": 6500,
-  "24x36": 8000,
-  "30x40": 9500,
-  "30x45": 10000,
-  "36x48": 12500,
-  "40x60": 17500,
+  "8x10": 4000,
+  "8x12": 4500,
+  "12x12": 4500,
+  "10x15": 5000,
+  "11x14": 5000,
+  "12x18": 5000,
+  "16x20": 6500,
+  "16x24": 6500,
+  "20x20": 7500,
+  "24x24": 9000,
+  "20x30": 9500,
+  "24x36": 11000,
+  "30x40": 14000,
+  "30x45": 15000,
+  "36x48": 18000,
+  "40x60": 26500,
 };
 
 /** Order the sizes are offered in, smallest first. Matches the stretched product. */
@@ -58,7 +55,7 @@ export const MARGINS = ["with", "without"];
 
 const EN_DESCRIPTION = `Our canvas, printed to your exact size and shipped flat-rolled in a protective tube. No stretcher frame, no hardware — just the print, ready for you to stretch, mount or frame however you like.
 
-Printed on the same cotton-blend canvas and the same Canon Colorado UVgel press as our stretched canvases, so the image quality is identical. What changes is what arrives: a roll rather than a finished piece, at roughly half the price.
+Printed on the same cotton-blend canvas and the same Canon Colorado UVgel press as our stretched canvases, so the image quality is identical. What changes is what arrives: a lower-priced roll rather than a finished piece.
 
 Choose whether to include a 2-inch blank margin around the image. With it, you have canvas to grip and staple when stretching over your own bars — this is what you want if you plan to mount it. Without it, the print stops at the edge of your chosen size, which suits framing behind glass or mounting flat. The price is the same either way.
 
@@ -66,7 +63,7 @@ Every roll is checked in prepress before printing. If your file will not hold up
 
 const FR_DESCRIPTION = `Notre toile, imprimée exactement au format choisi et expédiée à plat dans un tube protecteur. Sans châssis ni quincaillerie — seulement l'impression, prête à être tendue, montée ou encadrée comme vous le souhaitez.
 
-Imprimée sur la même toile de coton mélangé et sur la même presse Canon Colorado UVgel que nos toiles tendues : la qualité d'image est identique. Ce qui change, c'est ce que vous recevez — un rouleau plutôt qu'une pièce finie, à environ la moitié du prix.
+Imprimée sur la même toile de coton mélangé et sur la même presse Canon Colorado UVgel que nos toiles tendues : la qualité d'image est identique. Ce qui change, c'est ce que vous recevez — un rouleau moins cher plutôt qu'une pièce finie.
 
 Choisissez d'inclure ou non une marge vierge de 2 pouces autour de l'image. Avec la marge, vous avez de quoi saisir et agrafer la toile en la tendant sur vos propres châssis : c'est ce qu'il vous faut si vous comptez la monter. Sans marge, l'impression s'arrête au bord du format choisi, ce qui convient à un encadrement sous verre ou à un montage à plat. Le prix est le même dans les deux cas.
 
@@ -76,9 +73,9 @@ const EN_SEO_TITLE =
   "Rolled Canvas Prints | Printed to Size, Shipped in a Tube";
 const FR_SEO_TITLE = "Toile en rouleau | Imprimée au format, expédiée en tube";
 const EN_SEO_DESCRIPTION =
-  "Custom canvas printed to your size and shipped flat-rolled in a tube — no frame, about half the price of a stretched canvas. Optional 2-inch stretching margin. Printed in Quebec.";
+  "Custom canvas printed to your size and shipped flat-rolled in a tube — no frame, with an optional 2-inch stretching margin. Printed in Quebec.";
 const FR_SEO_DESCRIPTION =
-  "Toile personnalisée imprimée à votre format et expédiée à plat en tube — sans châssis, à environ la moitié du prix d'une toile tendue. Marge de 2 pouces optionnelle. Imprimée au Québec.";
+  "Toile personnalisée imprimée à votre format et expédiée à plat en tube — sans châssis, avec une marge de tension de 2 pouces optionnelle. Imprimée au Québec.";
 
 async function main() {
   const found =

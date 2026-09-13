@@ -616,7 +616,7 @@
         "description": "Toutes les toiles de cette page arrivent finies. Si vous préférez faire la finition vous-même — ou l'expédier à plat — nous vendons la même impression non tendue.",
         "points": {
           "one": "La toile tendue arrive sur châssis de bois massif, quincaillerie installée, prête pour le mur.",
-          "two": "Le rouleau coûte environ la moitié, s'expédie à plat dans un tube, et vous le tendez, le montez ou le faites encadrer vous-même.",
+          "two": "La toile en rouleau coûte moins cher, s'expédie à plat dans un tube, et vous la tendez, la montez ou la faites encadrer vous-même.",
           "three": "Les deux sont imprimées sur commande au Québec et bénéficient de la même garantie de qualité d'impression de 30 ans."
         },
         "ctaLead": "Prêt à la tendre vous-même, ou besoin d'un envoi à plat?",
@@ -640,7 +640,7 @@
       "productDescription": "Notre toile, imprimée au format choisi et expédiée à plat dans un tube rigide. Sans châssis ni quincaillerie — vous la tendez, la montez ou la faites encadrer vous-même. Marge vierge de 2 pouces optionnelle, sans supplément. Formats sur mesure sur demande par courriel.",
       "qualitySection": {
         "title": "La même impression, sans le châssis",
-        "description": "Une toile en rouleau n'est pas un produit au rabais : c'est la même toile imprimée que nous tendons nous-mêmes, expédiée à plat. Vous fournissez le châssis et le travail, et vous payez environ la moitié.",
+        "description": "Une toile en rouleau n'est pas un produit au rabais : c'est la même toile imprimée que nous tendons nous-mêmes, expédiée à plat. Vous fournissez le châssis et le travail, et payez moins cher pour ce format non tendu.",
         "cards": {
           "premiumCanvas": {
             "title": "Toile de coton mélangé de qualité supérieure",
@@ -793,7 +793,7 @@
         "title": "En rouleau ou tendue?",
         "description": "C'est la même impression, sur la même toile, sortie de la même presse. La seule différence : la part du travail que nous faisons et celle qui vous revient.",
         "points": {
-          "one": "Le rouleau coûte environ la moitié, arrive à plat dans un tube, et vous le tendez, le montez ou le faites encadrer vous-même.",
+          "one": "La toile en rouleau coûte moins cher, arrive à plat dans un tube, et vous la tendez, la montez ou la faites encadrer vous-même.",
           "two": "La toile tendue arrive finie sur châssis de bois massif, quincaillerie installée, prête à accrocher.",
           "three": "Les deux sont imprimées sur commande au Québec et bénéficient de la même garantie de qualité d'impression de 30 ans."
         },
