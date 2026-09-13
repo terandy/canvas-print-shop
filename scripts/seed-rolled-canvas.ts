@@ -14,6 +14,7 @@
 import * as dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 import { sql } from "@vercel/postgres";
+import { CANVAS_SIZES, ROLLED_CANVAS_PRICES_CENTS } from "./canvas-price-model";
 
 const HANDLE = "rolled-canvas-prints";
 const APPLY = process.argv.includes("--apply");
@@ -24,27 +25,10 @@ const APPLY = process.argv.includes("--apply");
  * bars, hand-stretching, hardware and a box, while still carrying the fixed
  * costs of prepress, printing, a protective tube and handling.
  */
-export const PRICES: Record<string, number> = {
-  "8x10": 4000,
-  "8x12": 4500,
-  "12x12": 4500,
-  "10x15": 5000,
-  "11x14": 5000,
-  "12x18": 5000,
-  "16x20": 6500,
-  "16x24": 6500,
-  "20x20": 7500,
-  "24x24": 9000,
-  "20x30": 9500,
-  "24x36": 11000,
-  "30x40": 14000,
-  "30x45": 15000,
-  "36x48": 18000,
-  "40x60": 26500,
-};
+export const PRICES = ROLLED_CANVAS_PRICES_CENTS;
 
 /** Order the sizes are offered in, smallest first. Matches the stretched product. */
-export const SIZES = Object.keys(PRICES);
+export const SIZES = [...CANVAS_SIZES];
 
 /**
  * Whether to leave 2 inches of blank canvas around the image so the customer

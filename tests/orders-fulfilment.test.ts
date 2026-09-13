@@ -21,6 +21,11 @@ import {
   SIZES,
   MARGINS,
 } from "../scripts/seed-rolled-canvas";
+import {
+  getCanvasArticleCode,
+  getGallerySupplierCostCents,
+  STRETCHED_CANVAS_PRICES_CENTS,
+} from "../scripts/canvas-price-model";
 
 const root = process.cwd();
 const en = JSON.parse(
@@ -222,19 +227,29 @@ test("every pickup counter publishes hours the shipping page can render", () => 
   assert.equal(montreal.openingHours!.closes, "16:00");
 });
 
-test("rolled canvas matches the stretched size list and stays cheaper", () => {
-  // The gallery-depth unframed price for each stretched size, as sold. Rolled
-  // remains the lower-priced unfinished option.
-  const stretched: Record<string, number> = {
+test("canvas supplier codes come from dimensions rather than guessed blank rows", () => {
+  assert.deepEqual(
+    {
+      "12x12": getCanvasArticleCode("12x12"),
+      "10x15": getCanvasArticleCode("10x15"),
+      "20x20": getCanvasArticleCode("20x20"),
+      "30x45": getCanvasArticleCode("30x45"),
+    },
+    { "12x12": 24, "10x15": 26, "20x20": 40, "30x45": 76 }
+  );
+  assert.equal(getGallerySupplierCostCents("12x12"), 2645);
+  assert.equal(getGallerySupplierCostCents("20x20"), 4645);
+
+  assert.deepEqual(STRETCHED_CANVAS_PRICES_CENTS, {
     "8x10": 5500,
     "8x12": 6000,
-    "12x12": 6500,
+    "12x12": 7000,
     "10x15": 7000,
     "11x14": 7000,
     "12x18": 7500,
     "16x20": 9500,
     "16x24": 10000,
-    "20x20": 11000,
+    "20x20": 10000,
     "24x24": 13000,
     "20x30": 13500,
     "24x36": 16500,
@@ -242,18 +257,24 @@ test("rolled canvas matches the stretched size list and stays cheaper", () => {
     "30x45": 22500,
     "36x48": 27500,
     "40x60": 40000,
-  };
+  });
+});
+
+test("rolled canvas matches the stretched size list and stays cheaper", () => {
+  // The gallery-depth unframed price for each stretched size, as sold. Rolled
+  // remains the lower-priced unfinished option.
+  const stretched = STRETCHED_CANVAS_PRICES_CENTS;
 
   const expectedRolledPrices: Record<string, number> = {
     "8x10": 4000,
     "8x12": 4500,
-    "12x12": 4500,
+    "12x12": 5000,
     "10x15": 5000,
     "11x14": 5000,
     "12x18": 5000,
     "16x20": 6500,
     "16x24": 6500,
-    "20x20": 7500,
+    "20x20": 6500,
     "24x24": 9000,
     "20x30": 9500,
     "24x36": 11000,

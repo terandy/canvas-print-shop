@@ -7,6 +7,10 @@ dotenv.config({ path: resolve(__dirname, "../.env.local") });
 import { db } from "../src/lib/db/index";
 import { productVariants } from "../src/lib/db/schema";
 import { eq } from "drizzle-orm";
+import {
+  getCanvasArticleCode,
+  STRETCHED_CANVAS_PRICES_CENTS,
+} from "./canvas-price-model";
 
 // ============================================
 // WHAT WE SELL
@@ -21,11 +25,9 @@ const SELLABLE_DEPTH_FOR_FRAME: Record<string, string> = {
   black: "regular",
 };
 
-// ============================================
-// PRICE MAP
-// ============================================
-// Unframed (gallery depth): 40% margin → (supplier + $15 packaging) / 0.60,
-// rounded to nearest $5.
+// Unframed gallery prices come from canvas-price-model.ts, which resolves the
+// supplier article code from the actual dimensions before applying the existing
+// 40% margin, $15 packaging allowance and $5 rounding policy.
 //
 // Framed is deliberately NOT derived from supplier cost on its own. It is the
 // unframed price plus an explicit upcharge (below), so the increase a customer
@@ -34,30 +36,6 @@ const SELLABLE_DEPTH_FOR_FRAME: Record<string, string> = {
 // fell out of the subtraction — which made it non-monotonic (40x60 charged less
 // to frame than 36x48).
 //
-// Map: size → unframed gallery price in DOLLARS
-
-const CANVAS_PRICES: Record<string, number> = {
-  // Direct matches from supplier pricelist
-  "8x10": 55,
-  "8x12": 60,
-  "11x14": 70,
-  "12x18": 75,
-  "16x20": 95,
-  "16x24": 100,
-  "20x30": 135,
-  "24x36": 165,
-  "30x40": 205,
-  "36x48": 275,
-  "40x60": 400,
-
-  // Estimated matches (unlabeled supplier codes)
-  "12x12": 65, // Code 22
-  "10x15": 70, // Code 24
-  "20x20": 110, // Code 42
-  "24x24": 130, // Code 48
-  "30x45": 225, // Code 74
-};
-
 // ============================================
 // FRAME UPCHARGE
 // ============================================
@@ -127,15 +105,8 @@ const FRAME_MARGIN = 0.2;
 // upcharge stays on the same rounding grid).
 const FRAME_ASSEMBLY_SURCHARGE = 15;
 
-function getFrameArticleCode(size: string): number | null {
-  const [width, height] = size.split("x").map((s) => parseInt(s.trim(), 10));
-  if (!width || !height) return null;
-  // Codes only exist for even sums, so round up to the next even number.
-  return Math.ceil((width + height) / 2) * 2;
-}
-
 function getFrameUpcharge(size: string): number | null {
-  const code = getFrameArticleCode(size);
+  const code = getCanvasArticleCode(size);
   if (code === null) return null;
 
   const supplierCost = FRAME_SUPPLIER_COST[code];
@@ -151,19 +122,19 @@ function isSellable(frame: string, depth: string): boolean {
   return SELLABLE_DEPTH_FOR_FRAME[frame] === depth;
 }
 
-function getNewPrice(
+function getNewPriceCents(
   size: string,
   depth: string,
   frame: string
 ): number | null {
-  const canvasPrice = CANVAS_PRICES[size];
-  if (canvasPrice === undefined) return null;
+  const canvasPriceCents = STRETCHED_CANVAS_PRICES_CENTS[size];
+  if (canvasPriceCents === undefined) return null;
   if (!isSellable(frame, depth)) return null;
 
-  if (frame === "none") return canvasPrice;
+  if (frame === "none") return canvasPriceCents;
 
   const upcharge = getFrameUpcharge(size);
-  return upcharge === null ? null : canvasPrice + upcharge;
+  return upcharge === null ? null : canvasPriceCents + upcharge * 100;
 }
 
 async function updatePrices() {
@@ -226,8 +197,8 @@ async function updatePrices() {
       continue;
     }
 
-    const newPriceDollars = getNewPrice(size, depth, frame);
-    if (newPriceDollars === null) {
+    const newPriceCents = getNewPriceCents(size, depth, frame);
+    if (newPriceCents === null) {
       console.log(
         `  SKIP: ${variant.title} — no price mapping for size "${size}"`
       );
@@ -235,7 +206,7 @@ async function updatePrices() {
       continue;
     }
 
-    const newPriceCents = newPriceDollars * 100;
+    const newPriceDollars = newPriceCents / 100;
     const oldPriceDollars = variant.priceCents / 100;
 
     if (variant.priceCents === newPriceCents) {
