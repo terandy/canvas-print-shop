@@ -637,26 +637,54 @@
     },
     "customSizeNote": "Need a size that is not listed? Email us at {email} and we will quote it — there is no fixed maximum.",
     "rollsPage": {
-      "productDescription": "Our canvas, printed at the size you choose and shipped flat-rolled in a rigid tube. No stretcher bars, no hardware — you stretch it, mount it or frame it yourself. Optional 2 inch blank margin for stretching, at no extra cost. Custom sizes quoted by email.",
+      "productDescription": "Our canvas, printed at the size you choose, carefully rolled and shipped in a rigid tube. No stretcher bars, no hardware — you stretch it, mount it or frame it yourself. Optional 2 inch blank margin for stretching, at no extra cost. Custom sizes quoted by email.",
+      "studio": {
+        "eyebrow": "Your photo. Your canvas.",
+        "arrivalNote": "Printed to order. Supplied unstretched and protected in a rigid tube.",
+        "previewHelp": "Your flat canvas preview. Change the size, orientation or blank margin to see exactly what will be printed.",
+        "customPreviewAlt": "Preview of your image printed on a flat canvas sheet",
+        "gallery": {
+          "product": "A rolled canvas print supplied without stretcher bars",
+          "material": "The woven surface of our cotton-blend canvas",
+          "press": "The Canon Colorado press used to print each canvas",
+          "sample": "Rolled canvas",
+          "caption": "Printed here. Finished your way."
+        },
+        "assurances": {
+          "guarantee": "{years}-year print quality guarantee",
+          "margin": "Optional 2 in blank margin at no extra cost",
+          "pickup": "Free Montreal & Quebec City pickup"
+        },
+        "craft": {
+          "eyebrow": "Printed in our Quebec workshop",
+          "title": "Beautifully printed.",
+          "accent": "Finished your way.",
+          "imageAlt": "A Canon Colorado press producing a wide-format print",
+          "link": "Our print quality promise"
+        },
+        "details": {
+          "guaranteeLink": "Our quality promise"
+        }
+      },
       "qualitySection": {
         "title": "The same print, without the frame",
-        "description": "A rolled canvas is not a lesser product — it is the same printed canvas we stretch ourselves, sent to you flat. You supply the frame and the labour, and pay less for the unfinished format.",
+        "description": "A rolled canvas is a finished print supplied without stretcher bars or assembly. We print it on premium canvas, check it in prepress and protect it in a rigid tube; you choose how it is mounted or framed.",
         "cards": {
           "premiumCanvas": {
             "title": "Premium cotton-blend canvas",
-            "description": "The same high-density cotton-blend canvas with up to 75% opacity that we use on our stretched pieces. Rich colour, clean whites, very little show-through."
+            "description": "High-density cotton-blend canvas with up to 75% opacity for rich colour, clean whites and very little show-through."
           },
           "archivalPrinting": {
             "title": "Archival UVgel printing",
-            "description": "Printed on our Canon Colorado UVgel press and guaranteed not to fade for over 30 years, exactly as our stretched canvases are."
+            "description": "Printed on our Canon Colorado UVgel press for sharp detail and durable colour, with a 30-year print quality guarantee."
           },
           "printedToSize": {
             "title": "Printed to your exact size",
             "description": "Your file is printed at the size you order rather than trimmed down from a stock sheet, so the proportions you choose are the proportions you get."
           },
           "shippedFlat": {
-            "title": "Shipped flat in a protective tube",
-            "description": "The print is rolled and sent flat in a protective tube rather than folded or boxed, so it travels without a crease across the image."
+            "title": "Shipped rolled in a protective tube",
+            "description": "The print is carefully rolled into a rigid protective tube rather than folded, so it travels without a crease across the image."
           }
         }
       },
@@ -725,7 +753,7 @@
           },
           "delivery": {
             "title": "Delivery",
-            "description": "Shipped flat-rolled in a rigid tube. You will see options and estimates at checkout."
+            "description": "Carefully rolled and shipped in a rigid tube. You will see options and estimates at checkout."
           },
           "assembly": {
             "title": "Assembly is yours",
@@ -793,7 +821,7 @@
         "title": "Rolled or stretched?",
         "description": "They are the same print on the same canvas from the same press. The only difference is how much of the work we do and how much you do.",
         "points": {
-          "one": "Rolled costs less, arrives flat in a tube, and you stretch, mount or frame it yourself.",
+          "one": "Rolled costs less, arrives protected in a rigid tube, and you stretch, mount or frame it yourself.",
           "two": "Stretched arrives finished on solid wood bars with hanging hardware fitted, ready to go straight on the wall.",
           "three": "Both are printed to order in Quebec and carry the same 30-year print quality guarantee."
         },

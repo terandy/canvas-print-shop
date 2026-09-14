@@ -637,26 +637,54 @@
     },
     "customSizeNote": "Besoin d'un format qui n'est pas offert? Écrivez-nous à {email} et nous vous ferons une soumission — il n'y a aucun maximum.",
     "rollsPage": {
-      "productDescription": "Notre toile, imprimée au format choisi et expédiée à plat dans un tube rigide. Sans châssis ni quincaillerie — vous la tendez, la montez ou la faites encadrer vous-même. Marge vierge de 2 pouces optionnelle, sans supplément. Formats sur mesure sur demande par courriel.",
+      "productDescription": "Notre toile, imprimée au format choisi, soigneusement enroulée et expédiée dans un tube rigide. Sans châssis ni quincaillerie — vous la tendez, la montez ou la faites encadrer vous-même. Marge vierge de 2 pouces optionnelle, sans supplément. Formats sur mesure sur demande par courriel.",
+      "studio": {
+        "eyebrow": "Votre photo. Votre toile.",
+        "arrivalNote": "Imprimée sur commande. Livrée non tendue et protégée dans un tube rigide.",
+        "previewHelp": "Aperçu de votre toile à plat. Modifiez le format, l'orientation ou la marge vierge pour voir exactement ce qui sera imprimé.",
+        "customPreviewAlt": "Aperçu de votre image imprimée sur une feuille de toile à plat",
+        "gallery": {
+          "product": "Une toile imprimée en rouleau, fournie sans châssis",
+          "material": "La surface tissée de notre toile de coton mélangé",
+          "press": "La presse Canon Colorado utilisée pour chaque toile",
+          "sample": "Toile en rouleau",
+          "caption": "Imprimée ici. Finie à votre façon."
+        },
+        "assurances": {
+          "guarantee": "Garantie de qualité d'impression de {years} ans",
+          "margin": "Marge vierge de 2 po optionnelle sans supplément",
+          "pickup": "Cueillette gratuite à Montréal et à Québec"
+        },
+        "craft": {
+          "eyebrow": "Imprimée dans notre atelier de Québec",
+          "title": "Imprimée avec soin.",
+          "accent": "Finie à votre façon.",
+          "imageAlt": "Une presse Canon Colorado produisant une impression grand format",
+          "link": "Notre promesse de qualité"
+        },
+        "details": {
+          "guaranteeLink": "Notre promesse de qualité"
+        }
+      },
       "qualitySection": {
         "title": "La même impression, sans le châssis",
-        "description": "Une toile en rouleau n'est pas un produit au rabais : c'est la même toile imprimée que nous tendons nous-mêmes, expédiée à plat. Vous fournissez le châssis et le travail, et payez moins cher pour ce format non tendu.",
+        "description": "Une toile en rouleau est une impression finie fournie sans châssis ni montage. Nous l'imprimons sur une toile de qualité, vérifions le fichier en prépresse et la protégeons dans un tube rigide; vous choisissez ensuite comment la monter ou l'encadrer.",
         "cards": {
           "premiumCanvas": {
             "title": "Toile de coton mélangé de qualité supérieure",
-            "description": "La même toile de coton mélangé haute densité, jusqu'à 75 % d'opacité, que nous utilisons pour nos toiles tendues. Couleurs riches, blancs propres, très peu de transparence."
+            "description": "Toile de coton mélangé haute densité, jusqu'à 75 % d'opacité, pour des couleurs riches, des blancs propres et très peu de transparence."
           },
           "archivalPrinting": {
             "title": "Impression UVgel de qualité archive",
-            "description": "Imprimée sur notre presse Canon Colorado UVgel et garantie sans décoloration pendant plus de 30 ans, exactement comme nos toiles tendues."
+            "description": "Imprimée sur notre presse Canon Colorado UVgel pour des détails nets et des couleurs durables, avec une garantie de qualité d'impression de 30 ans."
           },
           "printedToSize": {
             "title": "Imprimée exactement à votre format",
             "description": "Votre fichier est imprimé au format commandé plutôt que découpé dans une feuille standard : les proportions choisies sont celles que vous recevez."
           },
           "shippedFlat": {
-            "title": "Expédiée à plat dans un tube protecteur",
-            "description": "L'impression est enroulée et expédiée à plat dans un tube protecteur plutôt que pliée ou mise en boîte, pour qu'elle voyage sans pli en travers de l'image."
+            "title": "Expédiée en rouleau dans un tube protecteur",
+            "description": "L'impression est soigneusement enroulée dans un tube protecteur rigide plutôt que pliée, afin de voyager sans pli en travers de l'image."
           }
         }
       },
@@ -725,7 +753,7 @@
           },
           "delivery": {
             "title": "Livraison",
-            "description": "Expédiée à plat dans un tube rigide. Les options et les délais s'affichent à la caisse."
+            "description": "Soigneusement enroulée et expédiée dans un tube rigide. Les options et les délais s'affichent à la caisse."
           },
           "assembly": {
             "title": "Le montage vous revient",
@@ -793,7 +821,7 @@
         "title": "En rouleau ou tendue?",
         "description": "C'est la même impression, sur la même toile, sortie de la même presse. La seule différence : la part du travail que nous faisons et celle qui vous revient.",
         "points": {
-          "one": "La toile en rouleau coûte moins cher, arrive à plat dans un tube, et vous la tendez, la montez ou la faites encadrer vous-même.",
+          "one": "La toile en rouleau coûte moins cher, arrive protégée dans un tube rigide, et vous la tendez, la montez ou la faites encadrer vous-même.",
           "two": "La toile tendue arrive finie sur châssis de bois massif, quincaillerie installée, prête à accrocher.",
           "three": "Les deux sont imprimées sur commande au Québec et bénéficient de la même garantie de qualité d'impression de 30 ans."
         },

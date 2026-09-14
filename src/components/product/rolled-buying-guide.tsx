@@ -37,106 +37,127 @@ export default async function RolledBuyingGuide({
 
   return (
     <section
-      className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-20"
+      className="border-b border-secondary/10 bg-[#FCFBF8]"
       aria-labelledby="rolled-buying-guide"
     >
-      <div className="max-w-3xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[.18em] text-primary">
-          {t("eyebrow")}
-        </p>
-        <h2
-          id="rolled-buying-guide"
-          className="mb-3 text-2xl font-bold text-secondary sm:text-3xl"
-        >
-          {t("title")}
-        </h2>
-        <p className="text-gray">{t("description")}</p>
-      </div>
-
-      {/* Size and price table. Image size and total sheet size are separate
-          columns because confusing the two is the single most common way a
-          rolled canvas order goes wrong. */}
-      <div className="mt-8 overflow-x-auto rounded-2xl border border-neutral-200">
-        <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
-          <caption className="sr-only">{t("table.caption")}</caption>
-          <thead className="bg-neutral-50 text-xs uppercase tracking-wide text-gray">
-            <tr>
-              <th scope="col" className="px-4 py-3 font-semibold">
-                {t("table.imageSize")}
-              </th>
-              <th scope="col" className="px-4 py-3 font-semibold">
-                {t("table.totalSize", { margin: STRETCHING_MARGIN_INCHES })}
-              </th>
-              <th scope="col" className="px-4 py-3 text-right font-semibold">
-                {t("table.price")}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-neutral-200">
-            {rows.map((row) => (
-              <tr key={row.size}>
-                <th
-                  scope="row"
-                  className="px-4 py-3 font-medium text-secondary"
-                >
-                  {formatInches(row.image.width, row.image.height)}
-                  <span className="ml-2 font-normal text-gray">
-                    {formatCentimetres(row.image.width, row.image.height)}
-                  </span>
-                </th>
-                <td className="px-4 py-3 text-gray">
-                  {formatInches(row.total.width, row.total.height)}
-                </td>
-                <td className="px-4 py-3 text-right font-semibold text-secondary">
-                  {money(row.priceCents)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-3 text-sm leading-relaxed text-gray">
-        {t("table.footnote", { margin: STRETCHING_MARGIN_INCHES })}
-      </p>
-
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {/* What is and is not in the tube. Stated plainly because a rolled
-            print is not ready to hang and that must not be a surprise. */}
-        <div className="rounded-2xl border border-neutral-200 p-6">
-          <h3 className="mb-4 font-semibold text-secondary">
-            {t("contents.title")}
-          </h3>
-          <ul className="space-y-2 text-sm">
-            {included.map((key) => (
-              <li key={key} className="flex gap-2.5 text-secondary">
-                <Check
-                  aria-hidden
-                  className="mt-0.5 h-4 w-4 shrink-0 text-green-600"
-                />
-                {t(`contents.included.${key}`)}
-              </li>
-            ))}
-            {notIncluded.map((key) => (
-              <li key={key} className="flex gap-2.5 text-gray">
-                <X
-                  aria-hidden
-                  className="mt-0.5 h-4 w-4 shrink-0 text-red-500"
-                />
-                {t(`contents.notIncluded.${key}`)}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 flex gap-2 rounded-lg bg-amber-50 p-3 text-sm leading-relaxed text-secondary">
-            <AlertTriangle
-              aria-hidden
-              className="mt-0.5 h-4 w-4 shrink-0 text-amber-600"
-            />
-            {t("contents.notReadyToHang")}
+      <div className="mx-auto max-w-[1360px] px-6 py-16 sm:px-10 lg:py-24">
+        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-primary-dark">
+              {t("eyebrow")}
+            </p>
+            <h2
+              id="rolled-buying-guide"
+              className="mt-4 max-w-xl font-serif text-4xl leading-[1.08] tracking-[-0.035em] sm:text-5xl"
+            >
+              {t("title")}
+            </h2>
+          </div>
+          <p className="max-w-2xl text-sm leading-7 text-gray lg:justify-self-end">
+            {t("description")}
           </p>
         </div>
 
-        <div className="space-y-6">
-          <div className="rounded-2xl border border-neutral-200 p-6">
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
+          {/* Image size and total sheet size stay separate because confusing
+              them is the most consequential rolled-print ordering mistake. */}
+          <div>
+            <div className="overflow-x-auto border border-secondary/15 bg-white">
+              <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+                <caption className="sr-only">{t("table.caption")}</caption>
+                <thead className="bg-secondary text-[10px] uppercase tracking-[0.15em] text-white/65">
+                  <tr>
+                    <th scope="col" className="px-5 py-4 font-medium">
+                      {t("table.imageSize")}
+                    </th>
+                    <th
+                      scope="col"
+                      className="border-x border-white/15 px-5 py-4 font-medium"
+                    >
+                      {t("table.totalSize", {
+                        margin: STRETCHING_MARGIN_INCHES,
+                      })}
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-4 text-right font-medium"
+                    >
+                      {t("table.price")}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-secondary/10">
+                  {rows.map((row) => (
+                    <tr
+                      key={row.size}
+                      className="transition-colors hover:bg-[#F3F1EB]/65"
+                    >
+                      <th
+                        scope="row"
+                        className="px-5 py-4 font-medium text-secondary"
+                      >
+                        {formatInches(row.image.width, row.image.height)}
+                        <span className="ml-2 font-normal text-gray">
+                          {formatCentimetres(row.image.width, row.image.height)}
+                        </span>
+                      </th>
+                      <td className="border-x border-secondary/10 px-5 py-4 text-gray">
+                        {formatInches(row.total.width, row.total.height)}
+                      </td>
+                      <td className="px-5 py-4 text-right font-serif text-lg text-secondary">
+                        {money(row.priceCents)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-xs leading-6 text-gray">
+              {t("table.footnote", { margin: STRETCHING_MARGIN_INCHES })}
+            </p>
+          </div>
+
+          {/* This stays explicit: the print is deliberately unfinished and no
+              ready-to-hang hardware is implied by the shared visual style. */}
+          <aside className="bg-secondary p-6 text-[#FCFBF8] sm:p-8">
+            <h3 className="font-serif text-2xl tracking-[-0.02em]">
+              {t("contents.title")}
+            </h3>
+            <ul className="mt-6 space-y-3 text-sm">
+              {included.map((key) => (
+                <li key={key} className="flex gap-3 text-white/85">
+                  <Check
+                    aria-hidden
+                    className="mt-0.5 h-4 w-4 shrink-0 text-[#D9AE87]"
+                    strokeWidth={1.6}
+                  />
+                  {t(`contents.included.${key}`)}
+                </li>
+              ))}
+              {notIncluded.map((key) => (
+                <li key={key} className="flex gap-3 text-white/55">
+                  <X
+                    aria-hidden
+                    className="mt-0.5 h-4 w-4 shrink-0 text-white/40"
+                    strokeWidth={1.4}
+                  />
+                  {t(`contents.notIncluded.${key}`)}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-7 flex gap-3 border-t border-white/15 pt-6 text-xs leading-6 text-white/70">
+              <AlertTriangle
+                aria-hidden
+                className="mt-0.5 h-4 w-4 shrink-0 text-[#D9AE87]"
+                strokeWidth={1.5}
+              />
+              {t("contents.notReadyToHang")}
+            </p>
+          </aside>
+        </div>
+
+        <div className="mt-10 grid border-y border-secondary/15 md:grid-cols-2 md:divide-x md:divide-secondary/15">
+          <div className="py-7 md:pr-8">
             <h3 className="mb-3 font-semibold text-secondary">
               {t("upload.title")}
             </h3>
@@ -151,7 +172,7 @@ export default async function RolledBuyingGuide({
             </Link>
           </div>
 
-          <div className="rounded-2xl border border-neutral-200 p-6">
+          <div className="border-t border-secondary/15 py-7 md:border-t-0 md:pl-8">
             <h3 className="mb-3 font-semibold text-secondary">
               {t("delivery.title")}
             </h3>

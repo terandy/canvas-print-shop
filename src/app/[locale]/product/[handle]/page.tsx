@@ -19,6 +19,7 @@ import { getProductPageContent } from "@/lib/product-page-content";
 import RolledBuyingGuide from "@/components/product/rolled-buying-guide";
 import ProductAlternative from "@/components/product/product-alternative";
 import CanvasProductPage from "@/components/product/canvas-product-page";
+import RolledCanvasProductPage from "@/components/product/rolled-canvas-product-page";
 import {
   buildProductStructuredData,
   serializeJsonLd,
@@ -472,6 +473,8 @@ const ProductPage: NextPage<Props> = async (props: Props) => {
       />
       {product.handle === "canvas" ? (
         <CanvasProductPage product={product} locale={locale} />
+      ) : product.handle === "rolled-canvas-prints" ? (
+        <RolledCanvasProductPage product={product} locale={locale} />
       ) : (
         <>
           <div className="container mx-auto max-w-screen-2xl lg:px-4 lg:py-6">

@@ -102,10 +102,20 @@ export async function CanvasTrustedBy() {
   );
 }
 
-export async function CanvasComparison() {
-  const t = await getTranslations("Product.canvasPage.comparisonSection");
+export async function CanvasComparison({
+  handle = "canvas",
+  namespace = "canvasPage",
+}: {
+  handle?: "canvas" | "rolled-canvas-prints";
+  namespace?: "canvasPage" | "rollsPage";
+} = {}) {
+  const t = await getTranslations(
+    namespace === "rollsPage"
+      ? "Product.rollsPage.comparisonSection"
+      : "Product.canvasPage.comparisonSection"
+  );
   const studio = await getTranslations("Product.studio.comparison");
-  const rows = getProductPageContent("canvas")?.comparisonRows ?? [];
+  const rows = getProductPageContent(handle)?.comparisonRows ?? [];
   return (
     <section
       aria-labelledby="canvas-comparison-title"
