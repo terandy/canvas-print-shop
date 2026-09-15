@@ -13,11 +13,13 @@ const INITIAL_STATE: OrderStatusState = {};
 interface OrderStatusFormProps {
   orderId: string;
   currentStatus: string;
+  canNotifyPickup: boolean;
 }
 
 export default function OrderStatusForm({
   orderId,
   currentStatus,
+  canNotifyPickup,
 }: OrderStatusFormProps) {
   const t = useTranslations("Admin");
   const [selectedStatus, setSelectedStatus] = useState(currentStatus);
@@ -25,20 +27,35 @@ export default function OrderStatusForm({
     updateOrderStatusAction,
     INITIAL_STATE
   );
+  const savedStatus = state.status ?? currentStatus;
+  const showResend =
+    canNotifyPickup &&
+    savedStatus === "ready_for_pickup" &&
+    selectedStatus === "ready_for_pickup";
 
   return (
     <form action={formAction} className="space-y-4">
       <input type="hidden" name="orderId" value={orderId} />
 
       {state.error && (
-        <div className="p-3 rounded-md text-sm bg-red-50 text-red-700">
-          {state.error}
+        <div
+          role="alert"
+          className="p-3 rounded-md text-sm bg-red-50 text-red-700"
+        >
+          {t(`orders.errors.${state.error}`)}
         </div>
       )}
 
       {state.success && (
-        <div className="p-3 rounded-md text-sm bg-green-50 text-green-700">
-          {t("orders.updateSuccess")}
+        <div
+          role="status"
+          className="p-3 rounded-md text-sm bg-green-50 text-green-700"
+        >
+          {t(
+            state.pickupEmailSent
+              ? "orders.pickupEmailSent"
+              : "orders.updateSuccess"
+          )}
         </div>
       )}
 
@@ -56,7 +73,10 @@ export default function OrderStatusForm({
           onChange={(e) => setSelectedStatus(e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
         >
-          {ORDER_STATUSES.map((s) => (
+          {ORDER_STATUSES.filter(
+            (s) =>
+              s !== "ready_for_pickup" || canNotifyPickup || s === currentStatus
+          ).map((s) => (
             <option key={s} value={s}>
               {t(`status.${s}`)}
             </option>
@@ -101,11 +121,24 @@ export default function OrderStatusForm({
 
       <button
         type="submit"
-        disabled={isPending || selectedStatus === currentStatus}
+        disabled={isPending || selectedStatus === savedStatus}
         className="w-full px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isPending ? t("orders.updating") : t("orders.updateButton")}
       </button>
+      {showResend && (
+        <button
+          type="submit"
+          name="intent"
+          value="resendPickupEmail"
+          disabled={isPending}
+          className="w-full px-4 py-2 border border-primary text-primary rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isPending
+            ? t("orders.sendingPickupEmail")
+            : t("orders.resendPickupEmail")}
+        </button>
+      )}
     </form>
   );
 }

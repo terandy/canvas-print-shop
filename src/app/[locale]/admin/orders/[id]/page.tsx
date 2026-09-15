@@ -5,7 +5,7 @@ import { getOrder } from "@/lib/db/queries/orders";
 import { getTranslations } from "next-intl/server";
 import { ArrowLeft } from "lucide-react";
 import OrderStatusForm from "@/components/admin/order-status-form";
-import { statusColor } from "@/lib/orders/status";
+import { canSendPickupReady, statusColor } from "@/lib/orders/status";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -195,7 +195,11 @@ export default async function AdminOrderDetailPage({ params }: Props) {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
               {t("orders.updateStatus")}
             </h2>
-            <OrderStatusForm orderId={order.id} currentStatus={order.status} />
+            <OrderStatusForm
+              orderId={order.id}
+              currentStatus={order.status}
+              canNotifyPickup={canSendPickupReady(order)}
+            />
           </div>
 
           {/* Customer Info */}

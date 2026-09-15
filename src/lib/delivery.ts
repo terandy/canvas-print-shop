@@ -19,10 +19,9 @@ export const DELIVERY_MAX_BUSINESS_DAYS =
 /**
  * The estimated delivery window for an order placed on `from`.
  *
- * Note this is deliberately uniform across our Quebec and Ontario delivery
- * area — we do not quote faster times for closer cities, because production
- * scheduling dominates the total and transit differences are within the noise
- * of this window.
+ * We do not quote faster times for closer cities, because production scheduling
+ * dominates the total and we do not yet have evidence for province-specific
+ * transit-time promises.
  */
 export const getDeliveryEstimate = (from: Date = new Date()) => ({
   earliest: addBusinessDays(from, DELIVERY_MIN_BUSINESS_DAYS),

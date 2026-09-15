@@ -103,7 +103,7 @@ test("central business data separates the two verified physical entities", () =>
   assert.notEqual(quebecCityWorkshop.id, montrealBranch.id);
   assert.deepEqual(
     BUSINESS_DATA.deliveryCoverage.regions.map(({ code }) => code),
-    ["QC", "ON"]
+    ["QC", "ON", "NB", "NS", "PE", "NL", "MB", "SK", "AB", "BC"]
   );
 });
 
@@ -211,7 +211,18 @@ test("Product JSON-LD matches live product data and omits ineligible rating", ()
   assert.equal(offer.priceCurrency, "CAD");
   assert.equal(offer.offerCount, 1);
   assert.equal(offer.availability, "https://schema.org/InStock");
-  assert.deepEqual(destination[0].addressRegion, ["QC", "ON"]);
+  assert.deepEqual(destination[0].addressRegion, [
+    "QC",
+    "ON",
+    "NB",
+    "NS",
+    "PE",
+    "NL",
+    "MB",
+    "SK",
+    "AB",
+    "BC",
+  ]);
 });
 
 test("any eligible Product aggregateRating is explicitly five-point", () => {
@@ -273,6 +284,9 @@ test("content contains no prohibited delivery, maximum-size, rating or French ph
     /Impressions écologiques, sans odeur parfaites/i,
     /Aucun image/i,
     /Telephone/i,
+    /Shipping is priced the same across/i,
+    /La livraison est au même tarif/i,
+    /Delivery is currently limited to Quebec and Ontario/i,
   ];
   for (const pattern of prohibited) assert.doesNotMatch(all, pattern);
 });

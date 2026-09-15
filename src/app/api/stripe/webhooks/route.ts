@@ -9,7 +9,8 @@ import {
   sendAdminOrderNotification,
 } from "@/lib/email/send";
 import type Stripe from "stripe";
-import { resolveFulfilment } from "@/lib/stripe/checkout";
+import { resolveCheckoutShipping } from "@/lib/stripe/checkout";
+import { assertValidStandardCheckoutShipping } from "@/lib/shipping/pricing";
 
 export async function POST(request: NextRequest) {
   const body = await request.text();
@@ -135,8 +136,28 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       : session.payment_intent?.id || "";
 
   // Which shipping option the customer picked — delivery, or collection from
-  // one of the counters. Never fails the order: falls back to delivery.
-  const fulfilment = await resolveFulfilment(session.id);
+  // one of the counters. Resolve before writing: an API failure returns 500
+  // so the event can be retried without losing the customer's pickup choice.
+  const resolvedShipping = await resolveCheckoutShipping(session.id);
+  const fulfilment = {
+    fulfilmentMethod: resolvedShipping.fulfilmentMethod,
+    pickupLocation: resolvedShipping.pickupLocation,
+  };
+
+  // New standard checkouts are priced from a server-authored size band and a
+  // validated Canadian province/postal code. Recheck the complete evidence at
+  // payment time before writing an order; any mismatch returns 500 so Stripe
+  // retries instead of persisting an underpriced shipment.
+  if (!isCustomOrder) {
+    assertValidStandardCheckoutShipping({
+      sessionMetadata: session.metadata,
+      shippingAddress,
+      shippingCents,
+      resolvedShippingCents: resolvedShipping.shippingAmountCents,
+      fulfilmentMethod: resolvedShipping.fulfilmentMethod,
+      deliveryQuote: resolvedShipping.deliveryQuote,
+    });
+  }
 
   // The language the customer checked out in, kept so later emails match it.
   const orderLocale = session.metadata?.locale === "fr" ? "fr" : "en";

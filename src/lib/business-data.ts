@@ -213,6 +213,14 @@ export const BUSINESS_DATA = {
     regions: [
       { code: "QC", name: "Quebec" },
       { code: "ON", name: "Ontario" },
+      { code: "NB", name: "New Brunswick" },
+      { code: "NS", name: "Nova Scotia" },
+      { code: "PE", name: "Prince Edward Island" },
+      { code: "NL", name: "Newfoundland and Labrador" },
+      { code: "MB", name: "Manitoba" },
+      { code: "SK", name: "Saskatchewan" },
+      { code: "AB", name: "Alberta" },
+      { code: "BC", name: "British Columbia" },
     ] as const,
   },
   product: {

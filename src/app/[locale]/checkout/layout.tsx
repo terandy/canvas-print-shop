@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { noIndexMetadata } from "@/lib/seo";
 
 /**
- * Checkout success/cancelled pages must never be indexed — they are
- * per-order, thin, and were previously fully crawlable because the
- * robots.txt rules did not account for the locale prefix.
+ * Checkout pages must never be indexed — they are transactional or per-order,
+ * and were previously fully crawlable because the robots.txt rules did not
+ * account for the locale prefix.
  */
 export const metadata: Metadata = noIndexMetadata;
 

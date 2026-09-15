@@ -1,23 +1,15 @@
-/**
- * Seeds the Rolled Canvas product.
- *
- *   npx tsx scripts/seed-rolled-canvas.ts          # dry run, prints the plan
- *   npx tsx scripts/seed-rolled-canvas.ts --apply  # writes
- *
- * The product row already existed but was created empty and left inactive: no
- * options, no variants, so it could not have been bought even if switched on.
- * This fills it in and activates it.
- *
- * Idempotent: options and variants are replaced wholesale, so re-running after
- * a price change is safe.
- */
-import * as dotenv from "dotenv";
-dotenv.config({ path: ".env.local" });
-import { sql } from "@vercel/postgres";
 import { CANVAS_SIZES, ROLLED_CANVAS_PRICES_CENTS } from "./canvas-price-model";
 
+/**
+ * Reconcile rolled-canvas options and prices without replacing variant IDs.
+ *
+ *   npx tsx scripts/seed-rolled-canvas.ts          # offline dry run
+ *   npx tsx scripts/seed-rolled-canvas.ts --apply  # transaction against configured DB
+ *
+ * Existing carts/orders, product copy, activation and variant availability are
+ * preserved. Missing variants are inserted; retired variants are never deleted.
+ */
 const HANDLE = "rolled-canvas-prints";
-const APPLY = process.argv.includes("--apply");
 
 /**
  * Starts from the approved gallery-relative calculation, then applies a strict
@@ -37,104 +29,108 @@ export const SIZES = [...CANVAS_SIZES];
  */
 export const MARGINS = ["with", "without"];
 
-const EN_DESCRIPTION = `Our canvas, printed to your exact size and shipped flat-rolled in a protective tube. No stretcher frame, no hardware — just the print, ready for you to stretch, mount or frame however you like.
+export type SeedClient = {
+  query: (
+    text: string,
+    values?: unknown[]
+  ) => Promise<{
+    rows: Record<string, unknown>[];
+    rowCount: number | null;
+  }>;
+};
 
-Printed on the same cotton-blend canvas and the same Canon Colorado UVgel press as our stretched canvases, so the image quality is identical. What changes is what arrives: a lower-priced roll rather than a finished piece.
+/** The caller supplies one connected client for the entire transaction. */
+export async function syncRolledCanvas(client: SeedClient) {
+  await client.query("BEGIN");
+  try {
+    // Serialize concurrent reruns without needing a new catalogue constraint.
+    const found = await client.query(
+      "SELECT id FROM products WHERE handle = $1 FOR UPDATE",
+      [HANDLE]
+    );
+    if (!found.rows.length)
+      throw new Error(`No product with handle "${HANDLE}"`);
+    const id = found.rows[0].id;
+    for (const [name, values, affectsPrice, sortOrder] of [
+      ["size", SIZES, true, 0],
+      ["margin", MARGINS, false, 1],
+    ] as const) {
+      const existing = await client.query(
+        'UPDATE product_options SET "values" = $3::text[], affects_price = $4, sort_order = $5 WHERE product_id = $1 AND name = $2 RETURNING id',
+        [id, name, values, affectsPrice, sortOrder]
+      );
+      if (!existing.rowCount) {
+        await client.query(
+          'INSERT INTO product_options (product_id, name, "values", affects_price, sort_order) VALUES ($1, $2, $3::text[], $4, $5)',
+          [id, name, values, affectsPrice, sortOrder]
+        );
+      }
+    }
 
-Choose whether to include a 2-inch blank margin around the image. With it, you have canvas to grip and staple when stretching over your own bars — this is what you want if you plan to mount it. Without it, the print stops at the edge of your chosen size, which suits framing behind glass or mounting flat. The price is the same either way.
-
-Every roll is checked in prepress before printing. If your file will not hold up at the size you have chosen, we will tell you before we print it.`;
-
-const FR_DESCRIPTION = `Notre toile, imprimée exactement au format choisi et expédiée à plat dans un tube protecteur. Sans châssis ni quincaillerie — seulement l'impression, prête à être tendue, montée ou encadrée comme vous le souhaitez.
-
-Imprimée sur la même toile de coton mélangé et sur la même presse Canon Colorado UVgel que nos toiles tendues : la qualité d'image est identique. Ce qui change, c'est ce que vous recevez — un rouleau moins cher plutôt qu'une pièce finie.
-
-Choisissez d'inclure ou non une marge vierge de 2 pouces autour de l'image. Avec la marge, vous avez de quoi saisir et agrafer la toile en la tendant sur vos propres châssis : c'est ce qu'il vous faut si vous comptez la monter. Sans marge, l'impression s'arrête au bord du format choisi, ce qui convient à un encadrement sous verre ou à un montage à plat. Le prix est le même dans les deux cas.
-
-Chaque rouleau est vérifié en prépresse avant l'impression. Si votre fichier ne tient pas la route au format choisi, nous vous le dirons avant d'imprimer.`;
-
-const EN_SEO_TITLE =
-  "Rolled Canvas Prints | Printed to Size, Shipped in a Tube";
-const FR_SEO_TITLE = "Toile en rouleau | Imprimée au format, expédiée en tube";
-const EN_SEO_DESCRIPTION =
-  "Custom canvas printed to your size and shipped flat-rolled in a tube — no frame, with an optional 2-inch stretching margin. Printed in Quebec.";
-const FR_SEO_DESCRIPTION =
-  "Toile personnalisée imprimée à votre format et expédiée à plat en tube — sans châssis, avec une marge de tension de 2 pouces optionnelle. Imprimée au Québec.";
+    let updated = 0;
+    let inserted = 0;
+    for (const size of SIZES) {
+      for (const margin of MARGINS) {
+        const options = JSON.stringify({ size, margin });
+        const title = `${size} / ${margin === "with" ? "2in margin" : "no margin"}`;
+        const existing = await client.query(
+          "UPDATE product_variants SET title = $3, price_cents = $4, currency = 'CAD' WHERE product_id = $1 AND options = $2::jsonb RETURNING id",
+          [id, options, title, PRICES[size]]
+        );
+        if (existing.rowCount) {
+          updated += existing.rowCount;
+        } else {
+          await client.query(
+            "INSERT INTO product_variants (product_id, options, title, price_cents, currency, available_for_sale) VALUES ($1, $2::jsonb, $3, $4, 'CAD', true)",
+            [id, options, title, PRICES[size]]
+          );
+          inserted++;
+        }
+      }
+    }
+    await client.query("UPDATE products SET updated_at = now() WHERE id = $1", [
+      id,
+    ]);
+    await client.query("COMMIT");
+    return { updated, inserted };
+  } catch (error) {
+    await client.query("ROLLBACK");
+    throw error;
+  }
+}
 
 async function main() {
-  const found =
-    await sql`SELECT id, is_active FROM products WHERE handle = ${HANDLE}`;
-  if (!found.rowCount) throw new Error(`No product with handle "${HANDLE}"`);
-  const { id, is_active } = found.rows[0];
-
-  const variants = SIZES.flatMap((size) =>
-    MARGINS.map((margin) => ({
-      title: `${size} / ${margin === "with" ? "2in margin" : "no margin"}`,
-      priceCents: PRICES[size],
-      options: { size, margin },
-    }))
-  );
-
-  console.log(`product ${HANDLE} (${id}) — currently active=${is_active}`);
   console.log(
-    `sizes: ${SIZES.length}, margins: ${MARGINS.length}, variants: ${variants.length}`
+    `Product: ${HANDLE}; ${SIZES.length} sizes; ${SIZES.length * MARGINS.length} variants`
   );
-  console.log("\nsize      rolled");
   for (const size of SIZES) {
     console.log(`  ${size.padEnd(8)} $${(PRICES[size] / 100).toFixed(2)}`);
   }
-
-  if (!APPLY) {
-    console.log("\nDRY RUN — pass --apply to write.");
+  if (!process.argv.includes("--apply")) {
+    console.log(
+      "DRY RUN — no database connection. Pass --apply to update options/prices and insert missing variants."
+    );
     return;
   }
 
-  await sql`
-    UPDATE products SET
-      title_en = 'Rolled Canvas',
-      title_fr = 'Toile en rouleau',
-      description_en = ${EN_DESCRIPTION},
-      description_fr = ${FR_DESCRIPTION},
-      description_html_en = ${toHtml(EN_DESCRIPTION)},
-      description_html_fr = ${toHtml(FR_DESCRIPTION)},
-      seo_title_en = ${EN_SEO_TITLE},
-      seo_title_fr = ${FR_SEO_TITLE},
-      seo_description_en = ${EN_SEO_DESCRIPTION},
-      seo_description_fr = ${FR_SEO_DESCRIPTION},
-      is_active = true,
-      updated_at = now()
-    WHERE id = ${id}`;
-  console.log("\nupdated product row (title trimmed, copy set, activated)");
-
-  await sql`DELETE FROM product_options WHERE product_id = ${id}`;
-  await sql`
-    INSERT INTO product_options (product_id, name, values, affects_price, sort_order)
-    VALUES (${id}, 'size', ${SIZES as unknown as string}, true, 0)`;
-  await sql`
-    INSERT INTO product_options (product_id, name, values, affects_price, sort_order)
-    VALUES (${id}, 'margin', ${MARGINS as unknown as string}, false, 1)`;
-  console.log("inserted 2 options (size, margin)");
-
-  await sql`DELETE FROM product_variants WHERE product_id = ${id}`;
-  for (const v of variants) {
-    await sql`
-      INSERT INTO product_variants (product_id, title, price_cents, currency, available_for_sale, options)
-      VALUES (${id}, ${v.title}, ${v.priceCents}, 'CAD', true, ${JSON.stringify(v.options)})`;
+  const dotenv = await import("dotenv");
+  dotenv.config({ path: ".env.local" });
+  const { sql } = await import("@vercel/postgres");
+  const client = await sql.connect();
+  try {
+    const result = await syncRolledCanvas(client);
+    console.log(
+      `Updated ${result.updated} existing variants; inserted ${result.inserted}. Product copy and activation preserved.`
+    );
+  } finally {
+    client.release();
+    await sql.end();
   }
-  console.log(`inserted ${variants.length} variants`);
 }
 
-/** The stretched product stores paragraphs as <p> blocks; match that. */
-function toHtml(text: string) {
-  return text
-    .split("\n\n")
-    .map((p) => `<p>${p.trim()}</p>`)
-    .join("\n");
-}
-
-if (process.argv[1]?.includes("seed-rolled-canvas")) {
-  main().catch((e) => {
-    console.error("FAILED:", e.message);
-    process.exit(1);
+if (/(?:^|[/\\])seed-rolled-canvas\.(?:ts|js)$/.test(process.argv[1] ?? "")) {
+  main().catch((error) => {
+    console.error("FAILED:", error.message);
+    process.exitCode = 1;
   });
 }

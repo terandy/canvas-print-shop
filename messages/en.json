@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Custom Canvas Prints | Quebec & Ontario | Canvas Print Shop",
-    "description": "Custom canvas prints hand-made in Quebec. Upload a photo and get a ready-to-hang canvas delivered across Quebec and Ontario. 30-year fade guarantee.",
+    "title": "Custom Canvas Prints | Canada | Canvas Print Shop",
+    "description": "Custom canvas prints hand-made in Quebec. Upload a photo and get a ready-to-hang canvas delivered across all ten Canadian provinces. 30-year fade guarantee.",
     "og": {
       "title": "Canvas Prints Canada | Custom Canvas Printing | Canvas Print Shop",
       "description": "Transform your photos into premium canvas prints. Expert hand-crafted in Canada with UVgel technology. Custom canvas wall art, large canvas prints & more."
@@ -82,7 +82,7 @@
       },
       "enjoy": {
         "title": "We'll take it from here",
-        "description": "We print it with care. Choose delivery across Quebec and Ontario, or free pickup in Montreal or Quebec City."
+        "description": "We print it with care. Choose delivery across all ten Canadian provinces, or free pickup in Montreal or Quebec City."
       }
     },
     "closing": {
@@ -99,7 +99,7 @@
   },
   "Footer": {
     "companyName": "Canvas Print Shop",
-    "companyDescription": "Made-to-order canvas prints, produced in Quebec and delivered across Quebec and Ontario.",
+    "companyDescription": "Made-to-order canvas prints, produced in Quebec and delivered across all ten Canadian provinces.",
     "customerService": "Customer Service",
     "contactUs": "Contact Us",
     "emailUs": "Email us",
@@ -137,7 +137,7 @@
       "title": "Canada Post Delivery",
       "description": "We ship all orders through Canada Post with tracking provided on every shipment.",
       "estimatedTitle": "Estimated Delivery Times:",
-      "local": "Delivery area: Quebec and Ontario",
+      "local": "Delivery area: all ten Canadian provinces",
       "majorCities": "Every canvas is printed and hand-stretched to order",
       "ruralAreas": "Order to delivery: within 15 working days",
       "remoteLocations": "Your product estimate and checkout show the current timing for an individual order",
@@ -154,7 +154,9 @@
     "shippingCosts": {
       "title": "Shipping Costs",
       "localPickup": "Local Pickup: Free",
-      "standard": "Standard Shipping: Calculated at checkout based on size and destination"
+      "standard": "Standard Shipping: Calculated at checkout based on canvas size and destination province",
+      "coverage": "Automatic delivery is available to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available.",
+      "scope": "Shipping is available for all listed stretched, framed and rolled canvases. For multiple items, you pay the shipping rate for the largest canvas only."
     },
     "orderTracking": {
       "title": "Order Tracking",
@@ -355,7 +357,7 @@
   },
   "Product": {
     "metadata": {
-      "canvasDescription": "Made-to-order custom canvas prints from your photo, artwork or design. Printed and hand-finished in Quebec, with delivery across Quebec and Ontario."
+      "canvasDescription": "Made-to-order custom canvas prints from your photo, artwork or design. Printed and hand-finished in Quebec, with delivery across all ten Canadian provinces."
     },
     "direction": {
       "title": "Orientation",
@@ -474,7 +476,7 @@
         },
         "deliveryTime": {
           "question": "How long does delivery take?",
-          "answer": "The total order-to-delivery estimate within Quebec and Ontario is within 15 working days; the product estimate and checkout are authoritative for your order."
+          "answer": "The total order-to-delivery estimate for all ten Canadian provinces is within 15 working days; the product estimate and checkout are authoritative for your order."
         },
         "multipleCanvases": {
           "question": "Can I order multiple canvases of the same image?",
@@ -893,7 +895,7 @@
         },
         "shipping": {
           "title": "Delivery",
-          "description": "Delivery across Quebec and Ontario. Shipping options and costs are shown at checkout."
+          "description": "Delivery across all ten Canadian provinces. Shipping options and costs are shown at checkout."
         },
         "guarantee": {
           "title": "Our promise",
@@ -983,7 +985,7 @@
       "checkout": "Proceed to Checkout",
       "taxes": "Taxes",
       "shipping": "Shipping",
-      "shippingCalculation": "Calculated at checkout",
+      "shippingCalculation": "Based on size and province",
       "total": "Total",
       "openCartWithCount": "Open cart ({count, plural, one {# item} other {# items}})"
     }
@@ -1001,6 +1003,27 @@
     "discount": "discount"
   },
   "Checkout": {
+    "page": {
+      "eyebrow": "Secure checkout",
+      "title": "Complete your order",
+      "intro": "Enter your address for delivery to any Canadian province, or choose free pickup in Montreal or Quebec City. For multiple canvases, shipping is charged for the largest size only.",
+      "territoryUnavailable": "Delivery is currently available to the ten Canadian provinces only. You can still choose free pickup in Montreal or Quebec City.",
+      "updatingShipping": "Updating shipping…",
+      "retry": "Try again",
+      "unavailable": "Secure checkout is temporarily unavailable. Your cart is still saved.",
+      "loading": "Loading secure checkout…",
+      "contactUs": "Contact us",
+      "continueShopping": "Continue shopping",
+      "emptyCart": "Your cart is empty. Add a canvas before checking out.",
+      "returnHome": "Return to the shop",
+      "errors": {
+        "invalidAddress": "Enter a valid Canadian province and postal code that match.",
+        "invalidCart": "Your cart session has expired. Return to the shop and try again.",
+        "unavailable": "We could not update delivery pricing. Please try again.",
+        "reviewShipping": "Shipping has been updated. Review the total, then press Pay again.",
+        "payment": "Your payment was not completed. Check the payment details and try again."
+      }
+    },
     "success": {
       "title": "Thank you for your order!",
       "orderNumber": "Order #{orderNumber}",
@@ -1112,6 +1135,19 @@
       "updateButton": "Update Status",
       "updating": "Updating...",
       "updateSuccess": "Order status updated",
+      "resendPickupEmail": "Resend pickup email",
+      "sendingPickupEmail": "Sending pickup email...",
+      "pickupEmailSent": "Pickup email sent",
+      "errors": {
+        "unauthorized": "Please sign in again to update this order.",
+        "missingFields": "An order and status are required.",
+        "unknownStatus": "Choose a valid order status.",
+        "notFound": "This order could not be found.",
+        "invalidPickup": "This order needs a valid pickup location before a pickup email can be sent.",
+        "invalidResend": "Pickup emails can only be resent while the order is ready for pickup.",
+        "pickupEmailFailed": "The order is ready for pickup, but the email could not be sent. Use Resend pickup email to try again.",
+        "updateFailed": "The order status could not be updated. Please try again."
+      },
       "updateError": "Update failed",
       "actions": "Actions",
       "view": "View",
@@ -1506,7 +1542,7 @@
       },
       "trustBadges": {
         "secure": "Secure Checkout",
-        "shipping": "Quebec & Ontario Delivery",
+        "shipping": "Delivery to Canada’s ten provinces",
         "made": "Made in Quebec, Canada",
         "satisfaction": "100% Satisfaction Guarantee",
         "guarantee": "30-Year Print Guarantee"
@@ -1515,14 +1551,14 @@
     "montreal": {
       "meta": {
         "title": "Canvas Prints Montreal | Canvas Print Shop Montreal",
-        "description": "Custom canvas printing in Montreal with a genuine branch at 1350 Rue Mazurette. Made to order in our Quebec City workshop for Quebec and Ontario."
+        "description": "Custom canvas printing in Montreal with a genuine branch at 1350 Rue Mazurette. Made to order in our Quebec City workshop for all ten Canadian provinces."
       },
       "heading": "Canvas Prints in Montreal",
       "description": "Upload your photo or artwork for a made-to-order canvas, with a genuine Canvas Print Shop branch in Montreal.",
-      "subheading": "Montreal branch. Quebec City production workshop. Quebec and Ontario delivery.",
+      "subheading": "Montreal branch. Quebec City production workshop. Delivery to all ten Canadian provinces.",
       "intro": {
         "title": "A real Montreal branch for custom canvas printing",
-        "body": "Canvas Print Shop Montreal is our physical branch at 1350 Rue Mazurette. Made-to-order canvases are produced and hand-finished at our Quebec City workshop, then delivered across Quebec and Ontario.\n\nChoose a size in the online configurator and upload your photo, artwork or design. If the dimensions you need are not listed, contact us for an individual quote; there is no fixed maximum custom size."
+        "body": "Canvas Print Shop Montreal is our physical branch at 1350 Rue Mazurette. Made-to-order canvases are produced and hand-finished at our Quebec City workshop, then delivered across all ten Canadian provinces.\n\nChoose a size in the online configurator and upload your photo, artwork or design. If the dimensions you need are not listed, contact us for an individual quote; there is no fixed maximum custom size."
       },
       "location": {
         "heading": "Montreal branch"
@@ -1550,7 +1586,7 @@
           },
           {
             "title": "Delivery",
-            "description": "The total order-to-delivery estimate within Quebec and Ontario is within 15 working days. The product estimate and checkout are authoritative for your order."
+            "description": "The total order-to-delivery estimate for all ten Canadian provinces is within 15 working days. The product estimate and checkout are authoritative for your order."
           },
           {
             "title": "Made to order",
@@ -1569,7 +1605,7 @@
         },
         {
           "q": "Do you charge extra to ship to Montreal?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -1653,11 +1689,11 @@
         },
         {
           "q": "Do you charge extra to ship to Quebec City?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -1741,11 +1777,11 @@
         },
         {
           "q": "Do you charge extra to ship to Laval?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -1789,7 +1825,7 @@
       "subheading": "Made in Quebec. No customs, no cross-border shipping.",
       "intro": {
         "title": "Delivering canvas prints to Gatineau",
-        "body": "Because we serve both Quebec and Ontario, Gatineau customers can send a print across the river to an Ottawa address in the same order. Hull, Aylmer and Buckingham are all inside our standard delivery zone at no surcharge."
+        "body": "Because we serve all ten Canadian provinces, Gatineau customers can send a print across the river to an Ottawa address in the same order. Hull, Aylmer and Buckingham are all inside our standard delivery zone at no surcharge."
       },
       "benefits": {
         "one": {
@@ -1829,11 +1865,11 @@
         },
         {
           "q": "Do you charge extra to ship to Gatineau?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -1917,11 +1953,11 @@
         },
         {
           "q": "Do you charge extra to ship to Sherbrooke?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2005,11 +2041,11 @@
         },
         {
           "q": "Do you charge extra to ship to Trois-Rivières?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2093,11 +2129,11 @@
         },
         {
           "q": "Do you charge extra to ship to Longueuil?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2181,11 +2217,11 @@
         },
         {
           "q": "Do you charge extra to ship to Toronto?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2269,11 +2305,11 @@
         },
         {
           "q": "Do you charge extra to ship to Ottawa?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2357,11 +2393,11 @@
         },
         {
           "q": "Do you charge extra to ship to Mississauga?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2445,11 +2481,11 @@
         },
         {
           "q": "Do you charge extra to ship to Hamilton?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2533,11 +2569,11 @@
         },
         {
           "q": "Do you charge extra to ship to London?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2621,11 +2657,11 @@
         },
         {
           "q": "Do you charge extra to ship to Kingston?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2709,11 +2745,11 @@
         },
         {
           "q": "Do you charge extra to ship to Windsor?",
-          "a": "No. Shipping is priced the same across our entire Quebec and Ontario delivery area."
+          "a": "There is no city surcharge. Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         },
         {
-          "q": "Do you deliver outside Quebec and Ontario?",
-          "a": "Not at present. We deliver throughout Quebec and Ontario so we can keep transit times short and avoid damage in long-haul freight."
+          "q": "Do you deliver elsewhere in Canada?",
+          "a": "Yes. We deliver to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available."
         },
         {
           "q": "Does the canvas arrive ready to hang?",
@@ -2750,7 +2786,7 @@
     "16x20": {
       "meta": {
         "title": "16x20 Canvas Prints",
-        "description": "Custom 16x20 canvas prints made in Quebec. Upload a photo, choose gallery wrap or framed, and get a ready-to-hang canvas delivered across Quebec and Ontario."
+        "description": "Custom 16x20 canvas prints made in Quebec. Upload a photo, choose gallery wrap or framed, and get a ready-to-hang canvas delivered across all ten Canadian provinces."
       },
       "heading": "16x20 Canvas Prints",
       "description": "16x20 inches — 40 × 50 cm — printed on demand and hand-stretched in Quebec.",
@@ -2838,7 +2874,7 @@
     "24x36": {
       "meta": {
         "title": "24x36 Canvas Prints",
-        "description": "Custom 24x36 canvas prints hand-stretched in Quebec. A true statement size for living rooms and above-sofa placement. Delivered across Quebec and Ontario."
+        "description": "Custom 24x36 canvas prints hand-stretched in Quebec. A true statement size for living rooms and above-sofa placement. Delivered across all ten Canadian provinces."
       },
       "heading": "24x36 Canvas Prints",
       "description": "24x36 inches — 60 × 90 cm — printed on demand and hand-stretched in Quebec.",
@@ -2926,7 +2962,7 @@
     "36x48": {
       "meta": {
         "title": "36x48 Canvas Prints",
-        "description": "Extra large 36x48 canvas prints made to order in Quebec. Built on a reinforced stretcher frame and shipped flat. Delivery across Quebec and Ontario."
+        "description": "Extra large 36x48 canvas prints made to order in Quebec. Built on a reinforced stretcher frame and shipped flat. Delivery across all ten Canadian provinces."
       },
       "heading": "36x48 Canvas Prints",
       "description": "36x48 inches — 90 × 120 cm — printed on demand and hand-stretched in Quebec.",
@@ -3014,7 +3050,7 @@
     "wedding": {
       "meta": {
         "title": "Wedding Canvas Prints",
-        "description": "Turn your wedding photos into hand-stretched canvas prints made in Quebec. Archival UVgel ink with a 30-year guarantee. Delivered across Quebec and Ontario."
+        "description": "Turn your wedding photos into hand-stretched canvas prints made in Quebec. Archival UVgel ink with a 30-year guarantee. Delivered across all ten Canadian provinces."
       },
       "heading": "Wedding Canvas Prints",
       "description": "Your photographer delivered hundreds of files. Put the three or four that actually matter on the wall.",
@@ -3102,7 +3138,7 @@
     "family": {
       "meta": {
         "title": "Family Photo Canvas Prints",
-        "description": "Custom family photo canvas prints made in Quebec. Hand-stretched, ready to hang, with a 30-year fade guarantee. Delivered across Quebec and Ontario."
+        "description": "Custom family photo canvas prints made in Quebec. Hand-stretched, ready to hang, with a 30-year fade guarantee. Delivered across all ten Canadian provinces."
       },
       "heading": "Family Photo Canvas Prints",
       "description": "The photos worth looking at every day should not be trapped on a phone.",
@@ -3190,7 +3226,7 @@
     "pet-portrait": {
       "meta": {
         "title": "Pet Portrait Canvas Prints",
-        "description": "Custom pet portrait canvas prints made in Quebec. Upload your dog or cat photo and get a hand-stretched canvas delivered across Quebec and Ontario."
+        "description": "Custom pet portrait canvas prints made in Quebec. Upload your dog or cat photo and get a hand-stretched canvas delivered across all ten Canadian provinces."
       },
       "heading": "Pet Portrait Canvas Prints",
       "description": "The good photo you finally managed to get, printed properly.",
@@ -3278,7 +3314,7 @@
     "bedroom": {
       "meta": {
         "title": "Bedroom Canvas Wall Art",
-        "description": "Custom canvas prints for bedroom walls, made in Quebec. Matte, non-reflective, hand-stretched and ready to hang. Delivered across Quebec and Ontario."
+        "description": "Custom canvas prints for bedroom walls, made in Quebec. Matte, non-reflective, hand-stretched and ready to hang. Delivered across all ten Canadian provinces."
       },
       "heading": "Canvas Prints for the Bedroom",
       "description": "Quiet, matte, and sized to sit properly above a bed.",
@@ -3366,7 +3402,7 @@
     "living-room": {
       "meta": {
         "title": "Living Room Canvas Art",
-        "description": "Large custom canvas prints for living room walls, hand-stretched in Quebec. Above-sofa sizing guidance and a 30-year guarantee. Quebec and Ontario delivery."
+        "description": "Large custom canvas prints for living room walls, hand-stretched in Quebec. Above-sofa sizing guidance and a 30-year guarantee. Delivery to all ten Canadian provinces."
       },
       "heading": "Canvas Prints for the Living Room",
       "description": "The wall above the sofa is the one people actually look at.",
@@ -3454,7 +3490,7 @@
     "large": {
       "meta": {
         "title": "Large Canvas Prints",
-        "description": "Large custom canvas prints with no fixed maximum custom size. Online options use reinforced frames; other dimensions are quoted individually. Quebec and Ontario delivery."
+        "description": "Large custom canvas prints with no fixed maximum custom size. Online options use reinforced frames; other dimensions are quoted individually. Delivery to all ten Canadian provinces."
       },
       "heading": "Large Canvas Prints",
       "description": "Sizes that fill a wall instead of apologising for it.",
@@ -3509,7 +3545,7 @@
         },
         {
           "q": "Does a large canvas cost more to ship?",
-          "a": "Shipping is the same across our Quebec and Ontario delivery area regardless of size."
+          "a": "Shipping is priced by destination province and canvas size, with the exact amount shown at checkout."
         }
       ],
       "related": [
@@ -3542,7 +3578,7 @@
     "framed": {
       "meta": {
         "title": "Framed Canvas Prints",
-        "description": "Framed canvas prints made in Quebec. Add a floater frame to a gallery-wrapped canvas for a finished gallery look. Quebec and Ontario delivery."
+        "description": "Framed canvas prints made in Quebec. Add a floater frame to a gallery-wrapped canvas for a finished gallery look. Delivery to all ten Canadian provinces."
       },
       "heading": "Framed Canvas Prints",
       "description": "A floater frame turns a canvas into a finished piece.",
@@ -3630,14 +3666,14 @@
     "custom": {
       "meta": {
         "title": "Custom Canvas Prints",
-        "description": "Custom canvas prints made to order in Quebec. Upload any photo, pick your size and finish, and get a hand-stretched canvas across Quebec and Ontario."
+        "description": "Custom canvas prints made to order in Quebec. Upload any photo, pick your size and finish, and get a hand-stretched canvas across all ten Canadian provinces."
       },
       "heading": "Custom Canvas Prints",
       "description": "Your photo, your size, printed and stretched in Quebec.",
       "subheading": "No templates, no stock art — just your image.",
       "intro": {
         "title": "How a custom order works",
-        "body": "Everything we make is custom — there is no catalogue of pre-printed designs. You upload a file, choose a size and a finish, and we print that single canvas for you. Nothing is warehoused and nothing is drop-shipped.\n\nAfter you order, the file goes through prepress, where we check resolution against your chosen size and correct any obvious colour cast. If something will not print well, we contact you before production rather than shipping a poor result and dealing with it afterwards.\n\nFrom order to doorstep is within 15 working days — one to three weeks. The canvas is printed on a Canon Colorado with UVgel ink, hand-stretched over a solid wood frame, fitted with hanging hardware, and packed flat for delivery across Quebec and Ontario."
+        "body": "Everything we make is custom — there is no catalogue of pre-printed designs. You upload a file, choose a size and a finish, and we print that single canvas for you. Nothing is warehoused and nothing is drop-shipped.\n\nAfter you order, the file goes through prepress, where we check resolution against your chosen size and correct any obvious colour cast. If something will not print well, we contact you before production rather than shipping a poor result and dealing with it afterwards.\n\nFrom order to doorstep is within 15 working days — one to three weeks. The canvas is printed on a Canon Colorado with UVgel ink, hand-stretched over a solid wood frame, fitted with hanging hardware, and packed flat for delivery across all ten Canadian provinces."
       },
       "benefits": {
         "one": {
@@ -3718,7 +3754,7 @@
     "wall-art": {
       "meta": {
         "title": "Canvas Wall Art",
-        "description": "Custom canvas wall art printed and hand-stretched in Quebec. Turn your own photography into gallery-quality wall art. Quebec and Ontario delivery."
+        "description": "Custom canvas wall art printed and hand-stretched in Quebec. Turn your own photography into gallery-quality wall art. Delivery to all ten Canadian provinces."
       },
       "heading": "Canvas Wall Art",
       "description": "Wall art made from your photographs, not someone else's stock library.",
@@ -3806,7 +3842,7 @@
     "gallery-wrap": {
       "meta": {
         "title": "Gallery Wrap Canvas Prints",
-        "description": "Gallery wrapped canvas prints hand-stretched in Quebec over solid wood frames. Borderless, ready to hang. Delivered across Quebec and Ontario."
+        "description": "Gallery wrapped canvas prints hand-stretched in Quebec over solid wood frames. Borderless, ready to hang. Delivered across all ten Canadian provinces."
       },
       "heading": "Gallery Wrap Canvas Prints",
       "description": "Image wrapped around the edge, no frame, nothing between you and the print.",
@@ -3894,7 +3930,7 @@
     "personalized": {
       "meta": {
         "title": "Personalized Canvas Prints",
-        "description": "Personalized canvas prints made in Quebec from your own photos. A one-of-one gift, hand-stretched and ready to hang. Quebec and Ontario delivery."
+        "description": "Personalized canvas prints made in Quebec from your own photos. A one-of-one gift, hand-stretched and ready to hang. Delivery to all ten Canadian provinces."
       },
       "heading": "Personalized Canvas Prints",
       "description": "A gift that only makes sense for one person.",
@@ -3922,7 +3958,7 @@
         "items": [
           {
             "title": "Order to doorstep",
-            "description": "Within 15 working days — one to three weeks — across our whole Quebec and Ontario delivery area."
+            "description": "Within 15 working days — one to three weeks — for deliveries to all ten Canadian provinces."
           },
           {
             "title": "Made to order",
@@ -3983,7 +4019,7 @@
   "Shop": {
     "metadata": {
       "title": "Shop Canvas Prints",
-      "description": "Browse custom canvas prints made in Quebec. Choose a size, a finish and upload your photo. Delivered across Quebec and Ontario."
+      "description": "Browse custom canvas prints made in Quebec. Choose a size, a finish and upload your photo. Delivered across all ten Canadian provinces."
     },
     "heading": "Canvas Prints",
     "intro": "Every canvas is printed on demand and hand-stretched in our Quebec studio. Upload any photo, choose your size and finish, and we will deliver it ready to hang.",

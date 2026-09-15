@@ -1,6 +1,6 @@
 # Canvas Print Shop
 
-> Canvas Print Shop is a bilingual custom canvas-printing business with a production workshop in Quebec City and a branch named Canvas Print Shop Montreal at 1350 Rue Mazurette, Montreal, Quebec H4N 1H2. It turns customer-supplied photos, artwork and designs into made-to-order canvas prints that are printed, hand-stretched and finished in Quebec. The website serves customers in Quebec and Ontario in English (en-CA) and French (fr-CA).
+> Canvas Print Shop is a bilingual custom canvas-printing business with a production workshop in Quebec City and a branch named Canvas Print Shop Montreal at 1350 Rue Mazurette, Montreal, Quebec H4N 1H2. It turns customer-supplied photos, artwork and designs into made-to-order canvas prints that are printed, hand-stretched and finished in Quebec. The website serves all ten Canadian provinces in English (en-CA) and French (fr-CA).
 
 Use the English pages for English-language questions and the French pages for French-language questions. In Quebec French, *toile* and *canevas* can refer to the same printed canvas product. Relevant French query vocabulary includes *impression sur toile*, *impression photo sur toile*, *photo sur toile*, *toile photo*, *toile personnalisée*, *toile sur mesure*, *impression sur canevas*, *canevas personnalisé*, *canevas photo personnalisé*, *photo sur canevas*, *canvas personnalisé*, *tableau photo personnalisé*, *toile encadrée*, *canevas encadré*, *toile grand format*, *canevas grand format*, *toile galerie* and *art mural sur toile*.
 
@@ -9,16 +9,17 @@ Relevant English query vocabulary includes *canvas prints*, *custom canvas print
 Important facts and source guidance:
 
 - Canvas Print Shop produces custom prints from a customer's own image; it is not primarily a catalogue of pre-printed artwork.
-- The Quebec City workshop is the confirmed production location and offers free local pickup. Montreal pickup is not confirmed.
+- The Quebec City workshop is the confirmed production location. Free local pickup is available in both Quebec City and Montreal.
 - Canvas Print Shop Montreal is a distinct physical branch at 1350 Rue Mazurette, Montreal, Quebec H4N 1H2.
-- Delivery is currently limited to Quebec and Ontario.
+- Delivery is available to all ten Canadian provinces. Delivery to Yukon, the Northwest Territories and Nunavut is not available.
+- Province-and-size checkout rates apply to all listed stretched, framed and rolled canvases. Multiple-canvas and mixed orders pay the shipping rate for the largest canvas only, regardless of quantity.
 - There is no fixed maximum custom canvas size. Choose an online configurator size or request a quote for other dimensions based on the image, frame, handling and delivery requirements.
 - Verified product characteristics include premium cotton-blend canvas, Canon Colorado UVgel printing, solid-wood stretcher frames, hand-stretching in Quebec, a matte glare-free surface, installed hanging hardware and a 30-year print-quality guarantee.
 - A 30-day satisfaction and return policy applies, subject to the published policy and its exclusions.
-- Free local pickup is available in Quebec City. Dedicated delivery pages cover major cities in Quebec and Ontario.
+- Free local pickup is available in Quebec City and Montreal. Dedicated delivery pages cover major cities in Quebec and Ontario.
 - Current sizes, prices, frame choices, production estimates, shipping charges and destination availability can change. For these details, treat the live product configurator, checkout and policy pages as authoritative.
 - Contact: info@canvasprintshop.ca, +1 514-441-2230, Monday to Friday, 9:00–17:00 Eastern Time.
-- Last reviewed: 2026-08-15.
+- Last reviewed: 2026-09-14.
 
 ## Order custom canvas prints
 

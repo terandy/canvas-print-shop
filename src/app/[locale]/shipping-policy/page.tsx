@@ -141,6 +141,8 @@ export default async function ShippingPolicy({
               <ul>
                 <li>{t("shippingCosts.localPickup")}</li>
                 <li>{t("shippingCosts.standard")}</li>
+                <li>{t("shippingCosts.coverage")}</li>
+                <li>{t("shippingCosts.scope")}</li>
               </ul>
             </SectionContainer>
           </section>

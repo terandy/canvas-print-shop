@@ -2,6 +2,7 @@ import { resend, ORDER_EMAIL } from "./index";
 import type { Order } from "@/types/order";
 import { getAdminUsersForOrderEmails } from "@/lib/db/queries/admin-users";
 import { BASE_URL } from "@/lib/constants";
+import { canSendPickupReady } from "@/lib/orders/status";
 import {
   BUSINESS_DATA,
   formatOpeningTime,
@@ -10,6 +11,36 @@ import {
 } from "@/lib/business-data";
 
 type Locale = "en" | "fr";
+
+type AdminOrderEmailRecipient = {
+  email: string;
+  name: string | null;
+};
+
+const NEW_ORDER_ALERT_EMAIL = BUSINESS_DATA.organization.email;
+
+export function getAdminOrderNotificationRecipients(
+  adminEmails: AdminOrderEmailRecipient[],
+  fallbackEmail?: string
+): string[] {
+  const candidates = adminEmails.map((admin) => admin.email);
+
+  if (adminEmails.length === 0 && fallbackEmail) {
+    candidates.push(fallbackEmail);
+  }
+
+  // The company inbox always receives new-order alerts. Setting it last also
+  // normalizes any case-variant already present in the admin list.
+  candidates.push(NEW_ORDER_ALERT_EMAIL);
+
+  const uniqueRecipients = new Map<string, string>();
+  for (const candidate of candidates) {
+    const email = candidate.trim();
+    if (email) uniqueRecipients.set(email.toLowerCase(), email);
+  }
+
+  return Array.from(uniqueRecipients.values());
+}
 
 // Import translations directly for server-side email generation
 import enMessages from "../../../messages/en.json";
@@ -110,7 +141,7 @@ export async function sendAdminOrderNotification(order: Order): Promise<void> {
   }
 
   // Get all admins who should receive order notification emails
-  let adminEmails: Array<{ email: string; name: string | null }> = [];
+  let adminEmails: AdminOrderEmailRecipient[] = [];
 
   try {
     adminEmails = await getAdminUsersForOrderEmails();
@@ -118,14 +149,13 @@ export async function sendAdminOrderNotification(order: Order): Promise<void> {
     console.error("Error fetching admin users for emails:", error);
   }
 
-  // Fallback to ADMIN_EMAIL environment variable if no admins have notifications enabled
-  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-  if (adminEmails.length === 0 && ADMIN_EMAIL) {
-    adminEmails = [{ email: ADMIN_EMAIL, name: null }];
-  }
+  const recipients = getAdminOrderNotificationRecipients(
+    adminEmails,
+    process.env.ADMIN_EMAIL
+  );
 
   // If no recipients, return early
-  if (adminEmails.length === 0) {
+  if (recipients.length === 0) {
     console.warn("No admin users configured to receive order notifications");
     return;
   }
@@ -176,7 +206,7 @@ ${order.shippingAddress.country}`
   try {
     await resend.emails.send({
       from: ORDER_EMAIL,
-      to: adminEmails.map((admin) => admin.email),
+      to: recipients,
       subject: `New Order #${order.orderNumber} - $${(order.totalCents / 100).toFixed(2)}`,
       html: emailHtml,
     });
@@ -247,8 +277,11 @@ export async function sendPickupReady(
   order: Order,
   locale: Locale = "en"
 ): Promise<void> {
-  if (!resend) {
-    return;
+  if (!resend || !ORDER_EMAIL) {
+    throw new Error("Pickup email is not configured");
+  }
+  if (!canSendPickupReady(order)) {
+    throw new Error("Order has no valid pickup location");
   }
 
   const t = getEmailTranslations(locale).pickupReady;
@@ -269,7 +302,7 @@ export async function sendPickupReady(
 
   const contactEmail = location.email ?? ORDER_EMAIL;
 
-  await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: ORDER_EMAIL,
     to: order.customerEmail,
     subject: interpolate(t.subject, { orderNumber: order.orderNumber }),
@@ -315,6 +348,9 @@ export async function sendPickupReady(
       </div>
     `,
   });
+  if (error || !data?.id) {
+    throw new Error(error?.message || "Pickup email was not accepted");
+  }
 }
 
 export async function sendPasswordResetEmail(

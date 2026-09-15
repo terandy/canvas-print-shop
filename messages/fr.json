@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Impression photo sur toile et canevas | Canvas Print Shop",
-    "description": "Photo sur toile et canevas personnalisés, fabriqués à la main au Québec. Téléversez votre photo et recevez une toile prête à accrocher au Québec et en Ontario.",
+    "description": "Photo sur toile et canevas personnalisés, fabriqués à la main au Québec. Téléversez votre photo et recevez une toile prête à accrocher dans les dix provinces canadiennes.",
     "og": {
       "title": "Impression sur toile et canevas photo | Canvas Print Shop",
       "description": "Transformez vos photos en toiles et canevas haut de gamme. Fabriqués à la main au Québec avec la technologie UVgel. Canevas personnalisé, art mural et grand format."
@@ -82,7 +82,7 @@
       },
       "enjoy": {
         "title": "On s'occupe de la suite",
-        "description": "Nous l'imprimons avec soin. Choisissez la livraison au Québec et en Ontario ou la cueillette gratuite à Montréal ou à Québec."
+        "description": "Nous l'imprimons avec soin. Choisissez la livraison dans les dix provinces canadiennes ou la cueillette gratuite à Montréal ou à Québec."
       }
     },
     "closing": {
@@ -99,7 +99,7 @@
   },
   "Footer": {
     "companyName": "Canvas Print Shop",
-    "companyDescription": "Toiles fabriquées sur commande au Québec et livrées partout au Québec et en Ontario.",
+    "companyDescription": "Toiles fabriquées sur commande au Québec et livrées partout dans les dix provinces canadiennes.",
     "customerService": "Service client",
     "contactUs": "Contactez-nous",
     "emailUs": "Écrivez-nous",
@@ -135,9 +135,9 @@
     },
     "canadaPost": {
       "title": "Livraison par Postes Canada",
-      "description": "Nous expédions les commandes au Québec et en Ontario par Postes Canada, avec un numéro de suivi pour chaque envoi.",
+      "description": "Nous expédions les commandes dans les dix provinces canadiennes par Postes Canada, avec un numéro de suivi pour chaque envoi.",
       "estimatedTitle": "Délais estimatifs :",
-      "local": "Zone de livraison : Québec et Ontario",
+      "local": "Zone de livraison : les dix provinces canadiennes",
       "majorCities": "Chaque toile est imprimée et tendue à la main sur commande",
       "ruralAreas": "De la commande à la livraison : en moins de 15 jours ouvrables",
       "remoteLocations": "L'estimation du produit et la caisse indiquent le délai à jour pour chaque commande",
@@ -154,7 +154,9 @@
     "shippingCosts": {
       "title": "Frais d'expédition",
       "localPickup": "Cueillette locale : gratuite",
-      "standard": "Expédition standard : calculée à la caisse selon le format et la destination"
+      "standard": "Expédition standard : calculée à la caisse selon le format de la toile et la province de destination",
+      "coverage": "La livraison automatique est offerte dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte.",
+      "scope": "La livraison est offerte pour toutes les toiles tendues, encadrées et roulées proposées en ligne. Pour plusieurs articles, seul le tarif de la plus grande toile s’applique."
     },
     "orderTracking": {
       "title": "Suivi de commande",
@@ -355,7 +357,7 @@
   },
   "Product": {
     "metadata": {
-      "canvasDescription": "Toile personnalisée fabriquée sur commande à partir de votre photo, de votre œuvre ou de votre création. Imprimée et finie au Québec, puis livrée au Québec et en Ontario."
+      "canvasDescription": "Toile personnalisée fabriquée sur commande à partir de votre photo, de votre œuvre ou de votre création. Imprimée et finie au Québec, puis livrée dans les dix provinces canadiennes."
     },
     "direction": {
       "title": "Orientation",
@@ -474,7 +476,7 @@
         },
         "deliveryTime": {
           "question": "Combien de temps prend la livraison ?",
-          "answer": "Au Québec et en Ontario, le délai total entre la commande et la livraison est en moins de 15 jours ouvrables ; l'estimation du produit et la caisse font foi pour votre commande."
+          "answer": "Dans les dix provinces canadiennes, le délai total entre la commande et la livraison est en moins de 15 jours ouvrables ; l'estimation du produit et la caisse font foi pour votre commande."
         },
         "multipleCanvases": {
           "question": "Puis-je commander plusieurs toiles de la même image ?",
@@ -893,7 +895,7 @@
         },
         "shipping": {
           "title": "Livraison",
-          "description": "Livraison au Québec et en Ontario. Les options et les frais sont indiqués à la caisse."
+          "description": "Livraison dans les dix provinces canadiennes. Les options et les frais sont indiqués à la caisse."
         },
         "guarantee": {
           "title": "Notre promesse",
@@ -983,7 +985,7 @@
       "checkout": "Passer à la caisse",
       "taxes": "Taxes",
       "shipping": "Livraison",
-      "shippingCalculation": "Calculée à la caisse",
+      "shippingCalculation": "Selon le format et la province",
       "total": "Total",
       "openCartWithCount": "Ouvrir le panier ({count, plural, one {# article} other {# articles}})"
     },
@@ -1006,6 +1008,27 @@
     "discount": "rabais"
   },
   "Checkout": {
+    "page": {
+      "eyebrow": "Paiement sécurisé",
+      "title": "Finalisez votre commande",
+      "intro": "Entrez votre adresse pour une livraison dans une province canadienne, ou choisissez la cueillette gratuite à Montréal ou à Québec. Pour plusieurs toiles, seul le tarif du plus grand format s’applique.",
+      "territoryUnavailable": "La livraison est actuellement offerte uniquement dans les dix provinces canadiennes. Vous pouvez toujours choisir la cueillette gratuite à Montréal ou à Québec.",
+      "updatingShipping": "Mise à jour des frais de livraison…",
+      "retry": "Réessayer",
+      "unavailable": "Le paiement sécurisé est temporairement indisponible. Votre panier est toujours sauvegardé.",
+      "loading": "Chargement du paiement sécurisé…",
+      "contactUs": "Nous contacter",
+      "continueShopping": "Continuer vos achats",
+      "emptyCart": "Votre panier est vide. Ajoutez une toile avant de passer à la caisse.",
+      "returnHome": "Retourner à la boutique",
+      "errors": {
+        "invalidAddress": "Entrez une province canadienne et un code postal valides qui correspondent.",
+        "invalidCart": "Votre session de panier a expiré. Retournez à la boutique et réessayez.",
+        "unavailable": "Nous n'avons pas pu mettre à jour le tarif de livraison. Veuillez réessayer.",
+        "reviewShipping": "Les frais de livraison ont été mis à jour. Vérifiez le total, puis appuyez de nouveau sur Payer.",
+        "payment": "Votre paiement n’a pas été effectué. Vérifiez les informations de paiement et réessayez."
+      }
+    },
     "success": {
       "title": "Merci pour votre commande !",
       "orderNumber": "Commande #{orderNumber}",
@@ -1117,6 +1140,19 @@
       "updateButton": "Mettre à jour",
       "updating": "Mise à jour...",
       "updateSuccess": "Statut de la commande mis à jour",
+      "resendPickupEmail": "Renvoyer le courriel de cueillette",
+      "sendingPickupEmail": "Envoi du courriel de cueillette...",
+      "pickupEmailSent": "Courriel de cueillette envoyé",
+      "errors": {
+        "unauthorized": "Veuillez vous reconnecter pour modifier cette commande.",
+        "missingFields": "Une commande et un statut sont requis.",
+        "unknownStatus": "Choisissez un statut de commande valide.",
+        "notFound": "Cette commande est introuvable.",
+        "invalidPickup": "Un lieu de cueillette valide est requis pour envoyer le courriel de cette commande.",
+        "invalidResend": "Le courriel peut être renvoyé uniquement lorsque la commande est prête pour la cueillette.",
+        "pickupEmailFailed": "La commande est prête pour la cueillette, mais le courriel n’a pas pu être envoyé. Utilisez Renvoyer le courriel de cueillette pour réessayer.",
+        "updateFailed": "Le statut de la commande n’a pas pu être mis à jour. Veuillez réessayer."
+      },
       "updateError": "Échec de la mise à jour",
       "actions": "Actions",
       "view": "Voir",
@@ -1511,7 +1547,7 @@
       },
       "trustBadges": {
         "secure": "Paiement sécurisé",
-        "shipping": "Livraison Québec et Ontario",
+        "shipping": "Livraison dans les dix provinces canadiennes",
         "made": "Fabriqué au Québec, Canada",
         "satisfaction": "Garantie de satisfaction 100 %",
         "guarantee": "Impression garantie 30 ans"
@@ -1524,10 +1560,10 @@
       },
       "heading": "Impression sur toile à Montréal",
       "description": "Téléversez votre photo, votre œuvre ou votre création pour obtenir une toile sur mesure auprès d'une véritable succursale montréalaise.",
-      "subheading": "Succursale à Montréal. Atelier de production à Québec. Livraison au Québec et en Ontario.",
+      "subheading": "Succursale à Montréal. Atelier de production à Québec. Livraison dans les dix provinces canadiennes.",
       "intro": {
         "title": "Une véritable succursale montréalaise d'impression sur toile",
-        "body": "Canvas Print Shop Montreal est notre succursale physique située au 1350, rue Mazurette. Les toiles fabriquées sur commande sont produites et finies à la main dans notre atelier de Québec, puis livrées au Québec et en Ontario.\n\nChoisissez un format dans le configurateur en ligne et téléversez votre photo, votre œuvre ou votre création. Si les dimensions voulues ne sont pas proposées, communiquez avec nous pour obtenir une soumission ; il n'y a pas de format maximal fixe."
+        "body": "Canvas Print Shop Montreal est notre succursale physique située au 1350, rue Mazurette. Les toiles fabriquées sur commande sont produites et finies à la main dans notre atelier de Québec, puis livrées dans les dix provinces canadiennes.\n\nChoisissez un format dans le configurateur en ligne et téléversez votre photo, votre œuvre ou votre création. Si les dimensions voulues ne sont pas proposées, communiquez avec nous pour obtenir une soumission ; il n'y a pas de format maximal fixe."
       },
       "location": {
         "heading": "Succursale de Montréal"
@@ -1555,7 +1591,7 @@
           },
           {
             "title": "Livraison",
-            "description": "Au Québec et en Ontario, le délai total entre la commande et la livraison est en moins de 15 jours ouvrables. L'estimation du produit et la caisse font foi pour votre commande."
+            "description": "Dans les dix provinces canadiennes, le délai total entre la commande et la livraison est en moins de 15 jours ouvrables. L'estimation du produit et la caisse font foi pour votre commande."
           },
           {
             "title": "Fabriquée sur commande",
@@ -1574,7 +1610,7 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Montréal ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -1658,11 +1694,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Québec ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -1746,11 +1782,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Laval ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -1834,11 +1870,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Gatineau ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -1922,11 +1958,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Sherbrooke ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2010,11 +2046,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Trois-Rivières ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2098,11 +2134,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Longueuil ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2186,11 +2222,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Toronto ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2274,11 +2310,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Ottawa ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2362,11 +2398,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Mississauga ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2450,11 +2486,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Hamilton ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2538,11 +2574,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à London ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2626,11 +2662,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Kingston ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2714,11 +2750,11 @@
         },
         {
           "q": "Facturez-vous un supplément pour livrer à Windsor ?",
-          "a": "Non. La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario."
+          "a": "Il n'y a pas de supplément selon la ville. Les frais varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         },
         {
-          "q": "Livrez-vous à l'extérieur du Québec et de l'Ontario ?",
-          "a": "Pas pour l'instant. Nous livrons partout au Québec et en Ontario afin de garder des délais courts et d'éviter les dommages liés au transport longue distance."
+          "q": "Livrez-vous ailleurs au Canada ?",
+          "a": "Oui. Nous livrons dans les dix provinces canadiennes. La livraison au Yukon, aux Territoires du Nord-Ouest et au Nunavut n’est pas offerte."
         },
         {
           "q": "La toile arrive-t-elle prête à accrocher ?",
@@ -2755,7 +2791,7 @@
     "16x20": {
       "meta": {
         "title": "Impression sur toile 16x20",
-        "description": "Toile et canevas photo 16x20 personnalisés, imprimés et tendus à la main au Québec. Prêts à accrocher, livrés au Québec et en Ontario."
+        "description": "Toile et canevas photo 16x20 personnalisés, imprimés et tendus à la main au Québec. Prêts à accrocher, livrés dans les dix provinces canadiennes."
       },
       "heading": "Impressions sur toile 16x20",
       "description": "16x20 pouces — 40 × 50 cm — imprimée sur commande et tendue à la main au Québec.",
@@ -2843,7 +2879,7 @@
     "24x36": {
       "meta": {
         "title": "Impression sur toile 24x36",
-        "description": "Toile et canevas photo 24x36 tendus à la main au Québec. Le format vedette au-dessus d'un canapé ou d'un lit. Livrés au Québec et en Ontario."
+        "description": "Toile et canevas photo 24x36 tendus à la main au Québec. Le format vedette au-dessus d'un canapé ou d'un lit. Livrés dans les dix provinces canadiennes."
       },
       "heading": "Impressions sur toile 24x36",
       "description": "24x36 pouces — 60 × 90 cm — imprimée sur commande et tendue à la main au Québec.",
@@ -2931,7 +2967,7 @@
     "36x48": {
       "meta": {
         "title": "Impression sur toile 36x48",
-        "description": "Très grands canevas 36x48 sur châssis renforcé, fabriqués au Québec. Expédiés à plat, prêts à accrocher. Livraison au Québec et en Ontario."
+        "description": "Très grands canevas 36x48 sur châssis renforcé, fabriqués au Québec. Expédiés à plat, prêts à accrocher. Livraison dans les dix provinces canadiennes."
       },
       "heading": "Impressions sur toile 36x48",
       "description": "36x48 pouces — 90 × 120 cm — imprimée sur commande et tendue à la main au Québec.",
@@ -3019,7 +3055,7 @@
     "wedding": {
       "meta": {
         "title": "Toiles de mariage",
-        "description": "Vos photos de mariage sur toile ou canevas, tendus à la main au Québec. Encre d'archive garantie 30 ans. Livraison au Québec et en Ontario."
+        "description": "Vos photos de mariage sur toile ou canevas, tendus à la main au Québec. Encre d'archive garantie 30 ans. Livraison dans les dix provinces canadiennes."
       },
       "heading": "Toiles de mariage",
       "description": "Votre photographe vous a remis des centaines de fichiers. Mettez au mur les trois ou quatre qui comptent vraiment.",
@@ -3107,7 +3143,7 @@
     "family": {
       "meta": {
         "title": "Toiles photo de famille",
-        "description": "Canevas photo de famille personnalisés, fabriqués au Québec. Tendus à la main, prêts à accrocher, garantis 30 ans. Québec et Ontario."
+        "description": "Canevas photo de famille personnalisés, fabriqués au Québec. Tendus à la main, prêts à accrocher, garantis 30 ans. Canada."
       },
       "heading": "Toiles photo de famille",
       "description": "Les photos qui méritent d'être vues chaque jour ne devraient pas rester prisonnières d'un téléphone.",
@@ -3195,7 +3231,7 @@
     "pet-portrait": {
       "meta": {
         "title": "Portraits d'animaux sur toile",
-        "description": "Portrait de votre animal sur toile ou canevas, fabriqué au Québec. Téléversez la photo de votre chien ou chat. Livraison Québec et Ontario."
+        "description": "Portrait de votre animal sur toile ou canevas, fabriqué au Québec. Téléversez la photo de votre chien ou chat. Livraison dans les dix provinces canadiennes."
       },
       "heading": "Portraits d'animaux sur toile",
       "description": "La bonne photo que vous avez enfin réussi à prendre, imprimée comme il faut.",
@@ -3283,7 +3319,7 @@
     "bedroom": {
       "meta": {
         "title": "Toiles pour chambre à coucher",
-        "description": "Toile et canevas pour la chambre à coucher, fabriqués au Québec. Surface mate sans reflet, prêts à accrocher. Québec et Ontario."
+        "description": "Toile et canevas pour la chambre à coucher, fabriqués au Québec. Surface mate sans reflet, prêts à accrocher. Canada."
       },
       "heading": "Toiles pour la chambre à coucher",
       "description": "Discrètes, mates, et dimensionnées pour bien se placer au-dessus d'un lit.",
@@ -3459,7 +3495,7 @@
     "large": {
       "meta": {
         "title": "Impression sur toile grand format",
-        "description": "Toiles grand format sans format maximal fixe. Les dimensions hors configurateur font l'objet d'une soumission. Fabrication au Québec, livraison au Québec et en Ontario."
+        "description": "Toiles grand format sans format maximal fixe. Les dimensions hors configurateur font l'objet d'une soumission. Fabrication au Québec, livraison dans les dix provinces canadiennes."
       },
       "heading": "Impression sur toile grand format",
       "description": "Des formats qui remplissent un mur au lieu de s'en excuser.",
@@ -3514,7 +3550,7 @@
         },
         {
           "q": "La livraison d'une grande toile coûte-t-elle plus cher ?",
-          "a": "La livraison est au même tarif dans toute notre zone du Québec et de l'Ontario, peu importe le format."
+          "a": "Les frais de livraison varient selon la province de destination et le format de la toile; le montant exact est indiqué à la caisse."
         }
       ],
       "related": [
@@ -3547,7 +3583,7 @@
     "framed": {
       "meta": {
         "title": "Toiles encadrées",
-        "description": "Toile ou canevas sur cadre flottant, encadrés à la main au Québec. Un fini de galerie, prêt à accrocher. Québec et Ontario."
+        "description": "Toile ou canevas sur cadre flottant, encadrés à la main au Québec. Un fini de galerie, prêt à accrocher. Canada."
       },
       "heading": "Toiles encadrées",
       "description": "Un cadre flottant transforme une toile en pièce achevée.",
@@ -3635,14 +3671,14 @@
     "custom": {
       "meta": {
         "title": "Toile personnalisée sur mesure",
-        "description": "Toile personnalisée sur mesure, fabriquée sur commande au Québec. Téléversez une photo, choisissez format et fini. Livraison Québec et Ontario."
+        "description": "Toile personnalisée sur mesure, fabriquée sur commande au Québec. Téléversez une photo, choisissez format et fini. Livraison dans les dix provinces canadiennes."
       },
       "heading": "Toile personnalisée sur mesure",
       "description": "Votre photo, votre format, imprimée et tendue au Québec.",
       "subheading": "Aucun gabarit, aucune image de banque — seulement la vôtre.",
       "intro": {
         "title": "Comment fonctionne une commande sur mesure",
-        "body": "Tout ce que nous fabriquons est sur mesure : il n'y a aucun catalogue de motifs préimprimés. Vous téléversez un fichier, choisissez un format et un fini, et nous imprimons cette toile unique pour vous. Rien n'est entreposé, rien n'est expédié par un tiers.\n\nAprès votre commande, le fichier passe au prépresse, où nous vérifions la résolution par rapport au format choisi et corrigeons toute dominante de couleur évidente. Si quelque chose ne s'imprimera pas bien, nous vous contactons avant la production plutôt que d'expédier un résultat médiocre et de le régler ensuite.\n\nDe la commande à la livraison, comptez en moins de 15 jours ouvrables — d'une à trois semaines. La toile est imprimée sur une Canon Colorado avec de l'encre UVgel, tendue à la main sur un châssis en bois massif, munie de sa quincaillerie et emballée à plat pour la livraison au Québec et en Ontario."
+        "body": "Tout ce que nous fabriquons est sur mesure : il n'y a aucun catalogue de motifs préimprimés. Vous téléversez un fichier, choisissez un format et un fini, et nous imprimons cette toile unique pour vous. Rien n'est entreposé, rien n'est expédié par un tiers.\n\nAprès votre commande, le fichier passe au prépresse, où nous vérifions la résolution par rapport au format choisi et corrigeons toute dominante de couleur évidente. Si quelque chose ne s'imprimera pas bien, nous vous contactons avant la production plutôt que d'expédier un résultat médiocre et de le régler ensuite.\n\nDe la commande à la livraison, comptez en moins de 15 jours ouvrables — d'une à trois semaines. La toile est imprimée sur une Canon Colorado avec de l'encre UVgel, tendue à la main sur un châssis en bois massif, munie de sa quincaillerie et emballée à plat pour la livraison dans les dix provinces canadiennes."
       },
       "benefits": {
         "one": {
@@ -3723,7 +3759,7 @@
     "wall-art": {
       "meta": {
         "title": "Art mural sur toile",
-        "description": "Art mural sur toile et canevas personnalisé, imprimé et tendu à la main au Québec. Vos photos en qualité galerie. Québec et Ontario."
+        "description": "Art mural sur toile et canevas personnalisé, imprimé et tendu à la main au Québec. Vos photos en qualité galerie. Canada."
       },
       "heading": "Art mural sur toile",
       "description": "De l'art mural fait de vos photos, pas de la banque d'images d'un autre.",
@@ -3811,7 +3847,7 @@
     "gallery-wrap": {
       "meta": {
         "title": "Toiles galerie",
-        "description": "Toile galerie et canevas sans cadre, tendus à la main sur bois massif au Québec. Prêts à accrocher. Québec et Ontario."
+        "description": "Toile galerie et canevas sans cadre, tendus à la main sur bois massif au Québec. Prêts à accrocher. Canada."
       },
       "heading": "Toiles galerie",
       "description": "L'image repliée sur les bords, sans cadre, rien entre vous et l'impression.",
@@ -3899,7 +3935,7 @@
     "personalized": {
       "meta": {
         "title": "Canevas photo personnalisé",
-        "description": "Canevas photo personnalisé fabriqué au Québec à partir de vos photos. Un cadeau unique, prêt à accrocher. Livraison Québec et Ontario."
+        "description": "Canevas photo personnalisé fabriqué au Québec à partir de vos photos. Un cadeau unique, prêt à accrocher. Livraison dans les dix provinces canadiennes."
       },
       "heading": "Canevas photo personnalisé",
       "description": "Un canevas fait d'une seule photo, pour une seule personne.",
@@ -3988,7 +4024,7 @@
   "Shop": {
     "metadata": {
       "title": "Boutique de toiles et canevas photo",
-      "description": "Parcourez nos impressions photo sur toile et canevas personnalisés fabriqués au Québec. Choisissez un format, téléversez votre photo. Livraison Québec et Ontario."
+      "description": "Parcourez nos impressions photo sur toile et canevas personnalisés fabriqués au Québec. Choisissez un format, téléversez votre photo. Livraison dans les dix provinces canadiennes."
     },
     "heading": "Impressions photo sur toile et canevas",
     "intro": "Chaque toile — ou canevas, les deux mots désignent le même produit au Québec — est imprimée sur commande et tendue à la main dans notre atelier québécois. Téléversez une photo, choisissez format et fini, et nous la livrons prête à accrocher.",

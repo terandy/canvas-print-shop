@@ -8,23 +8,17 @@ import {
   updateAdminPassword,
 } from "@/lib/db/queries/admin-users";
 import {
-  getOrder,
-  updateOrderStatus,
-  addTrackingInfo,
-} from "@/lib/db/queries/orders";
-import {
   createPasswordResetToken,
   verifyPasswordResetToken,
   markTokenUsed,
 } from "@/lib/db/queries/password-reset";
-import {
-  sendShippingUpdate,
-  sendPickupReady,
-  sendPasswordResetEmail,
-} from "@/lib/email/send";
+import { sendPasswordResetEmail } from "@/lib/email/send";
 import { generateToken } from "./index";
 import { setAdminSession, clearAdminSession, getAdminSession } from "./session";
-import { isOrderStatus } from "@/lib/orders/status";
+import {
+  updateStatusWithNotification,
+  type OrderUpdateResult,
+} from "@/lib/orders/update-status";
 
 export interface LoginState {
   error?: string;
@@ -147,80 +141,33 @@ export async function resetPasswordAction(
 }
 
 // Order Status Update Action
-export interface OrderStatusState {
-  error?: string;
-  success?: boolean;
-}
+export type OrderStatusState = Partial<OrderUpdateResult>;
 
 export async function updateOrderStatusAction(
   prevState: OrderStatusState,
   formData: FormData
 ): Promise<OrderStatusState> {
-  const session = await getAdminSession();
-  if (!session) {
-    return { error: "Unauthorized" };
+  if (!(await getAdminSession())) {
+    return { success: false, error: "unauthorized" };
   }
-
-  const orderId = formData.get("orderId") as string;
-  const status = formData.get("status") as string;
-  const trackingNumber = formData.get("trackingNumber") as string;
-  const trackingUrl = formData.get("trackingUrl") as string;
-
-  if (!orderId || !status) {
-    return { error: "Order ID and status are required" };
+  const field = (name: string) => {
+    const value = formData.get(name);
+    return typeof value === "string" ? value : "";
+  };
+  const orderId = field("orderId");
+  const result = await updateStatusWithNotification({
+    orderId,
+    status: field("status"),
+    trackingNumber: field("trackingNumber"),
+    trackingUrl: field("trackingUrl"),
+    resendPickupEmail: field("intent") === "resendPickupEmail",
+  });
+  if (result.status) {
+    for (const locale of ["en", "fr"]) {
+      revalidatePath(`/${locale}/admin/orders/${orderId}`);
+      revalidatePath(`/${locale}/admin/orders`);
+      revalidatePath(`/${locale}/admin`);
+    }
   }
-
-  // The column is an unconstrained varchar, so an unrecognised value would be
-  // written happily and then render as a blank badge everywhere.
-  if (!isOrderStatus(status)) {
-    return { error: "Unknown order status" };
-  }
-
-  try {
-    const order = await getOrder(orderId);
-    if (!order) {
-      return { error: "Order not found" };
-    }
-
-    // Update order status (use addTrackingInfo if shipping with tracking number)
-    if (status === "shipped" && trackingNumber) {
-      await addTrackingInfo(orderId, trackingNumber, trackingUrl || undefined);
-    } else {
-      await updateOrderStatus(orderId, status);
-    }
-
-    // Emails are sent in the language the customer checked out in.
-    const locale = order.locale === "fr" ? "fr" : "en";
-
-    // If status is "shipped" and we have a tracking number, send shipping email
-    if (status === "shipped" && trackingNumber) {
-      try {
-        await sendShippingUpdate(
-          order,
-          trackingNumber,
-          trackingUrl || undefined,
-          locale
-        );
-      } catch {
-        // Don't fail the request if email fails
-      }
-    }
-
-    // A pickup order never gets a tracking number, so this is the only message
-    // telling the customer their canvas is waiting for them.
-    if (status === "ready_for_pickup") {
-      try {
-        await sendPickupReady(order, locale);
-      } catch {
-        // Don't fail the status update if email fails
-      }
-    }
-
-    revalidatePath(`/admin/orders/${orderId}`);
-    revalidatePath("/admin/orders");
-
-    return { success: true };
-  } catch {
-    return { error: "Failed to update order status" };
-  }
+  return result;
 }

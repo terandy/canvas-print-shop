@@ -2,12 +2,21 @@
 
 import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { getLocale } from "next-intl/server";
+import { z } from "zod";
 import { TAGS } from "../constants";
 import * as cartDb from "@/lib/db/queries/carts";
 import type { CartItemAttributes } from "@/types/cart";
-import { createCheckoutSession } from "@/lib/stripe/checkout";
+import { checkoutErrorDetails } from "@/lib/stripe/errors";
+import {
+  createCheckoutSession,
+  updateCheckoutShipping,
+} from "@/lib/stripe/checkout";
+import {
+  normalizeCanadianPostalCode,
+  normalizeCanadianRegion,
+  postalCodeMatchesRegion,
+} from "@/lib/shipping/pricing";
 
 // Helper to validate UUID format
 function isValidUUID(id: string): boolean {
@@ -15,6 +24,38 @@ function isValidUUID(id: string): boolean {
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   return uuidRegex.test(id);
 }
+
+const optionalAddressField = z.string().max(200).nullable().optional();
+const checkoutShippingUpdateSchema = z
+  .object({
+    checkoutSessionId: z
+      .string()
+      .min(8)
+      .max(255)
+      .regex(/^cs_[A-Za-z0-9_]+$/),
+    shippingDetails: z
+      .object({
+        name: z.string().trim().min(1).max(200),
+        address: z
+          .object({
+            country: z.string().length(2),
+            line1: optionalAddressField,
+            line2: optionalAddressField,
+            city: optionalAddressField,
+            postal_code: optionalAddressField,
+            state: optionalAddressField,
+          })
+          .strict(),
+      })
+      .strict(),
+  })
+  .strict();
+
+export type CheckoutActionErrorCode =
+  | "invalid-cart"
+  | "empty-cart"
+  | "invalid-address"
+  | "checkout-unavailable";
 
 // Attribute format from Shopify (for backwards compatibility during transition)
 type Attribute = {
@@ -157,35 +198,126 @@ export const removeItem = async (_prevState: any, cartItemId: string) => {
   }
 };
 
-// Redirect to Stripe checkout
-export const redirectToCheckout = async () => {
+// Validate before the browser opens a fresh payment document. A client-router
+// transition can retain stale Stripe iframe/controller state from the shop.
+export const getCheckoutDestination = async (): Promise<
+  { ok: true; url: string } | { ok: false }
+> => {
   const cookieStore = await cookies();
   let cartId = cookieStore.get("cartId")?.value;
   const locale = await getLocale();
 
   if (!cartId || !isValidUUID(cartId)) {
-    return "Invalid cart ID";
+    return { ok: false };
   }
 
   const cart = await cartDb.getCart(cartId);
 
   if (!cart || cart.items.length === 0) {
-    return "Cart is empty";
+    return { ok: false };
   }
 
-  let checkoutUrl: string;
+  return { ok: true, url: `/${locale === "fr" ? "fr" : "en"}/checkout` };
+};
+
+/** Create Stripe state only from a POST-backed Server Action, never from the
+ * checkout page's GET render (which Next.js may prefetch or retry). */
+export async function createEmbeddedCheckoutSession(): Promise<
+  | { ok: true; clientSecret: string }
+  | { ok: false; code: CheckoutActionErrorCode }
+> {
+  const cookieStore = await cookies();
+  const cartId = cookieStore.get("cartId")?.value;
+  const locale = (await getLocale()) === "fr" ? "fr" : "en";
+
+  if (!cartId || !isValidUUID(cartId)) {
+    return { ok: false, code: "invalid-cart" };
+  }
+
+  const cart = await cartDb.getCart(cartId);
+  if (!cart || cart.items.length === 0) {
+    return { ok: false, code: "empty-cart" };
+  }
 
   try {
     const session = await createCheckoutSession(cartId, locale);
-    checkoutUrl = session.url!;
+    if (!session.client_secret) {
+      return { ok: false, code: "checkout-unavailable" };
+    }
+    return { ok: true, clientSecret: session.client_secret };
   } catch (error) {
-    console.error("Error creating checkout session:", error);
-    return "Error creating checkout session";
+    console.error(
+      "Unable to create Checkout Form Session",
+      checkoutErrorDetails(error)
+    );
+    return { ok: false, code: "checkout-unavailable" };
+  }
+}
+
+export async function updateEmbeddedCheckoutShipping(
+  input: unknown
+): Promise<
+  | { ok: true; automaticDelivery: boolean }
+  | { ok: false; code: CheckoutActionErrorCode }
+> {
+  const parsed = checkoutShippingUpdateSchema.safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, code: "invalid-address" };
   }
 
-  // redirect() must be called outside try-catch as it throws a special error
-  redirect(checkoutUrl);
-};
+  const cookieStore = await cookies();
+  const cartId = cookieStore.get("cartId")?.value;
+  if (!cartId || !isValidUUID(cartId)) {
+    return { ok: false, code: "invalid-cart" };
+  }
+
+  const { checkoutSessionId, shippingDetails } = parsed.data;
+  const country = shippingDetails.address.country.toUpperCase();
+  const line1 = shippingDetails.address.line1?.trim();
+  const city = shippingDetails.address.city?.trim();
+  const province = normalizeCanadianRegion(shippingDetails.address.state);
+  const postalCode = normalizeCanadianPostalCode(
+    shippingDetails.address.postal_code
+  );
+
+  if (
+    country !== "CA" ||
+    !line1 ||
+    !city ||
+    !province ||
+    !postalCode ||
+    !postalCodeMatchesRegion(postalCode, province)
+  ) {
+    return { ok: false, code: "invalid-address" };
+  }
+
+  try {
+    const result = await updateCheckoutShipping({
+      sessionId: checkoutSessionId,
+      cartId,
+      shippingDetails: {
+        name: shippingDetails.name.trim(),
+        address: {
+          country: "CA",
+          line1,
+          ...(shippingDetails.address.line2?.trim()
+            ? { line2: shippingDetails.address.line2.trim() }
+            : {}),
+          city,
+          postal_code: postalCode,
+          state: province,
+        },
+      },
+    });
+    return { ok: true, ...result };
+  } catch (error) {
+    console.error(
+      "Unable to update Checkout shipping",
+      checkoutErrorDetails(error)
+    );
+    return { ok: false, code: "checkout-unavailable" };
+  }
+}
 
 // Create cart and set cookie
 export const createCartAndSetCookie = async () => {

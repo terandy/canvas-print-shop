@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Canvas Print Shop",
   },
   description:
-    "Transform your photos into high-quality canvas prints. Expert hand-crafted in Quebec, Canada with premium materials and UVgel technology. Delivery or free local pickup across Quebec and Ontario.",
+    "Transform your photos into high-quality canvas prints. Expert hand-crafted in Quebec, Canada with premium materials and UVgel technology. Delivery to all ten Canadian provinces or free local pickup.",
   icons: {
     icon: [
       { url: "/favicon.png", sizes: "96x96", type: "image/png" },

@@ -6,7 +6,7 @@ import { useCart } from "@/contexts";
 import Price from "../product/price";
 import { useFormStatus } from "react-dom";
 import LoadingDots from "../loading-dots";
-import { redirectToCheckout } from "@/lib/utils/cart-actions";
+import { getCheckoutDestination } from "@/lib/utils/cart-actions";
 import { PlusIcon, ShoppingBag, ShoppingCart, X } from "lucide-react";
 import Button from "../buttons/button";
 import type { CartState } from "@/contexts";
@@ -19,7 +19,11 @@ const CheckoutButton = () => {
   const t = useTranslations("Cart.Modal");
 
   return (
-    <Button type="submit" className="w-full flex justify-center">
+    <Button
+      type="submit"
+      disabled={pending}
+      className="w-full flex justify-center"
+    >
       {pending ? <LoadingDots className="bg-white" /> : t("checkout")}
     </Button>
   );
@@ -59,6 +63,8 @@ const CartModal = () => {
   const locale = useLocale();
   const t = useTranslations("Cart.Modal");
   const tr = useTranslations("Product");
+  const checkoutText = useTranslations("Checkout.page");
+  const [checkoutError, setCheckoutError] = useState(false);
 
   const { state, updateCartItemQuantity, isOpen, setIsOpen } = useCart();
   const quantityRef = useRef(state?.totalQuantity);
@@ -192,12 +198,28 @@ const CartModal = () => {
                     <Totals cartState={state} />
                     <form
                       action={async () => {
-                        localStorage.clear();
-                        await redirectToCheckout();
+                        setCheckoutError(false);
+                        try {
+                          const destination = await getCheckoutDestination();
+                          if (!destination.ok) {
+                            setCheckoutError(true);
+                            return;
+                          }
+                          // Deliberately use a full navigation for the isolated
+                          // payment page; do not replace with router.push().
+                          window.location.assign(destination.url);
+                        } catch {
+                          setCheckoutError(true);
+                        }
                       }}
                     >
                       <CheckoutButton />
                     </form>
+                    {checkoutError && (
+                      <p role="alert" className="text-sm text-red-800">
+                        {checkoutText("unavailable")}
+                      </p>
+                    )}
                   </div>
                 </div>
               )}

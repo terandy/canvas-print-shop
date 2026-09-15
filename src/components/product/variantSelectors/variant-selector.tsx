@@ -48,7 +48,8 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
       </label>
       <select
         id={option.name}
-        value={state[key] ?? undefined}
+        value={state[key] ?? ""}
+        required
         onChange={(e) => {
           startTransition(() => {
             updateField(key, e.target.value);
@@ -56,7 +57,9 @@ const VariantSelector: React.FC<VariantSelectorProps> = ({
         }}
         className="w-full px-4 py-2 rounded-lg border bg-white"
       >
-        <option value="">{t(`${option.name}.select`)}</option>
+        <option value="" disabled>
+          {t(`${option.name}.select`)}
+        </option>
         {option.values.map((value) => {
           const optionParams = {
             ...BASE_STATE,

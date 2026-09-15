@@ -24,10 +24,10 @@ const nextConfig: NextConfig = {
   /**
    * Retired landing pages.
    *
-   * Calgary, Vancouver and Edmonton were removed because we only deliver to
-   * Quebec and Ontario. They were indexed under the old sitemap, so they 308
-   * to a relevant page instead of 404ing — that preserves any accumulated link
-   * equity and avoids a spike of crawl errors in Search Console.
+   * Calgary, Vancouver and Edmonton do not have dedicated verified location
+   * pages. They were indexed under the old sitemap, so they 308 to a relevant
+   * page instead of 404ing — that preserves any accumulated link equity and
+   * avoids a spike of crawl errors in Search Console.
    *
    * These run at the edge, before rendering. An in-page `redirect()` cannot
    * work here because `generateMetadata` rejects the unknown slug first.
@@ -68,13 +68,6 @@ const nextConfig: NextConfig = {
         },
       ]),
     ];
-  },
-  webpack: (config) => {
-    config.resolve.fallback = {
-      crypto: require.resolve("crypto-browserify"),
-      stream: require.resolve("stream-browserify"),
-    };
-    return config;
   },
 };
 

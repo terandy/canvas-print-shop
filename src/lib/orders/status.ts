@@ -1,4 +1,4 @@
-import type { OrderStatus } from "@/types/order";
+import type { Order, OrderStatus } from "@/types/order";
 
 /**
  * Single source of truth for order statuses.
@@ -48,4 +48,14 @@ export function statusColor(status: string): string {
 
 export function isOrderStatus(value: string): value is OrderStatus {
   return (ORDER_STATUSES as readonly string[]).includes(value);
+}
+
+export function canSendPickupReady(
+  order: Pick<Order, "fulfilmentMethod" | "pickupLocation">
+): boolean {
+  return (
+    order.fulfilmentMethod === "pickup" &&
+    (order.pickupLocation === "montreal" ||
+      order.pickupLocation === "quebec-city")
+  );
 }
