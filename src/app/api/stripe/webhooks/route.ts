@@ -9,7 +9,11 @@ import {
   sendAdminOrderNotification,
 } from "@/lib/email/send";
 import type Stripe from "stripe";
-import { resolveCheckoutShipping } from "@/lib/stripe/checkout";
+import {
+  resolveCheckoutShipping,
+  resolveCheckoutAddress,
+  HOSTED_CHECKOUT_FLOW,
+} from "@/lib/stripe/checkout";
 import { assertValidStandardCheckoutShipping } from "@/lib/shipping/pricing";
 
 export async function POST(request: NextRequest) {
@@ -87,9 +91,20 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     return;
   }
 
+  if (
+    session.metadata?.checkoutFlow === HOSTED_CHECKOUT_FLOW &&
+    session.payment_status !== "paid"
+  ) {
+    throw new Error("Hosted checkout payment is not complete");
+  }
+
   // Get customer details
   const customerEmail = session.customer_details?.email;
-  const customerName = session.customer_details?.name;
+  const shippingInfo = await resolveCheckoutAddress(session);
+  const customerName =
+    session.metadata?.checkoutFlow === HOSTED_CHECKOUT_FLOW
+      ? shippingInfo?.name || session.customer_details?.name
+      : session.customer_details?.name;
   const customerPhone = session.customer_details?.phone;
 
   if (!customerEmail) {
@@ -97,10 +112,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
     return;
   }
 
-  // Parse shipping address from collected_information or shipping_details
-  const shippingInfo =
-    (session as any).shipping_details ||
-    (session as any).collected_information?.shipping_details;
+  // Use the verified delivery destination, with legacy session compatibility.
   const shippingAddress = shippingInfo?.address
     ? {
         line1: shippingInfo.address.line1 || "",

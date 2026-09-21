@@ -1,7 +1,8 @@
 import { cookies } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import CanvasEmbeddedCheckout from "@/components/checkout/embedded-checkout";
+import HostedCheckout from "@/components/checkout/hosted-checkout";
+import { getHostedCheckoutSummary } from "@/lib/stripe/hosted-checkout";
 import * as cartDb from "@/lib/db/queries/carts";
 
 interface Props {
@@ -14,10 +15,12 @@ export default async function CheckoutPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "Checkout.page" });
   const cookieStore = await cookies();
   const cartId = cookieStore.get("cartId")?.value;
-  const cart = cartId ? await cartDb.getCart(cartId) : undefined;
-  const publishableKey =
-    process.env.STRIPE_PUBLISHABLE_KEY ||
-    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  const validCartId =
+    cartId &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      cartId
+    );
+  const cart = validCartId ? await cartDb.getCart(cartId) : undefined;
 
   if (!cart || cart.items.length === 0) {
     return (
@@ -34,6 +37,13 @@ export default async function CheckoutPage({ params }: Props) {
     );
   }
 
+  let summary;
+  try {
+    summary = getHostedCheckoutSummary(cart);
+  } catch {
+    /* Show the saved-cart recovery path below. */
+  }
+
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
       <div className="mx-auto mb-8 max-w-3xl text-center">
@@ -46,9 +56,9 @@ export default async function CheckoutPage({ params }: Props) {
         <p className="mx-auto mt-3 max-w-2xl text-gray">{t("intro")}</p>
       </div>
 
-      <div className="mx-auto max-w-3xl rounded-3xl border border-secondary/10 bg-white p-2 shadow-sm sm:p-4">
-        {publishableKey ? (
-          <CanvasEmbeddedCheckout publishableKey={publishableKey} />
+      <div>
+        {summary ? (
+          <HostedCheckout summary={summary} />
         ) : (
           <div className="px-5 py-12 text-center">
             <p className="font-medium text-secondary">{t("unavailable")}</p>

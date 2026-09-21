@@ -28,9 +28,7 @@ const Footer = async () => {
     { name: "Discover", icon: "/discover.svg", width: 48, height: 32 },
     { name: "Diners Club", icon: "/diners.svg", width: 48, height: 32 },
     { name: "Apple Pay", icon: "/apple-pay.svg", width: 48, height: 32 },
-    { name: "Interac", icon: "/interac.svg", width: 48, height: 32 },
     { name: "Google Pay", icon: "/google-pay.svg", width: 48, height: 32 },
-    { name: "Shop Pay", icon: "/shop-pay.svg", width: 48, height: 32 },
   ];
 
   return (

@@ -1058,6 +1058,55 @@
         "quebec-city": "Cueillette gratuite — Québec",
         "montreal": "Cueillette gratuite — Montréal"
       }
+    },
+    "hosted": {
+      "fulfilment": "Comment souhaitez-vous recevoir votre commande ?",
+      "delivery": "Livraison",
+      "pickup": "Cueillette gratuite",
+      "deliveryHelp": "Dans toutes les provinces canadiennes",
+      "pickupHelp": "À Montréal ou à Québec",
+      "province": "Province",
+      "selectProvince": "Choisissez une province",
+      "chooseProvince": "Choisissez votre province pour connaître les frais de livraison.",
+      "deliveryPrice": "Livraison de votre commande : {price}. Seul le tarif de la plus grande toile s’applique.",
+      "name": "Nom complet du destinataire",
+      "line1": "Adresse",
+      "line2": "Appartement, bureau, etc. (facultatif)",
+      "city": "Ville",
+      "postalCode": "Code postal",
+      "country": "Livraison dans les dix provinces canadiennes.",
+      "pickupLocation": "Choisissez votre lieu de cueillette",
+      "pickupReady": "Nous vous enverrons un courriel lorsque votre commande sera prête.",
+      "summary": "Votre commande",
+      "quantity": "Quantité : {count}",
+      "subtotal": "Sous-total",
+      "total": "Total",
+      "currency": "Tous les prix sont en dollars canadiens.",
+      "continue": "Continuer vers le paiement sécurisé",
+      "opening": "Ouverture du paiement sécurisé…",
+      "secure": "Vous saisirez votre courriel et vos informations de paiement sur la page sécurisée de Stripe.",
+      "help": "Besoin d’aide pour votre commande ?",
+      "refresh": "Actualiser votre commande",
+      "deliverySummary": "Livrer à : {address}. Pour modifier la livraison, retournez à Canvas Print Shop avant de payer.",
+      "pickupSummary": "{location}. Nous vous aviserons par courriel lorsque votre commande sera prête. Pour modifier la cueillette, retournez à Canvas Print Shop avant de payer.",
+      "errors": {
+        "invalid-address": "Entrez une adresse complète avec une province et un code postal qui correspondent.",
+        "invalid-cart": "Votre session de panier a expiré. Retournez à la boutique et réessayez.",
+        "cart-changed": "Votre panier a changé. Actualisez la page pour vérifier le nouveau total avant de payer.",
+        "unavailable": "Nous n’avons pas pu ouvrir le paiement sécurisé. Votre panier est sauvegardé. Réessayez ou contactez-nous."
+      },
+      "provinces": {
+        "QC": "Québec",
+        "ON": "Ontario",
+        "NB": "Nouveau-Brunswick",
+        "NS": "Nouvelle-Écosse",
+        "PE": "Île-du-Prince-Édouard",
+        "NL": "Terre-Neuve-et-Labrador",
+        "MB": "Manitoba",
+        "SK": "Saskatchewan",
+        "AB": "Alberta",
+        "BC": "Colombie-Britannique"
+      }
     }
   },
   "Admin": {
