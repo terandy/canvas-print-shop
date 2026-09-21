@@ -1053,6 +1053,55 @@
         "quebec-city": "Free pickup — Quebec City",
         "montreal": "Free pickup — Montreal"
       }
+    },
+    "hosted": {
+      "fulfilment": "How would you like your order?",
+      "delivery": "Delivery",
+      "pickup": "Free pickup",
+      "deliveryHelp": "To any Canadian province",
+      "pickupHelp": "Montreal or Quebec City",
+      "province": "Province",
+      "selectProvince": "Select a province",
+      "chooseProvince": "Choose your province to see your delivery cost.",
+      "deliveryPrice": "Delivery for your whole order: {price}. Only the largest canvas size is charged.",
+      "name": "Recipient’s full name",
+      "line1": "Street address",
+      "line2": "Apartment, suite, etc. (optional)",
+      "city": "City",
+      "postalCode": "Postal code",
+      "country": "Delivery within Canada’s ten provinces.",
+      "pickupLocation": "Choose your pickup location",
+      "pickupReady": "We’ll email you when your order is ready for pickup.",
+      "summary": "Your order",
+      "quantity": "Quantity: {count}",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "currency": "All prices are in Canadian dollars.",
+      "continue": "Continue to secure payment",
+      "opening": "Opening secure payment…",
+      "secure": "You’ll enter your email and payment details on Stripe’s secure payment page.",
+      "help": "Need help with your order?",
+      "refresh": "Refresh your order",
+      "deliverySummary": "Deliver to: {address}. To change delivery details, return to Canvas Print Shop before paying.",
+      "pickupSummary": "{location}. We’ll email you when your order is ready. To change pickup details, return to Canvas Print Shop before paying.",
+      "errors": {
+        "invalid-address": "Enter a complete delivery address with a matching province and postal code.",
+        "invalid-cart": "Your cart session has expired. Return to the shop and try again.",
+        "cart-changed": "Your cart has changed. Refresh to review your updated total before paying.",
+        "unavailable": "We couldn’t open secure payment. Your cart is saved. Please try again or contact us."
+      },
+      "provinces": {
+        "QC": "Quebec",
+        "ON": "Ontario",
+        "NB": "New Brunswick",
+        "NS": "Nova Scotia",
+        "PE": "Prince Edward Island",
+        "NL": "Newfoundland and Labrador",
+        "MB": "Manitoba",
+        "SK": "Saskatchewan",
+        "AB": "Alberta",
+        "BC": "British Columbia"
+      }
     }
   },
   "Admin": {

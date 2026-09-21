@@ -72,7 +72,9 @@ function deliveryEstimate() {
  * a $0 shipping rate. The rate carries metadata rather than relying on its
  * display name, which is localised and would otherwise have to be parsed back.
  */
-async function buildPickupOptions(locale: string): Promise<ShippingOption[]> {
+export async function buildPickupOptions(
+  locale: string
+): Promise<ShippingOption[]> {
   const t = await getTranslations({ locale, namespace: "Checkout.fulfilment" });
 
   return (
@@ -98,7 +100,7 @@ async function buildPickupOptions(locale: string): Promise<ShippingOption[]> {
     );
 }
 
-async function buildDeliveryOption(
+export async function buildDeliveryOption(
   shippingCost: number,
   locale: string,
   quote?: { province: string; band: ShippingBand }
@@ -199,20 +201,12 @@ export async function resolveFulfilment(
   return { fulfilmentMethod, pickupLocation };
 }
 
-export async function createCheckoutSession(cartId: string, locale: string) {
-  const cart = await cartDb.getCart(cartId);
+export const HOSTED_CHECKOUT_FLOW = "hosted-v1";
 
-  if (!cart || cart.items.length === 0) {
-    throw new Error("Cart is empty");
-  }
-
-  const deliveryAssessment = assessAutomaticDelivery(cart);
-  if (!deliveryAssessment.eligible) {
-    throw new Error(`Invalid checkout cart: ${deliveryAssessment.reason}`);
-  }
-
-  // Build line items for Stripe
-  const lineItems = cart.items.map((item) => {
+export function buildCheckoutLineItems(
+  cart: NonNullable<Awaited<ReturnType<typeof cartDb.getCart>>>
+) {
+  return cart.items.map((item) => {
     // Build description from selected options
     const optionsDescription = Object.entries(item.selectedOptions)
       .map(([key, value]) => `${key}: ${value}`)
@@ -238,6 +232,56 @@ export async function createCheckoutSession(cartId: string, locale: string) {
       quantity: item.quantity,
     };
   });
+}
+
+/** Hosted payments receive an immutable delivery destination before redirect.
+ * Read it from the PaymentIntent, never from an editable billing address. */
+export async function resolveCheckoutAddress(session: Stripe.Checkout.Session) {
+  if (session.metadata?.checkoutFlow !== HOSTED_CHECKOUT_FLOW) {
+    const legacy = session as Stripe.Checkout.Session & {
+      shipping_details?: Stripe.Checkout.Session.CollectedInformation.ShippingDetails;
+      shipping?: Stripe.Checkout.Session.CollectedInformation.ShippingDetails;
+    };
+    return (
+      legacy.shipping_details ||
+      session.collected_information?.shipping_details ||
+      legacy.shipping
+    );
+  }
+  if (session.metadata.fulfilmentMethod === "pickup") return undefined;
+  if (
+    session.metadata.fulfilmentMethod !== "delivery" ||
+    !session.payment_intent
+  ) {
+    throw new Error("Hosted checkout delivery evidence is missing");
+  }
+  const intent =
+    typeof session.payment_intent === "string"
+      ? await stripe.paymentIntents.retrieve(session.payment_intent)
+      : session.payment_intent;
+  if (
+    !intent.shipping?.name ||
+    !intent.shipping.address?.line1 ||
+    !intent.shipping.address.city
+  ) {
+    throw new Error("Hosted checkout delivery address is missing");
+  }
+  return intent.shipping;
+}
+
+export async function createCheckoutSession(cartId: string, locale: string) {
+  const cart = await cartDb.getCart(cartId);
+
+  if (!cart || cart.items.length === 0) {
+    throw new Error("Cart is empty");
+  }
+
+  const deliveryAssessment = assessAutomaticDelivery(cart);
+  if (!deliveryAssessment.eligible) {
+    throw new Error(`Invalid checkout cart: ${deliveryAssessment.reason}`);
+  }
+
+  const lineItems = buildCheckoutLineItems(cart);
 
   // Start with pickup only. Once Stripe has a complete Canadian address, the
   // server callback adds the applicable delivery rate. This prevents a cheap
