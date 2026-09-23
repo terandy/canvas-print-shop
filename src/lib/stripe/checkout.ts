@@ -103,7 +103,11 @@ export async function buildPickupOptions(
 export async function buildDeliveryOption(
   shippingCost: number,
   locale: string,
-  quote?: { province: string; band: ShippingBand }
+  quote?: {
+    province: string;
+    band: ShippingBand;
+    waiverPromotionCodeId?: string;
+  }
 ): Promise<ShippingOption> {
   const t = await getTranslations({ locale, namespace: "Checkout.fulfilment" });
 
@@ -120,6 +124,9 @@ export async function buildDeliveryOption(
               shippingProvince: quote.province,
               shippingBand: quote.band,
               shippingPricingVersion: SHIPPING_PRICING_VERSION,
+              ...(quote.waiverPromotionCodeId
+                ? { qaShippingWaiverCodeId: quote.waiverPromotionCodeId }
+                : {}),
             }
           : {}),
       },
@@ -182,6 +189,7 @@ export async function resolveCheckoutShipping(
           province,
           band,
           pricingVersion: metadata.shippingPricingVersion,
+          waiverPromotionCodeId: metadata.qaShippingWaiverCodeId || undefined,
         }
       : null;
 
@@ -249,6 +257,33 @@ export async function resolveCheckoutAddress(session: Stripe.Checkout.Session) {
     );
   }
   if (session.metadata.fulfilmentMethod === "pickup") return undefined;
+  if (
+    session.metadata.fulfilmentMethod === "delivery" &&
+    session.metadata.qaShippingWaiverCodeId &&
+    !session.payment_intent
+  ) {
+    const metadata = session.metadata;
+    if (
+      !metadata.qaShippingName ||
+      !metadata.qaShippingLine1 ||
+      !metadata.qaShippingCity ||
+      !metadata.qaShippingState ||
+      !metadata.qaShippingPostalCode
+    ) {
+      throw new Error("Hosted checkout delivery address is missing");
+    }
+    return {
+      name: metadata.qaShippingName,
+      address: {
+        country: "CA",
+        line1: metadata.qaShippingLine1,
+        line2: metadata.qaShippingLine2 || undefined,
+        city: metadata.qaShippingCity,
+        state: metadata.qaShippingState,
+        postal_code: metadata.qaShippingPostalCode,
+      },
+    };
+  }
   if (
     session.metadata.fulfilmentMethod !== "delivery" ||
     !session.payment_intent

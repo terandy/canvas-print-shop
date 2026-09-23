@@ -264,6 +264,7 @@ export type DeliveryQuoteEvidence = {
   province: DeliveryProvince;
   band: ShippingBand;
   pricingVersion: string;
+  waiverPromotionCodeId?: string;
 };
 
 type StandardCheckoutShippingEvidence = {
@@ -277,6 +278,8 @@ type StandardCheckoutShippingEvidence = {
     | undefined;
   shippingCents: number;
   resolvedShippingCents: number | null;
+  subtotalCents?: number;
+  discountCents?: number;
   fulfilmentMethod: "delivery" | "pickup";
   deliveryQuote: DeliveryQuoteEvidence | null;
 };
@@ -291,6 +294,8 @@ export function assertValidStandardCheckoutShipping({
   shippingAddress,
   shippingCents,
   resolvedShippingCents,
+  subtotalCents,
+  discountCents,
   fulfilmentMethod,
   deliveryQuote,
 }: StandardCheckoutShippingEvidence): void {
@@ -338,6 +343,19 @@ export function assertValidStandardCheckoutShipping({
   }
 
   const expectedCents = getShippingRateCents(addressProvince, sessionBand);
+  if (sessionMetadata.qaShippingWaiverCodeId) {
+    if (
+      sessionMetadata.qaShippingWaiverCodeId !==
+        deliveryQuote.waiverPromotionCodeId ||
+      shippingCents !== 0 ||
+      (resolvedShippingCents !== null && resolvedShippingCents !== 0) ||
+      subtotalCents === undefined ||
+      discountCents !== subtotalCents
+    ) {
+      throw new Error("QA shipping waiver is invalid");
+    }
+    return;
+  }
   if (
     shippingCents !== expectedCents ||
     (resolvedShippingCents !== null && resolvedShippingCents !== expectedCents)

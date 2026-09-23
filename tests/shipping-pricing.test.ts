@@ -235,3 +235,42 @@ test("new checkout pickup is free and manual-delivery carts cannot select delive
     })
   );
 });
+
+test("QA delivery waiver requires the matching rate and a complete print discount", () => {
+  const waiver = {
+    sessionMetadata: {
+      shippingPricingVersion: SHIPPING_PRICING_VERSION,
+      automaticDelivery: "true",
+      shippingBand: "small",
+      qaShippingWaiverCodeId: "promo_qa",
+    },
+    shippingAddress: { state: "ON", postalCode: "M5V 2T6", country: "CA" },
+    shippingCents: 0,
+    resolvedShippingCents: 0,
+    subtotalCents: 5500,
+    discountCents: 5500,
+    fulfilmentMethod: "delivery" as const,
+    deliveryQuote: {
+      province: "ON" as const,
+      band: "small" as const,
+      pricingVersion: SHIPPING_PRICING_VERSION,
+      waiverPromotionCodeId: "promo_qa",
+    },
+  };
+  assert.doesNotThrow(() => assertValidStandardCheckoutShipping(waiver));
+  assert.throws(() =>
+    assertValidStandardCheckoutShipping({
+      ...waiver,
+      deliveryQuote: {
+        ...waiver.deliveryQuote,
+        waiverPromotionCodeId: "promo_other",
+      },
+    })
+  );
+  assert.throws(() =>
+    assertValidStandardCheckoutShipping({ ...waiver, discountCents: 0 })
+  );
+  assert.throws(() =>
+    assertValidStandardCheckoutShipping({ ...waiver, shippingCents: 3000 })
+  );
+});

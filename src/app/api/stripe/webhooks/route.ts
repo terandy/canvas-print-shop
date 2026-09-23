@@ -166,6 +166,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
       shippingAddress,
       shippingCents,
       resolvedShippingCents: resolvedShipping.shippingAmountCents,
+      subtotalCents,
+      discountCents: session.total_details?.amount_discount ?? 0,
       fulfilmentMethod: resolvedShipping.fulfilmentMethod,
       deliveryQuote: resolvedShipping.deliveryQuote,
     });
