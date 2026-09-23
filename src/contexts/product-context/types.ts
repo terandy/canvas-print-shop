@@ -52,7 +52,7 @@ export type TProductContext = {
   updateField: <U extends keyof FormState>(
     name: U,
     value: FormState[U]
-  ) => FormState;
+  ) => void;
   /**
    * Handles updating the state value
    *
