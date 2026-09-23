@@ -12,7 +12,12 @@ export async function startHostedCheckout(
   | { ok: true; url: string }
   | {
       ok: false;
-      code: "invalid-cart" | "invalid-address" | "cart-changed" | "unavailable";
+      code:
+        | "invalid-cart"
+        | "invalid-address"
+        | "invalid-code"
+        | "cart-changed"
+        | "unavailable";
     }
 > {
   const cartId = (await cookies()).get("cartId")?.value;
@@ -43,6 +48,8 @@ export async function startHostedCheckout(
       return { ok: false, code: "cart-changed" };
     if (error instanceof Error && error.message === "empty-cart")
       return { ok: false, code: "invalid-cart" };
+    if (error instanceof Error && error.message === "invalid-code")
+      return { ok: false, code: "invalid-code" };
     console.error(
       "Unable to create hosted checkout",
       checkoutErrorDetails(error)

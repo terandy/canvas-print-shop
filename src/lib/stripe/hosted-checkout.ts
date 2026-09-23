@@ -21,6 +21,10 @@ import type { Cart } from "@/types/cart";
 import * as cartDb from "@/lib/db/queries/carts";
 import { BASE_URL } from "@/lib/constants";
 
+// Temporary five-use code for live checkout QA. Remove this path after the
+// delivery tests and deactivate the Stripe promotion code.
+const QA_PROMOTION_CODE_ID = "promo_1UIweyKfgVVDSs6asCvCXrrW";
+
 export function getHostedCheckoutSummary(cart: Cart): HostedCheckoutSummary {
   const assessment = assessAutomaticDelivery(cart);
   if (!assessment.eligible) throw new Error("Checkout cart cannot be priced");
@@ -63,15 +67,36 @@ export async function createHostedCheckoutSession(
     throw new Error("cart-changed");
   const assessment = assessAutomaticDelivery(cart);
   if (!assessment.eligible) throw new Error("Invalid checkout cart");
+  let qaPromotionCodeId: string | undefined;
+  if (fulfilment.method === "delivery" && fulfilment.promotionCode) {
+    const promotion = await stripe.promotionCodes.retrieve(QA_PROMOTION_CODE_ID);
+    if (
+      !promotion.active ||
+      promotion.code.toUpperCase() !==
+        fulfilment.promotionCode.toUpperCase() ||
+      (promotion.expires_at !== null &&
+        promotion.expires_at * 1000 <= Date.now()) ||
+      (promotion.max_redemptions !== null &&
+        promotion.times_redeemed >= promotion.max_redemptions)
+    ) {
+      throw new Error("invalid-code");
+    }
+    qaPromotionCodeId = promotion.id;
+  }
   const t = await getTranslations({ locale, namespace: "Checkout.hosted" });
   const shippingOption =
     fulfilment.method === "delivery"
       ? await buildDeliveryOption(
-          summary.rates[fulfilment.shipping.address.state],
+          qaPromotionCodeId
+            ? 0
+            : summary.rates[fulfilment.shipping.address.state],
           locale,
           {
             province: fulfilment.shipping.address.state,
             band: assessment.profile.band,
+            ...(qaPromotionCodeId
+              ? { waiverPromotionCodeId: qaPromotionCodeId }
+              : {}),
           }
         )
       : (await buildPickupOptions(locale)).find(
@@ -102,7 +127,10 @@ export async function createHostedCheckoutSession(
     {
       payment_method_types: ["card"],
       mode: "payment",
-      allow_promotion_codes: true,
+      ...(!qaPromotionCodeId ? { allow_promotion_codes: true } : {}),
+      ...(qaPromotionCodeId
+        ? { discounts: [{ promotion_code: qaPromotionCodeId }] }
+        : {}),
       // Omit ui_mode to use Stripe's stable hosted default on the existing API.
       line_items: buildCheckoutLineItems(cart),
       success_url: `${BASE_URL}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -110,7 +138,9 @@ export async function createHostedCheckoutSession(
       shipping_options: [shippingOption],
       // The destination was confirmed before redirect. Collecting a second
       // shipping address here could undercharge if a buyer changed provinces.
-      ...(shipping ? { payment_intent_data: { shipping } } : {}),
+      ...(shipping && !qaPromotionCodeId
+        ? { payment_intent_data: { shipping } }
+        : {}),
       billing_address_collection: "auto",
       phone_number_collection: { enabled: true },
       custom_text: { submit: { message: summaryText } },
@@ -122,6 +152,17 @@ export async function createHostedCheckoutSession(
         shippingPricingVersion: SHIPPING_PRICING_VERSION,
         shippingBand: assessment.profile.band,
         automaticDelivery: "true",
+        ...(qaPromotionCodeId && shipping
+          ? {
+              qaShippingWaiverCodeId: qaPromotionCodeId,
+              qaShippingName: shipping.name,
+              qaShippingLine1: shipping.address.line1,
+              qaShippingLine2: shipping.address.line2 || "",
+              qaShippingCity: shipping.address.city,
+              qaShippingState: shipping.address.state,
+              qaShippingPostalCode: shipping.address.postal_code,
+            }
+          : {}),
       },
       locale: locale === "fr" ? "fr-CA" : "en",
     },

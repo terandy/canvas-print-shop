@@ -23,6 +23,7 @@ export default function HostedCheckout({
   const locale = useLocale();
   const [method, setMethod] = useState<"delivery" | "pickup">("delivery");
   const [province, setProvince] = useState("");
+  const [promotionCode, setPromotionCode] = useState("");
   const [location, setLocation] = useState<"montreal" | "quebec-city">(
     "montreal"
   );
@@ -68,6 +69,9 @@ export default function HostedCheckout({
               state: province,
               postalCode: form.get("postalCode"),
             },
+            ...(promotionCode.trim()
+              ? { promotionCode: promotionCode.trim() }
+              : {}),
           };
     if (!hostedCheckoutSchema.safeParse(input).success) {
       setError("invalid-address");
@@ -224,6 +228,18 @@ export default function HostedCheckout({
               </label>
             </div>
             <p className="text-sm text-gray">{t("country")}</p>
+            <label className="block text-sm font-medium text-secondary">
+              {t("promotionCode")}
+              <input
+                name="promotionCode"
+                value={promotionCode}
+                onChange={(event) => setPromotionCode(event.target.value)}
+                autoComplete="off"
+                maxLength={50}
+                className={inputClass}
+              />
+            </label>
+            <p className="text-sm text-gray">{t("promotionCodeHelp")}</p>
           </div>
         ) : (
           <div className="space-y-3">
