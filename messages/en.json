@@ -1071,8 +1071,6 @@
       "city": "City",
       "postalCode": "Postal code",
       "country": "Delivery within Canada’s ten provinces.",
-      "promotionCode": "Promotion code (optional)",
-      "promotionCodeHelp": "The discount will be confirmed on the secure checkout page.",
       "pickupLocation": "Choose your pickup location",
       "pickupReady": "We’ll email you when your order is ready for pickup.",
       "summary": "Your order",
@@ -1089,7 +1087,6 @@
       "pickupSummary": "{location}. We’ll email you when your order is ready. To change pickup details, return to Canvas Print Shop before paying.",
       "errors": {
         "invalid-address": "Enter a complete delivery address with a matching province and postal code.",
-        "invalid-code": "This promotion code is invalid or has expired.",
         "invalid-cart": "Your cart session has expired. Return to the shop and try again.",
         "cart-changed": "Your cart has changed. Refresh to review your updated total before paying.",
         "unavailable": "We couldn’t open secure payment. Your cart is saved. Please try again or contact us."

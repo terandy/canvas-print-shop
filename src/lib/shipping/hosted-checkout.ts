@@ -43,13 +43,7 @@ const address = z
   });
 
 export const hostedCheckoutSchema = z.discriminatedUnion("method", [
-  z
-    .object({
-      method: z.literal("delivery"),
-      shipping: address,
-      promotionCode: z.string().trim().min(1).max(50).optional(),
-    })
-    .strict(),
+  z.object({ method: z.literal("delivery"), shipping: address }).strict(),
   z
     .object({
       method: z.literal("pickup"),

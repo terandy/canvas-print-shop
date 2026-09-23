@@ -1,6 +1,7 @@
 import type { Cart } from "@/types/cart";
 
-export const SHIPPING_PRICING_VERSION = "province-size-v1-2026-09-14";
+export const SHIPPING_PRICING_VERSION = "province-size-v2-2026-09-23";
+export const PREVIOUS_SHIPPING_PRICING_VERSION = "province-size-v1-2026-09-14";
 
 export const DELIVERY_PROVINCE_CODES = [
   "QC",
@@ -27,21 +28,22 @@ export type ShippingBand = "small" | "medium" | "large" | "xl" | "xxl";
  *
  * Apply the same size rates to stretched, framed and rolled canvases. For a
  * multi-item order charge the largest shipping band once, regardless of
- * quantity. Approved by the shop owner on 15 September 2026.
+ * quantity. The shop owner approved a CAD 10 reduction to every paid rate on
+ * 23 September 2026. Earlier in-flight sessions retain their original rates.
  */
 export const SHIPPING_RATES_CENTS: Readonly<
   Record<DeliveryProvince, Readonly<Record<ShippingBand, number>>>
 > = {
-  QC: { small: 3000, medium: 3500, large: 4500, xl: 6000, xxl: 9500 },
-  ON: { small: 3000, medium: 4000, large: 5500, xl: 7500, xxl: 13500 },
-  NB: { small: 3000, medium: 4500, large: 6500, xl: 9000, xxl: 16500 },
-  NS: { small: 3000, medium: 4500, large: 6500, xl: 9000, xxl: 16500 },
-  PE: { small: 3000, medium: 4500, large: 6500, xl: 9000, xxl: 16500 },
-  NL: { small: 3500, medium: 5000, large: 7500, xl: 10000, xxl: 18000 },
-  MB: { small: 3000, medium: 4500, large: 7000, xl: 9500, xxl: 17500 },
-  SK: { small: 3500, medium: 5000, large: 7500, xl: 10000, xxl: 18000 },
-  AB: { small: 3500, medium: 5500, large: 8500, xl: 11000, xxl: 20000 },
-  BC: { small: 4000, medium: 6000, large: 9000, xl: 11500, xxl: 21000 },
+  QC: { small: 2000, medium: 2500, large: 3500, xl: 5000, xxl: 8500 },
+  ON: { small: 2000, medium: 3000, large: 4500, xl: 6500, xxl: 12500 },
+  NB: { small: 2000, medium: 3500, large: 5500, xl: 8000, xxl: 15500 },
+  NS: { small: 2000, medium: 3500, large: 5500, xl: 8000, xxl: 15500 },
+  PE: { small: 2000, medium: 3500, large: 5500, xl: 8000, xxl: 15500 },
+  NL: { small: 2500, medium: 4000, large: 6500, xl: 9000, xxl: 17000 },
+  MB: { small: 2000, medium: 3500, large: 6000, xl: 8500, xxl: 16500 },
+  SK: { small: 2500, medium: 4000, large: 6500, xl: 9000, xxl: 17000 },
+  AB: { small: 2500, medium: 4500, large: 7500, xl: 10000, xxl: 19000 },
+  BC: { small: 3000, medium: 5000, large: 8000, xl: 10500, xxl: 20000 },
 };
 
 const REGION_ALIASES: Readonly<Record<string, CanadianRegionCode>> = {
@@ -255,9 +257,14 @@ export function assessAutomaticDelivery(
 
 export function getShippingRateCents(
   province: DeliveryProvince,
-  band: ShippingBand
+  band: ShippingBand,
+  pricingVersion: string = SHIPPING_PRICING_VERSION
 ): number {
-  return SHIPPING_RATES_CENTS[province][band];
+  const currentRate = SHIPPING_RATES_CENTS[province][band];
+  if (pricingVersion === SHIPPING_PRICING_VERSION) return currentRate;
+  if (pricingVersion === PREVIOUS_SHIPPING_PRICING_VERSION)
+    return currentRate + 1000;
+  throw new Error("Unsupported shipping pricing version");
 }
 
 export type DeliveryQuoteEvidence = {
@@ -286,8 +293,8 @@ type StandardCheckoutShippingEvidence = {
 
 /**
  * Last-line server validation used by the Stripe webhook before any order is
- * written. Sessions created before this pricing version remain compatible;
- * all sessions created by the new embedded checkout are strictly checked.
+ * written. Validate open sessions against the rate version they were issued
+ * with, so a rate change cannot silently invalidate an in-flight checkout.
  */
 export function assertValidStandardCheckoutShipping({
   sessionMetadata,
@@ -299,9 +306,13 @@ export function assertValidStandardCheckoutShipping({
   fulfilmentMethod,
   deliveryQuote,
 }: StandardCheckoutShippingEvidence): void {
-  if (sessionMetadata?.shippingPricingVersion !== SHIPPING_PRICING_VERSION) {
-    return;
-  }
+  const pricingVersion = sessionMetadata?.shippingPricingVersion;
+  if (!pricingVersion) return; // Legacy sessions predate versioned rates.
+  if (
+    pricingVersion !== SHIPPING_PRICING_VERSION &&
+    pricingVersion !== PREVIOUS_SHIPPING_PRICING_VERSION
+  )
+    throw new Error("Unsupported shipping pricing version");
 
   if (fulfilmentMethod === "pickup") {
     if (
@@ -321,7 +332,7 @@ export function assertValidStandardCheckoutShipping({
     throw new Error("Delivery quote metadata is missing");
   }
   if (
-    deliveryQuote.pricingVersion !== SHIPPING_PRICING_VERSION ||
+    deliveryQuote.pricingVersion !== pricingVersion ||
     deliveryQuote.band !== sessionBand
   ) {
     throw new Error("Delivery quote metadata does not match the checkout");
@@ -342,18 +353,27 @@ export function assertValidStandardCheckoutShipping({
     throw new Error("Delivery province and postal code do not match");
   }
 
-  const expectedCents = getShippingRateCents(addressProvince, sessionBand);
+  const expectedCents = getShippingRateCents(
+    addressProvince,
+    sessionBand,
+    pricingVersion
+  );
+  // Completed QA orders from the previous deployment can still be retried by
+  // Stripe. The test promotion has reached its five-use cap and new sessions
+  // cannot request this waiver.
   if (sessionMetadata.qaShippingWaiverCodeId) {
     if (
+      pricingVersion !== PREVIOUS_SHIPPING_PRICING_VERSION ||
       sessionMetadata.qaShippingWaiverCodeId !==
-        deliveryQuote.waiverPromotionCodeId ||
+        "promo_1UIweyKfgVVDSs6asCvCXrrW" ||
+      deliveryQuote.waiverPromotionCodeId !==
+        sessionMetadata.qaShippingWaiverCodeId ||
       shippingCents !== 0 ||
       (resolvedShippingCents !== null && resolvedShippingCents !== 0) ||
       subtotalCents === undefined ||
       discountCents !== subtotalCents
-    ) {
-      throw new Error("QA shipping waiver is invalid");
-    }
+    )
+      throw new Error("Previous QA shipping waiver is invalid");
     return;
   }
   if (

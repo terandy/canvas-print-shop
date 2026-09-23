@@ -4,6 +4,7 @@ import type { Cart } from "../src/types/cart";
 import { CANVAS_SIZES } from "../scripts/canvas-price-model";
 import {
   SHIPPING_PRICING_VERSION,
+  PREVIOUS_SHIPPING_PRICING_VERSION,
   SHIPPING_RATES_CENTS,
   assertValidStandardCheckoutShipping,
   assessAutomaticDelivery,
@@ -58,20 +59,36 @@ const cart = (
 
 test("approved province and size matrix is stored exactly in cents", () => {
   assert.deepEqual(SHIPPING_RATES_CENTS, {
-    QC: { small: 3000, medium: 3500, large: 4500, xl: 6000, xxl: 9500 },
-    ON: { small: 3000, medium: 4000, large: 5500, xl: 7500, xxl: 13500 },
-    NB: { small: 3000, medium: 4500, large: 6500, xl: 9000, xxl: 16500 },
-    NS: { small: 3000, medium: 4500, large: 6500, xl: 9000, xxl: 16500 },
-    PE: { small: 3000, medium: 4500, large: 6500, xl: 9000, xxl: 16500 },
-    NL: { small: 3500, medium: 5000, large: 7500, xl: 10000, xxl: 18000 },
-    MB: { small: 3000, medium: 4500, large: 7000, xl: 9500, xxl: 17500 },
-    SK: { small: 3500, medium: 5000, large: 7500, xl: 10000, xxl: 18000 },
-    AB: { small: 3500, medium: 5500, large: 8500, xl: 11000, xxl: 20000 },
-    BC: { small: 4000, medium: 6000, large: 9000, xl: 11500, xxl: 21000 },
+    QC: { small: 2000, medium: 2500, large: 3500, xl: 5000, xxl: 8500 },
+    ON: { small: 2000, medium: 3000, large: 4500, xl: 6500, xxl: 12500 },
+    NB: { small: 2000, medium: 3500, large: 5500, xl: 8000, xxl: 15500 },
+    NS: { small: 2000, medium: 3500, large: 5500, xl: 8000, xxl: 15500 },
+    PE: { small: 2000, medium: 3500, large: 5500, xl: 8000, xxl: 15500 },
+    NL: { small: 2500, medium: 4000, large: 6500, xl: 9000, xxl: 17000 },
+    MB: { small: 2000, medium: 3500, large: 6000, xl: 8500, xxl: 16500 },
+    SK: { small: 2500, medium: 4000, large: 6500, xl: 9000, xxl: 17000 },
+    AB: { small: 2500, medium: 4500, large: 7500, xl: 10000, xxl: 19000 },
+    BC: { small: 3000, medium: 5000, large: 8000, xl: 10500, xxl: 20000 },
   });
-  assert.equal(getShippingRateCents("QC", "xxl"), 9500);
-  assert.equal(getShippingRateCents("BC", "xl"), 11500);
-  assert.equal(getShippingRateCents("BC", "xxl"), 21000);
+  assert.equal(getShippingRateCents("QC", "xxl"), 8500);
+  assert.equal(getShippingRateCents("BC", "xl"), 10500);
+  assert.equal(getShippingRateCents("BC", "xxl"), 20000);
+  for (const province of Object.keys(
+    SHIPPING_RATES_CENTS
+  ) as (keyof typeof SHIPPING_RATES_CENTS)[]) {
+    for (const band of Object.keys(
+      SHIPPING_RATES_CENTS[province]
+    ) as (keyof typeof SHIPPING_RATES_CENTS.QC)[]) {
+      assert.equal(
+        getShippingRateCents(
+          province,
+          band,
+          PREVIOUS_SHIPPING_PRICING_VERSION
+        ) - getShippingRateCents(province, band),
+        1000
+      );
+    }
+  }
 });
 
 test("size bands use the longest packaged side and reserve XXL for 40x60", () => {
@@ -127,8 +144,8 @@ test("mixed carts pay only the largest size band once, independent of order and 
     assert.equal(result.eligible, true);
     if (result.eligible) {
       assert.equal(result.profile.band, "xxl");
-      assert.equal(getShippingRateCents("QC", result.profile.band), 9500);
-      assert.equal(getShippingRateCents("BC", result.profile.band), 21000);
+      assert.equal(getShippingRateCents("QC", result.profile.band), 8500);
+      assert.equal(getShippingRateCents("BC", result.profile.band), 20000);
     }
   }
 });
@@ -173,8 +190,8 @@ test("webhook validation accepts the approved quote and rejects tampering", () =
       shippingBand: "xl",
     },
     shippingAddress: { state: "BC", postalCode: "V6B 1A1", country: "CA" },
-    shippingCents: 11500,
-    resolvedShippingCents: 11500,
+    shippingCents: 10500,
+    resolvedShippingCents: 10500,
     fulfilmentMethod: "delivery" as const,
     deliveryQuote: {
       province: "BC" as const,
@@ -197,6 +214,30 @@ test("webhook validation accepts the approved quote and rejects tampering", () =
     assertValidStandardCheckoutShipping({
       ...base,
       deliveryQuote: { ...base.deliveryQuote, province: "QC" },
+    })
+  );
+  assert.doesNotThrow(() =>
+    assertValidStandardCheckoutShipping({
+      ...base,
+      sessionMetadata: {
+        ...base.sessionMetadata,
+        shippingPricingVersion: PREVIOUS_SHIPPING_PRICING_VERSION,
+      },
+      shippingCents: 11500,
+      resolvedShippingCents: 11500,
+      deliveryQuote: {
+        ...base.deliveryQuote,
+        pricingVersion: PREVIOUS_SHIPPING_PRICING_VERSION,
+      },
+    })
+  );
+  assert.throws(() =>
+    assertValidStandardCheckoutShipping({
+      ...base,
+      sessionMetadata: {
+        ...base.sessionMetadata,
+        shippingPricingVersion: "unknown",
+      },
     })
   );
 });
@@ -236,41 +277,38 @@ test("new checkout pickup is free and manual-delivery carts cannot select delive
   );
 });
 
-test("QA delivery waiver requires the matching rate and a complete print discount", () => {
-  const waiver = {
+test("previously completed QA delivery retains strict retry validation", () => {
+  const prior = {
     sessionMetadata: {
-      shippingPricingVersion: SHIPPING_PRICING_VERSION,
+      shippingPricingVersion: PREVIOUS_SHIPPING_PRICING_VERSION,
       automaticDelivery: "true",
       shippingBand: "small",
-      qaShippingWaiverCodeId: "promo_qa",
+      qaShippingWaiverCodeId: "promo_1UIweyKfgVVDSs6asCvCXrrW",
     },
     shippingAddress: { state: "ON", postalCode: "M5V 2T6", country: "CA" },
     shippingCents: 0,
     resolvedShippingCents: 0,
-    subtotalCents: 5500,
-    discountCents: 5500,
+    subtotalCents: 10500,
+    discountCents: 10500,
     fulfilmentMethod: "delivery" as const,
     deliveryQuote: {
       province: "ON" as const,
       band: "small" as const,
-      pricingVersion: SHIPPING_PRICING_VERSION,
-      waiverPromotionCodeId: "promo_qa",
+      pricingVersion: PREVIOUS_SHIPPING_PRICING_VERSION,
+      waiverPromotionCodeId: "promo_1UIweyKfgVVDSs6asCvCXrrW",
     },
   };
-  assert.doesNotThrow(() => assertValidStandardCheckoutShipping(waiver));
+  assert.doesNotThrow(() => assertValidStandardCheckoutShipping(prior));
+  assert.throws(() =>
+    assertValidStandardCheckoutShipping({ ...prior, discountCents: 0 })
+  );
   assert.throws(() =>
     assertValidStandardCheckoutShipping({
-      ...waiver,
-      deliveryQuote: {
-        ...waiver.deliveryQuote,
-        waiverPromotionCodeId: "promo_other",
+      ...prior,
+      sessionMetadata: {
+        ...prior.sessionMetadata,
+        shippingPricingVersion: SHIPPING_PRICING_VERSION,
       },
     })
-  );
-  assert.throws(() =>
-    assertValidStandardCheckoutShipping({ ...waiver, discountCents: 0 })
-  );
-  assert.throws(() =>
-    assertValidStandardCheckoutShipping({ ...waiver, shippingCents: 3000 })
   );
 });

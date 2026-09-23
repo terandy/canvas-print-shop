@@ -142,7 +142,7 @@ test("validated BC address adds the approved 40x60 delivery rate", async () => {
   assert.equal(updateParams.shipping_options.length, 3);
   assert.equal(
     updateParams.shipping_options[0].shipping_rate_data.fixed_amount.amount,
-    21000
+    20000
   );
   assert.deepEqual(
     updateParams.shipping_options[0].shipping_rate_data.metadata,
@@ -152,6 +152,51 @@ test("validated BC address adds the approved 40x60 delivery rate", async () => {
       shippingBand: "xxl",
       shippingPricingVersion: shippingPricing.SHIPPING_PRICING_VERSION,
     }
+  );
+});
+
+test("an open session on the previous rate version keeps its original quote", async () => {
+  let updateParams: any;
+  const checkout = loadCheckout({
+    retrieve: async () => ({
+      status: "open",
+      ui_mode: "form",
+      metadata: {
+        cartId: "cart-id",
+        locale: "en",
+        automaticDelivery: "true",
+        shippingBand: "xxl",
+        shippingPricingVersion:
+          shippingPricing.PREVIOUS_SHIPPING_PRICING_VERSION,
+      },
+    }),
+    update: async (_id, input) => {
+      updateParams = input;
+      return {};
+    },
+  });
+  await checkout.updateCheckoutShipping({
+    sessionId: "cs_test_previous_rate",
+    cartId: "cart-id",
+    shippingDetails: {
+      name: "Test Buyer",
+      address: {
+        country: "CA",
+        line1: "123 Test Street",
+        city: "Vancouver",
+        postal_code: "V6B 1A1",
+        state: "BC",
+      },
+    },
+  });
+  assert.equal(
+    updateParams.shipping_options[0].shipping_rate_data.fixed_amount.amount,
+    21000
+  );
+  assert.equal(
+    updateParams.shipping_options[0].shipping_rate_data.metadata
+      .shippingPricingVersion,
+    shippingPricing.PREVIOUS_SHIPPING_PRICING_VERSION
   );
 });
 
