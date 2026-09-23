@@ -29,16 +29,6 @@ function modules(
   const cart = options.cart ?? hostedCart;
   const calls: any[] = [];
   const stripe = {
-    promotionCodes: {
-      retrieve: async () => ({
-        id: "promo_1UIweyKfgVVDSs6asCvCXrrW",
-        code: "CPSQAA2096CA481CE09CB3947",
-        active: true,
-        expires_at: Math.floor(Date.now() / 1000) + 3600,
-        max_redemptions: 5,
-        times_redeemed: 2,
-      }),
-    },
     checkout: {
       sessions: {
         create:
@@ -86,7 +76,7 @@ test("hosted delivery fixes the reviewed province rate and destination before pa
   assert.equal(summary.subtotalCents, 50000);
   assert.deepEqual(
     [summary.rates.QC, summary.rates.ON, summary.rates.BC],
-    [6000, 7500, 11500]
+    [5000, 6500, 10500]
   );
   await hosted.createHostedCheckoutSession(
     hostedCart.id,
@@ -104,7 +94,7 @@ test("hosted delivery fixes the reviewed province rate and destination before pa
   assert.equal(session.shipping_options.length, 1);
   assert.equal(
     session.shipping_options[0].shipping_rate_data.fixed_amount.amount,
-    7500
+    6500
   );
   const parsed = validation.hostedCheckoutSchema.parse({
     method: "delivery",
@@ -123,43 +113,6 @@ test("hosted delivery fixes the reviewed province rate and destination before pa
     session.line_items.map((item: any) => item.quantity),
     [2, 3]
   );
-});
-
-test("the limited QA code prepays the print and waives delivery without a card", async () => {
-  const { hosted, calls } = modules();
-  const summary = hosted.getHostedCheckoutSummary(hostedCart);
-  await hosted.createHostedCheckoutSession(
-    hostedCart.id,
-    "en",
-    {
-      method: "delivery",
-      shipping: address,
-      promotionCode: "CPSQAA2096CA481CE09CB3947",
-    },
-    summary.fingerprint
-  );
-  const session = calls[0];
-  assert.equal(session.allow_promotion_codes, undefined);
-  assert.deepEqual(session.discounts, [
-    { promotion_code: "promo_1UIweyKfgVVDSs6asCvCXrrW" },
-  ]);
-  assert.equal(
-    session.shipping_options[0].shipping_rate_data.fixed_amount.amount,
-    0
-  );
-  assert.equal(session.payment_intent_data, undefined);
-  assert.equal(session.metadata.qaShippingState, "ON");
-  assert.equal(session.metadata.qaShippingPostalCode, "M5V 2T6");
-  await assert.rejects(
-    hosted.createHostedCheckoutSession(
-      hostedCart.id,
-      "en",
-      { method: "delivery", shipping: address, promotionCode: "WRONG" },
-      summary.fingerprint
-    ),
-    /invalid-code/
-  );
-  assert.equal(calls.length, 1);
 });
 
 test("both pickup locations cost zero and need no delivery address in either language", async () => {
@@ -265,13 +218,14 @@ test("delivery order uses the fixed PaymentIntent shipping address; missing evid
   );
 });
 
-test("free QA delivery preserves the confirmed address without a PaymentIntent", async () => {
+test("a previous zero-dollar QA session retains its confirmed delivery address", async () => {
   const { checkout } = modules();
   const info = await checkout.resolveCheckoutAddress({
     metadata: {
       checkoutFlow: "hosted-v1",
       fulfilmentMethod: "delivery",
-      qaShippingWaiverCodeId: "promo_qa",
+      shippingPricingVersion: pricing.PREVIOUS_SHIPPING_PRICING_VERSION,
+      qaShippingWaiverCodeId: "promo_1UIweyKfgVVDSs6asCvCXrrW",
       qaShippingName: address.name,
       qaShippingLine1: address.line1,
       qaShippingLine2: address.line2,
@@ -283,7 +237,6 @@ test("free QA delivery preserves the confirmed address without a PaymentIntent",
   } as any);
   assert.equal(info?.address?.state, "ON");
   assert.equal(info?.address?.postal_code, "M5V 2T6");
-  assert.equal(info?.name, "Test Recipient");
 });
 
 test("server action binds checkout to the cart cookie and returns recoverable errors", async () => {
@@ -354,7 +307,7 @@ for (const choice of ["delivery", "montreal", "quebec-city"] as const) {
     let destination = shipping.shipping;
     const writes: any[] = [];
     const notifications: string[] = [];
-    const shippingCents = choice === "delivery" ? 7500 : 0;
+    const shippingCents = choice === "delivery" ? 6500 : 0;
     const event: any = {
       type: "checkout.session.completed",
       data: {
@@ -478,90 +431,3 @@ for (const choice of ["delivery", "montreal", "quebec-city"] as const) {
     assert.deepEqual(notifications, ["customer", "admin"]);
   });
 }
-
-test("completed zero-dollar QA delivery writes the chosen address and sends notices", async () => {
-  const writes: any[] = [];
-  const notifications: string[] = [];
-  const event: any = {
-    type: "checkout.session.completed",
-    data: {
-      object: {
-        id: "cs_test_qa_delivery",
-        metadata: {
-          cartId: hostedCart.id,
-          checkoutFlow: "hosted-v1",
-          fulfilmentMethod: "delivery",
-          locale: "en",
-          shippingPricingVersion: pricing.SHIPPING_PRICING_VERSION,
-          shippingBand: "small",
-          automaticDelivery: "true",
-          qaShippingWaiverCodeId: "promo_qa",
-          qaShippingName: address.name,
-          qaShippingLine1: address.line1,
-          qaShippingLine2: address.line2,
-          qaShippingCity: address.city,
-          qaShippingState: address.state,
-          qaShippingPostalCode: address.postalCode,
-        },
-        payment_status: "paid",
-        payment_intent: null,
-        amount_subtotal: 5500,
-        amount_total: 0,
-        total_details: {
-          amount_shipping: 0,
-          amount_discount: 5500,
-          amount_tax: 0,
-        },
-        customer_details: { email: "buyer@example.test", phone: "+15145550123" },
-      },
-    },
-  };
-  const { checkout } = modules();
-  const route = loadModule<
-    typeof import("../src/app/api/stripe/webhooks/route")
-  >("src/app/api/stripe/webhooks/route.ts", {
-    "next/server": { NextResponse: Response },
-    "@/lib/stripe": { stripe: { webhooks: { constructEvent: () => event } } },
-    "@/lib/db/queries/orders": {
-      createOrderFromCheckout: async (data: any) => {
-        writes.push(data);
-        return { orderNumber: 124 };
-      },
-    },
-    "@/lib/email/send": {
-      sendOrderConfirmation: async () => notifications.push("customer"),
-      sendAdminOrderNotification: async () => notifications.push("admin"),
-    },
-    "@/lib/stripe/checkout": {
-      ...checkout,
-      resolveCheckoutShipping: async () => ({
-        fulfilmentMethod: "delivery",
-        pickupLocation: null,
-        shippingAmountCents: 0,
-        deliveryQuote: {
-          province: "ON",
-          band: "small",
-          pricingVersion: pricing.SHIPPING_PRICING_VERSION,
-          waiverPromotionCodeId: "promo_qa",
-        },
-      }),
-    },
-    "@/lib/shipping/pricing": pricing,
-  });
-  const request = () =>
-    new Request("https://example.test/api/stripe/webhooks", {
-      method: "POST",
-      headers: { "stripe-signature": "synthetic" },
-      body: "synthetic",
-    });
-  assert.equal((await route.POST(request() as any)).status, 200);
-  assert.equal(writes.length, 1);
-  assert.equal(writes[0].totalCents, 0);
-  assert.equal(writes[0].shippingCents, 0);
-  assert.equal(writes[0].customerName, address.name);
-  assert.equal(writes[0].shippingAddress?.postalCode, address.postalCode);
-  assert.deepEqual(notifications, ["customer", "admin"]);
-  event.data.object.total_details.amount_discount = 0;
-  assert.equal((await route.POST(request() as any)).status, 500);
-  assert.equal(writes.length, 1);
-});

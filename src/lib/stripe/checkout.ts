@@ -6,6 +6,7 @@ import { BASE_URL } from "@/lib/constants";
 import { BUSINESS_DATA } from "@/lib/business-data";
 import {
   SHIPPING_PRICING_VERSION,
+  PREVIOUS_SHIPPING_PRICING_VERSION,
   assessAutomaticDelivery,
   getShippingRateCents,
   isDeliveryProvince,
@@ -103,11 +104,7 @@ export async function buildPickupOptions(
 export async function buildDeliveryOption(
   shippingCost: number,
   locale: string,
-  quote?: {
-    province: string;
-    band: ShippingBand;
-    waiverPromotionCodeId?: string;
-  }
+  quote?: { province: string; band: ShippingBand; pricingVersion?: string }
 ): Promise<ShippingOption> {
   const t = await getTranslations({ locale, namespace: "Checkout.fulfilment" });
 
@@ -123,10 +120,8 @@ export async function buildDeliveryOption(
           ? {
               shippingProvince: quote.province,
               shippingBand: quote.band,
-              shippingPricingVersion: SHIPPING_PRICING_VERSION,
-              ...(quote.waiverPromotionCodeId
-                ? { qaShippingWaiverCodeId: quote.waiverPromotionCodeId }
-                : {}),
+              shippingPricingVersion:
+                quote.pricingVersion ?? SHIPPING_PRICING_VERSION,
             }
           : {}),
       },
@@ -259,7 +254,10 @@ export async function resolveCheckoutAddress(session: Stripe.Checkout.Session) {
   if (session.metadata.fulfilmentMethod === "pickup") return undefined;
   if (
     session.metadata.fulfilmentMethod === "delivery" &&
-    session.metadata.qaShippingWaiverCodeId &&
+    session.metadata.shippingPricingVersion ===
+      PREVIOUS_SHIPPING_PRICING_VERSION &&
+    session.metadata.qaShippingWaiverCodeId ===
+      "promo_1UIweyKfgVVDSs6asCvCXrrW" &&
     !session.payment_intent
   ) {
     const metadata = session.metadata;
@@ -269,9 +267,8 @@ export async function resolveCheckoutAddress(session: Stripe.Checkout.Session) {
       !metadata.qaShippingCity ||
       !metadata.qaShippingState ||
       !metadata.qaShippingPostalCode
-    ) {
+    )
       throw new Error("Hosted checkout delivery address is missing");
-    }
     return {
       name: metadata.qaShippingName,
       address: {
@@ -365,12 +362,15 @@ export async function updateCheckoutShipping(params: {
     session.status !== "open" ||
     session.ui_mode !== "form" ||
     session.metadata?.cartId !== params.cartId ||
-    session.metadata?.shippingPricingVersion !== SHIPPING_PRICING_VERSION
+    ![SHIPPING_PRICING_VERSION, PREVIOUS_SHIPPING_PRICING_VERSION].includes(
+      session.metadata?.shippingPricingVersion ?? ""
+    )
   ) {
     throw new Error("Checkout session cannot be updated");
   }
 
   const locale = session.metadata.locale === "fr" ? "fr" : "en";
+  const pricingVersion = session.metadata.shippingPricingVersion;
   const province = params.shippingDetails.address.state;
   const band = parseShippingBand(session.metadata.shippingBand);
   if (session.metadata.automaticDelivery !== "true" || !band) {
@@ -384,10 +384,11 @@ export async function updateCheckoutShipping(params: {
   const shippingOptions = await buildPickupOptions(locale);
   if (automaticDelivery) {
     shippingOptions.unshift(
-      await buildDeliveryOption(getShippingRateCents(province, band), locale, {
-        province,
-        band,
-      })
+      await buildDeliveryOption(
+        getShippingRateCents(province, band, pricingVersion),
+        locale,
+        { province, band, pricingVersion }
+      )
     );
   }
 
