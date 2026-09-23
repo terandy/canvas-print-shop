@@ -39,23 +39,16 @@ const ProductProvider = ({
   const updateField = <U extends keyof FormState>(
     name: U,
     value: FormState[U]
-  ): FormState => {
-    const newState = { ...state, [name]: value };
-
-    if (name === "frame") {
-      newState.depth = depthForFrame(value);
-    }
-
-    if (name === "depth" && value === "gallery") {
-      newState.frame = "none";
-    }
-
-    if (name === "depth" && value === "regular") {
-      newState.frame = "black";
-    }
-
-    updateState(newState);
-    return newState;
+  ): void => {
+    // The upload callback can run after a customer changes size or finish.
+    // Merge into the latest state so its older render cannot undo that choice.
+    setState((previous) => {
+      const next = { ...previous, [name]: value };
+      if (name === "frame") next.depth = depthForFrame(value);
+      if (name === "depth" && value === "gallery") next.frame = "none";
+      if (name === "depth" && value === "regular") next.frame = "black";
+      return next;
+    });
   };
 
   /**
