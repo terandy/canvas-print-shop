@@ -6,6 +6,7 @@ import { getTranslations } from "next-intl/server";
 import { ArrowLeft } from "lucide-react";
 import OrderStatusForm from "@/components/admin/order-status-form";
 import { canSendPickupReady, statusColor } from "@/lib/orders/status";
+import { getOrderDiscountCents } from "@/lib/orders/discount";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -170,6 +171,14 @@ export default async function AdminOrderDetailPage({ params }: Props) {
                 <span className="text-gray-500">{t("orders.subtotal")}</span>
                 <span>${(order.subtotalCents / 100).toFixed(2)}</span>
               </div>
+              {getOrderDiscountCents(order) > 0 && (
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">{t("orders.discount")}</span>
+                  <span>
+                    -${(getOrderDiscountCents(order) / 100).toFixed(2)}
+                  </span>
+                </div>
+              )}
               <div className="flex justify-between text-sm">
                 <span className="text-gray-500">{t("orders.shipping")}</span>
                 <span>${(order.shippingCents / 100).toFixed(2)}</span>

@@ -4,6 +4,7 @@ import React from "react";
 import * as jsx from "react/jsx-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
 import * as business from "../src/lib/business-data";
+import * as discount from "../src/lib/orders/discount";
 import * as statuses from "../src/lib/orders/status";
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
@@ -38,6 +39,7 @@ function emailModule(
       "@/lib/constants": {},
       "@/lib/business-data": business,
       "@/lib/orders/status": statuses,
+      "@/lib/orders/discount": discount,
       "../../../messages/en.json": en,
       "../../../messages/fr.json": fr,
     }

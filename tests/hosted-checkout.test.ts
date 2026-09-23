@@ -85,6 +85,7 @@ test("hosted delivery fixes the reviewed province rate and destination before pa
     summary.fingerprint
   );
   const session = calls[0];
+  assert.equal(session.allow_promotion_codes, true);
   assert.equal(session.ui_mode, undefined);
   assert.equal(session.return_url, undefined);
   assert.equal(session.cancel_url, "https://canvasprintshop.ca/en/checkout");
