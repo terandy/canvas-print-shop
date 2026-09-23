@@ -102,6 +102,7 @@ export async function createHostedCheckoutSession(
     {
       payment_method_types: ["card"],
       mode: "payment",
+      allow_promotion_codes: true,
       // Omit ui_mode to use Stripe's stable hosted default on the existing API.
       line_items: buildCheckoutLineItems(cart),
       success_url: `${BASE_URL}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,

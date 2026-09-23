@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import * as business from "../src/lib/business-data";
+import * as discount from "../src/lib/orders/discount";
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
 import type { Order } from "../src/types/order";
@@ -43,6 +44,7 @@ function emailModule(
       },
       "@/lib/constants": { BASE_URL: "https://canvasprintshop.ca" },
       "@/lib/orders/status": { canSendPickupReady: () => false },
+      "@/lib/orders/discount": discount,
       "@/lib/business-data": business,
       "../../../messages/en.json": en,
       "../../../messages/fr.json": fr,

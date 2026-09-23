@@ -3,6 +3,7 @@ import type { Order } from "@/types/order";
 import { getAdminUsersForOrderEmails } from "@/lib/db/queries/admin-users";
 import { BASE_URL } from "@/lib/constants";
 import { canSendPickupReady } from "@/lib/orders/status";
+import { getOrderDiscountCents } from "@/lib/orders/discount";
 import {
   BUSINESS_DATA,
   formatOpeningTime,
@@ -70,6 +71,7 @@ export async function sendOrderConfirmation(
   }
 
   const t = getEmailTranslations(locale).orderConfirmation;
+  const discountCents = getOrderDiscountCents(order);
 
   const itemsList = order.items
     .map(
@@ -109,6 +111,7 @@ ${order.shippingAddress.country}`
           <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
           <p><strong>${t.subtotal}:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
+          ${discountCents > 0 ? `<p><strong>${t.discount}:</strong> -$${(discountCents / 100).toFixed(2)}</p>` : ""}
           <p><strong>${t.shipping}:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
           <p><strong>${t.tax}:</strong> $${(order.taxCents / 100).toFixed(2)}</p>
           <p style="font-size: 1.2em;"><strong>${t.total}:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
@@ -139,6 +142,7 @@ export async function sendAdminOrderNotification(order: Order): Promise<void> {
   if (!resend) {
     return;
   }
+  const discountCents = getOrderDiscountCents(order);
 
   // Get all admins who should receive order notification emails
   let adminEmails: AdminOrderEmailRecipient[] = [];
@@ -190,6 +194,7 @@ ${order.shippingAddress.country}`
         <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
         <p><strong>Subtotal:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
+        ${discountCents > 0 ? `<p><strong>${getEmailTranslations("en").orderConfirmation.discount}:</strong> -$${(discountCents / 100).toFixed(2)}</p>` : ""}
         <p><strong>Shipping:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
         <p style="font-size: 1.2em;"><strong>Total:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
       </div>

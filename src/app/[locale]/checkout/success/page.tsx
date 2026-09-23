@@ -3,6 +3,7 @@ import { CheckCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import ClearCart from "@/components/checkout/clear-cart";
+import { getOrderDiscountCents } from "@/lib/orders/discount";
 
 interface Props {
   searchParams: Promise<{ session_id?: string }>;
@@ -51,6 +52,8 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
     );
   }
 
+  const discountCents = getOrderDiscountCents(order);
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
       <ClearCart />
@@ -89,6 +92,12 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
             <span>{t("subtotal")}</span>
             <span>${(order.subtotalCents / 100).toFixed(2)}</span>
           </div>
+          {discountCents > 0 && (
+            <div className="flex justify-between text-sm">
+              <span>{t("discount")}</span>
+              <span>-${(discountCents / 100).toFixed(2)}</span>
+            </div>
+          )}
           <div className="flex justify-between text-sm">
             <span>{t("shipping")}</span>
             <span>${(order.shippingCents / 100).toFixed(2)}</span>
