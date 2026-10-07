@@ -310,14 +310,11 @@ test("admin shows a translated failure and enabled resend both after failure and
         })
       );
       assert.ok(html.includes(messages.Admin.orders.resendPickupEmail));
-      assert.match(
-        html,
-        /<button[^>]*name="intent"[^>]*value="resendPickupEmail"[^>]*>/
-      );
-      assert.doesNotMatch(
-        html.match(/<button[^>]*name="intent"[^>]*>/)![0],
-        /\sdisabled(?:=|\s|>)/
-      );
+      const resendButton = html.match(
+        /<button(?=[^>]*\bname="intent")(?=[^>]*\bvalue="resendPickupEmail")[^>]*>/
+      )?.[0];
+      assert.ok(resendButton);
+      assert.doesNotMatch(resendButton, /\sdisabled(?:=|\s|>)/);
       if (failed)
         assert.ok(
           html.includes(messages.Admin.orders.errors.pickupEmailFailed)

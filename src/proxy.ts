@@ -32,17 +32,21 @@ const isUnknownSlug = (pathname: string): boolean => {
   return false;
 };
 
-export default function middleware(request: NextRequest) {
-  if (isUnknownSlug(request.nextUrl.pathname)) {
-    const response = NextResponse.rewrite(request.nextUrl, { status: 404 });
-    response.headers.set("x-pathname", request.nextUrl.pathname);
-    return response;
-  }
-
+export default function proxy(request: NextRequest) {
   const response = intlMiddleware(request);
 
   // Add pathname header for use in layouts
   response.headers.set("x-pathname", request.nextUrl.pathname);
+
+  if (isUnknownSlug(request.nextUrl.pathname)) {
+    // Preserve next-intl's locale headers and keep rendering the matched route.
+    // A rewrite to the same URL can become an external self-proxy when Next.js
+    // normalizes the hostname.
+    return new NextResponse(response.body, {
+      status: 404,
+      headers: response.headers,
+    });
+  }
 
   return response;
 }

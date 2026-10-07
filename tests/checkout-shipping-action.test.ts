@@ -17,7 +17,7 @@ function loadActions(params: {
   return loadModule<typeof import("../src/lib/utils/cart-actions")>(
     "src/lib/utils/cart-actions.ts",
     {
-      "next/cache": { revalidateTag() {} },
+      "next/cache": { updateTag() {} },
       "next/headers": {
         cookies: async () => ({
           get: (key: string) =>

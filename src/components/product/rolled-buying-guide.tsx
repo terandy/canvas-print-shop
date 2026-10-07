@@ -61,7 +61,7 @@ export default async function RolledBuyingGuide({
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
           {/* Image size and total sheet size stay separate because confusing
               them is the most consequential rolled-print ordering mistake. */}
-          <div>
+          <div className="min-w-0">
             <div className="overflow-x-auto border border-secondary/15 bg-white">
               <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
                 <caption className="sr-only">{t("table.caption")}</caption>
