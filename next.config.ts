@@ -4,6 +4,8 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   /* config options here */
   outputFileTracingRoot: process.cwd(),
+  // Keep same-route 404 rewrites on the original request origin.
+  skipProxyUrlNormalize: true,
   images: {
     qualities: [25, 50, 75, 80, 100],
     formats: ["image/avif", "image/webp"],
