@@ -13,6 +13,9 @@ E-commerce platform for canvas prints built with Next.js.
 
 ## Getting Started
 
+Use Node.js 22 LTS for development. Next.js 16 requires Node.js 20.9 or newer
+at runtime.
+
 1. Install dependencies:
 
    ```bash
@@ -33,6 +36,9 @@ E-commerce platform for canvas prints built with Next.js.
    ```
 
 Open http://localhost:3000 to view the site.
+
+Run `npm run lint`, `npm run tsc -- --noEmit`, `npm test` and `npm run build`
+before releasing. Next.js 16 does not run lint as part of the build.
 
 ## Environment Variables
 
@@ -85,7 +91,7 @@ Required variables:
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16.4 (App Router, Turbopack)
 - **Database**: Vercel Postgres with Drizzle ORM
 - **Payments**: Stripe Checkout
 - **Image Storage**: AWS S3

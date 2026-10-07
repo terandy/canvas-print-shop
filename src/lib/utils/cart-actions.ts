@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { getLocale } from "next-intl/server";
 import { z } from "zod";
@@ -139,7 +139,7 @@ export async function addItem(_prevState: any, payload: AddToCartPayload) {
     console.error(error);
     return "Error adding item to cart";
   } finally {
-    revalidateTag(TAGS.cart);
+    updateTag(TAGS.cart);
   }
 }
 
@@ -175,7 +175,7 @@ export const updateCartItem = async (
     console.error(error);
     return "Error updating item quantity";
   } finally {
-    revalidateTag(TAGS.cart);
+    updateTag(TAGS.cart);
   }
 };
 
@@ -194,7 +194,7 @@ export const removeItem = async (_prevState: any, cartItemId: string) => {
     console.error(error);
     return "Error removing item from cart";
   } finally {
-    revalidateTag(TAGS.cart);
+    updateTag(TAGS.cart);
   }
 };
 
@@ -348,5 +348,5 @@ export const clearCartAction = async () => {
   }
 
   await cartDb.clearCart(cartId);
-  revalidateTag(TAGS.cart);
+  updateTag(TAGS.cart);
 };

@@ -1,9 +1,8 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
-export const alt =
-  "Canvas Print Shop - Custom Canvas Prints Made in Canada";
+export const alt = "Canvas Print Shop - Custom Canvas Prints Made in Canada";
 export const size = {
   width: 1200,
   height: 630,
@@ -16,7 +15,8 @@ export default async function Image() {
     (
       <div
         style={{
-          background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+          background:
+            "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
           width: "100%",
           height: "100%",
           display: "flex",
