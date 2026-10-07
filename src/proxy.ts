@@ -39,10 +39,11 @@ export default function proxy(request: NextRequest) {
   response.headers.set("x-pathname", request.nextUrl.pathname);
 
   if (isUnknownSlug(request.nextUrl.pathname)) {
-    // Preserve next-intl's locale headers and keep rendering the matched route.
-    // A rewrite to the same URL can become an external self-proxy when Next.js
-    // normalizes the hostname.
-    return new NextResponse(response.body, {
+    // Vercel needs a rewrite to render the localized route with a 404 status.
+    // Preserve the original origin; skipProxyUrlNormalize prevents localhost
+    // normalization from turning this into an external self-proxy.
+    response.headers.delete("x-middleware-next");
+    return NextResponse.rewrite(request.url, {
       status: 404,
       headers: response.headers,
     });
