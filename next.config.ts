@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: process.cwd(),
   // Keep same-route 404 rewrites on the original request origin.
   skipProxyUrlNormalize: true,
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     qualities: [25, 50, 75, 80, 100],
     formats: ["image/avif", "image/webp"],
