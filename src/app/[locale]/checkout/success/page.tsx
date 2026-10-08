@@ -4,6 +4,11 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import ClearCart from "@/components/checkout/clear-cart";
 import { getOrderDiscountCents } from "@/lib/orders/discount";
+import { buildPurchaseEvent } from "@/lib/analytics/purchase";
+import {
+  PurchaseAnalytics,
+  RefreshPendingOrder,
+} from "@/components/checkout/purchase-analytics";
 
 interface Props {
   searchParams: Promise<{ session_id?: string }>;
@@ -37,6 +42,7 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 text-center">
         <ClearCart />
+        <RefreshPendingOrder />
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-10 w-10 text-green-600" />
         </div>
@@ -53,10 +59,12 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
   }
 
   const discountCents = getOrderDiscountCents(order);
+  const purchaseEvent = buildPurchaseEvent(order);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16">
       <ClearCart />
+      {purchaseEvent && <PurchaseAnalytics event={purchaseEvent} />}
       <div className="text-center">
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
           <CheckCircle className="h-10 w-10 text-green-600" />
