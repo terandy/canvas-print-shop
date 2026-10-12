@@ -9,7 +9,7 @@ import {
   depthForFrame,
   INITIAL_FORM_STATE,
 } from "../src/contexts/product-context/data";
-import { DEFAULT_CANVAS_IMAGE, EMAIL } from "../src/lib/constants";
+import { DEFAULT_CANVAS_IMAGE, EMAIL, MIN_CANVAS_PPI } from "../src/lib/constants";
 import type { Product } from "../src/types/product";
 
 const product: Pick<Product, "options" | "variants"> = {
@@ -72,7 +72,7 @@ function render({ frame = "none", unavailable = false, editing = false } = {}) {
       },
       "@/contexts/product-context/data": { depthForFrame },
       "@/contexts/product-context/utils": { getSelectedVariant },
-      "@/lib/constants": { DEFAULT_CANVAS_IMAGE, EMAIL },
+      "@/lib/constants": { DEFAULT_CANVAS_IMAGE, EMAIL, MIN_CANVAS_PPI },
       "./add-to-cart": {
         __esModule: true,
         default: () => React.createElement("button", null, "Add"),

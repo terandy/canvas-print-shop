@@ -5,7 +5,7 @@ import * as jsx from "react/jsx-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
 import { loadModule } from "./helpers/load-module";
 import { getSelectedVariant } from "../src/contexts/product-context/utils";
-import { DEFAULT_CANVAS_IMAGE, EMAIL } from "../src/lib/constants";
+import { DEFAULT_CANVAS_IMAGE, EMAIL, MIN_CANVAS_PPI } from "../src/lib/constants";
 import type { Product } from "../src/types/product";
 
 const product = {
@@ -65,7 +65,7 @@ function render({ editing = false } = {}) {
         }),
       },
       "@/contexts/product-context/utils": { getSelectedVariant },
-      "@/lib/constants": { DEFAULT_CANVAS_IMAGE, EMAIL },
+      "@/lib/constants": { DEFAULT_CANVAS_IMAGE, EMAIL, MIN_CANVAS_PPI },
       "./add-to-cart": {
         __esModule: true,
         default: () => React.createElement("button", null, "Add"),

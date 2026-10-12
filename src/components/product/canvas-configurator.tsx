@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useProduct } from "@/contexts";
 import { depthForFrame } from "@/contexts/product-context/data";
 import { getSelectedVariant } from "@/contexts/product-context/utils";
-import { DEFAULT_CANVAS_IMAGE, EMAIL } from "@/lib/constants";
+import { DEFAULT_CANVAS_IMAGE, EMAIL, MIN_CANVAS_PPI } from "@/lib/constants";
 import AddToCart from "./add-to-cart";
 import SaveCartItem from "./save-cart-item";
 import ProductTotal from "./product-total";
@@ -64,7 +64,8 @@ export default function CanvasConfigurator() {
 
   const lowResolution =
     resolution &&
-    Math.min(resolution.width / width, resolution.height / height) < 50;
+    Math.min(resolution.width / width, resolution.height / height) <
+      MIN_CANVAS_PPI;
   const unframed = getSelectedVariant(product, {
     ...state,
     frame: "none",
@@ -162,7 +163,7 @@ export default function CanvasConfigurator() {
             </button>
           ))}
         </div>
-        {resolution && (
+        {resolution && width > 0 && height > 0 && (
           <p
             role="status"
             className={`mt-3 text-xs leading-5 ${lowResolution ? "text-amber-800" : "text-gray"}`}
