@@ -6,10 +6,10 @@ import { useState, useEffect, startTransition } from "react";
 import { InfoIcon } from "lucide-react";
 import type { ProductOption, ProductVariant } from "@/types/product";
 import { BASE_STATE, depthForFrame } from "@/contexts/product-context/data";
+import { MIN_CANVAS_PPI } from "@/lib/constants";
 import Price from "../price";
 
 const INCHES_TO_CM = 2.54; // Conversion factor: 1 inch = 2.54 cm
-const MIN_DPI = 50; // Posterjack policy minimum DPI for acceptable quality
 
 type Combination = {
   id: string;
@@ -137,14 +137,15 @@ const SizeSelector: React.FC<SizeSelectorProps> = ({
     value: string
   ) => {
     if (!imageResolution) return tr("noImage");
-    // Calculate DPI for both dimensions
-    const widthDPI = imageResolution.width / width;
-    const heightDPI = imageResolution.height / height;
+    // Match the selected orientation when checking the limiting dimension.
+    const [printWidth, printHeight] =
+      state.direction === "landscape" ? [height, width] : [width, height];
+    const widthPPI = imageResolution.width / printWidth;
+    const heightPPI = imageResolution.height / printHeight;
 
-    // Get the minimum DPI (the limiting factor)
-    const effectiveDPI = Math.min(widthDPI, heightDPI);
+    const effectivePPI = Math.min(widthPPI, heightPPI);
 
-    if (effectiveDPI >= MIN_DPI) {
+    if (effectivePPI >= MIN_CANVAS_PPI) {
       return <span className="text-gray-500">{t("quality.goodQuality")}</span>;
     }
     return (

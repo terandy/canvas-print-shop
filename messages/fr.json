@@ -380,10 +380,10 @@
       "add": "Ajouter",
       "quality": {
         "title": "Qualité de résolution",
-        "poorDescription": "La qualité dépend de la résolution de l'image téléversée. Si elle est insuffisante pour le format choisi, l'impression risque de manquer de netteté. Utilisez l'image ayant la meilleure résolution possible.",
-        "lowQuality": "Médiocre",
+        "poorDescription": "Cette image est assez petite pour ce format de toile. Une amélioration peut aider, mais un fichier original plus grand donnera le meilleur résultat. Contactez-nous si vous souhaitez faire vérifier votre image avant de commander.",
+        "lowQuality": "À vérifier",
         "normalQuality": "Bonne",
-        "goodQuality": "Haute"
+        "goodQuality": "Adaptée"
       }
     },
     "frame": {
@@ -456,7 +456,7 @@
       "questions": {
         "imageQuality": {
           "question": "Comment savoir si la qualité de mon image est suffisante ?",
-          "answer": "Notre système vérifie automatiquement la résolution de votre image et affiche un indicateur de qualité lorsque vous sélectionnez un format de toile. Pour un résultat optimal, utilisez l'image ayant la meilleure résolution possible."
+          "answer": "Notre outil vérifie la résolution de votre image selon le format de toile choisi, en tenant compte des améliorations possibles au besoin. Les très petites images peuvent nécessiter un fichier original plus grand ou une vérification avant la commande. Téléversez toujours votre fichier original de la meilleure qualité possible."
         },
         "depthDifference": {
           "question": "Quelle est la différence entre l'épaisseur Standard et Galerie ?",
@@ -843,7 +843,7 @@
       "canvasHelp": "Une toile de profondeur galerie, tendue sur un châssis en bois massif.",
       "framedHelp": "Une toile de profondeur régulière, avec un cadre flottant noir.",
       "edgeTitle": "Finition des bords",
-      "resolutionGood": "La résolution de votre image convient à ce format.",
+      "resolutionGood": "Votre image devrait convenir à ce format, avec une amélioration au besoin.",
       "uploadToStart": "Ajoutez votre photo pour continuer",
       "checkoutNote": "Prix en dollars canadiens. Livraison et taxes calculées à la caisse.",
       "customSize": "Vous imaginez un format plus grand ou différent?",

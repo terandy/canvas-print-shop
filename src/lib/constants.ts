@@ -24,3 +24,7 @@ export const ADDRESS = {
 };
 
 export const DEFAULT_CANVAS_IMAGE = "";
+
+// Advisory threshold for the original file, with a modest allowance for
+// enhancement before printing. Do not assume every image can be upscaled 4x.
+export const MIN_CANVAS_PPI = 40;

@@ -380,10 +380,10 @@
       "add": "Add",
       "quality": {
         "title": "Resolution",
-        "poorDescription": "The resolution of the image isn't high enough for this canvas size. If we print onto a canvas of this size, the quality of the image will be poor. Ensure the uploaded image quality is sufficient for the size you desire.",
-        "lowQuality": "Poor",
+        "poorDescription": "This image is quite small for this canvas size. Image enhancement may help, but a larger original will give the best result. Contact us if you'd like us to check it before you order.",
+        "lowQuality": "Check image",
         "normalQuality": "Good",
-        "goodQuality": "Perfect!"
+        "goodQuality": "Suitable"
       }
     },
     "frame": {
@@ -456,7 +456,7 @@
       "questions": {
         "imageQuality": {
           "question": "How do I know if my image quality is good enough?",
-          "answer": "Our system automatically checks your image resolution and shows a quality indicator (Poor, Normal or Perfect) when you select a canvas size. We recommend 'Perfect' quality for the best results."
+          "answer": "Our adviser checks your image's resolution against your chosen canvas size, allowing for image enhancement where needed. Very small images may still need a larger original or a check before you order. Always upload the best-quality original you have."
         },
         "depthDifference": {
           "question": "What's the difference between Regular and Gallery depth?",
@@ -843,7 +843,7 @@
       "canvasHelp": "A gallery-depth canvas, stretched over solid wood bars.",
       "framedHelp": "A regular-depth canvas, finished with a black floating frame.",
       "edgeTitle": "Edge finish",
-      "resolutionGood": "Your image has enough resolution for this size.",
+      "resolutionGood": "Your image should work well at this size, with enhancement if needed.",
       "uploadToStart": "Upload your photo to continue",
       "checkoutNote": "Prices in CAD. Shipping and taxes calculated at checkout.",
       "customSize": "Have something bigger or a different size in mind?",
