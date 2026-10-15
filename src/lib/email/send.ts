@@ -62,6 +62,43 @@ function interpolate(
   );
 }
 
+function getOrderFulfilmentDetails(order: Order, locale: Locale) {
+  const t = getEmailTranslations(locale).orderConfirmation;
+
+  if (order.fulfilmentMethod === "pickup") {
+    const location =
+      order.pickupLocation === "montreal"
+        ? BUSINESS_DATA.locations.montrealBranch
+        : order.pickupLocation === "quebec-city"
+          ? BUSINESS_DATA.locations.quebecCityWorkshop
+          : null;
+
+    return {
+      method:
+        order.pickupLocation === "montreal"
+          ? t.pickupMontreal
+          : order.pickupLocation === "quebec-city"
+            ? t.pickupQuebecCity
+            : t.pickup,
+      addressLabel: t.pickupAddress,
+      address: location
+        ? getLocationAddressLines(location, locale).join("\n")
+        : t.pickupLocationUnconfirmed,
+    };
+  }
+
+  // Orders placed before pickup was introduced have no fulfilment method.
+  return {
+    method: t.shipping,
+    addressLabel: t.shippingAddress,
+    address: order.shippingAddress
+      ? `${order.shippingAddress.line1}${order.shippingAddress.line2 ? `, ${order.shippingAddress.line2}` : ""}
+${order.shippingAddress.city}, ${order.shippingAddress.state} ${order.shippingAddress.postalCode}
+${order.shippingAddress.country}`
+      : t.notProvided,
+  };
+}
+
 export async function sendOrderConfirmation(
   order: Order,
   locale: Locale = "en"
@@ -72,6 +109,8 @@ export async function sendOrderConfirmation(
 
   const t = getEmailTranslations(locale).orderConfirmation;
   const discountCents = getOrderDiscountCents(order);
+  const isPickup = order.fulfilmentMethod === "pickup";
+  const fulfilment = getOrderFulfilmentDetails(order, locale);
 
   const itemsList = order.items
     .map(
@@ -79,12 +118,6 @@ export async function sendOrderConfirmation(
         `- ${item.productTitle} (${item.variantTitle}) x${item.quantity} - $${(item.priceCents / 100).toFixed(2)}`
     )
     .join("\n");
-
-  const shippingAddress = order.shippingAddress
-    ? `${order.shippingAddress.line1}${order.shippingAddress.line2 ? `, ${order.shippingAddress.line2}` : ""}
-${order.shippingAddress.city}, ${order.shippingAddress.state} ${order.shippingAddress.postalCode}
-${order.shippingAddress.country}`
-    : t.notProvided;
 
   const greeting = order.customerName
     ? interpolate(t.greeting, { name: order.customerName })
@@ -100,10 +133,11 @@ ${order.shippingAddress.country}`
 
         <p>${greeting},</p>
 
-        <p>${t.received}</p>
+        <p>${isPickup ? t.receivedPickup : t.received}</p>
 
         <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
           <h2 style="margin-top: 0;">${interpolate(t.subject, { orderNumber: order.orderNumber })}</h2>
+          <p><strong>${t.fulfilmentMethod}:</strong> ${fulfilment.method}</p>
 
           <h3>${t.items}:</h3>
           <pre style="font-family: inherit; white-space: pre-wrap;">${itemsList}</pre>
@@ -112,14 +146,14 @@ ${order.shippingAddress.country}`
 
           <p><strong>${t.subtotal}:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
           ${discountCents > 0 ? `<p><strong>${t.discount}:</strong> -$${(discountCents / 100).toFixed(2)}</p>` : ""}
-          <p><strong>${t.shipping}:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
+          <p><strong>${isPickup ? t.pickup : t.shipping}:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
           <p><strong>${t.tax}:</strong> $${(order.taxCents / 100).toFixed(2)}</p>
           <p style="font-size: 1.2em;"><strong>${t.total}:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
         </div>
 
         <div style="margin: 20px 0;">
-          <h3>${t.shippingAddress}:</h3>
-          <pre style="font-family: inherit; white-space: pre-wrap;">${shippingAddress}</pre>
+          <h3>${fulfilment.addressLabel}:</h3>
+          <pre style="font-family: inherit; white-space: pre-wrap;">${fulfilment.address}</pre>
         </div>
 
         <p>${t.questions}</p>
@@ -142,7 +176,9 @@ export async function sendAdminOrderNotification(order: Order): Promise<void> {
   if (!resend) {
     return;
   }
+  const t = getEmailTranslations("en").orderConfirmation;
   const discountCents = getOrderDiscountCents(order);
+  const fulfilment = getOrderFulfilmentDetails(order, "en");
 
   // Get all admins who should receive order notification emails
   let adminEmails: AdminOrderEmailRecipient[] = [];
@@ -171,18 +207,13 @@ export async function sendAdminOrderNotification(order: Order): Promise<void> {
     )
     .join("\n");
 
-  const shippingAddress = order.shippingAddress
-    ? `${order.shippingAddress.line1}${order.shippingAddress.line2 ? `, ${order.shippingAddress.line2}` : ""}
-${order.shippingAddress.city}, ${order.shippingAddress.state} ${order.shippingAddress.postalCode}
-${order.shippingAddress.country}`
-    : "Not provided";
-
   const emailHtml = `
     <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
       <h1 style="color: #CC5500;">New Order Received</h1>
 
       <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h2 style="margin-top: 0;">Order #${order.orderNumber}</h2>
+        <p><strong>${t.fulfilmentMethod}:</strong> ${fulfilment.method}</p>
 
         <p><strong>Customer:</strong> ${order.customerName || "N/A"}</p>
         <p><strong>Email:</strong> ${order.customerEmail}</p>
@@ -194,14 +225,14 @@ ${order.shippingAddress.country}`
         <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
 
         <p><strong>Subtotal:</strong> $${(order.subtotalCents / 100).toFixed(2)}</p>
-        ${discountCents > 0 ? `<p><strong>${getEmailTranslations("en").orderConfirmation.discount}:</strong> -$${(discountCents / 100).toFixed(2)}</p>` : ""}
-        <p><strong>Shipping:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
+        ${discountCents > 0 ? `<p><strong>${t.discount}:</strong> -$${(discountCents / 100).toFixed(2)}</p>` : ""}
+        <p><strong>${order.fulfilmentMethod === "pickup" ? t.pickup : t.shipping}:</strong> $${(order.shippingCents / 100).toFixed(2)}</p>
         <p style="font-size: 1.2em;"><strong>Total:</strong> $${(order.totalCents / 100).toFixed(2)} ${order.currency}</p>
       </div>
 
       <div style="margin: 20px 0;">
-        <h3>Shipping Address:</h3>
-        <pre style="font-family: inherit; white-space: pre-wrap;">${shippingAddress}</pre>
+        <h3>${fulfilment.addressLabel}:</h3>
+        <pre style="font-family: inherit; white-space: pre-wrap;">${fulfilment.address}</pre>
       </div>
 
     </div>
