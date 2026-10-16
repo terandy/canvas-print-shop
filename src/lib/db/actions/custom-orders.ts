@@ -2,45 +2,64 @@
 
 import { getAdminSession } from "@/lib/auth/session";
 import { createCustomCheckoutSession } from "@/lib/stripe/checkout";
+import { getTranslations } from "next-intl/server";
 
 export interface CustomOrderFormState {
   error?: string;
   success?: boolean;
   paymentUrl?: string;
+  fulfilment?: "delivery" | "montreal" | "quebec-city";
 }
 
 export async function createCustomOrderAction(
   prevState: CustomOrderFormState,
   formData: FormData
 ): Promise<CustomOrderFormState> {
+  const getText = (name: string) => {
+    const value = formData.get(name);
+    return typeof value === "string" ? value.trim() : "";
+  };
+  const locale = getText("locale") === "fr" ? "fr" : "en";
+  const t = await getTranslations({
+    locale,
+    namespace: "Admin.customOrder.errors",
+  });
   const session = await getAdminSession();
   if (!session) {
-    return { error: "Unauthorized" };
+    return { error: t("unauthorized") };
   }
 
-  const description = (formData.get("description") as string)?.trim();
-  const customerEmail = (formData.get("customerEmail") as string)?.trim();
-  const priceStr = formData.get("price") as string;
-  const shippingStr = formData.get("shipping") as string;
-  const customSize = (formData.get("customSize") as string)?.trim() || undefined;
-  const imageUrl = (formData.get("imageUrl") as string)?.trim() || undefined;
-  const locale = (formData.get("locale") as string) || "en";
+  const description = getText("description");
+  const customerEmail = getText("customerEmail");
+  const customSize = getText("customSize") || undefined;
+  const imageUrl = getText("imageUrl") || undefined;
+  const fulfilment = getText("fulfilment");
+
+  if (
+    formData.getAll("fulfilment").length !== 1 ||
+    (fulfilment !== "delivery" &&
+      fulfilment !== "montreal" &&
+      fulfilment !== "quebec-city")
+  ) {
+    return { error: t("fulfilmentRequired") };
+  }
 
   if (!description) {
-    return { error: "Description is required" };
+    return { error: t("descriptionRequired") };
   }
   if (!customerEmail) {
-    return { error: "Customer email is required" };
+    return { error: t("emailRequired") };
   }
 
-  const price = parseFloat(priceStr);
-  const shipping = parseFloat(shippingStr || "0");
+  const price = Number(getText("price"));
+  const shipping =
+    fulfilment === "delivery" ? Number(getText("shipping") || "0") : 0;
 
-  if (isNaN(price) || price <= 0) {
-    return { error: "Price must be a positive number" };
+  if (!Number.isFinite(price) || price <= 0) {
+    return { error: t("invalidPrice") };
   }
-  if (isNaN(shipping) || shipping < 0) {
-    return { error: "Shipping must be a non-negative number" };
+  if (!Number.isFinite(shipping) || shipping < 0) {
+    return { error: t("invalidShipping") };
   }
 
   try {
@@ -48,6 +67,8 @@ export async function createCustomOrderAction(
       description,
       priceCents: Math.round(price * 100),
       shippingCents: Math.round(shipping * 100),
+      fulfilmentMethod: fulfilment === "delivery" ? "delivery" : "pickup",
+      pickupLocation: fulfilment === "delivery" ? undefined : fulfilment,
       customerEmail,
       locale,
       customSize,
@@ -55,12 +76,12 @@ export async function createCustomOrderAction(
     });
 
     if (!stripeSession.url) {
-      return { error: "Failed to create payment link" };
+      return { error: t("createFailed") };
     }
 
-    return { success: true, paymentUrl: stripeSession.url };
+    return { success: true, paymentUrl: stripeSession.url, fulfilment };
   } catch (error) {
     console.error("Failed to create custom order:", error);
-    return { error: "Failed to create payment link. Please try again." };
+    return { error: t("createFailed") };
   }
 }

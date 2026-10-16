@@ -28,6 +28,10 @@ export default function CustomOrderForm() {
     INITIAL_STATE
   );
   const [copied, setCopied] = useState(false);
+  const [fulfilment, setFulfilment] = useState<
+    "delivery" | "montreal" | "quebec-city"
+  >("delivery");
+  const [shipping, setShipping] = useState("0");
   const formRef = useRef<HTMLFormElement>(null);
 
   // Image upload state
@@ -143,6 +147,17 @@ export default function CustomOrderForm() {
             <p className="text-sm mt-1">{t("successMessage")}</p>
           </div>
 
+          <p className="mb-4 text-sm text-gray-700">
+            <strong>{t("fulfilmentMethod")}:</strong>{" "}
+            {t(
+              state.fulfilment === "montreal"
+                ? "pickupMontreal"
+                : state.fulfilment === "quebec-city"
+                  ? "pickupQuebecCity"
+                  : "shipToCustomer"
+            )}
+          </p>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               {t("paymentLink")}
@@ -203,7 +218,7 @@ export default function CustomOrderForm() {
             </div>
           )}
 
-          <input type="hidden" name="locale" value="en" />
+          <input type="hidden" name="locale" value={locale} />
           <input type="hidden" name="imageUrl" value={imageUrl || ""} />
 
           <div>
@@ -336,6 +351,41 @@ export default function CustomOrderForm() {
             )}
           </div>
 
+          <fieldset disabled={isPending}>
+            <legend className="text-sm font-medium text-gray-700 mb-2">
+              {t("fulfilmentMethod")} *
+            </legend>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {(
+                [
+                  ["montreal", "pickupMontreal"],
+                  ["quebec-city", "pickupQuebecCity"],
+                  ["delivery", "shipToCustomer"],
+                ] as const
+              ).map(([value, label]) => (
+                <label
+                  key={value}
+                  className={`flex items-center gap-2 rounded-md border p-3 text-sm cursor-pointer ${
+                    fulfilment === value
+                      ? "border-primary bg-primary/5"
+                      : "border-gray-300"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    name="fulfilment"
+                    value={value}
+                    checked={fulfilment === value}
+                    onChange={() => setFulfilment(value)}
+                    required
+                    className="accent-primary"
+                  />
+                  {t(label)}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label
@@ -378,9 +428,11 @@ export default function CustomOrderForm() {
                   type="number"
                   step="0.01"
                   min="0"
-                  defaultValue="0"
+                  value={fulfilment === "delivery" ? shipping : "0"}
+                  onChange={(event) => setShipping(event.target.value)}
+                  disabled={fulfilment !== "delivery"}
                   placeholder="0.00"
-                  className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+                  className="w-full pl-7 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary disabled:bg-gray-50 disabled:text-gray-500"
                 />
               </div>
             </div>

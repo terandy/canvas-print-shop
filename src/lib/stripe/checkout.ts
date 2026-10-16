@@ -129,16 +129,6 @@ export async function buildDeliveryOption(
   };
 }
 
-async function buildLegacyShippingOptions(
-  shippingCost: number,
-  locale: string
-): Promise<ShippingOption[]> {
-  return [
-    await buildDeliveryOption(shippingCost, locale),
-    ...(await buildPickupOptions(locale)),
-  ];
-}
-
 /**
  * Which option the customer actually chose. The webhook event carries only the
  * shipping rate's id, so the session is re-read with that rate expanded.
@@ -405,6 +395,8 @@ export async function createCustomCheckoutSession(params: {
   description: string;
   priceCents: number;
   shippingCents: number;
+  fulfilmentMethod: "delivery" | "pickup";
+  pickupLocation?: PickupLocationKey;
   customerEmail: string;
   locale: string;
   customSize?: string;
@@ -414,15 +406,34 @@ export async function createCustomCheckoutSession(params: {
     description,
     priceCents,
     shippingCents,
+    fulfilmentMethod,
+    pickupLocation,
     customerEmail,
     locale,
     customSize,
     imageUrl,
   } = params;
 
+  if (fulfilmentMethod !== "delivery" && fulfilmentMethod !== "pickup") {
+    throw new Error("Custom order fulfilment method is required");
+  }
+  const shippingOption =
+    fulfilmentMethod === "delivery"
+      ? await buildDeliveryOption(shippingCents, locale)
+      : (await buildPickupOptions(locale)).find(
+          (option) =>
+            option.shipping_rate_data?.metadata?.pickupLocation ===
+            pickupLocation
+        );
+  if (!shippingOption) throw new Error("Invalid pickup location");
+
+  const t = await getTranslations({
+    locale,
+    namespace: "Checkout.customOrder",
+  });
   const productDescription = customSize
-    ? `Custom size: ${customSize}`
-    : "Custom order";
+    ? t("customSize", { size: customSize })
+    : t("description");
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -443,15 +454,28 @@ export async function createCustomCheckoutSession(params: {
     mode: "payment",
     success_url: `${BASE_URL}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${BASE_URL}/${locale}/checkout/cancelled`,
-    shipping_address_collection: {
-      allowed_countries: ["CA", "US"],
+    shipping_address_collection:
+      fulfilmentMethod === "delivery"
+        ? { allowed_countries: ["CA", "US"] }
+        : undefined,
+    shipping_options: [shippingOption],
+    custom_text: {
+      submit: {
+        message:
+          fulfilmentMethod === "pickup"
+            ? t("pickupSummary", {
+                location: shippingOption.shipping_rate_data!.display_name,
+              })
+            : t("deliverySummary"),
+      },
     },
-    shipping_options: await buildLegacyShippingOptions(shippingCents, locale),
     billing_address_collection: "required",
     phone_number_collection: { enabled: true },
     customer_email: customerEmail,
     metadata: {
       isCustomOrder: "true",
+      fulfilmentMethod,
+      pickupLocation: fulfilmentMethod === "pickup" ? pickupLocation! : "",
       description,
       customSize: customSize || "",
       imageUrl: imageUrl || "",
