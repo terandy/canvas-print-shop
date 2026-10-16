@@ -1103,6 +1103,12 @@
         "AB": "Alberta",
         "BC": "British Columbia"
       }
+    },
+    "customOrder": {
+      "description": "Custom order",
+      "customSize": "Custom size: {size}",
+      "pickupSummary": "{location}. We'll email you when your order is ready to collect. Contact us before paying if you need to change the pickup location or arrange shipping.",
+      "deliverySummary": "We'll ship your order to the delivery address entered at checkout. Contact us before paying if you need to arrange pickup instead."
     }
   },
   "Admin": {
@@ -1406,6 +1412,19 @@
       "customSizeHint": "Enter the custom dimensions for this order (e.g. 30x40, 24x36)",
       "price": "Price (CAD)",
       "shipping": "Shipping (CAD)",
+      "fulfilmentMethod": "Delivery method",
+      "pickupMontreal": "Montreal pickup",
+      "pickupQuebecCity": "Quebec City pickup",
+      "shipToCustomer": "Ship to customer",
+      "errors": {
+        "unauthorized": "Please sign in to create a custom order.",
+        "fulfilmentRequired": "Choose Montreal pickup, Quebec City pickup, or shipping.",
+        "descriptionRequired": "Description is required.",
+        "emailRequired": "Customer email is required.",
+        "invalidPrice": "Price must be a positive number.",
+        "invalidShipping": "Shipping must be zero or a positive number.",
+        "createFailed": "Failed to create payment link. Please try again."
+      },
       "createLink": "Create Payment Link",
       "creating": "Creating...",
       "successTitle": "Payment link created!",

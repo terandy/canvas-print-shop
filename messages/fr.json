@@ -1108,6 +1108,12 @@
         "AB": "Alberta",
         "BC": "Colombie-Britannique"
       }
+    },
+    "customOrder": {
+      "description": "Commande personnalisée",
+      "customSize": "Dimensions personnalisées : {size}",
+      "pickupSummary": "{location}. Nous vous aviserons par courriel lorsque votre commande sera prête. Contactez-nous avant de payer pour changer le lieu de cueillette ou demander la livraison.",
+      "deliverySummary": "Nous expédierons votre commande à l'adresse de livraison saisie lors du paiement. Contactez-nous avant de payer si vous préférez la cueillette."
     }
   },
   "Admin": {
@@ -1411,6 +1417,19 @@
       "customSizeHint": "Entrez les dimensions personnalisées pour cette commande (ex. 30x40, 24x36)",
       "price": "Prix (CAD)",
       "shipping": "Livraison (CAD)",
+      "fulfilmentMethod": "Mode de réception",
+      "pickupMontreal": "Cueillette à Montréal",
+      "pickupQuebecCity": "Cueillette à Québec",
+      "shipToCustomer": "Livraison au client",
+      "errors": {
+        "unauthorized": "Veuillez vous connecter pour créer une commande personnalisée.",
+        "fulfilmentRequired": "Choisissez la cueillette à Montréal, la cueillette à Québec ou la livraison.",
+        "descriptionRequired": "La description est obligatoire.",
+        "emailRequired": "Le courriel du client est obligatoire.",
+        "invalidPrice": "Le prix doit être un nombre positif.",
+        "invalidShipping": "Les frais de livraison doivent être nuls ou positifs.",
+        "createFailed": "Impossible de créer le lien de paiement. Veuillez réessayer."
+      },
       "createLink": "Créer le lien de paiement",
       "creating": "Création...",
       "successTitle": "Lien de paiement créé!",
