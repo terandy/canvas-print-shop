@@ -1403,7 +1403,11 @@
       "total": "Total",
       "created": "Créé",
       "updated": "Dernière mise à jour",
-      "noCarts": "Aucun panier actif"
+      "noCarts": "Aucun panier actif",
+      "pagination": "Pages des paniers",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "pageNumber": "Page {page}"
     },
     "customOrder": {
       "title": "Commande personnalisée",

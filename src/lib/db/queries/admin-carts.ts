@@ -1,4 +1,4 @@
-import { eq, and, sql, desc } from "drizzle-orm";
+import { eq, and, exists, desc } from "drizzle-orm";
 import { db } from "../index";
 import {
   carts,
@@ -27,9 +27,22 @@ export interface AdminCart {
   updatedAt: Date | null;
 }
 
-export async function getActiveCarts(): Promise<AdminCart[]> {
-  // Get all active carts
-  const cartRows = await db
+export const ADMIN_CARTS_PAGE_SIZE = 50;
+
+export function parseCartPage(value?: string): number {
+  const page = Number(value);
+  return Number.isSafeInteger(page) && page > 0 && page <= 1_000_000 ? page : 1;
+}
+
+export async function getActiveCarts(page = 1): Promise<{
+  carts: AdminCart[];
+  hasNextPage: boolean;
+}> {
+  const currentPage = parseCartPage(String(page));
+  // Filter out empty carts before pagination. Fetch one extra cart to determine
+  // whether there is another page, then join its complete set of items in the
+  // same query. Request count stays constant as abandoned carts accumulate.
+  const pageCarts = db
     .select({
       id: carts.id,
       customerEmail: customers.email,
@@ -40,68 +53,83 @@ export async function getActiveCarts(): Promise<AdminCart[]> {
     })
     .from(carts)
     .leftJoin(customers, eq(carts.customerId, customers.id))
-    .where(eq(carts.status, "active"))
-    .orderBy(desc(carts.updatedAt));
+    .where(
+      and(
+        eq(carts.status, "active"),
+        exists(
+          db
+            .select({ id: cartItems.id })
+            .from(cartItems)
+            .where(eq(cartItems.cartId, carts.id))
+        )
+      )
+    )
+    .orderBy(desc(carts.updatedAt), desc(carts.id))
+    .limit(ADMIN_CARTS_PAGE_SIZE + 1)
+    .offset((currentPage - 1) * ADMIN_CARTS_PAGE_SIZE)
+    .as("page_carts");
 
-  // For each cart, fetch items
-  const result: AdminCart[] = [];
-
-  for (const cart of cartRows) {
-    const items = await db
-      .select({
+  const rows = await db
+    .select({
+      cart: {
+        id: pageCarts.id,
+        customerEmail: pageCarts.customerEmail,
+        customerFirstName: pageCarts.customerFirstName,
+        customerLastName: pageCarts.customerLastName,
+        createdAt: pageCarts.createdAt,
+        updatedAt: pageCarts.updatedAt,
+      },
+      item: {
         productTitle: products.titleEn,
         variantTitle: productVariants.title,
         quantity: cartItems.quantity,
         priceCents: productVariants.priceCents,
         attributes: cartItems.attributes,
-      })
-      .from(cartItems)
-      .innerJoin(productVariants, eq(cartItems.variantId, productVariants.id))
-      .innerJoin(products, eq(productVariants.productId, products.id))
-      .where(eq(cartItems.cartId, cart.id));
-
-    // Skip empty carts
-    if (items.length === 0) continue;
-
-    const formattedItems: AdminCartItem[] = items.map((item) => {
-      const attrs = item.attributes as { imageUrl?: string };
-      return {
-        productTitle: item.productTitle,
-        variantTitle: item.variantTitle,
-        quantity: item.quantity,
-        priceCents: item.priceCents,
-        imageUrl: attrs?.imageUrl || null,
-      };
-    });
-
-    const totalCents = formattedItems.reduce(
-      (sum, item) => sum + item.priceCents * item.quantity,
-      0
+      },
+    })
+    .from(pageCarts)
+    .innerJoin(cartItems, eq(cartItems.cartId, pageCarts.id))
+    .innerJoin(productVariants, eq(cartItems.variantId, productVariants.id))
+    .innerJoin(products, eq(productVariants.productId, products.id))
+    .orderBy(
+      desc(pageCarts.updatedAt),
+      desc(pageCarts.id),
+      cartItems.createdAt,
+      cartItems.id
     );
 
-    const itemCount = formattedItems.reduce(
-      (sum, item) => sum + item.quantity,
-      0
-    );
-
-    const customerName =
-      cart.customerFirstName || cart.customerLastName
-        ? [cart.customerFirstName, cart.customerLastName]
+  const grouped = new Map<string, AdminCart>();
+  for (const { cart, item } of rows) {
+    let result = grouped.get(cart.id);
+    if (!result) {
+      result = {
+        id: cart.id,
+        customerEmail: cart.customerEmail,
+        customerName:
+          [cart.customerFirstName, cart.customerLastName]
             .filter(Boolean)
-            .join(" ")
-        : null;
-
-    result.push({
-      id: cart.id,
-      customerEmail: cart.customerEmail,
-      customerName,
-      items: formattedItems,
-      itemCount,
-      totalCents,
-      createdAt: cart.createdAt,
-      updatedAt: cart.updatedAt,
+            .join(" ") || null,
+        items: [],
+        itemCount: 0,
+        totalCents: 0,
+        createdAt: cart.createdAt,
+        updatedAt: cart.updatedAt,
+      };
+      grouped.set(cart.id, result);
+    }
+    result.items.push({
+      productTitle: item.productTitle,
+      variantTitle: item.variantTitle,
+      quantity: item.quantity,
+      priceCents: item.priceCents,
+      imageUrl: item.attributes?.imageUrl || null,
     });
+    result.itemCount += item.quantity;
+    result.totalCents += item.priceCents * item.quantity;
   }
 
-  return result;
+  return {
+    carts: Array.from(grouped.values()).slice(0, ADMIN_CARTS_PAGE_SIZE),
+    hasNextPage: grouped.size > ADMIN_CARTS_PAGE_SIZE,
+  };
 }
