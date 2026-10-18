@@ -1398,7 +1398,11 @@
       "total": "Total",
       "created": "Created",
       "updated": "Last Updated",
-      "noCarts": "No active carts"
+      "noCarts": "No active carts",
+      "pagination": "Cart pages",
+      "previous": "Previous",
+      "next": "Next",
+      "pageNumber": "Page {page}"
     },
     "customOrder": {
       "title": "Custom Order",

@@ -1,16 +1,20 @@
 import { getTranslations } from "next-intl/server";
-import { getActiveCarts } from "@/lib/db/queries/admin-carts";
+import Link from "next/link";
+import { getActiveCarts, parseCartPage } from "@/lib/db/queries/admin-carts";
 
-export default async function AdminCartsPage() {
+export default async function AdminCartsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
   const t = await getTranslations("Admin");
-  const carts = await getActiveCarts();
+  const currentPage = parseCartPage((await searchParams).page);
+  const { carts, hasNextPage } = await getActiveCarts(currentPage);
 
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">
-          {t("carts.title")}
-        </h1>
+        <h1 className="text-2xl font-bold text-gray-900">{t("carts.title")}</h1>
       </div>
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -111,6 +115,37 @@ export default async function AdminCartsPage() {
           </table>
         </div>
       </div>
+
+      {(currentPage > 1 || hasNextPage) && (
+        <nav
+          aria-label={t("carts.pagination")}
+          className="mt-6 flex items-center justify-between"
+        >
+          {currentPage > 1 ? (
+            <Link
+              href={`?page=${currentPage - 1}`}
+              className="rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow hover:bg-gray-50"
+            >
+              {t("carts.previous")}
+            </Link>
+          ) : (
+            <span />
+          )}
+          <span className="text-sm text-gray-600">
+            {t("carts.pageNumber", { page: currentPage })}
+          </span>
+          {hasNextPage ? (
+            <Link
+              href={`?page=${currentPage + 1}`}
+              className="rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow hover:bg-gray-50"
+            >
+              {t("carts.next")}
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      )}
     </div>
   );
 }
