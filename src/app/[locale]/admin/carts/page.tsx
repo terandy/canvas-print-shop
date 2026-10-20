@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { getActiveCarts, parseCartPage } from "@/lib/db/queries/admin-carts";
 
@@ -8,6 +8,7 @@ export default async function AdminCartsPage({
   searchParams: Promise<{ page?: string }>;
 }) {
   const t = await getTranslations("Admin");
+  const locale = await getLocale();
   const currentPage = parseCartPage((await searchParams).page);
   const { carts, hasNextPage } = await getActiveCarts(currentPage);
 
@@ -40,13 +41,16 @@ export default async function AdminCartsPage({
                 <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {t("carts.updated")}
                 </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {t("carts.recovery")}
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
               {carts.length === 0 ? (
                 <tr>
                   <td
-                    colSpan={6}
+                    colSpan={7}
                     className="px-4 py-6 text-center text-gray-500"
                   >
                     {t("carts.noCarts")}
@@ -107,6 +111,14 @@ export default async function AdminCartsPage({
                       {cart.updatedAt
                         ? new Date(cart.updatedAt).toLocaleDateString()
                         : "-"}
+                    </td>
+                    <td className="px-4 py-2 text-sm">
+                      <Link
+                        href={`/${locale}/admin/carts/${cart.id}`}
+                        className="text-primary-dark underline underline-offset-2"
+                      >
+                        {t("carts.review")}
+                      </Link>
                     </td>
                   </tr>
                 ))

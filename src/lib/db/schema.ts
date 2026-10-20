@@ -107,16 +107,49 @@ export const cartItems = pgTable("cart_items", {
     .references(() => productVariants.id, { onDelete: "cascade" }),
   quantity: integer("quantity").notNull().default(1),
   // Non-price attributes: { "borderStyle": "wrapped", "imageUrl": "https://...", "orientation": "landscape" }
-  attributes: jsonb("attributes")
-    .notNull()
-    .default({})
-    .$type<{
-      borderStyle?: string;
-      imageUrl?: string;
-      orientation?: "landscape" | "portrait";
-    }>(),
+  attributes: jsonb("attributes").notNull().default({}).$type<{
+    borderStyle?: string;
+    imageUrl?: string;
+    orientation?: "landscape" | "portrait";
+  }>(),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+// Recovery is opt-in and manually sent from admin. Email suppression applies
+// across carts; no existing customer record implies consent to reminders.
+export const cartRecoveryContacts = pgTable("cart_recovery_contacts", {
+  cartId: uuid("cart_id")
+    .primaryKey()
+    .references(() => carts.id, { onDelete: "cascade" }),
+  email: varchar("email", { length: 255 }).notNull(),
+  locale: varchar("locale", { length: 2 }).notNull().$type<"en" | "fr">(),
+  consentedAt: timestamp("consented_at").notNull().defaultNow(),
+  lastAttemptAt: timestamp("last_attempt_at"),
+  lastSentAt: timestamp("last_sent_at"),
+});
+
+export const cartRecoverySuppressions = pgTable("cart_recovery_suppressions", {
+  email: varchar("email", { length: 255 }).primaryKey(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const cartRecoveryLinks = pgTable("cart_recovery_links", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  cartId: uuid("cart_id")
+    .notNull()
+    .references(() => carts.id, { onDelete: "cascade" }),
+  tokenHash: varchar("token_hash", { length: 64 }).notNull().unique(),
+  unsubscribeTokenHash: varchar("unsubscribe_token_hash", { length: 64 })
+    .notNull()
+    .unique(),
+  email: varchar("email", { length: 255 }).notNull(),
+  locale: varchar("locale", { length: 2 }).notNull().$type<"en" | "fr">(),
+  sentBy: uuid("sent_by").notNull(),
+  expiresAt: timestamp("expires_at").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  sentAt: timestamp("sent_at"),
+  providerId: varchar("provider_id", { length: 255 }),
 });
 
 // ============================================
@@ -212,14 +245,11 @@ export const orderItems = pgTable("order_items", {
     .notNull()
     .$type<Record<string, string>>(),
   // Non-price attributes
-  attributes: jsonb("attributes")
-    .notNull()
-    .default({})
-    .$type<{
-      borderStyle?: string;
-      imageUrl?: string;
-      orientation?: "landscape" | "portrait";
-    }>(),
+  attributes: jsonb("attributes").notNull().default({}).$type<{
+    borderStyle?: string;
+    imageUrl?: string;
+    orientation?: "landscape" | "portrait";
+  }>(),
 });
 
 // ============================================

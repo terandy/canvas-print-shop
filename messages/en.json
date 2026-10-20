@@ -988,6 +988,16 @@
       "shippingCalculation": "Based on size and province",
       "total": "Total",
       "openCartWithCount": "Open cart ({count, plural, one {# item} other {# items}})"
+    },
+    "Recovery": {
+      "title": "Want a reminder?",
+      "email": "Email address",
+      "consent": "Canvas Print Shop may email me a link to this cart if I leave before checking out. I can unsubscribe at any time.",
+      "save": "Save my email",
+      "saving": "Saving…",
+      "saved": "Your email is saved for a cart reminder.",
+      "invalid": "Enter a valid email address and tick the reminder permission box.",
+      "unavailable": "We could not save your email. Please try again."
     }
   },
   "canadian": {
@@ -1402,7 +1412,9 @@
       "pagination": "Cart pages",
       "previous": "Previous",
       "next": "Next",
-      "pageNumber": "Page {page}"
+      "pageNumber": "Page {page}",
+      "recovery": "Recovery",
+      "review": "Review cart"
     },
     "customOrder": {
       "title": "Custom Order",
@@ -1455,6 +1467,38 @@
       "refunded": "Refunded",
       "printed": "Printed",
       "ready_for_pickup": "Ready for pickup"
+    },
+    "cartRecovery": {
+      "title": "Cart recovery",
+      "back": "Back to carts",
+      "items": "Saved items",
+      "image": "Customer artwork",
+      "border": "Border",
+      "landscape": "Landscape",
+      "portrait": "Portrait",
+      "subtotal": "Items subtotal",
+      "updated": "Last activity: {date} (Eastern Time)",
+      "preview": "Email preview",
+      "to": "To",
+      "language": "Email language",
+      "en": "English",
+      "fr": "French",
+      "consent": "Reminder requested (Eastern Time)",
+      "lastSent": "Last sent: {date} (Eastern Time)",
+      "lastAttempt": "Last attempt: {date} (Eastern Time). Sending has not been confirmed; check Resend before following up.",
+      "send": "Send recovery email",
+      "sending": "Sending…",
+      "sent": "Recovery email accepted by the email provider. This does not confirm inbox delivery.",
+      "noEmail": "No recovery email captured. This customer needs to save an email address and request a reminder before you can send one.",
+      "unsubscribed": "This email address has unsubscribed from cart reminders.",
+      "recentActivity": "This cart was active within the last hour. Check back once the customer has had time to finish.",
+      "recentAttempt": "A recovery email was attempted within the last 24 hours. Another send is blocked to avoid duplicates.",
+      "unavailable": "This cart cannot be recovered. It may have been ordered, expired, emptied, or contain unavailable items.",
+      "unauthorized": "Please sign in as an administrator.",
+      "changed": "The cart or recipient has changed. Refresh the page and review the email again.",
+      "notConfigured": "Email sending is not configured.",
+      "sendFailed": "The email provider did not confirm sending. Check Resend before trying again; another attempt is blocked for 24 hours.",
+      "unconfirmed": "We could not confirm whether the email was sent. Check Resend before following up; another attempt is blocked for 24 hours."
     }
   },
   "Email": {
@@ -1514,6 +1558,18 @@
       "thankYou": "Thank you for shopping with Canvas Print Shop!",
       "contact": "Questions? Email us at {email}.",
       "days": "Monday to Friday"
+    },
+    "cartRecovery": {
+      "subject": "Your canvas is waiting for you",
+      "heading": "Ready when you are",
+      "intro": "You saved a cart with Canvas Print Shop. If you would like to finish your order, your saved items are below.",
+      "subtotal": "Items subtotal",
+      "pricing": "Current item prices are shown. Delivery or free pickup, any applicable tax, and the final total are confirmed at checkout.",
+      "button": "Return to my cart and checkout",
+      "expiry": "This private link works for 7 days, while your cart remains available. Please do not share it.",
+      "help": "Need a hand with your print? Reply to this email or contact us at",
+      "permission": "You received this email because you requested a reminder for your saved cart.",
+      "unsubscribe": "Unsubscribe from cart reminders"
     }
   },
   "QualityGuarantee": {
@@ -4227,5 +4283,20 @@
     },
     "savePng": "PNG ready · Save preview",
     "mobileRoom": "Sample room · 2.4 m sofa · fixed camera"
+  },
+  "CartRecovery": {
+    "restoreTitle": "Continue with your saved cart",
+    "restoreBody": "Open your saved designs and continue to checkout. If you already have a different cart open in this browser, continuing will switch to this saved cart.",
+    "restoreButton": "Continue to checkout",
+    "unsubscribeTitle": "Stop cart reminders?",
+    "unsubscribeBody": "You can stop all cart reminder emails to this email address. This will not affect order confirmations.",
+    "unsubscribeButton": "Unsubscribe",
+    "unsubscribedTitle": "You have unsubscribed",
+    "unsubscribedBody": "You will no longer receive cart reminder emails at this email address.",
+    "invalidTitle": "This cart link is no longer available",
+    "invalidBody": "The link may have expired, or your cart may already have been ordered. You can return to the shop or contact us for help.",
+    "errorTitle": "Please try again shortly",
+    "errorBody": "We could not open your saved cart right now. Your items have not been changed.",
+    "home": "Return to the shop"
   }
 }
