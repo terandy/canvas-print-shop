@@ -1,4 +1,4 @@
-import { eq, and, exists, desc } from "drizzle-orm";
+import { eq, and, exists, desc, sql } from "drizzle-orm";
 import { db } from "../index";
 import {
   carts,
@@ -6,6 +6,7 @@ import {
   productVariants,
   products,
   customers,
+  cartRecoveryContacts,
 } from "../schema";
 
 export interface AdminCartItem {
@@ -45,7 +46,11 @@ export async function getActiveCarts(page = 1): Promise<{
   const pageCarts = db
     .select({
       id: carts.id,
-      customerEmail: customers.email,
+      customerEmail: sql<
+        string | null
+      >`coalesce(${cartRecoveryContacts.email}, ${customers.email})`.as(
+        "customer_email"
+      ),
       customerFirstName: customers.firstName,
       customerLastName: customers.lastName,
       createdAt: carts.createdAt,
@@ -53,6 +58,7 @@ export async function getActiveCarts(page = 1): Promise<{
     })
     .from(carts)
     .leftJoin(customers, eq(carts.customerId, customers.id))
+    .leftJoin(cartRecoveryContacts, eq(cartRecoveryContacts.cartId, carts.id))
     .where(
       and(
         eq(carts.status, "active"),

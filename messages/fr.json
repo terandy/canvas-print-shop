@@ -993,6 +993,16 @@
       "title": "Page introuvable",
       "message": "Désolé, la page que vous recherchez n'existe pas.",
       "button": "Retourner à l'accueil"
+    },
+    "Recovery": {
+      "title": "Vous aimeriez un rappel?",
+      "email": "Adresse courriel",
+      "consent": "Canvas Print Shop peut m’envoyer un lien vers ce panier si je quitte avant de terminer ma commande. Je peux me désabonner en tout temps.",
+      "save": "Enregistrer mon courriel",
+      "saving": "Enregistrement…",
+      "saved": "Votre adresse est enregistrée pour un rappel de panier.",
+      "invalid": "Entrez une adresse courriel valide et cochez la case autorisant le rappel.",
+      "unavailable": "Nous n’avons pas pu enregistrer votre adresse. Veuillez réessayer."
     }
   },
   "canadian": {
@@ -1407,7 +1417,9 @@
       "pagination": "Pages des paniers",
       "previous": "Précédent",
       "next": "Suivant",
-      "pageNumber": "Page {page}"
+      "pageNumber": "Page {page}",
+      "recovery": "Récupération",
+      "review": "Voir le panier"
     },
     "customOrder": {
       "title": "Commande personnalisée",
@@ -1460,6 +1472,38 @@
       "refunded": "Remboursée",
       "printed": "Imprimée",
       "ready_for_pickup": "Prête pour cueillette"
+    },
+    "cartRecovery": {
+      "title": "Récupération du panier",
+      "back": "Retour aux paniers",
+      "items": "Articles enregistrés",
+      "image": "Image du client",
+      "border": "Bordure",
+      "landscape": "Paysage",
+      "portrait": "Portrait",
+      "subtotal": "Sous-total des articles",
+      "updated": "Dernière activité : {date} (heure de l’Est)",
+      "preview": "Aperçu du courriel",
+      "to": "Destinataire",
+      "language": "Langue du courriel",
+      "en": "Anglais",
+      "fr": "Français",
+      "consent": "Rappel demandé (heure de l’Est)",
+      "lastSent": "Dernier envoi : {date} (heure de l’Est)",
+      "lastAttempt": "Dernière tentative : {date} (heure de l’Est). L’envoi n’est pas confirmé; vérifiez Resend avant de faire un suivi.",
+      "send": "Envoyer le courriel de récupération",
+      "sending": "Envoi…",
+      "sent": "Le fournisseur de courriel a accepté l’envoi. Cela ne confirme pas la réception dans la boîte de courriel.",
+      "noEmail": "Aucune adresse de récupération enregistrée. Le client doit enregistrer son adresse et demander un rappel avant que vous puissiez lui en envoyer un.",
+      "unsubscribed": "Cette adresse courriel est désabonnée des rappels de panier.",
+      "recentActivity": "Ce panier était actif dans la dernière heure. Laissez au client le temps de terminer sa commande.",
+      "recentAttempt": "Un envoi a été tenté dans les dernières 24 heures. Un nouvel envoi est bloqué pour éviter les doublons.",
+      "unavailable": "Ce panier ne peut pas être récupéré. Il a peut-être déjà été commandé, a expiré, est vide ou contient des articles non disponibles.",
+      "unauthorized": "Veuillez vous connecter comme administrateur.",
+      "changed": "Le panier ou le destinataire a changé. Actualisez la page et vérifiez de nouveau le courriel.",
+      "notConfigured": "L’envoi de courriels n’est pas configuré.",
+      "sendFailed": "Le fournisseur de courriel n’a pas confirmé l’envoi. Vérifiez Resend; une nouvelle tentative est bloquée pendant 24 heures.",
+      "unconfirmed": "Nous n’avons pas pu confirmer l’envoi. Vérifiez Resend avant de faire un suivi; une nouvelle tentative est bloquée pendant 24 heures."
     }
   },
   "Email": {
@@ -1519,6 +1563,18 @@
       "thankYou": "Merci d’avoir choisi Canvas Print Shop!",
       "contact": "Des questions? Écrivez-nous à {email}.",
       "days": "du lundi au vendredi"
+    },
+    "cartRecovery": {
+      "subject": "Votre toile vous attend",
+      "heading": "Quand vous serez prêt",
+      "intro": "Vous avez enregistré un panier chez Canvas Print Shop. Si vous souhaitez terminer votre commande, voici les articles que vous avez choisis.",
+      "subtotal": "Sous-total des articles",
+      "pricing": "Les prix actuels des articles sont affichés. La livraison ou la cueillette gratuite, les taxes applicables et le total final seront confirmés à la caisse.",
+      "button": "Retrouver mon panier et commander",
+      "expiry": "Ce lien privé est valide pendant 7 jours, tant que votre panier demeure disponible. Veuillez ne pas le partager.",
+      "help": "Besoin d’aide pour votre impression? Répondez à ce courriel ou écrivez-nous à",
+      "permission": "Vous recevez ce courriel parce que vous avez demandé un rappel pour votre panier enregistré.",
+      "unsubscribe": "Se désabonner des rappels de panier"
     }
   },
   "QualityGuarantee": {
@@ -4232,5 +4288,20 @@
     },
     "savePng": "PNG prêt · Enregistrer l’aperçu",
     "mobileRoom": "Pièce témoin · canapé de 2,4 m · caméra fixe"
+  },
+  "CartRecovery": {
+    "restoreTitle": "Retrouver votre panier enregistré",
+    "restoreBody": "Retrouvez vos créations et passez à la caisse. Si un autre panier est ouvert dans ce navigateur, continuer remplacera le panier affiché par ce panier enregistré.",
+    "restoreButton": "Passer à la caisse",
+    "unsubscribeTitle": "Arrêter les rappels de panier?",
+    "unsubscribeBody": "Vous pouvez arrêter tous les rappels de panier envoyés à cette adresse courriel. Cela n’affectera pas les confirmations de commande.",
+    "unsubscribeButton": "Me désabonner",
+    "unsubscribedTitle": "Vous êtes désabonné",
+    "unsubscribedBody": "Vous ne recevrez plus de rappels de panier à cette adresse courriel.",
+    "invalidTitle": "Ce lien de panier n’est plus disponible",
+    "invalidBody": "Le lien a peut-être expiré ou votre commande a déjà été passée. Retournez à la boutique ou communiquez avec nous pour obtenir de l’aide.",
+    "errorTitle": "Veuillez réessayer dans quelques instants",
+    "errorBody": "Nous n’avons pas pu ouvrir votre panier. Vos articles n’ont pas été modifiés.",
+    "home": "Retour à la boutique"
   }
 }

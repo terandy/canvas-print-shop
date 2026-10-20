@@ -51,6 +51,7 @@ test("cart pagination renders valid links and translated controls in both langua
         "next/link": ({ children, ...props }: any) =>
           createElement("a", props, children),
         "next-intl/server": {
+          getLocale: async () => locale,
           getTranslations: async () =>
             createTranslator({
               locale,
@@ -101,6 +102,9 @@ test(
           "drizzle/0000_eminent_major_mapleleaf.sql",
           "utf8"
         ).replaceAll('"public".', `"${testSchema}".`)
+      );
+      await client.query(
+        readFileSync("drizzle/0003_cart_recovery.sql", "utf8")
       );
       const product = (
         await client.query(

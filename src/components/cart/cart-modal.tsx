@@ -13,6 +13,7 @@ import type { CartState } from "@/contexts";
 import CartItemCard from "./cart-item-card";
 import { useLocale, useTranslations } from "next-intl";
 import { ButtonLink } from "../buttons";
+import RecoveryEmailForm from "./recovery-email-form";
 
 const CheckoutButton = () => {
   const { pending } = useFormStatus();
@@ -177,6 +178,9 @@ const CartModal = () => {
                         updateCartItemQuantity={updateCartItemQuantity}
                       />
                     ))}
+                    <li>
+                      <RecoveryEmailForm key={state.id} />
+                    </li>
                     <hr />
                     <ButtonLink
                       href={`/${locale}/product/canvas`}
